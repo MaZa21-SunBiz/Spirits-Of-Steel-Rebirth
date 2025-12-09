@@ -1,8 +1,7 @@
 extends Node
 
+# NOTE(pol): Both are only used to update the UI
 signal province_hovered(province_id: int, country_name: String)
-
-# NOTE(pol): Only used to communicate with the UI canvas layer
 signal province_clicked(province_id: int, country_name: String)
 
 signal map_ready()

@@ -18,6 +18,7 @@ func _ready() -> void:
 		_on_map_ready()
 
 
+# NOTE(pol): Misleading message and func name, this inits the map
 func _on_map_ready() -> void:
 	print("World: Map is ready → configuring visuals...")
 

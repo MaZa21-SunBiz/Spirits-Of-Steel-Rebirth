@@ -101,8 +101,7 @@ func _perform_selection() -> void:
 
 		var label = str(t.divisions)
 		
-		# FIXME(pol): Wtf this is wrong, AI hallucination ?
-		# Must pass in alignment and width before font_size
+		# FIXME(pol): Must pass in alignment and width before font_size
 		var text_size = font.get_string_size(label, FONT_SIZE_BASE) * inv_zoom
 		
 		var w = flag_size.x + (GAP_BASE * inv_zoom) + text_size.x + (pad * 2)

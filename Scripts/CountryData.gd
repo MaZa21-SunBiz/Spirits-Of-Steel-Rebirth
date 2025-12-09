@@ -2,7 +2,6 @@ extends Node
 class_name CountryData
 
 
-
 # --- Stats ---
 var country_name: String
 var political_power: int = 25
@@ -15,8 +14,10 @@ var daily_pp_gain: int = 2
 var daily_money_income: float = 1000
 var daily_manpower_growth: int = 600
 
+
 func _init(p_name: String) -> void:
 	country_name = p_name
+
 
 # Called by country manager
 func process_turn() -> void:
@@ -27,15 +28,12 @@ func process_turn() -> void:
 	# Stability logic
 	var target := 0.75
 	stability += (target - stability) * 0.01
-	
-func get_troops() -> Array:
-	return TroopManager.get_troops_for_country(country_name)
+
 
 func calculate_army_upkeep() -> float:
 	var total_upkeep = 0.0
-	var my_troops = get_troops()
 	
-	for troop in my_troops:
+	for troop in TroopManager.get_troops_for_country(country_name):
 		total_upkeep += troop.divisions * 10
 		
 	return total_upkeep

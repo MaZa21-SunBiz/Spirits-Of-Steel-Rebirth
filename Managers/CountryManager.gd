@@ -2,11 +2,10 @@ extends Node
 
 signal player_stats_changed()
 signal player_country_changed()
-var countries: Dictionary = {}
+var countries: Dictionary[String, CountryData] = {}
 var player_country: CountryData
 
 func _ready() -> void:
-	
 	await get_tree().process_frame
 	if MainClock:
 		MainClock.connect("day_passed", Callable(self, "_on_day_passed"))
@@ -18,6 +17,7 @@ func _on_day_passed(day, month, year) -> void:
 		var country_obj: CountryData = countries[c_name]
 		country_obj.process_turn()
 	emit_signal("player_stats_changed")
+
 
 func initialize_countries() -> void:
 	countries.clear()
@@ -33,33 +33,19 @@ func initialize_countries() -> void:
 
 	# 2. Create a CountryData instance for each
 	for country_name in detected_countries:
-		create_country(country_name)
+		var new_country := CountryData.new(country_name)
+		add_child(new_country)
+		countries[country_name] = new_country
 		
 	print("CountryManager: Initialized %d countries." % countries.size())
 
-func create_country(c_name: String) -> void:
-	# Create the instance
-	var new_country = CountryData.new(c_name)
-	
-	# Add it as a child of this Manager so it stays in the scene tree
-	# (This ensures it receives processing if you add _process later, and keeps memory safe)
-	add_child(new_country)
-	
-	# Store in dictionary
-	countries[c_name] = new_country
 
-# --- API to access data ---
+func set_player_country(country_name: String) -> void:
+	var country := countries.get(country_name.to_lower()) as CountryData
+	if !country:
+		push_error("CountryManager: Requested non-existent country '%s'" % country_name)
+		return
 
-func get_country(c_name: String) -> CountryData:
-	c_name = c_name.to_lower()
-	if countries.has(c_name):
-		return countries[c_name]
-	push_error("CountryManager: Requested non-existent country '%s'" % c_name)
-	return null
-
-func set_player_country(c_name: String) -> void:
-	var c = get_country(c_name)
-	if c:
-		player_country = c
-		print("Player is now playing as: ", c_name)
+	player_country = country
+	print("Player is now playing as: ", country_name)
 	emit_signal("player_country_changed")
