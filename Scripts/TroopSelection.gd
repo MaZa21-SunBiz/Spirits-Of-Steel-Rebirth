@@ -78,7 +78,7 @@ func _handle_left_mouse(event: InputEventMouseButton) -> void:
 		dragging = false
 		queue_redraw()
 	
-				# 🎯 PLAY SOUND HERE, ONLY ON MOUSE-UP AFTER DRAG
+		# 🎯 PLAY SOUND HERE, ONLY ON MOUSE-UP AFTER DRAG
 		if drag_distance >= CLICK_THRESHOLD and SelectionManager.is_a_troop_selected():
 			MusicManager.play_sfx(MusicManager.SFX.TROOP_SELECTED)
 

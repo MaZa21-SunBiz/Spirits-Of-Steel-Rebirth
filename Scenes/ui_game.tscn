@@ -185,6 +185,7 @@ toggle_mode = true
 icon = ExtResource("9_mdiyr")
 
 [node name="Sidemenu" type="ColorRect" parent="."]
+texture_filter = 4
 offset_top = 35.0
 offset_right = 268.0
 offset_bottom = 648.0

@@ -81,7 +81,6 @@ func _draw() -> void:
 		return
 
 	var player_country = CountryManager.player_country.country_name
-	var map_offset := map_sprite.texture.get_size() * 0.5
 	
 	# --- NEW: Group troops for stacking ---
 	var grouped_troops = _group_troops_by_position(TroopManager.troops, STACKING_RADIUS)
@@ -113,7 +112,7 @@ func _draw() -> void:
 	
 
 		for battle in WarManager.active_battles:
-			var pos = battle.position - map_offset
+			var pos = battle.position + map_sprite.position
 			var tex := BATTLE_ICON
 			var size := tex.get_size() * 0.05
 			var draw_pos = pos - size * 0.5

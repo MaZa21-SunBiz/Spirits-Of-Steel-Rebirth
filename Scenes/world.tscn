@@ -15,14 +15,10 @@ script = ExtResource("1_go701")
 
 [node name="UI_Topbar" parent="." instance=ExtResource("2_fo5ed")]
 
-[node name="MapContainer" type="Parallax2D" parent="."]
-scroll_offset = Vector2(412, 0)
-repeat_size = Vector2(1275, 0)
-repeat_times = 2
+[node name="MapContainer" type="Node2D" parent="."]
 
 [node name="CultureSprite" type="Sprite2D" parent="MapContainer"]
 material = SubResource("ShaderMaterial_8j60k")
-position = Vector2(850, 2)
 texture = ExtResource("2_go701")
 centered = false
 
@@ -35,6 +31,7 @@ centered = false
 script = ExtResource("5_o06y3")
 
 [node name="CameraController" type="Node2D" parent="."]
+position = Vector2(-1, 1)
 script = ExtResource("4_8j60k")
 
 [node name="TroopSelection" type="Node2D" parent="."]

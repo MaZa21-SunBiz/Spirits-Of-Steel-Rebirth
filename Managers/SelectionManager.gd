@@ -1,4 +1,6 @@
 # res://singletons/SelectionManager.gd
+## NOTE(pol): This is only used to store the selected troops in an array, 
+## because troop_renderer, TroopSelection and MapManager need it.
 extends Node
 
 const TROOP_DATA_TYPE = preload("res://Scripts/TroopData.gd")
@@ -12,10 +14,6 @@ func select_troops(new_list: Array[TROOP_DATA_TYPE], append: bool = false) -> vo
 		if not selected_troops.has(t):
 			selected_troops.append(t)
 			
-	get_tree().call_group("TroopRenderer", "queue_redraw")
-
-func clear_selection() -> void:
-	selected_troops.clear()
 	get_tree().call_group("TroopRenderer", "queue_redraw")
 
 func is_a_troop_selected() -> bool:
