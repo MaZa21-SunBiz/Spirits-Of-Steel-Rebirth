@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgfixe44dvfny"]
+[gd_scene load_steps=15 format=3 uid="uid://dgfixe44dvfny"]
 
 [ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scenes/ui_game.gd" id="1_rp7y5"]
 [ext_resource type="Texture2D" uid="uid://bd1tehujs0p3u" path="res://assets/flags/abkhazia_flag.png" id="1_xar7q"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/industry_icon.png" id="5_rp7y5"]
 [ext_resource type="Texture2D" uid="uid://c6fo2o462ff25" path="res://assets/icons/nonaligned_icon.png" id="6_okksu"]
 [ext_resource type="Texture2D" uid="uid://d0jobkwbqofhx" path="res://assets/icons/liberal_icon.png" id="8_okksu"]
-[ext_resource type="Texture2D" uid="uid://2dhnim3tchpf" path="res://assets/icons/unmerge_icon.png" id="9_mdiyr"]
 [ext_resource type="Texture2D" uid="uid://ddbgdqwtqoole" path="res://assets/icons/plus_icon.png" id="10_lnl2f"]
 [ext_resource type="Texture2D" uid="uid://bggny42m0dmo1" path="res://assets/icons/minus_icon.png" id="11_6bnrr"]
 [ext_resource type="FontFile" uid="uid://cee8mbnpx3w3h" path="res://font/arial.TTF" id="12_6bnrr"]
@@ -170,22 +169,6 @@ layout_mode = 2
 tooltip_text = "Decrease game speed"
 icon = ExtResource("11_6bnrr")
 flat = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = 592.0
-offset_top = 531.0
-offset_right = 632.0
-offset_bottom = 614.0
-theme_override_font_sizes/font_size = 60
-text = "A"
-
-[node name="Button" type="Button" parent="."]
-offset_left = 516.0
-offset_top = 546.0
-offset_right = 574.0
-offset_bottom = 604.0
-toggle_mode = true
-icon = ExtResource("9_mdiyr")
 
 [node name="Sidemenu" type="ColorRect" parent="."]
 offset_top = 35.0

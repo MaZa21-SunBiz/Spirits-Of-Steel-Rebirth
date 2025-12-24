@@ -1,0 +1,1382 @@
+{
+  "canada": {
+	"color": [195, 92, 109]
+  },
+  "denmark": {
+	"color": [153, 116, 93]
+  },
+  "russia": {
+	"color": [56, 96, 56]
+  },
+  "norway": {
+	"color": [111, 71, 71]
+  },
+  "united_states": {
+	"color": [20, 133, 237]
+  },
+  "finland": {
+	"color": [194, 198, 215]
+  },
+  "sweden": {
+	"color": [36, 132, 247]
+  },
+  "iceland": {
+	"color": [68, 81, 113]
+  },
+  "estonia": {
+	"color": [50, 135, 175]
+  },
+  "united_kingdom": {
+	"color": [200, 56, 93]
+  },
+  "latvia": {
+	"color": [75, 77, 186]
+  },
+  "belarus": {
+	"color": [199, 213, 224]
+  },
+  "lithuania": {
+	"color": [219, 219, 119]
+  },
+  "ireland": {
+	"color": [80, 159, 90]
+  },
+  "kazakhstan": {
+	"color": [88, 161, 193]
+  },
+  "germany": {
+	"color": [73, 72, 77]
+  },
+  "poland": {
+	"color": [197, 92, 106]
+  },
+  "mongolia": {
+	"color": [163, 142, 75]
+  },
+  "netherlands": {
+	"color": [199, 135, 73]
+  },
+  "china": {
+	"color": [167, 87, 90]
+  },
+  "ukraine": {
+	"color": [52, 88, 138]
+  },
+  "belgium": {
+	"color": [193, 171, 8]
+  },
+  "france": {
+	"color": [61, 117, 232]
+  },
+  "czechia": {
+	"color": [54, 167, 156]
+  },
+  "luxembourg": {
+	"color": [85, 228, 233]
+  },
+  "slovakia": {
+	"color": [121, 92, 159]
+  },
+  "austria": {
+	"color": [168, 174, 198]
+  },
+  "hungary": {
+	"color": [78, 125, 115]
+  },
+  "moldova": {
+	"color": [134, 110, 82]
+  },
+  "romania": {
+	"color": [215, 196, 72]
+  },
+  "transnistria": {
+	"color": [42, 22, 24]
+  },
+  "switzerland": {
+	"color": [224, 5, 5]
+  },
+  "liechtenstein": {
+	"color": [87, 90, 127]
+  },
+  "italy": {
+	"color": [67, 127, 63]
+  },
+  "slovenia": {
+	"color": [79, 111, 150]
+  },
+  "croatia": {
+	"color": [42, 45, 96]
+  },
+  "serbia": {
+	"color": [154, 104, 103]
+  },
+  "bosnia_and_herzegovina": {
+	"color": [223, 192, 135]
+  },
+  "uzbekistan": {
+	"color": [202, 206, 253]
+  },
+  "japan": {
+	"color": [255, 201, 178]
+  },
+  "bulgaria": {
+	"color": [51, 155, 0]
+  },
+  "spain": {
+	"color": [242, 205, 94]
+  },
+  "san_marino": {
+	"color": [98, 176, 198]
+  },
+  "monaco": {
+	"color": [237, 162, 186]
+  },
+  "abkhazia": {
+	"color": [63, 31, 45]
+  },
+  "montenegro": {
+	"color": [252, 114, 121]
+  },
+  "kosovo": {
+	"color": [118, 142, 186]
+  },
+  "georgia": {
+	"color": [239, 228, 232]
+  },
+  "andorra": {
+	"color": [201, 0, 1]
+  },
+  "kyrgyzstan": {
+	"color": [244, 61, 111]
+  },
+  "south_ossetia": {
+	"color": [194, 150, 87]
+  },
+  "north_korea": {
+	"color": [245, 12, 55]
+  },
+  "albania": {
+	"color": [149, 45, 102]
+  },
+  "north_macedonia": {
+	"color": [202, 149, 118]
+  },
+  "azerbaijan": {
+	"color": [114, 140, 217]
+  },
+  "portugal": {
+	"color": [39, 116, 70]
+  },
+  "turkmenistan": {
+	"color": [189, 140, 110]
+  },
+  "turkey": {
+	"color": [166, 52, 67]
+  },
+  "vatican_city": {
+	"color": [196, 181, 130]
+  },
+  "greece": {
+	"color": [93, 181, 227]
+  },
+  "armenia": {
+	"color": [246, 162, 134]
+  },
+  "tajikistan": {
+	"color": [109, 148, 130]
+  },
+  "iran": {
+	"color": [90, 143, 123]
+  },
+  "afghanistan": {
+	"color": [113, 107, 121]
+  },
+  "south_korea": {
+	"color": [94, 118, 190]
+  },
+  "tunisia": {
+	"color": [185, 86, 106]
+  },
+  "iraq": {
+	"color": [178, 114, 99]
+  },
+  "syria": {
+	"color": [55, 78, 92]
+  },
+  "pakistan": {
+	"color": [0, 41, 23]
+  },
+  "algeria": {
+	"color": [10, 43, 36]
+  },
+  "morocco": {
+	"color": [155, 74, 89]
+  },
+  "malta": {
+	"color": [217, 217, 217]
+  },
+  "turkish_cyprus": {
+	"color": [92, 77, 50]
+  },
+  "india": {
+	"color": [208, 163, 108]
+  },
+  "cyprus": {
+	"color": [222, 181, 27]
+  },
+  "lebanon": {
+	"color": [84, 156, 139]
+  },
+  "libya": {
+	"color": [42, 112, 84]
+  },
+  "israel": {
+	"color": [69, 105, 217]
+  },
+  "jordan": {
+	"color": [227, 152, 156]
+  },
+  "mexico": {
+	"color": [104, 151, 82]
+  },
+  "saudi_arabia": {
+	"color": [171, 190, 152]
+  },
+  "palestine": {
+	"color": [86, 72, 87]
+  },
+  "egypt": {
+	"color": [175, 163, 88]
+  },
+  "nepal": {
+	"color": [0, 56, 147]
+  },
+  "kuwait": {
+	"color": [90, 64, 42]
+  },
+  "bhutan": {
+	"color": [121, 100, 95]
+  },
+  "myanmar": {
+	"color": [59, 113, 79]
+  },
+  "western_sahara": {
+	"color": [197, 174, 120]
+  },
+  "mauritania": {
+	"color": [42, 111, 83]
+  },
+  "bahrain": {
+	"color": [58, 65, 75]
+  },
+  "bangladesh": {
+	"color": [0, 42, 48]
+  },
+  "qatar": {
+	"color": [111, 35, 115]
+  },
+  "united_arab_emirates": {
+	"color": [39, 150, 120]
+  },
+  "taiwan": {
+	"color": [91, 77, 92]
+  },
+  "mali": {
+	"color": [158, 138, 87]
+  },
+  "oman": {
+	"color": [129, 84, 88]
+  },
+  "niger": {
+	"color": [38, 88, 77]
+  },
+  "cuba": {
+	"color": [151, 68, 176]
+  },
+  "chad": {
+	"color": [187, 170, 126]
+  },
+  "sudan": {
+	"color": [12, 56, 39]
+  },
+  "vietnam": {
+	"color": [198, 190, 117]
+  },
+  "laos": {
+	"color": [89, 77, 63]
+  },
+  "haiti": {
+	"color": [165, 116, 111]
+  },
+  "dominican_republic": {
+	"color": [114, 136, 119]
+  },
+  "thailand": {
+	"color": [20, 45, 76]
+  },
+  "belize": {
+	"color": [130, 50, 20]
+  },
+  "yemen": {
+	"color": [78, 50, 53]
+  },
+  "jamaica": {
+	"color": [139, 220, 10]
+  },
+  "philippines": {
+	"color": [114, 85, 166]
+  },
+  "guatemala": {
+	"color": [72, 48, 109]
+  },
+  "eritrea": {
+	"color": [206, 140, 162]
+  },
+  "cabo_verde": {
+	"color": [206, 32, 39]
+  },
+  "st_kitts_and_nevis": {
+	"color": [59, 56, 0]
+  },
+  "senegal": {
+	"color": [184, 117, 124]
+  },
+  "honduras": {
+	"color": [153, 176, 74]
+  },
+  "burkina_faso": {
+	"color": [202, 110, 123]
+  },
+  "el_salvador": {
+	"color": [159, 136, 198]
+  },
+  "nicaragua": {
+	"color": [145, 178, 190]
+  },
+  "ethiopia": {
+	"color": [48, 71, 123]
+  },
+  "cambodia": {
+	"color": [226, 180, 144]
+  },
+  "dominica": {
+	"color": [118, 112, 178]
+  },
+  "nigeria": {
+	"color": [194, 122, 107]
+  },
+  "gambia": {
+	"color": [68, 53, 92]
+  },
+  "barbados": {
+	"color": [252, 209, 22]
+  },
+  "st_lucia": {
+	"color": [93, 183, 230]
+  },
+  "guinea_bissau": {
+	"color": [218, 189, 129]
+  },
+  "guinea": {
+	"color": [32, 90, 78]
+  },
+  "venezuela": {
+	"color": [200, 100, 150]
+  },
+  "grenada": {
+	"color": [0, 123, 95]
+  },
+  "benin": {
+	"color": [219, 196, 120]
+  },
+  "djibouti": {
+	"color": [215, 20, 26]
+  },
+  "cameroon": {
+	"color": [24, 94, 97]
+  },
+  "south_sudan": {
+	"color": [212, 191, 110]
+  },
+  "somalia": {
+	"color": [102, 131, 171]
+  },
+  "somaliland": {
+	"color": [85, 171, 112]
+  },
+  "costa_rica": {
+	"color": [167, 140, 42]
+  },
+  "colombia": {
+	"color": [222, 187, 91]
+  },
+  "togo": {
+	"color": [21, 51, 35]
+  },
+  "maldives": {
+	"color": [146, 155, 162]
+  },
+  "ghana": {
+	"color": [162, 74, 88]
+  },
+  "central_african_republic": {
+	"color": [166, 77, 99]
+  },
+  "trinidad_and_tobago": {
+	"color": [240, 90, 39]
+  },
+  "ivory_coast": {
+	"color": [209, 153, 106]
+  },
+  "sierra_leone": {
+	"color": [114, 159, 190]
+  },
+  "panama": {
+	"color": [60, 53, 88]
+  },
+  "sri_lanka": {
+	"color": [86, 75, 57]
+  },
+  "liberia": {
+	"color": [81, 61, 118]
+  },
+  "guyana": {
+	"color": [180, 150, 120]
+  },
+  "palau": {
+	"color": [255, 201, 14]
+  },
+  "nauru": {
+	"color": [41, 47, 133]
+  },
+  "malaysia": {
+	"color": [197, 96, 100]
+  },
+  "suriname": {
+	"color": [128, 55, 84]
+  },
+  "indonesia": {
+	"color": [221, 190, 196]
+  },
+  "brazil": {
+	"color": [76, 145, 63]
+  },
+  "dr_congo": {
+	"color": [65, 104, 147]
+  },
+  "kenya": {
+	"color": [131, 54, 64]
+  },
+  "brunei": {
+	"color": [60, 110, 85]
+  },
+  "uganda": {
+	"color": [146, 130, 79]
+  },
+  "equatorial_guinea": {
+	"color": [80, 144, 171]
+  },
+  "congo": {
+	"color": [209, 108, 120]
+  },
+  "gabon": {
+	"color": [220, 191, 123]
+  },
+  "singapore": {
+	"color": [77, 73, 134]
+  },
+  "ecuador": {
+	"color": [249, 146, 98]
+  },
+  "sao_tome_and_principe": {
+	"color": [18, 173, 43]
+  },
+  "peru": {
+	"color": [196, 189, 204]
+  },
+  "rwanda": {
+	"color": [29, 56, 65]
+  },
+  "tanzania": {
+	"color": [103, 135, 146]
+  },
+  "burundi": {
+	"color": [154, 75, 160]
+  },
+  "papua_new_guinea": {
+	"color": [43, 56, 90]
+  },
+  "angola": {
+	"color": [44, 24, 35]
+  },
+  "seychelles": {
+	"color": [161, 30, 36]
+  },
+  "solomon_islands": {
+	"color": [226, 12, 12]
+  },
+  "zambia": {
+	"color": [34, 86, 47]
+  },
+  "east_timor": {
+	"color": [40, 170, 76]
+  },
+  "tuvalu": {
+	"color": [237, 28, 36]
+  },
+  "malawi": {
+	"color": [161, 84, 104]
+  },
+  "bolivia": {
+	"color": [204, 166, 108]
+  },
+  "mozambique": {
+	"color": [14, 54, 62]
+  },
+  "australia": {
+	"color": [57, 143, 97]
+  },
+  "madagascar": {
+	"color": [44, 140, 4]
+  },
+  "vanuatu": {
+	"color": [237, 167, 32]
+  },
+  "zimbabwe": {
+	"color": [173, 88, 93]
+  },
+  "fiji": {
+	"color": [143, 73, 82]
+  },
+  "namibia": {
+	"color": [193, 217, 167]
+  },
+  "niue": {
+	"color": [185, 122, 87]
+  },
+  "chile": {
+	"color": [155, 101, 107]
+  },
+  "botswana": {
+	"color": [136, 157, 188]
+  },
+  "paraguay": {
+	"color": [57, 113, 228]
+  },
+  "mauritius": {
+	"color": [179, 149, 0]
+  },
+  "tonga": {
+	"color": [255, 117, 120]
+  },
+  "argentina": {
+	"color": [145, 157, 236]
+  },
+  "south_africa": {
+	"color": [210, 165, 108]
+  },
+  "eswatini": {
+	"color": [87, 95, 134]
+  },
+  "lesotho": {
+	"color": [0, 190, 240]
+  },
+  "uruguay": {
+	"color": [174, 192, 156]
+  },
+  "new_zealand": {
+	"color": [218, 209, 233]
+  },
+  "american_union": {
+	"color": [37, 48, 65]
+  },
+  "socialist_states": {
+	"color": [178, 34, 53]
+  },
+  "american_commonwealth": {
+	"color": [90, 80, 198]
+  },
+  "vichy_france": {
+	"color": [109, 187, 209]
+  },
+  "french_commune": {
+	"color": [10, 54, 176]
+  },
+  "french_empire": {
+	"color": [5, 91, 142]
+  },
+  "free_france": {
+	"color": [21, 37, 81]
+  },
+  "saar_protectorate": {
+	"color": [117, 207, 133]
+  },
+  "german_reich": {
+	"color": [102, 96, 87]
+  },
+  "german_empire": {
+	"color": [102, 102, 102]
+  },
+  "german_republic": {
+	"color": [51, 34, 42]
+  },
+  "great_britain": {
+	"color": [204, 110, 117]
+  },
+  "oceania": {
+	"color": [149, 47, 47]
+  },
+  "british_union": {
+	"color": [207, 12, 39]
+  },
+  "chinese_republic": {
+	"color": [218, 230, 92]
+  },
+  "beiyang_china": {
+	"color": [224, 139, 13]
+  },
+  "reorganized_china": {
+	"color": [96, 140, 194]
+  },
+  "great_qing": {
+	"color": [214, 180, 144]
+  },
+  "provincial_league": {
+	"color": [130, 139, 171]
+  },
+  "russian_sfsr": {
+	"color": [156, 91, 113]
+  },
+  "white_russia": {
+	"color": [74, 99, 41]
+  },
+  "russian_republic": {
+	"color": [0, 127, 13]
+  },
+  "soviet_union": {
+	"color": [125, 13, 24]
+  },
+  "transamur": {
+	"color": [235, 247, 247]
+  },
+  "imperial_japan": {
+	"color": [211, 184, 180]
+  },
+  "japanese_empire": {
+	"color": [201, 191, 183]
+  },
+  "occupied_japan": {
+	"color": [180, 186, 224]
+  },
+  "japanese_republic": {
+	"color": [255, 166, 146]
+  },
+  "republican_spain": {
+	"color": [255, 212, 2]
+  },
+  "francoist_spain": {
+	"color": [179, 123, 105]
+  },
+  "spanish_republic": {
+	"color": [232, 106, 118]
+  },
+  "carlist_spain": {
+	"color": [232, 143, 72]
+  },
+  "italian_empire": {
+	"color": [72, 140, 84]
+  },
+  "italian_kingdom": {
+	"color": [86, 165, 82]
+  },
+  "italian_republic": {
+	"color": [31, 122, 92]
+  },
+  "salo_republic": {
+	"color": [35, 69, 41]
+  },
+  "serbian_republic": {
+	"color": [89, 80, 110]
+  },
+  "serbian_kingdom": {
+	"color": [13, 70, 130]
+  },
+  "yugoslavia": {
+	"color": [72, 73, 126]
+  },
+  "sfr_yugoslavia": {
+	"color": [99, 106, 143]
+  },
+  "apartheid_south_africa": {
+	"color": [152, 130, 191]
+  },
+  "british_south_africa": {
+	"color": [102, 30, 52]
+  },
+  "south_african_republic": {
+	"color": [251, 131, 128]
+  },
+  "national_south_africa": {
+	"color": [185, 103, 74]
+  },
+  "zulu_kingdom": {
+	"color": [40, 128, 255]
+  },
+  "saudi_republic": {
+	"color": [130, 141, 124]
+  },
+  "unitary_saudi": {
+	"color": [77, 120, 90]
+  },
+  "reformed_saudi": {
+	"color": [157, 160, 159]
+  },
+  "abyssinia": {
+	"color": [190, 176, 215]
+  },
+  "pdr_ethiopia": {
+	"color": [196, 173, 199]
+  },
+  "reformed_ethiopia": {
+	"color": [162, 144, 161]
+  },
+  "italian_east_africa": {
+	"color": [69, 95, 77]
+  },
+  "danish_republic": {
+	"color": [156, 128, 125]
+  },
+  "norwegian_republic": {
+	"color": [0, 40, 101]
+  },
+  "british_raj": {
+	"color": [170, 10, 10]
+  },
+  "bharatiya": {
+	"color": [120, 38, 38]
+  },
+  "princely_federation": {
+	"color": [226, 135, 40]
+  },
+  "unitary_india": {
+	"color": [95, 174, 95]
+  },
+  "indian_empire": {
+	"color": [184, 92, 1]
+  },
+  "dominion_of_canada": {
+	"color": [119, 48, 39]
+  },
+  "unitary_canada": {
+	"color": [129, 138, 163]
+  },
+  "popular_canada": {
+	"color": [245, 140, 151]
+  },
+  "royal_canada": {
+	"color": [140, 104, 115]
+  },
+  "mexican_empire": {
+	"color": [178, 212, 191]
+  },
+  "reformed_mexico": {
+	"color": [86, 102, 85]
+  },
+  "unitary_mexico": {
+	"color": [76, 82, 98]
+  },
+  "mexican_republic": {
+	"color": [75, 105, 91]
+  },
+  "pr_mongolia": {
+	"color": [108, 140, 42]
+  },
+  "nigerian_republic": {
+	"color": [173, 47, 50]
+  },
+  "unitary_nigeria": {
+	"color": [11, 54, 24]
+  },
+  "nigerian_kingdom": {
+	"color": [148, 133, 58]
+  },
+  "reformed_nigeria": {
+	"color": [3, 129, 5]
+  },
+  "swedish_republic": {
+	"color": [102, 142, 201]
+  },
+  "unitary_sweden": {
+	"color": [45, 87, 147]
+  },
+  "swedish_kingdom": {
+	"color": [97, 185, 223]
+  },
+  "argentinian_republic": {
+	"color": [60, 76, 156]
+  },
+  "unitary_argentina": {
+	"color": [22, 49, 82]
+  },
+  "argentinian_kingdom": {
+	"color": [231, 204, 118]
+  },
+  "reformed_argentina": {
+	"color": [152, 149, 187]
+  },
+  "arab_islamic_republic": {
+	"color": [68, 150, 86]
+  },
+  "siam": {
+	"color": [140, 166, 115]
+  },
+  "reformed_thailand": {
+	"color": [3, 113, 174]
+  },
+  "thai_republic": {
+	"color": [165, 26, 49]
+  },
+  "national_siam": {
+	"color": [116, 43, 89]
+  },
+  "venezuelan_republic": {
+	"color": [186, 201, 171]
+  },
+  "dutch_east_indies": {
+	"color": [40, 50, 120]
+  },
+  "indonesian_republic": {
+	"color": [100, 9, 10]
+  },
+  "reformed_indonesia": {
+	"color": [3, 15, 72]
+  },
+  "majapahit_empire": {
+	"color": [130, 53, 51]
+  },
+  "occupied_indonesia": {
+	"color": [138, 95, 94]
+  },
+  "rosa_luxembourg": {
+	"color": [116, 161, 173]
+  },
+  "dutch_republic": {
+	"color": [102, 78, 55]
+  },
+  "niederlande": {
+	"color": [96, 93, 99]
+  },
+  "orange_netherlands": {
+	"color": [229, 195, 134]
+  },
+  "british_malaya": {
+	"color": [255, 117, 152]
+  },
+  "afghan_kingdom": {
+	"color": [64, 160, 167]
+  },
+  "afghan_republic": {
+	"color": [255, 159, 132]
+  },
+  "kingdom_of_greece": {
+	"color": [124, 166, 212]
+  },
+  "greek_republic": {
+	"color": [176, 187, 249]
+  },
+  "brazilian_republic": {
+	"color": [109, 63, 76]
+  },
+  "brazilian_empire": {
+	"color": [34, 112, 138]
+  },
+  "unitary_brazil": {
+	"color": [41, 94, 87]
+  },
+  "reformed_brazil": {
+	"color": [53, 132, 52]
+  },
+  "bohemia": {
+	"color": [100, 153, 104]
+  },
+  "czechoslovakia": {
+	"color": [63, 196, 183]
+  },
+  "czech_republic": {
+	"color": [62, 196, 159]
+  },
+  "bohemian_protectorate": {
+	"color": [70, 82, 157]
+  },
+  "persia": {
+	"color": [47, 100, 74]
+  },
+  "reformed_iran": {
+	"color": [143, 117, 96]
+  },
+  "iranian_republic": {
+	"color": [89, 110, 106]
+  },
+  "iraqi_kingdom": {
+	"color": [101, 135, 121]
+  },
+  "reformed_iraq": {
+	"color": [182, 166, 101]
+  },
+  "iraqi_republic": {
+	"color": [191, 30, 36]
+  },
+  "egyptian_kingdom": {
+	"color": [222, 184, 110]
+  },
+  "united_arab_republic": {
+	"color": [199, 187, 164]
+  },
+  "reformed_egypt": {
+	"color": [168, 151, 111]
+  },
+  "egyptian_republic": {
+	"color": [201, 193, 134]
+  },
+  "omani_sultanate": {
+	"color": [176, 121, 118]
+  },
+  "yemeni_kingdom": {
+	"color": [102, 77, 70]
+  },
+  "yemeni_republic": {
+	"color": [217, 140, 104]
+  },
+  "kingdom_of_albania": {
+	"color": [173, 83, 114]
+  },
+  "psr_albania": {
+	"color": [163, 74, 119]
+  },
+  "kingdom_of_hungary": {
+	"color": [249, 126, 98]
+  },
+  "hungarian_republic": {
+	"color": [255, 147, 139]
+  },
+  "greater_hungary": {
+	"color": [196, 129, 119]
+  },
+  "austrian_empire": {
+	"color": [220, 220, 220]
+  },
+  "austrian_state": {
+	"color": [181, 175, 194]
+  },
+  "austria_hungary": {
+	"color": [233, 234, 227]
+  },
+  "bulgarian_empire": {
+	"color": [58, 115, 97]
+  },
+  "bulgarian_kingdom": {
+	"color": [66, 113, 69]
+  },
+  "bulgarian_republic": {
+	"color": [74, 143, 74]
+  },
+  "irish_republic": {
+	"color": [115, 158, 134]
+  },
+  "irish_kingdom": {
+	"color": [185, 204, 172]
+  },
+  "unitary_ireland": {
+	"color": [31, 62, 79]
+  },
+  "ukrainian_state": {
+	"color": [107, 43, 1]
+  },
+  "ukrainian_ssr": {
+	"color": [107, 78, 77]
+  },
+  "national_ukraine": {
+	"color": [107, 124, 142]
+  },
+  "reformed_ukraine": {
+	"color": [1, 125, 207]
+  },
+  "slovak_republic": {
+	"color": [161, 168, 191]
+  },
+  "kampuchea": {
+	"color": [122, 94, 116]
+  },
+  "independent_croatia": {
+	"color": [191, 119, 173]
+  },
+  "illyria": {
+	"color": [233, 175, 221]
+  },
+  "legionary_romania": {
+	"color": [209, 205, 153]
+  },
+  "romanian_kingdom": {
+	"color": [255, 255, 119]
+  },
+  "romanian_republic": {
+	"color": [229, 185, 92]
+  },
+  "chosen": {
+	"color": [54, 66, 107]
+  },
+  "joseon": {
+	"color": [156, 169, 202]
+  },
+  "finnish_ssr": {
+	"color": [181, 164, 164]
+  },
+  "greater_finland": {
+	"color": [230, 217, 226]
+  },
+  "finnish_kingdom": {
+	"color": [197, 206, 230]
+  },
+  "pakistani_republic": {
+	"color": [75, 80, 102]
+  },
+  "reformed_pakistan": {
+	"color": [3, 125, 37]
+  },
+  "sikh_empire": {
+	"color": [255, 127, 39]
+  },
+  "unitary_pakistan": {
+	"color": [62, 69, 65]
+  },
+  "ottoman_empire": {
+	"color": [162, 20, 0]
+  },
+  "turkish_republic": {
+	"color": [135, 148, 141]
+  },
+  "national_turkey": {
+	"color": [102, 74, 58]
+  },
+  "kemalist_turkey": {
+	"color": [194, 207, 189]
+  },
+  "montenegrin_kingdom": {
+	"color": [77, 89, 105]
+  },
+  "portugese_kingdom": {
+	"color": [0, 102, 122]
+  },
+  "portugese_republic": {
+	"color": [179, 15, 6]
+  },
+  "burma": {
+	"color": [166, 106, 147]
+  },
+  "syrian_republic": {
+	"color": [149, 150, 171]
+  },
+  "polish_republic": {
+	"color": [230, 127, 148]
+  },
+  "polish_kingdom": {
+	"color": [191, 136, 162]
+  },
+  "unitary_poland": {
+	"color": [187, 156, 201]
+  },
+  "vietnamese_republic": {
+	"color": [0, 69, 154]
+  },
+  "reformed_vietnam": {
+	"color": [151, 130, 73]
+  },
+  "vietnamese_empire": {
+	"color": [77, 64, 5]
+  },
+  "vietnamese_kingdom": {
+	"color": [218, 206, 175]
+  },
+  "communist_chile": {
+	"color": [1, 89, 132]
+  },
+  "flanders": {
+	"color": [251, 224, 67]
+  },
+  "belgian_republic": {
+	"color": [181, 150, 75]
+  },
+  "burgundy": {
+	"color": [85, 1, 0]
+  },
+  "baltic_duchy": {
+	"color": [142, 142, 129]
+  },
+  "angolan_republic": {
+	"color": [154, 168, 127]
+  },
+  "lithuanian_kingdom": {
+	"color": [153, 69, 116]
+  },
+  "alash_autonomy": {
+	"color": [0, 122, 167]
+  },
+  "pr_congo": {
+	"color": [157, 25, 48]
+  },
+  "white_ruthenia": {
+	"color": [239, 238, 215]
+  },
+  "byelorussian_ssr": {
+	"color": [178, 190, 191]
+  },
+  "reformed_belarus": {
+	"color": [229, 232, 238]
+  },
+  "pr_benin": {
+	"color": [29, 75, 212]
+  },
+  "emu_empire": {
+	"color": [129, 76, 158]
+  },
+  "australian_republic": {
+	"color": [199, 164, 153]
+  },
+  "new_caledonia": {
+	"color": [122, 188, 208]
+  },
+  "greenland": {
+	"color": [196, 197, 215]
+  },
+  "aussa": {
+	"color": [130, 72, 96]
+  },
+  "tannu_tuva": {
+	"color": [151, 130, 190]
+  },
+  "manchukuo": {
+	"color": [255, 120, 71]
+  },
+  "mengjiang": {
+	"color": [185, 255, 152]
+  },
+  "sinkiang": {
+	"color": [71, 190, 152]
+  },
+  "tibet": {
+	"color": [80, 115, 45]
+  },
+  "ma_clique": {
+	"color": [105, 90, 132]
+  },
+  "shanxi_clique": {
+	"color": [82, 2, 15]
+  },
+  "yunnan_clique": {
+	"color": [114, 148, 80]
+  },
+  "guangxi_clique": {
+	"color": [71, 113, 97]
+  },
+  "jabal_shammar": {
+	"color": [222, 84, 10]
+  },
+  "danzig": {
+	"color": [163, 183, 214]
+  },
+  "cyrenaica": {
+	"color": [107, 107, 107]
+  },
+  "patagonia": {
+	"color": [150, 71, 70]
+  },
+  "west_indies": {
+	"color": [51, 13, 178]
+  },
+  "california": {
+	"color": [242, 205, 95]
+  },
+  "new_england": {
+	"color": [0, 107, 51]
+  },
+  "mittelafrika": {
+	"color": [135, 104, 60]
+  },
+  "lodomeria": {
+	"color": [161, 161, 161]
+  },
+  "sicily": {
+	"color": [204, 204, 0]
+  },
+  "sardinia": {
+	"color": [95, 206, 247]
+  },
+  "german_east_asia": {
+	"color": [70, 94, 150]
+  },
+  "bukhara": {
+	"color": [146, 106, 160]
+  },
+  "khiva": {
+	"color": [203, 154, 104]
+  },
+  "turkestan": {
+	"color": [0, 76, 152]
+  },
+  "sichuan_clique": {
+	"color": [75, 47, 52]
+  },
+  "hunan_clique": {
+	"color": [143, 20, 20]
+  },
+  "shandong_clique": {
+	"color": [42, 96, 59]
+  },
+  "legation_cities": {
+	"color": [0, 148, 255]
+  },
+  "kumul_khanate": {
+	"color": [160, 82, 45]
+  },
+  "borneo": {
+	"color": [185, 226, 255]
+  },
+  "west_africa": {
+	"color": [105, 50, 0]
+  },
+  "alaska": {
+	"color": [15, 32, 75]
+  },
+  "pr_america": {
+	"color": [158, 26, 54]
+  },
+  "lincoln": {
+	"color": [0, 212, 166]
+  },
+  "montana": {
+	"color": [117, 57, 25]
+  },
+  "utah": {
+	"color": [42, 69, 145]
+  },
+  "nevada": {
+	"color": [206, 92, 23]
+  },
+  "illinois": {
+	"color": [22, 0, 85]
+  },
+  "texas": {
+	"color": [10, 40, 70]
+  },
+  "midwest": {
+	"color": [255, 240, 60]
+  },
+  "great_lakes": {
+	"color": [124, 201, 241]
+  },
+  "hawaii": {
+	"color": [203, 84, 32]
+  },
+  "central_america": {
+	"color": [172, 214, 236]
+  },
+  "kurdistan": {
+	"color": [204, 172, 120]
+  },
+  "north_ireland": {
+	"color": [230, 144, 68]
+  },
+  "quebec": {
+	"color": [62, 219, 234]
+  },
+  "alberta": {
+	"color": [74, 65, 184]
+  },
+  "french_guiana": {
+	"color": [161, 200, 220]
+  },
+  "scotland": {
+	"color": [202, 208, 115]
+  },
+  "wales": {
+	"color": [219, 72, 78]
+  },
+  "england": {
+	"color": [171, 106, 130]
+  },
+  "anarchist_state": {
+	"color": [150, 60, 67]
+  },
+  "guadeloupe": {
+	"color": [36, 69, 138]
+  },
+  "hong_kong": {
+	"color": [248, 225, 231]
+  },
+  "macau": {
+	"color": [214, 204, 97]
+  },
+  "xinjiang": {
+	"color": [238, 218, 218]
+  },
+  "communist_china": {
+	"color": [245, 12, 56]
+  },
+  "canary_islands": {
+	"color": [249, 242, 228]
+  },
+  "montserrat": {
+	"color": [156, 44, 72]
+  },
+  "french_polynesia": {
+	"color": [0, 103, 170]
+  },
+  "french_antarctica": {
+	"color": [0, 38, 84]
+  },
+  "mayotte": {
+	"color": [212, 46, 18]
+  },
+  "reunion": {
+	"color": [1, 112, 193]
+  },
+  "indian_ocean": {
+	"color": [162, 67, 0]
+  },
+  "bavaria": {
+	"color": [49, 58, 176]
+  },
+  "wurttemberg": {
+	"color": [255, 110, 0]
+  },
+  "baden": {
+	"color": [44, 84, 83]
+  },
+  "brittany": {
+	"color": [99, 96, 141]
+  },
+  "catalonia": {
+	"color": [249, 110, 91]
+  },
+  "basque_country": {
+	"color": [156, 189, 140]
+  },
+  "cornwall": {
+	"color": [115, 102, 66]
+  },
+  "ryukyuan": {
+	"color": [54, 54, 54]
+  },
+  "siberia": {
+	"color": [46, 74, 101]
+  },
+  "chechnya": {
+	"color": [103, 132, 128]
+  },
+  "jewish_oblast": {
+	"color": [224, 222, 246]
+  },
+  "punjab": {
+	"color": [185, 250, 230]
+  }
+}
