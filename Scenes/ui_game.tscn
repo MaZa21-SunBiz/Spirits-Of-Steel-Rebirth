@@ -306,6 +306,27 @@ decision_tree = NodePath("../DecisionTree")
 visible = false
 z_index = 1
 
+[node name="ScrollContainer" type="ScrollContainer" parent="DecisionTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TreeContent" type="Control" parent="DecisionTree/ScrollContainer"]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="DecisionTree"]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 546.0
+offset_right = 1095.0
+offset_bottom = 602.0
+theme = ExtResource("13_sdmnd")
+text = "Close decision tree"
+
 [connection signal="mouse_entered" from="GameSpeedControl/Plus" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="GameSpeedControl/Minus" to="." method="_on_button_mouse_entered"]
 [connection signal="button_up" from="DecisionTreeButton" to="DecisionTreeButton" method="_on_button_up"]
+[connection signal="button_up" from="DecisionTree/ExitButton" to="DecisionTree" method="_on_exit_button_button_up"]

@@ -1,0 +1,47 @@
+{
+  "categories": {
+	"Economy": [
+	  {
+		"title": "Build Industry",
+		"pos": [100, 150],
+		"clicked": false,
+		"action": {
+		  "type": "increase_daily_money",
+		  "amount": 4000
+		}
+	  },
+	  {
+		"title": "Expand Resource Extraction",
+		"pos": [100, 250],
+		"clicked": false,
+		"action": {
+		  "type": "unlock_modifier",
+		  "modifier": "resource_extraction",
+		  "value": 0.1
+		}
+	  }
+	],
+	"Military": [
+	  {
+		"title": "Professional Army",
+		"pos": [400, 150],
+		"clicked": false,
+		"action": {
+		  "type": "increase_manpower",
+		  "amount": 50000
+		}
+	  }
+	],
+	"Political": [
+	  {
+		"title": "Increase Daily PP",
+		"pos": [700, 150],
+		"clicked": false,
+		"action": {
+		  "type": "increase_daily_pp",
+		  "amount": 1
+		}
+	  }
+	]
+  }
+}

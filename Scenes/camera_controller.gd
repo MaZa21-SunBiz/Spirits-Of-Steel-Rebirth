@@ -9,6 +9,8 @@ extends Node
 @export var max_zoom: float = 15
 
 func _process(delta: float) -> void:
+	if GameState.decision_tree_open: return
+	
 	var velocity := Vector2.ZERO
 	if Input.is_action_pressed("move_right"):  velocity.x += 1  # Speed is done with base_speed variable
 	if Input.is_action_pressed("move_left"):   velocity.x -= 1
@@ -22,6 +24,9 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if GameState.decision_tree_open: return
+
+	
 	if event is InputEventMouseButton and event.is_pressed():
 		var mouse_world_before = camera.get_global_mouse_position()
 		
