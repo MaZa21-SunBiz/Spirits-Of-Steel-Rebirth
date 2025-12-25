@@ -76,10 +76,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var cam := get_viewport().get_camera_2d()
 	
-	if cam. zoom. x != old_cam_x:
+	if cam.zoom.x != old_cam_x:
 		old_cam_x = cam.zoom.x
 		var raw_scale = 1.0 / old_cam_x
-		_current_inv_zoom = clamp(raw_scale, ZOOM_LIMITS.min_scale, ZOOM_LIMITS. max_scale)
+		_current_inv_zoom = clamp(raw_scale, ZOOM_LIMITS.min_scale, ZOOM_LIMITS.max_scale)
 	
 	queue_redraw()
 
@@ -129,7 +129,7 @@ func _draw_selection_box() -> void:
 # ==============================================================================
 
 func _draw_troops() -> void:
-	var player_country = CountryManager.player_country. country_name
+	var player_country = CountryManager.player_country.country_name
 	var grouped_troops = _group_troops_by_position(TroopManager.troops, STACKING_RADIUS)
 
 	for base_pos in grouped_troops.keys():
@@ -168,7 +168,7 @@ func _group_troops_by_position(troops: Array, radius: float) -> Dictionary:
 		for j in range(i + 1, troops.size()):
 			var t2 = troops[j]
 			
-			if t1.position. distance_to(t2.position) < radius:
+			if t1.position.distance_to(t2.position) < radius:
 				groups[group_key].append(t2)
 				processed_indices.append(j)
 
@@ -198,8 +198,8 @@ func _draw_single_troop_visual(troop: TroopData, pos: Vector2, player_country:  
 	var box_rect = Rect2(pos - box_size * 0.5, box_size)
 	
 	# Draw background
-	var bg_rect = box_rect. grow(-current_border_width * 0.5)
-	if bg_rect.size. x > 0 and bg_rect.size.y > 0:
+	var bg_rect = box_rect.grow(-current_border_width * 0.5)
+	if bg_rect.size.x > 0 and bg_rect.size.y > 0:
 		draw_rect(bg_rect, COLORS.background, true)
 	
 	# Draw flag (left side)
@@ -232,7 +232,7 @@ func _draw_single_troop_visual(troop: TroopData, pos: Vector2, player_country:  
 
 
 func _get_troop_style(troop: TroopData, player_country: String) -> Dictionary:
-	var is_owner = troop.country_name. to_lower() == player_country
+	var is_owner = troop.country_name.to_lower() == player_country
 	var is_selected = troop_selection and troop_selection.is_troop_selected(troop)
 	
 	if is_owner:
@@ -252,13 +252,13 @@ func _draw_path_preview() -> void:
 	if not troop_selection or not troop_selection.is_tracing_path():
 		return
 	
-	var right_path = troop_selection. get_right_path()
+	var right_path = troop_selection.get_right_path()
 	var max_path_length = troop_selection.get_max_path_length()
 	
 	if right_path.is_empty():
 		return
 	
-	for i in range(right_path. size()):
+	for i in range(right_path.size()):
 		var p = right_path[i]["map_pos"] + map_sprite.position
 		var is_over_limit = i >= max_path_length
 		var color = COLORS.path_inactive if is_over_limit else COLORS.path_active
@@ -281,7 +281,7 @@ func _draw_active_movements() -> void:
 		var start_local = troop.position + map_sprite.position
 		var end_local = troop.target_position + map_sprite.position
 		var visual_progress = troop.get_meta("visual_progress", 0.0) as float
-		var current_visual_pos = start_local. lerp(end_local, visual_progress)
+		var current_visual_pos = start_local.lerp(end_local, visual_progress)
 		
 		draw_line(start_local, current_visual_pos, COLORS.movement_active, 2.0)
 		draw_line(start_local, end_local, COLORS.movement_line, 1.0)
@@ -298,7 +298,7 @@ func _draw_battles() -> void:
 		var size := tex.get_size() * 0.05
 		var draw_pos = pos - size * 0.5
 
-		var p = battle.get_player_relative_progress(CountryManager.player_country. country_name)
+		var p = battle.get_player_relative_progress(CountryManager.player_country.country_name)
 		var color := COLORS.battle_positive if p >= 0.0 else COLORS.battle_negative
 		
 		draw_circle(pos, 1.3, color)
