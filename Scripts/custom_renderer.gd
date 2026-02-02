@@ -30,7 +30,6 @@ var troop_multimesh: MultiMeshInstance2D
 
 var _last_cam_pos := Vector2.INF
 var _last_cam_zoom := Vector2.INF
-
 # --- Lifecycle ---
 func _ready() -> void:
 	z_index = 20  # Keep renderer high
@@ -277,9 +276,9 @@ func _draw_path_preview() -> void:
 func _draw_active_movements() -> void:
 	var now := GameState.current_world.clock.total_game_seconds
 
-	var visible_pids = CountryManager.player_country.visibile_pids
+#	var visible_pids = CountryManager.player_country.visibile_pids
 	for troop in TroopManager.troops:
-		if not troop.is_moving or !visible_pids.has(troop.province_id):
+		if not troop.is_moving:# or !visible_pids.has(troop.province_id):
 			continue
 
 		var start = troop.position + map_sprite.position

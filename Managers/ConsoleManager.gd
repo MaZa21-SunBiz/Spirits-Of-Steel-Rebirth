@@ -5,6 +5,8 @@ func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
+	
+	Console.add_command("no_fog", _remove_fog, [], 0, "Removes Fog Of War")
 
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
 	Console.add_command("annex", _annex, ["country_name"], 1, "Annex Country for Player")
@@ -23,6 +25,10 @@ func _ready() -> void:
 		"releasables", _show_releasables_country, ["country"], 1, "Shows the releasables of a country"
 	)
 	
+
+func _remove_fog():
+	
+	pass
 
 func _show_releasables_country(country):
 	var releasables = MapManager.get_all_releasables(country)

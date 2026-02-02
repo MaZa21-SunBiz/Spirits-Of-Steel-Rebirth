@@ -601,3 +601,14 @@ func find_troop_owning_division(div_to_find: DivisionData) -> TroopData:
 		if div_to_find in t.stored_divisions:
 			return t
 	return null
+	
+func get_all_provinces_with_troops() -> Array:
+	var pids_with_troops = []
+	
+	for pid in TroopManager.troops_by_province:
+		var stack = TroopManager.troops_by_province[pid]
+		
+		if not stack.is_empty():
+			pids_with_troops.append(pid)
+			
+	return pids_with_troops
