@@ -46,6 +46,11 @@ var allowedCountries: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
 var deploy_pid: int = -1  # ID of province to deploy to
+
+# This is for fog of war stuff
+var visibile_pids = []
+var depth_allowed = 2
+var fog_of_war_dirty = true
 #endregion
 
 
@@ -94,6 +99,7 @@ func _init(p_country_name: String = "") -> void:
 	var manpower_used = CountryManager.get_country_used_manpower(self)
 	manpower = int((total_population * military_size_ratio) - manpower_used)
 	_setup_starting_army()
+	visibile_pids = MapManager.get_visible_pids(self.country_name, 1)
 
 
 
@@ -148,7 +154,11 @@ func _refresh_economic_stats() -> void:
 	factories_amount = CountryManager.get_factories_amount(country_name)
 	gdp = int(CountryManager.get_country_gdp(country_name) * total_population * 0.000001)
 	update_manpower_pool()
+	
+	if self.is_player: # AI doesn't need fog of war atm
+		visibile_pids = MapManager.get_visible_pids(self.country_name, depth_allowed)
 	self.dirty = false
+	self.fog_of_war_dirty = false
 
 #endregion
 

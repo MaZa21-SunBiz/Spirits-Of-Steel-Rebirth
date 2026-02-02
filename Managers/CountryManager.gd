@@ -62,6 +62,8 @@ func set_player_country(country_name: String) -> void:
 
 	player_country = country
 	player_country.is_player = true
+	
+	mark_country_dirty(country_name)
 
 	print("Player is now playing as: ", country_name)
 	emit_signal("player_country_changed")
@@ -99,6 +101,8 @@ func mark_country_dirty(country_name: String) -> void:
 	var c = get_country(country_name)
 	if c:
 		c.dirty = true
+		c.fog_of_war_dirty = true
+		c.dirty_manpower = true
 
 
 # HELPER FUNCTIONS ==========================================

@@ -146,8 +146,9 @@ func _update_multimesh_buffer():
 	var player_country = CountryManager.player_country.country_name
 	var selected_troops = TroopManager.troop_selection.selected_troops
 	
-	for pid in TroopManager.troops_by_province:
-		var stack = TroopManager.troops_by_province[pid]
+	var visible_pids = CountryManager.player_country.visibile_pids
+	for pid in visible_pids:
+		var stack = TroopManager.troops_by_province.get(pid, [])
 		var static_stack = stack.filter(func(t): return not t.is_moving)
 		if static_stack.is_empty(): continue
 		
@@ -155,7 +156,8 @@ func _update_multimesh_buffer():
 		idx = _write_stack_to_multimesh(static_stack, base_pos, idx, player_country, selected_troops)
 
 	for troop in TroopManager.moving_troops:
-		idx = _write_stack_to_multimesh([troop], troop.position, idx, player_country, selected_troops)
+		if visible_pids.has(troop.province_id):
+			idx = _write_stack_to_multimesh([troop], troop.position, idx, player_country, selected_troops)
 
 func _write_stack_to_multimesh(stack: Array, base_pos: Vector2, idx: int, player: String, selected: Array) -> int:
 	var mm = troop_multimesh.multimesh
@@ -192,9 +194,10 @@ func _draw() -> void:
 func _draw_troops() -> void:
 	if _current_inv_zoom > 1.5:
 		return 
-
-	for pid in TroopManager.troops_by_province:
-		var stack = TroopManager.troops_by_province[pid]
+	
+	var visible_pids = CountryManager.player_country.visibile_pids
+	for pid in visible_pids:
+		var stack = TroopManager.troops_by_province.get(pid, [])
 		var static_stack = stack.filter(func(t): return not t.is_moving)
 		if static_stack.is_empty(): continue
 		
@@ -203,7 +206,8 @@ func _draw_troops() -> void:
 
 	# 2. Draw Moving Troops (Individual)
 	for troop in TroopManager.moving_troops:
-		_draw_stack_labels([troop], troop.position)
+		if visible_pids.has(troop.province_id): 
+			_draw_stack_labels([troop], troop.position)
 
 func _draw_stack_labels(stack: Array, base_pos: Vector2) -> void:
 	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
@@ -247,22 +251,6 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 	# 3. Reset transform so other things draw correctly
 	draw_set_transform_matrix(Transform2D())
 
-
-func _group_troops_by_visual_position(troops: Array) -> Dictionary:
-	var g = {}
-	for t in troops:
-		# Get interpolated position if moving, else static position
-		var visual_pos = t.position
-		if t.is_moving:
-			var progress = t.get_meta("progress", 0.0)
-			visual_pos = t.position.lerp(t.target_position, progress)
-
-		if not g.has(visual_pos):
-			g[visual_pos] = []
-		g[visual_pos].append(t)
-	return g
-
-
 func _draw_selection_box() -> void:
 	if not TroopManager.troop_selection.dragging:
 		return
@@ -289,8 +277,9 @@ func _draw_path_preview() -> void:
 func _draw_active_movements() -> void:
 	var now := GameState.current_world.clock.total_game_seconds
 
+	var visible_pids = CountryManager.player_country.visibile_pids
 	for troop in TroopManager.troops:
-		if not troop.is_moving:
+		if not troop.is_moving or !visible_pids.has(troop.province_id):
 			continue
 
 		var start = troop.position + map_sprite.position

@@ -39,8 +39,6 @@ var province_centers: Dictionary = {}  # Stores {ID: Vector2(x, y)}
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
 
-
-
 var all_cities = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
@@ -1498,3 +1496,59 @@ func generate_type_mask() -> ImageTexture:
 		type_img.set_pixel(pos.x, pos.y, final_color)
 
 	return ImageTexture.create_from_image(type_img)
+
+
+func get_country_neighbors(country_name: String) -> Array:
+	if not country_to_provinces.has(country_name):
+		return []
+
+	var territory_array = country_to_provinces[country_name]
+	var external_neighbors_set: Dictionary = {}
+	
+	var territory_set: Dictionary = {}
+	for p_id in territory_array:
+		territory_set[p_id] = true
+
+	for p_id in territory_array:
+		var neighbors = adjacency_list.get(p_id, [])
+		for n_id in neighbors:
+			if not territory_set.has(n_id):
+				external_neighbors_set[n_id] = true
+
+	# 3. Return the keys as a clean Array
+	return external_neighbors_set.keys()
+
+# For Fog of war
+func get_visible_pids(country_name: String, depth: int = 20) -> Array:
+	if not country_to_provinces.has(country_name):
+		return []
+
+	var visible_set: Dictionary = {}
+	var own_provinces = country_to_provinces[country_name]
+	
+	for pid in own_provinces:
+		visible_set[pid] = true
+
+	var current_layer = own_provinces.duplicate()
+
+	# 3. EXPAND LAYER BY LAYER
+	for i in range(depth):
+		var next_layer = []
+		
+		for pid in current_layer:
+			# Get neighbors using the Dictionary or the Object directly
+			# Using province_objects is safer if adjacency_list might be out of sync
+			var p_obj: Province = province_objects.get(pid)
+			if not p_obj: continue
+				
+			var neighbors = p_obj.neighbors
+			
+			for n_id in neighbors:
+				if not visible_set.has(n_id):
+					visible_set[n_id] = true
+					next_layer.append(n_id)
+		
+		# Move the frontier forward
+		current_layer = next_layer
+		
+	return visible_set.keys()
