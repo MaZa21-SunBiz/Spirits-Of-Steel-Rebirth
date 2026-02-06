@@ -18,31 +18,41 @@ func _process(delta: float) -> void:
 		_update_moving_troop(troop, delta)
 
 
-## TroopManager.gd
-
-func _update_moving_troop(troop: TroopData, _delta: float) -> void:
-	# We no longer calculate position here. 
-	# We only check if the logical time has expired.
-	
+func _update_moving_troop(troop: TroopData, delta: float) -> void:
 	if GameState.current_world.clock.paused:
 		return
 
-	var start_time = troop.get_meta("start_time", 0.0)
-	var duration = troop.get_meta("duration", 0.0)
-	
-	# Use the same 'visual clock' the shader uses
-	# Assuming GameState or similar tracks total unpaused game seconds
-	var current_game_time = GameState.current_world.clock.total_game_seconds
-	
-	var progress = (current_game_time - start_time) / duration
-	
-	# Update meta so _draw() knows where to put labels
-	troop.set_meta("progress", clamp(progress, 0.0, 1.0))
+	if troop.country_obj == null:
+		troop.country_obj = CountryManager.get_country(troop.country_name)
 
-	if progress >= 1.0:
-		troop.position = troop.target_position
+	var start = troop.get_meta("start_pos", troop.position)
+	var end = troop.target_position
+	var total_dist = start.distance_to(end)
+
+	# Safety check for instant arrival
+	if total_dist < 0.5:
+		troop.position = end
+		_arrive_at_leg_end(troop)
+		return
+
+	# Unified progress calculation
+	var move_progress = troop.get_meta("progress", 0.0)
+
+	var base_speed = 1
+	var speed_mod = troop.country_obj.troop_speed_modifier if troop.country_obj else 1.0
+	var time_scale = GameState.current_world.clock.time_scale
+
+	# Increment progress based on real-time and game speed
+	move_progress += (base_speed * speed_mod * time_scale * delta) / total_dist
+
+	if move_progress >= 1.0:
+		troop.position = end
 		troop.set_meta("progress", 0.0)
 		_arrive_at_leg_end(troop)
+	else:
+		# Smoothly slide from A to B
+		troop.position = start.lerp(end, move_progress)
+		troop.set_meta("progress", move_progress)
 
 
 func _start_next_leg(troop: TroopData) -> void:
@@ -50,9 +60,9 @@ func _start_next_leg(troop: TroopData) -> void:
 		_stop_troop(troop)
 		return
 
-	var next_pid = int(troop.path[0])
+	var next_pid = troop.path[0]
 
-	# --- Combat Check ---
+	# Check for Combat (WarManager logic)
 	var local_troops = troops_by_province.get(next_pid, [])
 	var enemies = local_troops.filter(
 		func(t): return WarManager.is_at_war_names(t.country_name, troop.country_name)
@@ -65,17 +75,10 @@ func _start_next_leg(troop: TroopData) -> void:
 			pause_troop(enemy)
 		return
 
-	var target_pos = MapManager.province_centers.get(next_pid, troop.position)
-	var dist = troop.position.distance_to(target_pos)
-	
-	var base_speed = 1.0 
-	var speed_mod = troop.country_obj.troop_speed_modifier if troop.country_obj else 1.0
-	var duration = dist / (base_speed * speed_mod)
-	troop.target_position = target_pos
+	# Update targets and start movement
+	troop.target_position = MapManager.province_centers.get(int(next_pid), troop.position)
 	troop.set_meta("start_pos", troop.position)
-	troop.set_meta("duration", duration)
-	troop.set_meta("start_time", GameState.current_world.clock.total_game_seconds)
-	
+	troop.set_meta("progress", 0.0)
 	troop.is_moving = true
 
 	if not moving_troops.has(troop):
@@ -87,17 +90,21 @@ func _arrive_at_leg_end(troop: TroopData) -> void:
 		_stop_troop(troop)
 		return
 
-	var arrived_pid = int(troop.path.pop_front())
+	# Logic move: Update which province the troop is 'officially' in
+	var arrived_pid = troop.path.pop_front()
 	_move_troop_to_province_logically(troop, arrived_pid)
 
+	# Trigger occupation/events
 	WarManager.resolve_province_arrival(arrived_pid, troop)
 
+	# Check if we keep going or stop
 	if troop.path.is_empty():
 		_stop_troop(troop)
 		if AUTO_MERGE:
 			_auto_merge_in_province(troop.province_id, troop.country_name)
 	else:
 		_start_next_leg(troop)
+
 
 func _stop_troop(troop: TroopData) -> void:
 	moving_troops.erase(troop)
@@ -509,7 +516,7 @@ func clear_path_cache() -> void:
 func _sanitize_path_for_troop(path: Array, start_pid: int) -> Array:
 	if not path:
 		return []
-		# Duplicate to avoid mutating caller arrays
+	# Duplicate to avoid mutating caller arrays
 	var p = path.duplicate()
 	# Pop front while first entry equals start_pid
 	while p.size() > 0 and int(p[0]) == int(start_pid):
@@ -601,14 +608,3 @@ func find_troop_owning_division(div_to_find: DivisionData) -> TroopData:
 		if div_to_find in t.stored_divisions:
 			return t
 	return null
-	
-func get_all_provinces_with_troops() -> Array:
-	var pids_with_troops = []
-	
-	for pid in TroopManager.troops_by_province:
-		var stack = TroopManager.troops_by_province[pid]
-		
-		if not stack.is_empty():
-			pids_with_troops.append(pid)
-			
-	return pids_with_troops

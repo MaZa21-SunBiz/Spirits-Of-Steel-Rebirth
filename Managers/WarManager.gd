@@ -317,9 +317,6 @@ func add_war_silent(a: CountryData, b: CountryData) -> bool:
 
 	wars[a][b] = true
 	wars[b][a] = true
-	
-	a.war_dirty = true
-	b.war_dirty = true
 
 	if not a.allowedCountries.has(b.country_name):
 		a.allowedCountries.append(b.country_name)
@@ -446,7 +443,6 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 			original_territories.erase(fallen_name)
 		return
 
-	winner.war_dirty = true
 	# --- 5. AI takes everything ---
 	var all_provinces = MapManager.country_to_provinces.get(fallen_name, []).duplicate()
 	for pid in all_provinces:

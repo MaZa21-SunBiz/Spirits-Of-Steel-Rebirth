@@ -105,7 +105,7 @@ void fragment() {
     // 1. If type_map says Sea (0.0), render the animated water
     if (p_type < 0.5) {
         vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
-        float h = texture(ocean_noise, grid_uv + ocean_offset).r;
+        float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+TIME/5.0))/3.0;
         h = floor(h * sea_height_steps) / sea_height_steps;
         vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
         COLOR = vec4(water, 1.0);
@@ -128,4 +128,12 @@ void fragment() {
             COLOR = country_border_color;
         }
     }
+	
+	// 4. its soilading time
+	float vignette = (SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
+	float lower = 0.8;
+	vec2 coord = (1.0 / FRAGCOORD.xy) * UV;
+	vec3 avg = COLOR.rgb;
+	COLOR.rgb += (sin(800.0*SCREEN_UV.y+16.0*TIME))/50.0;
+	COLOR.rgb *= 16.0*vignette+lower*(1.0-vignette);
 }

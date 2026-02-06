@@ -8,7 +8,7 @@ enum Category { GENERAL, ECONOMY, MILITARY }
 # ── Top Bar Nodes ─────────────────────────────────────
 @onready var nation_flag: TextureRect = $Control/Topbar/nation_flag
 @onready
-var label_date: Label = $Control/Topbar/MarginContainer2/ColorRect/MarginContainer/label_date
+var label_date: Label = $Control/Topbar/MarginContainer2/ColorRect/ProgressBar/label_date
 @onready var stats_labels := {
 	"pp":
 	$Control/Topbar/MarginContainer/HBoxContainer/PoliticalPower/HBoxContainer/label_politicalpower,
@@ -33,11 +33,12 @@ var actions_container: VBoxContainer = $Control/SidemenuBG/Sidemenu/ScrollContai
 @onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/Sidemenu/PanelContainer/VBoxContainer/RelationsHbox
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
-@export var action_scene: PackedScene
+@export var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 
 # ── Speed Controls ────────────────────────────────────
-@onready var plus: Button = $Control/SpeedPanel/GameSpeedControl/PlusPanel/Plus
-@onready var minus: Button = $Control/SpeedPanel/GameSpeedControl/MinusPanel/Minus
+@onready var plus: Button = $Control/Topbar/MarginContainer2/ColorRect/HBoxContainer/GameSpeedControl/Plus
+@onready var minus: Button = $Control/Topbar/MarginContainer2/ColorRect/HBoxContainer/GameSpeedControl/Minus
+@onready var radio_list: VBoxContainer = $Radios
 
 # ── State Variables ───────────────────────────────────
 var selected_country: CountryData = null
@@ -130,6 +131,39 @@ func _ready() -> void:
 	plus.pressed.connect(clock.increase_speed)
 	minus.pressed.connect(clock.decrease_speed)
 	label_date.text = clock.get_datetime_string()
+
+	# NOTE(soi): its soiladin time
+	const music_path = "res://assets/music/"
+	for radio in MusicManager.music_map[0]:
+		var entry = Button.new()
+		entry.text = "\n\n\n" + radio
+		entry.icon = load(music_path + radio + "/thumbnail.png")
+		entry.expand_icon = true
+		entry.set_meta("radio_name", radio)
+		entry.pressed.connect(
+		func(): 
+			if radio in MusicManager.radios:
+				MusicManager.radios.erase(radio)
+			else:
+				MusicManager.radios.append(radio)
+			_update_radio_visuals()
+			print(MusicManager.radios)
+		)
+		radio_list.add_child(entry)
+	
+	_update_radio_visuals()
+
+func _update_radio_visuals() -> void:
+	for child in radio_list.get_children():
+		var radio_name = child.get_meta("radio_name", "")
+		if radio_name == "":
+			continue
+			
+		if radio_name in MusicManager.radios:
+			child.modulate = Color.WHITE
+		else:
+			child.modulate = Color(0.5, 0.5, 0.5)
+
 
 
 func _on_player_change() -> void:
@@ -359,7 +393,7 @@ func updateProgressBar():
 	var bg_style = progress_bar.get_theme_stylebox("background")
 	if clock.paused:
 		bg_style.border_color = Color.DARK_RED
-		label_date.add_theme_color_override("font_color", Color.RED)
+		label_date.add_theme_color_override("font_color", Color.GRAY)
 	else:
 		bg_style.border_color = Color.DARK_CYAN
 		label_date.add_theme_color_override("font_color", Color.WHITE)
@@ -590,15 +624,15 @@ func close_troop_container() -> void:
 # --- References ---
 @onready var military_extra_panel: ColorRect = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel
 @onready
-var input_division: LineEdit = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/HBoxContainer/input_division
-@onready var button_train: Button = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/Button_Train
+var input_division: LineEdit = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division
+@onready var button_train: Button = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/Button_Train
 
 # Grouping UI labels makes them easier to manage
 @onready var ui_labels = {
-	"type": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/label_type,
-	"div_stats": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/label_atkdef,
-	"costs": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer4/label_costs,
-	"manpower": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer4/label_manpower
+	"type": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type/type,
+	"div_stats": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats/amount,
+	"costs": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost/amount,
+	"manpower": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower/amount
 }
 
 # --- State ---
@@ -686,3 +720,6 @@ func _on_button_division_change(add: int) -> void:
 
 func _on_input_division_text_changed(new_text: String) -> void:
 	update_division_menu()
+
+func _on_music_pressed():
+	radio_list.visible = !radio_list.visible

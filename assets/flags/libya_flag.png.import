@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mk2cenkf5l83"
-path="res://.godot/imported/libya_flag.png-9d7bf8cc5b0e9982c65590450d2fa1e0.ctex"
+path.s3tc="res://.godot/imported/libya_flag.png-9d7bf8cc5b0e9982c65590450d2fa1e0.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/flags/libya_flag.png"
-dest_files=["res://.godot/imported/libya_flag.png-9d7bf8cc5b0e9982c65590450d2fa1e0.ctex"]
+dest_files=["res://.godot/imported/libya_flag.png-9d7bf8cc5b0e9982c65590450d2fa1e0.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -36,5 +37,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=256
 detect_3d/compress_to=1

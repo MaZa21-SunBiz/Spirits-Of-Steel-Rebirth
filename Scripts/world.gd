@@ -34,14 +34,19 @@ func _ready() -> void:
 	clock.hour_passed.connect(CountryManager._on_hour_passed)
 	clock.day_passed.connect(CountryManager._on_day_passed)
 
-	MapManager.load_country_data()
+	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
+	if MapManager.province_objects.is_empty():
+		MapManager.load_country_data()
+		CountryManager.initialize_countries()
 
 	print("World: Map is ready -> configuring visuals...")
 
 	MapManager.all_cities = MapManager.get_all_cities()
-	CountryManager.initialize_countries()
-	CountryManager.set_player_country("brazil")
+
+	if !CountryManager.player_country:
+		CountryManager.set_player_country("brazil")
 	# For debugging purposes. Create some troops first
+	MapManager.force_bidirectional_connections()
 	MapManager._build_global_registry()
 	var map_width := MapManager.id_map_image.get_width()
 	var map_height := MapManager.id_map_image.get_height()
@@ -52,7 +57,55 @@ func _ready() -> void:
 	mat.set_shader_parameter("region_id_map", id_tex)
 	mat.set_shader_parameter("state_colors", MapManager.state_color_texture)
 
-	var type_tex = MapManager.generate_type_mask()
+	# @warning_ignore("narrowing_conversion")
+	var type_img := Image.create_empty(map_width, map_height, false, Image.FORMAT_L8)
+	var uncertain_pixels := []
+# --- PASS 1: Direct Mapping ---
+	for y in range(map_height):
+		for x in range(map_width):
+			var pid = MapManager._get_pid_fast(x, y)
+			var province = MapManager.province_objects.get(pid)
+
+			if province:
+				if province.type == 0:  # SEA
+					type_img.set_pixel(x, y, Color(0, 0, 0))
+				else:  # LAND
+					type_img.set_pixel(x, y, Color(1, 1, 1))
+			else:
+				# It's a border (PID 1 or null). Mark as uncertain for now.
+				uncertain_pixels.append(Vector2i(x, y))
+
+	# --- PASS 2: Intelligent Flood-Check ---
+	for pos in uncertain_pixels:
+		var touches_land = false
+		var touches_sea = false
+
+		# Check 8-way neighbors (Radius 1 ONLY - very important)
+		for dy in range(-1, 2):
+			for dx in range(-1, 2):
+				if dx == 0 and dy == 0:
+					continue
+
+				var nx = pos.x + dx
+				var ny = pos.y + dy
+
+				if nx >= 0 and nx < map_width and ny >= 0 and ny < map_height:
+					var nid = MapManager._get_pid_fast(nx, ny)
+					if nid > 1:
+						var n_prov = MapManager.province_objects.get(nid)
+						if n_prov:
+							if n_prov.type != 0:
+								touches_land = true
+							else:
+								touches_sea = true
+
+		if touches_land:
+			type_img.set_pixel(pos.x, pos.y, Color(1, 1, 1))
+		else:
+			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
+			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
+
+	var type_tex = ImageTexture.create_from_image(type_img)
 	mat.set_shader_parameter("type_map", type_tex)
 
 	var noise = FastNoiseLite.new()
@@ -68,8 +121,8 @@ func _ready() -> void:
 
 	var noise_tex = NoiseTexture2D.new()
 	noise_tex.seamless = true
-	noise_tex.width = 512
-	noise_tex.height = 512
+	noise_tex.width = 1920
+	noise_tex.height = 1080
 	noise_tex.noise = noise
 
 	await noise_tex.changed

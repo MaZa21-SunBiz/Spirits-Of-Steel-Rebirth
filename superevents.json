@@ -1,0 +1,15 @@
+{
+	"Serbo-Bosnian War": {
+		"cause": {
+			"func": "is_at_war",
+			"args": [
+				"serbia",
+				"bosnia_and_herzegovina"
+			]
+		},
+		"background": "artilerija",
+		"desc": "\"the most painful state of being is remembering the future,\n particularly one you can never have.\" -Soren Kierkegaard",
+		"button": "@3gunnn  add this superevent",
+		"music": "artilerija"
+	}
+}

@@ -1,17 +1,6 @@
 extends CanvasLayer
 class_name CountryManageUI
 
-#region --- Theme Configuration ---
-const COLOR_BG_GLASS = Color(0.08, 0.09, 0.11, 0.96)
-const COLOR_PANEL_INNER = Color(0.15, 0.16, 0.19, 1.0)
-const COLOR_ACCENT = Color(0.24, 0.65, 0.85)
-const COLOR_TEXT_HEADER = Color(0.9, 0.9, 0.9)
-const COLOR_TEXT_DIM = Color(0.6, 0.6, 0.6)
-const COLOR_POSITIVE = Color(0.4, 0.8, 0.4)
-const COLOR_NEGATIVE = Color(0.85, 0.3, 0.3)
-const COLOR_WARNING = Color(0.9, 0.7, 0.2)
-#endregion
-
 #region --- Nodes ---
 var main_container: MarginContainer
 var category_hbox: HBoxContainer
@@ -20,21 +9,16 @@ var laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
 # Header & Stats
 var header_label: Label
 var flag_rect: TextureRect
-var pp_label: Label
-var money_display: Label
-var manpower_display: Label
-
-# Composition Labels
-var comp_infantry: Label
-var comp_tank: Label
-var comp_artillery: Label
-var income_breakdown_label: RichTextLabel
 
 # Data
 enum Category { MILITARY, ECONOMY, COUNTRY, RELEASABLES }
 var current_category: Category = Category.MILITARY
 var current_country: CountryData
 var _update_timer: float = 0.0
+
+const LOGISTICS_SCENE = preload("res://Scenes/logistics.tscn")
+var economic_status_val: Label
+var army_logistics_val: Label
 #endregion
 
 func _ready() -> void:
@@ -53,8 +37,6 @@ func close_menu() -> void:
 
 func _process(delta: float) -> void:
 	if not visible or not current_country: return
-	money_display.text = "$%s" % _format_money(current_country.money)
-	pp_label.text = "%.1f PP" % current_country.political_power
 	
 	_update_timer += delta
 	if _update_timer > 1.0:
@@ -64,139 +46,63 @@ func _process(delta: float) -> void:
 #region --- UI Construction ---
 
 func _build_ui() -> void:
-	main_container = MarginContainer.new()
-	main_container.set_anchors_preset(Control.PRESET_FULL_RECT)
-	main_container.add_theme_constant_override("margin_left", 40)
-	main_container.add_theme_constant_override("margin_right", 40)
-	main_container.add_theme_constant_override("margin_top", 40)
-	main_container.add_theme_constant_override("margin_bottom", 40)
-	add_child(main_container)
-
-	var bg_panel = PanelContainer.new()
-	var style = StyleBoxFlat.new()
-	style.bg_color = COLOR_BG_GLASS
-#	style.corner_radius_all(8)
-#	style.border_width_all(2)
-	style.border_color = Color(0.3, 0.35, 0.4)
-	bg_panel.add_theme_stylebox_override("panel", style)
-	main_container.add_child(bg_panel)
-
-	var vbox = VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 15)
-	var content_margin = MarginContainer.new()
-	content_margin.add_theme_constant_override("margin_all", 20)
-	content_margin.add_child(vbox)
-	bg_panel.add_child(content_margin)
-
-	_build_header(vbox)
-
-	var split = HBoxContainer.new()
-	split.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	split.add_theme_constant_override("separation", 30)
-	vbox.add_child(split)
-
-	_build_left_column(split)
-	_build_right_column(split)
-
-func _build_header(parent: VBoxContainer) -> void:
-	var header_hbox = HBoxContainer.new()
-	flag_rect = TextureRect.new()
-	flag_rect.custom_minimum_size = Vector2(100, 60)
-	flag_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	flag_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	flag_rect.texture = TroopManager.get_flag(current_country.country_name)
+	# Instantiate our new visual scene
+	var logistics_instance = LOGISTICS_SCENE.instantiate()
+	add_child(logistics_instance)
 	
-	var title_vbox = VBoxContainer.new()
-	header_label = Label.new()
-	header_label.add_theme_font_size_override("font_size", 28)
-	pp_label = Label.new()
-	pp_label.add_theme_color_override("font_color", COLOR_WARNING)
-	title_vbox.add_child(header_label)
-	title_vbox.add_child(pp_label)
-
-	var close_btn = Button.new()
-	close_btn.text = " DISMISS "
-	close_btn.pressed.connect(close_menu)
-
-	header_hbox.add_child(flag_rect)
-	header_hbox.add_child(VSeparator.new())
-	header_hbox.add_child(title_vbox)
-	header_hbox.add_spacer(false)
-	header_hbox.add_child(close_btn)
-	parent.add_child(header_hbox)
-	parent.add_child(HSeparator.new())
-
-func _build_left_column(parent: HBoxContainer) -> void:
-	var left_col = VBoxContainer.new()
-	left_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	left_col.size_flags_stretch_ratio = 0.4
-	parent.add_child(left_col)
-
-	_create_section_header(left_col, "Economic Status")
-	money_display = _create_stat_row(left_col, "Treasury", "$0.00")
-	income_breakdown_label = RichTextLabel.new()
-	income_breakdown_label.bbcode_enabled = true
-	income_breakdown_label.fit_content = true
-	left_col.add_child(income_breakdown_label)
-
-	left_col.add_child(HSeparator.new())
-	_create_section_header(left_col, "Army Logistics")
-	manpower_display = _create_stat_row(left_col, "Active Personnel", "0")
+	# Reference shorthand
+	var container = logistics_instance.get_node("Logistics")
+	var main_vbox = container.get_node("PanelContainer/VBoxContainer")
 	
-	# Composition
-	var comp_vbox = VBoxContainer.new()
-	comp_vbox.add_theme_constant_override("separation", 4)
-	comp_infantry = _create_simple_row(comp_vbox, "Infantry")
-	comp_tank = _create_simple_row(comp_vbox, "Armor")
-	comp_artillery = _create_simple_row(comp_vbox, "Artillery")
-	left_col.add_child(comp_vbox)
-
-func _build_right_column(parent: HBoxContainer) -> void:
-	var right_col = VBoxContainer.new()
-	right_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	right_col.size_flags_stretch_ratio = 0.6
-	parent.add_child(right_col)
-
+	# Mapping Node References
+	flag_rect = main_vbox.get_node("HBoxContainer/nation_flag")
+	header_label = main_vbox.get_node("HBoxContainer/Label")
+	
+	# Data Labels
+	var eco_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer")
+	economic_status_val = eco_hbox.get_node("Values")
+	
+	var army_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2")
+	army_logistics_val = army_hbox.get_node("Value")
+	
+	# Overwrite static labels for both sections
+	var eco_static_lbl = eco_hbox.get_node("Label")
+	eco_static_lbl.text = "Treasury:\nPolitical Power:\nBase Income:\nFactories:\nArmy Upkeep:"
+	
+	var army_static_lbl = army_hbox.get_node("Label")
+	army_static_lbl.text = "Active Personnel:\nInfantry:\nArmor:\nArtillery:"
+	
+	# Dismiss Button
+	var dismiss_btn = main_vbox.get_node("HBoxContainer/Button")
+	dismiss_btn.pressed.connect(close_menu)
+	
 	# Category Tabs
-	category_hbox = HBoxContainer.new()
-	category_hbox.add_theme_constant_override("separation", 5)
-	right_col.add_child(category_hbox)
+	var category_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
+	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/ScrollContainer/VBoxContainer")
 	
-	_add_category_button("MILITARY", Category.MILITARY)
-	_add_category_button("ECONOMY", Category.ECONOMY)
-	_add_category_button("COUNTRY", Category.COUNTRY)
-	_add_category_button("RELEASABLES", Category.RELEASABLES)
-
-	right_col.add_child(HSeparator.new())
-
-	# Laws Container with Scroll
-	var scroll = ScrollContainer.new()
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	right_col.add_child(scroll)
-
-	laws_grid = VBoxContainer.new()
-	laws_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	laws_grid.add_theme_constant_override("separation", 10)
-	scroll.add_child(laws_grid)
+	# Connect existing category buttons in the scene
+	var btn_mil = category_hbox.get_node("MilitaryTab")
+	btn_mil.pressed.connect(_switch_category.bind(Category.MILITARY))
+	
+	var btn_eco = category_hbox.get_node("EconomicTab")
+	btn_eco.pressed.connect(_switch_category.bind(Category.ECONOMY))
+	
+	var btn_cnt = category_hbox.get_node("CountryTab")
+	btn_cnt.pressed.connect(_switch_category.bind(Category.COUNTRY))
+	
+	var btn_rel = category_hbox.get_node("ReleasableTab")
+	btn_rel.pressed.connect(_switch_category.bind(Category.RELEASABLES))
 
 #endregion
 
 #region --- Category Management ---
 
-func _add_category_button(label: String, cat: Category) -> void:
-	var btn = Button.new()
-	btn.text = "  %s  " % label
-	btn.toggle_mode = true
-	btn.pressed.connect(_switch_category.bind(cat))
-	category_hbox.add_child(btn)
-
 func _switch_category(cat: Category) -> void:
 	current_category = cat
 	
-	# Update Button Visuals
-	for i in category_hbox.get_child_count():
-		category_hbox.get_child(i).button_pressed = (i == cat)
-
+	# Update Button Visuals (Scene buttons are standard Buttons, not naturally toggle grouped here)
+	# We'll just modulate or use styles if needed, but for now let's just switch
+	
 	# Clear Current List
 	for child in laws_grid.get_children():
 		child.queue_free()
@@ -220,13 +126,11 @@ func _populate_military() -> void:
 func _populate_economy() -> void:
 	var lbl = Label.new()
 	lbl.text = "Economy laws coming soon..."
-	lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
 	laws_grid.add_child(lbl)
 
 func _populate_country() -> void:
 	var lbl = Label.new()
 	lbl.text = "Country decisions coming soon..."
-	lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
 	laws_grid.add_child(lbl)
 
 func _populate_releasables(player_country: String) -> void:
@@ -239,12 +143,125 @@ func _populate_releasables(player_country: String) -> void:
 		var lbl = Label.new()
 		lbl.text = "No nations to release."
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5)) # COLOR_TEXT_DIM
 		laws_grid.add_child(lbl)
-		return
+	else:
+		for releasable_data in releasables:
+			_add_releasable_option(releasable_data)
+#endregion
 
-	for country_id in releasables:
-		_add_releasable_option(country_id)
+#region --- Logic & Data Refresh ---
+func _refresh_full_data() -> void:
+	if not current_country:
+		return
+	header_label.text = current_country.country_name.to_upper()
+
+	# Attempt to load specific flag, fallback to grey placeholder
+	var flag_path = "res://flags/%s.png" % current_country.country_name
+	if ResourceLoader.exists(flag_path):
+		flag_rect.texture = load(flag_path)
+
+	_refresh_army_counts()
+	_update_law_buttons_visuals()
+
+
+func _refresh_army_counts() -> void:
+	# 1. Economic Status
+	var eco_txt = ""
+	eco_txt += "$%s\n" % _format_money(current_country.money)
+	eco_txt += "%.1f\n" % current_country.political_power
+	eco_txt += "+$%.1f\n" % (current_country.gdp / 8760.0 * 0.2)
+	eco_txt += "+$%.1f\n" % (current_country.factories_amount * current_country.factory_income)
+	eco_txt += "-$%.1f" % current_country.army_cost
+	
+	if economic_status_val:
+		economic_status_val.text = eco_txt
+
+	# 2. Army Logistics
+	var counts = {"infantry": 0, "tank": 0, "artillery": 0}
+	var troops = TroopManager.get_troops_for_country(current_country.country_name)
+
+	for troop in troops:
+		for div in troop.stored_divisions:
+			if counts.has(div.type):
+				counts[div.type] += 1
+			else:
+				counts[div.type] = 1
+
+	var max_man = int(current_country.total_population * current_country.military_size_ratio)
+	var army_txt = ""
+	army_txt += "%s / %s\n" % [_format_number(current_country.manpower), _format_number(max_man)]
+	army_txt += "%d\n" % counts.get("infantry", 0)
+	army_txt += "%d\n" % counts.get("tank", 0)
+	army_txt += "%d" % counts.get("artillery", 0)
+	
+	if army_logistics_val:
+		army_logistics_val.text = army_txt
+
+
+func _update_law_buttons_visuals() -> void:
+	if not laws_grid: return
+	for btn in laws_grid.get_children():
+		# Safety check: make sure this child has the metadata we expect
+		if not btn.has_meta("ratio") and not btn.has_meta("country_id"):
+			continue
+
+		# Handle Military Laws
+		if btn.has_meta("ratio"):
+			var law_ratio = btn.get_meta("ratio")
+			var cost = btn.get_meta("cost")
+			var is_active = is_equal_approx(current_country.military_size_ratio, law_ratio)
+
+			var hbox = btn.get_child(0).get_child(0)  # Panel -> MarginContainer -> HBox
+
+			var _title_lbl = hbox.get_node("Title")
+			var status_lbl = hbox.get_node("Status")
+			var cost_lbl = hbox.get_node("Cost")
+
+			# Reset Style
+			var style = btn.get_theme_stylebox("panel").duplicate()
+
+			# NOTE(soi): dear god fix this
+			if is_active:
+				style.bg_color = Color(0.2, 0.4, 0.2, 0.9)  # Dark Green
+				style.border_color = Color(0.4, 0.8, 0.4) # COLOR_POSITIVE
+				status_lbl.text = " ACTIVE"
+				status_lbl.add_theme_color_override("font_color", Color(0.4, 0.8, 0.4))
+				cost_lbl.visible = false
+				btn.mouse_default_cursor_shape = Control.CURSOR_ARROW
+			else:
+				status_lbl.text = ""
+				cost_lbl.visible = true
+
+				if current_country.political_power >= cost:
+					cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
+					btn.modulate = Color(1, 1, 1, 1)
+					btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+				else:
+					cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
+					btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
+					btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
+			btn.add_theme_stylebox_override("panel", style)
+		# Handle Releasable Nations
+		elif btn.has_meta("country_id"):
+			var cost = btn.get_meta("cost")
+			var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
+			var cost_lbl = hbox.get_node("Cost")
+
+			var style = btn.get_theme_stylebox("panel").duplicate()
+
+			if current_country.political_power >= cost:
+				style.bg_color = Color(0.15, 0.16, 0.19, 1.0) # COLOR_PANEL_INNER
+				style.border_color = Color(0.3, 0.3, 0.3)
+				cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
+				btn.modulate = Color(1, 1, 1, 1)
+				btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+			else:
+				style.bg_color = Color(0.15, 0.16, 0.19, 1.0) # COLOR_PANEL_INNER
+				style.border_color = Color(0.3, 0.3, 0.3)
+				cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
+				btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
+				btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
+			btn.add_theme_stylebox_override("panel", style)
 
 #endregion
 
@@ -253,12 +270,12 @@ func _add_releasable_option(country_id: String) -> void:
 	btn_panel.custom_minimum_size = Vector2(0, 55) # Slimmer height for HBox layout
 	
 	# 1. Styling
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.12, 0.12, 0.14)
-	style.border_color = Color(0.25, 0.25, 0.3)
-	style.set_border_width_all(1)
-	style.set_corner_radius_all(4)
-	btn_panel.add_theme_stylebox_override("panel", style)
+	# var style = StyleBoxFlat.new()
+	# style.bg_color = Color(0.12, 0.12, 0.14)
+	# style.border_color = Color(0.25, 0.25, 0.3)
+	# style.set_border_width_all(1)
+	# style.set_corner_radius_all(4)
+	# btn_panel.add_theme_stylebox_override("panel", style)
 
 	# 2. Main Layout
 	var m = MarginContainer.new()
@@ -323,7 +340,7 @@ func _add_releasable_option(country_id: String) -> void:
 	h_btns.add_child(btn_play)
 
 	laws_grid.add_child(btn_panel)
-	
+
 func _on_release_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
 		current_country.political_power -= 50
@@ -344,171 +361,8 @@ func _on_release_and_play_pressed(country_id: String) -> void:
 	else:
 		Console.print_error("Not enough Political Power!")
 
-#region --- Logic & Data Refresh ---
-func _refresh_full_data() -> void:
-	if not current_country:
-		return
-	header_label.text = current_country.country_name.to_upper()
-
-	# Attempt to load specific flag, fallback to grey placeholder
-	var flag_path = "res://flags/%s.png" % current_country.country_name
-	if ResourceLoader.exists(flag_path):
-		flag_rect.texture = load(flag_path)
-
-	_refresh_army_counts()
-	_update_law_buttons_visuals()
-
-
-func _refresh_army_counts() -> void:
-	# Recalculate army composition
-	var counts = {"infantry": 0, "tank": 0, "artillery": 0}
-
-	# Assuming TroopManager has this function as per your previous code
-	var troops = TroopManager.get_troops_for_country(current_country.country_name)
-	var total_divs = 0
-
-	for troop in troops:
-		for div in troop.stored_divisions:
-			total_divs += 1
-			# Assuming 'type' is a string key
-			if counts.has(div.type):
-				counts[div.type] += 1
-			else:
-				# Handle types we didn't hardcode
-				counts[div.type] = 1
-
-	comp_infantry.text = str(counts.get("infantry", 0))
-	comp_tank.text = str(counts.get("tank", 0))
-	comp_artillery.text = str(counts.get("artillery", 0))
-
-	# Detailed Manpower String
-	var max_man = int(current_country.total_population * current_country.military_size_ratio)
-	manpower_display.text = (
-		"%s / %s" % [_format_number(current_country.manpower), _format_number(max_man)]
-	)
-
-	# Detailed Income String using BBCode
-	var txt = ""
-	txt += (
-		"[color=#cccccc]Base Income:[/color] [color=#88ff88]+$%.1f[/color]\n"
-		% (current_country.gdp / 8760.0 * 0.2)
-	)
-	txt += (
-		"[color=#cccccc]Factories:[/color] [color=#88ff88]+$%.1f[/color]\n"
-		% (current_country.factories_amount * current_country.factory_income)
-	)
-
-	if current_country.economy_law_penalty > 0:
-		var pen_pct = current_country.economy_law_penalty * 100.0
-		txt += (
-			"[color=#ff8888]Law Penalty (-%.0f%%):[/color] [color=#ff5555]-$%.1f[/color]\n"
-			% [pen_pct, current_country.hourly_money_income * current_country.economy_law_penalty]
-		)
-
-	txt += (
-		"[color=#cccccc]Army Upkeep:[/color] [color=#ff5555]-$%.1f[/color]"
-		% current_country.army_cost
-	)
-
-	income_breakdown_label.text = txt
-
-
-func _update_law_buttons_visuals() -> void:
-	for btn in laws_grid.get_children():
-		# Safety check: make sure this child has the metadata we expect
-		if not btn.has_meta("ratio"):
-			continue
-
-		var law_ratio = btn.get_meta("ratio")
-		var cost = btn.get_meta("cost")
-		var is_active = is_equal_approx(current_country.military_size_ratio, law_ratio)
-
-		# Look for nodes using the exact internal path we built
-		# Note: The MarginContainer we created didn't have a name,
-		# so Godot likely named it "MarginContainer" or "@MarginContainer@..."
-		# To be safe, we'll find them by their class or specific names.
-		var hbox = btn.get_child(0).get_child(0)  # Panel -> MarginContainer -> HBox
-
-		var title_lbl = hbox.get_node("Title")
-		var status_lbl = hbox.get_node("Status")
-		var cost_lbl = hbox.get_node("Cost")
-
-		# Reset Style
-		var style = btn.get_theme_stylebox("panel").duplicate()
-
-		if is_active:
-			style.bg_color = Color(0.2, 0.4, 0.2, 0.9)  # Dark Green
-			style.border_color = COLOR_POSITIVE
-			status_lbl.text = " ACTIVE"
-			status_lbl.add_theme_color_override("font_color", COLOR_POSITIVE)
-			cost_lbl.visible = false
-			btn.mouse_default_cursor_shape = Control.CURSOR_ARROW
-		else:
-			style.bg_color = COLOR_PANEL_INNER
-			style.border_color = Color(0.3, 0.3, 0.3)
-			status_lbl.text = ""
-			cost_lbl.visible = true
-
-			if current_country.political_power >= cost:
-				cost_lbl.add_theme_color_override("font_color", COLOR_WARNING)
-				btn.modulate = Color(1, 1, 1, 1)
-				btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-			else:
-				cost_lbl.add_theme_color_override("font_color", COLOR_NEGATIVE)
-				btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
-				btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
-
-		btn.add_theme_stylebox_override("panel", style)
-
-
-#endregion
-
-
-#region --- Helper Builders ---
-func _create_section_header(parent: Node, text: String) -> void:
-	var lbl = Label.new()
-	lbl.text = text
-	lbl.add_theme_font_size_override("font_size", 18)
-	lbl.add_theme_color_override("font_color", COLOR_ACCENT)
-	parent.add_child(lbl)
-
-
-func _create_stat_row(parent: Node, title: String, start_val: String) -> Label:
-	var hbox = HBoxContainer.new()
-	var t = Label.new()
-	t.text = title
-	t.add_theme_color_override("font_color", COLOR_TEXT_DIM)
-	var v = Label.new()
-	v.text = start_val
-	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	v.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	v.add_theme_font_size_override("font_size", 18)
-
-	hbox.add_child(t)
-	hbox.add_child(v)
-	parent.add_child(hbox)
-	return v
-
-
-func _create_simple_row(parent: Node, title: String) -> Label:
-	var hbox = HBoxContainer.new()
-	var t = Label.new()
-	t.text = title
-	t.add_theme_color_override("font_color", COLOR_TEXT_DIM)
-
-	var v = Label.new()
-	v.text = "0"
-	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	v.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-
-	hbox.add_child(t)
-	hbox.add_child(v)
-	parent.add_child(hbox)
-	return v
-
-
 func _add_law_option(
-	name: String, ratio: float, eco_penalty: float, cost: int, tooltip: String
+	_name: String, ratio: float, eco_penalty: float, cost: int, _tooltip: String
 ) -> void:
 	var btn_panel = PanelContainer.new()
 	btn_panel.custom_minimum_size = Vector2(0, 50)
@@ -518,20 +372,20 @@ func _add_law_option(
 	btn_panel.set_meta("penalty", eco_penalty)
 	btn_panel.set_meta("cost", cost)
 
-	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	btn_panel.add_theme_stylebox_override("panel", style)
+	# var style = StyleBoxFlat.new()
+	# style.corner_radius_top_left = 6
+	# style.corner_radius_top_right = 6
+	# style.corner_radius_bottom_right = 6
+	# style.corner_radius_bottom_left = 6
+	# style.border_width_left = 1
+	# style.border_width_top = 1
+	# style.border_width_right = 1
+	# style.border_width_bottom = 1
+	# btn_panel.add_theme_stylebox_override("panel", style)
 
 	var m = MarginContainer.new()
-	m.add_theme_constant_override("margin_left", 15)
-	m.add_theme_constant_override("margin_right", 15)
+	m.add_theme_constant_override("margin_left", 5)
+	m.add_theme_constant_override("margin_right", 5)
 	btn_panel.add_child(m)
 
 	var hbox = HBoxContainer.new()
@@ -540,14 +394,13 @@ func _add_law_option(
 
 	var title = Label.new()
 	title.name = "Title"
-	title.text = name
+	title.text = _name
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	# Effect info (small text)
 	var effect_lbl = Label.new()
 	effect_lbl.text = "Pop: %.2f%% | Eco: -%.0f%%" % [ratio * 100.0, eco_penalty * 100.0]
 	effect_lbl.add_theme_font_size_override("font_size", 12)
-	effect_lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
 
 	var cost_lbl = Label.new()
 	cost_lbl.name = "Cost"
@@ -625,7 +478,7 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 func _format_money(amount: float) -> String:
 	if amount >= 1000000:
 		return "%.2fM" % (amount / 1000000.0)
-	elif amount >= 1000:
+	if amount >= 1000:
 		return "%.2fK" % (amount / 1000.0)
 	return "%.2f" % amount
 
@@ -633,7 +486,7 @@ func _format_money(amount: float) -> String:
 func _format_number(amount: int) -> String:
 	if amount >= 1000000:
 		return "%.1fM" % (amount / 1000000.0)
-	elif amount >= 1000:
+	if amount >= 1000:
 		return "%.1fK" % (amount / 1000.0)
 	return str(amount)
 #endregion

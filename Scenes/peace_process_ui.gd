@@ -165,6 +165,10 @@ func _setup_ui_elements():
 	annex_btn.pressed.connect(_on_annex_all_pressed)
 	v_box.add_child(annex_btn)
 
+	var puppet_btn = _create_styled_button("PUPPET COUNTRY", Color(0.5, 0.3, 0.3))
+	puppet_btn.pressed.connect(_on_puppet_pressed)
+	v_box.add_child(puppet_btn)
+
 	var clear_btn = _create_styled_button("RESET SELECTION", Color(0.4, 0.4, 0.4))
 	clear_btn.pressed.connect(_on_clear_selection_pressed)
 	v_box.add_child(clear_btn)
@@ -205,12 +209,17 @@ func _on_annex_all_pressed():
 	_update_summary()
 
 
+func _on_puppet_pressed():
+	current_winner.allowedCountries.append(current_loser.country_name)
+	current_winner.puppets.append(current_loser.country_name)
+	print(current_winner.puppets)
+	_update_summary()
+
 func _on_clear_selection_pressed():
 	for pid in provinces_to_take:
 		_reset_province_visual_immediate(pid)
 	provinces_to_take.clear()
 	_update_summary()
-
 
 func _reset_province_visual_immediate(pid: int):
 	var owner = MapManager.province_to_country[pid]

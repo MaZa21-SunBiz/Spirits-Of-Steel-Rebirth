@@ -43,24 +43,14 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
+var puppets: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
 var deploy_pid: int = -1  # ID of province to deploy to
-
-# This is for fog of war stuff
-var visibile_pids = []
-var depth_allowed = 2
-var fog_of_war_dirty = true
 #endregion
 
-
-# for optimization
-var is_at_war = false
-var war_dirty = true
 var _is_loading := false
-var dirty := true
-var dirty_manpower:= true
-var enemies = []
+
 
 #region --- Inner Classes ---
 class TroopTraining:
@@ -99,9 +89,6 @@ func _init(p_country_name: String = "") -> void:
 	var manpower_used = CountryManager.get_country_used_manpower(self)
 	manpower = int((total_population * military_size_ratio) - manpower_used)
 	_setup_starting_army()
-	visibile_pids = MapManager.get_visible_pids(self.country_name, 1)
-
-
 
 
 func process_hour() -> void:
@@ -109,6 +96,7 @@ func process_hour() -> void:
 		return
 
 	political_power += daily_pp_gain
+
 	# Economic Cycle
 	# (GDP / Hours in a year) * Tax Rate + Factory Output
 	var base_income = (gdp / 8760.0) * 0.2
@@ -120,13 +108,9 @@ func process_hour() -> void:
 	money += income
 
 	troop_speed_modifier = 1.0 + (army_level * 0.1)
-	
-	if dirty_manpower and !dirty: # Because if dirty. refresh_economic_stats will do it anyways
-		update_manpower_pool()
-	
-	if war_dirty: # For the AI
-		update_is_at_war()
-	
+
+	update_manpower_pool()
+	_process_reinforcements()
 	if not is_player:
 		AiManager.ai_tick(self)
 		pass
@@ -139,26 +123,17 @@ func process_day() -> void:
 	# Refresh stats that change daily/weekly
 	_refresh_economic_stats()
 	_process_training()
-	_process_reinforcements()
-
 	DecisionManager.process_country_day(self)
 	if not is_player:
 		pass
 
 
 func _refresh_economic_stats() -> void:
-	if not dirty:
-		return # Already up to date
-		
 	total_population = CountryManager.get_country_population(country_name)
 	factories_amount = CountryManager.get_factories_amount(country_name)
+	# GDP calculation based on population (Simplified for performance)
 	gdp = int(CountryManager.get_country_gdp(country_name) * total_population * 0.000001)
-	update_manpower_pool()
-	
-	if self.is_player: # AI doesn't need fog of war atm
-		visibile_pids = MapManager.get_visible_pids(self.country_name, depth_allowed)
-	self.dirty = false
-	self.fog_of_war_dirty = false
+
 
 #endregion
 
@@ -178,7 +153,7 @@ func train_troops(count: int, type: String = "infantry") -> bool:
 		return false
 
 	manpower -= total_manpower_needed
-	dirty_manpower = true
+
 	# Add to training queue
 	var training_batch = TroopTraining.new(count, type, template["days"], template["cost"])
 	ongoing_training.append(training_batch)
@@ -206,7 +181,6 @@ func _graduate_troops(training: TroopTraining) -> void:
 		new_divisions.append(DivisionData.create_division(training.division_type))
 
 	ready_troops.append(ReadyTroop.new(new_divisions))
-	dirty_manpower = true
 
 
 #endregion
@@ -229,7 +203,6 @@ func update_manpower_pool() -> void:
 
 	# HARD SAFETY: Never let the variable itself be negative
 	manpower = max(0, manpower)
-	dirty_manpower = false
 
 
 func get_army_pressure() -> float:
@@ -276,7 +249,6 @@ func deploy_ready_troop(troop: ReadyTroop, specific_pid: int = -1) -> bool:
 
 	TroopManager.deploy_specific_divisions(country_name, troop.stored_divisions, target_pid)
 	ready_troops.remove_at(index)
-	dirty_manpower = true
 	return true
 
 
@@ -305,7 +277,7 @@ func demobilize_troop(troop: TroopData, count: int = -1) -> void:
 	if not divs_to_reserve.is_empty():
 		var reserve = ReadyTroop.new(divs_to_reserve)
 		ready_troops.append(reserve)
-	dirty_manpower = true
+
 
 ## Enhanced upkeep: Reserves cost 25% of active troops
 func calculate_army_upkeep() -> float:
@@ -384,10 +356,6 @@ func _deploy_initial_force(divisions: Array[DivisionData]) -> void:
 			TroopManager.deploy_specific_divisions(country_name, current_batch, target_pid)
 			current_batch = []  # Reset for next stack
 
-func update_is_at_war():
-	is_at_war = not WarManager.get_enemies_of(self.country_name).is_empty()
-	enemies = WarManager.get_enemies_of(self.country_name)
-	war_dirty = false
 
 func _process_reinforcements():
 	var all_my_troops = TroopManager.get_troops_for_country(country_name)

@@ -22,6 +22,9 @@ func _on_day_passed() -> void:
 	for c_name: String in countries:
 		var country_obj: CountryData = countries[c_name]
 		country_obj.process_day()
+	
+	SuperEventManager.check_events()
+	
 	MapManager.country_to_provinces
 
 
@@ -62,8 +65,6 @@ func set_player_country(country_name: String) -> void:
 
 	player_country = country
 	player_country.is_player = true
-	
-	mark_country_dirty(country_name)
 
 	print("Player is now playing as: ", country_name)
 	emit_signal("player_country_changed")
@@ -94,15 +95,6 @@ func add_country(country_name: String) -> CountryData:
 	
 	countries[c_name_lower] = new_country
 	return new_country
-
-func mark_country_dirty(country_name: String) -> void:
-	if country_name == "" or country_name == "sea":
-		return
-	var c = get_country(country_name)
-	if c:
-		c.dirty = true
-		c.fog_of_war_dirty = true
-		c.dirty_manpower = true
 
 
 # HELPER FUNCTIONS ==========================================

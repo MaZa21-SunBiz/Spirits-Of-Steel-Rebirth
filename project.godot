@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Spirits of Steel Rebirth"
 run/main_scene="uid://bonl378c51366"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://lifcljm83dlp"
 config/icon="uid://claivv7l8p5lc"
 
@@ -27,10 +31,12 @@ WarManager="*res://Managers/WarManager.gd"
 PopupManager="*res://Managers/PopupManager.gd"
 KeyboardManager="*res://Managers/KeyboardManager.gd"
 ConsoleManager="*res://Managers/ConsoleManager.gd"
-Console="*res://addons/console/console.gd"
+Console="*uid://ouiu5xh1cs8n"
 AiManager="*res://Managers/AiManager.gd"
 DecisionManager="*res://Managers/DecisionManager.gd"
 EconomyManager="*res://Managers/EconomyManager.gd"
+SuperEventManager="*res://Managers/SuperEventManager.gd"
+InterpreterManager="*res://Managers/InterpreterManager.gd"
 
 [display]
 

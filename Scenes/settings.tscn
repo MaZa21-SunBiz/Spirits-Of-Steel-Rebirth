@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://i3xg4d4cpxol"]
+
+[ext_resource type="Script" uid="uid://48v434jart4x" path="res://Scenes/settings.gd" id="1_aaqfp"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="1_i44u3"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_lhmql"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_lhmql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhmql"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aaqfp"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2dne"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="Node2D" type="Node2D" unique_id=20089709]
+
+[node name="Settings" type="Control" parent="." unique_id=892394724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aaqfp")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings" unique_id=1439157451]
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 372.0
+offset_top = 191.0
+offset_right = 492.0
+offset_bottom = 446.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lhmql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer" unique_id=2078243645]
+layout_mode = 2
+
+[node name="SaveLoad" type="Button" parent="Settings/PanelContainer/VBoxContainer" unique_id=1760711344]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_lhmql")
+text = "Save/Load"
+
+[node name="Audio" type="Button" parent="Settings/PanelContainer/VBoxContainer" unique_id=274551868]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_lhmql")
+text = "Audio"
+
+[node name="Graphics" type="Button" parent="Settings/PanelContainer/VBoxContainer" unique_id=930420190]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_lhmql")
+text = "Graphics"
+
+[node name="Quit" type="Button" parent="Settings/PanelContainer/VBoxContainer" unique_id=706352401]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_lhmql")
+text = "Quit"
+
+[node name="Audio" type="PanelContainer" parent="Settings" unique_id=750041884]
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 496.0
+offset_top = 191.0
+offset_right = 787.0
+offset_bottom = 446.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Audio" unique_id=704670754]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="SFX" type="HSplitContainer" parent="Settings/Audio/VBoxContainer" unique_id=250840008]
+layout_mode = 2
+split_offsets = PackedInt32Array(102)
+dragging_enabled = false
+split_offset = 102
+
+[node name="Label" type="Label" parent="Settings/Audio/VBoxContainer/SFX" unique_id=2026330459]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/Audio/VBoxContainer/SFX" unique_id=160017134]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 10.0
+
+[node name="Music" type="HSplitContainer" parent="Settings/Audio/VBoxContainer" unique_id=1273629578]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Audio/VBoxContainer/Music" unique_id=1494519377]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/Audio/VBoxContainer/Music" unique_id=364170525]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 10.0
+
+[node name="Exit" type="Button" parent="Settings/Audio/VBoxContainer" unique_id=1757865940]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme = ExtResource("2_lhmql")
+text = "exit
+"
+
+[node name="Saves" type="PanelContainer" parent="Settings" unique_id=1381486399]
+visible = false
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 496.0
+offset_top = 191.0
+offset_right = 787.0
+offset_bottom = 446.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2dne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Saves" unique_id=38392474]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/Saves/VBoxContainer" unique_id=136456174]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Saves/VBoxContainer/HBoxContainer" unique_id=1030447375]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+placeholder_text = "Search"
+
+[node name="SaveGame" type="Button" parent="Settings/Saves/VBoxContainer/HBoxContainer" unique_id=530483480]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme = ExtResource("2_lhmql")
+text = "Save"
+
+[node name="savelist" type="VBoxContainer" parent="Settings/Saves/VBoxContainer" unique_id=1708991261]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Graphics" type="PanelContainer" parent="Settings" unique_id=569515996]
+visible = false
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 496.0
+offset_top = 191.0
+offset_right = 787.0
+offset_bottom = 446.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2dne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Graphics" unique_id=734654457]
+layout_mode = 2
+
+[connection signal="pressed" from="Settings/PanelContainer/VBoxContainer/SaveLoad" to="Settings" method="_on_save_load_pressed"]
+[connection signal="pressed" from="Settings/PanelContainer/VBoxContainer/Audio" to="Settings" method="_on_audio_pressed"]
+[connection signal="pressed" from="Settings/PanelContainer/VBoxContainer/Graphics" to="Settings" method="_on_graphics_pressed"]
+[connection signal="value_changed" from="Settings/Audio/VBoxContainer/SFX/HSlider" to="Settings" method="_on_sfx_changed"]
+[connection signal="value_changed" from="Settings/Audio/VBoxContainer/Music/HSlider" to="Settings" method="_on_music_changed"]
+[connection signal="pressed" from="Settings/Saves/VBoxContainer/HBoxContainer/SaveGame" to="Settings" method="_on_save_game_pressed"]

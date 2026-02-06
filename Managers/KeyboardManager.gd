@@ -4,10 +4,14 @@ extends Node
 enum MapView { COUNTRIES, POPULATION, GDP, ETHNICITY }
 var current_view = MapView.COUNTRIES
 
+var settings = null
+
 signal toggle_menu
 
 var _debounce := false
 
+func _ready() -> void:
+	settings = get_tree().root.find_child("Settings", true, false)
 
 func _process(_delta: float) -> void:
 	if Console.is_visible():
@@ -16,7 +20,8 @@ func _process(_delta: float) -> void:
 		if !TroopManager.troop_selection.selected_troops.is_empty():
 			TroopManager.troop_selection.deselect_all()
 		else:
-			get_tree().root.find_child("Menu", true, false).toggle_menu()
+			# get_tree().root.find_child("Menu", true, false).toggle_menu()
+			settings.visible = !settings.visible
 
 	if Input.is_action_just_pressed("open_menu"):
 		if not _debounce:

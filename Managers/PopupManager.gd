@@ -38,6 +38,26 @@ func show_alert(
 	)
 
 
+
+func show_custom_popup(popup: Control) -> void:
+	ui_layer.add_child(popup)
+	active_popups.append(popup)
+
+	# Assume the popup has a 'reset_size' method or similar, but for safety we just restack.
+	# If the popup needs layout updates, it should handle its own _ready logic.
+	# But we can try to call reset_size if it exists.
+	if popup.has_method("reset_size"):
+		popup.call_deferred("reset_size")
+		
+	call_deferred("_restack_popups")
+
+	popup.tree_exited.connect(
+		func():
+			active_popups.erase(popup)
+			_restack_popups()
+	)
+
+
 func _restack_popups():
 	var viewport_size = get_viewport().get_visible_rect().size
 	var center_x = viewport_size.x / 2

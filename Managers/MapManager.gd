@@ -39,6 +39,8 @@ var province_centers: Dictionary = {}  # Stores {ID: Vector2(x, y)}
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
 
+
+
 var all_cities = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
@@ -443,6 +445,7 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 	var player_country_name = CountryManager.player_country.country_name
 	var is_player_owned = province_to_country.get(pid) == player_country_name
+	var is_puppet_owned = province_to_country.get(pid) in CountryManager.player_country.puppets
 
 	if GameState.choosing_deploy_city:
 		if is_player_owned:
@@ -453,6 +456,8 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	elif GameState.industry_building != GameState.IndustryType.DEFAULT:
 		if is_player_owned:
 			_province_build_industry(pid, player_country_name)
+		elif is_puppet_owned:
+			_province_build_industry(pid, province_to_country.get(pid))
 		else:
 			print("Action Failed: Cannot build in foreign territory.")
 			GameState.reset_industry_building()
@@ -581,24 +586,18 @@ func _build_adjacency_list() -> void:
 	var h = id_map_image.get_height()
 
 	adjacency_list.clear()
-	var unique_neighbors := {}
 
-	# Helper function to ensure bidirectional recording
-	var add_connection = func(a: int, b: int):
-		if a == b or a <= 1 or b <= 1: return
-		
-		# A -> B
-		if not unique_neighbors.has(a): unique_neighbors[a] = {}
-		unique_neighbors[a][b] = true
-		
-		# B -> A (The "Force" step)
-		if not unique_neighbors.has(b): unique_neighbors[b] = {}
-		unique_neighbors[b][a] = true
+	# Prepare dictionary for unique tracking
+	var unique_neighbors := {}
 
 	for y in range(h):
 		for x in range(w):
 			var pid = _get_pid_fast(x, y)
-			if pid <= 1: continue
+			if pid <= 1:
+				continue
+
+			if not unique_neighbors.has(pid):
+				unique_neighbors[pid] = {}
 
 			# 4-directional neighbors
 			var dirs = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
@@ -606,31 +605,39 @@ func _build_adjacency_list() -> void:
 			for d in dirs:
 				var nx = x + d.x
 				var ny = y + d.y
-				if nx < 0 or ny < 0 or nx >= w or ny >= h: continue
+				if nx < 0 or ny < 0 or nx >= w or ny >= h:
+					continue
 
 				var neighbor = _get_pid_fast(nx, ny)
 
+				# Normal adjacency (Land-to-Land)
 				if neighbor > 1 and neighbor != pid:
-					add_connection.call(pid, neighbor)
-				
-				elif neighbor == 1:
+					unique_neighbors[pid][neighbor] = true
+					continue
+
+				# Border pixel scan (ID=1)
+				if neighbor == 1:
 					var across = _scan_across_border(nx, ny, pid)
 					if across > 1 and across != pid:
-						add_connection.call(pid, across)
+						unique_neighbors[pid][across] = true
 
-	# --- Sync to Objects ---
+	# --- THE FIX: Convert to Typed Arrays and Populate Objects ---
 	for pid in unique_neighbors:
 		var neighbors_keys = unique_neighbors[pid].keys()
+
+		# Create a typed array for the Province resource
 		var typed_list: Array[int] = []
 		for n_id in neighbors_keys:
 			typed_list.append(int(n_id))
 
+		# Store in the global dictionary (can remain untyped for pathfinding)
 		adjacency_list[pid] = typed_list
 
+		# Sync to the Province object
 		if province_objects.has(pid):
 			province_objects[pid].neighbors = typed_list
 
-	print("MapManager: Adjacency list built (guaranteed bidirectional).")
+	print("MapManager: Adjacency list built and synced to Province objects.")
 
 
 func _scan_across_border(x: int, y: int, pid: int) -> int:
@@ -809,6 +816,43 @@ func is_path_possible(start_pid: int, end_pid: int) -> bool:
 
 func print_cache_stats() -> void:
 	print("Path Cache Stats: %d paths cached" % path_cache.size())
+
+
+func force_bidirectional_connections() -> void:
+	var fix_count = 0
+
+	# 1. Iterate through every province object
+	for pid_a in province_objects.keys():
+		var prov_a: Province = province_objects[pid_a]
+
+		var neighbors_of_a = prov_a.neighbors
+
+		for pid_b in neighbors_of_a:
+			# Safety check: Does the neighbor ID even exist in our world?
+			if not province_objects.has(pid_b):
+				push_warning(
+					(
+						"Graph Repair: Province %d lists neighbor %d, but %d doesn't exist!"
+						% [pid_a, pid_b, pid_b]
+					)
+				)
+				continue
+
+			var prov_b: Province = province_objects[pid_b]
+
+			# Check if B points back to A
+			if not pid_a in prov_b.neighbors:
+				prov_b.neighbors.append(pid_a)
+
+				if adjacency_list.has(pid_b):
+					if not pid_a in adjacency_list[pid_b]:
+						adjacency_list[pid_b].append(pid_a)
+				else:
+					adjacency_list[pid_b] = [pid_a]
+
+				fix_count += 1
+
+	print("Graph Repair Complete: Fixed %d one-way connections in Province Resources." % fix_count)
 
 
 func _is_mouse_over_ui() -> bool:
@@ -1001,9 +1045,6 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	province_to_country[pid] = new_owner_name
 
 	var new_color = country_colors.get(new_owner_name, Color.GRAY)
-	
-	CountryManager.mark_country_dirty(old_owner_name)
-	CountryManager.mark_country_dirty(new_owner_name)
 	_update_lookup(pid, new_color)
 
 
@@ -1444,111 +1485,3 @@ func _build_global_registry():
 			if not global_claims_registry.has(country_name):
 				global_claims_registry[country_name] = []
 			global_claims_registry[country_name].append(obj.id)
-
-
-func generate_type_mask() -> ImageTexture:
-	if id_map_image == null:
-		push_error("MapManager: Cannot generate type mask - id_map_image is null!")
-		return null
-
-	var w := id_map_image.get_width()
-	var h := id_map_image.get_height()
-	
-	var type_img := Image.create_empty(w, h, false, Image.FORMAT_L8)
-	var uncertain_pixels: Array[Vector2i] = []
-
-	# --- PASS 1: Direct Mapping ---
-	for y in range(h):
-		for x in range(w):
-			var pid = _get_pid_fast(x, y)
-			var province = province_objects.get(pid)
-
-			if province:
-				# 0 is usually Sea, anything else is Land
-				var color = Color.WHITE if province.type != 0 else Color.BLACK
-				type_img.set_pixel(x, y, color)
-			else:
-				# This pixel is a border (ID 1) or unassigned.
-				uncertain_pixels.append(Vector2i(x, y))
-
-	# --- PASS 2: Neighbor Check for Borders ---
-	for pos in uncertain_pixels:
-		var touches_land := false
-		
-		# 8-way check (includes diagonals)
-		for dy in range(-1, 2):
-			for dx in range(-1, 2):
-				if dx == 0 and dy == 0: continue
-
-				var nx: int = pos.x + dx
-				var ny: int = pos.y + dy
-
-				if nx >= 0 and nx < w and ny >= 0 and ny < h:
-					var nid = _get_pid_fast(nx, ny)
-					if nid > 1: # Ignore other border pixels
-						var n_prov = province_objects.get(nid)
-						if n_prov and n_prov.type != 0:
-							touches_land = true
-							break
-			if touches_land: break
-
-		var final_color = Color.WHITE if touches_land else Color.BLACK
-		type_img.set_pixel(pos.x, pos.y, final_color)
-
-	return ImageTexture.create_from_image(type_img)
-
-
-func get_country_neighbors(country_name: String) -> Array:
-	if not country_to_provinces.has(country_name):
-		return []
-
-	var territory_array = country_to_provinces[country_name]
-	var external_neighbors_set: Dictionary = {}
-	
-	var territory_set: Dictionary = {}
-	for p_id in territory_array:
-		territory_set[p_id] = true
-
-	for p_id in territory_array:
-		var neighbors = adjacency_list.get(p_id, [])
-		for n_id in neighbors:
-			if not territory_set.has(n_id):
-				external_neighbors_set[n_id] = true
-
-	# 3. Return the keys as a clean Array
-	return external_neighbors_set.keys()
-
-# For Fog of war
-func get_visible_pids(country_name: String, depth: int = 20) -> Array:
-	if not country_to_provinces.has(country_name):
-		return []
-
-	var visible_set: Dictionary = {}
-	var own_provinces = country_to_provinces[country_name]
-	
-	for pid in own_provinces:
-		visible_set[pid] = true
-
-	var current_layer = own_provinces.duplicate()
-
-	# 3. EXPAND LAYER BY LAYER
-	for i in range(depth):
-		var next_layer = []
-		
-		for pid in current_layer:
-			# Get neighbors using the Dictionary or the Object directly
-			# Using province_objects is safer if adjacency_list might be out of sync
-			var p_obj: Province = province_objects.get(pid)
-			if not p_obj: continue
-				
-			var neighbors = p_obj.neighbors
-			
-			for n_id in neighbors:
-				if not visible_set.has(n_id):
-					visible_set[n_id] = true
-					next_layer.append(n_id)
-		
-		# Move the frontier forward
-		current_layer = next_layer
-		
-	return visible_set.keys()

@@ -18,6 +18,10 @@ var tabs_container: HBoxContainer
 var info_text: RichTextLabel
 var info_panel: Panel
 
+var tooltip_panel: Panel
+var tooltip_label: RichTextLabel
+
+
 var current_category: String = "Economy"
 var node_buttons: Dictionary = {}
 var connection_lines: Array = []
@@ -37,6 +41,12 @@ func _process(delta: float) -> void:
 		if input != Vector2.ZERO:
 			tree_canvas.position -= input * MOVE_SPEED * delta
 			tree_canvas.queue_redraw()
+		
+		# --- UPDATE CUSTOM TOOLTIP POSITION ---
+		if tooltip_panel and tooltip_panel.visible:
+			var mouse_pos = get_viewport().get_mouse_position()
+			tooltip_panel.global_position = mouse_pos + Vector2(20, 20)  # Offset from cursor
+
 
 
 func _create_full_ui():
@@ -103,6 +113,26 @@ func _create_full_ui():
 	info_text.text = "[center][color=gray]Hover over a node to see info[/color][/center]"
 	info_panel.add_child(info_text)
 
+	# --- 4. CUSTOM TOOLTIP LAYER ---
+	tooltip_panel = Panel.new()
+	tooltip_panel.visible = false
+	tooltip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tooltip_panel.custom_minimum_size = Vector2(200, 40)
+	static_ui.add_child(tooltip_panel)
+
+
+	tooltip_label = RichTextLabel.new()
+	tooltip_label.bbcode_enabled = true
+	tooltip_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tooltip_label.offset_left = 10
+	tooltip_label.offset_right = -10
+	tooltip_label.offset_top = 5
+	tooltip_label.offset_bottom = -5
+	tooltip_label.fit_content = true
+	tooltip_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	tooltip_panel.add_child(tooltip_label)
+
+
 
 # --- LOGIC ---
 func open_menu():
@@ -133,7 +163,10 @@ func _toggle_pause(pause: bool):
 func _rebuild_tabs():
 	for c in tabs_container.get_children():
 		c.queue_free()
-	for cat in DecisionManager.categories.keys():
+	
+	var all_decisions = DecisionManager.get_country_categories(CountryManager.player_country.country_name)
+	
+	for cat in all_decisions.keys():
 		var btn = Button.new()
 		btn.text = " " + cat.to_upper() + " "
 		btn.toggle_mode = true
@@ -154,8 +187,9 @@ func _load_category(cat_name: String):
 	connection_lines.clear()
 	tree_canvas.position = Vector2.ZERO
 
-	var nodes = DecisionManager.categories[cat_name]
 	var player = CountryManager.player_country
+	var all_decisions = DecisionManager.get_country_categories(player.country_name)
+	var nodes = all_decisions.get(cat_name, [])
 
 	for i in range(nodes.size()):
 		_create_node(nodes[i], i, player)
@@ -190,8 +224,10 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	_apply_node_style(btn, data, player)
 	btn.set_meta("id", data["id"])
 	btn.set_meta("idx", idx)
+
 	node_buttons[data["id"]] = btn
 	tree_canvas.add_child(btn)
+
 
 
 func _show_info(data: Dictionary):
@@ -202,9 +238,40 @@ func _show_info(data: Dictionary):
 		% [data["days"], data["cost_pp"]]
 	)
 
+	if data.has("reqs"):
+		var reqs = data["reqs"]
+		if not reqs is Array:
+			reqs = [reqs]
+		
+		var final_req_texts = []
+		for req in reqs:
+			if not req is Dictionary: continue
+			
+			var f_name = req.get("func", "Unknown").capitalize()
+			var args = req.get("args", [])
+			var req_line = f_name
+			if args.size() > 0:
+				var arg_strs = []
+				for a in args:
+					arg_strs.append(str(a).capitalize())
+				req_line += ": " + ", ".join(arg_strs)
+			final_req_texts.append(req_line)
+			
+		if not final_req_texts.is_empty():
+			var full_text = "\n".join(final_req_texts)
+			info_text.text += "\n[color=red]Requirement: %s[/color]" % full_text
+			
+			# Update custom tooltip
+			tooltip_label.text = "[center]%s[/center]" % full_text
+			tooltip_panel.show()
+
+
 
 func _reset_info():
 	info_text.text = "[center][color=gray]Hover over a node to see info[/color][/center]"
+	if tooltip_panel:
+		tooltip_panel.hide()
+
 
 
 func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
@@ -290,7 +357,8 @@ func refresh_status_only():
 	if not visible:
 		return
 	var player = CountryManager.player_country
-	var nodes = DecisionManager.categories[current_category]
+	var all_decisions = DecisionManager.get_country_categories(player.country_name)
+	var nodes = all_decisions.get(current_category, [])
 	for btn in node_buttons.values():
 		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
 	tree_canvas.queue_redraw()
