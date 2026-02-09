@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://bonl378c51366"]
 
 [ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/world.gd" id="1_go701"]
-[ext_resource type="Script" uid="uid://bjvlgraecimcy" path="res://Scenes/main.gd" id="1_o06y3"]
+[ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="2_fo5ed"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
+[ext_resource type="Shader" uid="uid://cned8wsfobjji" path="res://shaders/OmniScale.gdshader" id="6_7yui6"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/decision_tree_ui.gd" id="9_5v1tr"]
 [ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scenes/peace_process_ui.gd" id="10_0fj1v"]
 [ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="11_ikia7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikia7"]
+shader = ExtResource("6_7yui6")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fo5ed"]
 load_path = "res://.godot/imported/cultures.png-f9255a05eddadc8a9aa0dedbe091def9.ctex"
@@ -40,6 +44,7 @@ script = ExtResource("6_o06y3")
 [node name="MapContainer" type="Node2D" parent="World" unique_id=2009493061]
 
 [node name="CultureSprite" type="Sprite2D" parent="World/MapContainer" unique_id=159175243]
+material = SubResource("ShaderMaterial_ikia7")
 texture = SubResource("CompressedTexture2D_fo5ed")
 centered = false
 

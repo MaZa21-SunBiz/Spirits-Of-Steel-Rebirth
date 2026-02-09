@@ -256,7 +256,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" type="Button" parent="CountrySelect" unique_id=742479731]
 material = ExtResource("5_yhxw7")
 layout_mode = 0
-offset_left = 426.0
+offset_left = 412.0
 offset_top = 210.0
 offset_right = 460.0
 offset_bottom = 280.0

@@ -1,7 +1,7 @@
 extends HBoxContainer
 class_name ActionRow
 
-@onready var button: Button = $ColorRect/Button
+@onready var button: Button = $Button
 
 var data: Dictionary = {}
 var base_text: String = ""

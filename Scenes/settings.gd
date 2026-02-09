@@ -1,10 +1,7 @@
 extends Control
 
-@onready var audio = $Audio
-@onready var saves = $Saves
-@onready var graphics = $Graphics
-@onready var save_list = $Saves/VBoxContainer/savelist
-@onready var line_edit = $Saves/VBoxContainer/HBoxContainer/TextEdit
+@onready var save_list = $TabContainer/Saves/VBoxContainer/ScrollContainer/savelist
+@onready var line_edit = $TabContainer/Saves/VBoxContainer/HBoxContainer/TextEdit
 
 enum Section { SAVE, AUDIO, SETTINGS, EXIT }
 
@@ -35,22 +32,6 @@ func _refresh_saves():
 			lbl.text = "No save files found."
 			lbl.modulate = Color(0.5, 0.5, 0.5)
 			save_list.add_child(lbl)
-
-
-func _on_save_load_pressed():
-	saves.visible = !saves.visible
-	audio.visible = false
-	graphics.visible = false
-
-func _on_audio_pressed():
-	audio.visible = !audio.visible
-	saves.visible = false
-	graphics.visible = false
-
-func _on_graphics_pressed():
-	graphics.visible = !graphics.visible
-	saves.visible = false
-	audio.visible = false
 
 func _on_sfx_changed(value: float) -> void:
 	MusicManager.set_sfx_volume(value)

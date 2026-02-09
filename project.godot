@@ -37,6 +37,7 @@ DecisionManager="*res://Managers/DecisionManager.gd"
 EconomyManager="*res://Managers/EconomyManager.gd"
 SuperEventManager="*res://Managers/SuperEventManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
+FactionManager="*uid://dk4jr4fcfs7dl"
 
 [display]
 

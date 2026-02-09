@@ -212,6 +212,7 @@ func _on_annex_all_pressed():
 func _on_puppet_pressed():
 	current_winner.allowedCountries.append(current_loser.country_name)
 	current_winner.puppets.append(current_loser.country_name)
+	current_loser.is_puppet = true
 	print(current_winner.puppets)
 	_update_summary()
 

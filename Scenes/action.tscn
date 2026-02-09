@@ -9,19 +9,10 @@ offset_right = 200.0
 offset_bottom = 50.0
 script = ExtResource("1_0hb5u")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=944245185]
-custom_minimum_size = Vector2(200, 50)
+[node name="Button" type="Button" parent="." unique_id=1647895448]
+material = ExtResource("2_o344a")
 layout_mode = 2
 size_flags_horizontal = 3
-color = Color(0.11764706, 0.11764706, 0.11764706, 0)
-
-[node name="Button" type="Button" parent="ColorRect" unique_id=1647895448]
-material = ExtResource("2_o344a")
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.1
-anchor_bottom = 0.82000005
-offset_right = 63.0
 theme = ExtResource("2_ycgp7")
 theme_override_font_sizes/font_size = 20
 disabled = true

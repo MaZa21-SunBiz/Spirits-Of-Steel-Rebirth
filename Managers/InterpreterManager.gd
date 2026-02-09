@@ -77,6 +77,14 @@ func get_function(expression, country = null):
 				if attacker and defender:
 					WarManager.declare_war(attacker, defender)
 					result = true
+		"release":
+			if args.size() >= 1:
+				MapManager.release_country(args[0])
+				result = true
+		"play_as":
+			if args.size() >= 1:
+				CountryManager.set_player_country(args[0])
+				result = true
 
 	if store_key != "":
 		heap[store_key] = result

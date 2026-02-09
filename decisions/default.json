@@ -3,6 +3,7 @@
 		"Economy": [
 			{
 				"id": "eco_1",
+				"prereq": "eco_0",
 				"title": "Industrial Effort",
 				"pos": [
 					100.0,
@@ -16,7 +17,8 @@
 						"args": [
 							"china",
 							"india"
-						]
+						],
+						"store": "ww3"
 					}
 				],
 				"action": {

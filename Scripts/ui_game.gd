@@ -6,38 +6,46 @@ enum Context { PLAYER_COUNTRY, ENEMY_COUNTRY, NEUTRAL_COUNTRY }
 enum Category { GENERAL, ECONOMY, MILITARY }
 
 # ── Top Bar Nodes ─────────────────────────────────────
-@onready var nation_flag: TextureRect = $Control/Topbar/nation_flag
-@onready
-var label_date: Label = $Control/Topbar/MarginContainer2/ColorRect/ProgressBar/label_date
+@onready var topbar: HBoxContainer = $Control/Topbar/HBoxContainer
+
+@onready var nation_flag: TextureRect = topbar.get_node("nation_flag")
+@onready var label_date: Label = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar/label_date")
 @onready var stats_labels := {
-	"pp":
-	$Control/Topbar/MarginContainer/HBoxContainer/PoliticalPower/HBoxContainer/label_politicalpower,
-	"manpower": $Control/Topbar/MarginContainer/HBoxContainer/Manpower/HBoxContainer/label_manpower,
-	"money": $Control/Topbar/MarginContainer/HBoxContainer/Money/HBoxContainer/label_money,
-	"industry": $Control/Topbar/MarginContainer/HBoxContainer/Industry/HBoxContainer/label_industry,
-	"stability":
-	$Control/Topbar/MarginContainer/HBoxContainer/Stability/HBoxContainer/label_stability
+	"pp": topbar.get_node("PoliticalPower/HBoxContainer/label_politicalpower"),
+	"manpower": topbar.get_node("Manpower/HBoxContainer/label_manpower"),
+	"money": topbar.get_node("Money/HBoxContainer/label_money"),
+	"industry": topbar.get_node("Industry/HBoxContainer/label_industry"),
+	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
 }
+
+# ── Speed Controls ────────────────────────────────────
+@onready var plus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Plus")
+@onready var minus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Minus")
+@onready var progress_bar: ProgressBar = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar")
 
 # ── Side Menu Nodes ───────────────────────────────────
 @onready var sidemenu: Control = $Control/SidemenuBG
-@onready
-var sidemenu_flag: TextureRect = $Control/SidemenuBG/Sidemenu/PanelContainer/VBoxContainer/Flag/TextureRect
-@onready
-var label_country_sidemenu: Label = $Control/SidemenuBG/Sidemenu/PanelContainer/VBoxContainer/Label
-@onready var label_category: Label = $Control/SidemenuBG/Sidemenu/Panel/label_category
-@onready
-var actions_container: VBoxContainer = $Control/SidemenuBG/Sidemenu/ScrollContainer/ActionsList
-@onready var progress_bar: ProgressBar = $Control/Topbar/MarginContainer2/ColorRect/ProgressBar
+@onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/TextureRect")
+@onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Label")
+@onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
+@onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
+
+# @onready var label_category: Label = $Control/SidemenuBG/Sidemenu/VBoxContainer/Panel/HBoxContainer/label_category
+# @onready var actions_container: VBoxContainer = $Control/SidemenuBG/Sidemenu/VBoxContainer/ScrollContainer/ActionsList
+
+# NOTE(soi): we should use tabs but ahhh evil vibecode
+# ykw maybe i should hv it be tht even the context is in the thing
+# @onready var military_actions_container: VBoxContainer = $Control/TabContainer/Military/ScrollContainer/ActionsList
+# @onready var economy_actions_container: VBoxContainer = $Control/TabContainer/Economy/ScrollContainer/ActionsList
+# @onready var diplomacy_actions_container: VBoxContainer = $Control/TabContainer/Diplomacy/ScrollContainer/ActionsList
+
 @onready var troop_container: PanelContainer = $Control/TroopContainer
-@onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/Sidemenu/PanelContainer/VBoxContainer/RelationsHbox
+@onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox
+@onready var faction_prompt: PanelContainer = $CreateFaction
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @export var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 
-# ── Speed Controls ────────────────────────────────────
-@onready var plus: Button = $Control/Topbar/MarginContainer2/ColorRect/HBoxContainer/GameSpeedControl/Plus
-@onready var minus: Button = $Control/Topbar/MarginContainer2/ColorRect/HBoxContainer/GameSpeedControl/Minus
 @onready var radio_list: VBoxContainer = $Radios
 
 # ── State Variables ───────────────────────────────────
@@ -57,13 +65,15 @@ var current_category: Category = Category.GENERAL
 
 var menu_actions = {
 	# When clicking on player country
+	# NOTE(soi): why do we hv releasables here
 	Context.PLAYER_COUNTRY:
 	{
 		Category.GENERAL:
 		[
 			{"text": "Manage Country", "func": "open_manage_country"},
 			{"text": "Decisions", "func": "open_decisions_tree"},
-			{"text": "Releasables", "func": "_improve_relations"}
+			{"text": "Releasables", "func": "_improve_relations"},
+			{"text": "Create Faction", "func": "_open_faction"}
 		],
 		Category.ECONOMY:
 		[
@@ -96,6 +106,7 @@ var menu_actions = {
 			{"text": "Declare War", "cost": 50, "func": "_declare_war"},
 			{"text": "Request Access", "cost": 50, "func": "_request_access"},
 			{"text": "Improve Relations", "cost": 15, "func": "_improve_relations"},
+			{"text": "Force Puppet", "cost": 100, "func": "_force_puppet"},
 			{"text": "Form Alliance", "cost": 80, "func": "_form_alliance"},
 		],
 		Category.ECONOMY:
@@ -175,7 +186,7 @@ func _on_province_clicked(country_name: String) -> void:
 	selected_country = CountryManager.get_country(country_name)
 
 	sidemenu_flag.texture = TroopManager.get_flag(country_name)
-	label_country_sidemenu.text = country_name.capitalize().replace("_", " ")
+	sidemenu_country_label.text = country_name.capitalize().replace("_", " ")
 
 	if (
 		!GameState.choosing_deploy_city
@@ -195,15 +206,17 @@ func _on_province_clicked(country_name: String) -> void:
 			"Military Access: " + String("Yes" if has_military_access else "No")
 		)
 
+		sidemenu_context.current_tab = new_context
 		open_menu(new_context, Category.GENERAL)
 
 
 func toggle_menu(context := Context.PLAYER_COUNTRY) -> void:
+	print(context)
 	if is_open:
 		close_menu()
 	else:
 		selected_country = CountryManager.player_country
-		label_country_sidemenu.text = CountryManager.player_country.country_name
+		sidemenu_country_label.text = CountryManager.player_country.country_name
 		sidemenu_flag.texture = nation_flag.texture
 		open_menu(context, Category.GENERAL)
 
@@ -260,7 +273,7 @@ func open_menu(context: Context, category: Category) -> void:
 				relations_hbox.add_child(_get_simple_flag(target.country_name))
 			else:
 				relations_hbox.visible = false
-	_build_action_list()
+	# _build_action_list()
 
 	if !is_open:
 		MusicManager.play_sfx(MusicManager.SFX.OPEN_MENU)
@@ -296,66 +309,51 @@ func _get_simple_flag(c_name: String) -> TextureRect:
 	return tr
 func _on_tab_changed(new_category_index: int) -> void:
 	current_category = new_category_index as Category
-	_build_action_list()
+	# _build_action_list()
 	MusicManager.play_sfx(MusicManager.SFX.HOVERED)
 
 
 func _on_menu_button_button_up(_menu_index: int) -> void:
 	current_category = _menu_index as Category
-	if _menu_index == Category.ECONOMY:
-		MapManager.show_industry_country(CountryManager.player_country.country_name)
-	else:
-		MapManager.set_country_color(CountryManager.player_country.country_name, Color.TRANSPARENT)
-		GameState.industry_building = GameState.IndustryType.DEFAULT
-		MapManager.show_countries_map()
+	if !CountryManager.player_country: return
+	print(current_context)
+	if current_context == Context.PLAYER_COUNTRY:
+		if _menu_index == Category.ECONOMY:
+			MapManager.show_industry_country(CountryManager.player_country.country_name)
+		else:
+			MapManager.set_country_color(CountryManager.player_country.country_name, Color.TRANSPARENT)
+			GameState.industry_building = GameState.IndustryType.DEFAULT
+			MapManager.show_countries_map()
 
-	if _menu_index == Category.MILITARY:
-		military_extra_panel.visible = true
-	else:
-		military_extra_panel.visible = false
-	_build_action_list()
+		if _menu_index == Category.MILITARY:
+			military_extra_panel.visible = true
+		else:
+			military_extra_panel.visible = false
+	# _build_action_list()
 
 
 # Note Z21 Some of the things here are outdated and not used and overall bad way to do things ngl
-func _build_action_list() -> void:
-	for child in actions_container.get_children():
+func _build_trooplist() -> void:
+	for child in sidemenu_trooplist.get_children():
 		child.queue_free()
 
-	label_category.text = Category.keys()[current_category].capitalize()
+	var player = CountryManager.player_country
 
-	for item in (menu_actions[current_context] as Dictionary[int, Array]).get(current_category, []):
-		
-		if item.func == "_request_access":
-			if CountryManager.player_country.allowedCountries.has(selected_country.country_name):
-				continue
-		
-		var new_btn = action_scene.instantiate()
-		var call_ref = Callable(self, item.func)
-		if item.func == "_conscript":
-			call_ref = call_ref.bind(item)
+	for troop in player.ongoing_training:
+		var btn = action_scene.instantiate()
+		sidemenu_trooplist.add_child(btn)
+		btn.setup_training(troop)
+		# We connect the signal emitted by ActionRow when days_left <= 0
+		if not btn.training_finished.is_connected(_build_trooplist):
+			btn.training_finished.connect(_build_trooplist)
 
-		new_btn.setup(item, call_ref)
-		actions_container.add_child(new_btn)
-
-	if current_context == Context.PLAYER_COUNTRY and current_category == Category.MILITARY:
-		var player = CountryManager.player_country
-
-		for troop in player.ongoing_training:
-			var btn = action_scene.instantiate()
-			actions_container.add_child(btn)
-			btn.setup_training(troop)
-			# We connect the signal emitted by ActionRow when days_left <= 0
-			if not btn.training_finished.is_connected(_build_action_list):
-				btn.training_finished.connect(_build_action_list)
-
-		# Ready to Deploy
-		for troop in player.ready_troops:
-			var btn = action_scene.instantiate()
-			actions_container.add_child(btn)
-			# Callable points to deploy_troop, passing the specific troop object
-			var deploy_call = Callable(self, "deploy_troop").bind(troop)
-			btn.setup_ready(troop, deploy_call)
-
+	# Ready to Deploy
+	for troop in player.ready_troops:
+		var btn = action_scene.instantiate()
+		sidemenu_trooplist.add_child(btn)
+		# Callable points to deploy_troop, passing the specific troop object
+		var deploy_call = Callable(self, "deploy_troop").bind(troop)
+		btn.setup_ready(troop, deploy_call)
 
 func update_topbar_stats() -> void:
 	if !CountryManager.player_country:
@@ -454,14 +452,14 @@ func _conscript(data: Dictionary):
 	var manpower = data.manpower / 10000
 	CountryManager.player_country.train_troops(1, "infantry")
 	update_topbar_stats()
-	_build_action_list()
+	# _build_action_list()
 
 
 func deploy_troop(troop):
 	CountryManager.player_country.deploy_ready_troop(
 		troop, CountryManager.player_country.deploy_pid
 	)
-	_build_action_list()
+	_build_trooplist()
 
 
 func improve_stability():
@@ -481,8 +479,12 @@ func _build_port():
 
 func _request_access():
 	CountryManager.player_country.allowedCountries.append(selected_country.country_name)
-	_build_action_list()
-	pass
+	# _build_action_list()
+
+func _force_puppet():
+	CountryManager.player_country.puppets.append(selected_country.country_name)
+	selected_country.is_puppet = true
+
 
 
 func _improve_relations():
@@ -516,6 +518,8 @@ func open_research_tree():
 func open_decisions_tree():
 	get_tree().root.find_child("DecisionTreeUI", true, false).open_menu()
 
+func _open_faction():
+	faction_prompt.visible = !faction_prompt.visible
 
 func open_manage_country():
 	get_tree().root.find_child("CountryManageUI", true, false).open_menu(
@@ -622,17 +626,17 @@ func close_troop_container() -> void:
 
 
 # --- References ---
-@onready var military_extra_panel: ColorRect = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel
-@onready
-var input_division: LineEdit = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division
-@onready var button_train: Button = $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/Button_Train
+@onready var military_extra_panel: ColorRect = $Control/MilitaryExtraPanel
+# @onready var input_division: SpinBox = $VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division
+@onready var input_division: SpinBox = military_extra_panel.get_node("VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division")
+@onready var button_train: Button = military_extra_panel.get_node("VBoxContainer/Button_Train")
 
 # Grouping UI labels makes them easier to manage
 @onready var ui_labels = {
-	"type": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type/type,
-	"div_stats": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats/amount,
-	"costs": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost/amount,
-	"manpower": $Control/SidemenuBG/Sidemenu/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower/amount
+	"type": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Type/type"),
+	"div_stats": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Stats/amount"),
+	"costs": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Cost/amount"),
+	"manpower": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Manpower/amount")
 }
 
 # --- State ---
@@ -641,14 +645,7 @@ var division_type_selected: String = "infantry"
 
 # --- Main Update Logic ---
 func update_division_menu():
-	# 1. Validate Input (Prevent crashes)
-	if not input_division.text.is_valid_int():
-		ui_labels.costs.text = "-"
-		ui_labels.manpower.text = "-"
-		button_train.disabled = true
-		return
-
-	var count = int(input_division.text)
+	var count = int(input_division.value)
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
 
 	if not stats:
@@ -695,14 +692,11 @@ func _update_train_button_visuals(is_affordable: bool) -> void:
 
 
 func _on_button_train_troops() -> void:
-	if not input_division.text.is_valid_int():
-		return
-
-	var divisions = int(input_division.text)
+	var divisions = int(input_division.value)
 	var success = CountryManager.player_country.train_troops(divisions, division_type_selected)
 
 	if success:
-		_build_action_list()
+		_build_trooplist()
 	update_division_menu()
 
 
@@ -710,16 +704,11 @@ func _on_division_type_button(type: String) -> void:
 	division_type_selected = type
 	update_division_menu()
 
-
-func _on_button_division_change(add: int) -> void:
-	var current = int(input_division.text) if input_division.text.is_valid_int() else 0
-	var new_val = clampi(current + add, 1, 999)  # Limit between 1 and 999
-	input_division.text = str(new_val)
-	update_division_menu()
-
-
-func _on_input_division_text_changed(new_text: String) -> void:
+func _on_input_division_text_changed(new_text: float) -> void:
 	update_division_menu()
 
 func _on_music_pressed():
 	radio_list.visible = !radio_list.visible
+
+func _on_create_faction_pressed() -> void:
+	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("HBoxContainer/TextEdit").text)
