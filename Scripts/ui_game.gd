@@ -30,15 +30,6 @@ enum Category { GENERAL, ECONOMY, MILITARY }
 @onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 
-# @onready var label_category: Label = $Control/SidemenuBG/Sidemenu/VBoxContainer/Panel/HBoxContainer/label_category
-# @onready var actions_container: VBoxContainer = $Control/SidemenuBG/Sidemenu/VBoxContainer/ScrollContainer/ActionsList
-
-# NOTE(soi): we should use tabs but ahhh evil vibecode
-# ykw maybe i should hv it be tht even the context is in the thing
-# @onready var military_actions_container: VBoxContainer = $Control/TabContainer/Military/ScrollContainer/ActionsList
-# @onready var economy_actions_container: VBoxContainer = $Control/TabContainer/Economy/ScrollContainer/ActionsList
-# @onready var diplomacy_actions_container: VBoxContainer = $Control/TabContainer/Diplomacy/ScrollContainer/ActionsList
-
 @onready var troop_container: PanelContainer = $Control/TroopContainer
 @onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox
 @onready var faction_prompt: PanelContainer = $CreateFaction
@@ -62,60 +53,6 @@ var current_context: Context = Context.PLAYER_COUNTRY
 var current_category: Category = Category.GENERAL
 
 @export var military_access_label: Label
-
-var menu_actions = {
-	# When clicking on player country
-	# NOTE(soi): why do we hv releasables here
-	Context.PLAYER_COUNTRY:
-	{
-		Category.GENERAL:
-		[
-			{"text": "Manage Country", "func": "open_manage_country"},
-			{"text": "Decisions", "func": "open_decisions_tree"},
-			{"text": "Releasables", "func": "_improve_relations"},
-			{"text": "Create Faction", "func": "_open_faction"}
-		],
-		Category.ECONOMY:
-		[
-			{"text": "Research", "cost": 0, "func": "open_research_tree"},
-			{"text": "Build Factory", "cost": 0, "func": "_build_factory"},
-			{"text": "Build Port", "cost": 0, "func": "_build_port"},
-		],
-		Category.MILITARY:
-		[
-			{"text": "Choose Deployment Province", "func": "_choose_deploy_city"},
-		]
-	},
-	# When clicking on a country the player is at war with
-	Context.ENEMY_COUNTRY:
-	{
-		Category.GENERAL:
-		[
-			{"text": "Propose Ceasefire", "cost": 50, "func": "_propose_peace"},
-		],
-		Category.MILITARY:
-		[
-			{"text": "Launch Nuke", "cost": 500, "func": "_launch_nuke"},
-		]
-	},
-	# When clicking on a country the player isn't at war with
-	Context.NEUTRAL_COUNTRY:
-	{
-		Category.GENERAL:
-		[
-			{"text": "Declare War", "cost": 50, "func": "_declare_war"},
-			{"text": "Request Access", "cost": 50, "func": "_request_access"},
-			{"text": "Improve Relations", "cost": 15, "func": "_improve_relations"},
-			{"text": "Force Puppet", "cost": 100, "func": "_force_puppet"},
-			{"text": "Form Alliance", "cost": 80, "func": "_form_alliance"},
-		],
-		Category.ECONOMY:
-		[
-			{"text": "Trade Deal", "cost": 10, "func": "_trade_deal"},
-		],
-	}
-}
-
 
 func _enter_tree() -> void:
 	GameState.game_ui = self
@@ -211,7 +148,6 @@ func _on_province_clicked(country_name: String) -> void:
 
 
 func toggle_menu(context := Context.PLAYER_COUNTRY) -> void:
-	print(context)
 	if is_open:
 		close_menu()
 	else:
@@ -316,7 +252,6 @@ func _on_tab_changed(new_category_index: int) -> void:
 func _on_menu_button_button_up(_menu_index: int) -> void:
 	current_category = _menu_index as Category
 	if !CountryManager.player_country: return
-	print(current_context)
 	if current_context == Context.PLAYER_COUNTRY:
 		if _menu_index == Category.ECONOMY:
 			MapManager.show_industry_country(CountryManager.player_country.country_name)
@@ -484,6 +419,8 @@ func _request_access():
 func _force_puppet():
 	CountryManager.player_country.puppets.append(selected_country.country_name)
 	selected_country.is_puppet = true
+	selected_country.owner = CountryManager.player_country.country_name
+	MapManager.show_countries_map()
 
 
 
@@ -626,7 +563,7 @@ func close_troop_container() -> void:
 
 
 # --- References ---
-@onready var military_extra_panel: ColorRect = $Control/MilitaryExtraPanel
+@onready var military_extra_panel: PanelContainer = $Control/MilitaryExtraPanel
 # @onready var input_division: SpinBox = $VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division
 @onready var input_division: SpinBox = military_extra_panel.get_node("VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division")
 @onready var button_train: Button = military_extra_panel.get_node("VBoxContainer/Button_Train")
@@ -712,3 +649,6 @@ func _on_music_pressed():
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("HBoxContainer/TextEdit").text)
+
+func _on_invite_faction_pressed() -> void:
+	FactionManager.invite_faction(CountryManager.player_country, selected_country)

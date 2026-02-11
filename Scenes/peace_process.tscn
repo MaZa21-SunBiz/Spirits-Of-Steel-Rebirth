@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://4g3o4rng4gk1"]
+
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_41grw"]
+[ext_resource type="Script" uid="uid://be08gs0etrp6i" path="res://Scripts/peace_process.gd" id="1_52vyn"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_o4gkq"]
+
+[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297]
+script = ExtResource("1_52vyn")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
+material = ExtResource("1_o4gkq")
+offset_right = 398.0
+offset_bottom = 648.0
+theme = ExtResource("1_41grw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=233954815]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=611784857]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Peace Treaty"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=587709827]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1831209202]
+layout_mode = 2
+text = "Negotiations:"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=1329378844]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer" unique_id=181135906]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1929314597]
+layout_mode = 2
+text = "Province Selected:
+Total Country Loss:"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1916313741]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0
+0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=90273759]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Annex" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1726934931]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+text = "Annex All"
+
+[node name="Puppet" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=38295834]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+text = "Puppet Country"
+
+[node name="Reset" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=557110290]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+text = "Reset Selection"
+
+[node name="Sign" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=2087430811]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+text = "Sign Treaty"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Annex" to="." method="_on_annex_all_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Puppet" to="." method="_on_puppet_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_clear_selection_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Sign" to="." method="_on_confirm_pressed"]

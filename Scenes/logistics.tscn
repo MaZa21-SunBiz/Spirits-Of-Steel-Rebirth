@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://blcn3ntbcrb0o"]
+[gd_scene format=3 uid="uid://ct6nbkh50os7e"]
 
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_sj0rh"]
+[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="1_xesbs"]
 [ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia_flag.png" id="2_xesbs"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_vvlv7"]
 
@@ -11,88 +12,69 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1989091712]
+[node name="CountryManageUI" type="CanvasLayer" unique_id=570987311]
+script = ExtResource("1_xesbs")
 
-[node name="Logistics" type="Control" parent="." unique_id=2010702332]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 352.0
-offset_top = 136.0
-offset_right = 352.0
-offset_bottom = 136.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Logistics" unique_id=542448780]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=542448780]
 material = ExtResource("1_sj0rh")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 45.0
-offset_top = -24.0
-offset_right = 575.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 340.0
+offset_top = 108.0
+offset_right = 908.0
+offset_bottom = 532.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7hts")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Logistics/PanelContainer" unique_id=915670831]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=915670831]
 layout_mode = 2
 theme_override_constants/separation = 17
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Logistics/PanelContainer/VBoxContainer" unique_id=36553791]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=36553791]
 layout_mode = 2
 
-[node name="nation_flag" type="TextureRect" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer" unique_id=341438356]
+[node name="nation_flag" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=341438356]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 texture = ExtResource("2_xesbs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1117245167]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1117245167]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "country1"
 
-[node name="Button" type="Button" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer" unique_id=893706572]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=893706572]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("3_vvlv7")
 text = "Dismiss"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Logistics/PanelContainer/VBoxContainer" unique_id=1281740733]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1281740733]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=318015081]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=318015081]
 layout_mode = 2
 theme_override_constants/separation = 35
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=810723979]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=810723979]
 layout_mode = 2
 
-[node name="EconomicStatus" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=937801178]
+[node name="EconomicStatus" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=937801178]
 layout_mode = 2
 text = "Economic Status"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=249090007]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=249090007]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=225936235]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=225936235]
 layout_mode = 2
 text = "Treasury:
 Base Income:
 Factories:
 Army Upkeep:"
 
-[node name="Values" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1707953451]
+[node name="Values" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1707953451]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0
@@ -101,24 +83,24 @@ text = "0
 0"
 horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1218174066]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1218174066]
 layout_mode = 2
 
-[node name="ArmyLogistics" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=996787207]
+[node name="ArmyLogistics" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=996787207]
 layout_mode = 2
 text = "Army Logistics"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=1862816020]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=1862816020]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=545560069]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=545560069]
 layout_mode = 2
-text = "Treasury:
-Base Income:
-Factories:
-Army Upkeep:"
+text = "Active Personnel:
+Active Infantry:
+Active Armor:
+Active Artillery:"
 
-[node name="Value" type="Label" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=119911072]
+[node name="Value" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=119911072]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0
@@ -127,45 +109,45 @@ text = "0
 0"
 horizontal_alignment = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2087893247]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2087893247]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=873224743]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=873224743]
 layout_mode = 2
 
-[node name="MilitaryTab" type="Button" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1041728115]
+[node name="MilitaryTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1041728115]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vvlv7")
 text = "MILITARY"
 
-[node name="EconomicTab" type="Button" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=593127409]
+[node name="EconomicTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=593127409]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vvlv7")
 text = "ECONOMY"
 
-[node name="CountryTab" type="Button" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1115534465]
+[node name="CountryTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1115534465]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vvlv7")
-text = "COUNTY"
+text = "COUNTRY"
 
-[node name="ReleasableTab" type="Button" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1004354260]
+[node name="ReleasableTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1004354260]
 material = ExtResource("1_sj0rh")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vvlv7")
-text = "RELEASABE"
+text = "RELEASABLE"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=563426380]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=563426380]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Logistics/PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ScrollContainer" unique_id=1103937466]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ScrollContainer" unique_id=1103937466]
 layout_mode = 2
 size_flags_vertical = 3

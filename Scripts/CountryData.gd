@@ -44,7 +44,8 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
-var puppets: Array[String] = []
+var puppets: Array[String] = [] 
+var owner: String
 var factions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []

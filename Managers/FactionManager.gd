@@ -8,6 +8,7 @@ func create_faction(leader: String, name: String):
 	print(factions)
 
 func invite_faction(inviter: CountryData, invitee: CountryData):
-	factions[inviter.faction_name].append(invitee.country_name)
-	invitee.faction_name = inviter.faction_name
+	for faction in inviter.factions:
+		factions[faction].append(invitee.country_name)
+		invitee.factions = inviter.factions
 	print(factions)

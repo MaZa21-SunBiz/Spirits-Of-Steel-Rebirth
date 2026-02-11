@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://cned8wsfobjji" path="res://shaders/OmniScale.gdshader" id="6_7yui6"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/decision_tree_ui.gd" id="9_5v1tr"]
-[ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scenes/peace_process_ui.gd" id="10_0fj1v"]
-[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="11_ikia7"]
+[ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ikia7"]
 shader = ExtResource("6_7yui6")
@@ -72,8 +72,8 @@ script = ExtResource("6_5ukr8")
 [node name="DecisionTreeUI" type="CanvasLayer" parent="." unique_id=639051544]
 script = ExtResource("9_5v1tr")
 
-[node name="PeaceProcessUI" type="CanvasLayer" parent="." unique_id=917506257]
-script = ExtResource("10_0fj1v")
+[node name="CountryManageUI" parent="." unique_id=570987311 instance=ExtResource("11_7yui6")]
+visible = false
 
-[node name="CountryManageUI" type="CanvasLayer" parent="." unique_id=50435436]
-script = ExtResource("11_ikia7")
+[node name="PeaceProcessUI" parent="." unique_id=1219073297 instance=ExtResource("10_0fj1v")]
+visible = false

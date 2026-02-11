@@ -38,17 +38,6 @@ corner_radius_bottom_left = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qum3k"]
 bg_color = Color(0.22352941, 0.30980393, 0.22352941, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85er5"]
-bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilaaa"]
-content_margin_left = 12.0
-content_margin_top = 12.0
-content_margin_right = 12.0
-content_margin_bottom = 24.0
-bg_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdmnd"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
@@ -116,12 +105,14 @@ theme_override_styles/panel = ExtResource("5_5phox")
 layout_mode = 2
 
 [node name="icon_politicalpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=886319999]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 expand_mode = 3
 
 [node name="label_politicalpower" type="Label" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=2078116230]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
@@ -136,12 +127,14 @@ theme_override_styles/panel = ExtResource("5_5phox")
 layout_mode = 2
 
 [node name="icon_money" type="TextureRect" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=1594976084]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 expand_mode = 3
 
 [node name="label_money" type="Label" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=309530038]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
@@ -156,12 +149,14 @@ theme_override_styles/panel = ExtResource("5_5phox")
 layout_mode = 2
 
 [node name="icon_manpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=1872756692]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 expand_mode = 3
 
 [node name="label_manpower" type="Label" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=964147615]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
@@ -176,12 +171,14 @@ theme_override_styles/panel = ExtResource("5_5phox")
 layout_mode = 2
 
 [node name="icon_industry" type="TextureRect" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=408342431]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("9_5hlpc")
 expand_mode = 3
 
 [node name="label_industry" type="Label" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=1336028149]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
@@ -196,18 +193,21 @@ theme_override_styles/panel = ExtResource("5_5phox")
 layout_mode = 2
 
 [node name="icon_stability" type="TextureRect" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=1546646896]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("10_aipye")
 expand_mode = 3
 
 [node name="label_stability" type="Label" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=788481322]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
+material = ExtResource("16_lpwmk")
 custom_minimum_size = Vector2(272, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -226,6 +226,7 @@ show_percentage = false
 
 [node name="label_date" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar" unique_id=520160489]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 clip_contents = true
 layout_mode = 0
 offset_right = 130.0
@@ -247,6 +248,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
 [node name="Plus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1044589756]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Increase game speed"
@@ -256,6 +258,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Minus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1047883681]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Decrease game speed"
@@ -265,6 +268,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Music" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=283872825]
+material = ExtResource("16_lpwmk")
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -276,6 +280,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("12_2a76p")
@@ -284,27 +289,24 @@ stretch_mode = 5
 
 [node name="label_tension" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1256875266]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "20%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MilitaryExtraPanel" type="ColorRect" parent="Control" unique_id=840929467]
+[node name="MilitaryExtraPanel" type="PanelContainer" parent="Control" unique_id=1873248397]
 material = ExtResource("16_lpwmk")
 layout_mode = 0
 offset_left = 310.0
 offset_top = 401.0
-offset_right = 579.0
-offset_bottom = 648.0
-color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+offset_right = 589.0
+offset_bottom = 647.0
+theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtraPanel" unique_id=1745200345]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 259.0
-offset_bottom = 237.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer" unique_id=1330084502]
 layout_mode = 2
@@ -428,7 +430,7 @@ anchor_bottom = 1.0
 offset_top = 35.0
 offset_right = 310.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_85er5")
+theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/SidemenuBG" unique_id=1423441942]
 layout_mode = 2
@@ -438,7 +440,7 @@ material = ExtResource("16_lpwmk")
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ilaaa")
+theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=2118811652]
 layout_mode = 2
@@ -459,6 +461,7 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1954831864]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_yp111")
 theme_override_font_sizes/font_size = 24
@@ -470,6 +473,7 @@ layout_mode = 2
 
 [node name="MilitaryAccess" type="Label" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=829443985]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_override_fonts/font = ExtResource("4_uqxsi")
@@ -482,15 +486,16 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+visible = false
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -500,7 +505,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
@@ -516,6 +520,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1595718017]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -525,6 +530,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1517342316]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
@@ -579,6 +585,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=1911035227]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -588,8 +595,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=2084192849]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("5_0e43j")
+texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=1353097113]
@@ -619,6 +627,7 @@ theme = ExtResource("13_sdmnd")
 text = "Build Port"
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
@@ -633,6 +642,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=2064020114]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -642,8 +652,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=925378781]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("5_0e43j")
+texture = ExtResource("8_qum3k")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=608373696]
@@ -671,7 +682,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -681,7 +692,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 1
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy" unique_id=1083850577]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
@@ -697,6 +707,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=829313179]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -706,6 +717,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=665498883]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
@@ -741,6 +753,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1833015955]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -750,8 +763,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1355151102]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("5_0e43j")
+texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=566937834]
@@ -763,6 +777,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy" unique_id=713610224]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
@@ -807,12 +822,11 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
-visible = false
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -822,7 +836,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 2
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=481997949]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
@@ -878,6 +891,12 @@ layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Improve Relations"
 
+[node name="Button5" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=286592296]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+text = "Invite To Facttion"
+
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=1421175975]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
@@ -900,6 +919,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=303614205]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -909,8 +929,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=265570064]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("5_0e43j")
+texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Economy" unique_id=754704684]
@@ -928,6 +949,7 @@ theme = ExtResource("13_sdmnd")
 text = "Trade Deal"
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=173220231]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
@@ -942,6 +964,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=724673175]
 texture_filter = 2
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -951,8 +974,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=1393378957]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("5_0e43j")
+texture = ExtResource("8_qum3k")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military" unique_id=386300872]
@@ -1160,6 +1184,7 @@ text = "Create Faction"
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_declare_war"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button2" to="." method="_request_access"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
 [connection signal="button_up" from="ColorRect/Button" to="ColorRect" method="_on_button_button_up"]
 [connection signal="button_up" from="ColorRect/Button2" to="ColorRect" method="_on_button_2_button_up"]

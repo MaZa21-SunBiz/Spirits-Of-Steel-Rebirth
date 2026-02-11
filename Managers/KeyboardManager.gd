@@ -1,7 +1,7 @@
 extends Node
 
 # Use the same names as your MapManager functions for clarity
-enum MapView { COUNTRIES, POPULATION, GDP, ETHNICITY }
+enum MapView { COUNTRIES, POPULATION, GDP, ETHNICITY, FACTION }
 var current_view = MapView.COUNTRIES
 
 var settings = null
@@ -65,6 +65,12 @@ func _cycle_map_mode() -> void:
 			print("Map Mode: Ethnicity")
 
 		MapView.ETHNICITY:
+			current_view = MapView.FACTION
+			MapManager.show_faction_map()
+			print("Map Mode: Factions")
+
+		MapView.FACTION:
 			current_view = MapView.COUNTRIES
 			MapManager.show_countries_map()
 			print("Map Mode: Countries")
+

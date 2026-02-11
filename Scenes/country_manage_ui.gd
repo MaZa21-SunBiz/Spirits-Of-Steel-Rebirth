@@ -11,7 +11,7 @@ var header_label: Label
 var flag_rect: TextureRect
 
 # Data
-enum Category { MILITARY, ECONOMY, COUNTRY, RELEASABLES }
+enum Category {MILITARY, ECONOMY, COUNTRY, RELEASABLES}
 var current_category: Category = Category.MILITARY
 var current_country: CountryData
 var _update_timer: float = 0.0
@@ -46,13 +46,8 @@ func _process(delta: float) -> void:
 #region --- UI Construction ---
 
 func _build_ui() -> void:
-	# Instantiate our new visual scene
-	var logistics_instance = LOGISTICS_SCENE.instantiate()
-	add_child(logistics_instance)
-	
-	# Reference shorthand
-	var container = logistics_instance.get_node("Logistics")
-	var main_vbox = container.get_node("PanelContainer/VBoxContainer")
+	# Reference shorthand - main_vbox is relative to 'self' (the CanvasLayer)
+	var main_vbox = get_node("PanelContainer/VBoxContainer")
 	
 	# Mapping Node References
 	flag_rect = main_vbox.get_node("HBoxContainer/nation_flag")
@@ -65,32 +60,25 @@ func _build_ui() -> void:
 	var army_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2")
 	army_logistics_val = army_hbox.get_node("Value")
 	
-	# Overwrite static labels for both sections
-	var eco_static_lbl = eco_hbox.get_node("Label")
-	eco_static_lbl.text = "Treasury:\nPolitical Power:\nBase Income:\nFactories:\nArmy Upkeep:"
-	
-	var army_static_lbl = army_hbox.get_node("Label")
-	army_static_lbl.text = "Active Personnel:\nInfantry:\nArmor:\nArtillery:"
-	
 	# Dismiss Button
 	var dismiss_btn = main_vbox.get_node("HBoxContainer/Button")
 	dismiss_btn.pressed.connect(close_menu)
 	
 	# Category Tabs
-	var category_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
+	var tabs_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
 	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/ScrollContainer/VBoxContainer")
 	
 	# Connect existing category buttons in the scene
-	var btn_mil = category_hbox.get_node("MilitaryTab")
+	var btn_mil = tabs_hbox.get_node("MilitaryTab")
 	btn_mil.pressed.connect(_switch_category.bind(Category.MILITARY))
 	
-	var btn_eco = category_hbox.get_node("EconomicTab")
+	var btn_eco = tabs_hbox.get_node("EconomicTab")
 	btn_eco.pressed.connect(_switch_category.bind(Category.ECONOMY))
 	
-	var btn_cnt = category_hbox.get_node("CountryTab")
+	var btn_cnt = tabs_hbox.get_node("CountryTab")
 	btn_cnt.pressed.connect(_switch_category.bind(Category.COUNTRY))
 	
-	var btn_rel = category_hbox.get_node("ReleasableTab")
+	var btn_rel = tabs_hbox.get_node("ReleasableTab")
 	btn_rel.pressed.connect(_switch_category.bind(Category.RELEASABLES))
 
 #endregion
@@ -110,8 +98,8 @@ func _switch_category(cat: Category) -> void:
 	# Populate based on selection
 	match current_category:
 		Category.MILITARY: _populate_military()
-		Category.ECONOMY:  _populate_economy()
-		Category.COUNTRY:  _populate_country()
+		Category.ECONOMY: _populate_economy()
+		Category.COUNTRY: _populate_country()
 		Category.RELEASABLES: _populate_releasables(current_country.country_name)
 	
 	_update_law_buttons_visuals()
@@ -211,7 +199,7 @@ func _update_law_buttons_visuals() -> void:
 			var cost = btn.get_meta("cost")
 			var is_active = is_equal_approx(current_country.military_size_ratio, law_ratio)
 
-			var hbox = btn.get_child(0).get_child(0)  # Panel -> MarginContainer -> HBox
+			var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
 
 			var _title_lbl = hbox.get_node("Title")
 			var status_lbl = hbox.get_node("Status")
@@ -222,7 +210,7 @@ func _update_law_buttons_visuals() -> void:
 
 			# NOTE(soi): dear god fix this
 			if is_active:
-				style.bg_color = Color(0.2, 0.4, 0.2, 0.9)  # Dark Green
+				style.bg_color = Color(0.2, 0.4, 0.2, 0.9) # Dark Green
 				style.border_color = Color(0.4, 0.8, 0.4) # COLOR_POSITIVE
 				status_lbl.text = " ACTIVE"
 				status_lbl.add_theme_color_override("font_color", Color(0.4, 0.8, 0.4))
@@ -454,7 +442,7 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 
 		# 1. Is this already active?
 		if is_equal_approx(current_country.military_size_ratio, ratio):
-			return  # Do nothing
+			return # Do nothing
 
 		# 2. Can we afford it?
 		if current_country.political_power >= cost:
@@ -463,7 +451,7 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 			current_country.military_size_ratio = ratio
 			current_country.economy_law_penalty = penalty
 
-			current_country.update_manpower_pool()  # Recalc based on new ratio
+			current_country.update_manpower_pool() # Recalc based on new ratio
 
 			# Refresh UI
 			_update_law_buttons_visuals()

@@ -301,11 +301,11 @@ func update_province_color(pid: int, country_name: String) -> void:
 		return
 
 	var new_color = country_colors.get(country_name, Color.GRAY)
-	_update_lookup(pid, new_color)
+	update_lookup(pid, new_color)
 
 	if pid == last_hovered_pid:
 		original_hover_color = new_color
-		_update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
+		update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
 
 
 func set_country_color(country_name: String, custom_color: Color = Color.TRANSPARENT) -> void:
@@ -320,11 +320,11 @@ func set_country_color(country_name: String, custom_color: Color = Color.TRANSPA
 		return
 
 	for pid in provinces:
-		_update_lookup(pid, new_color)
+		update_lookup(pid, new_color)
 
 		if pid == last_hovered_pid:
 			original_hover_color = new_color
-			_update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
+			update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
 
 
 func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
@@ -378,7 +378,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 		if pid > 1 and highlight_color != Color.TRANSPARENT:
 			original_hover_color = state_color_image.get_pixel(pid, 0)
-			_update_lookup(pid, highlight_color)
+			update_lookup(pid, highlight_color)
 
 			last_hovered_pid = pid
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -390,7 +390,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 func _reset_last_hover() -> void:
 	if last_hovered_pid > 1:
-		_update_lookup(last_hovered_pid, original_hover_color)
+		update_lookup(last_hovered_pid, original_hover_color)
 	last_hovered_pid = -1
 
 
@@ -512,7 +512,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 func _cleanup_interaction_state() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	if last_hovered_pid > 1:
-		_update_lookup(last_hovered_pid, original_hover_color)
+		update_lookup(last_hovered_pid, original_hover_color)
 		last_hovered_pid = -1
 
 
@@ -538,7 +538,7 @@ func get_province_with_radius(center: Vector2, map_sprite: Sprite2D, radius: int
 	return -1
 
 
-func _update_lookup(pid: int, color: Color) -> void:
+func update_lookup(pid: int, color: Color) -> void:
 	state_color_image.set_pixel(pid, 0, color)
 	state_color_texture.update(state_color_image)
 
@@ -880,6 +880,36 @@ func _get_heatmap_color(pop: int, max_pop: float) -> Color:
 
 	return col
 
+# soilad aneurysm time
+func show_faction_map() -> void:
+	var faction_color = Color.GRAY
+	if province_objects.is_empty():
+		return
+
+	var current_max_gdp: float = 1.0
+	for province in province_objects.values():
+		if province.gdp > current_max_gdp:
+			current_max_gdp = float(province.gdp)
+
+	for pid in province_objects.keys():
+		var province = province_objects[pid]
+
+		if pid <= 1:
+			continue
+
+		var total: int = 0
+		for faction in FactionManager.factions:
+			if province.country in FactionManager.factions[faction]:
+				total+=1
+				var faction_leader = FactionManager.factions[faction][0]
+				faction_color = country_colors.get(faction_leader, Color.GRAY)
+			else:
+				faction_color = Color.GRAY
+			state_color_image.set_pixel(pid, 0, faction_color/total)
+
+	state_color_texture.update(state_color_image)
+	KeyboardManager.current_view = KeyboardManager.MapView.FACTION
+	print("MapManager: Faction View Updated")
 
 func show_population_map() -> void:
 	if province_objects.is_empty():
@@ -978,6 +1008,12 @@ func show_countries_map() -> void:
 		var province = province_objects[pid]
 		var country_name = province.country
 		var country_color = country_colors.get(country_name, Color.GRAY)
+		var owner: String
+		if CountryManager.countries.has(country_name):
+			owner = CountryManager.countries[country_name].owner
+		if owner:
+			country_color = (country_color+3*country_colors.get(owner, Color.GRAY))/4
+
 		state_color_image.set_pixel(pid, 0, country_color)
 
 	state_color_texture.update(state_color_image)
@@ -1045,7 +1081,7 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	province_to_country[pid] = new_owner_name
 
 	var new_color = country_colors.get(new_owner_name, Color.GRAY)
-	_update_lookup(pid, new_color)
+	update_lookup(pid, new_color)
 
 
 func _load_country_colors() -> void:

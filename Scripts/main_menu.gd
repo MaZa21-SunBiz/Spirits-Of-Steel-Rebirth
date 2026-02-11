@@ -18,7 +18,7 @@ func _on_start() -> void:
 		get_tree().change_scene_to_packed(preload("res://Scenes/world.tscn"))
 
 func _on_settings_pressed() -> void:
-	$"/root/MainMenu/Settings".visible = true
+	$"/root/MainMenu/Settings".visible = !$"/root/MainMenu/Settings".visible
 
 func _on_exit_settings_pressed() -> void:
 	$"/root/MainMenu/Settings".visible = false
