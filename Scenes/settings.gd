@@ -73,3 +73,12 @@ func _on_save_game_pressed():
 	GameState.current_world.save_game(file_name)
 	_refresh_saves()
 	# _switch_section(Section.SAVE) # Refresh list
+
+func _on_scanlines_changed(value: float) -> void:
+	GameState.current_world.map_sprite.material.set_shader_parameter("scanlines", value)
+	
+func _on_vignette_upper_changed(value: float) -> void:
+	GameState.current_world.map_sprite.material.set_shader_parameter("upper", value)
+
+func _on_vignette_lower_changed(value: float) -> void:
+	GameState.current_world.map_sprite.material.set_shader_parameter("lower", value)

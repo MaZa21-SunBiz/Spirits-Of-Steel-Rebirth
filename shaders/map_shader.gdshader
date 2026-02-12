@@ -2,9 +2,12 @@ shader_type canvas_item;
 
 const float max_dist = 5.0;
 const float increment = 6.28/8.0;
-const float ratio = 9.0/16.0;
 const vec3 sea = vec3(126, 142, 158)/255.0;
 const vec3 sea_border = vec3(105, 118, 132)/255.0;
+
+const float ratio = 625.0/1275.0;
+const float dist = 0.5/625.0;
+
 
 // --- INPUTS ---
 uniform sampler2D region_id_map : filter_nearest;
@@ -16,6 +19,11 @@ uniform sampler2D ocean_noise : filter_nearest, repeat_enable;
 // ORIGINAL TEXTURE (To show the grid)
 uniform sampler2D original_texture : filter_linear_mipmap;
 uniform vec2 tex_size;
+uniform float lower = 0.5;
+uniform float upper = 1.8;
+uniform float scanlines = 0.05;
+
+
 
 // --- COLORS ---
 // Shallow/deep don't exist just named that way
@@ -136,8 +144,7 @@ void fragment() {
     }
 	
 	// 4. its soilading time
-	float vignette = (SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
-	float lower = 0.8;
+	float vignette = 4.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
 	//for (float dist=0.0; dist <= max_dist; dist++) {
 		//for (float angle = 0.0; angle<6.28; angle+=increment) {
 			//vec4 color1 = texture(TEXTURE, UV + dist/600.0*vec2(ratio*cos(angle), sin(angle)));
@@ -150,6 +157,26 @@ void fragment() {
 			//}
 		//}
 	//}
-	COLOR.rgb += (sin(800.0*SCREEN_UV.y+16.0*TIME))/50.0;
-	COLOR.rgb *= 16.0*vignette+lower*(1.0-vignette);
+	
+	//NOTE(soi): this works better but bcuz of smthng not getting updated the range for this is wacc so clamping it causes puppets to go black
+	//vec2 topvec = vec2(0.0, 1.0);
+	//vec2 leftvec = vec2(ratio, 0.0);
+	//vec4 left = texture(TEXTURE, UV-dist*leftvec);
+	//vec4 right = texture(TEXTURE, UV+dist*leftvec);
+	//vec4 top = texture(TEXTURE, UV-dist*topvec);
+	//vec4 bottom = texture(TEXTURE, UV+dist*topvec);
+	//vec4 clamped = ((top+left+bottom+right)
+				   ////+(top2+left2+bottom2+right2)
+				   //)/(4.0);
+	//clamped /= COLOR;
+	//clamped.a = 1.0;
+	////COLOR.rgb = vec3(clamped.g);
+//
+	//if (clamped.g <= 0.7) {
+		////COLOR.rgb = (COLOR.rgb + vec3(0.0))/2.0;
+		//COLOR.rgb = vec3(0.0);
+	//}
+
+	COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
+	COLOR.rgb *= (1.0+upper)*(vignette)+lower*(1.0-vignette);
 }

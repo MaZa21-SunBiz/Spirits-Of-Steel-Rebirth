@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 const float a = 36.0;
 const float ratio = 625.0/1275.0;
-const float c = 0.5/625.0;
+const float c = 2.0/625.0;
 
 
 void fragment() {

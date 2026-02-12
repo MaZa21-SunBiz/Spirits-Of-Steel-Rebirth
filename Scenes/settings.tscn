@@ -40,7 +40,7 @@ offset_right = 722.0
 offset_bottom = 446.0
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="Settings/TabContainer" unique_id=1381486399]
@@ -78,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Audio" type="PanelContainer" parent="Settings/TabContainer" unique_id=750041884]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -122,17 +123,67 @@ theme = ExtResource("2_lhmql")
 text = "exit
 "
 
-[node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=569515996]
+[node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=659766638]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Graphics" unique_id=1767833482]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Graphics/HBoxContainer" unique_id=363933149]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer" unique_id=1719360911]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Scan Lines"
+
+[node name="Label2" type="Label" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer" unique_id=163635902]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Vignette Lower"
+
+[node name="Label3" type="Label" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer" unique_id=232210971]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Vignette Upper"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/TabContainer/Graphics/HBoxContainer" unique_id=181683716]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="HSlider2" type="HSlider" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2" unique_id=719313660]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2" unique_id=2004516307]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="HSlider3" type="HSlider" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2" unique_id=915995424]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Exit" type="Button" parent="Settings/TabContainer/Graphics/HBoxContainer" unique_id=1103568460]
 visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_j2dne")
-metadata/_tab_index = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Graphics" unique_id=734654457]
-layout_mode = 2
+theme = ExtResource("2_lhmql")
+text = "exit
+"
 
 [connection signal="pressed" from="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer/SaveGame" to="Settings" method="_on_save_game_pressed"]
 [connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_sfx_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_music_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_scanlines_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_vignette_lower_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider3" to="Settings" method="_on_vignette_upper_changed"]

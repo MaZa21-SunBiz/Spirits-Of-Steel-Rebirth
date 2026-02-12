@@ -32,6 +32,7 @@ var political_power: float = 5000.0
 var daily_pp_gain: float = 0.04
 var stability: float = 0.5
 var war_support: float = 0.5
+var ideology: Array = [randi_range(-100, 100), randi_range(-100, 100)]
 
 # Population & Manpower
 var total_population: int = 0

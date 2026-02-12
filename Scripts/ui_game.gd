@@ -2,8 +2,8 @@ extends CanvasLayer
 class_name GameUI
 
 # ── Enums ─────────────────────────────────────────────
-enum Context { PLAYER_COUNTRY, ENEMY_COUNTRY, NEUTRAL_COUNTRY }
-enum Category { GENERAL, ECONOMY, MILITARY }
+enum Context {PLAYER, ENEMY, NEUTRAL, PUPPET, ALLY}
+enum Category {GENERAL, ECONOMY, MILITARY}
 
 # ── Top Bar Nodes ─────────────────────────────────────
 @onready var topbar: HBoxContainer = $Control/Topbar/HBoxContainer
@@ -25,7 +25,8 @@ enum Category { GENERAL, ECONOMY, MILITARY }
 
 # ── Side Menu Nodes ───────────────────────────────────
 @onready var sidemenu: Control = $Control/SidemenuBG
-@onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/TextureRect")
+@onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/Flag")
+@onready var sidemenu_pointer: Sprite2D = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/compass/pointer")
 @onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Label")
 @onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
@@ -49,10 +50,30 @@ var pos_open := Vector2.ZERO
 var pos_closed := Vector2.ZERO
 
 # Navigation State
-var current_context: Context = Context.PLAYER_COUNTRY
+var current_context: Context = Context.PLAYER
 var current_category: Category = Category.GENERAL
 
 @export var military_access_label: Label
+
+# ── Constants ──────────────────────────────────────────
+const ACTION_COSTS := {
+	"_declare_war": 100,
+	"_request_access": 25,
+	"_force_puppet": 150,
+	"improve_stability": 50,
+	"_improve_relations": 50,
+	"_propose_peace": 0, # Should be free or handled by peace process
+	"_launch_nuke": 250,
+	"_form_alliance": 100,
+	"_demand_tribute": 75,
+	"_trade_deal": 25,
+	"open_research_tree": 0,
+	"open_decisions_tree": 0,
+	"_open_faction": 0,
+	"open_manage_country": 0,
+	"_build_factory": 0, # Uses money/time
+	"_build_port": 0 # Uses money/time
+}
 
 func _enter_tree() -> void:
 	GameState.game_ui = self
@@ -89,7 +110,7 @@ func _ready() -> void:
 		entry.expand_icon = true
 		entry.set_meta("radio_name", radio)
 		entry.pressed.connect(
-		func(): 
+		func():
 			if radio in MusicManager.radios:
 				MusicManager.radios.erase(radio)
 			else:
@@ -113,7 +134,6 @@ func _update_radio_visuals() -> void:
 			child.modulate = Color(0.5, 0.5, 0.5)
 
 
-
 func _on_player_change() -> void:
 	_update_flag()
 	update_topbar_stats()
@@ -129,12 +149,16 @@ func _on_province_clicked(country_name: String) -> void:
 		!GameState.choosing_deploy_city
 		|| GameState.industry_building == GameState.IndustryType.DEFAULT
 	):
-		var new_context = Context.NEUTRAL_COUNTRY
+		var new_context = Context.NEUTRAL
 
 		if country_name == CountryManager.player_country.country_name:
-			new_context = Context.PLAYER_COUNTRY
+			new_context = Context.PLAYER
 		elif WarManager.is_at_war(CountryManager.player_country, selected_country):
-			new_context = Context.ENEMY_COUNTRY
+			new_context = Context.ENEMY
+		elif selected_country.country_name in CountryManager.player_country.puppets:
+			new_context = Context.PUPPET
+		# elif selected_country.country_name in CountryManager.player_country.puppets:
+		# 	new_context = Context.PUPPET
 
 		var has_military_access := (
 			selected_country.country_name in CountryManager.player_country.allowedCountries
@@ -145,9 +169,10 @@ func _on_province_clicked(country_name: String) -> void:
 
 		sidemenu_context.current_tab = new_context
 		open_menu(new_context, Category.GENERAL)
+		_update_context_actions_visuals()
 
 
-func toggle_menu(context := Context.PLAYER_COUNTRY) -> void:
+func toggle_menu(context := Context.PLAYER) -> void:
 	if is_open:
 		close_menu()
 	else:
@@ -155,6 +180,7 @@ func toggle_menu(context := Context.PLAYER_COUNTRY) -> void:
 		sidemenu_country_label.text = CountryManager.player_country.country_name
 		sidemenu_flag.texture = nation_flag.texture
 		open_menu(context, Category.GENERAL)
+		_update_context_actions_visuals()
 
 var custom_font = load("res://font/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf")
 
@@ -166,6 +192,9 @@ func open_menu(context: Context, category: Category) -> void:
 		return
 	current_context = context
 	current_category = category
+
+	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
+	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
 	
 	if current_category == Category.GENERAL:
 			for child in relations_hbox.get_children():
@@ -182,7 +211,7 @@ func open_menu(context: Context, category: Category) -> void:
 
 				# 2. SPACER (Justify-Between)
 				var spacer1 = Control.new()
-				spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL 
+				spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				relations_hbox.add_child(spacer1)
 				
 				# 3. CENTER: Dual Opinions
@@ -214,6 +243,45 @@ func open_menu(context: Context, category: Category) -> void:
 	if !is_open:
 		MusicManager.play_sfx(MusicManager.SFX.OPEN_MENU)
 		slide_in()
+	
+	_update_context_actions_visuals()
+
+func _update_context_actions_visuals() -> void:
+	var player = CountryManager.player_country
+	if not player: return
+
+	# Iterate through all context tabs to find action buttons
+	for context_node in sidemenu_context.get_children():
+		# Try to find ScrollContainer/ActionsList/ in each tab
+		var actions_list = context_node.find_child("ActionsList", true, false)
+		if actions_list:
+			for child in actions_list.get_children():
+				if child is Button:
+					var method = ""
+					# Find which method this button calls by looking at connections
+					for connection in child.pressed.get_connections():
+						if connection.callable.get_object() == self:
+							method = connection.callable.get_method()
+							break
+					
+					if method != "" and ACTION_COSTS.has(method):
+						var cost = ACTION_COSTS[method]
+						var can_afford = player.political_power >= cost
+						
+						child.disabled = !can_afford
+						
+						# Update text to show cost if > 0
+						var base_text = child.text.split(" (")[0] # Strip existing cost
+						if cost > 0:
+							child.text = base_text + " (%d PP)" % cost
+						else:
+							child.text = base_text
+						
+						# Visual feedback for disabled buttons
+						if !can_afford:
+							child.modulate = Color(1, 0.5, 0.5, 0.7)
+						else:
+							child.modulate = Color.WHITE
 
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
 	var l = Label.new()
@@ -252,7 +320,7 @@ func _on_tab_changed(new_category_index: int) -> void:
 func _on_menu_button_button_up(_menu_index: int) -> void:
 	current_category = _menu_index as Category
 	if !CountryManager.player_country: return
-	if current_context == Context.PLAYER_COUNTRY:
+	if current_context == Context.PLAYER:
 		if _menu_index == Category.ECONOMY:
 			MapManager.show_industry_country(CountryManager.player_country.country_name)
 		else:
@@ -302,6 +370,8 @@ func update_topbar_stats() -> void:
 
 func _on_hour_passed() -> void:
 	update_topbar_stats()
+	if is_open:
+		_update_context_actions_visuals()
 
 
 func format_number(value: float) -> String:
@@ -346,7 +416,7 @@ func close_menu() -> void:
 	if is_open:
 		MusicManager.play_sfx(MusicManager.SFX.CLOSE_MENU)
 	GameState.reset_industry_building()
-	military_extra_panel.visible = false  # just to be sure
+	military_extra_panel.visible = false # just to be sure
 	slide_out()
 
 
@@ -371,16 +441,21 @@ func _choose_deploy_city():
 
 
 func _declare_war():
+	var cost = ACTION_COSTS.get("_declare_war", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
 	WarManager.declare_war(CountryManager.player_country, selected_country)
 
-	var has_military_access := (
-		selected_country.country_name in CountryManager.player_country.allowedCountries
-	)
-	GameState.game_ui.military_access_label.text = (
-		"Military Access: " + String("Yes" if has_military_access else "No")
-	)
+	# var has_military_access := (
+	# 	selected_country.country_name in CountryManager.player_country.allowedCountries
+	# )
+	# GameState.game_ui.military_access_label.text = (
+	# 	"Military Access: " + String("Yes" if has_military_access else "No")
+	# )
 
-	open_menu(Context.ENEMY_COUNTRY, Category.GENERAL)
+	open_menu(Context.ENEMY, Category.GENERAL)
 
 
 func _conscript(data: Dictionary):
@@ -398,8 +473,14 @@ func deploy_troop(troop):
 
 
 func improve_stability():
+	var cost = ACTION_COSTS.get("improve_stability", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
 	CountryManager.player_country.stability += 0.02
 	update_topbar_stats()
+	_update_context_actions_visuals()
 
 
 func _build_factory():
@@ -413,19 +494,32 @@ func _build_port():
 
 
 func _request_access():
+	var cost = ACTION_COSTS.get("_request_access", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
 	CountryManager.player_country.allowedCountries.append(selected_country.country_name)
-	# _build_action_list()
+	_update_context_actions_visuals()
 
 func _force_puppet():
-	CountryManager.player_country.puppets.append(selected_country.country_name)
-	selected_country.is_puppet = true
-	selected_country.owner = CountryManager.player_country.country_name
-	MapManager.show_countries_map()
-
+	var cost = ACTION_COSTS.get("_force_puppet", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
+	CountryManager.make_puppet(CountryManager.player_country, selected_country)
+	_update_context_actions_visuals()
 
 
 func _improve_relations():
+	var cost = ACTION_COSTS.get("_improve_relations", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
 	print("Improving relations")
+	_update_context_actions_visuals()
 
 
 func _propose_peace():
@@ -477,7 +571,7 @@ func open_manage_country():
 
 # 1. Add this variable at the top with your other @onready variables
 var selected_division_objects: Array[DivisionData] = []
-const DIVISION_CARD_SCENE = preload("res://Scenes/DivisionItem.tscn")  # Path to your card
+const DIVISION_CARD_SCENE = preload("res://Scenes/DivisionItem.tscn") # Path to your card
 
 
 func make_troop_container(selected_troops: Array[TroopData]) -> void:
@@ -489,7 +583,7 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 		# --- Create a Province Header ---
 		var header_panel = PanelContainer.new()
 		var h_style = StyleBoxFlat.new()
-		h_style.bg_color = Color(0.12, 0.13, 0.15, 0.95)  # Cleaner military dark
+		h_style.bg_color = Color(0.12, 0.13, 0.15, 0.95) # Cleaner military dark
 		h_style.border_width_bottom = 2
 		h_style.border_color = Color.GOLD
 		header_panel.add_theme_stylebox_override("panel", h_style)
@@ -586,7 +680,7 @@ func update_division_menu():
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
 
 	if not stats:
-		return  # Safety check
+		return # Safety check
 
 	ui_labels.type.text = division_type_selected.capitalize()
 	ui_labels.div_stats.text = "%s : %s : %s" % [stats.attack, stats.defense, stats.hp]
@@ -614,16 +708,16 @@ func update_division_menu():
 func _update_train_button_visuals(is_affordable: bool) -> void:
 	# Create a new StyleBoxFlat to override the background color
 	var style = StyleBoxFlat.new()
-	style.set_corner_radius_all(4)  # Optional: match your game's rounded corners
+	style.set_corner_radius_all(4) # Optional: match your game's rounded corners
 
 	if is_affordable:
-		style.bg_color = Color("#394f39")  # Greenish
+		style.bg_color = Color("#394f39") # Greenish
 		# Apply to Normal and Hover states
 		button_train.add_theme_stylebox_override("normal", style)
 		button_train.add_theme_stylebox_override("hover", style)
 		button_train.remove_theme_stylebox_override("disabled")
 	else:
-		style.bg_color = Color("#5a3f39")  # Reddish
+		style.bg_color = Color("#5a3f39") # Reddish
 		# Apply specifically to the Disabled state
 		button_train.add_theme_stylebox_override("disabled", style)
 

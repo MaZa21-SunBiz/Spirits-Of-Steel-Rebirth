@@ -7,14 +7,10 @@
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
-[ext_resource type="Shader" uid="uid://cned8wsfobjji" path="res://shaders/OmniScale.gdshader" id="6_7yui6"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/decision_tree_ui.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikia7"]
-shader = ExtResource("6_7yui6")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fo5ed"]
 load_path = "res://.godot/imported/cultures.png-f9255a05eddadc8a9aa0dedbe091def9.ctex"
@@ -44,7 +40,6 @@ script = ExtResource("6_o06y3")
 [node name="MapContainer" type="Node2D" parent="World" unique_id=2009493061]
 
 [node name="CultureSprite" type="Sprite2D" parent="World/MapContainer" unique_id=159175243]
-material = SubResource("ShaderMaterial_ikia7")
 texture = SubResource("CompressedTexture2D_fo5ed")
 centered = false
 

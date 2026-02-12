@@ -25,8 +25,6 @@ func _on_day_passed() -> void:
 	
 	SuperEventManager.check_events()
 	
-	MapManager.country_to_provinces
-
 
 func initialize_countries() -> void:
 	if GameState.is_loading_game:
@@ -82,7 +80,8 @@ func add_country(country_name: String) -> CountryData:
 	# 2. Check if the flag exists before proceeding
 	var flag = TroopManager.get_flag(c_name_lower)
 	if flag == null:
-		push_error("CountryManager: Cannot add '%s'. No flag found at res://assets/flags/" % country_name)
+		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % country_name
+		push_error(err_msg)
 		return null
 
 	# 3. If flag exists, create and store the country
@@ -163,7 +162,7 @@ static func _get_manpower_from_template(type: String) -> int:
 	var stats = DivisionData.TEMPLATES.get(type, DivisionData.TEMPLATES["infantry"])
 	return stats["manpower"]
 	
-func _cleanup_empty_countries() -> void:
+func cleanup_empty_countries() -> void:
 	var to_remove: Array[String] = []
 	
 	for c_name in countries.keys():
@@ -174,3 +173,11 @@ func _cleanup_empty_countries() -> void:
 	for c_name in to_remove:
 		print("CountryManager: Removing '%s' (No provinces found)." % c_name)
 		countries.erase(c_name)
+
+func make_puppet(puppeter: CountryData, puppetee: CountryData):
+	puppeter.puppets.append(puppetee.country_name)
+	puppeter.allowedCountries.append(puppetee.country_name)
+	puppetee.allowedCountries.append(puppeter.country_name)
+	puppetee.is_puppet = true
+	puppetee.owner = puppeter.country_name
+	MapManager.show_countries_map()

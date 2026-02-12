@@ -13,7 +13,7 @@ signal day_passed
 @export var start_hour := 0
 
 var time_scale := MIN_SPEED
-const MIN_SPEED := 0
+const MIN_SPEED := 8
 const MAX_SPEED := 80.0
 
 var hour: int = start_hour
