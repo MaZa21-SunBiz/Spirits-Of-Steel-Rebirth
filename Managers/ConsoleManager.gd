@@ -7,7 +7,7 @@ func _ready() -> void:
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
-	Console.add_command("annex", _annex, ["country_name"], 1, "Annex Country for Player")
+	Console.add_command("annex", _annex, ["annexer", "annexee"], 2, "Annex Country for Player")
 	Console.add_command("pp", _add_pp, ["amount"], 1, "Add Poltical power to player")
 	Console.add_command("manpower", _add_manpower, ["amount"], 1, "Add Manpower to Country")
 	Console.add_command(
@@ -21,6 +21,9 @@ func _ready() -> void:
 	)
 	Console.add_command(
 		"releasables", _show_releasables_country, ["country"], 1, "Shows the releasables of a country"
+	)
+	Console.add_command(
+		"cta", _call_to_arms, ["caller", "target"], 2, "Call a country to arms"
 	)
 	
 
@@ -48,12 +51,12 @@ func _peace_treaty(country):
 	WarManager._handle_total_collapse(country, CountryManager.player_country.country_name)
 
 
-func _annex(country_name: String) -> void:
-	if CountryManager.countries.has(country_name):
-		MapManager.annex_country(country_name)
+func _annex(annexer: String, annexee) -> void:
+	if CountryManager.countries.has(annexee):
+		MapManager.annex_country(annexer, annexee)
 		return
 
-	Console.print_line("Unknown country: " + country_name)
+	Console.print_line("Unknown country: " + annexee)
 
 
 func _play_country(country_name: String) -> void:
@@ -76,3 +79,17 @@ func _start_war(country_name1: String, country_name2: String) -> void:
 		Console.print_line("Unknown country: " + country_name1)
 	if not country2:
 		Console.print_line("Unknown country: " + country_name2)
+
+
+func _call_to_arms(caller_name: String, target_name: String) -> void:
+	var caller := CountryManager.get_country(caller_name)
+	var target := CountryManager.get_country(target_name)
+
+	if caller and target:
+		WarManager.call_to_arms(caller, target)
+		return
+
+	if not caller:
+		Console.print_line("Unknown country: " + caller_name)
+	if not target:
+		Console.print_line("Unknown country: " + target_name)

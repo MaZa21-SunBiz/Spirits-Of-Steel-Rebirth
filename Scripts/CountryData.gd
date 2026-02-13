@@ -1,7 +1,7 @@
 extends Resource
 class_name CountryData
 
-var economy_law_penalty: float = 0.0  # 0.10 means 10% income loss
+var economy_law_penalty: float = 0.0 # 0.10 means 10% income loss
 var army_composition_cache: Dictionary = {"infantry": 0, "tank": 0, "artillery": 0}
 #region --- Configuration & Constants ---
 const MANPOWER_RECOVERY_PER_YEAR := 0.10
@@ -25,7 +25,7 @@ var gdp: int = 0
 var income: float = 0.0
 var factories_amount: int = 0
 var factory_income = 100
-var hourly_money_income: float = 0.0  # Calculated value
+var hourly_money_income: float = 0.0 # Calculated value
 
 # Politics
 var political_power: float = 5000.0
@@ -45,12 +45,12 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
-var puppets: Array[String] = [] 
+var puppets: Array[String] = []
 var owner: String
 var factions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
-var deploy_pid: int = -1  # ID of province to deploy to
+var deploy_pid: int = -1 # ID of province to deploy to
 #endregion
 
 var _is_loading := false
@@ -212,7 +212,7 @@ func update_manpower_pool() -> void:
 func get_army_pressure() -> float:
 	var army_size = 0
 	for troop in TroopManager.get_troops_for_country(country_name):
-		army_size += troop.divisions  # assuming .divisions property exists on TroopData
+		army_size += troop.divisions # assuming .divisions property exists on TroopData
 
 	var capacity = max(1.0, (gdp * 0.03) + factories_amount * 5)
 	return army_size / capacity
@@ -312,7 +312,7 @@ func _setup_starting_army() -> void:
 
 	# 2. Determine count (Strictly capped to prevent icon spam)
 	var affordable_count = int(upkeep_budget / max(1.0, individual_cost))
-	var final_count = clampi(affordable_count, 1, 6)  # Start very small (1-6 divs)
+	var final_count = clampi(affordable_count, 1, 6) # Start very small (1-6 divs)
 
 	# 3. Manpower Check
 	var template = DivisionData.TEMPLATES.get("infantry")
@@ -358,7 +358,7 @@ func _deploy_initial_force(divisions: Array[DivisionData]) -> void:
 		if current_batch.size() >= stack_size or i == divisions.size() - 1:
 			var target_pid = deploy_targets.pick_random()
 			TroopManager.deploy_specific_divisions(country_name, current_batch, target_pid)
-			current_batch = []  # Reset for next stack
+			current_batch = [] # Reset for next stack
 
 
 func _process_reinforcements():
@@ -371,14 +371,13 @@ func _process_reinforcements():
 		for div in troop.stored_divisions:
 			if div.hp < div.max_hp:
 				var template = DivisionData.TEMPLATES[div.type]
-				var men_needed = int(template["manpower"] * 0.05)  # 5% reinforcement
+				var men_needed = int(template["manpower"] * 0.05) # 5% reinforcement
 
 				# REINFORCEMENT SAFETY: Stop if it would drop us below zero
 				if manpower >= men_needed and money >= (template["cost"] * 0.05):
 					money -= (template["cost"] * 0.05)
 					manpower -= men_needed
 					div.hp = min(div.max_hp, div.hp + 5.0)
-					
 					
 					
 func set_relation_with(other_country_name: String, value: int) -> void:

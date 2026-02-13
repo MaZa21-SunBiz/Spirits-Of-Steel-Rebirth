@@ -4,12 +4,12 @@ class_name GameClock
 signal hour_passed
 signal day_passed
 
-@export var hours_per_tick := 1  # How many in-game hours pass per tick
-@export var seconds_per_tick := 1.0  # Real seconds per tick
+@export var hours_per_tick := 1 # How many in-game hours pass per tick
+@export var seconds_per_tick := 1.0 # Real seconds per tick
 
 @export var start_year := 2010
-@export var start_month := 1  # 1-12
-@export var start_day := 1  # 1-31
+@export var start_month := 1 # 1-12
+@export var start_day := 1 # 1-31
 @export var start_hour := 0
 
 var time_scale := MIN_SPEED
@@ -74,6 +74,8 @@ func pause() -> void:
 
 
 func resume() -> void:
+	if GameState.in_peace_process:
+		return
 	paused = false
 	GameState.game_ui.updateProgressBar()
 
@@ -82,6 +84,8 @@ func toggle_pause() -> void:
 	if time_scale == 0:
 		return
 	if paused:
+		if GameState.in_peace_process:
+			return
 		resume()
 	else:
 		pause()

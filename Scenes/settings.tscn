@@ -170,7 +170,7 @@ step = 0.01
 [node name="HSlider3" type="HSlider" parent="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2" unique_id=915995424]
 material = ExtResource("1_lhmql")
 layout_mode = 2
-max_value = 1.0
+max_value = 16.0
 step = 0.01
 
 [node name="Exit" type="Button" parent="Settings/TabContainer/Graphics/HBoxContainer" unique_id=1103568460]

@@ -499,17 +499,16 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -519,6 +518,7 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -643,7 +643,6 @@ theme = ExtResource("13_sdmnd")
 text = "Build Port"
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
@@ -843,6 +842,7 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -1192,7 +1192,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -1202,6 +1202,7 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 4
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1671842405]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
@@ -1249,7 +1250,7 @@ text = "Improve Relations"
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
-text = "Invite To Facttion"
+text = "Kick From Faction"
 
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=2009539886]
 material = ExtResource("16_lpwmk")
@@ -1302,8 +1303,13 @@ layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Trade Deal"
 
+[node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=1662116374]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+text = "Kindly Ask For Money"
+
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1928349567]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
@@ -1345,29 +1351,24 @@ size_flags_horizontal = 3
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
-text = "Declare War"
+text = "Call To Arms"
 
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=1319266632]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
-text = "Request Access"
-
-[node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=1436888003]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-theme = ExtResource("13_sdmnd")
-text = "Launch Nuke"
+text = "Kindly Ask For Manpower"
 
 [node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
-visible = false
 layout_mode = 0
 offset_left = 918.0
 offset_top = 235.0
 offset_right = 1149.0
 offset_bottom = 647.0
+theme = ExtResource("13_sdmnd")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TroopContainer" unique_id=208408317]
+material = ExtResource("16_lpwmk")
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TroopContainer/ScrollContainer" unique_id=1354240878]
@@ -1546,6 +1547,7 @@ text = "Create Faction"
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button" to="." method="open_research_tree"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button2" to="." method="_build_factory"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button3" to="." method="_build_port"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_propose_peace"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer/ActionsList/Button" to="." method="_launch_nuke"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
@@ -1553,12 +1555,15 @@ text = "Create Faction"
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList/Button2" to="." method="_declare_war"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
-[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
-[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_on_annex_country_pressed"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_release_puppet_pressed"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy/ActionsList/Button" to="." method="_on_steal_money_pressed"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button" to="." method="_on_steal_manpower_pressed"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
-[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_declare_war"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
 [connection signal="button_up" from="ColorRect/Button" to="ColorRect" method="_on_button_button_up"]
 [connection signal="button_up" from="ColorRect/Button2" to="ColorRect" method="_on_button_2_button_up"]

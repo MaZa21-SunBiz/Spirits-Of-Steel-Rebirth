@@ -144,7 +144,7 @@ func _refresh_full_data() -> void:
 	header_label.text = current_country.country_name.to_upper()
 
 	# Attempt to load specific flag, fallback to grey placeholder
-	var flag_path = "res://flags/%s.png" % current_country.country_name
+	var flag_path = "res://assets/flags/%s_flag.png" % current_country.country_name
 	if ResourceLoader.exists(flag_path):
 		flag_rect.texture = load(flag_path)
 

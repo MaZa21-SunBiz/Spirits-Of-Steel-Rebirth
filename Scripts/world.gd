@@ -67,9 +67,9 @@ func _ready() -> void:
 			var province = MapManager.province_objects.get(pid)
 
 			if province:
-				if province.type == 0:  # SEA
+				if province.type == 0: # SEA
 					type_img.set_pixel(x, y, Color(0, 0, 0))
-				else:  # LAND
+				else: # LAND
 					type_img.set_pixel(x, y, Color(1, 1, 1))
 			else:
 				# It's a border (PID 1 or null). Mark as uncertain for now.
@@ -129,7 +129,7 @@ func _ready() -> void:
 	mat.set_shader_parameter("ocean_noise", noise_tex)
 
 	mat.set_shader_parameter("original_texture", map_sprite.texture)
-	mat.set_shader_parameter("sea_speed", 0.00)  # Changed by MainClock
+	mat.set_shader_parameter("sea_speed", 0.00) # Changed by MainClock
 	mat.set_shader_parameter("tex_size", Vector2(map_width, MapManager.id_map_image.get_height()))
 	mat.set_shader_parameter("country_border_color", Color.BLACK)
 
@@ -152,7 +152,6 @@ func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	ghost.material = p_material
 	ghost.position = map_sprite.position + offset
 	$MapContainer.add_child(ghost)
-
 
 
 func _input(event: InputEvent) -> void:

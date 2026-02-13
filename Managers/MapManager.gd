@@ -1491,25 +1491,24 @@ func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> 
 	return specific_borders
 
 
-func annex_country(target_country_name: String) -> void:
+func annex_country(annexer: String, annexee: String) -> void:
 	var playerobj = CountryManager.player_country
-	var player = playerobj.country_name
 
-	var target_troops = TroopManager.get_troops_for_country(target_country_name).duplicate()
+	var target_troops = TroopManager.get_troops_for_country(annexee).duplicate()
 	for troop in target_troops:
 		TroopManager.remove_troop(troop)
 
-	var provinces_to_transfer = country_to_provinces.get(target_country_name, []).duplicate()
+	var provinces_to_transfer = country_to_provinces.get(annexee, []).duplicate()
 
 	if provinces_to_transfer.is_empty():
-		print("MapManager: No provinces found for ", target_country_name)
+		print("MapManager: No provinces found for ", annexee)
 		return
 
 	for pid in provinces_to_transfer:
-		transfer_ownership(pid, player)
+		transfer_ownership(pid, annexer)
 
 	#playerobj.reset_manpower()
-	print("ANNEXATION COMPLETE: ", player, " has taken all of ", target_country_name)
+	print("ANNEXATION COMPLETE: ", annexer, " has taken all of ", annexee)
 
 
 func _build_global_registry():

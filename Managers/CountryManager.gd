@@ -181,3 +181,11 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.is_puppet = true
 	puppetee.owner = puppeter.country_name
 	MapManager.show_countries_map()
+
+func release_puppet(puppeter: CountryData, puppetee: CountryData):
+	puppeter.puppets.erase(puppetee.country_name)
+	puppeter.allowedCountries.erase(puppetee.country_name)
+	puppetee.allowedCountries.erase(puppeter.country_name)
+	puppetee.is_puppet = false
+	puppetee.owner = ""
+	MapManager.show_countries_map()

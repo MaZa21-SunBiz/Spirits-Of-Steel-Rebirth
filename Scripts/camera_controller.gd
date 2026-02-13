@@ -20,7 +20,7 @@ func _is_mouse_over_ui() -> bool:
 
 
 func _input(event: InputEvent) -> void:
-	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT/camera.zoom.y, -(MAP_HEIGHT + TOP_BAR_HEIGHT)/camera.zoom.y + MAP_HEIGHT)
+	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y, - (MAP_HEIGHT + TOP_BAR_HEIGHT) / camera.zoom.y + MAP_HEIGHT)
 
 	if Console.is_visible() or _is_mouse_over_ui():
 		return

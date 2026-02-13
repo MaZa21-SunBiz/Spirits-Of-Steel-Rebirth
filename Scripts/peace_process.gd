@@ -191,6 +191,7 @@ func _on_confirm_pressed():
 	if GameState.game_ui:
 		GameState.game_ui.visible = true
 	GameState.in_peace_process = false
+	MapManager.show_countries_map()
 	GameState.current_world.clock.resume()
 	self.hide()
 

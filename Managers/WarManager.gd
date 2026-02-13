@@ -286,6 +286,17 @@ func resolve_province_arrival(pid: int, troop: TroopData):
 			check_country_collapse(target_country, troop.country_name)
 
 
+func call_to_arms(caller: CountryData, target: CountryData) -> void:
+	if caller == target:
+		return
+	
+	var enemies = get_enemies_of(caller.country_name)
+	for enemy_name in enemies:
+		var enemy_data = CountryManager.get_country(enemy_name)
+		if enemy_data:
+			declare_war(target, enemy_data)
+
+
 func declare_war(a: CountryData, b: CountryData) -> void:
 	if a == b or is_at_war(a, b):
 		return

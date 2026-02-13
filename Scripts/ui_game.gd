@@ -157,6 +157,8 @@ func _on_province_clicked(country_name: String) -> void:
 			new_context = Context.ENEMY
 		elif selected_country.country_name in CountryManager.player_country.puppets:
 			new_context = Context.PUPPET
+		elif FactionManager.in_faction(CountryManager.player_country, selected_country):
+			new_context = Context.ALLY
 		# elif selected_country.country_name in CountryManager.player_country.puppets:
 		# 	new_context = Context.PUPPET
 
@@ -448,12 +450,12 @@ func _declare_war():
 	
 	WarManager.declare_war(CountryManager.player_country, selected_country)
 
-	# var has_military_access := (
-	# 	selected_country.country_name in CountryManager.player_country.allowedCountries
-	# )
-	# GameState.game_ui.military_access_label.text = (
-	# 	"Military Access: " + String("Yes" if has_military_access else "No")
-	# )
+	var has_military_access := (
+		selected_country.country_name in CountryManager.player_country.allowedCountries
+	)
+	GameState.game_ui.military_access_label.text = (
+		"Military Access: " + String("Yes" if has_military_access else "No")
+	)
 
 	open_menu(Context.ENEMY, Category.GENERAL)
 
@@ -510,6 +512,17 @@ func _force_puppet():
 	
 	CountryManager.make_puppet(CountryManager.player_country, selected_country)
 	_update_context_actions_visuals()
+	close_menu()
+
+func _on_release_puppet_pressed():
+	var cost = ACTION_COSTS.get("_release_puppet", 0)
+	if CountryManager.player_country.political_power < cost:
+		return
+	CountryManager.player_country.political_power -= cost
+	
+	CountryManager.release_puppet(CountryManager.player_country, selected_country)
+	_update_context_actions_visuals()
+	close_menu()
 
 
 func _improve_relations():
@@ -528,11 +541,6 @@ func _propose_peace():
 
 func _launch_nuke():
 	print("NUKE!")
-
-
-func _form_alliance():
-	print("Alliance formed")
-
 
 func _demand_tribute():
 	print("Pay up!")
@@ -743,6 +751,29 @@ func _on_music_pressed():
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("HBoxContainer/TextEdit").text)
+	faction_prompt.get_node("HBoxContainer/TextEdit").text = ""
+	faction_prompt.visible = !faction_prompt.visible
 
 func _on_invite_faction_pressed() -> void:
 	FactionManager.invite_faction(CountryManager.player_country, selected_country)
+	# MapManager.show_faction_map()
+
+func _on_steal_manpower_pressed() -> void:
+	if selected_country.total_population > 0:
+		CountryManager.player_country.total_population +=1_000
+		selected_country.total_population -=1_000
+		CountryManager.player_country.update_manpower_pool()
+		selected_country.update_manpower_pool()
+
+
+func _on_steal_money_pressed() -> void:
+	if selected_country.money > 0:
+		CountryManager.player_country.money +=1_000
+		selected_country.money -=1_000
+
+
+func _on_annex_country_pressed() -> void:
+	MapManager.annex_country(CountryManager.player_country.country_name, selected_country.country_name)
+
+func _on_call_to_arms_pressed() -> void:
+	WarManager.call_to_arms(CountryManager.player_country, selected_country)
