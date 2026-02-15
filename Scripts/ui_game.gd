@@ -16,6 +16,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 	"money": topbar.get_node("Money/HBoxContainer/label_money"),
 	"industry": topbar.get_node("Industry/HBoxContainer/label_industry"),
 	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
+	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
 }
 
 # ── Speed Controls ────────────────────────────────────
@@ -92,6 +93,12 @@ func _ready() -> void:
 
 	GameState.current_world.clock.hour_passed.connect(_on_hour_passed)
 	CountryManager.player_country_changed.connect(_on_player_change)
+	if CountryManager.player_country:
+		if CountryManager.player_country.ideology_changed.is_connected(_update_flag):
+			CountryManager.player_country.ideology_changed.disconnect(_update_flag)
+		CountryManager.player_country.ideology_changed.connect(_update_flag)
+	
+	_update_flag()
 	updateProgressBar()
 	update_division_menu()
 	military_extra_panel.visible = false
@@ -134,16 +141,37 @@ func _update_radio_visuals() -> void:
 			child.modulate = Color(0.5, 0.5, 0.5)
 
 
+func _update_sidemenu_visuals(country_name: String) -> void:
+	sidemenu_flag.texture = TroopManager.get_flag(country_name, selected_country.ideology_name)
+	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + country_name.capitalize()
+	
+	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
+	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
+	
+	_update_relations_visuals()
+
+func _on_selected_country_ideology_changed():
+	if selected_country:
+		_update_sidemenu_visuals(selected_country.country_name)
+
 func _on_player_change() -> void:
+	if CountryManager.player_country:
+		if CountryManager.player_country.ideology_changed.is_connected(_update_flag):
+			CountryManager.player_country.ideology_changed.disconnect(_update_flag)
+		CountryManager.player_country.ideology_changed.connect(_update_flag)
+
 	_update_flag()
 	update_topbar_stats()
 
 
 func _on_province_clicked(country_name: String) -> void:
-	selected_country = CountryManager.get_country(country_name)
+	if selected_country and selected_country.ideology_changed.is_connected(_on_selected_country_ideology_changed):
+		selected_country.ideology_changed.disconnect(_on_selected_country_ideology_changed)
 
-	sidemenu_flag.texture = TroopManager.get_flag(country_name)
-	sidemenu_country_label.text = country_name.capitalize().replace("_", " ")
+	selected_country = CountryManager.get_country(country_name)
+	selected_country.ideology_changed.connect(_on_selected_country_ideology_changed)
+
+	_update_sidemenu_visuals(country_name)
 
 	if (
 		!GameState.choosing_deploy_city
@@ -198,48 +226,7 @@ func open_menu(context: Context, category: Category) -> void:
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
 	
-	if current_category == Category.GENERAL:
-			for child in relations_hbox.get_children():
-				child.queue_free()
-			
-			var player = CountryManager.player_country
-			var target = selected_country
-
-			if player and target and player != target:
-				relations_hbox.visible = true
-				
-				# 1. FAR LEFT: Player Flag
-				relations_hbox.add_child(_get_simple_flag(player.country_name))
-
-				# 2. SPACER (Justify-Between)
-				var spacer1 = Control.new()
-				spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				relations_hbox.add_child(spacer1)
-				
-				# 3. CENTER: Dual Opinions
-				var our_val = player.get_relation_with(target.country_name)
-				var their_val = target.get_relation_with(player.country_name)
-				
-				# "Our view"
-				relations_hbox.add_child(_create_styled_label(str(our_val), 20, our_val))
-				
-				# Visual Divider
-				var mid_icon = _create_styled_label(" ↔ ", 20, 50) # Neutral color for divider
-				mid_icon.modulate.a = 0.4
-				relations_hbox.add_child(mid_icon)
-				
-				# "Their view"
-				relations_hbox.add_child(_create_styled_label(str(their_val), 20, their_val))
-
-				# 4. SECOND SPACER
-				var spacer2 = Control.new()
-				spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				relations_hbox.add_child(spacer2)
-
-				# 5. FAR RIGHT: Target Flag
-				relations_hbox.add_child(_get_simple_flag(target.country_name))
-			else:
-				relations_hbox.visible = false
+	_update_relations_visuals()
 	# _build_action_list()
 
 	if !is_open:
@@ -247,6 +234,52 @@ func open_menu(context: Context, category: Category) -> void:
 		slide_in()
 	
 	_update_context_actions_visuals()
+
+func _update_relations_visuals() -> void:
+	if current_category != Category.GENERAL:
+		return
+
+	for child in relations_hbox.get_children():
+		child.queue_free()
+	
+	var player = CountryManager.player_country
+	var target = selected_country
+
+	if player and target and player != target:
+		relations_hbox.visible = true
+		
+		# 1. FAR LEFT: Player Flag
+		relations_hbox.add_child(_get_simple_flag(player.country_name, player.ideology_name))
+
+		# 2. SPACER (Justify-Between)
+		var spacer1 = Control.new()
+		spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		relations_hbox.add_child(spacer1)
+		
+		# 3. CENTER: Dual Opinions
+		var our_val = player.get_relation_with(target.country_name)
+		var their_val = target.get_relation_with(player.country_name)
+		
+		# "Our view"
+		relations_hbox.add_child(_create_styled_label(str(our_val), 20, our_val))
+		
+		# Visual Divider
+		var mid_icon = _create_styled_label(" ↔ ", 20, 50) # Neutral color for divider
+		mid_icon.modulate.a = 0.4
+		relations_hbox.add_child(mid_icon)
+		
+		# "Their view"
+		relations_hbox.add_child(_create_styled_label(str(their_val), 20, their_val))
+
+		# 4. SECOND SPACER
+		var spacer2 = Control.new()
+		spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		relations_hbox.add_child(spacer2)
+
+		# 5. FAR RIGHT: Target Flag
+		relations_hbox.add_child(_get_simple_flag(target.country_name, target.ideology_name))
+	else:
+		relations_hbox.visible = false
 
 func _update_context_actions_visuals() -> void:
 	var player = CountryManager.player_country
@@ -306,9 +339,9 @@ func _create_styled_label(text_content: String, size: int, score_ref: int) -> La
 		
 	return l
 
-func _get_simple_flag(c_name: String) -> TextureRect:
+func _get_simple_flag(c_name: String, ideology: String = "") -> TextureRect:
 	var tr = TextureRect.new()
-	tr.texture = TroopManager.get_flag(c_name)
+	tr.texture = TroopManager.get_flag(c_name, ideology)
 	tr.custom_minimum_size = Vector2(42, 26)
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -368,6 +401,7 @@ func update_topbar_stats() -> void:
 	stats_labels.manpower.text = format_number(CountryManager.player_country.manpower)
 	stats_labels.money.text = format_number(CountryManager.player_country.money)
 	stats_labels.industry.text = str(CountryManager.player_country.factories_amount)
+	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
 
 
 func _on_hour_passed() -> void:
@@ -407,11 +441,8 @@ func updateProgressBar():
 func _update_flag() -> void:
 	if !CountryManager.player_country:
 		return
-	var path = (
-		"res://assets/flags/%s_flag.png" % CountryManager.player_country.country_name.to_lower()
-	)
-	if ResourceLoader.exists(path):
-		nation_flag.texture = load(path)
+	nation_flag.texture = TroopManager.get_flag(CountryManager.player_country.country_name, CountryManager.player_country.ideology_name)
+	_update_relations_visuals()
 
 
 func close_menu() -> void:
@@ -760,16 +791,16 @@ func _on_invite_faction_pressed() -> void:
 
 func _on_steal_manpower_pressed() -> void:
 	if selected_country.total_population > 0:
-		CountryManager.player_country.total_population +=1_000
-		selected_country.total_population -=1_000
+		CountryManager.player_country.total_population += 1_000
+		selected_country.total_population -= 1_000
 		CountryManager.player_country.update_manpower_pool()
 		selected_country.update_manpower_pool()
 
 
 func _on_steal_money_pressed() -> void:
 	if selected_country.money > 0:
-		CountryManager.player_country.money +=1_000
-		selected_country.money -=1_000
+		CountryManager.player_country.money += 1_000
+		selected_country.money -= 1_000
 
 
 func _on_annex_country_pressed() -> void:

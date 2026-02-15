@@ -5,6 +5,7 @@ func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
+	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
 
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
 	Console.add_command("annex", _annex, ["annexer", "annexee"], 2, "Annex Country for Player")
@@ -38,6 +39,8 @@ func _release_country(country):
 func _add_pp(amount):
 	CountryManager.player_country.political_power += float(amount)
 
+func _set_ideology(x, y):
+	CountryManager.player_country.ideology = [int(x), int(y)]
 
 func _add_manpower(amount):
 	CountryManager.player_country.manpower += int(amount)

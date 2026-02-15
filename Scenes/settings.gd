@@ -82,3 +82,9 @@ func _on_vignette_upper_changed(value: float) -> void:
 
 func _on_vignette_lower_changed(value: float) -> void:
 	GameState.current_world.map_sprite.material.set_shader_parameter("lower", value)
+
+func _on_map_effects_changed(value: float) -> void:
+	GameState.current_world.map_sprite.material.set_shader_parameter("toggle", value)
+
+func _on_province_borders_changed(value: float) -> void:
+	GameState.current_world.map_sprite.material.set_shader_parameter("internal_border_darkness", value)

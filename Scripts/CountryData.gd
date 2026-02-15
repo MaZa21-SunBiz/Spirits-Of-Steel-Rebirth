@@ -27,12 +27,21 @@ var factories_amount: int = 0
 var factory_income = 100
 var hourly_money_income: float = 0.0 # Calculated value
 
+signal ideology_changed
+
 # Politics
 var political_power: float = 5000.0
 var daily_pp_gain: float = 0.04
 var stability: float = 0.5
 var war_support: float = 0.5
-var ideology: Array = [randi_range(-100, 100), randi_range(-100, 100)]
+var ideology: Array = [randi_range(-100, 100), randi_range(-100, 100)]: set = set_ideology
+var ideology_name: String = "neutral"
+
+func set_ideology(value: Array) -> void:
+	ideology = value
+	refresh_ideology_name()
+	ideology_changed.emit()
+
 
 # Population & Manpower
 var total_population: int = 0
@@ -88,6 +97,7 @@ func _init(p_country_name: String = "") -> void:
 		return
 	allowedCountries.append_array([p_country_name, "sea"])
 	_refresh_economic_stats()
+	refresh_ideology_name()
 
 	# Initial Manpower Calculation
 	var manpower_used = CountryManager.get_country_used_manpower(self)
@@ -140,6 +150,10 @@ func _refresh_economic_stats() -> void:
 
 
 #endregion
+
+
+func refresh_ideology_name() -> void:
+	ideology_name = IdeologyManager.get_ideology_name(ideology)
 
 
 #region --- Military Management ---

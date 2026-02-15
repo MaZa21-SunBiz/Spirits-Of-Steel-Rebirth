@@ -1,22 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq47nwibqhw6h"]
+[gd_scene format=3 uid="uid://cq47nwibqhw6h"]
 
-[ext_resource type="Texture2D" uid="uid://bd1tehujs0p3u" path="res://assets/flags/abkhazia_flag.png" id="1_mg4y4"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_iimk6"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_mg4y4"]
 [ext_resource type="Script" uid="uid://brr8pe0aekthg" path="res://Scripts/TroopData.gd" id="1_vakmv"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_x2cd0"]
 
-[node name="PanelContainer" type="PanelContainer"]
-offset_right = 73.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rup03"]
+bg_color = Color(0.10623657, 0.106236584, 0.106236525, 1)
+
+[node name="PanelContainer" type="PanelContainer" unique_id=756827025]
+material = ExtResource("1_iimk6")
+offset_right = 106.0
 offset_bottom = 31.0
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rup03")
 script = ExtResource("1_vakmv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=832838748]
+use_parent_material = true
 layout_mode = 2
+theme = ExtResource("1_x2cd0")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=2040484844]
+use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("1_mg4y4")
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1492461651]
+use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 6
 text = "323"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
 [ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/ui_game.gd" id="1_rp7y5"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia_flag.png" id="1_xar7q"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
 [ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://qfkxeawpeigd" path="res://assets/icons/man_power_icon.svg" id="8_qum3k"]
 [ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="9_5hlpc"]
 [ext_resource type="Texture2D" uid="uid://dhgqvklqmqkjn" path="res://assets/icons/nonaligned_icon.svg" id="10_aipye"]
+[ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="11_qum3k"]
 [ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="12_2a76p"]
 [ext_resource type="Texture2D" uid="uid://cj7k64j1jq62k" path="res://assets/icons/music.svg" id="13_0e43j"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="13_sdmnd"]
@@ -40,9 +41,14 @@ corner_radius_bottom_left = 6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qum3k"]
 bg_color = Color(0.22352941, 0.30980393, 0.22352941, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qum3k"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilaaa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpwmk"]
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
 shadow_color = Color(0, 0, 0, 0.35686275)
 
@@ -202,6 +208,28 @@ theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
 text = "100"
 
+[node name="WarSupport" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1561316651]
+layout_mode = 2
+tooltip_text = "Stability"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/WarSupport" unique_id=110085503]
+layout_mode = 2
+
+[node name="icon_war_support" type="TextureRect" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=1722293711]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("11_qum3k")
+expand_mode = 3
+
+[node name="label_war_support" type="Label" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=897470063]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
 material = ExtResource("16_lpwmk")
 custom_minimum_size = Vector2(272, 0)
@@ -298,7 +326,7 @@ layout_mode = 0
 offset_left = 356.0
 offset_top = 401.0
 offset_right = 589.0
-offset_bottom = 647.0
+offset_bottom = 648.0
 theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtraPanel" unique_id=1745200345]
@@ -424,7 +452,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 35.0
-offset_right = 310.0
+offset_right = 356.0
 grow_vertical = 2
 theme = ExtResource("13_sdmnd")
 
@@ -432,11 +460,12 @@ theme = ExtResource("13_sdmnd")
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/SidemenuBG/VBoxContainer2" unique_id=731782393]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("13_sdmnd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qum3k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=2118811652]
 layout_mode = 2
@@ -499,16 +528,17 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -518,7 +548,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -570,13 +599,6 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Decisions"
-
-[node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1251469573]
-visible = false
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-theme = ExtResource("13_sdmnd")
-text = "Releasables"
 
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=779262759]
 material = ExtResource("16_lpwmk")
@@ -643,6 +665,7 @@ theme = ExtResource("13_sdmnd")
 text = "Build Port"
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
@@ -842,7 +865,6 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
-visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -1360,6 +1382,7 @@ theme = ExtResource("13_sdmnd")
 text = "Kindly Ask For Manpower"
 
 [node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
+visible = false
 layout_mode = 0
 offset_left = 918.0
 offset_top = 235.0

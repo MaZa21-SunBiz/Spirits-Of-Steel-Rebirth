@@ -53,7 +53,7 @@ content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-shadow_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
@@ -123,7 +123,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_hr0ed")
 Button/styles/normal = SubResource("StyleBoxFlat_470mv")
 Button/styles/pressed = SubResource("StyleBoxFlat_a2l2q")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_85er5")
-TabContainer/constants/icon_max_width = 0
+TabContainer/constants/icon_max_width = 18
 TabContainer/constants/icon_separation = 3
 TabContainer/constants/side_margin = 16
 TabContainer/constants/tab_separation = 64

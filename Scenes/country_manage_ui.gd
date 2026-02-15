@@ -26,7 +26,12 @@ func _ready() -> void:
 	#_build_ui()
 
 func open_menu(country: CountryData) -> void:
+	if current_country and current_country.ideology_changed.is_connected(_refresh_full_data):
+		current_country.ideology_changed.disconnect(_refresh_full_data)
+
 	current_country = country
+	current_country.ideology_changed.connect(_refresh_full_data)
+	
 	_build_ui()
 	_switch_category(Category.MILITARY) # Default to Military
 	_refresh_full_data()
@@ -144,9 +149,8 @@ func _refresh_full_data() -> void:
 	header_label.text = current_country.country_name.to_upper()
 
 	# Attempt to load specific flag, fallback to grey placeholder
-	var flag_path = "res://assets/flags/%s_flag.png" % current_country.country_name
-	if ResourceLoader.exists(flag_path):
-		flag_rect.texture = load(flag_path)
+	# Attempt to load specific flag, fallback to grey placeholder
+	flag_rect.texture = TroopManager.get_flag(current_country.country_name, current_country.ideology_name)
 
 	_refresh_army_counts()
 	_update_law_buttons_visuals()

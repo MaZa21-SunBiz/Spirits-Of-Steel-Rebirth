@@ -26,13 +26,13 @@ func _build_ui():
 
 	# 1. Handle Flags (Hide them if null)
 	if c1:
-		flag_left.texture = _get_flag(c1.country_name)
+		flag_left.texture = _get_flag(c1.country_name, c1.ideology_name)
 		flag_left.show()
 	else:
 		flag_left.hide()
 
 	if c2:
-		flag_right.texture = _get_flag(c2.country_name)
+		flag_right.texture = _get_flag(c2.country_name, c2.ideology_name)
 		flag_right.show()
 	else:
 		flag_right.hide()
@@ -45,9 +45,9 @@ func _build_ui():
 		# Fallback to standard types for backward compatibility
 		match type:
 			"war":
-				description.text = "%s has declared war on %s!" % [c1.country_name, c2.country_name]
+				description.text = "%s has declared war on %s!" % [c1.country_name.capitalize(), c2.country_name.capitalize()]
 			"capitulated":
-				description.text = "%s has capitulated." % [c1.country_name]
+				description.text = "%s has capitulated." % [c1.country_name.capitalize()]
 			"game_over":
 				description.text = "Game Over"
 			_:
@@ -65,8 +65,5 @@ func _on_ok():
 	queue_free()
 
 
-func _get_flag(country: String):
-	var path = "res://assets/flags/%s_flag.png" % country.to_lower()
-	if ResourceLoader.exists(path):
-		return ResourceLoader.load(path)
-	return null
+func _get_flag(country: String, ideology: String = ""):
+	return TroopManager.get_flag(country, ideology)

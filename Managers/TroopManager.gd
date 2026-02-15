@@ -4,11 +4,11 @@ var AUTO_MERGE = true
 
 var troops: Array = []
 var moving_troops: Array = []
-var troops_by_province: Dictionary = {}  # { province_id: [TroopData, ...] }
-var troops_by_country: Dictionary = {}  # { country_name: [TroopData, ...] }
+var troops_by_province: Dictionary = {} # { province_id: [TroopData, ...] }
+var troops_by_country: Dictionary = {} # { country_name: [TroopData, ...] }
 
-var path_cache: Dictionary = {}  # { start_id: { target_id: path_array } }
-var flag_cache: Dictionary = {}  # { country_name: texture }
+var path_cache: Dictionary = {} # { start_id: { target_id: path_array } }
+var flag_cache: Dictionary = {} # { country_name: texture }
 
 var troop_selection: TroopSelection
 
@@ -162,7 +162,7 @@ func command_move_assigned(payload: Array) -> void:
 				var batch: Array[DivisionData] = []
 				for j in range(requested_count):
 					if not troop.stored_divisions.is_empty():
-						batch.append(troop.stored_divisions.pop_back())  # Take from the end
+						batch.append(troop.stored_divisions.pop_back()) # Take from the end
 
 				if batch.is_empty():
 					continue
@@ -317,14 +317,14 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 	if divs <= 0:
 		return null
 
-	if not flag_cache.has(country):
-		var path = "res://assets/flags/%s_flag.png" % country.to_lower()
-		flag_cache[country] = load(path) if ResourceLoader.exists(path) else null
+	var country_data = CountryManager.get_country(country)
+	var ideology = country_data.ideology_name if country_data else ""
+	var flag = get_flag(country, ideology)
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	var troop = load("res://Scripts/TroopData.gd").new(
-		country, prov_id, divs, pos, flag_cache.get(country)
+		country, prov_id, divs, pos, flag
 	)
 
 	# FIX: Assign the country object reference
@@ -412,7 +412,7 @@ func move_to_garrison(troop: TroopData) -> void:
 	var center = MapManager.province_centers.get(troop.province_id, troop.position)
 	troop.position = center
 	troop.target_position = center
-	_stop_troop(troop)  # Stops any ongoing movement
+	_stop_troop(troop) # Stops any ongoing movement
 
 
 ## Adds a troop reference to the spatial and country dictionaries.
@@ -548,15 +548,15 @@ func deploy_specific_divisions(
 	if divisions_to_deploy.is_empty():
 		return null
 
-	if not flag_cache.has(country):
-		var path = "res://assets/flags/%s_flag.png" % country.to_lower()
-		flag_cache[country] = load(path) if ResourceLoader.exists(path) else null
+	var country_data = CountryManager.get_country(country)
+	var ideology = country_data.ideology_name if country_data else ""
+	var flag = get_flag(country, ideology)
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	# 1. Create the container (TroopData) with 0 divisions initially
 	var troop = load("res://Scripts/TroopData.gd").new(
-		country, prov_id, 0, pos, flag_cache.get(country)
+		country, prov_id, 0, pos, flag
 	)
 
 	# 2. Inject the specific divisions we trained
@@ -581,25 +581,120 @@ func deploy_specific_divisions(
 
 
 # Used by popup for now
-func get_flag(country: String) -> Texture2D:
-	# Normalize the key
+var flag_redirects: Dictionary = {}
+
+func _ready() -> void:
+	_load_flag_redirects()
+
+func _load_flag_redirects() -> void:
+	var path = "res://assets/flags/flag_redirects.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var json = JSON.new()
+		var error = json.parse(file.get_as_text())
+		if error == OK:
+			flag_redirects = json.data
+		else:
+			push_error("TroopManager: Failed to parse flag_redirects.json")
+
+func get_flag(country: String, ideology: String = "") -> Texture2D:
+	# Normalize the keys
 	country = country.to_lower()
+	ideology = ideology.to_lower()
+	
+	# Cache key needs to include ideology if provided
+	var cache_key = country
+	if ideology != "":
+		cache_key = "%s_%s" % [country, ideology]
 
 	# If already cached → return it
-	if flag_cache.has(country):
-		return flag_cache[country]
+	if flag_cache.has(cache_key):
+		return flag_cache[cache_key]
 
-	# Build the file path
-	var path = "res://assets/flags/%s_flag.png" % country
+	# 0. Check Redirects
+	if flag_redirects.has(country):
+		var redirect = flag_redirects[country]
+		# Use redirected country and ideology (unless specific ideology requested overrides?)
+		# If user requested explicit ideology, we try that on the target country.
+		# If user requested NO ideology (neutral), we use the redirect's ideology.
+		var target_country = redirect["target"]
+		var target_ideology = redirect["ideology"]
+		
+		if ideology != "":
+			# Requesting specific ideology on redirected country
+			# e.g. german_empire (redirect->germany/monarchist) + requested "communist"
+			# -> look for germany/communist
+			return get_flag(target_country, ideology)
+		else:
+			# Requesting default (neutral) on redirected country
+			# -> look for germany/monarchist (the mapping)
+			return get_flag(target_country, target_ideology)
 
-	# Load if exists
+	var path = ""
+	
+	# 1. Try Specific Ideology Flag: assets/flags/country/ideology_flag.png
+	if ideology != "":
+		path = "res://assets/flags/%s/%s_flag.png" % [country, ideology]
+		if ResourceLoader.exists(path):
+			var tex := load(path)
+			flag_cache[cache_key] = tex
+			return tex
+
+	# 2. Try Neutral/Default Flag in new structure: assets/flags/country/neutral_flag.png
+	path = "res://assets/flags/%s/neutral_flag.png" % country
 	if ResourceLoader.exists(path):
 		var tex := load(path)
-		flag_cache[country] = tex
+		# Cache this as the specific request if we found it (even if ideology was requested but not found)
+		flag_cache[cache_key] = tex
+		return tex
+
+	# 3. Fallback: Suffix Stripping / Semantic Fallback
+	# If we are here, neither specific ideology nor neutral flag exists for 'country'.
+	# Maybe 'country' is 'afghan_kingdom' and we didn't have a redirect (or redirect failed).
+	# Try stripping known suffixes.
+	var suffixes = {
+		"_kingdom": "monarchist",
+		"_empire": "monarchist",
+		"_republic": "liberal",
+		"_commune": "communist",
+		"_union": "communist",
+		"_socialist": "communist",
+		"_fascist": "facist",
+		"_national": "facist",
+		"_democratic": "liberal"
+	}
+	
+	for suffix in suffixes:
+		if country.ends_with(suffix):
+			var base_country = country.left(country.length() - suffix.length())
+			var fallback_ideology = suffixes[suffix]
+			
+			# If user requested an ideology, we might still want to check base_country with THAT ideology first
+			# But if they didn't, use the fallback.
+			var check_ideology = ideology if ideology != "" else fallback_ideology
+			
+			# Avoid infinite recursion if base == country (shouldn't happen with suffix check)
+			var tex = get_flag(base_country, check_ideology)
+			if tex:
+				flag_cache[cache_key] = tex
+				return tex
+			
+			# If that failed, maybe base_country + neutral?
+			if ideology != "":
+				tex = get_flag(base_country, "")
+				if tex:
+					flag_cache[cache_key] = tex
+					return tex
+
+	# 4. Fallback to old flat structure (just in case): assets/flags/country_flag.png
+	path = "res://assets/flags/%s_flag.png" % country
+	if ResourceLoader.exists(path):
+		var tex := load(path)
+		flag_cache[cache_key] = tex
 		return tex
 
 	# Fallback texture (optional)
-	print("Flag not found for country:", country)
+	# print("Flag not found for country: %s (ideology: %s)" % [country, ideology])
 	return null
 
 

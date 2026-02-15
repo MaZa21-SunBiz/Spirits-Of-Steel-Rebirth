@@ -3,7 +3,7 @@ class_name TroopData
 
 # --- Core Properties ---
 var country_name: String
-var country_obj: Resource  # Changed to Resource/Object for safety
+var country_obj: Resource # Changed to Resource/Object for safety
 var province_id: int
 var position: Vector2
 
@@ -28,6 +28,7 @@ func _init(
 	country_name = p_country
 	province_id = p_province_id
 	position = p_position
+	country_obj = CountryManager.get_country(p_country)
 
 	for i in range(p_divisions):
 		var div = DivisionData.new()

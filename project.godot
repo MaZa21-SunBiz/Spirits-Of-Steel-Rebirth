@@ -38,6 +38,7 @@ EconomyManager="*res://Managers/EconomyManager.gd"
 SuperEventManager="*res://Managers/SuperEventManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
+IdeologyManager="*uid://yqhi3i86rxuf"
 
 [display]
 

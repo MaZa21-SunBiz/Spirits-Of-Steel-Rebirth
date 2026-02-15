@@ -34,7 +34,7 @@ var _last_cam_zoom := Vector2.INF
 
 # --- Lifecycle ---
 func _ready() -> void:
-	z_index = 20  # Keep renderer high
+	z_index = 20 # Keep renderer high
 	_setup_multimesh()
 
 func _process(_delta: float) -> void:
@@ -75,7 +75,7 @@ func _setup_multimesh():
 	var mm = MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_2D
 	mm.use_colors = true
-	mm.use_custom_data = false  # Simplified to avoid data corruption
+	mm.use_custom_data = false # Simplified to avoid data corruption
 
 	var q_mesh = QuadMesh.new()
 	q_mesh.size = Vector2(LAYOUT.flag_width + LAYOUT.min_text_width, LAYOUT.flag_height)
@@ -161,7 +161,7 @@ func _draw() -> void:
 
 func _draw_troops() -> void:
 	if _current_inv_zoom > 1.5:
-		return  # LOD optimization
+		return # LOD optimization
 
 	# Use the same grouping logic but account for movement
 	var troops = TroopManager.troops
@@ -201,10 +201,11 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 	# Position text relative to the flag's right edge
 	var text_area_x = top_left.x + LAYOUT.flag_width
 	var tx = text_area_x + (LAYOUT.min_text_width - text_size.x) * 0.5
-	var ty = text_size.y * 0.3  # Vertical center relative to (0,0)
+	var ty = text_size.y * 0.3 # Vertical center relative to (0,0)
 
 	var flag_rect = Rect2(top_left, Vector2(LAYOUT.flag_width, total_h)).grow(-1.0)
-	draw_texture_rect(TroopManager.get_flag(troop.country_name), flag_rect, false)
+	var ideology = troop.country_obj.ideology_name if troop.country_obj else ""
+	draw_texture_rect(TroopManager.get_flag(troop.country_name, ideology), flag_rect, false)
 
 	draw_string(
 		_font, Vector2(tx, ty), label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, COLORS.text
@@ -269,7 +270,7 @@ func _update_screen_rect():
 	var viewport_rect := get_viewport_rect()
 
 	_screen_rect = Rect2(
-		-canvas_xform.origin / canvas_xform.get_scale(),
+		- canvas_xform.origin / canvas_xform.get_scale(),
 		viewport_rect.size / canvas_xform.get_scale()
 	)
 
@@ -360,7 +361,7 @@ func draw_battles():
 		var base_radius = 1.0
 		var ring_radius = 1.2
 		var line_width = 0.5
-		var start_angle = -PI / 2  # Top
+		var start_angle = - PI / 2 # Top
 
 		# 3. Colors
 		var arc_color = Color.GOLD
