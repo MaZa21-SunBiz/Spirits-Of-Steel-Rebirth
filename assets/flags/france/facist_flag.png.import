@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xpl83bl0pwkj"
-path="res://.godot/imported/neutral_flag.png-a604866d74c37c9b7850628bb36c090d.ctex"
+path="res://.godot/imported/facist_flag.png-9539b035295f419aac594a2865941ea2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/national_france/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-a604866d74c37c9b7850628bb36c090d.ctex"]
+source_file="res://assets/flags/france/facist_flag.png"
+dest_files=["res://.godot/imported/facist_flag.png-9539b035295f419aac594a2865941ea2.ctex"]
 
 [params]
 

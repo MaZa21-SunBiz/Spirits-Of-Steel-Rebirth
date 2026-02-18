@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5e1l62pwmty2"
-path="res://.godot/imported/neutral_flag.png-ba4ac6e0be796e5c6b61abecf11cd707.ctex"
+path="res://.godot/imported/neutral_flag.png-123bfd4ebaa78fc2c231e40441cdbccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/communist_bloc/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-ba4ac6e0be796e5c6b61abecf11cd707.ctex"]
+source_file="res://assets/flags/Factions/communist_bloc/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-123bfd4ebaa78fc2c231e40441cdbccc.ctex"]
 
 [params]
 

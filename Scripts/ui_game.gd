@@ -57,23 +57,25 @@ var current_category: Category = Category.GENERAL
 @export var military_access_label: Label
 
 # ── Constants ──────────────────────────────────────────
-const ACTION_COSTS := {
-	"_declare_war": 100,
-	"_request_access": 25,
-	"_force_puppet": 150,
-	"improve_stability": 50,
-	"_improve_relations": 50,
-	"_propose_peace": 0, # Should be free or handled by peace process
-	"_launch_nuke": 250,
-	"_form_alliance": 100,
-	"_demand_tribute": 75,
-	"_trade_deal": 25,
-	"open_research_tree": 0,
-	"open_decisions_tree": 0,
-	"_open_faction": 0,
-	"open_manage_country": 0,
-	"_build_factory": 0, # Uses money/time
-	"_build_port": 0 # Uses money/time
+var action_costs := {
+	"_declare_war": func(data: CountryData): return 100 if data.war_support > 0.5 else 150,
+	"_request_access": func(_data: CountryData): return 25,
+	"_force_puppet": func(_data: CountryData): return 150,
+	"_release_puppet": func(_data: CountryData): return 50,
+	"improve_stability": func(data: CountryData): return int(50 * (1.0 + data.stability)),
+	"_improve_relations": func(data: CountryData):
+		return 40 if data.ideology_name == "liberal" else 50,
+	"_propose_peace": func(_data: CountryData): return 0,
+	"_launch_nuke": func(_data: CountryData): return 250,
+	"_form_alliance": func(_data: CountryData): return 100,
+	"_demand_tribute": func(_data: CountryData): return 75,
+	"_trade_deal": func(_data: CountryData): return 25,
+	"open_research_tree": func(_data: CountryData): return 0,
+	"open_decisions_tree": func(_data: CountryData): return 0,
+	"_open_faction": func(_data: CountryData): return 0,
+	"open_manage_country": func(_data: CountryData): return 0,
+	"_build_factory": func(_data: CountryData): return 0,
+	"_build_port": func(_data: CountryData): return 0
 }
 
 func _enter_tree() -> void:
@@ -299,8 +301,8 @@ func _update_context_actions_visuals() -> void:
 							method = connection.callable.get_method()
 							break
 					
-					if method != "" and ACTION_COSTS.has(method):
-						var cost = ACTION_COSTS[method]
+					if method != "" and action_costs.has(method):
+						var cost = action_costs[method].call(player)
 						var can_afford = player.political_power >= cost
 						
 						child.disabled = !can_afford
@@ -474,12 +476,17 @@ func _choose_deploy_city():
 
 
 func _declare_war():
-	var cost = ACTION_COSTS.get("_declare_war", 0)
+	var cost = action_costs["_declare_war"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
 	
 	WarManager.declare_war(CountryManager.player_country, selected_country)
+
+	if selected_country.owner:
+		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[selected_country.owner])
+	for puppet in selected_country.puppets:
+		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[ puppet ])
 
 	var has_military_access := (
 		selected_country.country_name in CountryManager.player_country.allowedCountries
@@ -506,7 +513,7 @@ func deploy_troop(troop):
 
 
 func improve_stability():
-	var cost = ACTION_COSTS.get("improve_stability", 0)
+	var cost = action_costs["improve_stability"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -527,7 +534,7 @@ func _build_port():
 
 
 func _request_access():
-	var cost = ACTION_COSTS.get("_request_access", 0)
+	var cost = action_costs["_request_access"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -536,7 +543,7 @@ func _request_access():
 	_update_context_actions_visuals()
 
 func _force_puppet():
-	var cost = ACTION_COSTS.get("_force_puppet", 0)
+	var cost = action_costs["_force_puppet"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -546,7 +553,7 @@ func _force_puppet():
 	close_menu()
 
 func _on_release_puppet_pressed():
-	var cost = ACTION_COSTS.get("_release_puppet", 0)
+	var cost = action_costs["_release_puppet"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -557,7 +564,7 @@ func _on_release_puppet_pressed():
 
 
 func _improve_relations():
-	var cost = ACTION_COSTS.get("_improve_relations", 0)
+	var cost = action_costs["_improve_relations"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -774,7 +781,7 @@ func _on_division_type_button(type: String) -> void:
 	division_type_selected = type
 	update_division_menu()
 
-func _on_input_division_text_changed(new_text: float) -> void:
+func _on_input_division_text_changed(_new_text: float) -> void:
 	update_division_menu()
 
 func _on_music_pressed():

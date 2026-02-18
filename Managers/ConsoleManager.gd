@@ -40,7 +40,7 @@ func _add_pp(amount):
 	CountryManager.player_country.political_power += float(amount)
 
 func _set_ideology(x, y):
-	CountryManager.player_country.ideology = [int(x), int(y)]
+	CountryManager.player_country.ideology = Vector2(int(x), int(y))
 
 func _add_manpower(amount):
 	CountryManager.player_country.manpower += int(amount)

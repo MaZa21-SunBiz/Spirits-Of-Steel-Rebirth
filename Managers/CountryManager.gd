@@ -38,6 +38,8 @@ func initialize_countries() -> void:
 
 	for country_name in detected_countries:
 		add_country(country_name)
+	for country in countries.values():
+		country.update_relations()
 
 	print("CountryManager: Initialized %d countries." % countries.size())
 
@@ -180,6 +182,9 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.allowedCountries.append(puppeter.country_name)
 	puppetee.is_puppet = true
 	puppetee.owner = puppeter.country_name
+	puppetee.ideology = puppeter.ideology
+	puppetee.ideology_name = puppeter.ideology_name
+	puppetee.relations[puppeter.country_name] = 200
 	MapManager.show_countries_map()
 
 func release_puppet(puppeter: CountryData, puppetee: CountryData):

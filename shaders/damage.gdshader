@@ -5,7 +5,7 @@ void fragment(){
     float noiseValue = texture(NOISE_PATTERN, SCREEN_UV).x;
     // COLOR += vec4(noiseValue)/20.0;
 	float thicc = 0.02;
-	float lower = 0.4;
+	float lower = 0.1;
 	float upper = 0.0;
 	vec2 uhh = UV-0.5;
 	float ooo = uhh.x*uhh.x+uhh.y*uhh.y;

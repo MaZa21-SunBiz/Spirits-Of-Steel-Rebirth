@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w2mse1vgd4p1"
-path="res://.godot/imported/neutral_flag.png-3b26be6b1beff718044186891bb29c3d.ctex"
+path="res://.godot/imported/liberal_flag.png-36be4ae2b47821289e6676c9f0ebad50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/white_ruthenia/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-3b26be6b1beff718044186891bb29c3d.ctex"]
+source_file="res://assets/flags/belarus/liberal_flag.png"
+dest_files=["res://.godot/imported/liberal_flag.png-36be4ae2b47821289e6676c9f0ebad50.ctex"]
 
 [params]
 

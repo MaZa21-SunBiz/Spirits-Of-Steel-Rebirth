@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vdxgev54paps"
-path.s3tc="res://.godot/imported/communist_flag.png-833cc59cdfb01e8ba620ec26bcdc2ee9.s3tc.ctex"
+uid="uid://b8jf8msdgktvf"
+path.s3tc="res://.godot/imported/liberal_flag.png-ec90a533e3249bc46ba8ff7139ec711b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/germany/communist_flag.png"
-dest_files=["res://.godot/imported/communist_flag.png-833cc59cdfb01e8ba620ec26bcdc2ee9.s3tc.ctex"]
+source_file="res://assets/flags/germany/liberal_flag.png"
+dest_files=["res://.godot/imported/liberal_flag.png-ec90a533e3249bc46ba8ff7139ec711b.s3tc.ctex"]
 
 [params]
 

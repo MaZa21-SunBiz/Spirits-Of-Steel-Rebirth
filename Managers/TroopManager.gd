@@ -68,7 +68,7 @@ func _start_next_leg(troop: TroopData) -> void:
 		func(t): return WarManager.is_at_war_names(t.country_name, troop.country_name)
 	)
 
-	if not enemies.is_empty():
+	if not enemies.is_empty() and not GameState.current_world.clock.paused:
 		WarManager.start_battle(troop.province_id, next_pid)
 		pause_troop(troop)
 		for enemy in enemies:

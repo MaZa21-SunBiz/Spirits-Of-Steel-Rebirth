@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvi18u07y3qq5"
-path.s3tc="res://.godot/imported/neutral_flag.png-c7ece6af3664f2ff98dd52b07afebe3d.s3tc.ctex"
+path.s3tc="res://.godot/imported/neutral_flag.png-10ed2ce490f3efe3f7c7d35a53129593.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/nationalism/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-c7ece6af3664f2ff98dd52b07afebe3d.s3tc.ctex"]
+source_file="res://assets/flags/Factions/nationalism/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-10ed2ce490f3efe3f7c7d35a53129593.s3tc.ctex"]
 
 [params]
 

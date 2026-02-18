@@ -203,7 +203,7 @@ class Battle:
 
 
 func _process(delta: float):
-	if active_battles.is_empty():
+	if active_battles.is_empty() or GameState.current_world.clock.paused:
 		return
 	var current_intensity = delta * GameState.current_world.clock.time_scale
 	if current_intensity <= 0:
@@ -214,6 +214,8 @@ func _process(delta: float):
 
 
 func start_battle(attacker_pid: int, defender_pid: int):
+	if GameState.current_world.clock.paused:
+		return
 	# Prevent duplicate battles
 	for b in active_battles:
 		if b.attacker_pid == attacker_pid and b.defender_pid == defender_pid:
@@ -306,7 +308,13 @@ func declare_war(a: CountryData, b: CountryData) -> void:
 	if not ok:
 		return
 
-	if a.is_player or b.is_player:
+	var is_involved = (
+		a.is_player or b.is_player or
+		is_at_war(CountryManager.player_country, a) or
+		is_at_war(CountryManager.player_country, b)
+	)
+
+	if is_involved:
 		PopupManager.show_alert("war", a, b)
 		MusicManager.play_music(MusicManager.MUSIC.BATTLE_THEME)
 		MusicManager.play_sfx(MusicManager.SFX.DECLARE_WAR)
@@ -316,6 +324,11 @@ func _snapshot_country_territory(c_name: String) -> void:
 	if not original_territories.has(c_name):
 		var pids = MapManager.country_to_provinces.get(c_name, []).duplicate()
 		original_territories[c_name] = pids
+		
+		# Also store in CountryData if it exists
+		var country_data = CountryManager.get_country(c_name)
+		if country_data and country_data.pre_war_provinces.is_empty():
+			country_data.pre_war_provinces = pids.duplicate()
 
 
 func add_war_silent(a: CountryData, b: CountryData) -> bool:
@@ -442,12 +455,22 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		if player and !is_country_at_war(player.country_name):
 			MusicManager.play_music(MusicManager.MUSIC.MAIN_THEME)
 
+	# --- 2. Return territory occupied BY the loser to original owners ---
+	var current_provinces = MapManager.country_to_provinces.get(fallen_name, []).duplicate()
+	for pid in current_provinces:
+		if not loser.pre_war_provinces.has(pid):
+			var original_owner = _get_original_owner(pid)
+			if original_owner != fallen_name:
+				MapManager.transfer_ownership(pid, original_owner)
+
 	# --- 3. Territory preview (for peace UI only) ---
-	var provinces_to_negotiate = (
-		original_territories
-		.get(fallen_name, MapManager.country_to_provinces.get(fallen_name, []))
-		.duplicate()
-	)
+	var provinces_to_negotiate = loser.pre_war_provinces.duplicate()
+	if provinces_to_negotiate.is_empty():
+		provinces_to_negotiate = (
+			original_territories
+			.get(fallen_name, MapManager.country_to_provinces.get(fallen_name, []))
+			.duplicate()
+		)
 
 	if player_won:
 		for pid in provinces_to_negotiate:
@@ -469,3 +492,10 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		MapManager.transfer_ownership(pid, victor_name)
 	original_territories.erase(fallen_name)
 	CountryManager.cleanup_empty_countries()
+
+
+func _get_original_owner(pid: int) -> String:
+	for c_name in original_territories:
+		if pid in original_territories[c_name]:
+			return c_name
+	return MapManager.province_to_country.get(pid, "sea")

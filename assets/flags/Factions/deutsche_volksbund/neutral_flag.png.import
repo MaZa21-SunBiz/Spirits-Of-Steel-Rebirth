@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tvjvr0uvqgn2"
-path.s3tc="res://.godot/imported/neutral_flag.png-a7da8d73bf65c1bd943e2b00a0a7c360.s3tc.ctex"
+path.s3tc="res://.godot/imported/neutral_flag.png-7a5b1a37ccd1a98f7549ba34759ae7cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/deutsche_volksbund/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-a7da8d73bf65c1bd943e2b00a0a7c360.s3tc.ctex"]
+source_file="res://assets/flags/Factions/deutsche_volksbund/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-7a5b1a37ccd1a98f7549ba34759ae7cf.s3tc.ctex"]
 
 [params]
 

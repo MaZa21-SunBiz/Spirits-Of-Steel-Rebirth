@@ -34,10 +34,10 @@ var political_power: float = 5000.0
 var daily_pp_gain: float = 0.04
 var stability: float = 0.5
 var war_support: float = 0.5
-var ideology: Array = [randi_range(-100, 100), randi_range(-100, 100)]: set = set_ideology
+var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100))
 var ideology_name: String = "neutral"
 
-func set_ideology(value: Array) -> void:
+func set_ideology(value: Vector2) -> void:
 	ideology = value
 	refresh_ideology_name()
 	ideology_changed.emit()
@@ -60,6 +60,7 @@ var factions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
 var deploy_pid: int = -1 # ID of province to deploy to
+var pre_war_provinces: Array = [] # Snapshotted provinces before a war
 #endregion
 
 var _is_loading := false
@@ -397,6 +398,16 @@ func _process_reinforcements():
 func set_relation_with(other_country_name: String, value: int) -> void:
 	other_country_name = other_country_name.to_lower()
 	relations[other_country_name] = clampi(value, 0, 100)
+	var finish_game = true
+
+
+func update_relations():
+	for country_name in relations:
+		if CountryManager.countries.has(country_name):
+			relations[country_name] = 141 - ideology.distance_to(CountryManager.countries[country_name].ideology)
+		else:
+			print(country_name)
+			relations[country_name] = 50
 
 func get_relation_with(other_country_name: String) -> int:
 	other_country_name = other_country_name.to_lower()

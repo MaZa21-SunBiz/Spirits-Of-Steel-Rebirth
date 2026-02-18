@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dew167mckcsj0"
-path.s3tc="res://.godot/imported/neutral_flag.png-008f620a14251ab0569ede35f605d2c2.s3tc.ctex"
+path.s3tc="res://.godot/imported/communist_flag.png-2a5258e5677ee855d67145d625e5fcd6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/south_african_republic/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-008f620a14251ab0569ede35f605d2c2.s3tc.ctex"]
+source_file="res://assets/flags/south_africa/communist_flag.png"
+dest_files=["res://.godot/imported/communist_flag.png-2a5258e5677ee855d67145d625e5fcd6.s3tc.ctex"]
 
 [params]
 

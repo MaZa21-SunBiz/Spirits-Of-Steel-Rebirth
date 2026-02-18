@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8jf8msdgktvf"
-path.s3tc="res://.godot/imported/liberal_flag.png-ec90a533e3249bc46ba8ff7139ec711b.s3tc.ctex"
+uid="uid://dawuoh0v5jjw0"
+path.s3tc="res://.godot/imported/anarchist_flag.png-20a7a2247809ffde23b5bcdd4d52bc96.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/germany/liberal_flag.png"
-dest_files=["res://.godot/imported/liberal_flag.png-ec90a533e3249bc46ba8ff7139ec711b.s3tc.ctex"]
+source_file="res://assets/flags/germany/anarchist_flag.png"
+dest_files=["res://.godot/imported/anarchist_flag.png-20a7a2247809ffde23b5bcdd4d52bc96.s3tc.ctex"]
 
 [params]
 

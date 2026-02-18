@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cih83jr5wlt56"
-path="res://.godot/imported/monarchist_flag.png-58c1514a580861903547785a426308e4.ctex"
+path="res://.godot/imported/monarchist_flag.png-1910d199ca8d64502831556174884cc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/finnish_ssr/monarchist_flag.png"
-dest_files=["res://.godot/imported/monarchist_flag.png-58c1514a580861903547785a426308e4.ctex"]
+source_file="res://assets/flags/finland/monarchist_flag.png"
+dest_files=["res://.godot/imported/monarchist_flag.png-1910d199ca8d64502831556174884cc2.ctex"]
 
 [params]
 

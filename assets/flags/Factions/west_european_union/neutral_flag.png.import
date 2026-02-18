@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnbgm6bj4ucxf"
-path.s3tc="res://.godot/imported/neutral_flag.png-8ebcfdf4ea442586ac9386ec7e4a2cfb.s3tc.ctex"
+path.s3tc="res://.godot/imported/neutral_flag.png-b543646f06db5a69c5c931b99db4f187.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/west_european_union/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-8ebcfdf4ea442586ac9386ec7e4a2cfb.s3tc.ctex"]
+source_file="res://assets/flags/Factions/west_european_union/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-b543646f06db5a69c5c931b99db4f187.s3tc.ctex"]
 
 [params]
 

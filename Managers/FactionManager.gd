@@ -18,7 +18,5 @@ func invite_faction(inviter: CountryData, invitee: CountryData):
 func in_faction(inviter: CountryData, invitee: CountryData):
 	for faction in invitee.factions:
 		if faction in inviter.factions:
-			print("smart fella")
 			return true
-	print("fart smella")
 	return false

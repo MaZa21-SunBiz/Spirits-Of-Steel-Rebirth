@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dggnll03d7lqj"
-path="res://.godot/imported/communist_flag.png-f7e4db156726701430ba682631041e0a.ctex"
+path="res://.godot/imported/communist_flag.png-2b1fa3acb870bcb8f723d529cafa1833.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/african_union/communist_flag.png"
-dest_files=["res://.godot/imported/communist_flag.png-f7e4db156726701430ba682631041e0a.ctex"]
+source_file="res://assets/flags/Factions/african_union/communist_flag.png"
+dest_files=["res://.godot/imported/communist_flag.png-2b1fa3acb870bcb8f723d529cafa1833.ctex"]
 
 [params]
 

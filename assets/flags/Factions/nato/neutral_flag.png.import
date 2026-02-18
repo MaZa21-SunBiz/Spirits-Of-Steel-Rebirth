@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5gktvsxbcw0o"
-path="res://.godot/imported/neutral_flag.png-fb3834f5886a3ceaae6d9f95277fbcf1.ctex"
+path="res://.godot/imported/neutral_flag.png-f3f60fa1afe0add96a9dc8d79d0f76d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/nato/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-fb3834f5886a3ceaae6d9f95277fbcf1.ctex"]
+source_file="res://assets/flags/Factions/nato/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-f3f60fa1afe0add96a9dc8d79d0f76d5.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci0d74g04ukku"
-path.s3tc="res://.godot/imported/neutral_flag.png-8d252820283bd6d7f0e621ca3449c2fc.s3tc.ctex"
+path.s3tc="res://.godot/imported/monarchist_flag.png-0ed199ae9f50610521f99fbd7622d4f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/montenegrin_kingdom/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-8d252820283bd6d7f0e621ca3449c2fc.s3tc.ctex"]
+source_file="res://assets/flags/montenegro/monarchist_flag.png"
+dest_files=["res://.godot/imported/monarchist_flag.png-0ed199ae9f50610521f99fbd7622d4f9.s3tc.ctex"]
 
 [params]
 

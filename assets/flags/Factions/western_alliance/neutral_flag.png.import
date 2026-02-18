@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btulqwymjrhqh"
-path.s3tc="res://.godot/imported/neutral_flag.png-a6cae3553c9c4f0d86dc86a6d96c6275.s3tc.ctex"
+path.s3tc="res://.godot/imported/neutral_flag.png-bf97fd8b6443f16079faf9cd755629a1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/western_alliance/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-a6cae3553c9c4f0d86dc86a6d96c6275.s3tc.ctex"]
+source_file="res://assets/flags/Factions/western_alliance/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-bf97fd8b6443f16079faf9cd755629a1.s3tc.ctex"]
 
 [params]
 

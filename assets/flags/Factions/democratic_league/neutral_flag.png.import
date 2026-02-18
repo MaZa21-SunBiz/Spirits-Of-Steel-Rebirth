@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v2j3hie43euh"
-path="res://.godot/imported/neutral_flag.png-082b65a807590133665136b77ecaf211.ctex"
+path="res://.godot/imported/neutral_flag.png-96ededb68e37e97ca658f95cb63e47e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flags/democratic_league/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-082b65a807590133665136b77ecaf211.ctex"]
+source_file="res://assets/flags/Factions/democratic_league/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-96ededb68e37e97ca658f95cb63e47e0.ctex"]
 
 [params]
 

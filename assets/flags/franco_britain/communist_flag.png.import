@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqapi5khx525p"
-path.s3tc="res://.godot/imported/neutral_flag.png-8f3ad90ccdbdefdf58866f287bd33116.s3tc.ctex"
+path.s3tc="res://.godot/imported/communist_flag.png-14fd5a0c45874d389811f875e63ba8f3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/franco_british_union/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-8f3ad90ccdbdefdf58866f287bd33116.s3tc.ctex"]
+source_file="res://assets/flags/franco_britain/communist_flag.png"
+dest_files=["res://.godot/imported/communist_flag.png-14fd5a0c45874d389811f875e63ba8f3.s3tc.ctex"]
 
 [params]
 

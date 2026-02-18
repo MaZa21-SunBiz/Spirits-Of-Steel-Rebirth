@@ -24,10 +24,10 @@ func _ready():
 	else:
 		print("Unexpected JSON root type: expected Dictionary")
 
-func get_ideology_name(coords: Array):
+func get_ideology_name(coords: Vector2):
 	for ideology in ideologies:
 		var lower_bound = ideologies[ideology][0]
 		var upper_bound = ideologies[ideology][1]
-		if (lower_bound[0] < coords[0] and coords[0] < upper_bound[0]) and (lower_bound[1] < coords[1] and coords[1] < upper_bound[1]):
+		if (lower_bound[0] <= coords[0] and coords.x <= upper_bound[0]) and (lower_bound[1] <= coords.y and coords[1] <= upper_bound[1]):
 			return ideology
 	return "neutral"

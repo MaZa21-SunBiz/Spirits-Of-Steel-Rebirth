@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxtcqtvs0f137"
-path.s3tc="res://.godot/imported/conservative_flag.png-00a461649922b7ac89c68f4490201c23.s3tc.ctex"
+path.s3tc="res://.godot/imported/monarchist_flag.png-282af0749d4183d6217237676a501b2d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/belarus/conservative_flag.png"
-dest_files=["res://.godot/imported/conservative_flag.png-00a461649922b7ac89c68f4490201c23.s3tc.ctex"]
+source_file="res://assets/flags/belarus/monarchist_flag.png"
+dest_files=["res://.godot/imported/monarchist_flag.png-282af0749d4183d6217237676a501b2d.s3tc.ctex"]
 
 [params]
 

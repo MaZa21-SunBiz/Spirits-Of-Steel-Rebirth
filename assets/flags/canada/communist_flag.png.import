@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8pmqebdt3uf0"
-path.s3tc="res://.godot/imported/monarchist_flag.png-1bdbcdcaf8a73fbeb631554b2aabb9b0.s3tc.ctex"
+path.s3tc="res://.godot/imported/communist_flag.png-8b541938ff20f92d246dc7b41a1563ad.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/canada/monarchist_flag.png"
-dest_files=["res://.godot/imported/monarchist_flag.png-1bdbcdcaf8a73fbeb631554b2aabb9b0.s3tc.ctex"]
+source_file="res://assets/flags/canada/communist_flag.png"
+dest_files=["res://.godot/imported/communist_flag.png-8b541938ff20f92d246dc7b41a1563ad.s3tc.ctex"]
 
 [params]
 
