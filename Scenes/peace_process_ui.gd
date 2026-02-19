@@ -224,7 +224,7 @@ func _on_clear_selection_pressed():
 
 func _reset_province_visual_immediate(pid: int):
 	var owner = MapManager.province_to_country[pid]
-	var original_color = MapManager.country_colors.get(owner, Color.WHITE)
+	var original_color = CountryManager.GetCountryColor(owner, Color.WHITE)
 	_update_map_visual(pid, original_color)
 
 
@@ -292,5 +292,5 @@ func _reset_province_visual(pid: int):
 		# Otherwise, revert to the original country color
 		var country = MapManager.province_to_country[pid]
 		if country != "sea":
-			var original_color = MapManager.country_colors[country]
+			var original_color = CountryManager.GetCountryColor(country)
 			_update_map_visual(pid, original_color)

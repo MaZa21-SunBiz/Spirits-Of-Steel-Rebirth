@@ -12,6 +12,7 @@ const BASE_ARMY_COST := 20
 
 #region --- Properties ---
 var country_name: String
+var country_color: Color
 var is_player: bool = false
 var is_puppet: bool = false
 
@@ -54,7 +55,7 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
-var puppets: Array[String] = []
+var puppets: Array = []
 var owner: String
 var factions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
@@ -91,20 +92,39 @@ class ReadyTroop:
 
 
 #region --- Lifecycle ---
-func _init(p_country_name: String = "") -> void:
-	if p_country_name != "":
-		country_name = p_country_name
-	if _is_loading:
-		return
-	allowedCountries.append_array([p_country_name, "sea"])
-	_refresh_economic_stats()
-	refresh_ideology_name()
+#func _init(p_country_name: String = "") -> void:
+#	if p_country_name != "":
+#		country_name = p_country_name
+#	if _is_loading:
+#		return
+#	allowedCountries.append_array([p_country_name, "sea"])
+#	_refresh_economic_stats()
+#	refresh_ideology_name()
+#
+#	# Initial Manpower Calculation
+#	var manpower_used = CountryManager.get_country_used_manpower(self)
+#	manpower = int((total_population * military_size_ratio) - manpower_used)
+#	_setup_starting_army()
 
-	# Initial Manpower Calculation
-	var manpower_used = CountryManager.get_country_used_manpower(self)
-	manpower = int((total_population * military_size_ratio) - manpower_used)
-	_setup_starting_army()
-
+static func FromDict(a_data: Dictionary) -> CountryData:
+	var country: CountryData = CountryData.new()
+	
+	country.country_name = a_data["name"]
+	country.country_color = Color.html(a_data.get("color", "#FFFFFF"))
+	country.money = a_data.get("money", 0)
+	country.ideology = Vector2(a_data.get("ideology", [0, 0])[0], a_data.get("ideology", [0, 0])[1])
+	country.political_power = a_data.get("political_power", 5000)
+	country.stability = a_data.get("stability", 0.5)
+	country.war_support = a_data.get("war_support", 0.5)
+	country.puppets = a_data.get("puppets", [])
+	country.allowedCountries.append_array([country.country_name, "Sea"])
+	country._refresh_economic_stats()
+	country.refresh_ideology_name()
+	
+	# NOTE(Sockmit2007): Urgh...
+	#country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
+	
+	return country
 
 func process_hour() -> void:
 	if _is_loading:
@@ -115,8 +135,7 @@ func process_hour() -> void:
 	# Economic Cycle
 	# (GDP / Hours in a year) * Tax Rate + Factory Output
 	var base_income = (gdp / 8760.0) * 0.2
-	var factory_income = factories_amount * factory_income
-	var gross_income = base_income + factory_income
+	var gross_income = base_income + (factories_amount * factory_income)
 	hourly_money_income = gross_income * (1.0 - economy_law_penalty)
 	army_cost = calculate_army_upkeep()
 	income = hourly_money_income - army_cost
@@ -317,23 +336,14 @@ func calculate_army_upkeep() -> float:
 func _setup_starting_army() -> void:
 	# 1. Economic Safety: Calculate what we can actually afford
 	# We use the same math as process_hour to see our projected income
-	var base_income = (gdp / 8760.0) * 0.2
-	var factory_income = factories_amount * factory_income
-	var total_hourly_income = base_income + factory_income
-
 	# Don't spend more than 25% of hourly income on starting upkeep
-	var upkeep_budget = total_hourly_income * 0.25
-	var individual_cost = army_level * BASE_ARMY_COST
-
 	# 2. Determine count (Strictly capped to prevent icon spam)
-	var affordable_count = int(upkeep_budget / max(1.0, individual_cost))
-	var final_count = clampi(affordable_count, 1, 6) # Start very small (1-6 divs)
+	var final_count = clampi(int(((((gdp / 8760.0) * 0.2) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
 
 	# 3. Manpower Check
 	var template = DivisionData.TEMPLATES.get("infantry")
-	var needed_manpower = final_count * template["manpower"]
 
-	if manpower < needed_manpower:
+	if manpower < final_count * template["manpower"]:
 		final_count = int(manpower / max(1, template["manpower"]))
 
 	if final_count <= 0:
@@ -396,19 +406,17 @@ func _process_reinforcements():
 					
 					
 func set_relation_with(other_country_name: String, value: int) -> void:
-	other_country_name = other_country_name.to_lower()
 	relations[other_country_name] = clampi(value, 0, 100)
-	var finish_game = true
+	#var finish_game = true
 
 
 func update_relations():
-	for country_name in relations:
-		if CountryManager.countries.has(country_name):
-			relations[country_name] = 141 - ideology.distance_to(CountryManager.countries[country_name].ideology)
+	for otherName in relations:
+		if CountryManager.countries.has(otherName):
+			relations[otherName] = 141 - ideology.distance_to(CountryManager.countries[otherName].ideology)
 		else:
-			print(country_name)
-			relations[country_name] = 50
+			print(otherName)
+			relations[otherName] = 50
 
 func get_relation_with(other_country_name: String) -> int:
-	other_country_name = other_country_name.to_lower()
 	return relations.get(other_country_name, 50)

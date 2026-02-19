@@ -26,36 +26,36 @@ func _on_day_passed() -> void:
 	SuperEventManager.check_events()
 	
 
-func initialize_countries() -> void:
+func initialize_countries(a_countriesData: Array) -> void:
 	if GameState.is_loading_game:
 		print("CountryManager: Skipping initialization (loading save)")
 		return
 	countries.clear()
 
-	var detected_countries = MapManager.country_to_provinces.keys()
-	if detected_countries.is_empty():
-		detected_countries = MapManager.country_colors.keys()
-
-	for country_name in detected_countries:
-		add_country(country_name)
-	for country in countries.values():
+	for countryData: Dictionary in a_countriesData:
+		add_country(countryData)
+		
+	for country: CountryData in countries.values():
 		country.update_relations()
+		for puppeted: String in country.puppets:
+			InformPuppet(country, countries[puppeted])
 
 	print("CountryManager: Initialized %d countries." % countries.size())
 
 
 func get_country(c_name: String) -> CountryData:
-	c_name = c_name.to_lower()
-	if c_name == "sea":
+	if c_name == "Sea":
 		return null
 	if countries.has(c_name):
 		return countries[c_name]
 	push_warning("CountryManager: Requested non-existent country '%s'" % c_name)
 	return null
 
+func GetCountryColor(a_country: String, a_defaultColor: Color = Color.BLACK) -> Color:
+	return countries[a_country].country_color if countries.has(a_country) else a_defaultColor
 
 func set_player_country(country_name: String) -> void:
-	var country := countries.get(country_name.to_lower()) as CountryData
+	var country := countries.get(country_name) as CountryData
 	if !country:
 		push_error("CountryManager: Requested non-existent country '%s'" % country_name)
 		return
@@ -70,31 +70,31 @@ func set_player_country(country_name: String) -> void:
 	emit_signal("player_country_changed")
 
 
-func add_country(country_name: String) -> CountryData:
-	if country_name == "sea": return
-	var c_name_lower = country_name.to_lower()
+func add_country(a_countryData: Dictionary) -> CountryData:
+	if a_countryData["name"] == "Sea": return
+	var tempName = a_countryData["name"]
 
 	# 1. Check if it already exists
-	if countries.has(c_name_lower):
-		push_warning("CountryManager: Country '%s' already exists!" % country_name)
-		return countries[c_name_lower]
+	if countries.has(tempName):
+		push_warning("CountryManager: Country '%s' already exists!" % tempName)
+		return countries[tempName]
 
 	# 2. Check if the flag exists before proceeding
-	var flag = TroopManager.get_flag(c_name_lower)
+	var flag = TroopManager.get_flag(tempName)
 	if flag == null:
-		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % country_name
+		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % tempName
 		push_error(err_msg)
 		return null
 
 	# 3. If flag exists, create and store the country
-	var new_country := CountryData.new(country_name)
+	var new_country: CountryData = CountryData.FromDict(a_countryData)
 	
 	# NOTE Z21: Relations should be based on political affinity and stuff
 	for existing_name in countries.keys():
 		new_country.set_relation_with(existing_name, 50)
-		countries[existing_name].set_relation_with(c_name_lower, 50)
+		countries[existing_name].set_relation_with(tempName, 50)
 	
-	countries[c_name_lower] = new_country
+	countries[tempName] = new_country
 	return new_country
 
 
@@ -108,7 +108,7 @@ func get_country_population(country_name: String) -> int:
 	var pids = MapManager.country_to_provinces[country_name]
 	for pid in pids:
 		if MapManager.province_objects.has(pid):
-			total_pop += MapManager.province_objects[pid].population
+			total_pop += MapManager.province_objects[pid].GetPopulation()
 	return total_pop
 
 
@@ -127,12 +127,15 @@ func get_country_gdp(country_name: String) -> int:
 
 
 func get_factories_amount(country_name: String) -> int:
-	var provinces = MapManager.country_to_provinces.get(country_name, [])
-	var count = 0
-	for pid in provinces:
-		if MapManager.province_objects[pid].factory == Province.FACTORY_BUILT:
-			count += 1
-	return count
+	return MapManager.country_to_provinces.get(country_name, []).reduce(
+		func(pid: int, accum: int):
+			return (accum + MapManager.province_objects[pid].buildings.reduce(
+				func(building: BuildingData, b_accum: int): 
+					return (b_accum + 1) if (building.type == "Factory" && building.state == BuildingData.BuildingState.FUNCTIONAL) else b_accum,\
+				0
+			) if (MapManager.province_objects.has(pid)) else 0),
+		0
+	)
 
 # NOTE(pol): We should keep track of the manpower used instead of recalculating
 # In CountryManager.gd (or wherever this static function lives)
@@ -161,9 +164,9 @@ static func get_country_used_manpower(country_obj: CountryData) -> int:
 
 # Helper to keep the code DRY (Don't Repeat Yourself)
 static func _get_manpower_from_template(type: String) -> int:
-	var stats = DivisionData.TEMPLATES.get(type, DivisionData.TEMPLATES["infantry"])
-	return stats["manpower"]
+	return DivisionData.TEMPLATES.get(type, DivisionData.TEMPLATES["infantry"])["manpower"]
 	
+## [Deprecated]
 func cleanup_empty_countries() -> void:
 	var to_remove: Array[String] = []
 	
@@ -175,6 +178,15 @@ func cleanup_empty_countries() -> void:
 	for c_name in to_remove:
 		print("CountryManager: Removing '%s' (No provinces found)." % c_name)
 		countries.erase(c_name)
+
+func InformPuppet(puppeter: CountryData, puppetee: CountryData):
+	puppeter.allowedCountries.append(puppetee.country_name)
+	puppetee.allowedCountries.append(puppeter.country_name)
+	puppetee.is_puppet = true
+	puppetee.owner = puppeter.country_name
+	puppetee.ideology = puppeter.ideology
+	puppetee.ideology_name = puppeter.ideology_name
+	puppetee.relations[puppeter.country_name] = 200
 
 func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppeter.puppets.append(puppetee.country_name)

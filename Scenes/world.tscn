@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bonl378c51366"]
 
-[ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/world.gd" id="1_go701"]
+[ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/Map/World.gd" id="1_go701"]
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="2_fo5ed"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]

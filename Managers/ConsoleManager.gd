@@ -17,8 +17,9 @@ func _ready() -> void:
 	Console.add_command(
 		"peace_treaty", _peace_treaty, ["country"], 1, "Spawns a peace treaty with country"
 	)
+	# TODO: Rework this.
 	Console.add_command(
-		"release", _release_country, ["country"], 1, "Releases a country based on all its cores"
+		"release", _release_country, ["country"], 1, "Releases a country based on all its claims; the country must exist, to create a new country, look to instantiate_country"
 	)
 	Console.add_command(
 		"releasables", _show_releasables_country, ["country"], 1, "Shows the releasables of a country"
@@ -33,7 +34,7 @@ func _show_releasables_country(country):
 	Console.print_info(JSON.stringify(releasables))
 
 func _release_country(country):
-	MapManager.release_country(country)
+	MapManager.ReleaseCountry(country)
 
 
 func _add_pp(amount):

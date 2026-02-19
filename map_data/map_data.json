@@ -1,0 +1,199 @@
+{
+  "provinces": {
+    "2": {
+      "type": "land",
+      "name": "New Ireland",
+      "polity": "Brazil",
+      "biome": "Forest",
+      "resources": [
+        {
+          "type": "Iron",
+          "amount": 2,
+          "quality": 0.5
+        }
+      ],
+      "city": "Arboria",
+      "buildings": [
+        {
+          "type": "Port",
+          "state": 1,
+          "durability": 1.0
+        }
+      ],
+      "population": [
+        {
+          "ethnicity": "Irish",
+          "amount": 10000
+        }
+      ],
+      "claims": [],
+      "gdp": 1500000
+    },
+    "3": {
+      "type": "land",
+      "name": "Greater Peru",
+      "polity": "Peru",
+      "biome": "Forest",
+      "resources": [
+        {
+          "type": "Iron",
+          "amount": 2,
+          "quality": 0.5
+        }
+      ],
+      "city": "Manchester",
+      "buildings": [],
+      "population": [
+        {
+          "ethnicity": "Irish",
+          "amount": 10000
+        }
+      ],
+      "claims": [],
+      "gdp": 150000
+    },
+    "4": {
+      "type": "land",
+      "name": "Old Tanzania",
+      "polity": "Tanzania",
+      "biome": "Forest",
+      "resources": [
+        {
+          "type": "Iron",
+          "amount": 2,
+          "quality": 0.5
+        }
+      ],
+      "buildings": [],
+      "city": "Manchester",
+      "population": [
+        {
+          "ethnicity": "Irish",
+          "amount": 10000
+        }
+      ],
+      "claims": [],
+      "gdp": 750000
+    }
+  },
+  "polities": [
+    {
+      "name": "Brazil",
+      "color": "#00F0F0",
+      "flag": "",
+      "money": 100000,
+      "ideology": [0, 0],
+      "political_power": 500,
+      "stability": 1.0,
+      "war_support": 1.0,
+      "puppets": [
+        "Peru"
+      ]
+    },
+    {
+      "name": "Peru",
+      "color": "03A0F0",
+      "flag": "",
+      "money": 100000,
+      "ideology": [0, 0],
+      "political_power": 0,
+      "stability": 0.2,
+      "war_support": 0.2,
+      "puppets": []
+    },
+    {
+      "name": "Tanzania",
+      "color": "#FEA0F0",
+      "flag": "",
+      "money": 100000,
+      "ideology": [0, 0],
+      "political_power": 500,
+      "stability": 1.0,
+      "war_support": 1.0,
+      "puppets": []
+    }
+  ],
+  "ideologies": {
+    "Neutral": {
+      "region": [
+        [ -25,  -25],
+        [  25,   25]
+      ]
+    },
+    "Communist": {
+      "region": [
+        [-100, -100],
+        [   0,    0]
+      ]
+    },
+    "Fascist": {
+      "region": [
+        [   0, -100],
+        [ 100,    0]
+      ]
+    },
+    "Liberal": {
+      "region": [
+        [-100,    0],
+        [   0,  100]
+      ]
+    },
+    "Conservative": {
+      "region": [
+        [   0,    0],
+        [ 100,  100]
+      ]
+    },
+    "Monarchist": {
+      "region": [
+        [  50,   50],
+        [ 150,  150] 
+      ]
+    }
+  },
+  "factions": [
+    {
+      "name": "Southern American Alliance", 
+      "color": "#AA030B",
+      "members": [
+        {
+          "polity": "Brazil",
+          "status": "Leader"
+        },
+        {
+          "polity": "Peru",
+          "status": "Member"
+        }
+      ]
+    }
+  ],
+  "diplomacy": {
+    "Brazilian_Tanzanian_War": {
+      "type": "War",
+      "sides": {
+        "Brazilian_Horde": {
+          "participants": [
+            "Brazil",
+            "Peru"
+          ],
+          "relations": {
+            "Tanzanian_Coalition": "Hostile"
+          }
+        },
+        "Tanzanian_Coalition": {
+          "participants": [
+            "Tanzania"
+          ],
+          "relations": {
+            "Brazilian_Horde": "Hostile"
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "name": "Mesianic Bilgecon",
+    "description": "A world in chaos as great powers fight.",
+    "time": 0
+  }
+}

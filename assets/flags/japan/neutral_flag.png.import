@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuhfo18gmuxq5"
-path.s3tc="res://.godot/imported/neutral_flag.png-65d6379d85c1ccb357f240b0e39fb537.s3tc.ctex"
+path.s3tc="res://.godot/imported/neutral_flag.png-8e173774ef907558879bb99398098f98.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/flags/japanese_state/neutral_flag.png"
-dest_files=["res://.godot/imported/neutral_flag.png-65d6379d85c1ccb357f240b0e39fb537.s3tc.ctex"]
+source_file="res://assets/flags/japan/neutral_flag.png"
+dest_files=["res://.godot/imported/neutral_flag.png-8e173774ef907558879bb99398098f98.s3tc.ctex"]
 
 [params]
 

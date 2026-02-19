@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SaveGame" format=3]
 
-[ext_resource type="Script" path="res://Scripts/CountryData.gd" id="1_eas8e"]
-[ext_resource type="Script" path="res://map_data/Province.gd" id="2_jegwg"]
-[ext_resource type="Script" path="res://map_data/SaveFile.gd" id="3_14fip"]
+[ext_resource type="Script" uid="uid://qefgstab0j1o" path="res://Scripts/Map/CountryData.gd" id="1_eas8e"]
+[ext_resource type="Script" uid="uid://cwsfwiffoqm48" path="res://Scripts/Map/Province.gd" id="2_jegwg"]
+[ext_resource type="Script" uid="uid://btetjn2rqn5qn" path="res://map_data/SaveFile.gd" id="3_14fip"]
 
 [sub_resource type="Resource" id="Resource_7se5u"]
 script = ExtResource("1_eas8e")
