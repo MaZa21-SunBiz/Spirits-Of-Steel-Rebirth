@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_iimk6"]
 [ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_mg4y4"]
-[ext_resource type="Script" uid="uid://brr8pe0aekthg" path="res://Scripts/TroopData.gd" id="1_vakmv"]
+[ext_resource type="Script" uid="uid://brr8pe0aekthg" path="res://Scripts/Divisions/TroopData.gd" id="1_vakmv"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_x2cd0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rup03"]

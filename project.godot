@@ -32,7 +32,7 @@ PopupManager="*res://Managers/PopupManager.gd"
 KeyboardManager="*res://Managers/KeyboardManager.gd"
 ConsoleManager="*res://Managers/ConsoleManager.gd"
 Console="*uid://ouiu5xh1cs8n"
-AiManager="*res://Managers/AiManager.gd"
+AiManager="*res://Managers/AIManager.gd"
 DecisionManager="*res://Managers/DecisionManager.gd"
 EconomyManager="*res://Managers/EconomyManager.gd"
 SuperEventManager="*res://Managers/SuperEventManager.gd"
@@ -45,6 +45,10 @@ IdeologyManager="*uid://yqhi3i86rxuf"
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Spirits of Steel Rebirth"
 
 [editor_plugins]
 

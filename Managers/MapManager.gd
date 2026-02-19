@@ -17,12 +17,6 @@ var state_color_image: Image
 var state_color_texture: ImageTexture
 var max_province_id: int = 0
 
-var country_colors: Dictionary = {}
-
-var color_to_pop_map: Dictionary = {}
-var color_to_city_map: Dictionary = {}
-var color_to_ethnic_map: Dictionary = {}
-var color_to_claim_map: Dictionary = {}
 var ethnic_name_to_color: Dictionary = {}
 var gdp_map: Dictionary = {}
 
@@ -54,48 +48,60 @@ const CACHE_FOLDER = "res://map_data/"
 @export var claims_texture: Texture2D
 
 
-func load_country_data() -> void:
-	# NOTE Z21 this can all be done in 1 function like load_json("countries.json", color_to_country_map)
-	_load_country_colors()
-	_load_population_json()
-	_load_city_json()
-	_load_gdp_json()
-	_load_ethnic_json()
-	_load_claims_json()
-	var dir = DirAccess.open("res://")
-	if dir and not dir.dir_exists(CACHE_FOLDER):
-		dir.make_dir_recursive(CACHE_FOLDER)
+func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
+	var width: int = a_map.get_width()
+	var height: int = a_map.get_height()
 
-	if !DEBUG_MODE:
-		if _try_load_cached_data():
-			print("MapManager: Loaded cached data with Province Objects.")
-			return
+	id_map_image = Image.create(width, height, false, Image.FORMAT_RGB8)
+	var unique_regions = {}
+	var next_id = 2
 
-	var region = region_texture if region_texture else preload("res://maps/regions.png")
-	var culture = culture_texture if culture_texture else preload("res://maps/cultures.png")
-	var population = (
-		population_texture if population_texture else preload("res://maps/population_color_map.png")
-	)
-	var city = city_texture if city_texture else preload("res://maps/city_colors.png")
-	var gdp_data = gdp_texture if gdp_texture else preload("res://maps/gdp_data.png")
-	var ethnicity = (
-		ethnicity_texture if ethnicity_texture else preload("res://maps/ethnicities.png")
-	)
-	var claims = claims_texture if claims_texture else preload("res://maps/claims.png")
+	var mapImage = a_map.get_image()
 
-	_generate_and_save(region, culture, population, city, gdp_data, ethnicity, claims)
+	for i in range(width * height):
+		var x: int = i % width
+		var y: int = i / width
+		var r_color = mapImage.get_pixel(x, y)
+
+		var index: String = "%d" % (r_color.to_rgba32() >> 8) # I hate alpha.
 
 
-func _generate_and_save(
-	region: Texture2D,
-	culture: Texture2D,
-	population: Texture2D,
-	city: Texture2D,
-	gdp_data: Texture2D,
-	ethnicity: Texture2D,
-	claims: Texture2D
-) -> void:
-	initialize_map(region, culture, population, city, gdp_data, ethnicity, claims)
+		# Check for Borders/Grid (ID 1)
+		if r_color == Color.BLACK:
+			id_map_image.set_pixel(x, y, 1)
+			continue
+
+		# If this is a new region (Unique Sea Zone or Land Province)
+		if not unique_regions.has(index):
+			print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d" % next_id)
+			unique_regions[index] = next_id
+
+			var province = Province.FromDict(a_provinceData.get(index, {}))
+			province.id = next_id
+
+			province_objects[next_id] = province
+			province_to_country[next_id] = province.country
+			next_id += 1
+
+		# Write the unique ID to your id_map_image
+		id_map_image.set_pixel(x, y, Color.hex((unique_regions[index] << 8) | 0x000000FF))
+	max_province_id = next_id - 1
+	_calculate_province_centroids()
+	_build_country_to_provinces()
+	_build_adjacency_list()
+	
+func load_country_data(a_provinceData: Dictionary) -> void:
+	#var dir = DirAccess.open("res://")
+	#if dir and not dir.dir_exists(CACHE_FOLDER):
+	#	dir.make_dir_recursive(CACHE_FOLDER)
+	#
+	#if !DEBUG_MODE:
+	#	if _try_load_cached_data():
+	#		print("MapManager: Loaded cached data with Province Objects.")
+	#		return
+
+	var region = preload("res://maps/regions.png")
+	Initialize(region, a_provinceData)
 
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
@@ -107,7 +113,6 @@ func _generate_and_save(
 	map_data.province_objects = province_objects.duplicate()
 
 	ResourceSaver.save(map_data, MAP_DATA_PATH)
-
 
 func _try_load_cached_data() -> bool:
 	if not ResourceLoader.exists(MAP_DATA_PATH):
@@ -124,100 +129,8 @@ func _try_load_cached_data() -> bool:
 	id_map_image = loaded.id_map_image
 	province_objects.assign(loaded.province_objects)
 
-	_build_lookup_texture()
+	build_lookup_texture()
 	return true
-
-
-func initialize_map(
-	region_tex: Texture2D,
-	culture_tex: Texture2D,
-	population_tex: Texture2D,
-	city_tex: Texture2D,
-	gdp_tex,
-	ethnicity_tex,
-	claims_tex
-) -> void:
-	var r_img = region_tex.get_image()
-	var c_img = culture_tex.get_image()
-	var p_img = population_tex.get_image()
-	var city_img = city_tex.get_image()
-	var gdp_img = gdp_tex.get_image()
-	var ethnicity_img = ethnicity_tex.get_image()
-	var claims_img = claims_tex.get_image()
-
-	var w = r_img.get_width()
-	var h = r_img.get_height()
-
-	# Safety check for the crash you saw
-	var pw = p_img.get_width()
-	var ph = p_img.get_height()
-
-	id_map_image = Image.create(w, h, false, Image.FORMAT_RGB8)
-	var unique_regions = {}
-	var next_id = 2
-
-	for y in range(h):
-		for x in range(w):
-			var c_color = c_img.get_pixel(x, y)
-			var r_color = r_img.get_pixel(x, y)
-			var is_sea_pixel = _is_sea(c_color)
-
-			# var is_sea_grid = _is_sea_grid(c_color)
-
-			# FIX: Generate a key based on the actual color in the region map (r_color)
-			# We add a prefix so that a land province and sea province with the
-			# same hex color won't accidentally merge.
-			var hex = r_color.to_html(false)
-			var key = ("S_" if is_sea_pixel else "L_") + hex
-
-			# Check for Borders/Grid (ID 1)
-			if r_color == Color.BLACK:
-				_write_id(x, y, 1)
-				continue
-
-			# If this is a new region (Unique Sea Zone or Land Province)
-			if not unique_regions.has(key):
-				unique_regions[key] = next_id
-
-				var province = Province.new()
-				province.id = next_id
-
-				if is_sea_pixel:
-					# SEA LOGIC: Unique ID, but 0 stats
-					province.type = province.SEA
-					province.country = "sea"
-					province.population = 0
-					province.gdp = 0
-					province.city = ""
-				else:
-					# LAND LOGIC
-					province.type = province.LAND
-					province.country = _identify_country(c_color)
-
-					var p_color = p_img.get_pixel(min(x, pw - 1), min(y, ph - 1))
-					var city_color = city_img.get_pixel(min(x, pw - 1), min(y, ph - 1))
-					var gdp_color = gdp_img.get_pixel(min(x, pw - 1), min(y, ph - 1))
-					var ethnicity_color = ethnicity_img.get_pixel(min(x, pw - 1), min(y, ph - 1))
-					var claims_color = claims_img.get_pixel(min(x, pw - 1), min(y, ph - 1))
-					province.population = _get_pop_from_color(p_color)
-					province.city = _get_city_from_color(city_color)
-					province.ethnicity = _get_name_from_color(ethnicity_color, color_to_ethnic_map)
-					province.claims = _get_claims_from_color(claims_color, color_to_claim_map)
-					if len(province.city) > 0: # Cities by default have factories
-						province.factory = Province.FACTORY_BUILT
-					province.gdp = _get_gdp_from_color(gdp_color)
-
-				province_objects[next_id] = province
-				province_to_country[next_id] = province.country
-				next_id += 1
-
-			# Write the unique ID to your id_map_image
-			_write_id(x, y, unique_regions[key])
-	max_province_id = next_id - 1
-	_calculate_province_centroids()
-	_build_country_to_provinces()
-	_build_adjacency_list()
-	_build_lookup_texture()
 
 
 func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> void:
@@ -250,13 +163,7 @@ func _build_country_to_provinces():
 	return
 
 
-func _write_id(x: int, y: int, pid: int) -> void:
-	var r = float(pid % 256) / 255.0
-	var g = pid / 256.0 / 255.0
-	id_map_image.set_pixel(x, y, Color(r, g, 0.0))
-
-
-func _build_lookup_texture() -> void:
+func build_lookup_texture() -> void:
 	state_color_image = Image.create(max_province_id + 1, 1, false, Image.FORMAT_RGBA8)
 
 	for pid in range(max_province_id + 1):
@@ -270,7 +177,7 @@ func _build_lookup_texture() -> void:
 			continue
 
 		var country = province.country
-		var col = country_colors.get(country, Color.GRAY)
+		var col = CountryManager.GetCountryColor(country, Color.GRAY)
 		state_color_image.set_pixel(pid, 0, col)
 
 	state_color_texture = ImageTexture.create_from_image(state_color_image)
@@ -278,17 +185,6 @@ func _build_lookup_texture() -> void:
 
 func _is_sea(c: Color) -> bool:
 	return _dist_sq(c, SEA_RASTER) < 0.001 or _dist_sq(c, SEA_MAIN) < 0.001
-
-
-func _identify_country(c: Color) -> String:
-	var best := ""
-	var min_dist := 0.05
-	for country_name in country_colors.keys():
-		var dist := _dist_sq(c, country_colors[country_name])
-		if dist < min_dist:
-			min_dist = dist
-			best = country_name
-	return best
 
 
 func _dist_sq(c1: Color, c2: Color) -> float:
@@ -299,7 +195,7 @@ func update_province_color(pid: int, country_name: String) -> void:
 	if pid <= 1 or pid > max_province_id:
 		return
 
-	var new_color = country_colors.get(country_name, Color.GRAY)
+	var new_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 	update_lookup(pid, new_color)
 
 	if pid == last_hovered_pid:
@@ -310,7 +206,7 @@ func update_province_color(pid: int, country_name: String) -> void:
 func set_country_color(country_name: String, custom_color: Color = Color.TRANSPARENT) -> void:
 	var new_color = custom_color
 	if new_color == Color.TRANSPARENT:
-		new_color = country_colors.get(country_name, Color.GRAY)
+		new_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 
 	var provinces = country_to_provinces.get(country_name, [])
 
@@ -357,9 +253,7 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 		return 0
 
 	var c = id_map_image.get_pixel(x, y)
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	return r + (g * 256)
+	return c.to_rgba32() >> 8
 
 
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
@@ -481,23 +375,23 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 	# 1. Safety Check: Is there already something there or currently building?
 	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
 	if type == GameState.IndustryType.FACTORY:
-		if province.factory != province.NO_FACTORY:
+		if province.buildings.size() >= 4:
 			print("Cannot build: Factory slot is busy or full.")
 			return
 			
-		EconomyManager.start_construction(pid, "factory", 10, 150.0, country)
+		EconomyManager.start_construction(pid, "Factory", 10, 150.0, country)
 		
 		_cleanup_interaction_state()
 		show_industry_country(player_name)
 
 	elif type == GameState.IndustryType.PORT:
-		if province.port != province.NO_PORT:
+		if province.buildings.size() >= 4 && province.buildings.find_custom(func(a_building: BuildingData): return a_building.type != "Port") == -1:
 			print("Cannot build: Port slot is busy or full.")
 			return
 			
 		# 3. Sea check for Ports
 		if pid in get_provinces_near_sea(player_name):
-			EconomyManager.start_construction(pid, "port", 10, 150.0, country)
+			EconomyManager.start_construction(pid, "Port", 10, 150.0, country)
 			
 			_cleanup_interaction_state()
 			show_industry_country(player_name)
@@ -660,10 +554,7 @@ func _scan_across_border(x: int, y: int, pid: int) -> int:
 
 # Faster direct pid fetch
 func _get_pid_fast(x: int, y: int) -> int:
-	var c = id_map_image.get_pixel(x, y)
-	var r = int(c.r * 255.0 + 0.5)
-	var g = int(c.g * 255.0 + 0.5)
-	return r + g * 256
+	return id_map_image.get_pixel(x, y).to_rgba32() >> 8
 
 
 # --- Pathfinding section kinda. Should be in own file tbh.. ---#
@@ -898,10 +789,9 @@ func show_faction_map() -> void:
 
 		var total: int = 0
 		for faction in FactionManager.factions:
-			if province.country in FactionManager.factions[faction]:
+			if FactionManager.factions[faction].members.find_custom(func(a_factionMember: FactionMember): return a_factionMember.polity == province.country) != -1:
 				total += 1
-				var faction_leader = FactionManager.factions[faction][0]
-				faction_color = country_colors.get(faction_leader, Color.GRAY)
+				faction_color = FactionManager.factions[faction].color
 			else:
 				faction_color = Color.GRAY
 			state_color_image.set_pixel(pid, 0, faction_color / total)
@@ -915,14 +805,14 @@ func show_population_map() -> void:
 		return
 	var current_max_pop: float = 1.0
 	for province in province_objects.values():
-		if province.population > current_max_pop:
-			current_max_pop = float(province.population)
+		if province.GetPopulation() > current_max_pop:
+			current_max_pop = float(province.GetPopulation())
 
 	for pid in province_objects.keys():
 		var province = province_objects[pid]
 		if pid <= 1:
 			continue
-		var pop_color = _get_heatmap_color(province.population, current_max_pop)
+		var pop_color = _get_heatmap_color(province.GetPopulation(), current_max_pop)
 		state_color_image.set_pixel(pid, 0, pop_color)
 
 	state_color_texture.update(state_color_image)
@@ -938,8 +828,10 @@ func show_ethnic_map() -> void:
 		if pid <= 1:
 			continue
 
-		var province = province_objects[pid]
-		var eth_name = province.ethnicity # Assuming this is the String name (e.g., "Igbo")
+		var province: Province = province_objects[pid]
+		if (province.population.size() <= 0):
+			continue
+		var eth_name = province.population[0].ethnicity # Assuming this is the String name (e.g., "Igbo")
 
 		# Default to black or transparent if ethnicity not found
 		var display_color = Color.BLACK
@@ -1006,10 +898,10 @@ func show_countries_map() -> void:
 
 		var province = province_objects[pid]
 		var country_name = province.country
-		var country_color = country_colors.get(country_name, Color.GRAY)
+		var country_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 		var country_data = CountryManager.get_country(country_name)
 		if country_data and country_data.owner:
-			var owner_color = country_colors.get(country_data.owner, Color.GRAY)
+			var owner_color = CountryManager.GetCountryColor(country_data.owner, Color.GRAY)
 			country_color = (country_color + 3 * owner_color) / 4
 
 		state_color_image.set_pixel(pid, 0, country_color)
@@ -1078,253 +970,13 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 
 	province_to_country[pid] = new_owner_name
 
-	var new_color = country_colors.get(new_owner_name, Color.GRAY)
+	var new_color = CountryManager.GetCountryColor(new_owner_name, Color.GRAY)
 	update_lookup(pid, new_color)
-
-
-func _load_country_colors() -> void:
-	var file := FileAccess.open("res://assets/countries.json", FileAccess.READ)
-	if file == null:
-		push_error("Could not open country_colors.json")
-		return
-
-	var data = JSON.parse_string(file.get_as_text())
-	if data is not Dictionary:
-		push_error("Invalid JSON format")
-		return
-
-	country_colors.clear()
-	for country_name in data.keys():
-		var rgb = data[country_name].get("color")
-		if rgb == null or rgb.size() != 3:
-			continue
-		country_colors[country_name] = Color8(rgb[0], rgb[1], rgb[2])
-
-
-func _load_population_json() -> void:
-	var path = "res://map_data/population_color_map.json"
-	if not FileAccess.file_exists(path):
-		push_error("Population JSON missing!")
-		return
-
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-	if json_data is Dictionary:
-		color_to_pop_map = json_data
-
-
-func _get_pop_from_color(c: Color) -> int:
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	var b = int(round(c.b * 255.0))
-
-	var exact_key = "(%d, %d, %d)" % [r, g, b]
-
-	# 1. Try Exact Match
-	if color_to_pop_map.has(exact_key):
-		return color_to_pop_map[exact_key]
-
-	# 2. Try match without spaces (common JSON difference)
-	var tight_key = "(%d,%d,%d)" % [r, g, b]
-	if color_to_pop_map.has(tight_key):
-		return color_to_pop_map[tight_key]
-
-	# 3. Fuzzy Match (Only if exact fails)
-	# We look for the color in our map with the smallest RGB distance
-	var best_match = 0
-	var min_dist = 999999.0
-
-	for color_str in color_to_pop_map.keys():
-		var target_rgb = _parse_color_string(color_str)
-		var dist = (Vector3(r, g, b) - target_rgb).length_squared()
-
-		if dist < min_dist:
-			min_dist = dist
-			best_match = color_to_pop_map[color_str]
-
-	# If the closest color is reasonably similar, use it
-	if min_dist < 100: # Threshold for "close enough"
-		return best_match
-
-	return 0
-
 
 func _parse_color_string(s: String) -> Vector3:
 	var cleaned = s.replace("(", "").replace(")", "").replace(" ", "")
 	var parts = cleaned.split(",")
 	return Vector3(float(parts[0]), float(parts[1]), float(parts[2]))
-
-
-func _load_city_json() -> void:
-	var path = "res://map_data/city_colors.json" # Ensure path is correct
-	if not FileAccess.file_exists(path):
-		push_error("City JSON missing!")
-		return
-
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-	if json_data is Dictionary:
-		color_to_city_map = json_data
-
-
-func _load_claims_json() -> void:
-	var path = "res://map_data/claims.json" # Ensure path is correct
-	if not FileAccess.file_exists(path):
-		push_error("City JSON missing!")
-		return
-
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-	if json_data is Dictionary:
-		color_to_claim_map = json_data
-
-
-func _get_city_from_color(c: Color) -> String:
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	var b = int(round(c.b * 255.0))
-
-	var exact_key = "(%d, %d, %d)" % [r, g, b]
-
-	# 1. Try Exact Match
-	if color_to_city_map.has(exact_key):
-		return color_to_city_map[exact_key]
-
-	# 2. Try match without spaces
-	var tight_key = "(%d,%d,%d)" % [r, g, b]
-	if color_to_city_map.has(tight_key):
-		return color_to_city_map[tight_key]
-
-	# 3. Fuzzy Match
-	var best_match = "Unknown"
-	var min_dist = 999999.0
-
-	for color_str in color_to_city_map.keys():
-		var target_rgb = _parse_color_string(color_str)
-		var dist = (Vector3(r, g, b) - target_rgb).length_squared()
-
-		if dist < min_dist:
-			min_dist = dist
-			best_match = color_to_city_map[color_str]
-
-	# Threshold check: 100 distance squared is very close
-	if min_dist < 100:
-		return best_match
-
-	return ""
-
-
-func _load_gdp_json() -> void:
-	var path = "res://map_data/gdp_data.json"
-	if not FileAccess.file_exists(path):
-		push_error("GDP JSON missing!")
-		return
-
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-	if json_data is Dictionary:
-		gdp_map = json_data
-
-
-func _load_ethnic_json() -> void:
-	var path = "res://map_data/ethnicities.json"
-
-	if not FileAccess.file_exists(path):
-		push_error("Ethnic JSON missing at: " + path)
-		return
-
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-
-	if json_data is Dictionary:
-		color_to_ethnic_map = json_data
-
-		# --- BUILD THE REVERSE LOOKUP ---
-		# We do this once here so show_ethnic_map() is super fast
-		ethnic_name_to_color.clear()
-		for color_key in color_to_ethnic_map.keys():
-			var ethnicity_name = color_to_ethnic_map[color_key]
-
-			# Use your existing _parse_color_string to get a Vector3(R, G, B)
-			var rgb_vec = _parse_color_string(color_key)
-
-			# Convert to Godot Color (0.0 to 1.0 range)
-			var final_color = Color(rgb_vec.x / 255.0, rgb_vec.y / 255.0, rgb_vec.z / 255.0)
-
-			# Map the NAME to the COLOR
-			ethnic_name_to_color[ethnicity_name] = final_color
-
-		print("Successfully loaded ", color_to_ethnic_map.size(), " ethnicities.")
-	else:
-		push_error("Ethnic JSON format is invalid (Expected Dictionary)")
-
-
-func _get_name_from_color(c: Color, data_map: Dictionary) -> String:
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	var b = int(round(c.b * 255.0))
-
-	var exact_key = "(%d, %d, %d)" % [r, g, b]
-
-	# 1. Try Exact Match
-	if data_map.has(exact_key):
-		return data_map[exact_key]
-
-	# 2. Try match without spaces (tight format)
-	var tight_key = "(%d,%d,%d)" % [r, g, b]
-	if data_map.has(tight_key):
-		return data_map[tight_key]
-
-	# 3. Fuzzy Match
-	var best_match = ""
-	var min_dist = 999999.0
-
-	for color_str in data_map.keys():
-		var target_rgb = _parse_color_string(color_str)
-		var dist = (Vector3(r, g, b) - target_rgb).length_squared()
-
-		if dist < min_dist:
-			min_dist = dist
-			best_match = data_map[color_str]
-
-	# Threshold check
-	if min_dist < 100:
-		return best_match
-
-	return "Unknown"
-
-
-func _get_claims_from_color(c: Color, data_map: Dictionary) -> Array:
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	var b = int(round(c.b * 255.0))
-
-	# Define possible key formats (Standard, Tight, and No-Bracket)
-	var formats = ["(%d, %d, %d)" % [r, g, b], "(%d,%d,%d)" % [r, g, b], "%d,%d,%d" % [r, g, b]]
-
-	# 1. Try Exact Matches
-	for key in formats:
-		if data_map.has(key):
-			return _force_array(data_map[key])
-
-	# 2. Fuzzy Match
-	var best_data = null
-	var min_dist = 999999.0
-	var current_vec = Vector3(r, g, b)
-
-	for color_str in data_map.keys():
-		var target_rgb = _parse_color_string(color_str)
-		var dist = (current_vec - target_rgb).length_squared()
-
-		if dist < min_dist:
-			min_dist = dist
-			best_data = data_map[color_str]
-
-	# Threshold check (10 units distance)
-	if min_dist < 100 and best_data != null:
-		return _force_array(best_data)
-
-	return [] # Return empty array if no claim found
 
 
 # Helper to ensure we never return a single String when an Array is expected
@@ -1446,19 +1098,27 @@ func _country_exists_on_map(c_name: String) -> bool:
 			return true
 	return false
 
-
-func release_country(country_name: String) -> void:
+func ReleaseCountry(a_countryName: String) -> void:
 	for obj in province_objects.values():
-		if obj.claims.has(country_name):
+		if obj.claims.has(a_countryName):
 			var troops = TroopManager.troops_by_province.get(obj.id, [])
 			for troop in troops.duplicate():
 				if is_instance_valid(troop):
 					TroopManager.remove_troop(troop)
 
-			transfer_ownership(obj.id, country_name)
-	CountryManager.add_country(country_name)
-	CountryManager.cleanup_empty_countries()
+			transfer_ownership(obj.id, a_countryName)
+	#CountryManager.cleanup_empty_countries()
 
+func InstantiateCountry(a_countryData: Dictionary, a_claims: PackedInt32Array) -> void:
+	CountryManager.add_country(a_countryData)
+	for pid: int in a_claims:
+		var troops = TroopManager.troops_by_province.get(pid, [])
+		for troop in troops.duplicate():
+			if is_instance_valid(troop):
+				TroopManager.remove_troop(troop)
+
+		transfer_ownership(pid, a_countryData["name"])
+	#CountryManager.cleanup_empty_countries()
 
 func get_all_cities() -> Array:
 	var pids = []

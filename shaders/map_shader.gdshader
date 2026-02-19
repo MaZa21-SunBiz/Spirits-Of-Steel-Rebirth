@@ -54,18 +54,13 @@ const vec2 DIRS[8] = vec2[8](
 
 // --- ID HELPERS ---
 int get_id(vec2 uv) {
-    vec2 cuv = clamp(uv, vec2(0.0), vec2(1.0));
-    vec4 c = texture(region_id_map, cuv);
-    int r = int(round(c.r * 255.0));
-    int g = int(round(c.g * 255.0));
-    return r + g * 256;
+    vec4 c = texture(region_id_map, clamp(uv, vec2(0.0), vec2(1.0)));
+    return int(c.b * 256.0) + int(c.g * 256.0 * 256.0) + int(c.r * 256.0 * 256.0 * 256.0);
 }
 
 vec4 get_country_color(int id) {
     if (id <= 1) return vec4(0.0);
-    float u = (float(id) + 0.5) / float(textureSize(state_colors, 0).x);
-    vec4 col = texture(state_colors, vec2(u, 0.5));
-    return col; // This will return alpha 0 for sea provinces now
+    return texture(state_colors, vec2((float(id) + 0.5) / float(textureSize(state_colors, 0).x), 0.5)); // This will return alpha 0 for sea provinces now
 }
 // --- BORDER SCANNING LOGIC ---
 bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color, out bool is_black) {

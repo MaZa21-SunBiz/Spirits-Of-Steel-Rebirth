@@ -1537,28 +1537,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -114.0
-offset_top = -114.0
-offset_right = 226.0
-offset_bottom = -44.0
+offset_left = -170.0
+offset_top = -230.0
+offset_right = 170.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0e43j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CreateFaction" unique_id=1065785828]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateFaction" unique_id=1381981934]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="CreateFaction/HBoxContainer" unique_id=1417137941]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateFaction/VBoxContainer" unique_id=1065785828]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=1417137941]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Faction Name"
 
-[node name="Button" type="Button" parent="CreateFaction/HBoxContainer" unique_id=119683320]
+[node name="Button" type="Button" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=119683320]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Create Faction"
+
+[node name="ColorPicker" type="ColorPicker" parent="CreateFaction/VBoxContainer" unique_id=1452449253]
+layout_mode = 2
+edit_alpha = false
+edit_intensity = false
+sampler_visible = false
+color_modes_visible = false
+presets_visible = false
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
@@ -1590,4 +1601,4 @@ text = "Create Faction"
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
 [connection signal="button_up" from="ColorRect/Button" to="ColorRect" method="_on_button_button_up"]
 [connection signal="button_up" from="ColorRect/Button2" to="ColorRect" method="_on_button_2_button_up"]
-[connection signal="pressed" from="CreateFaction/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]
+[connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]

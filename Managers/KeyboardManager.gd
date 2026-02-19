@@ -19,6 +19,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("deselect_troops"):
 		if !TroopManager.troop_selection.selected_troops.is_empty():
 			TroopManager.troop_selection.deselect_all()
+		elif GameState.game_ui.sidemenu.visible:
+			MapManager.close_sidemenu.emit()
 		else:
 			# get_tree().root.find_child("Menu", true, false).toggle_menu()
 			settings.visible = !settings.visible
@@ -73,4 +75,3 @@ func _cycle_map_mode() -> void:
 			current_view = MapView.COUNTRIES
 			MapManager.show_countries_map()
 			print("Map Mode: Countries")
-

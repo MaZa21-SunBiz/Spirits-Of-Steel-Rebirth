@@ -29,19 +29,15 @@ func process_economy_day():
 		construction_queue.erase(pid)
 
 func start_construction(pid: int, type: String, total_days: int, daily_cost: float, country: CountryData):
-	var province = MapManager.province_objects[pid]
-	
 	# Set the province enum to BUILDING state immediately
-	if type == "factory":
-		province.factory = province.FACTORY_BUILDING
-	elif type == "port":
-		province.port = province.PORT_BUILDING
+	MapManager.province_objects[pid].buildings.append(BuildingData.FromValues(type, BuildingData.BuildingState.CONSTRUCTION))
 	
 	if country == CountryManager.player_country:
 		MusicManager.play_sfx(MusicManager.SFX.BUILD)
 
 	construction_queue[pid] = {
 		"type": type,
+		"index": MapManager.province_objects[pid].buildings.size(),
 		"days": total_days,
 		"daily_cost": daily_cost,
 		"country": country
@@ -49,17 +45,10 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 	
 
 func _complete_construction(pid: int, project: Dictionary):
-	var province = MapManager.province_objects[pid]
-	var type = project["type"]
-	var country: CountryData = project["country"]
-
 	# Update enum to BUILT state
-	if type == "factory":
-		province.factory = province.FACTORY_BUILT
-	elif type == "port":
-		province.port = province.PORT_BUILT
+	MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
 
-	if country.is_player:
+	if project["country"].is_player:
 		#PopupManager.show_alert("economy", country, null, "Construction of %s complete!" % type.capitalize())
 		if GameState.industry_building:
 			MusicManager.play_sfx(MusicManager.SFX.CLAPPING)

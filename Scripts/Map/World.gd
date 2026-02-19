@@ -34,17 +34,32 @@ func _ready() -> void:
 	clock.hour_passed.connect(CountryManager._on_hour_passed)
 	clock.day_passed.connect(CountryManager._on_day_passed)
 
+	
+	var path = "res://map_data/map_data.json" # Ensure path is correct
+	if not FileAccess.file_exists(path):
+		push_error("Map Data JSON missing!")
+		return
+
+	var mapData: Dictionary = {}
+	var file = FileAccess.open(path, FileAccess.READ)
+	var json_data = JSON.parse_string(file.get_as_text())
+	if json_data is Dictionary:
+		mapData = json_data
+
 	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
 	if MapManager.province_objects.is_empty():
-		MapManager.load_country_data()
-		CountryManager.initialize_countries()
+		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
+		MapManager.load_country_data(mapData["provinces"] as Dictionary)
+		CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
+		MapManager.build_lookup_texture()
+		FactionManager.Initialize(mapData["factions"])
 
 	print("World: Map is ready -> configuring visuals...")
 
 	MapManager.all_cities = MapManager.get_all_cities()
 
 	if !CountryManager.player_country:
-		CountryManager.set_player_country("brazil")
+		CountryManager.set_player_country("Brazil")
 	# For debugging purposes. Create some troops first
 	MapManager.force_bidirectional_connections()
 	MapManager._build_global_registry()
@@ -53,21 +68,20 @@ func _ready() -> void:
 
 	var mat := ShaderMaterial.new()
 	mat.shader = map_shader
-	var id_tex := ImageTexture.create_from_image(MapManager.id_map_image)
-	mat.set_shader_parameter("region_id_map", id_tex)
+	mat.set_shader_parameter("region_id_map", ImageTexture.create_from_image(MapManager.id_map_image))
 	mat.set_shader_parameter("state_colors", MapManager.state_color_texture)
 
 	# @warning_ignore("narrowing_conversion")
 	var type_img := Image.create_empty(map_width, map_height, false, Image.FORMAT_L8)
 	var uncertain_pixels := []
-# --- PASS 1: Direct Mapping ---
+	# --- PASS 1: Direct Mapping ---
 	for y in range(map_height):
 		for x in range(map_width):
 			var pid = MapManager._get_pid_fast(x, y)
 			var province = MapManager.province_objects.get(pid)
 
 			if province:
-				if province.type == 0: # SEA
+				if province.type == Province.SEA: # SEA
 					type_img.set_pixel(x, y, Color(0, 0, 0))
 				else: # LAND
 					type_img.set_pixel(x, y, Color(1, 1, 1))
@@ -78,7 +92,7 @@ func _ready() -> void:
 	# --- PASS 2: Intelligent Flood-Check ---
 	for pos in uncertain_pixels:
 		var touches_land = false
-		var touches_sea = false
+		#var touches_sea = false
 
 		# Check 8-way neighbors (Radius 1 ONLY - very important)
 		for dy in range(-1, 2):
@@ -92,12 +106,12 @@ func _ready() -> void:
 				if nx >= 0 and nx < map_width and ny >= 0 and ny < map_height:
 					var nid = MapManager._get_pid_fast(nx, ny)
 					if nid > 1:
-						var n_prov = MapManager.province_objects.get(nid)
+						var n_prov: Province = MapManager.province_objects.get(nid)
 						if n_prov:
 							if n_prov.type != 0:
 								touches_land = true
-							else:
-								touches_sea = true
+							#else:
+							#	touches_sea = true
 
 		if touches_land:
 			type_img.set_pixel(pos.x, pos.y, Color(1, 1, 1))

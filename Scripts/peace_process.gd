@@ -138,12 +138,12 @@ func _process_click(map_pos: Vector2):
 			_update_map_visual(pid, Color(1.5, 1.5, 1.5))
 		else:
 			var b_name = current_beneficiary.country_name
-			var b_color = MapManager.country_colors.get(b_name, COLOR_SELECT)
+			var b_color = CountryManager.GetCountryColor(b_name, COLOR_SELECT)
 			provinces_to_take[pid] = b_name
 			_update_map_visual(pid, b_color)
 	else:
 		var b_name = current_beneficiary.country_name
-		var b_color = MapManager.country_colors.get(b_name, COLOR_SELECT)
+		var b_color = CountryManager.GetCountryColor(b_name, COLOR_SELECT)
 		provinces_to_take[pid] = b_name
 		_update_map_visual(pid, b_color)
 
@@ -153,7 +153,7 @@ func _process_click(map_pos: Vector2):
 func _on_annex_all_pressed():
 	provinces_to_take.clear()
 	var b_name = current_beneficiary.country_name
-	var b_color = MapManager.country_colors.get(b_name, COLOR_SELECT)
+	var b_color = CountryManager.GetCountryColor(b_name, COLOR_SELECT)
 	
 	for pid in MapManager.province_to_country.keys():
 		if MapManager.province_to_country[pid] == current_loser.country_name:
@@ -167,7 +167,7 @@ func _on_puppet_pressed():
 	# Re-apply highlights after MapManager.show_countries_map() wiped them
 	for pid in provinces_to_take:
 		var beneficiary = provinces_to_take[pid]
-		var color = MapManager.country_colors.get(beneficiary, COLOR_SELECT)
+		var color = CountryManager.GetCountryColor(beneficiary, COLOR_SELECT)
 		_update_map_visual(pid, color)
 	_update_summary()
 
@@ -181,7 +181,7 @@ func _reset_province_visual_immediate(pid: int):
 	var p_owner = MapManager.province_to_country[pid]
 	if pid in provinces_to_take or (p_owner is CountryData and p_owner.is_puppet):
 		return
-	var original_color = MapManager.country_colors.get(p_owner, Color.WHITE)
+	var original_color = CountryManager.GetCountryColor(p_owner, Color.WHITE)
 	_update_map_visual(pid, original_color)
 
 func _on_confirm_pressed():
@@ -218,10 +218,10 @@ func _update_map_visual(pid: int, color: Color):
 func _reset_province_visual(pid: int):
 	if provinces_to_take.has(pid):
 		var beneficiary = provinces_to_take[pid]
-		var color = MapManager.country_colors.get(beneficiary, COLOR_SELECT)
+		var color = CountryManager.GetCountryColor(beneficiary, COLOR_SELECT)
 		_update_map_visual(pid, color)
 	else:
 		var country = MapManager.province_to_country.get(pid, "sea")
 		if country != "sea":
-			var original_color = MapManager.country_colors.get(country, Color.WHITE)
+			var original_color = CountryManager.GetCountryColor(country, Color.WHITE)
 			_update_map_visual(pid, original_color)

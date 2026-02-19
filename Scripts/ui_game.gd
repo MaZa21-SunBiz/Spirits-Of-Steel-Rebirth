@@ -348,6 +348,7 @@ func _get_simple_flag(c_name: String, ideology: String = "") -> TextureRect:
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	return tr
+
 func _on_tab_changed(new_category_index: int) -> void:
 	current_category = new_category_index as Category
 	# _build_action_list()
@@ -788,8 +789,9 @@ func _on_music_pressed():
 	radio_list.visible = !radio_list.visible
 
 func _on_create_faction_pressed() -> void:
-	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("HBoxContainer/TextEdit").text)
-	faction_prompt.get_node("HBoxContainer/TextEdit").text = ""
+	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text, faction_prompt.get_node("VBoxContainer/ColorPicker").color)
+	faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text = ""
+	faction_prompt.get_node("VBoxContainer/ColorPicker").color = Color.WHITE
 	faction_prompt.visible = !faction_prompt.visible
 
 func _on_invite_faction_pressed() -> void:
