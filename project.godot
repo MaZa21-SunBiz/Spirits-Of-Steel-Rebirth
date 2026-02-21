@@ -32,13 +32,13 @@ PopupManager="*res://Managers/PopupManager.gd"
 KeyboardManager="*res://Managers/KeyboardManager.gd"
 ConsoleManager="*res://Managers/ConsoleManager.gd"
 Console="*uid://ouiu5xh1cs8n"
-AiManager="*res://Managers/AIManager.gd"
 DecisionManager="*res://Managers/DecisionManager.gd"
 EconomyManager="*res://Managers/EconomyManager.gd"
 SuperEventManager="*res://Managers/SuperEventManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
+AiManager="*uid://ol3874ku3mbe"
 
 [display]
 

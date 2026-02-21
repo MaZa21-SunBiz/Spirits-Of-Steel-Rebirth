@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikth6b5ai3eh"
-path="res://.godot/imported/ethnicities.png-436269ab221ec5dc70f8a267201da7c4.ctex"
+uid="uid://3uqbig1xmicj"
+path="res://.godot/imported/biomes.png-77c2f192bba6f5c39e85665a3747f8ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/ethnicities.png"
-dest_files=["res://.godot/imported/ethnicities.png-436269ab221ec5dc70f8a267201da7c4.ctex"]
+source_file="res://utils/asdfa/biomes.png"
+dest_files=["res://.godot/imported/biomes.png-77c2f192bba6f5c39e85665a3747f8ea.ctex"]
 
 [params]
 

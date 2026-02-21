@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcvpwkdgkayao"
-path="res://.godot/imported/claims.png-402e0635937febbf73f690f24d69cc99.ctex"
+uid="uid://bghhskp58oxsr"
+path="res://.godot/imported/culture.png-b14f979eb76db8a4e4ffa664afc83406.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/claims.png"
-dest_files=["res://.godot/imported/claims.png-402e0635937febbf73f690f24d69cc99.ctex"]
+source_file="res://maps/culture.png"
+dest_files=["res://.godot/imported/culture.png-b14f979eb76db8a4e4ffa664afc83406.ctex"]
 
 [params]
 

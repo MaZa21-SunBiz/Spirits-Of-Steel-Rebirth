@@ -29,11 +29,22 @@ var damaged: ShaderMaterial = preload(\"res://damaged.tres\")
 
 
 func _ready():
-	MapManager.load_country_data()
-	CountryManager.initialize_countries()
-	countries = CountryManager.countries.values()
-	countries.sort_custom(func(a, b): return a.gdp > b.gdp)
-	_on_search()
+	var path = \"res://map_data/map_data.json\" # Ensure path is correct
+	if not FileAccess.file_exists(path):
+		push_error(\"Map Data JSON missing!\")
+		return
+	var mapData: Dictionary = {}
+	var file = FileAccess.open(path, FileAccess.READ)
+	var json_data = JSON.parse_string(file.get_as_text())
+	if json_data is Dictionary:
+		mapData = json_data
+	if MapManager.province_objects.is_empty():
+		IdeologyManager.Initialize(mapData[\"ideologies\"] as Dictionary)
+		MapManager.load_country_data(mapData[\"provinces\"] as Dictionary)
+		CountryManager.initialize_countries(mapData[\"polities\"] as Array[Dictionary])
+		MapManager.build_lookup_texture()
+		FactionManager.Initialize(mapData[\"factions\"])
+
 
 func _on_search() -> void:
 	for n in entry_list.get_children():

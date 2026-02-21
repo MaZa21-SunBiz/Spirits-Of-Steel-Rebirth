@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj2x6fjdf4e3"
-path="res://.godot/imported/cultures.png-f9255a05eddadc8a9aa0dedbe091def9.ctex"
+uid="uid://b2funajcc0i56"
+path="res://.godot/imported/regions.png-79ead78bfc8b181dbd95d5fa1e91ca92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/cultures.png"
-dest_files=["res://.godot/imported/cultures.png-f9255a05eddadc8a9aa0dedbe091def9.ctex"]
+source_file="res://utils/regions.png"
+dest_files=["res://.godot/imported/regions.png-79ead78bfc8b181dbd95d5fa1e91ca92.ctex"]
 
 [params]
 
