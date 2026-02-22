@@ -55,7 +55,7 @@ const vec2 DIRS[8] = vec2[8](
 // --- ID HELPERS ---
 int get_id(vec2 uv) {
     vec4 c = texture(region_id_map, clamp(uv, vec2(0.0), vec2(1.0)));
-    return int(c.b * 256.0) + int(c.g * 256.0 * 256.0) + int(c.r * 256.0 * 256.0 * 256.0);
+    return int(c.b * 255.0) + int(c.g * 255.0 * 256.0) + int(c.r * 255.0 * 256.0 * 256.0);
 }
 
 vec4 get_country_color(int id) {

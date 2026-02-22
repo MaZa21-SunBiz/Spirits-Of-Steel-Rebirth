@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y8f4o78ca762"
-path="res://.godot/imported/regionasds.png-5f329a4e88dc1b13f31b13029cf6b3c5.ctex"
+uid="uid://doyhr66cpcgqi"
+path="res://.godot/imported/population_color_map.png-68260bb2727927852aa2eaa86e323ed6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/regionasds.png"
-dest_files=["res://.godot/imported/regionasds.png-5f329a4e88dc1b13f31b13029cf6b3c5.ctex"]
+source_file="res://utils/population_color_map.png"
+dest_files=["res://.godot/imported/population_color_map.png-68260bb2727927852aa2eaa86e323ed6.ctex"]
 
 [params]
 

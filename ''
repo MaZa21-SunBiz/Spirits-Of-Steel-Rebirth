@@ -58,23 +58,23 @@ var current_category: Category = Category.GENERAL
 
 # ── Constants ──────────────────────────────────────────
 var action_costs := {
-	"_declare_war": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5},
-	"_request_access": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.get_relation_with(selected.country_name) > 150},
-	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000*CountryManager.get_country_gdp(selected.country_name)},
-	"_release_puppet": func(player: CountryData, selected: CountryData): return {"cost": 50, "can_afford": true},
-	"improve_stability": func(player: CountryData, selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true},
-	"_improve_relations": func(player: CountryData, selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true},
-	"_propose_peace": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_launch_nuke": func(player: CountryData, selected: CountryData): return {"cost": 250, "can_afford": true},
-	"_form_alliance": func(player: CountryData, selected: CountryData): return {"cost": 100, "can_afford": player.ideology_name == selected.ideology_name},
-	"_demand_tribute": func(player: CountryData, selected: CountryData): return {"cost": 75, "can_afford": player.ideology_name == selected.ideology_name},
-	"_trade_deal": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.ideology_name == selected.ideology_name},
-	"open_research_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_decisions_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_open_faction": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_manage_country": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_factory": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true}
+	"_declare_war": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5),
+	"_request_access": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.get_relation_with(selected.country_name) > 150),
+	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000*CountryManager.get_country_gdp(selected.country_name)),
+	"_release_puppet": func(player: CountryData, selected: CountryData): return {"cost": 50, "can_afford": true),
+	"improve_stability": func(player: CountryData, selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true),
+	"_improve_relations": func(player: CountryData, selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true),
+	"_propose_peace": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"_launch_nuke": func(player: CountryData, selected: CountryData): return {"cost": 250, "can_afford": true),
+	"_form_alliance": func(player: CountryData, selected: CountryData): return {"cost": 100, "can_afford": player.ideology_name == selected.ideology_name),
+	"_demand_tribute": func(player: CountryData, selected: CountryData): return {"cost": 75, "can_afford": player.ideology_name == selected.ideology_name),
+	"_trade_deal": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.ideology_name == selected.ideology_name),
+	"open_research_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"open_decisions_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"_open_faction": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"open_manage_country": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"_build_factory": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true),
+	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true)
 }
 
 func _enter_tree() -> void:
@@ -299,10 +299,7 @@ func _update_context_actions_visuals() -> void:
 							break
 					
 					if method != "" and action_costs.has(method):
-						# NOTE(soi): look man idk anymore
-						var AAAAAA = action_costs[method].call(CountryManager.player_country, selected_country)
-						var cost = AAAAAA["cost"]
-						var can_afford = AAAAAA["can_afford"]
+						var (cost, can_afford) = action_costs[method].call(CountryManager.player_country, selected_country)
 						
 						child.disabled = !can_afford
 						
@@ -476,7 +473,7 @@ func _choose_deploy_city():
 
 
 func _declare_war():
-	var cost = action_costs["_declare_war"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["_declare_war"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -513,7 +510,7 @@ func deploy_troop(troop):
 
 
 func improve_stability():
-	var cost = action_costs["improve_stability"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["improve_stability"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -534,7 +531,7 @@ func _build_port():
 
 
 func _request_access():
-	var cost = action_costs["_request_access"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["_request_access"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -543,7 +540,7 @@ func _request_access():
 	_update_context_actions_visuals()
 
 func _force_puppet():
-	var cost = action_costs["_force_puppet"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["_force_puppet"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -553,7 +550,7 @@ func _force_puppet():
 	close_menu()
 
 func _on_release_puppet_pressed():
-	var cost = action_costs["_release_puppet"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["_release_puppet"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
@@ -564,7 +561,7 @@ func _on_release_puppet_pressed():
 
 
 func _improve_relations():
-	var cost = action_costs["_improve_relations"].call(CountryManager.player_country, selected_country)["cost"]
+	var cost = action_costs["_improve_relations"].call(CountryManager.player_country)
 	if CountryManager.player_country.political_power < cost:
 		return
 	CountryManager.player_country.political_power -= cost
