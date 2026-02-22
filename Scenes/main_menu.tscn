@@ -9,6 +9,10 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="5_yhxw7"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
+[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://Scenes/goober.gdshader" id="10_5egv6"]
+[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
+[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://Scenes/petpet.gdshader" id="11_5egv6"]
+[ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
 content_margin_left = 14.0
@@ -76,6 +80,12 @@ content_margin_top = 14.0
 content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
+shader = ExtResource("10_5egv6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
+shader = ExtResource("11_5egv6")
 
 [node name="MainMenu" type="Control" unique_id=945632142]
 layout_mode = 3
@@ -255,6 +265,7 @@ text = "Selected: None"
 
 [node name="Credits" type="Control" parent="." unique_id=1558337124]
 visible = false
+material = ExtResource("5_yhxw7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,6 +285,7 @@ color = Color(0, 0, 0, 0.5019608)
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Credits" unique_id=585752186]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -289,28 +301,55 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Credits/PanelContainer" unique_id=289431072]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Label" type="Label" parent="Credits/PanelContainer/VBoxContainer" unique_id=771123924]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_trj04")
 text = "Z21
 CallMePol
 Soilad
+Sockmit
+EsatBoucaud icon-sets
+Rosseau
 Ariect Von don Koppan Finchendenstein II
 The spirit of GavGrub"
 
 [node name="Exit" type="Button" parent="Credits/PanelContainer/VBoxContainer" unique_id=1733367604]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
 visible = false
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1375568892]
+material = SubResource("ShaderMaterial_vtepg")
+layout_mode = 0
+offset_left = 827.0
+offset_top = 222.0
+offset_right = 1105.4519
+offset_bottom = 419.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1924079947]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 707.0
+offset_top = 207.0
+offset_right = 1152.0
+offset_bottom = 347.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]

@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw
+from PIL import Image
 from json import dump, load
 from pprint import pprint
 
@@ -78,7 +78,7 @@ def main():
 
     with open("cultures.json") as f:
         uhh = load(f)
-        cult_data = {eval(k): v for k, v in uhh.items()}
+        cult_data = {tuple(v): k for k, v in uhh.items()}
 
     cmap = Image.open("polities.png").convert("RGB")
     pmap = Image.open("regions.png").convert("RGB")
@@ -115,46 +115,62 @@ def main():
         if province_color in blacklist and country_color in blacklist: # I assume you can't just put BLACK in colors?
             continue
 
-        id = (province_color[2] + province_color[1]*256 + province_color[0]*65536)
-        if id not in sosr_time["provinces"] and country_color in coloredata:
-            sosr_time["provinces"][str(id)] = {
-                    "type": "land",
-                    "name": "",
-                    "polity": coloredata[country_color].capitalize(),
-                    "biome": "",
-                    "resources": [],
-                    "buildings": [],
-                    "population": [{"ethnicity": cult_data.get(cult_color, "brazilian").capitalize(),
-                                     "amount": pop_data.get(pop_color, 0)}],
-                    "claims": [],
-                    "gdp": gdp_data.get(gdp_color, 0),
-                    }
-            blacklist.add(province_color)
-            if city_color not in blacklist:
-                sosr_time["provinces"][str(id)]["city"] = city_colors[city_color]
-                blacklist.add(city_color)
+        if country_color in coloredata:
+            country = coloredata[country_color].capitalize()
+            culture = cult_data.get(cult_color, "brazilians").capitalize()
 
-            count +=1
+            if country_color not in blacklist and country_color in coloredata:
+                sosr_time["polities"].append(
+                        {
+                            "name": country, 
+                            "color": rgb_to_hex(*country_color),
+                            "flag": "",
+                            "money": 100000,
+                            "ideology": [0, 0],
+                            "political_power": 500,
+                            "stability": 1.0,
+                            "war_support": 1.0,
+                            "acceptedCultures": [culture],
+                            "puppets": []
+                        }
+                )
+                blacklist.add(country_color)
 
-        if country_color not in blacklist and country_color in coloredata:
-            sosr_time["polities"].append(
-                    {
-                        "name": coloredata[country_color].capitalize(), 
-                        "color": rgb_to_hex(*country_color),
-                        "flag": "",
-                        "money": 100000,
-                        "ideology": [0, 0],
-                        "political_power": 500,
-                        "stability": 1.0,
-                        "war_support": 1.0,
-                        "puppets": []
-                    }
-                    )
-            blacklist.add(country_color)
+            id = (province_color[2] + province_color[1]*256 + province_color[0]*65536)
+            if id not in sosr_time["provinces"]:
+                sosr_time["provinces"][str(id)] = {
+                        "type": "land",
+                        "name": "",
+                        "polity": country,
+                        "biome": "",
+                        "resources": [],
+                        "buildings": [],
+                        "population": [{"ethnicity": culture,
+                                         "amount": pop_data.get(pop_color, 0)}],
+                        "claims": [],
+                        "gdp": gdp_data.get(gdp_color, 0),
+                        }
+
+
+                blacklist.add(province_color)
+                if city_color not in blacklist:
+                    sosr_time["provinces"][str(id)]["city"] = city_colors[city_color]
+                    blacklist.add(city_color)
+
+                count +=1
+
+    # NOTE(soi): this is the worst code known to mankind
+    for province in sosr_time["provinces"].values():
+        province["name"]
+        for country in sosr_time["polities"]:
+            if country["name"] == province["polity"]:
+                for population in province["population"]:
+                    if population["ethnicity"] not in country["acceptedCultures"]:
+                        country["acceptedCultures"].append(population["ethnicity"])
 
     pprint(sosr_time)
     with open("map_data.json", "w") as f:
-        dump(sosr_time, f)
+        dump(sosr_time, f, indent=4)
     print(count)
 
 

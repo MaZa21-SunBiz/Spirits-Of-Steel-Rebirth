@@ -55,6 +55,7 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
+var acceptedCultures: Array = []
 var puppets: Array = []
 var owner: String
 var factions: Array[String] = []
@@ -117,11 +118,13 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.stability = a_data.get("stability", 0.5)
 	country.war_support = a_data.get("war_support", 0.5)
 	country.puppets = a_data.get("puppets", [])
+	country.acceptedCultures = a_data.get("acceptedCultures", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country._refresh_economic_stats()
 	country.refresh_ideology_name()
 	
 	# NOTE(Sockmit2007): Urgh...
+	# NOTE(soi): indeed
 	#country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
 	
 	return country
