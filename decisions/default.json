@@ -15,8 +15,8 @@
 					{
 						"func": "is_at_war",
 						"args": [
-							"china",
-							"india"
+							"China",
+							"India"
 						],
 						"store": "ww3"
 					}
@@ -97,8 +97,8 @@
 				"action": {
 					"func": "declare_war",
 					"args": [
-						"china",
-						"india"
+						"China",
+						"India"
 					]
 				},
 				"desc": "Encourage enlistment."

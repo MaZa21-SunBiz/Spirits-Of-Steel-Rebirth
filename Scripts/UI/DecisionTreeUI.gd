@@ -188,8 +188,7 @@ func _load_category(cat_name: String):
 	tree_canvas.position = Vector2.ZERO
 
 	var player = CountryManager.player_country
-	var all_decisions = DecisionManager.get_country_categories(player.country_name)
-	var nodes = all_decisions.get(cat_name, [])
+	var nodes = DecisionManager.get_country_categories(player.country_name).get(cat_name, [])
 
 	for i in range(nodes.size()):
 		_create_node(nodes[i], i, player)
@@ -197,12 +196,11 @@ func _load_category(cat_name: String):
 	for node in nodes:
 		if node.has("prereq"):
 			var start = _get_node_center(nodes, node["prereq"])
-			var end = Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE / 2)
 			if start != Vector2.ZERO:
 				connection_lines.append(
 					{
 						"from": start,
-						"to": end,
+						"to": Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE * 0.5),
 						"active": player.has_meta("finished_" + node["prereq"])
 					}
 				)
@@ -247,9 +245,8 @@ func _show_info(data: Dictionary):
 		for req in reqs:
 			if not req is Dictionary: continue
 			
-			var f_name = req.get("func", "Unknown").capitalize()
 			var args = req.get("args", [])
-			var req_line = f_name
+			var req_line = req.get("func", "Unknown").capitalize()
 			if args.size() > 0:
 				var arg_strs = []
 				for a in args:
@@ -276,8 +273,6 @@ func _reset_info():
 
 func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 	var id = data["id"]
-	var finished = player.has_meta("finished_" + id)
-	var progressing = DecisionManager.is_in_progress(player, id)
 	var style = StyleBoxFlat.new()
 	style.corner_radius_top_left = 4
 	style.corner_radius_top_right = 4
@@ -285,31 +280,25 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 	style.corner_radius_bottom_right = 4
 	style.border_width_bottom = 4
 
-	if finished:
+	if player.has_meta("finished_" + id):
 		btn.text = data["title"] + "\n[DONE]"
 		style.bg_color = Color(0.1, 0.4, 0.1)
 		btn.disabled = true
-	elif progressing:
-		var days_left = DecisionManager.get_days_left(player, id)
-		btn.text = data["title"] + "\n⌛ %d Days" % days_left
+	elif DecisionManager.is_in_progress(player, id):
+		btn.text = data["title"] + "\n⌛ %d Days" % DecisionManager.get_days_left(player, id)
 		style.bg_color = Color(0.1, 0.2, 0.5)  # Dark Blue
 		btn.disabled = true
+	elif data.has("prereq") and not player.has_meta("finished_" + data["prereq"]):
+		btn.text = data["title"]
+		style.bg_color = Color(0.241, 0.102, 0.101, 1.0)
+		btn.disabled = true
 	else:
-		var parent_done = true
-		if data.has("prereq"):
-			parent_done = player.has_meta("finished_" + data["prereq"])
-
-		if not parent_done:
-			btn.text = data["title"]
-			style.bg_color = Color(0.241, 0.102, 0.101, 1.0)
-			btn.disabled = true
-		else:
-			btn.text = data["title"] + "\n%d PP" % data["cost_pp"]
-			style.bg_color = Color(0.2, 0.2, 0.2)
-			# Also check if another decision is already running
-			btn.disabled = (
-				player.political_power < data["cost_pp"] or DecisionManager.is_country_busy(player)
-			)
+		btn.text = data["title"] + "\n%d PP" % data["cost_pp"]
+		style.bg_color = Color(0.2, 0.2, 0.2)
+		# Also check if another decision is already running
+		btn.disabled = (
+			player.political_power < data["cost_pp"] or DecisionManager.is_country_busy(player)
+		)
 
 	btn.add_theme_stylebox_override("normal", style)
 	btn.add_theme_stylebox_override("disabled", style)
@@ -342,8 +331,7 @@ func _on_draw_canvas():
 
 	# Connections
 	for line in connection_lines:
-		var col = COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE
-		tree_canvas.draw_line(line["from"], line["to"], col, LINE_WIDTH, true)
+		tree_canvas.draw_line(line["from"], line["to"], COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE, LINE_WIDTH, true)
 
 
 func _get_node_center(nodes: Array, id: String) -> Vector2:
@@ -357,8 +345,7 @@ func refresh_status_only():
 	if not visible:
 		return
 	var player = CountryManager.player_country
-	var all_decisions = DecisionManager.get_country_categories(player.country_name)
-	var nodes = all_decisions.get(current_category, [])
+	var nodes = DecisionManager.get_country_categories(player.country_name).get(current_category, [])
 	for btn in node_buttons.values():
 		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
 	tree_canvas.queue_redraw()

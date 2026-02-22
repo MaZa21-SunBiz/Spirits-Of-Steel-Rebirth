@@ -18,7 +18,6 @@ func _ready():
 
 
 func _build_ui():
-	var type = data.get("type", "default")
 	var c1 = data.get("c1")
 	var c2 = data.get("c2")
 	var custom_text = data.get("text", "")
@@ -43,14 +42,14 @@ func _build_ui():
 		description.text = custom_text
 	else:
 		# Fallback to standard types for backward compatibility
-		match type:
+		match data.get("type", "default"):
 			"war":
 				description.text = "%s has declared war on %s!" % [c1.country_name.capitalize(), c2.country_name.capitalize()]
 			"capitulated":
 				description.text = "%s has capitulated." % [c1.country_name.capitalize()]
 			"game_over":
 				description.text = "Game Over"
-			_:
+			var type:
 				description.text = "Event: " + type
 
 	# 3. Custom Styling from Params

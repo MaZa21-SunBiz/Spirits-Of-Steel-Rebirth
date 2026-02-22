@@ -40,11 +40,8 @@ func _ready() -> void:
 		push_error("Map Data JSON missing!")
 		return
 
-	var mapData: Dictionary = {}
-	var file = FileAccess.open(path, FileAccess.READ)
-	var json_data = JSON.parse_string(file.get_as_text())
-	if json_data is Dictionary:
-		mapData = json_data
+	var json_data = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
+	var mapData: Dictionary = json_data if json_data is Dictionary else {}
 
 	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
 	if MapManager.province_objects.is_empty():
@@ -119,8 +116,7 @@ func _ready() -> void:
 			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
 			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
 
-	var type_tex = ImageTexture.create_from_image(type_img)
-	mat.set_shader_parameter("type_map", type_tex)
+	mat.set_shader_parameter("type_map", ImageTexture.create_from_image(type_img))
 
 	var noise = FastNoiseLite.new()
 	noise.seed = randi()

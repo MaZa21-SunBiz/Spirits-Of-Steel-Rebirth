@@ -15,6 +15,7 @@ var country_name: String
 var country_color: Color
 var is_player: bool = false
 var is_puppet: bool = false
+var is_exiled: bool = false
 
 var relations: Dictionary = {}
 
@@ -57,7 +58,9 @@ var troop_speed_modifier: float = 1.0
 var allowedCountries: Array[String] = []
 var acceptedCultures: Array = []
 var puppets: Array = []
+var hostedGovernments: Array = []
 var owner: String
+var host: String
 var factions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
@@ -118,7 +121,8 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.stability = a_data.get("stability", 0.5)
 	country.war_support = a_data.get("war_support", 0.5)
 	country.puppets = a_data.get("puppets", [])
-	country.acceptedCultures = a_data.get("acceptedCultures", [])
+	country.acceptedCultures = a_data.get("accepted_cultures", [])
+	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country._refresh_economic_stats()
 	country.refresh_ideology_name()
@@ -137,9 +141,7 @@ func process_hour() -> void:
 
 	# Economic Cycle
 	# (GDP / Hours in a year) * Tax Rate + Factory Output
-	var base_income = (gdp / 8760.0) * 0.2
-	var gross_income = base_income + (factories_amount * factory_income)
-	hourly_money_income = gross_income * (1.0 - economy_law_penalty)
+	hourly_money_income = ((gdp * 0.0000228310502) + (factories_amount * factory_income)) * (1.0 - economy_law_penalty)
 	army_cost = calculate_army_upkeep()
 	income = hourly_money_income - army_cost
 	money += income
@@ -187,17 +189,15 @@ func train_troops(count: int, type: String = "infantry") -> bool:
 		return false
 
 	var total_manpower_needed = count * template["manpower"]
-	var daily_cost = count * template["cost"]
 
 	# Check affordability (Manpower + First day of cost)
-	if manpower < total_manpower_needed or money < daily_cost:
+	if manpower < total_manpower_needed or money < count * template["cost"]:
 		return false
 
 	manpower -= total_manpower_needed
 
 	# Add to training queue
-	var training_batch = TroopTraining.new(count, type, template["days"], template["cost"])
-	ongoing_training.append(training_batch)
+	ongoing_training.append(TroopTraining.new(count, type, template["days"], template["cost"]))
 	return true
 
 
@@ -233,13 +233,10 @@ func update_manpower_pool() -> void:
 
 	var used_manpower = CountryManager.get_country_used_manpower(self)
 
-	var total_mobilized = manpower + used_manpower
+	if manpower + used_manpower < max_allowed_manpower:
+		manpower += max(1, int(total_population * 0.0001))
 
-	if total_mobilized < max_allowed_manpower:
-		var daily_growth = max(1, int(total_population * 0.0001))
-		manpower += daily_growth
-
-	if (manpower + used_manpower) > max_allowed_manpower:
+	if manpower + used_manpower > max_allowed_manpower:
 		manpower = max(0, max_allowed_manpower - used_manpower)
 
 	# HARD SAFETY: Never let the variable itself be negative
@@ -256,19 +253,15 @@ func get_army_pressure() -> float:
 
 
 func get_max_morale() -> float:
-	var base = 60.0 + (stability * 40.0) + (army_level * 5.0)
-	return base * 0.5 if money < 0 else base
+	return (60.0 + (stability * 40.0) + (army_level * 5.0)) * (0.5 if money < 0 else 1.0)
 
 
 func get_attack_efficiency() -> float:
-	var eff = 0.9 + (war_support * 0.3) + (army_level * 0.05)
-	return eff * 0.7 if money < 0 else eff
+	return (0.9 + (war_support * 0.3) + (army_level * 0.05)) * (0.7 if money < 0 else 1.0)
 
 
 func get_defense_efficiency() -> float:
-	var eff = 1.0 + (stability * 0.15) + (army_level * 0.05)
-	return eff * 0.8 if money < 0 else eff
-
+	return (1.0 + (stability * 0.15) + (army_level * 0.05)) * (0.8 if money < 0 else 1.0)
 
 #endregion
 
@@ -413,7 +406,7 @@ func set_relation_with(other_country_name: String, value: int) -> void:
 	#var finish_game = true
 
 
-func update_relations():
+func update_relations() -> void:
 	for otherName in relations:
 		if CountryManager.countries.has(otherName):
 			relations[otherName] = 141 - ideology.distance_to(CountryManager.countries[otherName].ideology)
@@ -422,4 +415,8 @@ func update_relations():
 			relations[otherName] = 50
 
 func get_relation_with(other_country_name: String) -> int:
-	return relations.get(other_country_name, 50)
+	if CountryManager.countries.has(other_country_name):
+		return relations.get(other_country_name, 50)
+	else:
+		relations.erase(other_country_name)
+		return 0

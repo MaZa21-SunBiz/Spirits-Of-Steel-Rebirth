@@ -1,5 +1,10 @@
 extends Node
 
+func m_GatesOfHell() -> void:
+	var sizer: int = CountryManager.countries.keys().size()
+	for countryA in range(sizer):
+		for countryB in range(countryA, sizer):
+			m_StartWarSilent(CountryManager.countries.keys()[countryA], CountryManager.countries.keys()[countryB])
 
 func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
@@ -7,6 +12,7 @@ func _ready() -> void:
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
 
+	Console.add_command("gates_of_hell", m_GatesOfHell, [], 0, "Start armageddon")
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
 	Console.add_command("annex", _annex, ["annexer", "annexee"], 2, "Annex Country for Player")
 	Console.add_command("pp", _add_pp, ["amount"], 1, "Add Poltical power to player")
@@ -84,6 +90,18 @@ func _start_war(country_name1: String, country_name2: String) -> void:
 	if not country2:
 		Console.print_line("Unknown country: " + country_name2)
 
+func m_StartWarSilent(country_name1: String, country_name2: String) -> void:
+	var country1 := CountryManager.get_country(country_name1)
+	var country2 := CountryManager.get_country(country_name2)
+
+	if country1 and country2:
+		WarManager.declare_war(country1, country2, true)
+		return
+
+	if not country1:
+		Console.print_line("Unknown country: " + country_name1)
+	if not country2:
+		Console.print_line("Unknown country: " + country_name2)
 
 func _call_to_arms(caller_name: String, target_name: String) -> void:
 	var caller := CountryManager.get_country(caller_name)

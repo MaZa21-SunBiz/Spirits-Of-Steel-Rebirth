@@ -57,7 +57,6 @@ var music_volume_map = {MUSIC.MAIN_THEME: 0.4, MUSIC.BATTLE_THEME: 0.5}
 
 
 func _ready():
-	const music_path = "res://assets/music/"
 	for radio in DirAccess.open(music_path).get_directories():
 		if radio != "superevents":
 			music_map[MUSIC.MAIN_THEME][radio] = []
@@ -91,8 +90,7 @@ func _load_music_folder(radio: String, track_enum: int):
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and not file_name.ends_with(".import"):
-				var full_path = path + "/" + file_name
-				var stream = load(full_path)
+				var stream = load(path + "/" + file_name)
 				if stream:
 					music_map[track_enum][radio].append(stream)
 			file_name = dir.get_next()

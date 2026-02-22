@@ -69,8 +69,7 @@ func _add_save_row(parent: Node, save_name: String) -> void:
 	parent.add_child(hbox)
 
 func _on_save_game_pressed():
-	var file_name = line_edit.text.strip_edges()
-	GameState.current_world.save_game(file_name)
+	GameState.current_world.save_game(line_edit.text.strip_edges())
 	_refresh_saves()
 	# _switch_section(Section.SAVE) # Refresh list
 

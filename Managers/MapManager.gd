@@ -299,7 +299,7 @@ func _get_contextual_highlight(pid: int) -> Color:
 
 	if GameState.industry_building == GameState.IndustryType.PORT:
 		var coastal_provinces = get_provinces_near_sea(player_name)
-		if pid in coastal_provinces && !province_objects[pid].port == Province.PORT_BUILT:
+		if pid in coastal_provinces && province_objects[pid].buildings.find_custom(func(a_building): return a_building.type == "Port") != -1:
 			return Color.CYAN
 		else:
 			return Color.TRANSPARENT
@@ -341,10 +341,10 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	var is_puppet_owned = province_to_country.get(pid) in CountryManager.player_country.puppets
 
 	if GameState.choosing_deploy_city:
-		if is_player_owned:
+		if is_player_owned and province_objects[pid].city != "":
 			_execute_deployment(pid, player_country_name)
 		else:
-			print("Action Failed: Province not owned by player.")
+			print("Action Failed: Province not owned by player or not a city.")
 
 	elif GameState.industry_building != GameState.IndustryType.DEFAULT:
 		if is_player_owned:
@@ -398,6 +398,16 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 		else:
 			print("Action Failed: Port must be on a coast!")
 			return
+
+	elif type == GameState.IndustryType.INFRASTRUCTURE:
+		if province.infrastructure < province.maxInfrastructure:
+			print("Cannot build: Infrastructure is already maxeda.")
+			return
+			
+		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, country)
+		
+		_cleanup_interaction_state()
+		show_industry_country(player_name)
 
 	country_clicked.emit(player_name)
 
@@ -490,6 +500,7 @@ func _build_adjacency_list() -> void:
 				continue
 
 			if not unique_neighbors.has(pid):
+				#print("Unique Neighbor: %d" % pid)
 				unique_neighbors[pid] = {}
 
 			# 4-directional neighbors
@@ -499,19 +510,24 @@ func _build_adjacency_list() -> void:
 				var nx = x + d.x
 				var ny = y + d.y
 				if nx < 0 or ny < 0 or nx >= w or ny >= h:
+					#print("Skipping: (%d, %d)" % [nx, ny])
 					continue
 
 				var neighbor = _get_pid_fast(nx, ny)
+				#print("Checking Neighbor: %d %d" % [pid, neighbor])
 
 				# Normal adjacency (Land-to-Land)
-				if neighbor > 1 and neighbor != pid:
+				if neighbor > 0 and neighbor != pid:
+					#print("Neighborship: %d = %d" % [pid, neighbor])
 					unique_neighbors[pid][neighbor] = true
 					continue
 
 				# Border pixel scan (ID=1)
-				if neighbor == 1:
+				if neighbor == 0:
+					#print("Across: %d" % pid)
 					var across = _scan_across_border(nx, ny, pid)
-					if across > 1 and across != pid:
+					if across > 0 and across != pid:
+						#print("Across Neighborship: %d = %d" % [pid, across])
 						unique_neighbors[pid][across] = true
 
 	# --- THE FIX: Convert to Typed Arrays and Populate Objects ---
@@ -540,13 +556,13 @@ func _scan_across_border(x: int, y: int, pid: int) -> int:
 	# Check right
 	if x + 1 < w:
 		var n: int = _get_pid_fast(x + 1, y)
-		if n > 1 and n != pid:
+		if n > 0 and n != pid:
 			return n
 
 	# Check down
 	if y + 1 < h:
 		var n: int = _get_pid_fast(x, y + 1)
-		if n > 1 and n != pid:
+		if n > 0 and n != pid:
 			return n
 
 	return -1
@@ -647,7 +663,7 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 
 			# --- RULE 1: LAND -> SEA REQUIRES PORT ---
 			if current_prov.type == Province.LAND and neighbor_prov.type == Province.SEA:
-				if not current_prov.port == Province.PORT_BUILT:
+				if current_prov.buildings.find_custom(func(building): return building.type == "Port") == -1:
 					continue # BLOCKED: No port to launch ships
 
 			# --- RULE 2: POLITICAL RESTRICTIONS ---
@@ -779,17 +795,15 @@ func show_faction_map() -> void:
 	var current_max_gdp: float = 1.0
 	for province in province_objects.values():
 		if province.gdp > current_max_gdp:
-			current_max_gdp = float(province.gdp)
+			current_max_gdp = province.gdp
 
 	for pid in province_objects.keys():
-		var province = province_objects[pid]
-
 		if pid <= 1:
 			continue
 
 		var total: int = 0
 		for faction in FactionManager.factions:
-			if FactionManager.factions[faction].members.find_custom(func(a_factionMember: FactionMember): return a_factionMember.polity == province.country) != -1:
+			if FactionManager.factions[faction].members.find_custom(func(a_factionMember: FactionMember): return a_factionMember.polity == province_objects[pid].country) != -1:
 				total += 1
 				faction_color = FactionManager.factions[faction].color
 			else:
@@ -806,17 +820,36 @@ func show_population_map() -> void:
 	var current_max_pop: float = 1.0
 	for province in province_objects.values():
 		if province.GetPopulation() > current_max_pop:
-			current_max_pop = float(province.GetPopulation())
+			current_max_pop = province.GetPopulation()
 
 	for pid in province_objects.keys():
-		var province = province_objects[pid]
 		if pid <= 1:
 			continue
-		var pop_color = _get_heatmap_color(province.GetPopulation(), current_max_pop)
-		state_color_image.set_pixel(pid, 0, pop_color)
+		state_color_image.set_pixel(pid, 0, _get_heatmap_color(province_objects[pid].GetPopulation(), current_max_pop))
 
 	state_color_texture.update(state_color_image)
 	print("MapManager: Population View Updated. Max Pop found: ", current_max_pop)
+
+func ShowInfrastructureMap() -> void:
+	if province_objects.is_empty():
+		return
+
+	for pid in province_objects.keys():
+		if pid <= 1 || province_objects[pid].country == "Sea":
+			continue
+		if CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.allowedCountries.has(province_objects[pid].country):
+			state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color)
+		else:
+			var infra = province_objects[pid].infrastructure
+			if infra == 0:
+				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.WHITE * 0.5)
+			elif infra == province_objects[pid].maxInfrastructure:
+				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.BLUE * 0.5)
+			else:
+				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW  * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure))
+
+	state_color_texture.update(state_color_image)
+	print("MapManager: Infrastructure View Updated.")
 
 
 func show_ethnic_map() -> void:
@@ -872,16 +905,13 @@ func show_gdp_map() -> void:
 	var current_max_gdp: float = 1.0
 	for province in province_objects.values():
 		if province.gdp > current_max_gdp:
-			current_max_gdp = float(province.gdp)
+			current_max_gdp = province.gdp
 
 	for pid in province_objects.keys():
-		var province = province_objects[pid]
-
 		if pid <= 1:
 			continue
 
-		var gdp_color = _get_gdp_heatmap_color(province.gdp, current_max_gdp)
-		state_color_image.set_pixel(pid, 0, gdp_color)
+		state_color_image.set_pixel(pid, 0, _get_gdp_heatmap_color(province_objects[pid].gdp, current_max_gdp))
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.GDP
@@ -896,8 +926,7 @@ func show_countries_map() -> void:
 		if pid <= 1:
 			continue
 
-		var province = province_objects[pid]
-		var country_name = province.country
+		var country_name = province_objects[pid].country
 		var country_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 		var country_data = CountryManager.get_country(country_name)
 		if country_data and country_data.owner:
@@ -919,25 +948,25 @@ func show_industry_country(country_name: String) -> void:
 		push_warning("MapManager: Country " + country_name + " not found.")
 		return
 
-	var provinces = country_to_provinces.get(country_name)
 	var provinces_near_sea := get_provinces_near_sea(country_name)
 
-	for pid in provinces:
+	for pid in country_to_provinces.get(country_name):
 		var province = province_objects[pid]
 		var color = Color.WHITE # Default color
 
+		# TODO(sockmit2007): This whole section has to be reworked.
 		if province.city.length() > 0:
 			color = Color.YELLOW
 		
-		elif province.factory == province.FACTORY_BUILT:
-			color = Color.GREEN
-		elif province.factory == province.FACTORY_BUILDING:
-			color = Color.ORANGE # Show progress
-			
-		elif province.port == province.PORT_BUILT:
-			color = Color.BLUE
-		elif province.port == province.PORT_BUILDING:
-			color = Color.CYAN # Show progress
+		#elif province.factory == province.FACTORY_BUILT:
+		#	color = Color.GREEN
+		#elif province.factory == province.FACTORY_BUILDING:
+		#	color = Color.ORANGE # Show progress
+		#	
+		#elif province.port == province.PORT_BUILT:
+		#	color = Color.BLUE
+		#elif province.port == province.PORT_BUILDING:
+		#	color = Color.CYAN # Show progress
 			
 		elif pid in provinces_near_sea:
 			color = Color.LIGHT_SKY_BLUE
@@ -970,12 +999,10 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 
 	province_to_country[pid] = new_owner_name
 
-	var new_color = CountryManager.GetCountryColor(new_owner_name, Color.GRAY)
-	update_lookup(pid, new_color)
+	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
 
 func _parse_color_string(s: String) -> Vector3:
-	var cleaned = s.replace("(", "").replace(")", "").replace(" ", "")
-	var parts = cleaned.split(",")
+	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")
 	return Vector3(float(parts[0]), float(parts[1]), float(parts[2]))
 
 
@@ -989,9 +1016,9 @@ func _force_array(data) -> Array:
 
 
 func _get_gdp_from_color(c: Color) -> int:
-	var r = int(round(c.r * 255.0))
-	var g = int(round(c.g * 255.0))
-	var b = int(round(c.b * 255.0))
+	var r = int(c.r * 255.0)
+	var g = int(c.g * 255.0)
+	var b = int(c.b * 255.0)
 
 	var exact_key = "(%d, %d, %d)" % [r, g, b]
 
@@ -1021,10 +1048,9 @@ func _get_gdp_from_color(c: Color) -> int:
 
 
 func get_provinces_near_sea(country_name: String) -> Array[int]:
-	var provinces = country_to_provinces.get(country_name, [])
 	var provinces_near_sea: Array[int] = []
 
-	for pid in provinces:
+	for pid in country_to_provinces.get(country_name, []):
 		var neighbors = adjacency_list.get(pid, [])
 
 		for neighbor_id in neighbors:
@@ -1042,9 +1068,8 @@ func get_border_provinces(country_name: String) -> Array[int]:
 	var border_provinces: Array[int] = []
 
 	# Get all provinces owned by this country
-	var my_provinces = country_to_provinces.get(country_name, [])
 
-	for prov_id in my_provinces:
+	for prov_id in country_to_provinces.get(country_name, []):
 		var province_data: Province = province_objects.get(prov_id)
 
 		if not province_data:
@@ -1052,10 +1077,8 @@ func get_border_provinces(country_name: String) -> Array[int]:
 
 		# Check neighbors of this province
 		for neighbor_id in province_data.neighbors:
-			var neighbor_owner = province_to_country.get(neighbor_id, "unknown")
-
 			# If the neighbor is owned by someone else (and isn't sea/neutral)
-			if neighbor_owner != country_name:
+			if province_to_country.get(neighbor_id, "Unknown") != country_name:
 				border_provinces.append(prov_id)
 				break # Move to next province once we know this one is a border
 
@@ -1139,11 +1162,9 @@ func get_cities_province_country(country_name) -> Array:
 ## Returns provinces that specifically border a certain enemy
 func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> Array[int]:
 	var specific_borders: Array[int] = []
-	var my_provinces = country_to_provinces.get(country_name, [])
-
-	for prov_id in my_provinces:
-		var province_data: Province = province_objects.get(prov_id)
-		for neighbor_id in province_data.neighbors:
+	
+	for prov_id in country_to_provinces.get(country_name, []):
+		for neighbor_id in province_objects.get(prov_id).neighbors:
 			if province_to_country.get(neighbor_id) == enemy_name:
 				specific_borders.append(prov_id)
 				break
@@ -1152,10 +1173,9 @@ func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> 
 
 
 func annex_country(annexer: String, annexee: String) -> void:
-	var playerobj = CountryManager.player_country
+	#var playerobj = CountryManager.player_country
 
-	var target_troops = TroopManager.get_troops_for_country(annexee).duplicate()
-	for troop in target_troops:
+	for troop in TroopManager.get_troops_for_country(annexee).duplicate():
 		TroopManager.remove_troop(troop)
 
 	var provinces_to_transfer = country_to_provinces.get(annexee, []).duplicate()

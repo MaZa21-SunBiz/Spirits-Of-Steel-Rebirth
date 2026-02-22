@@ -8,7 +8,7 @@ const FLAG_WIDTH_BASE := 24.0
 const FLAG_HEIGHT_BASE := 20.0
 const PADDING_BASE := 6.0
 const GAP_BASE := 8.0
-const CLICK_THRESHOLD := 1.0  # pixels – how far mouse can move and still count as a "click"
+const CLICK_THRESHOLD := 2.0  # pixels – how far mouse can move and still count as a "click"
 
 # --- State ---
 var dragging: bool = false
@@ -110,7 +110,7 @@ func _perform_selection() -> void:
 	var pad = PADDING_BASE * inv_zoom
 
 	for t in TroopManager.troops:
-		if t.country_name.to_lower() != CountryManager.player_country.country_name:
+		if t.country_name != CountryManager.player_country.country_name:
 			continue
 
 		var label = str(t.divisions_count)

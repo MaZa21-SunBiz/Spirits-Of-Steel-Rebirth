@@ -44,15 +44,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _handle_keyboard_movement(delta: float) -> void:
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	camera.position += input_dir * (base_speed / camera.zoom.x) * delta
+	camera.position += Input.get_vector("move_left", "move_right", "move_up", "move_down") * (base_speed / camera.zoom.x) * delta
 
 
 func _perform_zoom(direction: int) -> void:
 	var mouse_pos_before := camera.get_global_mouse_position()
 
-	var new_zoom := camera.zoom + Vector2.ONE * direction
-	camera.zoom = new_zoom.clamp(Vector2.ONE, Vector2.ONE * 12)
+	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(Vector2.ONE, Vector2.ONE * 12)
 
-	var mouse_pos_after := camera.get_global_mouse_position()
-	camera.position += mouse_pos_before - mouse_pos_after
+	camera.position += mouse_pos_before - camera.get_global_mouse_position()

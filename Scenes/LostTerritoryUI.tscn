@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://ci2ut4j82a2sx"]
+
+[ext_resource type="Script" uid="uid://blaptx5eas05o" path="res://Scripts/UI/LostTerritoryUI.gd" id="1_6sc0s"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_l52io"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_ov18t"]
+[ext_resource type="Texture2D" uid="uid://dls0thnd1nfsm" path="res://assets/flags/chad/neutral_flag.png" id="4_l52io"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov18t"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.29411766, 0.29411766, 0.627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nw3h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.24840015, 0.24840018, 0.24840012, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l52io"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0.21568628, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0.47058824, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+shadow_color = Color(0, 0, 0.3529412, 1)
+shadow_size = 2
+anti_aliasing = false
+
+[node name="LostTerritoryUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("hosts", "template")]
+script = ExtResource("1_6sc0s")
+hosts = NodePath("PanelContainer/VBoxContainer/ScrollContainer/Hosts")
+template = NodePath("Template")
+
+[node name="Template" type="PanelContainer" parent="." unique_id=1296478884]
+visible = false
+material = ExtResource("2_l52io")
+offset_left = 389.0
+offset_top = 141.0
+offset_right = 763.0
+offset_bottom = 197.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ov18t")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Template" unique_id=459666818]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Template/HFlowContainer" unique_id=1447218751]
+material = ExtResource("2_l52io")
+layout_mode = 2
+texture = ExtResource("4_l52io")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Template/HFlowContainer" unique_id=261739774]
+material = ExtResource("2_l52io")
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_0nw3h")
+text = "Nation"
+
+[node name="PanelContainer" type="PanelContainer" parent="Template/HFlowContainer" unique_id=1459819891]
+material = ExtResource("2_l52io")
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l52io")
+
+[node name="Label" type="Label" parent="Template/HFlowContainer/PanelContainer" unique_id=2013589251]
+layout_mode = 2
+size_flags_vertical = 1
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
+material = ExtResource("2_l52io")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.0
+offset_right = 199.0
+offset_bottom = 648.0
+grow_horizontal = 2
+theme = ExtResource("3_ov18t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=233954815]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=611784857]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "End Of A Nation"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=587709827]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer" unique_id=186216995]
+layout_mode = 2
+text = "Hosts:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer" unique_id=298232394]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hosts" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer" unique_id=326351235]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=90273759]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Exile" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1726934931]
+material = ExtResource("2_l52io")
+layout_mode = 2
+theme = ExtResource("3_ov18t")
+text = "Government in Exile"
+
+[node name="Dissolution" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=38295834]
+material = ExtResource("2_l52io")
+layout_mode = 2
+theme = ExtResource("3_ov18t")
+text = "Dissolution of Government"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Exile" to="." method="m_OnExilePressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Dissolution" to="." method="m_OnDissolvePressed"]
