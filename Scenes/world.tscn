@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
-[ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="7_c5t2i"]
-[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/decision_tree_ui.gd" id="9_5v1tr"]
+[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
+[ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ukr8"]
 load_path = "res://.godot/imported/regions.png-75b8193867ba7ee4418b242a7a7efe49.ctex"
@@ -69,4 +69,7 @@ script = ExtResource("9_5v1tr")
 visible = false
 
 [node name="PeaceProcessUI" parent="." unique_id=1219073297 instance=ExtResource("10_0fj1v")]
+visible = false
+
+[node name="LostTerritoryUI" parent="." unique_id=799302478 instance=ExtResource("13_c5t2i")]
 visible = false

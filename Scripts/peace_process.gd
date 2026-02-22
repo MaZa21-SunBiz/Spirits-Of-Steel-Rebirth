@@ -51,7 +51,7 @@ func _populate_belligerents(winners_list: Array = []):
 		var btn = Button.new()
 		btn.text = enemy_name.capitalize()
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.material = preload("res://damaged.tres")
+		btn.material = preload("res://Materials/damaged.tres")
 		btn.pressed.connect(_on_belligerent_selected.bind(enemy_name))
 		belligerents_list.add_child(btn)
 		
@@ -65,7 +65,7 @@ func _on_belligerent_selected(country_name: String):
 		current_beneficiary = country
 		for child in belligerents_list.get_children():
 			if child is Button:
-				var is_selected = child.text.to_lower() == country_name
+				var is_selected = child.text == country_name
 				child.modulate = Color.CYAN if is_selected else Color.WHITE
 
 func _input(event: InputEvent) -> void:

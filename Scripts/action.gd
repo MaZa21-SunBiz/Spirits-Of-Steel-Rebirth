@@ -95,7 +95,7 @@ func _update_standard_text_and_cost(player) -> void:
 	if cost_pp > 0:
 		suffix = " (%d PP)" % cost_pp
 	elif cost_mp > 0:
-		suffix = " (%sk MP)" % str(cost_mp / 1000)
+		suffix = " (%sk MP)" % str(cost_mp * 0.001)
 
 	button.text = base_text + suffix
 
@@ -105,7 +105,6 @@ func _update_standard_text_and_cost(player) -> void:
 
 
 func _on_button_pressed() -> void:
-	var cost = data.get("cost", 0)
-	CountryManager.player_country.political_power -= cost
+	CountryManager.player_country.political_power -= data.get("cost", 0)
 	if _callback.is_valid():
 		_callback.call()

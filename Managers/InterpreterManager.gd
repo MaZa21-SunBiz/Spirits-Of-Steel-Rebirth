@@ -26,12 +26,11 @@ func get_function(expression, country: CountryData = null):
 		push_error("Interpreter: Expression must be a Dictionary or Array.")
 		return null
 
-	var func_name: String = expression.get("func", "")
 	var args: Array = expression.get("args", [])
 	var store_key: String = expression.get("store", "")
 	var result = null
 
-	match func_name:
+	match expression.get("func", ""):
 		"eq":
 			if args.size() >= 2:
 				result = get_variable(args[0]) == get_variable(args[1])

@@ -75,6 +75,7 @@ var action_costs := {
 	"open_manage_country": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
 	"_build_factory": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
 	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true}
+	"m_BuildInfrastructure": func(a_player: CountryData, a_selected: CountryData): return {"cost": 0, "can_afford": true}
 }
 
 func _enter_tree() -> void:
@@ -118,13 +119,13 @@ func _ready() -> void:
 		entry.expand_icon = true
 		entry.set_meta("radio_name", radio)
 		entry.pressed.connect(
-		func():
-			if radio in MusicManager.radios:
-				MusicManager.radios.erase(radio)
-			else:
-				MusicManager.radios.append(radio)
-			_update_radio_visuals()
-			print(MusicManager.radios)
+			func():
+				if radio in MusicManager.radios:
+					MusicManager.radios.erase(radio)
+				else:
+					MusicManager.radios.append(radio)
+				_update_radio_visuals()
+				print(MusicManager.radios)
 		)
 		radio_list.add_child(entry)
 	
@@ -191,11 +192,8 @@ func _on_province_clicked(country_name: String) -> void:
 		# elif selected_country.country_name in CountryManager.player_country.puppets:
 		# 	new_context = Context.PUPPET
 
-		var has_military_access := (
-			selected_country.country_name in CountryManager.player_country.allowedCountries
-		)
 		self.military_access_label.text = (
-			"Military Access: " + String("Yes" if has_military_access else "No")
+			"Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No")
 		)
 
 		sidemenu_context.current_tab = new_context
@@ -307,17 +305,10 @@ func _update_context_actions_visuals() -> void:
 						child.disabled = !can_afford
 						
 						# Update text to show cost if > 0
-						var base_text = child.text.split(" (")[0] # Strip existing cost
-						if cost > 0:
-							child.text = base_text + " (%d PP)" % cost
-						else:
-							child.text = base_text
+						child.text = child.text.split(" (")[0] + (" (%d PP)" % cost if cost > 0 else "")
 						
 						# Visual feedback for disabled buttons
-						if !can_afford:
-							child.modulate = Color(1, 0.5, 0.5, 0.7)
-						else:
-							child.modulate = Color.WHITE
+						child.modulate = Color.WHITE if can_afford else Color(1, 0.5, 0.5, 0.7)
 
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
 	var l = Label.new()
@@ -365,10 +356,7 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 			GameState.industry_building = GameState.IndustryType.DEFAULT
 			MapManager.show_countries_map()
 
-		if _menu_index == Category.MILITARY:
-			military_extra_panel.visible = true
-		else:
-			military_extra_panel.visible = false
+		military_extra_panel.visible = _menu_index == Category.MILITARY
 	# _build_action_list()
 
 
@@ -392,8 +380,7 @@ func _build_trooplist() -> void:
 		var btn = action_scene.instantiate()
 		sidemenu_trooplist.add_child(btn)
 		# Callable points to deploy_troop, passing the specific troop object
-		var deploy_call = Callable(self, "deploy_troop").bind(troop)
-		btn.setup_ready(troop, deploy_call)
+		btn.setup_ready(troop, Callable(self, "deploy_troop").bind(troop))
 
 func update_topbar_stats() -> void:
 	if !CountryManager.player_country:
@@ -416,11 +403,11 @@ func format_number(value: float) -> String:
 	var abs_val = abs(value)
 	var sign_str = "-" if value < 0 else ""
 	if abs_val >= 1_000_000_000:
-		return sign_str + "%.2fB" % (abs_val / 1_000_000_000.0)
+		return sign_str + "%.2fB" % (abs_val * 0.000000001)
 	elif abs_val >= 1_000_000:
-		return sign_str + "%.2fM" % (abs_val / 1_000_000.0)
+		return sign_str + "%.2fM" % (abs_val * 0.000001)
 	elif abs_val >= 1_000:
-		return sign_str + "%.1fK" % (abs_val / 1_000.0)
+		return sign_str + "%.1fK" % (abs_val * 0.001)
 	return sign_str + str(floori(abs_val))
 
 
@@ -459,16 +446,14 @@ func slide_in() -> void:
 	if is_open:
 		return
 	is_open = true
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(sidemenu, "position", pos_open, slide_duration)
+	create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).tween_property(sidemenu, "position", pos_open, slide_duration)
 
 
 func slide_out() -> void:
 	if not is_open:
 		return
 	is_open = false
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	tween.tween_property(sidemenu, "position", pos_closed, slide_duration)
+	create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN).tween_property(sidemenu, "position", pos_closed, slide_duration)
 
 
 func _choose_deploy_city():
@@ -488,18 +473,15 @@ func _declare_war():
 	for puppet in selected_country.puppets:
 		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[ puppet ])
 
-	var has_military_access := (
-		selected_country.country_name in CountryManager.player_country.allowedCountries
-	)
 	GameState.game_ui.military_access_label.text = (
-		"Military Access: " + String("Yes" if has_military_access else "No")
+		"Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No")
 	)
 
 	open_menu(Context.ENEMY, Category.GENERAL)
 
 
 func _conscript(data: Dictionary):
-	var manpower = data.manpower / 10000
+	#var manpower = data.manpower * 0.0001
 	CountryManager.player_country.train_troops(1, "infantry")
 	update_topbar_stats()
 	# _build_action_list()
@@ -532,6 +514,9 @@ func _build_port():
 	GameState.industry_building = GameState.IndustryType.PORT
 	#MapManager.show_industry_country(player.country_name)
 
+func m_BuildInfrastructure():
+	GameState.industry_building = GameState.IndustryType.INFRASTRUCTURE
+	#MapManager.show_industry_country(player.country_name)
 
 func _request_access():
 	var cost = action_costs["_request_access"].call(CountryManager.player_country, selected_country)["cost"]
@@ -656,12 +641,9 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 			var card = DIVISION_CARD_SCENE.instantiate()
 			troop_list_parent.add_child(card)
 
-			# Check if the group is selected based on the first element
-			var is_selected = divisions_of_type[0] in selected_division_objects
-
 			# FIX: Pass 'divisions_of_type' (the Array) as the second argument
 			# We no longer pass 'count' here because the card calculates it from the array
-			card.setup_grouped(type, divisions_of_type, is_selected)
+			card.setup_grouped(type, divisions_of_type, divisions_of_type[0] in selected_division_objects)
 
 			# Update the signal connection
 			if not card.is_connected("clicked", _on_group_clicked):
@@ -731,19 +713,14 @@ func update_division_menu():
 	ui_labels.type.text = division_type_selected.capitalize()
 	ui_labels.div_stats.text = "%s : %s : %s" % [stats.attack, stats.defense, stats.hp]
 
-	var total_cost = stats.cost * count
 	var total_manpower = stats.manpower * count
 
-	ui_labels.costs.text = format_number(total_cost)
+	ui_labels.costs.text = format_number(stats.cost * count)
 	ui_labels.manpower.text = format_number(total_manpower)
 
 	# 4. Check Affordability
 	var player = CountryManager.player_country
-	var can_afford = false
-
-	if player:
-		# You can check Money here too if you want: "and player.money >= total_cost"
-		can_afford = player.manpower >= total_manpower
+	var can_afford: bool = player and player.manpower >= total_manpower
 
 	# 5. Update Button State & Visuals
 	button_train.disabled = not can_afford
@@ -769,10 +746,7 @@ func _update_train_button_visuals(is_affordable: bool) -> void:
 
 
 func _on_button_train_troops() -> void:
-	var divisions = int(input_division.value)
-	var success = CountryManager.player_country.train_troops(divisions, division_type_selected)
-
-	if success:
+	if CountryManager.player_country.train_troops(int(input_division.value), division_type_selected):
 		_build_trooplist()
 	update_division_menu()
 

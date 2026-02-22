@@ -37,13 +37,7 @@ func _load_decisions():
 
 
 func get_country_categories(country_name: String) -> Dictionary:
-	# Store keys as lowercase to match CountryManager pattern
-	var key = country_name.to_lower()
-	if country_decisions_map.has(key):
-		return country_decisions_map[key]
-	
-	# Fallback to default
-	return default_categories
+	return country_decisions_map.get(country_name, default_categories)
 
 
 # --- TICKING SYSTEM ---
@@ -67,8 +61,8 @@ func process_country_day(country: CountryData):
 			var country_cats = get_country_categories(country.country_name)
 
 			# Look through all categories to find the matching ID
-			for cat_name in country_cats:
-				for decision in country_cats[cat_name]:
+			for cat in country_cats.values():
+				for decision in cat:
 					if decision["id"] == key:
 						decision_title = decision["title"]
 						break
@@ -131,9 +125,8 @@ func _finalize_decision(country: CountryData, id: String):
 	country.set_meta("finished_" + id, true)
 
 	# Find the data to get the action (Slow search, but happens rarely)
-	var country_cats = get_country_categories(country.country_name)
-	for cat in country_cats:
-		for node in country_cats[cat]:
+	for cat in get_country_categories(country.country_name).values():
+		for node in cat:
 			if node["id"] == id:
 				_apply_reward(country, node.get("action", {}))
 				return
@@ -155,6 +148,4 @@ func get_days_left(country: CountryData, id: String) -> int:
 
 # Check if the country has ANY active timers
 func is_country_busy(country: CountryData) -> bool:
-	if not active_decisions.has(country.country_name):
-		return false
-	return not active_decisions[country.country_name].is_empty()
+	return not active_decisions.get(country.country_name, []).is_empty()

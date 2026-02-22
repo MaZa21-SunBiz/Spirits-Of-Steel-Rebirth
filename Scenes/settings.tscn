@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://48v434jart4x" path="res://Scenes/settings.gd" id="1_aaqfp"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="1_i44u3"]
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_lhmql"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_lhmql"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_lhmql"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2dne"]

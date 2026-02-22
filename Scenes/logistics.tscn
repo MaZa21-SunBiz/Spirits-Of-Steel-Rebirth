@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ct6nbkh50os7e"]
 
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_sj0rh"]
-[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="1_xesbs"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_sj0rh"]
+[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scripts/UI/ManageCountryUI.gd" id="1_xesbs"]
 [ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="2_xesbs"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_vvlv7"]
 

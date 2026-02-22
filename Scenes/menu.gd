@@ -69,6 +69,7 @@ func _add_sub_header(parent: Node, txt: String) -> void:
 	l.modulate = COLOR_ACCENT
 	if custom_font: l.add_theme_font_override("font", custom_font)
 	parent.add_child(l)
+	
 func _add_header(txt: String) -> void:
 	var l = Label.new()
 	l.text = txt
@@ -107,14 +108,15 @@ func _draw_save_menu() -> void:
 	save_input_hbox.add_child(save_btn)
 
 	# Enable button only if text is not empty
-	line_edit.text_changed.connect(func(new_text): 
-		save_btn.disabled = new_text.strip_edges().is_empty()
+	line_edit.text_changed.connect(
+		func(new_text): 
+			save_btn.disabled = new_text.strip_edges().is_empty()
 	)
 
-	save_btn.pressed.connect(func():
-		var file_name = line_edit.text.strip_edges()
-		GameState.current_world.save_game(file_name)
-		_switch_section(Section.SAVE) # Refresh list
+	save_btn.pressed.connect(
+		func():
+			GameState.current_world.save_game(line_edit.text.strip_edges())
+			_switch_section(Section.SAVE) # Refresh list
 	)
 
 	content_area.add_child(HSeparator.new())

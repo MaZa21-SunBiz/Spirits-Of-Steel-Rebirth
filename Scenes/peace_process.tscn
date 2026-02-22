@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_41grw"]
 [ext_resource type="Script" uid="uid://be08gs0etrp6i" path="res://Scripts/peace_process.gd" id="1_52vyn"]
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="1_o4gkq"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_o4gkq"]
 
 [node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297]
 script = ExtResource("1_52vyn")

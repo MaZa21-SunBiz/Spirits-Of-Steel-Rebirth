@@ -40,6 +40,10 @@ FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
 AiManager="*uid://ol3874ku3mbe"
 
+[debug]
+
+file_logging/enable_file_logging=true
+
 [display]
 
 window/size/resizable=false
