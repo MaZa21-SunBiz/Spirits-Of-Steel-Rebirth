@@ -74,9 +74,18 @@ var action_costs := {
 	"_open_faction": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
 	"open_manage_country": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
 	"_build_factory": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true}
+	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
 	"m_BuildInfrastructure": func(a_player: CountryData, a_selected: CountryData): return {"cost": 0, "can_afford": true}
 }
+
+# Yeah, not a bad idea.
+# Not sure how to impl that though.
+# Hmm...
+# Ok.
+# I guess that could work.
+# yeah.
+# Then we can have immigrants.
+# Hexagons Before Immigrants???
 
 func _enter_tree() -> void:
 	GameState.game_ui = self

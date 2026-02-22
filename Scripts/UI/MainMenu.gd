@@ -11,7 +11,7 @@ func _on_music_changed(value: float) -> void:
 	MusicManager.set_music_volume(value)
 
 func _on_new_game_pressed() -> void:
-	$"/root/MainMenu/CountrySelect".visible = true
+	get_tree().change_scene_to_packed(preload("res://Scenes/world.tscn"))
 
 func _on_start() -> void:
 	if CountryManager.player_country:

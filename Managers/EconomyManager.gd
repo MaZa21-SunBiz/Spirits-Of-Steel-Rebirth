@@ -29,7 +29,7 @@ func process_economy_day():
 
 func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dailyCost: float, a_country: CountryData) -> void:
 	if a_country == CountryManager.player_country:
-		MusicManager.play_sfx(MusicManager.SFX_BUILD)
+		MusicManager.play_sfx(MusicManager.SFX.BUILD)
 	
 	construction_queue[a_provinceID] = {
 		"type": "Infrastructure",

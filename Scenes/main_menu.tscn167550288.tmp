@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://materials/damaged.tres" id="5_yhxw7"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
 [ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://Scenes/goober.gdshader" id="10_5egv6"]
@@ -20,6 +20,59 @@ content_margin_top = 14.0
 content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="GDScript" id="GDScript_cp0ys"]
+script/source = "extends Control
+
+var countries = []
+@onready var country_select = $\"/root/MainMenu/CountrySelect\"
+@onready var search_input = country_select.get_node(\"PanelContainer2/TextEdit\")
+@onready var entry_list = country_select.get_node(\"ScrollContainer/VBoxContainer\")
+@onready var country_info = country_select.get_node(\"CountryInfo\")
+var damaged: ShaderMaterial = preload(\"res://materials/damaged.tres\")
+
+
+func _ready():
+	var path = \"res://map_data/map_data.json\" # Ensure path is correct
+	if not FileAccess.file_exists(path):
+		push_error(\"Map Data JSON missing!\")
+		return
+	var mapData: Dictionary = {}
+	var file = FileAccess.open(path, FileAccess.READ)
+	var json_data = JSON.parse_string(file.get_as_text())
+	if json_data is Dictionary:
+		mapData = json_data
+	if MapManager.province_objects.is_empty():
+		IdeologyManager.Initialize(mapData[\"ideologies\"] as Dictionary)
+		MapManager.load_country_data(mapData[\"provinces\"] as Dictionary)
+		CountryManager.initialize_countries(mapData[\"polities\"] as Array[Dictionary])
+		MapManager.build_lookup_texture()
+		FactionManager.Initialize(mapData[\"factions\"])
+
+
+func _on_search() -> void:
+	for n in entry_list.get_children():
+		n.queue_free()
+	for country in countries:
+		if country.country_name.begins_with(search_input.text):
+			var country_entry = 	add_entry(country)
+			entry_list.add_child(country_entry)
+
+func add_entry(country):
+	var set_country = func():
+		CountryManager.set_player_country(country.country_name)
+		country_info.text = \"Selected: %s\\n\\nGDP: %d\\nManpower: %d\\nStability: %d\" % [country.country_name.capitalize(), country.gdp, country.manpower, country.stability*100]
+	var entry = Button.new()
+	entry.text = country.country_name.capitalize()
+	entry.icon = TroopManager.get_flag(country.country_name)
+	entry.material = damaged
+	entry.expand_icon = true
+	entry.pressed.connect(set_country)
+	return entry
+
+func _on_exit() -> void:
+	$\"/root/MainMenu/CountrySelect\".visible = false
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr1f0"]
 content_margin_left = 14.0
@@ -139,6 +192,77 @@ theme = ExtResource("1_28flt")
 text = "Quit
 "
 
+[node name="CountrySelect" type="Control" parent="." unique_id=1383980299]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cp0ys")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CountrySelect" unique_id=742479731]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 412.0
+offset_top = 210.0
+offset_right = 460.0
+offset_bottom = 280.0
+text = "Exit"
+
+[node name="Button2" type="Button" parent="CountrySelect" unique_id=1344543558]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 692.0
+offset_top = 210.0
+offset_right = 850.0
+offset_bottom = 280.0
+text = "Start Game"
+
+[node name="PanelContainer2" type="PanelContainer" parent="CountrySelect" unique_id=1245583328]
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -114.0
+offset_right = 114.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="TextEdit" type="TextEdit" parent="CountrySelect/PanelContainer2" unique_id=1460251216]
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+placeholder_text = "Search country"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CountrySelect" unique_id=1571751802]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 462.0
+offset_top = 282.0
+offset_right = 690.0
+offset_bottom = 446.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CountrySelect/ScrollContainer" unique_id=1688162897]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CountryInfo" type="Label" parent="CountrySelect" unique_id=1815496630]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 281.0
+offset_right = 847.0
+offset_bottom = 302.0
+text = "Selected: None"
+
 [node name="Credits" type="Control" parent="." unique_id=1558337124]
 visible = false
 material = ExtResource("5_yhxw7")
@@ -231,4 +355,7 @@ flip_h = true
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer" method="_on_quit_pressed"]
+[connection signal="pressed" from="CountrySelect/Button" to="CountrySelect" method="_on_exit"]
+[connection signal="pressed" from="CountrySelect/Button2" to="PanelContainer" method="_on_start"]
+[connection signal="text_changed" from="CountrySelect/PanelContainer2/TextEdit" to="CountrySelect" method="_on_search"]
 [connection signal="pressed" from="Credits/PanelContainer/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]

@@ -400,7 +400,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 			return
 
 	elif type == GameState.IndustryType.INFRASTRUCTURE:
-		if province.infrastructure < province.maxInfrastructure:
+		if province.infrastructure >= province.maxInfrastructure:
 			print("Cannot build: Infrastructure is already maxeda.")
 			return
 			

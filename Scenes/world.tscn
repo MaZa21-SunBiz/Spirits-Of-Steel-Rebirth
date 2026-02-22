@@ -7,14 +7,17 @@
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
+[ext_resource type="Shader" uid="uid://badetdgq63gwx" path="res://Scenes/smooth_borders.gdshader" id="6_7yui6"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
+[ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="7_kn0ld"]
+[ext_resource type="Texture2D" uid="uid://noat3k35lsya" path="res://maps/regions.png" id="8_hgpy0"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
 [ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ukr8"]
-load_path = "res://.godot/imported/regions.png-75b8193867ba7ee4418b242a7a7efe49.ctex"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5t2i"]
+shader = ExtResource("6_7yui6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_o06y3"]
 
@@ -38,12 +41,13 @@ script = ExtResource("6_o06y3")
 [node name="MapContainer" type="Node2D" parent="World" unique_id=2009493061]
 
 [node name="CultureSprite" type="Sprite2D" parent="World/MapContainer" unique_id=159175243]
-texture = ExtResource("7_c5t2i")
+material = SubResource("ShaderMaterial_c5t2i")
+texture = ExtResource("7_kn0ld")
 centered = false
 
 [node name="RegionSprite" type="Sprite2D" parent="World/MapContainer" unique_id=2123006699]
 visible = false
-texture = SubResource("CompressedTexture2D_5ukr8")
+texture = ExtResource("8_hgpy0")
 centered = false
 
 [node name="CustomRenderer" type="Node2D" parent="World/MapContainer" unique_id=927049698]
