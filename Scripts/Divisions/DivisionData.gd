@@ -46,13 +46,11 @@ const TEMPLATES = {
 
 # --- Helper to get stats safely ---
 func get_attack_power() -> float:
-	var base = TEMPLATES.get(type, TEMPLATES["infantry"])["attack"]
-	return base * (1.0 + (experience * 0.5))
+	return TEMPLATES.get(type, TEMPLATES["infantry"])["attack"] * (1.0 + (experience * 0.5))
 
 
 func get_defense_power() -> float:
-	var base = TEMPLATES.get(type, TEMPLATES["infantry"])["defense"]
-	return base * (1.0 + (experience * 0.5))
+	return TEMPLATES.get(type, TEMPLATES["infantry"])["defense"] * (1.0 + (experience * 0.5))
 
 
 static func create_division(p_type: String) -> DivisionData:

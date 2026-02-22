@@ -6,22 +6,20 @@ var player_country: CountryData
 
 
 func _on_hour_passed() -> void:
-	if GameState.is_loading_game:
-		return
+	#if GameState.is_loading_game:
+	#	return
 
 	for c_name: String in countries:
-		var country_obj: CountryData = countries[c_name]
-		country_obj.process_hour()
+		countries[c_name].process_hour()
 		
 
 func _on_day_passed() -> void:
-	if GameState.is_loading_game:
-		return
+	#if GameState.is_loading_game:
+	#	return
 
 	EconomyManager.process_economy_day()
 	for c_name: String in countries:
-		var country_obj: CountryData = countries[c_name]
-		country_obj.process_day()
+		countries[c_name].process_day()
 	
 	SuperEventManager.check_events()
 	
@@ -105,8 +103,7 @@ func get_country_population(country_name: String) -> int:
 	if not MapManager.country_to_provinces.has(country_name):
 		return 0
 	var total_pop: int = 0
-	var pids = MapManager.country_to_provinces[country_name]
-	for pid in pids:
+	for pid in MapManager.country_to_provinces[country_name]:
 		if MapManager.province_objects.has(pid):
 			total_pop += MapManager.province_objects[pid].GetPopulation()
 	return total_pop
@@ -115,14 +112,10 @@ func get_country_population(country_name: String) -> int:
 func get_country_gdp(country_name: String) -> int:
 	if not MapManager.country_to_provinces.has(country_name):
 		return 0
-
 	var total_gdp: int = 0
-	var pids = MapManager.country_to_provinces[country_name]
-
-	for pid in pids:
+	for pid in MapManager.country_to_provinces[country_name]:
 		if MapManager.province_objects.has(pid):
 			total_gdp += MapManager.province_objects[pid].gdp
-
 	return total_gdp
 
 
@@ -143,8 +136,7 @@ static func get_country_used_manpower(country_obj: CountryData) -> int:
 	var total_used: int = 0
 
 	# 1. Active Troops on the field
-	var active_troops = TroopManager.get_troops_for_country(country_obj.country_name)
-	for troop in active_troops:
+	for troop in TroopManager.get_troops_for_country(country_obj.country_name):
 		for div in troop.stored_divisions:
 			total_used += _get_manpower_from_template(div.type)
 
@@ -165,8 +157,7 @@ static func get_country_used_manpower(country_obj: CountryData) -> int:
 # Helper to keep the code DRY (Don't Repeat Yourself)
 static func _get_manpower_from_template(type: String) -> int:
 	return DivisionData.TEMPLATES.get(type, DivisionData.TEMPLATES["infantry"])["manpower"]
-	
-## [Deprecated]
+
 func cleanup_empty_countries() -> void:
 	var to_remove: Array[String] = []
 	
@@ -177,7 +168,15 @@ func cleanup_empty_countries() -> void:
 
 	for c_name in to_remove:
 		print("CountryManager: Removing '%s' (No provinces found)." % c_name)
-		countries.erase(c_name)
+		# So here, we offer options: Government In Exile, or Dissolution
+		var country: CountryData = countries[c_name]
+		if country.is_player:
+			# Uh oh.
+			var lostTerritoryUI = get_tree().root.find_child("LostTerritoryUI", true, false)
+			if lostTerritoryUI:
+				# Pass the player as the default winner/beneficiary, and the full list of winners
+				lostTerritoryUI.open_menu(country)
+			pass
 
 func InformPuppet(puppeter: CountryData, puppetee: CountryData):
 	puppeter.allowedCountries.append(puppetee.country_name)
@@ -205,4 +204,20 @@ func release_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.allowedCountries.erase(puppeter.country_name)
 	puppetee.is_puppet = false
 	puppetee.owner = ""
+	MapManager.show_countries_map()
+
+func MakeHost(a_host: CountryData, a_hosted: CountryData) -> void:
+	a_host.hostedGovernments.append(a_hosted.country_name)
+	a_host.allowedCountries.append(a_hosted.country_name)
+	a_hosted.allowedCountries.append(a_host.country_name)
+	a_hosted.is_exiled = true
+	a_hosted.host = a_host.country_name
+	MapManager.show_countries_map()
+
+func FreeHost(a_host: CountryData, a_hosted: CountryData):
+	a_host.puppets.erase(a_hosted.country_name)
+	a_host.allowedCountries.erase(a_hosted.country_name)
+	a_hosted.allowedCountries.erase(a_host.country_name)
+	a_hosted.is_exiled = false
+	a_hosted.host = ""
 	MapManager.show_countries_map()

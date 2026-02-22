@@ -59,32 +59,25 @@ func _build_ui() -> void:
 	header_label = main_vbox.get_node("HBoxContainer/Label")
 	
 	# Data Labels
-	var eco_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer")
-	economic_status_val = eco_hbox.get_node("Values")
+	economic_status_val = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer").get_node("Values")
 	
-	var army_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2")
-	army_logistics_val = army_hbox.get_node("Value")
+	army_logistics_val = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2").get_node("Value")
 	
 	# Dismiss Button
-	var dismiss_btn = main_vbox.get_node("HBoxContainer/Button")
-	dismiss_btn.pressed.connect(close_menu)
+	main_vbox.get_node("HBoxContainer/Button").pressed.connect(close_menu)
 	
 	# Category Tabs
 	var tabs_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
 	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/ScrollContainer/VBoxContainer")
 	
 	# Connect existing category buttons in the scene
-	var btn_mil = tabs_hbox.get_node("MilitaryTab")
-	btn_mil.pressed.connect(_switch_category.bind(Category.MILITARY))
+	tabs_hbox.get_node("MilitaryTab").pressed.connect(_switch_category.bind(Category.MILITARY))
 	
-	var btn_eco = tabs_hbox.get_node("EconomicTab")
-	btn_eco.pressed.connect(_switch_category.bind(Category.ECONOMY))
+	tabs_hbox.get_node("EconomicTab").pressed.connect(_switch_category.bind(Category.ECONOMY))
 	
-	var btn_cnt = tabs_hbox.get_node("CountryTab")
-	btn_cnt.pressed.connect(_switch_category.bind(Category.COUNTRY))
+	tabs_hbox.get_node("CountryTab").pressed.connect(_switch_category.bind(Category.COUNTRY))
 	
-	var btn_rel = tabs_hbox.get_node("ReleasableTab")
-	btn_rel.pressed.connect(_switch_category.bind(Category.RELEASABLES))
+	tabs_hbox.get_node("ReleasableTab").pressed.connect(_switch_category.bind(Category.RELEASABLES))
 
 #endregion
 
@@ -158,36 +151,20 @@ func _refresh_full_data() -> void:
 
 func _refresh_army_counts() -> void:
 	# 1. Economic Status
-	var eco_txt = ""
-	eco_txt += "$%s\n" % _format_money(current_country.money)
-	eco_txt += "%.1f\n" % current_country.political_power
-	eco_txt += "+$%.1f\n" % (current_country.gdp / 8760.0 * 0.2)
-	eco_txt += "+$%.1f\n" % (current_country.factories_amount * current_country.factory_income)
-	eco_txt += "-$%.1f" % current_country.army_cost
-	
 	if economic_status_val:
-		economic_status_val.text = eco_txt
+		economic_status_val.text = "$%s\n%.1f\n+$%.1f\n+$%.1f\n-$%.1f" % [_format_money(current_country.money), current_country.political_power, current_country.gdp * 0.0000228310502, current_country.factories_amount * current_country.factory_income, current_country.army_cost]
 
 	# 2. Army Logistics
-	var counts = {"infantry": 0, "tank": 0, "artillery": 0}
-	var troops = TroopManager.get_troops_for_country(current_country.country_name)
-
-	for troop in troops:
-		for div in troop.stored_divisions:
-			if counts.has(div.type):
-				counts[div.type] += 1
-			else:
-				counts[div.type] = 1
-
-	var max_man = int(current_country.total_population * current_country.military_size_ratio)
-	var army_txt = ""
-	army_txt += "%s / %s\n" % [_format_number(current_country.manpower), _format_number(max_man)]
-	army_txt += "%d\n" % counts.get("infantry", 0)
-	army_txt += "%d\n" % counts.get("tank", 0)
-	army_txt += "%d" % counts.get("artillery", 0)
-	
 	if army_logistics_val:
-		army_logistics_val.text = army_txt
+		var counts = {"infantry": 0, "tank": 0, "artillery": 0}
+	
+		for troop in TroopManager.get_troops_for_country(current_country.country_name):
+			for div in troop.stored_divisions:
+				if counts.has(div.type):
+					counts[div.type] += 1
+				else:
+					counts[div.type] = 1
+		army_logistics_val.text = "%s / %s\n%d\n%d\n%d" % [_format_number(current_country.manpower), _format_number(int(current_country.total_population * current_country.military_size_ratio)), counts.get("infantry", 0), counts.get("tank", 0), counts.get("artillery", 0)]
 
 
 func _update_law_buttons_visuals() -> void:
@@ -197,23 +174,18 @@ func _update_law_buttons_visuals() -> void:
 		if not btn.has_meta("ratio") and not btn.has_meta("country_id"):
 			continue
 
+		var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
+		var cost_lbl = hbox.get_node("Cost")
+		
+		var style = btn.get_theme_stylebox("panel").duplicate()
+		
 		# Handle Military Laws
 		if btn.has_meta("ratio"):
-			var law_ratio = btn.get_meta("ratio")
-			var cost = btn.get_meta("cost")
-			var is_active = is_equal_approx(current_country.military_size_ratio, law_ratio)
-
-			var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
-
-			var _title_lbl = hbox.get_node("Title")
+			#var _title_lbl = hbox.get_node("Title")
 			var status_lbl = hbox.get_node("Status")
-			var cost_lbl = hbox.get_node("Cost")
-
-			# Reset Style
-			var style = btn.get_theme_stylebox("panel").duplicate()
 
 			# NOTE(soi): dear god fix this
-			if is_active:
+			if is_equal_approx(current_country.military_size_ratio, btn.get_meta("ratio")):
 				style.bg_color = Color(0.2, 0.4, 0.2, 0.9) # Dark Green
 				style.border_color = Color(0.4, 0.8, 0.4) # COLOR_POSITIVE
 				status_lbl.text = " ACTIVE"
@@ -224,7 +196,7 @@ func _update_law_buttons_visuals() -> void:
 				status_lbl.text = ""
 				cost_lbl.visible = true
 
-				if current_country.political_power >= cost:
+				if current_country.political_power >= btn.get_meta("cost"):
 					cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
 					btn.modulate = Color(1, 1, 1, 1)
 					btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -232,16 +204,9 @@ func _update_law_buttons_visuals() -> void:
 					cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
 					btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
 					btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
-			btn.add_theme_stylebox_override("panel", style)
 		# Handle Releasable Nations
-		elif btn.has_meta("country_id"):
-			var cost = btn.get_meta("cost")
-			var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
-			var cost_lbl = hbox.get_node("Cost")
-
-			var style = btn.get_theme_stylebox("panel").duplicate()
-
-			if current_country.political_power >= cost:
+		else:
+			if current_country.political_power >= btn.get_meta("cost"):
 				style.bg_color = Color(0.15, 0.16, 0.19, 1.0) # COLOR_PANEL_INNER
 				style.border_color = Color(0.3, 0.3, 0.3)
 				cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
@@ -253,7 +218,8 @@ func _update_law_buttons_visuals() -> void:
 				cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
 				btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
 				btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
-			btn.add_theme_stylebox_override("panel", style)
+				
+		btn.add_theme_stylebox_override("panel", style)
 
 #endregion
 
@@ -422,11 +388,11 @@ func _add_law_option(
 
 func _on_releasable_gui_input(event: InputEvent, panel: PanelContainer) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var country_id = panel.get_meta("country_id")
 		var cost = panel.get_meta("cost")
 		
 		# Assuming you have a global 'PlayerData' or similar for Political Power
 		if current_country.political_power >= cost:
+			var country_id = panel.get_meta("country_id")
 			current_country.political_power -= cost
 			MapManager.ReleaseCountry(country_id)
 			
@@ -441,19 +407,19 @@ func _on_releasable_gui_input(event: InputEvent, panel: PanelContainer) -> void:
 func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var ratio = btn.get_meta("ratio")
-		var penalty = btn.get_meta("penalty")
-		var cost = btn.get_meta("cost")
 
 		# 1. Is this already active?
 		if is_equal_approx(current_country.military_size_ratio, ratio):
 			return # Do nothing
+			
+		var cost = btn.get_meta("cost")
 
 		# 2. Can we afford it?
 		if current_country.political_power >= cost:
 			# Execute Change
 			current_country.political_power -= cost
 			current_country.military_size_ratio = ratio
-			current_country.economy_law_penalty = penalty
+			current_country.economy_law_penalty = btn.get_meta("penalty")
 
 			current_country.update_manpower_pool() # Recalc based on new ratio
 
@@ -469,16 +435,16 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 # Utils
 func _format_money(amount: float) -> String:
 	if amount >= 1000000:
-		return "%.2fM" % (amount / 1000000.0)
+		return "%.2fM" % (amount * 0.000001)
 	if amount >= 1000:
-		return "%.2fK" % (amount / 1000.0)
+		return "%.2fK" % (amount * 0.001)
 	return "%.2f" % amount
 
 
 func _format_number(amount: int) -> String:
 	if amount >= 1000000:
-		return "%.1fM" % (amount / 1000000.0)
+		return "%.1fM" % (amount * 0.000001)
 	if amount >= 1000:
-		return "%.1fK" % (amount / 1000.0)
+		return "%.1fK" % (amount * 0.001)
 	return str(amount)
 #endregion

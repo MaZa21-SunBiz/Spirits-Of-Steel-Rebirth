@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
-[ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/ui_game.gd" id="1_rp7y5"]
+[ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
 [ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ddy7law3og0nb" path="res://assets/icons/minus_icon.svg" id="14_pvldk"]
 [ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="15_yp111"]
 [ext_resource type="Theme" uid="uid://6wluupp1lmut" path="res://tab_button_theme.tres" id="16_6c76w"]
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://damaged.tres" id="16_lpwmk"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
 [ext_resource type="Texture2D" uid="uid://blvxrdiioikq5" path="res://assets/ui/compass.svg" id="20_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
@@ -322,7 +322,7 @@ vertical_alignment = 1
 
 [node name="MilitaryExtraPanel" type="PanelContainer" parent="Control" unique_id=1873248397]
 material = ExtResource("16_lpwmk")
-layout_mode = 0
+layout_mode = 1
 offset_left = 356.0
 offset_top = 401.0
 offset_right = 589.0
@@ -502,7 +502,6 @@ texture = ExtResource("21_lpwmk")
 
 [node name="Label" type="Label" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1954831864]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_yp111")
 theme_override_font_sizes/font_size = 24
@@ -514,7 +513,6 @@ layout_mode = 2
 
 [node name="MilitaryAccess" type="Label" parent="Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=829443985]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_override_fonts/font = ExtResource("4_uqxsi")
@@ -663,6 +661,12 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Build Port"
+
+[node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1919168460]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+text = "Build Infrastructure"
 
 [node name="Military" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
 visible = false
@@ -898,7 +902,6 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/Panel/HBoxContainer" unique_id=1587197366]
 texture_filter = 2
-use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -926,7 +929,6 @@ size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=287123050]
 material = ExtResource("16_lpwmk")
-use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 text = "Improve Relations"
@@ -1581,6 +1583,7 @@ presets_visible = false
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button" to="." method="open_research_tree"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button2" to="." method="_build_factory"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button3" to="." method="_build_port"]
+[connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button4" to="." method="m_BuildInfrastructure"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_propose_peace"]
 [connection signal="pressed" from="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer/ActionsList/Button" to="." method="_launch_nuke"]

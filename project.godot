@@ -40,6 +40,10 @@ InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
 
+[debug]
+
+file_logging/enable_file_logging=true
+
 [display]
 
 window/size/resizable=false

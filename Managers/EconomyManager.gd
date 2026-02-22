@@ -21,12 +21,23 @@ func process_economy_day():
 			if project["days"] <= 0:
 				finished_projects.append(pid)
 				_complete_construction(pid, project)
-		else:
-			if country.is_player:
-				print("Construction stalled in %d: Need %d money" % [pid, cost])
+		elif country.is_player:
+			print("Construction stalled in %d: Need %d money" % [pid, cost])
 
 	for pid in finished_projects:
 		construction_queue.erase(pid)
+
+func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dailyCost: float, a_country: CountryData) -> void:
+	if a_country == CountryManager.player_country:
+		MusicManager.play_sfx(MusicManager.SFX_BUILD)
+	
+	construction_queue[a_provinceID] = {
+		"type": "Infrastructure",
+		"index": -1,
+		"days": a_totalDays,
+		"daily_cost": a_dailyCost,
+		"country": a_country
+	}
 
 func start_construction(pid: int, type: String, total_days: int, daily_cost: float, country: CountryData):
 	# Set the province enum to BUILDING state immediately
@@ -37,7 +48,7 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 
 	construction_queue[pid] = {
 		"type": type,
-		"index": MapManager.province_objects[pid].buildings.size(),
+		"index": MapManager.province_objects[pid].buildings.size() - 1,
 		"days": total_days,
 		"daily_cost": daily_cost,
 		"country": country
@@ -46,7 +57,12 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 
 func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state
-	MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
+	if project["index"] != -1:
+		MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
+	else:
+		match project["type"]:
+			"Infrastructure":
+				MapManager.province_objects[pid].infrastructure += 1
 
 	if project["country"].is_player:
 		#PopupManager.show_alert("economy", country, null, "Construction of %s complete!" % type.capitalize())

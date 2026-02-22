@@ -299,13 +299,13 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 			declare_war(target, enemy_data)
 
 
-func declare_war(a: CountryData, b: CountryData) -> void:
+func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void:
 	if a == b or is_at_war(a, b):
 		return
 	_snapshot_country_territory(a.country_name)
 	_snapshot_country_territory(b.country_name)
 	var ok := add_war_silent(a, b)
-	if not ok:
+	if not ok or a_silent:
 		return
 
 	var is_involved = (
@@ -477,9 +477,8 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 			MapManager.transfer_ownership(pid, fallen_name)
 
 	# --- 4. Player peace OR AI annexation ---
-	if player_won:
-		var root = get_tree().root
-		var peace_ui = root.find_child("PeaceProcessUI", true, false)
+	if player_won: 
+		var peace_ui = get_tree().root.find_child("PeaceProcessUI", true, false)
 		if peace_ui:
 			# Pass the player as the default winner/beneficiary, and the full list of winners
 			peace_ui.open_menu(player, loser, winners)
@@ -491,11 +490,11 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	for pid in all_provinces:
 		MapManager.transfer_ownership(pid, victor_name)
 	original_territories.erase(fallen_name)
-	#CountryManager.cleanup_empty_countries()
+	CountryManager.cleanup_empty_countries()
 
 
 func _get_original_owner(pid: int) -> String:
 	for c_name in original_territories:
 		if pid in original_territories[c_name]:
 			return c_name
-	return MapManager.province_to_country.get(pid, "sea")
+	return MapManager.province_to_country.get(pid, "Sea")

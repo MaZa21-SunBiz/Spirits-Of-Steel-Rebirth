@@ -27,8 +27,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	# 1. Ignore input if clicking on the sidebar itself
-	var mouse_pos = get_viewport().get_mouse_position()
-	if mouse_pos.x < sidebar_panel.size.x:
+	if get_viewport().get_mouse_position().x < sidebar_panel.size.x:
 		return
 
 	# 2. Convert Screen position to Map/World position
@@ -43,8 +42,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_process_hover(map_pos)
 
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_process_click(map_pos)
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			_process_click(map_pos)
 
 
 func _process_hover(map_pos: Vector2):
@@ -60,8 +59,7 @@ func _process_hover(map_pos: Vector2):
 
 		# 3. Apply NEW hover visual (if it's a valid land province belonging to the loser)
 		if hovered_pid > 1:
-			var owner = MapManager.province_to_country.get(hovered_pid, "")
-			if owner == current_loser.country_name:
+			if MapManager.province_to_country.get(hovered_pid, "") == current_loser.country_name:
 				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5))
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			else:
@@ -74,9 +72,8 @@ func _process_click(map_pos: Vector2):
 	var pid = get_province_with_radius(map_pos, GameState.current_world.map_sprite, 5)
 	if pid <= 1:
 		return
-
-	var owner_name = MapManager.province_to_country.get(pid, "")
-	if owner_name != current_loser.country_name:
+		
+	if MapManager.province_to_country.get(pid, "") != current_loser.country_name:
 		return
 
 	if provinces_to_take.has(pid):
@@ -95,8 +92,7 @@ func _setup_ui_elements():
 	# Sidebar Setup
 	sidebar_panel = PanelContainer.new()
 	sidebar_panel.set_anchors_and_offsets_preset(Control.PRESET_LEFT_WIDE)
-	var screen_width = get_viewport().get_visible_rect().size.x
-	sidebar_panel.custom_minimum_size.x = screen_width * 0.22  # Slightly slimmer
+	sidebar_panel.custom_minimum_size.x = get_viewport().get_visible_rect().size.x * 0.22  # Slightly slimmer
 
 	var style = StyleBoxFlat.new()
 	style.bg_color = COLOR_BG
@@ -223,9 +219,7 @@ func _on_clear_selection_pressed():
 	_update_summary()
 
 func _reset_province_visual_immediate(pid: int):
-	var owner = MapManager.province_to_country[pid]
-	var original_color = CountryManager.GetCountryColor(owner, Color.WHITE)
-	_update_map_visual(pid, original_color)
+	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_to_country[pid], Color.WHITE))
 
 
 # --- Logic & Integration ---
@@ -255,8 +249,7 @@ func _update_summary():
 			total_loser_provinces += 1
 
 	if total_loser_provinces > 0:
-		var percent = (float(provinces_to_take.size()) / total_loser_provinces) * 100
-		stats_label.text = "Total Country Loss: %d%%" % int(percent)
+		stats_label.text = "Total Country Loss: %d%%" % int((float(provinces_to_take.size()) / total_loser_provinces) * 100)
 
 
 func _on_confirm_pressed():

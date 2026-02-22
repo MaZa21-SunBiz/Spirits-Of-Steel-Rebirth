@@ -1,5 +1,5 @@
 extends Node
-class_name AIController
+class_name AIManager
 
 # --- TUNING ---
 const TICK_RATE_PEACE := 60  # Slower thinking in peace time

@@ -1,7 +1,6 @@
 extends Node
 
-var events: Dictionary = {}
-var triggered_events: Dictionary = {} # { "WW3": true }
+var events: Array = []
 
 const SUPER_EVENT_SCENE = preload("res://Scenes/SuperEvent.tscn")
 
@@ -18,30 +17,29 @@ func _load_events():
 	if file:
 		var json = JSON.parse_string(file)
 		if json:
-			events = json
+			for eventData in json.get("events", []):
+				if eventData.has("cause") and not eventData["cause"].is_empty():
+					events.append(eventData)
 
 func check_events():
-	if events.is_empty():
-		return
-		
-	for event_id in events.keys():
-		 # Skip if already happened
-		if triggered_events.has(event_id):
-			continue
-			
-		var event_data = events[event_id]
-		if _check_condition(event_data.get("cause", {})):
-			_trigger_event(event_id, event_data)
+	var remove: PackedInt32Array = []
+	var indexCur: int = 0
+	for event in events:
+		if _check_condition(event.get("cause", {})):
+			_trigger_event(event)
+			remove.append(indexCur)
+		indexCur += 1
+	remove.reverse()
+	for index in remove:
+		events.remove_at(index)
 
 func _check_condition(cause: Dictionary) -> bool:
-	if cause.is_empty():
-		return false
+	#if cause.is_empty():
+	#	return false
 		
 	return InterpreterManager.get_function(cause)
 
-func _trigger_event(event_id: String, data: Dictionary):
-	triggered_events[event_id] = true
-	
+func _trigger_event(data: Dictionary):
 	var popup = SUPER_EVENT_SCENE.instantiate()
 	canvas_layer.add_child(popup)
 	

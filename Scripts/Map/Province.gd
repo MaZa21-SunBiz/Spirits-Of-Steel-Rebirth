@@ -17,6 +17,8 @@ enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACT
 @export var center: Vector2
 @export var neighbors: PackedInt32Array = []
 @export var claims: PackedStringArray = []
+@export var infrastructure: int = 0
+@export var maxInfrastructure: int = 3
 
 static func FromDict(a_data: Dictionary) -> Province:
 	var province: Province = Province.new()
@@ -33,6 +35,8 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.buildings = []
 		province.population = []
 		province.gdp = 0
+		province.infrastructure = a_data.get("infrastructure", 0)
+		province.maxInfrastructure = a_data.get("max_infrastructure", 0)
 	else:
 		# LAND LOGIC
 		province.type = Province.LAND
@@ -48,6 +52,8 @@ static func FromDict(a_data: Dictionary) -> Province:
 			province.population.append(PopulationData.FromDict(populationData))
 		province.claims = a_data.get("claims", [])
 		province.gdp = a_data.get("gdp", 1000)
+		province.infrastructure = a_data.get("infrastructure", 0)
+		province.maxInfrastructure = a_data.get("max_infrastructure", 5)
 	
 	return province
 

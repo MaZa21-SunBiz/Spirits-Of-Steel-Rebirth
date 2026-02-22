@@ -289,7 +289,7 @@ func _split_and_send_troop(troop: TroopData, target_pids: Array, paths: Dictiona
 func _create_new_split_troop(original: TroopData, specific_divisions: Array) -> TroopData:
 	var pos = original.position
 
-	var new_troop = load("res://Scripts/TroopData.gd").new(
+	var new_troop = load("res://Scripts/Divisions/TroopData.gd").new(
 		original.country_name, original.province_id, 0, pos, TroopManager.get_flag(original.country_name)
 	)
 
@@ -323,7 +323,7 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
-	var troop = load("res://Scripts/TroopData.gd").new(
+	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
 		country, prov_id, divs, pos, flag
 	)
 
@@ -555,7 +555,7 @@ func deploy_specific_divisions(
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	# 1. Create the container (TroopData) with 0 divisions initially
-	var troop = load("res://Scripts/TroopData.gd").new(
+	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
 		country, prov_id, 0, pos, flag
 	)
 
