@@ -56,7 +56,7 @@ func _ready() -> void:
 	MapManager.all_cities = MapManager.get_all_cities()
 
 	if !CountryManager.player_country:
-		CountryManager.set_player_country("Brazil")
+		CountryManager.set_player_country(CountryManager.countries.keys().pick_random())
 	# For debugging purposes. Create some troops first
 	MapManager.force_bidirectional_connections()
 	MapManager._build_global_registry()

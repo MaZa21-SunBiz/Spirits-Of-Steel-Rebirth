@@ -527,11 +527,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -731,22 +730,26 @@ metadata/_tab_name = ""
 layout_mode = 2
 text = "Accepted Cultures"
 
-[node name="AcceptedCultures" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=114737541]
+[node name="AcceptedCultures" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=895736875]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=895736875]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=285137922]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=957078040]
+[node name="Label2" type="Label" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=957078040]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "EVIL CULTURES"
 
-[node name="UnacceptedCultures" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=470564074]
+[node name="UnacceptedCultures" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=1846953765]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=1846953765]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=350419185]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Enemy" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=305618823]
 visible = false
@@ -898,6 +901,7 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2

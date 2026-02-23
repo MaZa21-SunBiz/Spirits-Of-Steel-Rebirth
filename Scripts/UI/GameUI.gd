@@ -36,6 +36,9 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox
 @onready var faction_prompt: PanelContainer = $CreateFaction
 
+@onready var accepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/AcceptedCultures/VBoxContainer")
+@onready var unaccepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/VBoxContainer")
+
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @export var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 
@@ -173,6 +176,7 @@ func _on_player_change() -> void:
 
 	_update_flag()
 	update_topbar_stats()
+	update_cultures()
 
 
 func _on_province_clicked(country_name: String) -> void:
@@ -799,3 +803,13 @@ func _on_annex_country_pressed() -> void:
 
 func _on_call_to_arms_pressed() -> void:
 	WarManager.call_to_arms(CountryManager.player_country, selected_country)
+
+func update_cultures() -> void:
+	for child in accepted_cultures.get_children():
+		child.queue_free()
+
+	for culture in CountryManager.player_country.accepted_cultures:
+		var entry = Button.new()
+		entry.text = culture
+		entry.material = preload("res://Materials/damaged.tres")
+		accepted_cultures.add_child(entry)
