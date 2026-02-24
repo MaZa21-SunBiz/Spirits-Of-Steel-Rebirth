@@ -56,7 +56,7 @@ var troop_speed_modifier: float = 1.0
 
 # Deployment & Training State
 var allowedCountries: Array[String] = []
-var acceptedCultures: Array = []
+var accepted_cultures: Array = []
 var puppets: Array = []
 var hostedGovernments: Array = []
 var owner: String
@@ -121,7 +121,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.stability = a_data.get("stability", 0.5)
 	country.war_support = a_data.get("war_support", 0.5)
 	country.puppets = a_data.get("puppets", [])
-	country.acceptedCultures = a_data.get("accepted_cultures", [])
+	country.accepted_cultures = a_data.get("accepted_cultures", [])
 	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country._refresh_economic_stats()

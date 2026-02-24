@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="22_0e43j"]
-[ext_resource type="Texture2D" uid="uid://c21r1omtqqoxr" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
+[ext_resource type="Texture2D" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
