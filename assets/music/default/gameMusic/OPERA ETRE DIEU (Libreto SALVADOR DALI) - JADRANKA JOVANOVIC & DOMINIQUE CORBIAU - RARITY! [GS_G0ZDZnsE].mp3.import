@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cisarube25oph"
+path="res://.godot/imported/OPERA ETRE DIEU (Libreto SALVADOR DALI) - JADRANKA JOVANOVIC & DOMINIQUE CORBIAU - RARITY! [GS_G0ZDZnsE].mp3-7bc5d00aa7edbc22d294a10c8bf2a1e0.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/OPERA ETRE DIEU (Libreto SALVADOR DALI) - JADRANKA JOVANOVIC & DOMINIQUE CORBIAU - RARITY! [GS_G0ZDZnsE].mp3"
+dest_files=["res://.godot/imported/OPERA ETRE DIEU (Libreto SALVADOR DALI) - JADRANKA JOVANOVIC & DOMINIQUE CORBIAU - RARITY! [GS_G0ZDZnsE].mp3-7bc5d00aa7edbc22d294a10c8bf2a1e0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

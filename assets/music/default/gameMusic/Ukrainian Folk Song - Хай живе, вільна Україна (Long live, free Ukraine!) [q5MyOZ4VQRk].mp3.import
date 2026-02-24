@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq4v0ncex2glj"
+path="res://.godot/imported/Ukrainian Folk Song - Хай живе, вільна Україна (Long live, free Ukraine!) [q5MyOZ4VQRk].mp3-51587522edd5f3ee0d2dba7e530269b1.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/Ukrainian Folk Song - Хай живе, вільна Україна (Long live, free Ukraine!) [q5MyOZ4VQRk].mp3"
+dest_files=["res://.godot/imported/Ukrainian Folk Song - Хай живе, вільна Україна (Long live, free Ukraine!) [q5MyOZ4VQRk].mp3-51587522edd5f3ee0d2dba7e530269b1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

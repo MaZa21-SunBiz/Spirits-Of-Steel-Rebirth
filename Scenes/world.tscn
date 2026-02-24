@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/Map/World.gd" id="1_go701"]
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="2_fo5ed"]
-[ext_resource type="PackedScene" uid="uid://d054r2umstj43" path="res://Scenes/action.tscn" id="3_hgpy0"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
@@ -30,8 +29,6 @@ mesh = SubResource("QuadMesh_o06y3")
 script = ExtResource("1_o06y3")
 
 [node name="ui_game" parent="." unique_id=1419155510 instance=ExtResource("2_fo5ed")]
-action_scene = ExtResource("3_hgpy0")
-slide_duration = 0.2
 
 [node name="World" type="Node2D" parent="." unique_id=42721154 node_paths=PackedStringArray("clock")]
 script = ExtResource("1_go701")

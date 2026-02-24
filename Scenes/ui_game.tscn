@@ -342,6 +342,7 @@ theme_override_constants/separation = 19
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme = ExtResource("16_6c76w")
 icon = ExtResource("19_2igyl")
 icon_alignment = 1
@@ -351,6 +352,7 @@ expand_icon = true
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme = ExtResource("16_6c76w")
 icon = ExtResource("20_patwf")
 icon_alignment = 1
@@ -360,6 +362,7 @@ expand_icon = true
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 theme = ExtResource("16_6c76w")
 icon = ExtResource("21_qnodh")
 icon_alignment = 1
@@ -443,6 +446,7 @@ text = "100"
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
 text = "TRAIN"
 
@@ -591,18 +595,21 @@ size_flags_vertical = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=939931474]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Manage Country"
 
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1788664696]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Decisions"
 
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=779262759]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Create Faction"
 
@@ -649,24 +656,28 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1961953376]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Research"
 
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1121653450]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Build Factory"
 
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=175155204]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Build Port"
 
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1919168460]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Build Infrastructure"
 
@@ -713,6 +724,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=2143465910]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Choose Deployment Province"
 
@@ -811,6 +823,7 @@ size_flags_vertical = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList" unique_id=848041002]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Propose Ceasefire"
 
@@ -897,6 +910,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer/ActionsList" unique_id=1673693170]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
@@ -963,6 +977,7 @@ size_flags_vertical = 3
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=287123050]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Improve Relations"
 
@@ -970,6 +985,7 @@ text = "Improve Relations"
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Invite To Faction"
 
@@ -977,6 +993,7 @@ text = "Invite To Faction"
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Force Puppet"
 
@@ -1022,6 +1039,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Diplomacy/ActionsList" unique_id=1343803464]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Trade Deal"
 
@@ -1067,18 +1085,21 @@ size_flags_horizontal = 3
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=678799358]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Declare War"
 
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=1571239659]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Request Access"
 
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=2131250622]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
@@ -1139,12 +1160,14 @@ size_flags_vertical = 3
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=1697014369]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Annex Puppet"
 
 [node name="Button5" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=2122222714]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Release Puppet"
 
@@ -1190,6 +1213,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy/ActionsList" unique_id=1202195637]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Steal Money"
 
@@ -1234,12 +1258,14 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=645040993]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Steal Manpower"
 
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=2111600738]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Call to Arms"
 
@@ -1300,18 +1326,21 @@ size_flags_vertical = 3
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1031120624]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Improve Relations"
 
 [node name="Button5" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1019195712]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Kick From Faction"
 
 [node name="Button4" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=2009539886]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Force Puppet"
 
@@ -1357,12 +1386,14 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=231033924]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Trade Deal"
 
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=1662116374]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Kindly Ask For Money"
 
@@ -1407,12 +1438,14 @@ size_flags_horizontal = 3
 [node name="Button2" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=860663546]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Call To Arms"
 
 [node name="Button3" type="Button" parent="Control/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=1319266632]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Kindly Ask For Manpower"
 
@@ -1595,6 +1628,7 @@ placeholder_text = "Faction Name"
 [node name="Button" type="Button" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=119683320]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Create Faction"
 
