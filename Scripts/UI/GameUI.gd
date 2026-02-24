@@ -25,7 +25,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var progress_bar: ProgressBar = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar")
 
 # ── Side Menu Nodes ───────────────────────────────────
-@onready var sidemenu: Control = $Control/SidemenuBG
+@onready var sidemenu: Control = $Control/HSplitContainer/SidemenuBG
 @onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/Flag")
 @onready var sidemenu_pointer: Sprite2D = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/compass/pointer")
 @onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Label")
@@ -33,7 +33,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 
 @onready var troop_container: PanelContainer = $Control/TroopContainer
-@onready var relations_hbox: HBoxContainer = $Control/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox
+@onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox")
 @onready var faction_prompt: PanelContainer = $CreateFaction
 
 # Use the class_name of your action scene if available, or load strictly as packed scene

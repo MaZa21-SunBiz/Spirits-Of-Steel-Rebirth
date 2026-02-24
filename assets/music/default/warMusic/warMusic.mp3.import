@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://df0sjyja1ux8u"
-path="res://.godot/imported/warMusic.mp3-9932976f95534b092e98098460161505.mp3str"
+uid="uid://cdysoub1gf6m3"
+path="res://.godot/imported/WarMusic.mp3-5dfbffe33d1939d65db8f2a676f8590e.mp3str"
 
 [deps]
 
-source_file="res://assets/music/default/warMusic/warMusic.mp3"
-dest_files=["res://.godot/imported/warMusic.mp3-9932976f95534b092e98098460161505.mp3str"]
+source_file="res://assets/music/default/warMusic/WarMusic.mp3"
+dest_files=["res://.godot/imported/WarMusic.mp3-5dfbffe33d1939d65db8f2a676f8590e.mp3str"]
 
 [params]
 

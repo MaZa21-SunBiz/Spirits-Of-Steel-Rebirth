@@ -24,6 +24,19 @@ func _update_moving_troop(troop: TroopData, delta: float) -> void:
 
 	if troop.country_obj == null:
 		troop.country_obj = CountryManager.get_country(troop.country_name)
+	
+	var targetPID = troop.path.front()
+	var enemies = troops_by_province.get(targetPID, []).filter(
+		func(t): 
+			return WarManager.is_at_war_names(t.country_name, troop.country_name)
+	)
+
+	if not enemies.is_empty() and not GameState.current_world.clock.paused:
+		WarManager.start_battle(troop.province_id, targetPID)
+		pause_troop(troop)
+		for enemy in enemies:
+			pause_troop(enemy)
+		return
 
 	var start = troop.get_meta("start_pos", troop.position)
 	var end = troop.target_position
@@ -39,11 +52,9 @@ func _update_moving_troop(troop: TroopData, delta: float) -> void:
 	var move_progress = troop.get_meta("progress", 0.0)
 
 	var base_speed = 1
-	var speed_mod = troop.country_obj.troop_speed_modifier if troop.country_obj else 1.0
-	var time_scale = GameState.current_world.clock.time_scale
 
 	# Increment progress based on real-time and game speed
-	move_progress += (base_speed * speed_mod * time_scale * delta) / total_dist
+	move_progress += (base_speed * (troop.country_obj.troop_speed_modifier if troop.country_obj else 1.0) * GameState.current_world.clock.time_scale * delta) / total_dist
 
 	if move_progress >= 1.0:
 		troop.position = end
@@ -146,16 +157,12 @@ func command_move_assigned(payload: Array) -> void:
 
 		for i in range(moves.size()):
 			var move_data = moves[i]
-			var target_pid = move_data["province_id"]
 			var requested_count = int(move_data.get("divisions", 1))
 
-			# Safety check: Don't try to take more than we have
-			var available = troop.stored_divisions.size()
-
 			# If this is the last move in the list OR we are requesting everything left
-			if i == moves.size() - 1 or requested_count >= available:
+			if i == moves.size() - 1 or requested_count >= troop.stored_divisions.size():
 				# No splitting needed for the final move; just move the original troop
-				_apply_movement_path(troop, target_pid)
+				_apply_movement_path(troop, move_data["province_id"])
 				break
 			else:
 				# Splitting logic:
@@ -168,8 +175,7 @@ func command_move_assigned(payload: Array) -> void:
 					continue
 
 				# Create a new troop node for this small "detachment"
-				var split_troop = _create_new_split_troop(troop, batch)
-				_apply_movement_path(split_troop, target_pid)
+				_apply_movement_path(_create_new_split_troop(troop, batch), move_data["province_id"])
 
 
 # Helper to keep your code clean
@@ -535,8 +541,7 @@ func get_troops_in_province(province_id):
 
 func get_province_strength(pid: int, country: String) -> int:
 	var total = 0
-	var list = troops_by_province.get(pid, [])
-	for t in list:
+	for t in troops_by_province.get(pid, []):
 		if t.country_name == country:
 			total += t.divisions_count
 	return total
@@ -549,14 +554,12 @@ func deploy_specific_divisions(
 		return null
 
 	var country_data = CountryManager.get_country(country)
-	var ideology = country_data.ideology_name if country_data else ""
-	var flag = get_flag(country, ideology)
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	# 1. Create the container (TroopData) with 0 divisions initially
 	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
-		country, prov_id, 0, pos, flag
+		country, prov_id, 0, pos, get_flag(country, country_data.ideology_name if country_data else "")
 	)
 
 	# 2. Inject the specific divisions we trained

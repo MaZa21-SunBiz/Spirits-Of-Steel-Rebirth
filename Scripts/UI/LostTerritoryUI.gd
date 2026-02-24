@@ -137,6 +137,12 @@ func open_menu(player: CountryData):
 	GameState.lostTerritory = true
 
 func m_OnDissolvePressed():
+	if CountryManager.player_country.is_puppet:
+		CountryManager.release_puppet(CountryManager.countries[CountryManager.player_country.owner], CountryManager.player_country)
+	
+	for puppet in CountryManager.player_country.puppets:
+		CountryManager.release_puppet(CountryManager.player_country, CountryManager.countries[puppet])
+	
 	CountryManager.countries.erase(CountryManager.player_country.country_name)
 	
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
@@ -144,5 +150,7 @@ func m_OnDissolvePressed():
 		game_ui.visible = true
 	GameState.lostTerritory = false
 	GameState.current_world.clock.resume()
-
+	
+	CountryManager.set_player_country(CountryManager.countries.keys().pick_random())
+	
 	self.hide()

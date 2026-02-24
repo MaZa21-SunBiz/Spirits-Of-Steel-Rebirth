@@ -12,6 +12,7 @@ var game_ui: GameUI
 var decision_menu_open: bool = false
 var in_peace_process: bool = false
 var lostTerritory: bool = false
+var selectingCountry: bool = true
 
 
 func reset_industry_building():

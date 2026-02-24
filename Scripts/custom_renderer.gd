@@ -116,7 +116,7 @@ func _update_multimesh_buffer():
 	if mm.instance_count != needed:
 		mm.instance_count = needed
 
-	var player_country = CountryManager.player_country.country_name
+	var player_country = CountryManager.player_country.country_name if !GameState.selectingCountry else ""
 	var selected_troops = TroopManager.troop_selection.selected_troops
 	var groups = _group_troops_by_visual_position(troops)
 	var idx = 0
@@ -334,7 +334,7 @@ func _draw_cities() -> void:
 
 
 func draw_battles():
-	var player_country = CountryManager.player_country.country_name
+	var player_country = CountryManager.player_country.country_name if !GameState.selectingCountry else ""
 	const base_radius = 1.0
 	const ring_radius = 1.2
 	const line_width = 0.5

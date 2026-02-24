@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_opfnp"]
+[ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="2_vtepg"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
@@ -13,6 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://Scenes/petpet.gdshader" id="11_5egv6"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
+shader = ExtResource("10_5egv6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
+shader = ExtResource("11_5egv6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
 content_margin_left = 14.0
@@ -27,12 +34,6 @@ content_margin_top = 14.0
 content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
-shader = ExtResource("10_5egv6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
-shader = ExtResource("11_5egv6")
 
 [node name="MainMenu" type="Control" unique_id=945632142]
 layout_mode = 3
@@ -54,6 +55,40 @@ texture = ExtResource("1_48xlc")
 expand_mode = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_vtepg")
+USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("2_opfnp")])
+AvatarImage = NodePath("Avatar")
+
+[node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]
+material = SubResource("ShaderMaterial_vtepg")
+layout_mode = 0
+offset_left = 827.0
+offset_top = 222.0
+offset_right = 1105.4519
+offset_bottom = 419.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+
+[node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 707.0
+offset_top = 207.0
+offset_right = 1152.0
+offset_bottom = 347.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+
+[node name="Timer" type="Timer" parent="Butter" unique_id=1343216001]
+process_callback = 0
+wait_time = 20.0
+autostart = true
 
 [node name="Logo" type="TextureRect" parent="." unique_id=110353226]
 layout_mode = 0
@@ -206,27 +241,7 @@ text = "Thanks y'all"
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
 visible = false
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1375568892]
-material = SubResource("ShaderMaterial_vtepg")
-layout_mode = 0
-offset_left = 827.0
-offset_top = 222.0
-offset_right = 1105.4519
-offset_bottom = 419.0
-texture = ExtResource("10_t1dhk")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1924079947]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 707.0
-offset_top = 207.0
-offset_right = 1152.0
-offset_bottom = 347.0
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-flip_h = true
-
+[connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]

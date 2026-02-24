@@ -28,6 +28,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	KeyboardManager.OnWorldLoad()
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
 
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.
@@ -56,7 +57,8 @@ func _ready() -> void:
 	MapManager.all_cities = MapManager.get_all_cities()
 
 	if !CountryManager.player_country:
-		CountryManager.set_player_country("Brazil")
+		# CountryManager.set_player_country(CountryManager.countries.keys().pick_random())
+		GameState.selectingCountry = true
 	# For debugging purposes. Create some troops first
 	MapManager.force_bidirectional_connections()
 	MapManager._build_global_registry()
