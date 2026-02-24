@@ -40,7 +40,7 @@ offset_right = 779.0
 offset_bottom = 446.0
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="Settings/TabContainer" unique_id=1381486399]
@@ -78,7 +78,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Audio" type="PanelContainer" parent="Settings/TabContainer" unique_id=750041884]
-visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -89,31 +88,53 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=339645836]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=2026330459]
+[node name="PanelContainer" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1620347858]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1831225387]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=2026330459]
+clip_contents = true
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "SFX Volume"
 
-[node name="Label2" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1494519377]
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=160017134]
+material = ExtResource("1_lhmql")
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 0.5
+step = 0.01
+value = 0.1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1221755667]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2" unique_id=1746973344]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1913130775]
+clip_contents = true
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Music Volume"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=455188979]
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=369707613]
+material = ExtResource("1_lhmql")
+custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 15
-
-[node name="HSlider2" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2" unique_id=160017134]
-material = ExtResource("1_lhmql")
-layout_mode = 2
-max_value = 10.0
-
-[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2" unique_id=364170525]
-material = ExtResource("1_lhmql")
-layout_mode = 2
-max_value = 10.0
+size_flags_vertical = 4
+max_value = 0.5
+step = 0.01
+value = 0.1
 
 [node name="Exit" type="Button" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=1757865940]
 visible = false
@@ -124,6 +145,7 @@ text = "exit
 "
 
 [node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=659766638]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -205,8 +227,8 @@ text = "exit
 "
 
 [connection signal="pressed" from="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer/SaveGame" to="Settings" method="_on_save_game_pressed"]
-[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_sfx_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_music_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/HSlider" to="Settings" method="_on_sfx_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/HSlider" to="Settings" method="_on_music_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_scanlines_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_vignette_lower_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/HBoxContainer/VBoxContainer2/HSlider3" to="Settings" method="_on_vignette_upper_changed"]

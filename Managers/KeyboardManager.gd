@@ -10,7 +10,7 @@ signal toggle_menu
 
 var _debounce := false
 
-func _ready() -> void:
+func OnWorldLoad() -> void:
 	settings = get_tree().root.find_child("Settings", true, false)
 
 func _process(_delta: float) -> void:
@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("deselect_troops"):
 		if !TroopManager.troop_selection.selected_troops.is_empty():
 			TroopManager.troop_selection.deselect_all()
-		elif GameState.game_ui.sidemenu.visible:
+		elif GameState.game_ui.is_open:
 			MapManager.close_sidemenu.emit()
 		else:
 			# get_tree().root.find_child("Menu", true, false).toggle_menu()

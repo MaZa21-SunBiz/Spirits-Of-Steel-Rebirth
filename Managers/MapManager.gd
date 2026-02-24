@@ -228,15 +228,15 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 
 	var x: int
 	var y: int
-	var size = id_map_image.get_size()
+	var size: Vector2i = id_map_image.get_size()
 
 	if map_sprite:
-		var local = map_sprite.to_local(pos)
-		var sprite_size = map_sprite.texture.get_size()
+		var local: Vector2 = map_sprite.to_local(pos)
+		var sprite_size: Vector2 = map_sprite.texture.get_size()
 
 		# If sprite is centered, offset the local position to be top-left based
 		if map_sprite.centered:
-			local += sprite_size / 2.0
+			local += sprite_size * 0.5
 
 		# --- INFINITE SCROLL MATH ---
 		x = int(local.x) % int(sprite_size.x)
@@ -275,7 +275,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 			last_hovered_pid = pid
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			province_hovered.emit(pid, CountryManager.player_country.country_name)
+			province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 			province_hovered.emit(-1, "")
@@ -290,6 +290,9 @@ func _reset_last_hover() -> void:
 func _get_contextual_highlight(pid: int) -> Color:
 	if pid <= 1:
 		return Color.TRANSPARENT
+	
+	if GameState.selectingCountry:
+		return Color.ANTIQUE_WHITE
 
 	var player_name = CountryManager.player_country.country_name
 	var is_player_owned = province_to_country.get(pid) == player_name
@@ -336,28 +339,32 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			close_sidemenu.emit()
 		return
 
-	var player_country_name = CountryManager.player_country.country_name
-	var is_player_owned = province_to_country.get(pid) == player_country_name
-	var is_puppet_owned = province_to_country.get(pid) in CountryManager.player_country.puppets
+	if GameState.selectingCountry:
+		CountryManager.set_player_country(MapManager.province_objects[pid].country)
+		GameState.selectingCountry = false
+	else:
+		var player_country_name = CountryManager.player_country.country_name
+		var is_player_owned = province_to_country.get(pid) == player_country_name
+		var is_puppet_owned = province_to_country.get(pid) in CountryManager.player_country.puppets
 
-	if GameState.choosing_deploy_city:
-		if is_player_owned and province_objects[pid].city != "":
-			_execute_deployment(pid, player_country_name)
-		else:
-			print("Action Failed: Province not owned by player or not a city.")
+		if GameState.choosing_deploy_city:
+			if is_player_owned and province_objects[pid].city != "":
+				_execute_deployment(pid, player_country_name)
+			else:
+				print("Action Failed: Province not owned by player or not a city.")
 
-	elif GameState.industry_building != GameState.IndustryType.DEFAULT:
-		if is_player_owned:
-			_province_build_industry(pid, player_country_name)
-		elif is_puppet_owned:
-			_province_build_industry(pid, province_to_country.get(pid))
-		else:
-			print("Action Failed: Cannot build in foreign territory.")
-			GameState.reset_industry_building()
-			show_countries_map()
+		elif GameState.industry_building != GameState.IndustryType.DEFAULT:
+			if is_player_owned:
+				_province_build_industry(pid, player_country_name)
+			elif is_puppet_owned:
+				_province_build_industry(pid, province_to_country.get(pid))
+			else:
+				print("Action Failed: Cannot build in foreign territory.")
+				GameState.reset_industry_building()
+				show_countries_map()
 
-	if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
-		country_clicked.emit(province_to_country.get(pid, ""))
+		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
+			country_clicked.emit(province_to_country.get(pid, ""))
 
 
 func _execute_deployment(pid: int, player_name: String) -> void:
@@ -1124,24 +1131,34 @@ func _country_exists_on_map(c_name: String) -> bool:
 func ReleaseCountry(a_countryName: String) -> void:
 	for obj in province_objects.values():
 		if obj.claims.has(a_countryName):
-			var troops = TroopManager.troops_by_province.get(obj.id, [])
-			for troop in troops.duplicate():
+			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
 				if is_instance_valid(troop):
 					TroopManager.remove_troop(troop)
 
 			transfer_ownership(obj.id, a_countryName)
-	#CountryManager.cleanup_empty_countries()
+	CountryManager.cleanup_empty_countries()
 
-func InstantiateCountry(a_countryData: Dictionary, a_claims: PackedInt32Array) -> void:
+func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
+	CountryManager.add_country(a_countryData)
+	
+	for obj in province_objects.values():
+		if obj.claims.has(a_countryData["name"]):
+			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
+				if is_instance_valid(troop):
+					TroopManager.remove_troop(troop)
+
+			transfer_ownership(obj.id, a_countryData["name"])
+	CountryManager.cleanup_empty_countries()
+	
+func InstantiateCountryFromProvinces(a_countryData: Dictionary, a_claims: PackedInt32Array) -> void:
 	CountryManager.add_country(a_countryData)
 	for pid: int in a_claims:
-		var troops = TroopManager.troops_by_province.get(pid, [])
-		for troop in troops.duplicate():
+		for troop in TroopManager.troops_by_province.get(pid, []).duplicate():
 			if is_instance_valid(troop):
 				TroopManager.remove_troop(troop)
 
 		transfer_ownership(pid, a_countryData["name"])
-	#CountryManager.cleanup_empty_countries()
+	CountryManager.cleanup_empty_countries()
 
 func get_all_cities() -> Array:
 	var pids = []
@@ -1153,7 +1170,7 @@ func get_all_cities() -> Array:
 
 func get_cities_province_country(country_name) -> Array:
 	var provinces = []
-	for pid in country_to_provinces[country_name]:
+	for pid in country_to_provinces.get(country_name, []):
 		if len(province_objects[pid].city) > 0:
 			provinces.append(pid)
 	return provinces

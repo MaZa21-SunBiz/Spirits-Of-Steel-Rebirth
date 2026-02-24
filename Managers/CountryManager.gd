@@ -177,6 +177,9 @@ func cleanup_empty_countries() -> void:
 				# Pass the player as the default winner/beneficiary, and the full list of winners
 				lostTerritoryUI.open_menu(country)
 			pass
+		else:
+			MapManager.country_to_provinces.erase(c_name)
+			countries.erase(c_name)
 
 func InformPuppet(puppeter: CountryData, puppetee: CountryData):
 	puppeter.allowedCountries.append(puppetee.country_name)

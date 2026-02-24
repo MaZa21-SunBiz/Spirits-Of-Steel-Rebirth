@@ -428,7 +428,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	for t in remaining_troops:
 		TroopManager.remove_troop(t)
 
-# --- 1. Clean up wars and permissions ---
+	# --- 1. Clean up wars and permissions ---
 	if wars.has(loser):
 		wars.erase(loser)
 		if loser.allowedCountries.has(victor_name):
@@ -486,8 +486,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		return
 
 	# --- 5. AI takes everything ---
-	var all_provinces = MapManager.country_to_provinces.get(fallen_name, []).duplicate()
-	for pid in all_provinces:
+	for pid in MapManager.country_to_provinces.get(fallen_name, []).duplicate():
 		MapManager.transfer_ownership(pid, victor_name)
 	original_territories.erase(fallen_name)
 	CountryManager.cleanup_empty_countries()
