@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="22_0e43j"]
-[ext_resource type="Texture2D" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
+[ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
@@ -540,11 +540,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -743,31 +742,45 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Cultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=114756877]
+[node name="Cultures" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1315655306]
 layout_mode = 2
 metadata/_tab_index = 3
 metadata/_tab_name = ""
 
-[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=1207119508]
+[node name="AcceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=114737541]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=1207119508]
 layout_mode = 2
 text = "Accepted Cultures"
 
-[node name="AcceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=114737541]
-layout_mode = 2
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=895736875]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Label2" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=957078040]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer" unique_id=41053949]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UnacceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=470564074]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=957078040]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "EVIL CULTURES"
 
-[node name="UnacceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=470564074]
-layout_mode = 2
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=1846953765]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer" unique_id=1864884055]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Enemy" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=305618823]
 visible = false
@@ -921,6 +934,7 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2

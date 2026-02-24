@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://w74b3hnlyyxo"]
 
 [ext_resource type="Script" uid="uid://b1l4f6uhouw0j" path="res://Scripts/Events/super_event_popup.gd" id="1_uj0pn"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_jk02u"]
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="2_u72vx"]
 [ext_resource type="FontFile" uid="uid://cee8mbnpx3w3h" path="res://font/arial.TTF" id="3_2njta"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="4_ptv18"]
@@ -11,6 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_uj0pn")
 
 [node name="Panel" type="ColorRect" parent="." unique_id=2056094251]
+material = ExtResource("2_jk02u")
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 252.0
@@ -53,6 +55,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="." unique_id=1096516728]
+material = ExtResource("2_jk02u")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

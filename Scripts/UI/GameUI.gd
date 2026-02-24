@@ -36,8 +36,8 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox")
 @onready var faction_prompt: PanelContainer = $CreateFaction
 
-@onready var accepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/AcceptedCultures/VBoxContainer")
-@onready var unaccepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/VBoxContainer")
+@onready var accepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
+@onready var unaccepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer/VBoxContainer")
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @export var action_scene: PackedScene = preload("res://Scenes/action.tscn")

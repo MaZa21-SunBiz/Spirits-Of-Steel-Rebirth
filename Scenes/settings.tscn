@@ -109,9 +109,9 @@ custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 0.999999999999968
-step = 0.0999999999999968
-value = 0.999999999999968
+max_value = 0.5
+step = 0.01
+value = 0.1
 
 [node name="PanelContainer2" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1221755667]
 layout_mode = 2
@@ -132,9 +132,9 @@ custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 0.999999999999968
-step = 0.0999999999999968
-value = 0.999999999999968
+max_value = 0.5
+step = 0.01
+value = 0.1
 
 [node name="Exit" type="Button" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=1757865940]
 visible = false
