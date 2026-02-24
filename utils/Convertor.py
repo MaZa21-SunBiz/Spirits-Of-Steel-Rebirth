@@ -63,20 +63,29 @@ def main():
         coloredata = {tuple(v["color"]): k for k, v in load(f).items()}
     with open("input/ethnicities.json") as f:
         eth_data = load(f)
+
+    # with open("input/ethnicities.json", 'w') as f:
+    #     for country in coloredata:
+    #         if not eth_data.get(str(country), True):
+    #             eth_data[str(country)] = coloredata[country]
+    #     for ethnicity in eth_data:
+    #         eth_data[ethnicity] = eth_data[ethnicity].capitalize().replace(' ', '-').replace('_', '-').replace('\n', '-')
+    #     dump(eth_data, f, indent=4)
+
     with open("input/population_color_map.json") as f:
         pop_data = load(f)
     with open("input/gdp_data.json") as f:
         gdp_data = load(f)
     with open("input/city_colors.json") as f:
         city_data = load(f)
-    with open("input/claims.json") as f:
-        claims_data = load(f)
+    # with open("input/claims.json") as f:
+    #     claims_data = load(f)
     cmap = Image.open("input/polities.png").convert("RGB")
     eth_map = Image.open("input/ethnicities.png").convert("RGB")
     pop_map = Image.open("input/population_color_map.png").convert("RGB")
     gdp_map = Image.open("input/gdp_data.png").convert("RGB")
     city_map = Image.open("input/city_colors.png").convert("RGB")
-    claims_map = Image.open("input/claims.png").convert("RGB")
+    # claims_map = Image.open("input/claims.png").convert("RGB")
     industry_map = Image.open("input/industry.png").convert("RGB")
     biomes_map = Image.open("input/biomes.png").convert("RGB")
     pmap = Image.open("input/regions.png").convert("RGB")
@@ -85,7 +94,7 @@ def main():
     pop_pixels = pop_map.load()
     gdp_pixels = gdp_map.load()
     city_pixels = city_map.load()
-    claims_pixels = claims_map.load()
+    # claims_pixels = claims_map.load()
     industry_pixels = industry_map.load()
     biomes_pixels = biomes_map.load()
     ppixels = pmap.load()
@@ -108,7 +117,7 @@ def main():
         pop_color = tuple(pop_pixels[i % width, i // width])
         gdp_color = tuple(gdp_pixels[i % width, i // width])
         city_color = tuple(city_pixels[i % width, i // width])
-        claims_color = tuple(claims_pixels[i % width, i // width])
+        # claims_color = tuple(claims_pixels[i % width, i // width])
         industry_color = tuple(industry_pixels[i % width, i // width])
         biomes_color = tuple(biomes_pixels[i % width, i // width])
         province_color = tuple(ppixels[i % width, i // width])
@@ -142,7 +151,9 @@ def main():
                         "amount": pop_data.get(f"({pop_color[0]}, {pop_color[1]}, {pop_color[2]})", 10000)
                     }
                 ],
-                "claims": [entryer.capitalize() for entryer in claims_data.get(f"({claims_color[0]},{claims_color[1]},{claims_color[2]})", [])],
+                "claims": [
+                    # entryer.capitalize() for entryer in claims_data.get(f"({claims_color[0]},{claims_color[1]},{claims_color[2]})", [])
+                    ],
                 "gdp": gdp_data.get(f"({gdp_color[0]}, {gdp_color[1]}, {gdp_color[2]})", 1500000)
             }
             blacklist.add(province_color)

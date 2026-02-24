@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8kbndn3udlf"
+path="res://.godot/imported/(Sablin) The Battle Goes On (Violin Instrumental  Remix)  (SILENZIUM) [cEkH2YMkj6U].mp3-d711ed2caa3e544a507bd40200c17b16.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/(Sablin) The Battle Goes On (Violin Instrumental  Remix)  (SILENZIUM) [cEkH2YMkj6U].mp3"
+dest_files=["res://.godot/imported/(Sablin) The Battle Goes On (Violin Instrumental  Remix)  (SILENZIUM) [cEkH2YMkj6U].mp3-d711ed2caa3e544a507bd40200c17b16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

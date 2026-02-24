@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
-[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://materials/damaged.tres" id="5_yhxw7"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
 [ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://Scenes/goober.gdshader" id="10_5egv6"]
@@ -242,6 +242,37 @@ text = "Thanks y'all"
 visible = false
 
 [connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1375568892]
+material = SubResource("ShaderMaterial_vtepg")
+layout_mode = 0
+offset_left = 475.0
+offset_top = 292.0
+offset_right = 753.4519
+offset_bottom = 489.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1924079947]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 355.0
+offset_top = 277.0
+offset_right = 800.0
+offset_bottom = 417.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=752835337]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 223.0
+offset_right = 1078.4519
+offset_bottom = 420.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+flip_h = true
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
