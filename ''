@@ -31,7 +31,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Label")
 @onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
-@onready var sidemenu_buildings: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
+@onready var sidemenu_buildings: VBoxContainer = sidemenu.get_node("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 
 @onready var troop_container: PanelContainer = $Control/TroopContainer
 @onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox")
@@ -247,7 +247,6 @@ func open_menu(context: Context, category: Category) -> void:
 		slide_in()
 	
 	_update_context_actions_visuals()
-	update_economy_menu()
 
 func _update_relations_visuals() -> void:
 	if current_category != Category.GENERAL:
@@ -412,7 +411,6 @@ func _on_hour_passed() -> void:
 	update_topbar_stats()
 	if is_open:
 		_update_context_actions_visuals()
-		update_economy_menu()
 
 
 func format_number(value: float) -> String:
@@ -539,17 +537,11 @@ func _on_building_selected(index: int):
 
 
 func update_economy_menu():
-	for child in sidemenu_buildings.get_children():
-		child.queue_free()
 	for building in EconomyManager.construction_queue.values():
 		print(building)
 		var entry = ProgressBar.new()
-		entry.value = 10 - building["days"]
-		entry.max_value = 10
-		entry.use_parent_material = true
 		var text = Label.new()
 		text.text = building["type"]
-		text.use_parent_material = true
 		entry.add_child(text)
 		sidemenu_buildings.add_child(entry)
 	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv26r5eesdqi4"
+path="res://.godot/imported/chris††† - he left [q-1oxg0-dYE].mp3-881ee109604a556fe42b72eeb7f9783a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/chris††† - he left [q-1oxg0-dYE].mp3"
+dest_files=["res://.godot/imported/chris††† - he left [q-1oxg0-dYE].mp3-881ee109604a556fe42b72eeb7f9783a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -53,7 +53,7 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 		"daily_cost": daily_cost,
 		"country": country
 	}
-	
+	GameState.game_ui.update_economy_menu()
 
 func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cka6e42ep40a3"
+path="res://.godot/imported/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3-94e177d92c4d81641ab923a530e891b1.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3"
+dest_files=["res://.godot/imported/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3-94e177d92c4d81641ab923a530e891b1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

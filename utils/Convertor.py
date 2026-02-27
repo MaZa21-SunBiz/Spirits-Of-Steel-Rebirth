@@ -117,6 +117,8 @@ def main():
         pop_color = tuple(pop_pixels[i % width, i // width])
         gdp_color = tuple(gdp_pixels[i % width, i // width])
         city_color = tuple(city_pixels[i % width, i // width])
+
+
         # claims_color = tuple(claims_pixels[i % width, i // width])
         industry_color = tuple(industry_pixels[i % width, i // width])
         biomes_color = tuple(biomes_pixels[i % width, i // width])

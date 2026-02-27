@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b12r5o5kvt1fc"
+path="res://.godot/imported/Les Terres Saintes (The Holy Lands) French Crusading & Monarchist Song [FULL VERSION] [of8cnIvVA8E].mp3-b7c8f41e5463199bc639fd922e2cd00a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/Les Terres Saintes (The Holy Lands) French Crusading & Monarchist Song [FULL VERSION] [of8cnIvVA8E].mp3"
+dest_files=["res://.godot/imported/Les Terres Saintes (The Holy Lands) French Crusading & Monarchist Song [FULL VERSION] [of8cnIvVA8E].mp3-b7c8f41e5463199bc639fd922e2cd00a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
