@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bc5t06lvfk52"]
+
+[ext_resource type="Script" uid="uid://dmvkq3d576psb" path="res://Scripts/map_editor.gd" id="1_maped"]
+
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573]
+script = ExtResource("1_maped")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=403020217]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=376971442]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer" unique_id=231677890]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer" unique_id=309156479]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1361114609]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Province Editor"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1352176760]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1239453382]
+layout_mode = 2
+text = "Selected PID: None
+R_Color: None"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1740113436]
+layout_mode = 2
+columns = 2
+
+[node name="LabelCountry" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1733643887]
+layout_mode = 2
+text = "Country:"
+
+[node name="InputCountry" type="LineEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1490308924]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelCity" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1083187472]
+layout_mode = 2
+text = "City:"
+
+[node name="InputCity" type="LineEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1529520698]
+layout_mode = 2
+
+[node name="LabelPop" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=358188387]
+layout_mode = 2
+text = "Population:"
+
+[node name="InputPop" type="SpinBox" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=163410757]
+layout_mode = 2
+max_value = 2000000000.0
+
+[node name="LabelGDP" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=387247466]
+layout_mode = 2
+text = "GDP:"
+
+[node name="InputGDP" type="SpinBox" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1491334534]
+layout_mode = 2
+max_value = 1000000000000.0
+step = 0.1
+
+[node name="LabelEthName" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1850200068]
+layout_mode = 2
+text = "Ethnicity:"
+
+[node name="InputEthName" type="LineEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=2066954753]
+layout_mode = 2
+
+[node name="LabelEthColor" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1810585477]
+layout_mode = 2
+text = "Eth Color:"
+
+[node name="InputEthColor" type="LineEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=61260226]
+layout_mode = 2
+placeholder_text = "(194, 122, 107)"
+
+[node name="LabelCountryColor" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=421136677]
+layout_mode = 2
+text = "Country Color:"
+
+[node name="InputCountryColor" type="ColorPickerButton" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer" unique_id=1924345469]
+layout_mode = 2
+text = "Select Color"
+
+[node name="LabelClaims" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=474258352]
+layout_mode = 2
+text = "Claims (comma separated):"
+
+[node name="InputClaims" type="TextEdit" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2079219791]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=247650640]
+layout_mode = 2
+
+[node name="BtnApply" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=692144953]
+layout_mode = 2
+text = "Apply Changes to Map"
+
+[node name="BtnExport" type="Button" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1522256774]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = "Export to JSON"
