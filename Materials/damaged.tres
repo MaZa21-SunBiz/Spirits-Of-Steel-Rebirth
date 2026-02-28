@@ -19,3 +19,7 @@ color_ramp = SubResource("Gradient_lpwmk")
 [resource]
 shader = ExtResource("1_5kvwk")
 shader_parameter/NOISE_PATTERN = SubResource("NoiseTexture2D_lpwmk")
+shader_parameter/upper = 0.865
+shader_parameter/lower = 0.115
+shader_parameter/dirt = 0.355
+shader_parameter/color = Vector3(0, 0, 0)

@@ -103,7 +103,7 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     }
 
     if (found_color) {
-        out_color = mix(vec4(0.0, 0.0, 0.0, 1.0), reference, internal_border_darkness);
+        out_color = mix(reference, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
         return true;
     }
     return false;

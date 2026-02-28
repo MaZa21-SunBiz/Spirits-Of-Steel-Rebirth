@@ -542,7 +542,6 @@ func update_economy_menu():
 	for child in sidemenu_buildings.get_children():
 		child.queue_free()
 	for building in EconomyManager.construction_queue.values():
-		print(building)
 		var entry = ProgressBar.new()
 		entry.value = 10 - building["days"]
 		entry.max_value = 10

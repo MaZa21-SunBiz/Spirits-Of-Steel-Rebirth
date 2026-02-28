@@ -157,6 +157,8 @@ func _ready() -> void:
 	else:
 		push_error("CustomRenderer node not found!")
 
+	SettingsManager.apply_settings()
+
 
 func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	var ghost := Sprite2D.new()

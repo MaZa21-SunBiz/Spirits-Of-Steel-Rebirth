@@ -3,10 +3,42 @@ extends Control
 @onready var save_list = $TabContainer/Saves/VBoxContainer/ScrollContainer/savelist
 @onready var line_edit = $TabContainer/Saves/VBoxContainer/HBoxContainer/TextEdit
 
-enum Section { SAVE, AUDIO, SETTINGS, EXIT }
+enum Section {SAVE, AUDIO, SETTINGS, EXIT}
+var settings = {}
+@onready var idfkanymore = $TabContainer/Graphics
+@onready var audio_path = $TabContainer/Audio/HBoxContainer/VBoxContainer
+@onready var graphics_path = $TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2
+
+@onready var sfx_slider = audio_path.get_node("PanelContainer/HBoxContainer/HSlider")
+@onready var music_slider = audio_path.get_node("PanelContainer2/HBoxContainer/HSlider")
+@onready var scanlines_slider = graphics_path.get_node("HSlider2")
+@onready var vignette_lower_slider = graphics_path.get_node("HSlider")
+@onready var vignette_upper_slider = graphics_path.get_node("HSlider3")
+@onready var map_effects_slider = graphics_path.get_node("HSlider4")
+@onready var province_borders_slider = graphics_path.get_node("HSlider5")
+@onready var ui_upper_slider = graphics_path.get_node("HSlider6")
+@onready var ui_lower_slider = graphics_path.get_node("HSlider7")
+@onready var ui_dirt_slider = graphics_path.get_node("HSlider8")
 
 func _ready():
 	_refresh_saves()
+	_initialize_ui_values()
+
+func _initialize_ui_values():
+	var s = SettingsManager.settings
+	sfx_slider.value = s.sfx_volume
+	music_slider.value = s.music_volume
+	scanlines_slider.value = s.scanlines
+	vignette_lower_slider.value = s.vignette_lower
+	vignette_upper_slider.value = s.vignette_upper
+	map_effects_slider.value = s.map_effects
+	province_borders_slider.value = s.province_borders
+	ui_upper_slider.value = s.ui_upper
+	ui_lower_slider.value = s.ui_lower
+	ui_dirt_slider.value = s.ui_dirt
+
+func save_settings() -> void:
+	SettingsManager.save_settings()
 
 func _refresh_saves():
 	for n in save_list.get_children(): n.queue_free()
@@ -34,10 +66,12 @@ func _refresh_saves():
 			save_list.add_child(lbl)
 
 func _on_sfx_changed(value: float) -> void:
-	MusicManager.set_sfx_volume(value)
+	SettingsManager.settings.sfx_volume = value
+	SettingsManager.apply_settings()
 
 func _on_music_changed(value: float) -> void:
-	MusicManager.set_music_volume(value)
+	SettingsManager.settings.music_volume = value
+	SettingsManager.apply_settings()
 
 func _add_save_row(parent: Node, save_name: String) -> void:
 	var hbox = HBoxContainer.new()
@@ -61,7 +95,6 @@ func _add_save_row(parent: Node, save_name: String) -> void:
 	del_btn.pressed.connect(func():
 		DirAccess.remove_absolute("res://saves/" + save_name + ".tres")
 		_refresh_saves()
-		# _switch_section(Section.SAVE) # Refresh
 	)
 
 	hbox.add_child(load_btn)
@@ -71,19 +104,35 @@ func _add_save_row(parent: Node, save_name: String) -> void:
 func _on_save_game_pressed():
 	GameState.current_world.save_game(line_edit.text.strip_edges())
 	_refresh_saves()
-	# _switch_section(Section.SAVE) # Refresh list
 
 func _on_scanlines_changed(value: float) -> void:
-	GameState.current_world.map_sprite.material.set_shader_parameter("scanlines", value)
+	SettingsManager.settings.scanlines = value
+	SettingsManager.apply_settings()
 	
 func _on_vignette_upper_changed(value: float) -> void:
-	GameState.current_world.map_sprite.material.set_shader_parameter("upper", value)
+	SettingsManager.settings.vignette_upper = value
+	SettingsManager.apply_settings()
 
 func _on_vignette_lower_changed(value: float) -> void:
-	GameState.current_world.map_sprite.material.set_shader_parameter("lower", value)
+	SettingsManager.settings.vignette_lower = value
+	SettingsManager.apply_settings()
 
 func _on_map_effects_changed(value: float) -> void:
-	GameState.current_world.map_sprite.material.set_shader_parameter("toggle", value)
+	SettingsManager.settings.map_effects = value
+	SettingsManager.apply_settings()
 
 func _on_province_borders_changed(value: float) -> void:
-	GameState.current_world.map_sprite.material.set_shader_parameter("internal_border_darkness", value)
+	SettingsManager.settings.province_borders = value
+	SettingsManager.apply_settings()
+
+func _on_ui_upper_changed(value: float) -> void:
+	SettingsManager.settings.ui_upper = value
+	idfkanymore.material.set_shader_parameter("upper", value)
+
+func _on_ui_lower_changed(value: float) -> void:
+	SettingsManager.settings.ui_lower = value
+	idfkanymore.material.set_shader_parameter("lower", value)
+
+func _on_ui_dirt_changed(value: float) -> void:
+	SettingsManager.settings.ui_dirt = value
+	idfkanymore.material.set_shader_parameter("dirt", value)
