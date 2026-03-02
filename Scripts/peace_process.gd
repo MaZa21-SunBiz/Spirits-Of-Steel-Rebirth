@@ -212,7 +212,7 @@ func get_province_with_radius(global_pos: Vector2, map_sprite: Sprite2D, radius:
 
 func _update_map_visual(pid: int, color: Color):
 	if MapManager.has_method("update_lookup"):
-		MapManager.update_lookup(pid, color)
+		MapManager.update_lookup(pid, color, color)
 
 
 func _reset_province_visual(pid: int):

@@ -197,11 +197,11 @@ func update_province_color(pid: int, country_name: String) -> void:
 		return
 
 	var new_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
-	update_lookup(pid, new_color)
+	update_lookup(pid, new_color, new_color)
 
 	if pid == last_hovered_pid:
 		original_hover_color = new_color
-		update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
+		update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0), new_color + Color(0.15, 0.15, 0.15, 0))
 
 
 func set_country_color(country_name: String, custom_color: Color = Color.TRANSPARENT) -> void:
@@ -216,11 +216,11 @@ func set_country_color(country_name: String, custom_color: Color = Color.TRANSPA
 		return
 
 	for pid in provinces:
-		update_lookup(pid, new_color)
+		update_lookup(pid, new_color, new_color)
 
 		if pid == last_hovered_pid:
 			original_hover_color = new_color
-			update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0))
+			update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0), new_color + Color(0.15, 0.15, 0.15, 0))
 
 
 func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
@@ -272,7 +272,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 		if pid > 1 and highlight_color != Color.TRANSPARENT:
 			original_hover_color = state_color_image.get_pixel(pid, 0)
-			update_lookup(pid, highlight_color)
+			update_lookup(pid, highlight_color, highlight_color)
 
 			last_hovered_pid = pid
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -284,7 +284,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 func _reset_last_hover() -> void:
 	if last_hovered_pid > 1:
-		update_lookup(last_hovered_pid, original_hover_color)
+		update_lookup(last_hovered_pid, original_hover_color, original_hover_color)
 	last_hovered_pid = -1
 
 
@@ -422,7 +422,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 func _cleanup_interaction_state() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	if last_hovered_pid > 1:
-		update_lookup(last_hovered_pid, original_hover_color)
+		update_lookup(last_hovered_pid, original_hover_color, original_hover_color)
 		last_hovered_pid = -1
 
 
@@ -448,8 +448,9 @@ func get_province_with_radius(center: Vector2, map_sprite: Sprite2D, radius: int
 	return -1
 
 
-func update_lookup(pid: int, color: Color) -> void:
-	state_color_image.set_pixel(pid, 0, color)
+func update_lookup(pid: int, colorMain: Color, colorSecondary: Color) -> void:
+	state_color_image.set_pixel(pid, 0, colorMain)
+	state_color_image.set_pixel(pid, 1, colorSecondary)
 	state_color_texture.update(state_color_image)
 
 
@@ -1014,7 +1015,7 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	
 	province_objects[pid].occupier = ""
 
-	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
+	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY), CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
 
 func _parse_color_string(s: String) -> Vector3:
 	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")

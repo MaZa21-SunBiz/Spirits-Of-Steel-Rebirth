@@ -146,12 +146,14 @@ func _update_multimesh_buffer():
 func _draw() -> void:
 	if !map_sprite or map_width <= 0:
 		return
-	_draw_path_preview()
-	_draw_active_movements()
-	_draw_selection_box()
-	_draw_troops()
+	if !GameState.in_peace_process:
+		_draw_path_preview()
+		_draw_active_movements()
+		_draw_selection_box()
+		_draw_troops()
 	_draw_cities()
-	draw_battles()
+	if !GameState.in_peace_process:
+		draw_battles()
 
 
 func _draw_troops() -> void:
