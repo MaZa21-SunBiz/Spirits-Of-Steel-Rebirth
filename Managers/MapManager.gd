@@ -1011,6 +1011,8 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 		country_to_provinces[new_owner_name].append(pid)
 
 	province_to_country[pid] = new_owner_name
+	
+	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
 
