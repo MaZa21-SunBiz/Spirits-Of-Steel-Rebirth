@@ -278,12 +278,11 @@ func apply_casualties(pid: int, country: String, damage_amount: float):
 
 
 func resolve_province_arrival(pid: int, troop: TroopData):
-	var target_country = MapManager.province_to_country.get(pid)
+	var target_country = MapManager.province_objects[pid].GetFunctionalOwner()
 
 	if target_country != troop.country_name and is_at_war_names(troop.country_name, target_country):
-		var enemies = TroopManager.get_province_strength(pid, target_country)
 
-		if enemies <= 0:
+		if TroopManager.get_province_strength(pid, target_country) <= 0:
 			MapManager.transfer_ownership(pid, troop.country_name)
 			check_country_collapse(target_country, troop.country_name)
 

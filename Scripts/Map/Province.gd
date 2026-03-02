@@ -8,6 +8,7 @@ enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACT
 @export var id: int
 @export var name: String
 @export var country: String
+@export var occupier: String
 @export var biome: String
 @export var resources: Array[ResourceNode]
 @export var city: String
@@ -28,6 +29,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.type = Province.SEA
 		province.name = "Sea"
 		province.country = "Sea"
+		province.occupier = ""
 		province.biome = a_data.get("biome", "Sea")
 		for resourceData: Dictionary in a_data.get("resources", []):
 			province.resourrces.append(ResourceNode.FromDict(resourceData))
@@ -42,6 +44,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.type = Province.LAND
 		province.name = a_data["name"]
 		province.country = a_data["polity"]
+		province.occupier = a_data.get("occupier", "")
 		province.biome = a_data.get("biome", "Plains")
 		for resourceData: Dictionary in a_data.get("resources", []):
 			province.resources.append(ResourceNode.FromDict(resourceData))
@@ -62,3 +65,9 @@ func GetPopulation() -> int:
 	for subpopulation: PopulationData in self.population:
 		totalPopulation += subpopulation.amount
 	return totalPopulation
+
+func GetFunctionalOwner() -> String:
+	if occupier == "":
+		return country
+	else:
+		return occupier

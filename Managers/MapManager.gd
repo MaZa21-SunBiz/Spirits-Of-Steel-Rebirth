@@ -164,21 +164,22 @@ func _build_country_to_provinces():
 
 
 func build_lookup_texture() -> void:
-	state_color_image = Image.create(max_province_id + 1, 1, false, Image.FORMAT_RGBA8)
+	state_color_image = Image.create(max_province_id + 1, 2, false, Image.FORMAT_RGBA8)
 
 	for pid in range(max_province_id + 1):
 		if pid <= 1:
-			state_color_image.set_pixel(pid, 0, Color(0, 0, 0, 0))
+			state_color_image.set_pixel(pid, 0, Color.BLACK)
+			state_color_image.set_pixel(pid, 1, Color.BLACK)
 			continue
 		var province = province_objects.get(pid)
 
 		if province == null or province.type == 0: # 0 is province.SEA
-			state_color_image.set_pixel(pid, 0, Color(0, 0, 0, 0))
+			state_color_image.set_pixel(pid, 0, Color.BLACK)
+			state_color_image.set_pixel(pid, 1, Color.BLACK)
 			continue
-
-		var country = province.country
-		var col = CountryManager.GetCountryColor(country, Color.GRAY)
-		state_color_image.set_pixel(pid, 0, col)
+			
+		state_color_image.set_pixel(pid, 0, CountryManager.GetCountryColor(province.country, Color.GRAY))
+		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(CountryManager.countries.keys().pick_random(), Color.GRAY))
 
 	state_color_texture = ImageTexture.create_from_image(state_color_image)
 
@@ -377,7 +378,6 @@ func _execute_deployment(pid: int, player_name: String) -> void:
 func _province_build_industry(pid: int, player_name: String) -> void:
 	var type := GameState.industry_building
 	var province = province_objects[pid]
-	var country = CountryManager.get_country(player_name)
 
 	# 1. Safety Check: Is there already something there or currently building?
 	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
@@ -386,7 +386,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 			print("Cannot build: Factory slot is busy or full.")
 			return
 			
-		EconomyManager.start_construction(pid, "Factory", 10, 150.0, country)
+		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.get_country(player_name))
 		
 		_cleanup_interaction_state()
 		show_industry_country(player_name)
@@ -398,7 +398,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 			
 		# 3. Sea check for Ports
 		if pid in get_provinces_near_sea(player_name):
-			EconomyManager.start_construction(pid, "Port", 10, 150.0, country)
+			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.get_country(player_name))
 			
 			_cleanup_interaction_state()
 			show_industry_country(player_name)
@@ -411,7 +411,7 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 			print("Cannot build: Infrastructure is already maxeda.")
 			return
 			
-		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, country)
+		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.get_country(player_name))
 		
 		_cleanup_interaction_state()
 		show_industry_country(player_name)
@@ -679,7 +679,7 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 				if neighbor_prov.type == Province.LAND:
 					# Strictly check if the country is in the allowed list
 					# If it's not there, we can't enter it—even if it's the end_pid
-					if not allowed_dict.has(neighbor_prov.country):
+					if not allowed_dict.has(neighbor_prov.GetFunctionalOwner()):
 						continue
 
 			# --- STANDARD A* CALCULATION ---
@@ -816,6 +816,7 @@ func show_faction_map() -> void:
 			else:
 				faction_color = Color.GRAY
 			state_color_image.set_pixel(pid, 0, faction_color / total)
+			state_color_image.set_pixel(pid, 1, faction_color / total)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.FACTION
@@ -832,7 +833,9 @@ func show_population_map() -> void:
 	for pid in province_objects.keys():
 		if pid <= 1:
 			continue
-		state_color_image.set_pixel(pid, 0, _get_heatmap_color(province_objects[pid].GetPopulation(), current_max_pop))
+		var color: Color = _get_heatmap_color(province_objects[pid].GetPopulation(), current_max_pop)
+		state_color_image.set_pixel(pid, 0, color)
+		state_color_image.set_pixel(pid, 1, color)
 
 	state_color_texture.update(state_color_image)
 	print("MapManager: Population View Updated. Max Pop found: ", current_max_pop)
@@ -844,7 +847,7 @@ func ShowInfrastructureMap() -> void:
 	for pid in province_objects.keys():
 		if pid <= 1 || province_objects[pid].country == "Sea":
 			continue
-		if CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.allowedCountries.has(province_objects[pid].country):
+		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.allowedCountries.has(province_objects[pid].country):
 			state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color)
 		else:
 			var infra = province_objects[pid].infrastructure
@@ -881,6 +884,7 @@ func show_ethnic_map() -> void:
 
 		# Update the lookup texture
 		state_color_image.set_pixel(pid, 0, display_color)
+		state_color_image.set_pixel(pid, 1, display_color)
 
 	state_color_texture.update(state_color_image)
 	print("MapManager: Ethnic View Updated.")
@@ -918,7 +922,9 @@ func show_gdp_map() -> void:
 		if pid <= 1:
 			continue
 
-		state_color_image.set_pixel(pid, 0, _get_gdp_heatmap_color(province_objects[pid].gdp, current_max_gdp))
+		var color: Color = _get_gdp_heatmap_color(province_objects[pid].gdp, current_max_gdp)
+		state_color_image.set_pixel(pid, 0, color)
+		state_color_image.set_pixel(pid, 1, color)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.GDP
@@ -937,10 +943,10 @@ func show_countries_map() -> void:
 		var country_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 		var country_data = CountryManager.get_country(country_name)
 		if country_data and country_data.owner:
-			var owner_color = CountryManager.GetCountryColor(country_data.owner, Color.GRAY)
-			country_color = (country_color + 3 * owner_color) / 4
+			country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
 
 		state_color_image.set_pixel(pid, 0, country_color)
+		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(province_objects[pid].occupier, Color.GRAY) if province_objects[pid].occupier != "" else country_color)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES

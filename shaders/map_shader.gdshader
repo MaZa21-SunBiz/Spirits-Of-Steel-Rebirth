@@ -58,9 +58,9 @@ int get_id(vec2 uv) {
     return int(c.b * 255.0) + int(c.g * 255.0 * 256.0) + int(c.r * 255.0 * 256.0 * 256.0);
 }
 
-vec4 get_country_color(int id) {
+vec4 get_country_color(int id, float ev) {
     if (id <= 1) return vec4(0.0);
-    return texture(state_colors, vec2((float(id) + 0.5) / float(textureSize(state_colors, 0).x), 0.5)); // This will return alpha 0 for sea provinces now
+    return texture(state_colors, vec2((float(id) + 0.5) / float(textureSize(state_colors, 0).x), 0.25 + 0.5 * ev)); // This will return alpha 0 for sea provinces now
 }
 // --- BORDER SCANNING LOGIC ---
 bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color, out bool is_black) {
@@ -88,7 +88,7 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
         // 2. If neighbor is LAND
         if (nid > 1) {
-            vec4 c = get_country_color(nid);
+            vec4 c = get_country_color(nid, 0.0);
             if (!found_color) {
                 reference = c;
                 found_color = true;
@@ -112,6 +112,7 @@ void fragment() {
 	if (toggle == 1) {
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
+		float black = UV.x * tex_size.x + UV.y * tex_size.y;
 
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
@@ -123,7 +124,7 @@ void fragment() {
 		} 
 		// 2. If it's Land (type_map 1.0) and a real province
 		else if (id > 1) {
-		    COLOR = vec4(get_country_color(id).rgb, 1.0);
+		    COLOR = vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
 		} 
 		// 3. If it's Land (type_map 1.0) and ID 1 (Border)
 		else {
