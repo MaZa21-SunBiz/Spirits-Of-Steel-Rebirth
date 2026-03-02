@@ -151,7 +151,7 @@ func process_hour() -> void:
 	update_manpower_pool()
 	_process_reinforcements()
 	if not is_player:
-		AiManager.ai_tick(self)
+		CountryAIManager.ai_tick(self)
 		pass
 
 
