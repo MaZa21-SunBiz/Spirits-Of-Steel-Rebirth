@@ -179,7 +179,7 @@ func build_lookup_texture() -> void:
 			continue
 			
 		state_color_image.set_pixel(pid, 0, CountryManager.GetCountryColor(province.country, Color.GRAY))
-		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(CountryManager.countries.keys().pick_random(), Color.GRAY))
+		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(province.GetFunctionalOwner(), Color.GRAY))
 
 	state_color_texture = ImageTexture.create_from_image(state_color_image)
 
@@ -946,7 +946,7 @@ func show_countries_map() -> void:
 			country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
 
 		state_color_image.set_pixel(pid, 0, country_color)
-		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(province_objects[pid].occupier, Color.GRAY) if province_objects[pid].occupier != "" else country_color)
+		state_color_image.set_pixel(pid, 1, country_color)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES

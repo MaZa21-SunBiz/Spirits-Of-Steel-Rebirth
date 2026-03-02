@@ -39,7 +39,7 @@ SuperEventManager="*res://Managers/SuperEventManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
-AiManager="*uid://ol3874ku3mbe"
+AiManager="*uid://lfcuhgfmerxw"
 SceneSwitcher="*uid://b6nuwg2ue50me"
 
 [debug]
