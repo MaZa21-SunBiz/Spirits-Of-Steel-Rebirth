@@ -803,6 +803,7 @@ func _on_input_division_text_changed(_new_text: float) -> void:
 
 func _on_music_pressed():
 	$Radios.visible = !$Radios.visible
+	SettingsManager.save_settings()
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text, faction_prompt.get_node("VBoxContainer/ColorPicker").color)

@@ -1522,6 +1522,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
+visible = false
 material = ExtResource("16_lpwmk")
 offset_left = 858.0
 offset_top = 43.0

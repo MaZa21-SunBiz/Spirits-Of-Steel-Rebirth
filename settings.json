@@ -4,6 +4,10 @@
   "map_effects": 1.0,
   "music_volume": 0.03,
   "province_borders": 0.41,
+  "radios": [
+    "Lead poisoning",
+    "default"
+  ],
   "scanlines": 0.1,
   "sfx_volume": 0.5,
   "ui_dirt": 1.0,

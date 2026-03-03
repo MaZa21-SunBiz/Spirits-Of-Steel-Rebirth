@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqo3w3xapbjis"
+path="res://.godot/imported/chris††† - judas inside [6i2CqF0Xzss].mp3-ae06cf1f507bd3180d518fb2b1ba4917.mp3str"
+
+[deps]
+
+source_file="res://radios/Lead poisoning/warMusic/chris††† - judas inside [6i2CqF0Xzss].mp3"
+dest_files=["res://.godot/imported/chris††† - judas inside [6i2CqF0Xzss].mp3-ae06cf1f507bd3180d518fb2b1ba4917.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
