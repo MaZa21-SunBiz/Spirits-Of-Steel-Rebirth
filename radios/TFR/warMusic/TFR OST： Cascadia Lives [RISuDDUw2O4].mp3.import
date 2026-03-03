@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do2o6wiur07yf"
+path="res://.godot/imported/TFR OST： Cascadia Lives [RISuDDUw2O4].mp3-7f7c708a36079e01337380a0e37735e5.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： Cascadia Lives [RISuDDUw2O4].mp3"
+dest_files=["res://.godot/imported/TFR OST： Cascadia Lives [RISuDDUw2O4].mp3-7f7c708a36079e01337380a0e37735e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgc88df7njd84"
+path="res://.godot/imported/TFR OST： Daughter Of Russia [YY3SLoyCUjg].mp3-8454aa78a257c82e9ad5c1c563d162e7.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/gameMusic/TFR OST： Daughter Of Russia [YY3SLoyCUjg].mp3"
+dest_files=["res://.godot/imported/TFR OST： Daughter Of Russia [YY3SLoyCUjg].mp3-8454aa78a257c82e9ad5c1c563d162e7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

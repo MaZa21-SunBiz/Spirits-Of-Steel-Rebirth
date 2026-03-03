@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yadqngo804we"
+path="res://.godot/imported/TFR OST： Fractured Timeline [REUPLOAD] [WAeQ4O8QDuY].mp3-e4d3469a07cb414158246b6c218d10c5.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： Fractured Timeline [REUPLOAD] [WAeQ4O8QDuY].mp3"
+dest_files=["res://.godot/imported/TFR OST： Fractured Timeline [REUPLOAD] [WAeQ4O8QDuY].mp3-e4d3469a07cb414158246b6c218d10c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

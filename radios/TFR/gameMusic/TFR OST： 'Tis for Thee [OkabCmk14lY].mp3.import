@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hkkykrwa55ts"
+path="res://.godot/imported/TFR OST： 'Tis for Thee [OkabCmk14lY].mp3-ab601b08880e6856cfde1b7e5cdaf028.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/gameMusic/TFR OST： 'Tis for Thee [OkabCmk14lY].mp3"
+dest_files=["res://.godot/imported/TFR OST： 'Tis for Thee [OkabCmk14lY].mp3-ab601b08880e6856cfde1b7e5cdaf028.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

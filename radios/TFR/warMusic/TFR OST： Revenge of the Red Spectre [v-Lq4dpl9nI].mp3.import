@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bodglibyij5ym"
+path="res://.godot/imported/TFR OST： Revenge of the Red Spectre [v-Lq4dpl9nI].mp3-2d7b0fca692f7c2f060004eacd7aa68d.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： Revenge of the Red Spectre [v-Lq4dpl9nI].mp3"
+dest_files=["res://.godot/imported/TFR OST： Revenge of the Red Spectre [v-Lq4dpl9nI].mp3-2d7b0fca692f7c2f060004eacd7aa68d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

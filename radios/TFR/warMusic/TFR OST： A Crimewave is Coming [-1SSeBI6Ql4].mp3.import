@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfc4cwplkw6lo"
+path="res://.godot/imported/TFR OST： A Crimewave is Coming [-1SSeBI6Ql4].mp3-d03bc9b238a997d28b55691a80ce1e8b.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： A Crimewave is Coming [-1SSeBI6Ql4].mp3"
+dest_files=["res://.godot/imported/TFR OST： A Crimewave is Coming [-1SSeBI6Ql4].mp3-d03bc9b238a997d28b55691a80ce1e8b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

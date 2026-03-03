@@ -43,7 +43,8 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @export var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 
-@onready var radio_list: VBoxContainer = $Radios
+@onready var radio_list: VBoxContainer = $Radios/RadioList
+@onready var now_playing: Label = $Radios/ScrollContainer/NowPlaying
 
 # ── State Variables ───────────────────────────────────
 var selected_country: CountryData = null
@@ -124,8 +125,15 @@ func _ready() -> void:
 	label_date.text = clock.get_datetime_string()
 
 	# NOTE(soi): its soiladin time
-	const music_path = "res://assets/music/"
+	const default_music_path = "res://assets/music/"
+	const custom_music_path = "res://radios/"
 	for radio in MusicManager.music_map[0]:
+		var music_path = ""
+		print(default_music_path + radio + "/thumbnail.png")
+		if ResourceLoader.exists(default_music_path + radio + "/thumbnail.png"):
+			music_path = default_music_path
+		else:
+			music_path = custom_music_path
 		var entry = Button.new()
 		entry.text = "\n\n\n" + radio
 		entry.icon = load(music_path + radio + "/thumbnail.png")
@@ -794,7 +802,7 @@ func _on_input_division_text_changed(_new_text: float) -> void:
 	update_division_menu()
 
 func _on_music_pressed():
-	radio_list.visible = !radio_list.visible
+	$Radios.visible = !$Radios.visible
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text, faction_prompt.get_node("VBoxContainer/ColorPicker").color)
@@ -835,3 +843,7 @@ func update_cultures() -> void:
 		entry.text = culture
 		entry.material = preload("res://Materials/damaged.tres")
 		accepted_cultures.add_child(entry)
+
+
+func _on_next_song_pressed() -> void:
+	MusicManager._on_music_finished()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqj4lidf4gnvj"
+path="res://.godot/imported/TFR OST： Risen Again [76-BacfJPJk].mp3-87e3db456413fa706a7a3872e96b83f1.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： Risen Again [76-BacfJPJk].mp3"
+dest_files=["res://.godot/imported/TFR OST： Risen Again [76-BacfJPJk].mp3-87e3db456413fa706a7a3872e96b83f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

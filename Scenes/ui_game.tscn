@@ -242,7 +242,6 @@ text = "100"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(272, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_styles/panel = SubResource("StyleBoxFlat_5hlpc")
@@ -252,8 +251,8 @@ layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=95724245]
 material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 15.0
 show_percentage = false
@@ -273,12 +272,11 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=986642983]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="GameSpeedControl" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=2134005269]
+custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
 [node name="Plus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1044589756]
@@ -313,10 +311,20 @@ icon = ExtResource("13_0e43j")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+[node name="Music2" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1779393988]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-size_flags_horizontal = 3
+tooltip_text = "Radio"
+focus_mode = 0
+theme_override_constants/icon_max_width = 900
+text = ">"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(17, 0)
+layout_mode = 2
 texture = ExtResource("12_2a76p")
 expand_mode = 1
 stretch_mode = 5
@@ -1514,12 +1522,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
-visible = false
 material = ExtResource("16_lpwmk")
-offset_left = 1043.0
+offset_left = 858.0
 offset_top = 43.0
 offset_right = 1144.0
 offset_bottom = 89.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Radios" unique_id=786990813]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
+layout_mode = 2
+text = "Now playing"
+
+[node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
+layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=663062883]
 visible = false
@@ -1688,6 +1706,7 @@ color_modes_visible = false
 presets_visible = false
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="button_up" from="Control/MilitaryExtraPanel/VBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]

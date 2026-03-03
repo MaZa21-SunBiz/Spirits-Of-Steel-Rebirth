@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c70nej3vcakha"
+path="res://.godot/imported/TFR OST： Master of None [UtofGLM-L8A].mp3-8323d18aa025612a79182cb4d5a0a9d4.mp3str"
+
+[deps]
+
+source_file="res://radios/TFR/warMusic/TFR OST： Master of None [UtofGLM-L8A].mp3"
+dest_files=["res://.godot/imported/TFR OST： Master of None [UtofGLM-L8A].mp3-8323d18aa025612a79182cb4d5a0a9d4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
