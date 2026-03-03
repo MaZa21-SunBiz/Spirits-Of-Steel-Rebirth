@@ -2,12 +2,12 @@ extends Node2D
 
 @onready var background_rect: TextureRect = $"PanelContainer/VBoxContainer/background"
 # @onready var heading_label: Label = $"PanelContainer/VBoxContainer/description"
-@onready var button: Button = $"PanelContainer/VBoxContainer/background/Button"
+@onready var button: Button = $"PanelContainer/VBoxContainer/Button"
 
 func _ready():
-	button.pressed.connect(_on_button_pressed)
+	pass
 
-func setup(text: String, background: String):
+func setup(text: String, background: String, mapdata_path: String):
 	# Data format: { "background": "ww3", "desc": "...", "button": "..." }
 	
 	# if data.has("desc"):
@@ -15,6 +15,16 @@ func setup(text: String, background: String):
 	
 	if button:
 		button.text = text
+		var json_data = JSON.parse_string(FileAccess.open(mapdata_path, FileAccess.READ).get_as_text())
+		var mapData: Dictionary = json_data if json_data is Dictionary else {}
+		var load_map_data = func():
+				IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
+				MapManager.load_country_data(mapData["provinces"] as Dictionary)
+				CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
+				MapManager.build_lookup_texture()
+				FactionManager.Initialize(mapData["factions"])
+				get_tree().change_scene_to_packed(preload("res://Scenes/world.tscn"))
+		button.connect("pressed", load_map_data)
 		
 	if background:
 		if FileAccess.file_exists(background) or ResourceLoader.exists(background):
@@ -22,5 +32,5 @@ func setup(text: String, background: String):
 		else:
 			push_warning("StartEntry: Background image not found at %s" % background)
 
-func _on_button_pressed():
-	queue_free()
+# func _on_button_pressed():
+	# queue_free()

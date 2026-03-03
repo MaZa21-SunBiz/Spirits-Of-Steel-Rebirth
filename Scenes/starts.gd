@@ -14,7 +14,7 @@ func _ready() -> void:
 	for start in starts_dir.get_directories():
 		var entry = START_ENTRY_SCENE.instantiate()
 		start_entry.add_child(entry)
-		entry.setup(start, starts_folder + start + "/thumbnail.png")
+		entry.setup(start, starts_folder + start + "/thumbnail.png", starts_folder + start + "/map_data.json")
 		print(start)
 
 func _process(delta: float) -> void:

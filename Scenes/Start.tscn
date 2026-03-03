@@ -10,7 +10,7 @@
 script = ExtResource("1_37b1d")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=181871694]
-offset_right = 287.0
+offset_right = 212.0
 offset_bottom = 166.0
 theme = ExtResource("1_1lxxj")
 
@@ -36,12 +36,8 @@ size_flags_vertical = 3
 texture = ExtResource("3_lmkek")
 expand_mode = 3
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/background" unique_id=343436503]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=343436503]
 material = ExtResource("4_035le")
-layout_mode = 0
-offset_left = -11.0
-offset_top = 111.0
-offset_right = 269.0
-offset_bottom = 143.0
+layout_mode = 2
 theme = ExtResource("1_1lxxj")
 text = "Ok"
