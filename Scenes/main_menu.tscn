@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://Scenes/petpet.gdshader" id="11_5egv6"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
+[ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
 shader = ExtResource("10_5egv6")
@@ -237,6 +238,43 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Thanks y'all"
+
+[node name="Starts" type="Control" parent="." unique_id=65741064]
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchor_left = 0.33950615
+anchor_top = 0.33950618
+anchor_right = 0.66049385
+anchor_bottom = 0.66049385
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_8dnnj")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Starts" unique_id=1804048672]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -100.5
+offset_right = 164.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Starts/PanelContainer2" unique_id=356775520]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=2040824027]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
 
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
 visible = false

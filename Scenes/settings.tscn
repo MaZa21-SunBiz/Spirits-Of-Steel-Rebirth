@@ -168,6 +168,16 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Vignette Upper"
 
+[node name="Label9" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1696087471]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "DayNight Contrast"
+
+[node name="Label10" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=471896850]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "DayNight Smooth"
+
 [node name="Label4" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=850260639]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
@@ -216,7 +226,19 @@ layout_mode = 2
 max_value = 4.0
 step = 0.01
 
+[node name="HSlider9" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=1797230289]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 0.4
+step = 0.01
+
 [node name="HSlider4" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=501460201]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 0.5
+step = 0.01
+
+[node name="HSlider10" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=1431056582]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 max_value = 1.0
@@ -267,7 +289,9 @@ text = "Save Settings"
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_scanlines_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_vignette_lower_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider3" to="Settings" method="_on_vignette_upper_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider4" to="Settings" method="_on_map_effects_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider9" to="Settings" method="_on_daynight_contrast_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider4" to="Settings" method="_on_daynight_smoothness_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider10" to="Settings" method="_on_map_effects_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider5" to="Settings" method="_on_province_borders_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider6" to="Settings" method="_on_ui_upper_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider7" to="Settings" method="_on_ui_lower_changed"]

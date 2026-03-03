@@ -14,11 +14,13 @@ var settings = {}
 @onready var scanlines_slider = graphics_path.get_node("HSlider2")
 @onready var vignette_lower_slider = graphics_path.get_node("HSlider")
 @onready var vignette_upper_slider = graphics_path.get_node("HSlider3")
-@onready var map_effects_slider = graphics_path.get_node("HSlider4")
+@onready var map_effects_slider = graphics_path.get_node("HSlider10")
 @onready var province_borders_slider = graphics_path.get_node("HSlider5")
 @onready var ui_upper_slider = graphics_path.get_node("HSlider6")
 @onready var ui_lower_slider = graphics_path.get_node("HSlider7")
 @onready var ui_dirt_slider = graphics_path.get_node("HSlider8")
+@onready var daynight_contrast_slider = graphics_path.get_node("HSlider9")
+@onready var daynight_smoothness_slider = graphics_path.get_node("HSlider4")
 
 func _ready():
 	_refresh_saves()
@@ -36,6 +38,8 @@ func _initialize_ui_values():
 	ui_upper_slider.value = s.ui_upper
 	ui_lower_slider.value = s.ui_lower
 	ui_dirt_slider.value = s.ui_dirt
+	daynight_contrast_slider.value = s.daynight_contrast
+	daynight_smoothness_slider.value = s.daynight_smoothness
 
 func save_settings() -> void:
 	SettingsManager.save_settings()
@@ -136,3 +140,11 @@ func _on_ui_lower_changed(value: float) -> void:
 func _on_ui_dirt_changed(value: float) -> void:
 	SettingsManager.settings.ui_dirt = value
 	idfkanymore.material.set_shader_parameter("dirt", value)
+
+func _on_daynight_contrast_changed(value: float) -> void:
+	SettingsManager.settings.daynight_contrast = value
+	SettingsManager.apply_settings()
+
+func _on_daynight_smoothness_changed(value: float) -> void:
+	SettingsManager.settings.daynight_smoothness = value
+	SettingsManager.apply_settings()

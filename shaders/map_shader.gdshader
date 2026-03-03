@@ -23,6 +23,8 @@ uniform float lower : hint_range(0.0, 1.0) = 0.5;
 uniform float upper : hint_range(0.0, 4.0) = 1.8;
 uniform float scanlines : hint_range(0.0, 0.5) = 0.05;
 uniform int toggle = 1;
+uniform float contrast : hint_range(0.0, 0.5) = 0.05;
+uniform float smoothness : hint_range(0.0, 1.0) = 0.05;
 
 
 
@@ -177,4 +179,12 @@ void fragment() {
 	float vignette = 4.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
 	COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
 	COLOR.rgb *= (1.0+upper)*(vignette)+lower*(1.0-vignette);
+	COLOR.rgb += vec3(
+		contrast/smoothness*
+		clamp(
+			sin(cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
+			-smoothness,
+			smoothness
+		)
+		);
 }

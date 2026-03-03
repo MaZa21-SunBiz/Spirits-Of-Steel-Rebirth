@@ -12,7 +12,9 @@ var settings = {
 	"province_borders": 0.8,
 	"ui_upper": 0.8,
 	"ui_lower": 0.8,
-	"ui_dirt": 0.8
+	"ui_dirt": 0.8,
+	"daynight_contrast": 0.01,
+	"daynight_smoothness": 0.01
 }
 
 func _ready():
@@ -58,6 +60,8 @@ func apply_settings():
 		mat.set_shader_parameter("upper", settings.vignette_upper)
 		mat.set_shader_parameter("lower", settings.vignette_lower)
 		mat.set_shader_parameter("toggle", settings.map_effects)
+		mat.set_shader_parameter("contrast", settings.daynight_contrast)
+		mat.set_shader_parameter("smoothness", settings.daynight_smoothness)
 		mat.set_shader_parameter("internal_border_darkness", settings.province_borders)
 	
 	# UI Effects (Wait for idfkanymore if it's in Settings menu, 

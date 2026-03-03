@@ -15,6 +15,28 @@
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
 [ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
+shader = ExtResource("3_k7acu")
+shader_parameter/tex_size = Vector2(0, 0)
+shader_parameter/lower = 0.5
+shader_parameter/upper = 1.8
+shader_parameter/scanlines = 0.05
+shader_parameter/toggle = 1
+shader_parameter/contrast = 0.1310000062225
+shader_parameter/smoothness = 0.05
+shader_parameter/water_color_deep = Color(0.1, 0.25, 0.45, 1)
+shader_parameter/water_color_shallow = Color(0.25, 0.45, 0.65, 1)
+shader_parameter/sun_glint_color = Color(0.9, 0.95, 1, 0.3)
+shader_parameter/country_border_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/sea_speed = 0.02
+shader_parameter/wave_scale = 1.5
+shader_parameter/distortion_strength = 0.15
+shader_parameter/grid_opacity = 0.3
+shader_parameter/sea_pixel_size = 2.0
+shader_parameter/sea_height_steps = 6.0
+shader_parameter/ocean_offset = Vector2(0, 0)
+shader_parameter/internal_border_darkness = 0.82
+
 [sub_resource type="QuadMesh" id="QuadMesh_o06y3"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_k7acu"]
@@ -37,6 +59,8 @@ script = ExtResource("6_o06y3")
 [node name="MapContainer" type="Node2D" parent="World" unique_id=2009493061]
 
 [node name="CultureSprite" type="Sprite2D" parent="World/MapContainer" unique_id=159175243]
+material = SubResource("ShaderMaterial_e0ngr")
+position = Vector2(29, 1)
 texture = ExtResource("7_kn0ld")
 centered = false
 
