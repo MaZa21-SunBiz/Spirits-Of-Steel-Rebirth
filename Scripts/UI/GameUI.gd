@@ -149,6 +149,7 @@ func _ready() -> void:
 				print(MusicManager.radios)
 		)
 		radio_list.add_child(entry)
+		entry.material = $Radios.material
 	
 	_update_radio_visuals()
 

@@ -26,7 +26,7 @@ func get_function(expression, country: CountryData = null):
 		push_error("Interpreter: Expression must be a Dictionary or Array.")
 		return null
 
-	var args: Array = expression.get("args", [])
+	var args: Array = []
 	var store_key: String = expression.get("store", "")
 	var result = null
 
@@ -76,46 +76,31 @@ func get_function(expression, country: CountryData = null):
 		"release":
 			if args.size() >= 1:
 				MapManager.ReleaseCountry(args[0])
-				result = true
+				result = false
 		"play_as":
 			if args.size() >= 1:
 				CountryManager.set_player_country(args[0])
-				result = true
+				result = false
 		"annex":
 			if args.size() >= 2:
 				MapManager.annex_country(args[0], args[1])
-				result = true
+				result = false
 		"all":
-			if args.size() >= 2:
-				var tmp = get_variable(args[0]+"0")
-				for count in range(int(args[1])):
-					tmp = tmp and get_variable(args[0]+str(count))
-					if !tmp:
-						result = false
-						break
+			var tmp = get_variable(args[0])
+			result = true
+			for arg in args:
+				# if arg:
+				tmp = tmp and get_variable(arg)
+				if !tmp:
+					result = false
+					break
 		"has_pid":
 			if args.size() >= 2:
-				print(int(args[1]), MapManager.province_objects[int(args[1])].city)
+				print(MapManager.province_objects[int(args[1])].country, int(args[1]))
 				# for province in MapManager.province_objects:
 				# 	if MapManager.province_objects[province].GetFunctionalOwner() == "Pakistan":
 				# 		print(MapManager.province_objects[province].GetFunctionalOwner(), province - args[1])
-				result = (args[0] == MapManager.province_objects[args[1]].GetFunctionalOwner())
-		"has_pids":
-			var i = 0
-			var owner = args[i]
-			i += 1
-			print(owner)
-			var tmp = (owner == (MapManager.province_objects[int(args[i])].GetFunctionalOwner()))
-			i += 1
-			print(tmp)
-			if tmp:
-				while i < args.size():
-					if !tmp:
-						result = false
-					print(owner,args[i])
-					tmp = tmp and (owner == (MapManager.province_objects[args[i]].GetFunctionalOwner()))
-					i += 1
-					print(tmp)
+				result = (args[0] == MapManager.province_objects[int(args[1])].GetFunctionalOwner())
 
 	if store_key != "":
 		heap[store_key] = result

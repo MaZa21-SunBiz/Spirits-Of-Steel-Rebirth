@@ -1530,14 +1530,17 @@ offset_right = 1144.0
 offset_bottom = 89.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Radios" unique_id=786990813]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
+use_parent_material = true
 layout_mode = 2
 text = "Now playing"
 
 [node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
+use_parent_material = true
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=663062883]

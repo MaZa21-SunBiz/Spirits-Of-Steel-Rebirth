@@ -134,8 +134,8 @@ func play_music(track: int):
 	if songs.is_empty():
 		return
 		
-	print(radios)
-	print(songs)
+	# print(radios)
+	# print(songs)
 	var song = songs.pick_random()
 	if GameState.game_ui.now_playing:
 		GameState.game_ui.now_playing.text = song.resource_path.get_file()

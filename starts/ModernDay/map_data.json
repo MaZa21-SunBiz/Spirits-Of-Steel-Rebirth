@@ -62543,6 +62543,44 @@
 			"puppets": []
 		},
 		{
+			"name": "Soviet Union",
+			"color": "#FF0000",
+			"flag": "",
+			"money": 100000,
+			"ideology": [
+				0,
+				0
+			],
+			"political_power": 500,
+			"stability": 1.0,
+			"war_support": 1.0,
+			"accepted_cultures": [
+				"Russians",
+				"Evenkis",
+				"Nenets",
+				"Yakuts",
+				"Chukoktans",
+				"Komi",
+				"Finnish",
+				"Evens",
+				"Berlarussians",
+				"Mari",
+				"Tartars",
+				"Balkarsk",
+				"Chuvash",
+				"Mordvins",
+				"Tuvans",
+				"Mongols",
+				"Altayns",
+				"Udegens",
+				"Kalmykians",
+				"Dagestani",
+				"Checnyians"
+			],
+			"puppets": []
+		},
+
+		{
 			"name": "Russia",
 			"color": "#386038",
 			"flag": "",
@@ -62575,7 +62613,7 @@
 				"Udegens",
 				"Kalmykians",
 				"Dagestani",
-                "Checnyians"
+				"Checnyians"
 			],
 			"puppets": []
 		},

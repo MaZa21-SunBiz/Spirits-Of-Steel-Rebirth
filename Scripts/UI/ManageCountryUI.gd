@@ -17,6 +17,7 @@ var current_country: CountryData
 var _update_timer: float = 0.0
 
 const LOGISTICS_SCENE = preload("res://Scenes/logistics.tscn")
+
 var economic_status_val: Label
 var army_logistics_val: Label
 #endregion
@@ -115,9 +116,20 @@ func _populate_economy() -> void:
 	laws_grid.add_child(lbl)
 
 func _populate_country() -> void:
-	var lbl = Label.new()
-	lbl.text = "Country decisions coming soon..."
-	laws_grid.add_child(lbl)
+	for element in PlansManager.plans[current_country.country_name]:
+		if element.has("plan"):
+			var entry = Button.new()
+			entry.text = element["plan"]
+			# entry.disabled = !InterpreterManager.get_function(element["condition"])
+			entry.connect("pressed", func():
+				for condition in element["condition"]:
+					print(condition)
+					InterpreterManager.get_function(condition)
+
+				if InterpreterManager.get_function(element["condition"]):
+					InterpreterManager.get_function(element["finished"]))
+			laws_grid.add_child(entry)
+			entry.material = laws_grid.material
 
 func _populate_releasables(player_country: String) -> void:
 	for child in laws_grid.get_children():

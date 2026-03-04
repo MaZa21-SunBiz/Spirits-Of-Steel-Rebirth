@@ -73,10 +73,10 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 
 		# If this is a new region (Unique Sea Zone or Land Province)
 		if not unique_regions.has(index):
-			print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d" % next_id)
 			unique_regions[index] = next_id
 
 			var province = Province.FromDict(a_provinceData.get(index, {}))
+			print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d For Country: %s" % [next_id, province.country])
 			province.id = next_id
 
 			province_objects[next_id] = province

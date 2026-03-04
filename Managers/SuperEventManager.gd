@@ -25,7 +25,7 @@ func check_events():
 	var remove: PackedInt32Array = []
 	var indexCur: int = 0
 	for event in events:
-		if _check_condition(event.get("cause", {})):
+		if InterpreterManager.get_function(event.get("cause", {})):
 			_trigger_event(event)
 			remove.append(indexCur)
 		indexCur += 1
@@ -33,11 +33,6 @@ func check_events():
 	for index in remove:
 		events.remove_at(index)
 
-func _check_condition(cause: Dictionary) -> bool:
-	#if cause.is_empty():
-	#	return false
-		
-	return InterpreterManager.get_function(cause)
 
 func _trigger_event(data: Dictionary):
 	var popup = SUPER_EVENT_SCENE.instantiate()

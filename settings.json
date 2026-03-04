@@ -2,17 +2,16 @@
   "daynight_contrast": 0.05,
   "daynight_smoothness": 0.05,
   "map_effects": 1.0,
-  "music_volume": 0.03,
+  "music_volume": 0.5,
   "province_borders": 0.41,
   "radios": [
-    "Lead poisoning",
     "default"
   ],
   "scanlines": 0.1,
   "sfx_volume": 0.5,
-  "ui_dirt": 1.0,
-  "ui_lower": 0.0,
-  "ui_upper": 1.0,
-  "vignette_lower": 0.0,
-  "vignette_upper": 4.0
+  "ui_dirt": 0.48,
+  "ui_lower": 0.08,
+  "ui_upper": 0.74,
+  "vignette_lower": 0.67,
+  "vignette_upper": 2.83
 }
