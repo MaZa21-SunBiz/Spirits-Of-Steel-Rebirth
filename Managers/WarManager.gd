@@ -184,7 +184,7 @@ class Battle:
 				else:
 					TroopManager.teleport_troop_to_province(t, retreat_pid)
 
-		MapManager.transfer_ownership(defender_pid, attacker_country)
+		MapManager.OccupyProvince(defender_pid, attacker_country)
 		manager.check_country_collapse(defender_country, attacker_country)
 		manager.end_battle(self)
 
@@ -194,7 +194,7 @@ class Battle:
 
 		for n in MapManager.adjacency_list[from_pid]:
 			# Retreat logic: Must be owned by self and not currently under attack
-			if MapManager.province_to_country[n] == country:
+			if MapManager.province_objects[n].GetFunctionalOwner() == country:
 				return n
 		return -1
 
@@ -283,7 +283,7 @@ func resolve_province_arrival(pid: int, troop: TroopData):
 	if target_country != troop.country_name and is_at_war_names(troop.country_name, target_country):
 
 		if TroopManager.get_province_strength(pid, target_country) <= 0:
-			MapManager.transfer_ownership(pid, troop.country_name)
+			MapManager.OccupyProvince(pid, troop.country_name)
 			check_country_collapse(target_country, troop.country_name)
 
 
@@ -458,9 +458,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	var current_provinces = MapManager.country_to_provinces.get(fallen_name, []).duplicate()
 	for pid in current_provinces:
 		if not loser.pre_war_provinces.has(pid):
-			var original_owner = _get_original_owner(pid)
-			if original_owner != fallen_name:
-				MapManager.transfer_ownership(pid, original_owner)
+			MapManager.DeoccupyProvince(pid)
 
 	# --- 3. Territory preview (for peace UI only) ---
 	var provinces_to_negotiate = loser.pre_war_provinces.duplicate()
@@ -473,7 +471,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 
 	if player_won:
 		for pid in provinces_to_negotiate:
-			MapManager.transfer_ownership(pid, fallen_name)
+			MapManager.DeoccupyProvince(pid)
 
 	# --- 4. Player peace OR AI annexation ---
 	if player_won: 
@@ -487,6 +485,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	# --- 5. AI takes everything ---
 	for pid in MapManager.country_to_provinces.get(fallen_name, []).duplicate():
 		MapManager.transfer_ownership(pid, victor_name)
+		original_territories[victor_name].append(pid)
 	original_territories.erase(fallen_name)
 	CountryManager.cleanup_empty_countries()
 
@@ -495,4 +494,4 @@ func _get_original_owner(pid: int) -> String:
 	for c_name in original_territories:
 		if pid in original_territories[c_name]:
 			return c_name
-	return MapManager.province_to_country.get(pid, "Sea")
+	return MapManager.province_objects[pid].GetFunctionalOwner()

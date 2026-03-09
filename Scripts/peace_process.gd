@@ -100,7 +100,7 @@ func _process_hover(map_pos: Vector2):
 			hovered_pid = -1
 		return
 
-	var p_owner_name = MapManager.province_to_country.get(pid, "sea")
+	var p_owner_name = MapManager.province_objects[pid].GetFunctionalOwner()
 	var p_owner = CountryManager.get_country(p_owner_name)
 	var is_puppet = p_owner and p_owner.is_puppet
 
@@ -127,7 +127,7 @@ func _process_click(map_pos: Vector2):
 	if pid <= 1:
 		return
 
-	var owner_name = MapManager.province_to_country.get(pid, "")
+	var owner_name = MapManager.province_objects[pid].GetFunctionalOwner()
 	if owner_name != current_loser.country_name:
 		return
 
@@ -155,8 +155,8 @@ func _on_annex_all_pressed():
 	var b_name = current_beneficiary.country_name
 	var b_color = CountryManager.GetCountryColor(b_name, COLOR_SELECT)
 	
-	for pid in MapManager.province_to_country.keys():
-		if MapManager.province_to_country[pid] == current_loser.country_name:
+	for pid in MapManager.province_objects.keys():
+		if MapManager.province_objects[pid].GetFunctionalOwner() == current_loser.country_name:
 			provinces_to_take[pid] = b_name
 			_update_map_visual(pid, b_color)
 	_update_summary()
@@ -178,7 +178,7 @@ func _on_clear_selection_pressed():
 	_update_summary()
 
 func _reset_province_visual_immediate(pid: int):
-	var p_owner = MapManager.province_to_country[pid]
+	var p_owner = MapManager.province_objects[pid].GetFunctionalOwner()
 	if pid in provinces_to_take or (p_owner is CountryData and p_owner.is_puppet):
 		return
 	var original_color = CountryManager.GetCountryColor(p_owner, Color.WHITE)
@@ -197,7 +197,7 @@ func _on_confirm_pressed():
 
 func _update_summary():
 	var total_loser_provinces = 0
-	for p in MapManager.province_to_country.values():
+	for p in MapManager.province_objects.values():
 		if p == current_loser.country_name:
 			total_loser_provinces += 1
 
@@ -221,7 +221,7 @@ func _reset_province_visual(pid: int):
 		var color = CountryManager.GetCountryColor(beneficiary, COLOR_SELECT)
 		_update_map_visual(pid, color)
 	else:
-		var country = MapManager.province_to_country.get(pid, "sea")
+		var country = MapManager.province_objects[pid].GetFunctionalOwner()
 		if country != "sea":
 			var original_color = CountryManager.GetCountryColor(country, Color.WHITE)
 			_update_map_visual(pid, original_color)

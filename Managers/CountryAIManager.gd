@@ -120,10 +120,8 @@ func _analyze_frontline_targets(country: CountryData, enemies: Array) -> Array:
 		for my_pid in border_pids:
 			var neighbors = MapManager.adjacency_list.get(my_pid, [])
 			for n_id in neighbors:
-				var owner = MapManager.province_to_country.get(n_id)
-
 				# Check if it's enemy territory
-				if owner == enemy_name and not seen.has(n_id):
+				if MapManager.province_objects[n_id].GetFunctionalOwner() == enemy_name and not seen.has(n_id):
 					seen[n_id] = true
 					var e_str = TroopManager.get_province_strength(n_id, enemy_name)
 					var score = 10.0
@@ -155,7 +153,7 @@ func _analyze_frontline_targets(country: CountryData, enemies: Array) -> Array:
 					var deep_neighbors = MapManager.adjacency_list.get(n_id, [])
 					for dn_id in deep_neighbors:
 						if (
-							MapManager.province_to_country.get(dn_id) == enemy_name
+							MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name
 							and not seen.has(dn_id)
 						):
 							if dn_id in MapManager.all_cities:
@@ -350,7 +348,7 @@ func _get_neighbor_countries(country: CountryData) -> Array:
 	for pid in provs:
 		var adj = MapManager.adjacency_list.get(pid, [])
 		for nid in adj:
-			var owner = MapManager.province_to_country.get(nid)
+			var owner = MapManager.province_objects[nid].GetFunctionalOwner()
 			if owner and owner != country.country_name:
 				neighbors[owner] = true
 	return neighbors.keys()

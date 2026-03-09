@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bc5t06lvfk52"]
+
+[ext_resource type="Script" uid="uid://bl37j3o36eynq" path="res://Scripts/UI/MapEditorUI.gd" id="1_mcl4l"]
+[ext_resource type="StyleBox" uid="uid://0mslv70mgr34" path="res://UI/CloseButton.tres" id="2_kkefn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5xoin"]
+font_size = 24
+
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573]
+script = ExtResource("1_mcl4l")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=403020217]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer" unique_id=248046533]
+layout_mode = 2
+current_tab = 0
+
+[node name="Province" type="ScrollContainer" parent="PanelContainer/TabContainer" unique_id=231677890]
+layout_mode = 2
+horizontal_scroll_mode = 0
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Province" unique_id=376971442]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Province/MarginContainer" unique_id=309156479]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1361114609]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Province Editor"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1352176760]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1239453382]
+layout_mode = 2
+text = "Selected PID: None
+R_Color: None"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1740113436]
+layout_mode = 2
+columns = 2
+
+[node name="LabelCountry" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1733643887]
+layout_mode = 2
+text = "Country:"
+
+[node name="InputCountry" type="LineEdit" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1490308924]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelCity" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1083187472]
+layout_mode = 2
+text = "City:"
+
+[node name="InputCity" type="LineEdit" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1529520698]
+layout_mode = 2
+
+[node name="LabelGDP" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=387247466]
+layout_mode = 2
+text = "GDP:"
+
+[node name="InputGDP" type="SpinBox" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1491334534]
+layout_mode = 2
+max_value = 1000000000000.0
+step = 0.1
+
+[node name="LabelEthName" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1850200068]
+layout_mode = 2
+text = "Population"
+label_settings = SubResource("LabelSettings_5xoin")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=618233061]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer" unique_id=1672469653]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer" unique_id=1154747749]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer" unique_id=2013225206]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer" unique_id=1130758222]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=236627398]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0, 0, 0.5019608)
+theme_override_styles/normal = ExtResource("2_kkefn")
+theme_override_styles/pressed = ExtResource("2_kkefn")
+theme_override_styles/hover = ExtResource("2_kkefn")
+theme_override_styles/disabled = ExtResource("2_kkefn")
+theme_override_styles/focus = ExtResource("2_kkefn")
+text = "X"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1254832168]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="LabelEthName" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/GridContainer" unique_id=668134930]
+layout_mode = 2
+text = "Ethnicity:"
+
+[node name="InputEthName" type="LineEdit" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/GridContainer" unique_id=125009688]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelPop" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/GridContainer" unique_id=1343604499]
+layout_mode = 2
+text = "Population:"
+
+[node name="InputPop" type="SpinBox" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/GridContainer" unique_id=789657053]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2000000000.0
+
+[node name="LabelClaims" type="Label" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=474258352]
+layout_mode = 2
+text = "Claims (comma separated):"
+
+[node name="InputClaims" type="TextEdit" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=2079219791]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=247650640]
+layout_mode = 2
+
+[node name="BtnApply" type="Button" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=692144953]
+layout_mode = 2
+text = "Apply Changes to Map"
+
+[node name="BtnExport" type="Button" parent="PanelContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1522256774]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+text = "Export to JSON"

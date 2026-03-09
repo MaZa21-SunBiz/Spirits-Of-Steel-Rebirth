@@ -22,6 +22,7 @@ var gdp_map: Dictionary = {}
 
 var province_to_country: Dictionary = {}
 var country_to_provinces: Dictionary = {}
+var occupied_provinces: Dictionary = {}
 var province_objects: Dictionary[int, Province] = {}
 
 var adjacency_list: Dictionary = {} # Stores {ID: [Neighbor_ID_1, Neighbor_ID_2, ...]}
@@ -80,7 +81,6 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 			province.id = next_id
 
 			province_objects[next_id] = province
-			province_to_country[next_id] = province.country
 			next_id += 1
 
 		# Write the unique ID to your id_map_image
@@ -89,7 +89,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	_calculate_province_centroids()
 	_build_country_to_provinces()
 	_build_adjacency_list()
-	
+
 func load_country_data(a_provinceData: Dictionary) -> void:
 	#var dir = DirAccess.open("res://")
 	#if dir and not dir.dir_exists(CACHE_FOLDER):
@@ -106,7 +106,6 @@ func load_country_data(a_provinceData: Dictionary) -> void:
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
 	map_data.adjacency_list = adjacency_list.duplicate(true)
-	map_data.province_to_country = province_to_country.duplicate()
 	map_data.country_to_provinces = country_to_provinces.duplicate()
 	map_data.max_province_id = max_province_id
 	map_data.id_map_image = id_map_image.duplicate()
@@ -123,7 +122,6 @@ func _try_load_cached_data() -> bool:
 
 	province_centers = loaded.province_centers
 	adjacency_list = loaded.adjacency_list
-	province_to_country = loaded.province_to_country
 	country_to_provinces = loaded.country_to_provinces
 	max_province_id = loaded.max_province_id
 	id_map_image = loaded.id_map_image
@@ -151,8 +149,8 @@ func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> 
 func _build_country_to_provinces():
 	var result: Dictionary = {}
 
-	for pid in province_to_country.keys():
-		var country: String = province_to_country[pid]
+	for pid in province_objects.keys():
+		var country: String = province_objects[pid].country
 
 		if not result.has(country):
 			result[country] = []
@@ -296,7 +294,7 @@ func _get_contextual_highlight(pid: int) -> Color:
 		return Color.ANTIQUE_WHITE
 
 	var player_name = CountryManager.player_country.country_name
-	var is_player_owned = province_to_country.get(pid) == player_name
+	var is_player_owned = MapManager.province_objects[pid].GetFunctionalOwner() == player_name
 
 	if not is_player_owned:
 		return Color.TRANSPARENT
@@ -345,8 +343,8 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		GameState.selectingCountry = false
 	else:
 		var player_country_name = CountryManager.player_country.country_name
-		var is_player_owned = province_to_country.get(pid) == player_country_name
-		var is_puppet_owned = province_to_country.get(pid) in CountryManager.player_country.puppets
+		var is_player_owned = MapManager.province_objects[pid].GetFunctionalOwner() == player_country_name
+		var is_puppet_owned = MapManager.province_objects[pid].GetFunctionalOwner() in CountryManager.player_country.puppets
 
 		if GameState.choosing_deploy_city:
 			if is_player_owned and province_objects[pid].city != "":
@@ -358,14 +356,14 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			if is_player_owned:
 				_province_build_industry(pid, player_country_name)
 			elif is_puppet_owned:
-				_province_build_industry(pid, province_to_country.get(pid))
+				_province_build_industry(pid, province_objects[pid].GetFunctionalOwner())
 			else:
 				print("Action Failed: Cannot build in foreign territory.")
 				GameState.reset_industry_building()
 				show_countries_map()
 
 		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
-			country_clicked.emit(province_to_country.get(pid, ""))
+			country_clicked.emit(province_objects[pid].GetFunctionalOwner())
 
 
 func _execute_deployment(pid: int, player_name: String) -> void:
@@ -849,7 +847,7 @@ func ShowInfrastructureMap() -> void:
 		if pid <= 1 || province_objects[pid].country == "Sea":
 			continue
 		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.allowedCountries.has(province_objects[pid].country):
-			state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color)
+			state_color_image.set_pixel(pid, 0, CountryManager.GetCountryColor(province_objects[pid].country))
 		else:
 			var infra = province_objects[pid].infrastructure
 			if infra == 0:
@@ -947,7 +945,7 @@ func show_countries_map() -> void:
 			country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
 
 		state_color_image.set_pixel(pid, 0, country_color)
-		state_color_image.set_pixel(pid, 1, country_color)
+		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES
@@ -991,7 +989,7 @@ func show_industry_country(country_name: String) -> void:
 
 
 func transfer_ownership(pid: int, new_owner_name: String) -> void:
-	var old_owner_name = province_to_country.get(pid, "")
+	var old_owner_name = MapManager.province_objects[pid].GetFunctionalOwner()
 
 	if old_owner_name == new_owner_name:
 		return
@@ -1010,12 +1008,44 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 
 	if not pid in country_to_provinces[new_owner_name]:
 		country_to_provinces[new_owner_name].append(pid)
-
-	province_to_country[pid] = new_owner_name
 	
 	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY), CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
+
+func OccupyProvince(pid: int, new_owner_name: String) -> void:
+	var old_owner_name = province_objects[pid].GetFunctionalOwner()
+
+	if old_owner_name == new_owner_name:
+		return
+
+	if province_objects.has(pid):
+		province_objects[pid].occupier = new_owner_name
+	else:
+		push_error("MapManager: Attempted to transfer ownership of non-existent PID: ", pid)
+		return
+		
+	if country_to_provinces.has(old_owner_name):
+		country_to_provinces[old_owner_name].erase(pid)
+
+	if not country_to_provinces.has(new_owner_name):
+		country_to_provinces[new_owner_name] = []
+
+	if not pid in country_to_provinces[new_owner_name]:
+		country_to_provinces[new_owner_name].append(pid)
+
+	if province_objects[pid].occupier == province_objects[pid].country:
+		province_objects[pid].occupier = ""
+	#else:
+	#	occupied_provinces[new_owner_name] = occupied_provinces.get(new_owner_name, [])
+	#	occupied_provinces[new_owner_name].append(pid)
+
+	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+
+func DeoccupyProvince(pid: int) -> void:
+	province_objects[pid].occupier = ""
+
+	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
 
 func _parse_color_string(s: String) -> Vector3:
 	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")
@@ -1094,7 +1124,7 @@ func get_border_provinces(country_name: String) -> Array[int]:
 		# Check neighbors of this province
 		for neighbor_id in province_data.neighbors:
 			# If the neighbor is owned by someone else (and isn't sea/neutral)
-			if province_to_country.get(neighbor_id, "Unknown") != country_name:
+			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() != country_name:
 				border_provinces.append(prov_id)
 				break # Move to next province once we know this one is a border
 
@@ -1145,6 +1175,7 @@ func ReleaseCountry(a_countryName: String) -> void:
 					TroopManager.remove_troop(troop)
 
 			transfer_ownership(obj.id, a_countryName)
+	CountryManager.add_country({"name": a_countryName})
 	CountryManager.cleanup_empty_countries()
 
 func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
@@ -1158,7 +1189,7 @@ func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
 
 			transfer_ownership(obj.id, a_countryData["name"])
 	CountryManager.cleanup_empty_countries()
-	
+
 func InstantiateCountryFromProvinces(a_countryData: Dictionary, a_claims: PackedInt32Array) -> void:
 	CountryManager.add_country(a_countryData)
 	for pid: int in a_claims:
@@ -1180,7 +1211,7 @@ func get_all_cities() -> Array:
 func get_cities_province_country(country_name) -> Array:
 	var provinces = []
 	for pid in country_to_provinces.get(country_name, []):
-		if len(province_objects[pid].city) > 0:
+		if province_objects[pid].GetFunctionalOwner() == country_name and len(province_objects[pid].city) > 0:
 			provinces.append(pid)
 	return provinces
 
@@ -1191,7 +1222,7 @@ func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> 
 	
 	for prov_id in country_to_provinces.get(country_name, []):
 		for neighbor_id in province_objects.get(prov_id).neighbors:
-			if province_to_country.get(neighbor_id) == enemy_name:
+			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() == enemy_name:
 				specific_borders.append(prov_id)
 				break
 
