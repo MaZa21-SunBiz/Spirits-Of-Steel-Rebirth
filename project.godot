@@ -41,6 +41,7 @@ FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
 CountryAIManager="*uid://8a2gs10drptm"
 SceneSwitcher="*uid://b6nuwg2ue50me"
+PlansManager="*uid://2omlok4o48ss"
 
 [debug]
 
@@ -62,6 +63,7 @@ enabled=PackedStringArray("res://addons/console/plugin.cfg")
 
 [gui]
 
+theme/custom="uid://c38ivksvf4is0"
 theme/custom_font="uid://dbgv10is5c4ls"
 
 [input]

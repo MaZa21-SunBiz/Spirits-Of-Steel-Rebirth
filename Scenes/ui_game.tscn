@@ -23,10 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
-[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="22_0e43j"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
 [ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="27_2a76p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
@@ -242,7 +242,6 @@ text = "100"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(272, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_styles/panel = SubResource("StyleBoxFlat_5hlpc")
@@ -252,8 +251,8 @@ layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=95724245]
 material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 value = 15.0
 show_percentage = false
@@ -273,12 +272,11 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=986642983]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="GameSpeedControl" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=2134005269]
+custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
 [node name="Plus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1044589756]
@@ -313,10 +311,20 @@ icon = ExtResource("13_0e43j")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+[node name="Music2" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1779393988]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-size_flags_horizontal = 3
+tooltip_text = "Radio"
+focus_mode = 0
+theme_override_constants/icon_max_width = 900
+text = ">"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(17, 0)
+layout_mode = 2
 texture = ExtResource("12_2a76p")
 expand_mode = 1
 stretch_mode = 5
@@ -1516,10 +1524,24 @@ size_flags_horizontal = 3
 [node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
 visible = false
 material = ExtResource("16_lpwmk")
-offset_left = 1043.0
+offset_left = 858.0
 offset_top = 43.0
 offset_right = 1144.0
 offset_bottom = 89.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Radios" unique_id=786990813]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
+use_parent_material = true
+layout_mode = 2
+text = "Now playing"
+
+[node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
+use_parent_material = true
+layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=663062883]
 visible = false
@@ -1641,9 +1663,6 @@ offset_bottom = 217.0
 theme_override_font_sizes/font_size = 25
 text = "Army Level: "
 
-[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("22_0e43j")]
-visible = false
-
 [node name="CreateFaction" type="PanelContainer" parent="." unique_id=1478231919]
 visible = false
 material = ExtResource("16_lpwmk")
@@ -1687,7 +1706,11 @@ sampler_visible = false
 color_modes_visible = false
 presets_visible = false
 
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("27_2a76p")]
+visible = false
+
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="button_up" from="Control/MilitaryExtraPanel/VBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]

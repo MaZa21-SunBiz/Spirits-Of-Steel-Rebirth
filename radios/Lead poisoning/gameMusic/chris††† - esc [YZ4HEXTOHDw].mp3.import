@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvs56y4uy7y28"
+path="res://.godot/imported/chris††† - esc [YZ4HEXTOHDw].mp3-75b7dee113e8eafaf8d924e5f18a4d4f.mp3str"
+
+[deps]
+
+source_file="res://radios/Lead poisoning/gameMusic/chris††† - esc [YZ4HEXTOHDw].mp3"
+dest_files=["res://.godot/imported/chris††† - esc [YZ4HEXTOHDw].mp3-75b7dee113e8eafaf8d924e5f18a4d4f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

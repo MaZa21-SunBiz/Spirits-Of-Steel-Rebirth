@@ -5,22 +5,34 @@ extends Node
 var default_categories: Dictionary = {}
 var country_decisions_map: Dictionary = {} # { "China": { "Economy": [...] } }
 
-var active_decisions: Dictionary = {}  # { "Germany": { "eco_1": 5 } }
+var active_decisions: Dictionary = {} # { "Germany": { "eco_1": 5 } }
 var ui_overlay = null
 
 
 func _ready():
-	_load_decisions()
+	_load_decisions("res://decisions/")
 
 
-func _load_decisions():
+func load_decisions_from_path(base_path: String):
+	if not base_path.ends_with("/"):
+		base_path += "/"
+	_load_decisions(base_path)
+
+
+func _load_decisions(base_path: String):
+	# Clear existing data before loading new ones
+	default_categories.clear()
+	country_decisions_map.clear()
+	
 	# 1. Load Default
-	var default_text = FileAccess.get_file_as_string("res://decisions/default.json")
-	if default_text:
-		default_categories = JSON.parse_string(default_text).get("categories", {})
+	var default_path = base_path + "default.json"
+	if FileAccess.file_exists(default_path):
+		var default_text = FileAccess.get_file_as_string(default_path)
+		if default_text:
+			default_categories = JSON.parse_string(default_text).get("categories", {})
 	
 	# 2. Load Country Specific
-	var dir = DirAccess.open("res://decisions/")
+	var dir = DirAccess.open(base_path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -28,7 +40,7 @@ func _load_decisions():
 			if not dir.current_is_dir() and file_name.ends_with(".json") and file_name != "default.json":
 				var country_key = file_name.replace(".json", "").to_lower() # e.g. "India.json" -> "india"
 				
-				var content = FileAccess.get_file_as_string("res://decisions/" + file_name)
+				var content = FileAccess.get_file_as_string(base_path + file_name)
 				var json = JSON.parse_string(content)
 				if json and json.has("categories"):
 					country_decisions_map[country_key] = json["categories"]
@@ -73,7 +85,7 @@ func process_country_day(country: CountryData):
 		tasks.erase(key)
 
 	if ui_overlay and ui_overlay.visible and country.is_player:
-		ui_overlay.refresh_status_only()  # Efficient refresh
+		ui_overlay.refresh_status_only() # Efficient refresh
 
 
 # --- ACTIONS ---

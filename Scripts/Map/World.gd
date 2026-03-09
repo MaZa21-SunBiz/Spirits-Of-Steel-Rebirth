@@ -1,23 +1,24 @@
 extends Node2D
 class_name World
 
-@onready var map_sprite: Sprite2D = $MapContainer/CultureSprite as Sprite2D
-@onready var camera: Camera2D = $Camera2D as Camera2D
-@onready var troop_renderer: CustomRenderer = $MapContainer/CustomRenderer as CustomRenderer
+@onready var map_sprite: Sprite2D = $"../../MapContainer/CultureSprite" as Sprite2D
+@onready var camera: Camera2D = $"../../Camera2D" as Camera2D
+@onready var troop_renderer: CustomRenderer = $CustomRenderer as CustomRenderer
 
 @export var map_shader: Shader
-@export var clock: GameClock
+var clock: GameClock
 
 var water_offset: Vector2 = Vector2.ZERO
 
 
 func _process(_delta: float) -> void:
+	if !map_sprite: return
 	var map_width := MapManager.id_map_image.get_width()
 	if camera.position.x > map_sprite.position.x + map_width:
 		camera.position.x -= map_width
 	elif camera.position.x < map_sprite.position.x - map_width:
 		camera.position.x += map_width
-	if map_sprite.material and !clock.paused:
+	if map_sprite.material and clock and !clock.paused:
 		var move_amount = clock.time_scale * 0.001 * _delta
 		water_offset.x += move_amount
 		map_sprite.material.set_shader_parameter("ocean_offset", water_offset)
@@ -25,6 +26,7 @@ func _process(_delta: float) -> void:
 
 func _enter_tree() -> void:
 	GameState.current_world = self
+	clock = $CustomRenderer/Clock
 
 
 func _ready() -> void:
@@ -46,11 +48,8 @@ func _ready() -> void:
 
 	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
 	if MapManager.province_objects.is_empty():
-		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
-		MapManager.load_country_data(mapData["provinces"] as Dictionary)
-		CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
-		MapManager.build_lookup_texture()
-		FactionManager.Initialize(mapData["factions"])
+		load_map_data(mapData)
+
 
 	print("World: Map is ready -> configuring visuals...")
 
@@ -159,6 +158,12 @@ func _ready() -> void:
 
 	SettingsManager.apply_settings()
 
+func load_map_data(mapData):
+		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
+		MapManager.load_country_data(mapData["provinces"] as Dictionary)
+		CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
+		MapManager.build_lookup_texture()
+		FactionManager.Initialize(mapData["factions"])
 
 func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	var ghost := Sprite2D.new()
@@ -166,7 +171,7 @@ func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	ghost.centered = map_sprite.centered
 	ghost.material = p_material
 	ghost.position = map_sprite.position + offset
-	$MapContainer.add_child(ghost)
+	$"../../MapContainer".add_child(ghost)
 
 
 func _input(event: InputEvent) -> void:

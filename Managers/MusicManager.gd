@@ -22,7 +22,8 @@ enum SFX {
 
 enum MUSIC { MAIN_THEME, BATTLE_THEME }
 
-const music_path = "res://assets/music/"
+const default_music_path = "res://assets/music/"
+const custom_music_path = "res://radios/"
 
 var sfx_map = {
 	SFX.TROOP_MOVE: preload("res://assets/snd/moveDivSound.mp3"),
@@ -57,12 +58,19 @@ var music_volume_map = {MUSIC.MAIN_THEME: 0.4, MUSIC.BATTLE_THEME: 0.5}
 
 
 func _ready():
-	for radio in DirAccess.open(music_path).get_directories():
+	for radio in DirAccess.open(default_music_path).get_directories():
 		if radio != "superevents":
 			music_map[MUSIC.MAIN_THEME][radio] = []
 			music_map[MUSIC.BATTLE_THEME][radio] = []
-			_load_music_folder(radio, MUSIC.MAIN_THEME)
-			_load_music_folder(radio, MUSIC.BATTLE_THEME)
+			_load_music_folder(default_music_path, radio, MUSIC.MAIN_THEME)
+			_load_music_folder(default_music_path, radio, MUSIC.BATTLE_THEME)
+
+	for radio in DirAccess.open(custom_music_path).get_directories():
+		if radio != "superevents":
+			music_map[MUSIC.MAIN_THEME][radio] = []
+			music_map[MUSIC.BATTLE_THEME][radio] = []
+			_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
+			_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
 
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"
@@ -77,8 +85,8 @@ func _ready():
 
 	play_music(MUSIC.MAIN_THEME)
 
-func _load_music_folder(radio: String, track_enum: int):
-	var path = music_path + radio
+func _load_music_folder(path: String, radio: String, track_enum: int):
+	path += radio
 	match track_enum:
 		MUSIC.MAIN_THEME:
 			path += "/gameMusic"
@@ -126,10 +134,12 @@ func play_music(track: int):
 	if songs.is_empty():
 		return
 		
-	print(radios)
-	print(songs)
-
-	music_player.stream = songs.pick_random()
+	# print(radios)
+	# print(songs)
+	var song = songs.pick_random()
+	if GameState.game_ui and GameState.game_ui.now_playing:
+		GameState.game_ui.now_playing.text = song.resource_path.get_file()
+	music_player.stream = song
 	music_player.volume_db = linear_to_db(music_volume_map.get(track, 1.0))
 	music_player.play()
 

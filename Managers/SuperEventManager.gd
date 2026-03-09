@@ -10,10 +10,16 @@ func _ready():
 	# Create a high-layer canvas to ensure it's on top of map/other UI
 	canvas_layer.layer = 101 # A bit higher than standard UI (100)
 	add_child(canvas_layer)
-	_load_events()
+	_load_events("res://superevents.json")
 
-func _load_events():
-	var file = FileAccess.get_file_as_string("res://superevents.json")
+
+func load_events_from_path(path: String):
+	_load_events(path)
+
+
+func _load_events(path: String):
+	events.clear()
+	var file = FileAccess.get_file_as_string(path)
 	if file:
 		var json = JSON.parse_string(file)
 		if json:
@@ -25,7 +31,7 @@ func check_events():
 	var remove: PackedInt32Array = []
 	var indexCur: int = 0
 	for event in events:
-		if _check_condition(event.get("cause", {})):
+		if InterpreterManager.get_function(event.get("cause", {})):
 			_trigger_event(event)
 			remove.append(indexCur)
 		indexCur += 1
@@ -33,11 +39,6 @@ func check_events():
 	for index in remove:
 		events.remove_at(index)
 
-func _check_condition(cause: Dictionary) -> bool:
-	#if cause.is_empty():
-	#	return false
-		
-	return InterpreterManager.get_function(cause)
 
 func _trigger_event(data: Dictionary):
 	var popup = SUPER_EVENT_SCENE.instantiate()

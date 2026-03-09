@@ -1,15 +1,11 @@
-[gd_scene format=3 uid="uid://bonl378c51366"]
+[gd_scene format=3 uid="uid://chckoa2c7cmr1"]
 
 [ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/Map/World.gd" id="1_go701"]
-[ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="2_fo5ed"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]
-[ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
-[ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="7_kn0ld"]
-[ext_resource type="Texture2D" uid="uid://noat3k35lsya" path="res://maps/regions.png" id="8_hgpy0"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
@@ -21,47 +17,25 @@
 custom_aabb = AABB(30, 20, 0, 0, 0, 0)
 mesh = SubResource("QuadMesh_o06y3")
 
-[node name="Main" type="Node2D" unique_id=567585559]
-script = ExtResource("1_o06y3")
-
-[node name="ui_game" parent="." unique_id=1419155510 instance=ExtResource("2_fo5ed")]
-
-[node name="World" type="Node2D" parent="." unique_id=42721154 node_paths=PackedStringArray("clock")]
+[node name="World" type="Node2D" unique_id=431820296]
 script = ExtResource("1_go701")
 map_shader = ExtResource("3_k7acu")
-clock = NodePath("Clock")
 
-[node name="Clock" type="Node" parent="World" unique_id=972022838]
-script = ExtResource("6_o06y3")
-
-[node name="MapContainer" type="Node2D" parent="World" unique_id=2009493061]
-
-[node name="CultureSprite" type="Sprite2D" parent="World/MapContainer" unique_id=159175243]
-texture = ExtResource("7_kn0ld")
-centered = false
-
-[node name="RegionSprite" type="Sprite2D" parent="World/MapContainer" unique_id=2123006699]
-visible = false
-texture = ExtResource("8_hgpy0")
-centered = false
-
-[node name="CustomRenderer" type="Node2D" parent="World/MapContainer" unique_id=927049698]
+[node name="CustomRenderer" type="Node2D" parent="." unique_id=1175318338]
 script = ExtResource("5_o06y3")
 
-[node name="TroopMultiMesh" type="MultiMeshInstance2D" parent="World/MapContainer/CustomRenderer" unique_id=131112411]
+[node name="TroopMultiMesh" type="MultiMeshInstance2D" parent="CustomRenderer" unique_id=721109816]
 multimesh = SubResource("MultiMesh_k7acu")
 
-[node name="Camera2D" type="Camera2D" parent="World" unique_id=2107605688]
-anchor_mode = 0
+[node name="Clock" type="Node" parent="CustomRenderer" unique_id=1115487155]
+script = ExtResource("6_o06y3")
 
-[node name="CameraController" type="Node" parent="World/Camera2D" unique_id=510001396 node_paths=PackedStringArray("camera")]
-script = ExtResource("4_8j60k")
-camera = NodePath("..")
-
-[node name="TroopSelection" type="Node2D" parent="World" unique_id=741480692]
+[node name="TroopSelection" type="Node2D" parent="." unique_id=905291779]
 script = ExtResource("6_5ukr8")
 
-[node name="DecisionTreeUI" type="CanvasLayer" parent="." unique_id=639051544]
+[node name="ui_game" parent="." unique_id=4700273 instance=ExtResource("2_fo5ed")]
+
+[node name="DecisionTreeUI" type="CanvasLayer" parent="." unique_id=739202993]
 script = ExtResource("9_5v1tr")
 
 [node name="CountryManageUI" parent="." unique_id=570987311 instance=ExtResource("11_7yui6")]
@@ -70,5 +44,5 @@ visible = false
 [node name="PeaceProcessUI" parent="." unique_id=1219073297 instance=ExtResource("10_0fj1v")]
 visible = false
 
-[node name="LostTerritoryUI" parent="." unique_id=799302478 instance=ExtResource("13_c5t2i")]
+[node name="LostTerritoryUI" parent="." unique_id=746887622 instance=ExtResource("13_c5t2i")]
 visible = false

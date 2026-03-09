@@ -8,7 +8,7 @@ const FLAG_WIDTH_BASE := 24.0
 const FLAG_HEIGHT_BASE := 20.0
 const PADDING_BASE := 6.0
 const GAP_BASE := 8.0
-const CLICK_THRESHOLD := 2.0  # pixels – how far mouse can move and still count as a "click"
+const CLICK_THRESHOLD := 2.0 # pixels – how far mouse can move and still count as a "click"
 
 # --- State ---
 var dragging: bool = false
@@ -18,7 +18,7 @@ var drag_end: Vector2 = Vector2.ZERO
 var right_dragging: bool = false
 var right_path: Array = []
 
-@onready var map_sprite: Sprite2D = $"../MapContainer/CultureSprite"
+@onready var map_sprite: Sprite2D = $"../../../MapContainer/CultureSprite"
 
 # --- Path Length Limit ---
 var max_path_length: int = 0
@@ -316,7 +316,7 @@ func _find_template_troop_for_divs(batch: Array[DivisionData]) -> TroopData:
 # --- MODE A: Move only the units clicked in the UI ---
 func _handle_selective_ui_move(div_objects: Array[DivisionData], path: Array) -> void:
 	# Group the divisions by their current "parent" troop so we can split them
-	var split_map = {}  # { TroopData: Array[DivisionData] }
+	var split_map = {} # { TroopData: Array[DivisionData] }
 	for div in div_objects:
 		var owner = TroopManager.find_troop_owning_division(div)
 		if owner:
