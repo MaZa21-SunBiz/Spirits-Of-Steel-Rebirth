@@ -6,21 +6,21 @@
 [ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="2_vtepg"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
+[ext_resource type="Shader" path="res://shaders/goober.gdshader" id="5_8dnnj"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
+[ext_resource type="Shader" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
-[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://shaders/goober.gdshader" id="10_5egv6"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
-[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="11_5egv6"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
-[ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
+[ext_resource type="Script" path="res://Scenes/starts.gd" id="14_8dnnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
-shader = ExtResource("10_5egv6")
+shader = ExtResource("5_8dnnj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
-shader = ExtResource("11_5egv6")
+shader = ExtResource("6_m3bi6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
 content_margin_left = 14.0

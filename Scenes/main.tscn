@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bonl378c51366"]
+[gd_scene format=3 uid="uid://bm4eje12awfbn"]
 
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_k12tt"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="2_h1bgf"]
