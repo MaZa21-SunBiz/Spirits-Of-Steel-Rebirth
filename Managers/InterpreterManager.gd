@@ -9,7 +9,7 @@ func get_variable(variable: String):
 		"current_date":
 			return GameState.current_world.clock.get_date_string()
 		_: 
-			return heap.get(variable, variable)
+			returna heap.get(variable, variable)
 
 func get_function(expression, country: CountryData = null):
 	if country == null:

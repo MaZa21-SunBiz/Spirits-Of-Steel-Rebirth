@@ -182,7 +182,7 @@ void fragment() {
 	COLOR.rgb += vec3(
 		contrast/smoothness*
 		clamp(
-			sin(cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
+			sin(PI*.5*cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
 			-smoothness,
 			smoothness
 		)
