@@ -16,7 +16,7 @@ func _on_new_game_pressed() -> void:
 
 func _on_start() -> void:
 	if CountryManager.player_country:
-		get_tree().change_scene_to_packed(preload("res://Scenes/world.tscn"))
+		get_tree().change_scene_to_packed(preload("res://Scenes/main.tscn"))
 
 func _on_settings_pressed() -> void:
 	$"/root/MainMenu/Settings".visible = !$"/root/MainMenu/Settings".visible

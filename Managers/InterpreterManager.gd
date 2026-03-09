@@ -2,14 +2,28 @@ extends Node
 
 var heap: Dictionary = {}
 
-func get_variable(variable: String):
+func all(...args) -> bool:
+	for arg in args:
+		if not arg:
+			return false
+	return true
+
+func any(...args) -> bool:
+	for arg in args:
+		if arg:
+			return true
+	return false
+
+func get_variable(variable):
+	if not variable is String:
+		return variable
 	match variable:
 		"player":
 			return CountryManager.player_country.country_name
 		"current_date":
 			return GameState.current_world.clock.get_date_string()
-		_: 
-			returna heap.get(variable, variable)
+		_:
+			return heap.get(variable, variable)
 
 func get_function(expression, country: CountryData = null):
 	if country == null:
@@ -26,94 +40,110 @@ func get_function(expression, country: CountryData = null):
 		push_error("Interpreter: Expression must be a Dictionary or Array.")
 		return null
 
-	var args: Array = expression.get("args", [])
+	var args: Array = expression.get("args", []).duplicate()
+	for i in range(args.size()):
+		if (args[i] is Dictionary and args[i].has("func")) or args[i] is Array:
+			args[i] = get_function(args[i], country)
+	var evaled_args = args
 	var store_key: String = expression.get("store", "")
 	var result = null
 
+	print(expression)
 	match expression.get("func", ""):
+		# Comparison stuff
+		"and":
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) and get_variable(evaled_args[1])
+		"not":
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0])
+		"or":
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) or get_variable(evaled_args[1])
+		"xor":
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) ^ get_variable(evaled_args[1])
 		"eq":
-			if args.size() >= 2:
-				result = get_variable(args[0]) == get_variable(args[1])
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) == get_variable(evaled_args[1])
 		"gt":
-			if args.size() >= 2:
-				result = get_variable(args[0]) > get_variable(args[1])
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) > get_variable(evaled_args[1])
 		"lt":
-			if args.size() >= 2:
-				result = get_variable(args[0]) < get_variable(args[1])
+			if evaled_args.size() >= 2:
+				result = get_variable(evaled_args[0]) < get_variable(evaled_args[1])
+		"all":
+			result = all(evaled_args)
+		"any":
+			result = any(evaled_args)
+
+		# Country stuff
 		"is_at_war":
-			if args.size() >= 2:
+			if evaled_args.size() >= 2:
 				result = WarManager.is_at_war_names(
-					get_variable(args[0]),
-					get_variable(args[1])
+					get_variable(evaled_args[0]),
+					get_variable(evaled_args[1])
 				)
 		"increase_hourly_money":
-			country.hourly_money_income += args[0] if args.size() > 0 else 0
+			country.hourly_money_income += evaled_args[0] if evaled_args.size() > 0 else 0
 			result = country.hourly_money_income
 		"increase_manpower":
-			country.manpower += args[0] if args.size() > 0 else 0
+			country.manpower += evaled_args[0] if evaled_args.size() > 0 else 0
 			result = country.manpower
 		"increase_daily_pp":
-			country.daily_pp_gain += args[0] if args.size() > 0 else 0
+			country.daily_pp_gain += evaled_args[0] if evaled_args.size() > 0 else 0
 			result = country.daily_pp_gain
 		"increase_stability":
-			country.stability = min(1.0, country.stability + (args[0] if args.size() > 0 else 0))
+			country.stability = min(1.0, country.stability + (evaled_args[0] if evaled_args.size() > 0 else 0))
 			result = country.stability
 		"army_level_up":
 			country.army_level += 1
 			result = country.army_level
 		"build_factory":
-			country.factories_amount += args[0] if args.size() > 0 else 1
+			country.factories_amount += evaled_args[0] if evaled_args.size() > 0 else 1
 			result = country.factories_amount
 		"declare_war":
-			if args.size() >= 2:
-				var attacker = CountryManager.countries.get(get_variable(args[0]))
-				var defender = CountryManager.countries.get(get_variable(args[1]))
+			if evaled_args.size() >= 2:
+				var attacker = CountryManager.countries.get(get_variable(evaled_args[0]))
+				var defender = CountryManager.countries.get(get_variable(evaled_args[1]))
 				if attacker and defender:
 					WarManager.declare_war(attacker, defender)
 					result = true
 				else:
 					result = false
 		"release":
-			if args.size() >= 1:
-				MapManager.ReleaseCountry(args[0])
+			if evaled_args.size() >= 1:
+				MapManager.ReleaseCountry(evaled_args[0])
 				result = true
 		"play_as":
-			if args.size() >= 1:
-				CountryManager.set_player_country(args[0])
+			if evaled_args.size() >= 1:
+				CountryManager.set_player_country(evaled_args[0])
 				result = true
 		"annex":
-			if args.size() >= 2:
-				MapManager.annex_country(args[0], args[1])
+			if evaled_args.size() >= 2:
+				MapManager.annex_country(evaled_args[0], evaled_args[1])
 				result = true
-		"all":
-			if args.size() >= 2:
-				var tmp = get_variable(args[0]+"0")
-				for count in range(int(args[1])):
-					tmp = tmp and get_variable(args[0]+str(count))
-					if !tmp:
-						result = false
-						break
 		"has_pid":
-			if args.size() >= 2:
-				print(int(args[1]), MapManager.province_objects[int(args[1])].city)
+			if evaled_args.size() >= 2:
+				print(int(evaled_args[1]), MapManager.province_objects[int(evaled_args[1])].city)
 				# for province in MapManager.province_objects:
 				# 	if MapManager.province_objects[province].GetFunctionalOwner() == "Pakistan":
-				# 		print(MapManager.province_objects[province].GetFunctionalOwner(), province - args[1])
-				result = (args[0] == MapManager.province_objects[args[1]].GetFunctionalOwner())
+				# 		print(MapManager.province_objects[province].GetFunctionalOwner(), province - evaled_args[1])
+				result = (evaled_args[0] == MapManager.province_objects[evaled_args[1]].GetFunctionalOwner())
 		"has_pids":
 			var i = 0
-			var owner = args[i]
+			var province_owner = evaled_args[i]
 			i += 1
-			print(owner)
-			var tmp = (owner == (MapManager.province_objects[int(args[i])].GetFunctionalOwner()))
+			print(province_owner)
+			var tmp = (province_owner == (MapManager.province_objects[int(evaled_args[i])].GetFunctionalprovince_owner()))
 			i += 1
 			print(tmp)
 			if tmp:
-				while i < args.size():
+				while i < evaled_args.size():
 					if !tmp:
 						result = false
-					print(owner,args[i])
-					tmp = tmp and (owner == (MapManager.province_objects[args[i]].GetFunctionalOwner()))
+					print(province_owner, evaled_args[i])
+					tmp = tmp and (province_owner == (MapManager.province_objects[evaled_args[i]].GetFunctionalprovince_owner()))
 					i += 1
 					print(tmp)
 

@@ -65,7 +65,7 @@ var current_category: Category = Category.GENERAL
 var action_costs := {
 	"_declare_war": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5},
 	"_request_access": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.get_relation_with(selected.country_name) > 150},
-	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000*CountryManager.get_country_gdp(selected.country_name)},
+	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)},
 	"_release_puppet": func(player: CountryData, selected: CountryData): return {"cost": 50, "can_afford": true},
 	"improve_stability": func(player: CountryData, selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true},
 	"_improve_relations": func(player: CountryData, selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true},
@@ -107,7 +107,10 @@ func _ready() -> void:
 
 	KeyboardManager.toggle_menu.connect(toggle_menu)
 
-	GameState.current_world.clock.hour_passed.connect(_on_hour_passed)
+	var world: World = GameState.current_world
+	if world and world.clock:
+		world.clock.hour_passed.connect(_on_hour_passed)
+	
 	CountryManager.player_country_changed.connect(_on_player_change)
 	if CountryManager.player_country:
 		if CountryManager.player_country.ideology_changed.is_connected(_update_flag):
@@ -118,11 +121,15 @@ func _ready() -> void:
 	updateProgressBar()
 	update_division_menu()
 	military_extra_panel.visible = false
-	var clock := GameState.current_world.clock
-	clock.hour_passed.connect(_on_time_passed)
-	plus.pressed.connect(clock.increase_speed)
-	minus.pressed.connect(clock.decrease_speed)
-	label_date.text = clock.get_datetime_string()
+	
+	if world and world.clock:
+		var clock := world.clock
+		clock.hour_passed.connect(_on_time_passed)
+		plus.pressed.connect(clock.increase_speed)
+		minus.pressed.connect(clock.decrease_speed)
+		label_date.text = clock.get_datetime_string()
+	else:
+		printerr("GameUI: Clock not found in current world!")
 
 	# NOTE(soi): its soiladin time
 	const default_music_path = "res://assets/music/"
@@ -305,7 +312,6 @@ func _update_relations_visuals() -> void:
 		relations_hbox.visible = false
 
 func _update_context_actions_visuals() -> void:
-
 	# Iterate through all context tabs to find action buttons
 	for context_node in sidemenu_context.get_children():
 		# Try to find ScrollContainer/ActionsList/ in each tab
@@ -404,7 +410,7 @@ func _build_trooplist() -> void:
 		var btn = action_scene.instantiate()
 		sidemenu_trooplist.add_child(btn)
 		# Callable points to deploy_troop, passing the specific troop object
-		btn.setup_ready(troop, Callable(self, "deploy_troop").bind(troop))
+		btn.setup_ready(troop, Callable(self , "deploy_troop").bind(troop))
 
 func update_topbar_stats() -> void:
 	if !CountryManager.player_country:
@@ -542,7 +548,7 @@ func _on_building_selected(index: int):
 		2:
 			GameState.industry_building = GameState.IndustryType.INFRASTRUCTURE
 			#MapManager.show_industry_country(player.country_name)
-		_: 
+		_:
 			GameState.industry_building = GameState.IndustryType.DEFAULT
 	update_economy_menu()
 

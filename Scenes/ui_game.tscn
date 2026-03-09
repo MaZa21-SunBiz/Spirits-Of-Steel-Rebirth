@@ -23,10 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
-[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="22_0e43j"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
 [ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="27_2a76p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
@@ -1663,9 +1663,6 @@ offset_bottom = 217.0
 theme_override_font_sizes/font_size = 25
 text = "Army Level: "
 
-[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("22_0e43j")]
-visible = false
-
 [node name="CreateFaction" type="PanelContainer" parent="." unique_id=1478231919]
 visible = false
 material = ExtResource("16_lpwmk")
@@ -1708,6 +1705,9 @@ edit_intensity = false
 sampler_visible = false
 color_modes_visible = false
 presets_visible = false
+
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("27_2a76p")]
+visible = false
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]

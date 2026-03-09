@@ -10,9 +10,9 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
-[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://Scenes/goober.gdshader" id="10_5egv6"]
+[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://shaders/goober.gdshader" id="10_5egv6"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
-[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://Scenes/petpet.gdshader" id="11_5egv6"]
+[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="11_5egv6"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 
@@ -78,10 +78,11 @@ expand_mode = 1
 [node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 707.0
-offset_top = 207.0
-offset_right = 1152.0
-offset_bottom = 347.0
+offset_left = 845.00006
+offset_top = 179.0
+offset_right = 1100.0
+offset_bottom = 391.0
+rotation = -0.351973
 texture = ExtResource("12_vtepg")
 expand_mode = 1
 flip_h = true
@@ -89,10 +90,23 @@ flip_h = true
 [node name="Hand2" type="TextureRect" parent="Butter" unique_id=1333335628]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 709.0
-offset_top = 337.0
-offset_right = 1154.0
-offset_bottom = 477.0
+offset_left = 986.0
+offset_top = 333.0
+offset_right = 1167.0
+offset_bottom = 459.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Hand3" type="TextureRect" parent="Butter" unique_id=2140408290]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 931.0
+offset_top = 258.0
+offset_right = 1129.0
+offset_bottom = 426.0
+rotation = 1.3656135
 texture = ExtResource("12_vtepg")
 expand_mode = 1
 flip_h = true

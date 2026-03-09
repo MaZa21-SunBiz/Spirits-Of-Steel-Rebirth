@@ -27,7 +27,7 @@ func _update_moving_troop(troop: TroopData, delta: float) -> void:
 	
 	var targetPID = troop.path.front()
 	var enemies = troops_by_province.get(targetPID, []).filter(
-		func(t): 
+		func(t):
 			return WarManager.is_at_war_names(t.country_name, troop.country_name)
 	)
 
@@ -600,6 +600,15 @@ func _load_flag_redirects() -> void:
 		else:
 			push_error("TroopManager: Failed to parse flag_redirects.json")
 
+var custom_flag_path: String = ""
+
+func set_custom_flag_path(path: String):
+	if path != "" and not path.ends_with("/"):
+		path += "/"
+	custom_flag_path = path
+	flag_cache.clear() # Clear cache to force reload from new path
+
+
 func get_flag(country: String, ideology: String = "") -> Texture2D:
 	# Normalize the keys
 	country = country.to_lower()
@@ -617,44 +626,43 @@ func get_flag(country: String, ideology: String = "") -> Texture2D:
 	# 0. Check Redirects
 	if flag_redirects.has(country):
 		var redirect = flag_redirects[country]
-		# Use redirected country and ideology (unless specific ideology requested overrides?)
-		# If user requested explicit ideology, we try that on the target country.
-		# If user requested NO ideology (neutral), we use the redirect's ideology.
 		var target_country = redirect["target"]
 		var target_ideology = redirect["ideology"]
 		
 		if ideology != "":
-			# Requesting specific ideology on redirected country
-			# e.g. german_empire (redirect->germany/monarchist) + requested "communist"
-			# -> look for germany/communist
 			return get_flag(target_country, ideology)
 		else:
-			# Requesting default (neutral) on redirected country
-			# -> look for germany/monarchist (the mapping)
 			return get_flag(target_country, target_ideology)
 
 	var path = ""
 	
-	# 1. Try Specific Ideology Flag: assets/flags/country/ideology_flag.png
+	# Helper to check both custom and default locations
+	var find_resource = func(sub_path: String):
+		if custom_flag_path != "":
+			var full_custom = custom_flag_path + sub_path
+			if ResourceLoader.exists(full_custom):
+				return full_custom
+		var full_default = "res://assets/flags/" + sub_path
+		if ResourceLoader.exists(full_default):
+			return full_default
+		return ""
+
+	# 1. Try Specific Ideology Flag: {path}/country/ideology_flag.png
 	if ideology != "":
-		path = "res://assets/flags/%s/%s_flag.png" % [country, ideology]
-		if ResourceLoader.exists(path):
+		path = find_resource.call("%s/%s_flag.png" % [country, ideology])
+		if path != "":
 			var tex := load(path)
 			flag_cache[cache_key] = tex
 			return tex
 
-	# 2. Try Neutral/Default Flag in new structure: assets/flags/country/neutral_flag.png
-	path = "res://assets/flags/%s/neutral_flag.png" % country
-	if ResourceLoader.exists(path):
+	# 2. Try Neutral/Default Flag in new structure: {path}/country/neutral_flag.png
+	path = find_resource.call("%s/neutral_flag.png" % country)
+	if path != "":
 		var tex := load(path)
-		# Cache this as the specific request if we found it (even if ideology was requested but not found)
 		flag_cache[cache_key] = tex
 		return tex
 
 	# 3. Fallback: Suffix Stripping / Semantic Fallback
-	# If we are here, neither specific ideology nor neutral flag exists for 'country'.
-	# Maybe 'country' is 'afghan_kingdom' and we didn't have a redirect (or redirect failed).
-	# Try stripping known suffixes.
 	var suffixes = {
 		"_kingdom": "monarchist",
 		"_empire": "monarchist",
@@ -671,33 +679,26 @@ func get_flag(country: String, ideology: String = "") -> Texture2D:
 		if country.ends_with(suffix):
 			var base_country = country.left(country.length() - suffix.length())
 			var fallback_ideology = suffixes[suffix]
-			
-			# If user requested an ideology, we might still want to check base_country with THAT ideology first
-			# But if they didn't, use the fallback.
 			var check_ideology = ideology if ideology != "" else fallback_ideology
 			
-			# Avoid infinite recursion if base == country (shouldn't happen with suffix check)
 			var tex = get_flag(base_country, check_ideology)
 			if tex:
 				flag_cache[cache_key] = tex
 				return tex
 			
-			# If that failed, maybe base_country + neutral?
 			if ideology != "":
 				tex = get_flag(base_country, "")
 				if tex:
 					flag_cache[cache_key] = tex
 					return tex
 
-	# 4. Fallback to old flat structure (just in case): assets/flags/country_flag.png
-	path = "res://assets/flags/%s_flag.png" % country
-	if ResourceLoader.exists(path):
+	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
+	path = find_resource.call("%s_flag.png" % country)
+	if path != "":
 		var tex := load(path)
 		flag_cache[cache_key] = tex
 		return tex
 
-	# Fallback texture (optional)
-	# print("Flag not found for country: %s (ideology: %s)" % [country, ideology])
 	return null
 
 

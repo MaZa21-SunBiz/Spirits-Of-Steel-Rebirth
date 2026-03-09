@@ -137,7 +137,7 @@ func play_music(track: int):
 	# print(radios)
 	# print(songs)
 	var song = songs.pick_random()
-	if GameState.game_ui.now_playing:
+	if GameState.game_ui and GameState.game_ui.now_playing:
 		GameState.game_ui.now_playing.text = song.resource_path.get_file()
 	music_player.stream = song
 	music_player.volume_db = linear_to_db(music_volume_map.get(track, 1.0))
