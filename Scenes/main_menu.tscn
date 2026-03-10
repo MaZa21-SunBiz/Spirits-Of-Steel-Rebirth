@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
-[ext_resource type="Script" path="res://Scenes/starts.gd" id="14_8dnnj"]
+[ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
 shader = ExtResource("5_8dnnj")
@@ -72,39 +72,46 @@ expand_mode = 1
 [node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 845.00006
-offset_top = 179.0
-offset_right = 1100.0
-offset_bottom = 391.0
+offset_left = 787.6218
+offset_top = 264.56232
+offset_right = 989.52826
+offset_bottom = 419.17804
 rotation = -0.351973
 texture = ExtResource("12_vtepg")
 expand_mode = 1
-flip_h = true
+
+[node name="Hand4" type="TextureRect" parent="Butter" unique_id=885631731]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 885.0
+offset_top = 514.0
+offset_right = 1086.9065
+offset_bottom = 668.6157
+rotation = -1.6544858
+texture = ExtResource("12_vtepg")
+expand_mode = 1
 
 [node name="Hand2" type="TextureRect" parent="Butter" unique_id=1333335628]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 986.0
-offset_top = 333.0
-offset_right = 1167.0
-offset_bottom = 459.0
+offset_left = 1145.0
+offset_top = 438.99994
+offset_right = 1326.0
+offset_bottom = 564.99994
+rotation = 2.9900136
 texture = ExtResource("12_vtepg")
 expand_mode = 1
-flip_h = true
-flip_v = true
 
 [node name="Hand3" type="TextureRect" parent="Butter" unique_id=2140408290]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 931.0
-offset_top = 258.0
-offset_right = 1129.0
-offset_bottom = 426.0
+offset_left = 1097.0001
+offset_top = 164.99998
+offset_right = 1295.0001
+offset_bottom = 333.0
 rotation = 1.3656135
 texture = ExtResource("12_vtepg")
 expand_mode = 1
-flip_h = true
-flip_v = true
 
 [node name="Timer" type="Timer" parent="Butter" unique_id=1343216001]
 process_callback = 0

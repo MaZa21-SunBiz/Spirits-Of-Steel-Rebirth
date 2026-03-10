@@ -25,6 +25,41 @@ func get_variable(variable):
 		_:
 			return heap.get(variable, variable)
 
+func get_element(element, laws_grid):
+	match element.get("type", ""):
+		"button":
+			var entry = Button.new()
+			entry.text = element["text"]
+			
+			entry.pressed.connect(func():
+				if get_function(element["condition"]):
+					get_function(element["finished"])
+			)
+			laws_grid.add_child(entry)
+			entry.material = laws_grid.material
+			entry.tooltip_text = "Condition - %s\nFinished - %s" % [
+				_format_functions(element["condition"]),
+				_format_functions(element["finished"])
+			]
+		"image":
+			var entry = TextureRect.new()
+			entry.texture = load(
+				PlansManager.current_start_folder + "assets/plans/" + element["path"]
+			)
+			entry.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			entry.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			entry.custom_minimum_size = Vector2(100, 100)
+			laws_grid.add_child(entry)
+			entry.material = laws_grid.material
+		"paragraph":
+			var entry = RichTextLabel.new()
+			entry.add_theme_font_size_override("normal_font_size", 18)
+			entry.add_text(element["text"])
+			entry.fit_content = true
+			entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			entry.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			laws_grid.add_child(entry)
+
 func get_function(expression, country: CountryData = null):
 	if country == null:
 		country = CountryManager.player_country
@@ -48,8 +83,11 @@ func get_function(expression, country: CountryData = null):
 	var store_key: String = expression.get("store", "")
 	var result = null
 
-	print(expression)
 	match expression.get("func", ""):
+		# idk stuff
+		"return":
+			if evaled_args.size() == 1:
+				result = evaled_args[0]
 		# Comparison stuff
 		"and":
 			if evaled_args.size() >= 2:
@@ -151,3 +189,11 @@ func get_function(expression, country: CountryData = null):
 		heap[store_key] = result
 	
 	return result
+
+# shitty helper function
+func _format_functions(function_array: Array) -> String:
+	var formatted: String = ""
+	for function in function_array:
+		if function.has("func") and function.has("args"):
+			formatted += "%s: %s\n" % [function["func"], function["args"]]
+	return formatted
