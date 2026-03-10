@@ -25,3 +25,12 @@ func ToDict() -> Dictionary:
 		"polity": self.polity,
 		"status": self.status
 	}
+
+static func GetIndex(a_status: String) -> int:
+	match a_status:
+		"Leader":
+			return 0
+		"Member":
+			return 1
+		_:
+			return -1

@@ -409,6 +409,7 @@ func check_country_collapse(country_name: String, victor_name: String):
 
 
 func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
+	print("Total Collapse of: " + fallen_name + " and " + victor_name)
 	var loser := CountryManager.get_country(fallen_name)
 	var winner := CountryManager.get_country(victor_name)
 	
@@ -457,35 +458,35 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	# --- 2. Return territory occupied BY the loser to original owners ---
 	var current_provinces = MapManager.country_to_provinces.get(fallen_name, []).duplicate()
 	for pid in current_provinces:
-		if not loser.pre_war_provinces.has(pid):
+		if not MapManager.country_to_owned_provinces.get(fallen_name).has(pid):
+			print("Deoccupying %d" % pid)
 			MapManager.DeoccupyProvince(pid)
 
 	# --- 3. Territory preview (for peace UI only) ---
-	var provinces_to_negotiate = loser.pre_war_provinces.duplicate()
-	if provinces_to_negotiate.is_empty():
-		provinces_to_negotiate = (
-			original_territories
-			.get(fallen_name, MapManager.country_to_provinces.get(fallen_name, []))
-			.duplicate()
-		)
+	var provinces_to_negotiate = MapManager.country_to_owned_provinces.get(fallen_name).duplicate()
 
 	if player_won:
 		for pid in provinces_to_negotiate:
 			MapManager.DeoccupyProvince(pid)
-
-	# --- 4. Player peace OR AI annexation ---
-	if player_won: 
+			
 		var peace_ui = get_tree().root.find_child("PeaceProcessUI", true, false)
 		if peace_ui:
 			# Pass the player as the default winner/beneficiary, and the full list of winners
-			peace_ui.open_menu(player, loser, winners)
+			peace_ui.open_menu(winner, loser)
 			original_territories.erase(fallen_name)
 		return
 
 	# --- 5. AI takes everything ---
-	for pid in MapManager.country_to_provinces.get(fallen_name, []).duplicate():
-		MapManager.transfer_ownership(pid, victor_name)
-		original_territories[victor_name].append(pid)
+	for pid in provinces_to_negotiate.duplicate():
+		if MapManager.province_objects[pid].occupier == "":
+			print("%d is going to victor " % pid + victor_name)
+			MapManager.transfer_ownership(pid, victor_name)
+			#original_territories[victor_name].append(pid)
+		else:
+			print("%d is going to occupier " % pid + MapManager.province_objects[pid].occupier)
+			MapManager.transfer_ownership(pid, MapManager.province_objects[pid].occupier)
+			#original_territories[MapManager.province_objects[pid].country].append(pid)
+		
 	original_territories.erase(fallen_name)
 	CountryManager.cleanup_empty_countries()
 

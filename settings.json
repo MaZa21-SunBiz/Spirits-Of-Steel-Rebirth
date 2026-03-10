@@ -2,13 +2,13 @@
   "daynight_contrast": 0.02,
   "daynight_smoothness": 0.12,
   "map_effects": 1.0,
-  "music_volume": 0.5,
+  "music_volume": 0.0,
   "province_borders": 0.41,
   "radios": [
     "default"
   ],
   "scanlines": 0.1,
-  "sfx_volume": 0.5,
+  "sfx_volume": 0.0,
   "ui_dirt": 0.48,
   "ui_lower": 0.08,
   "ui_upper": 0.74,

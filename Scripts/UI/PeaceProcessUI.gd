@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-var sidebar_panel: PanelContainer
-var summary_label: Label
-var stats_label: Label
-var loser_label: Label
+@export var sidebar_panel: PanelContainer
+@export var summary_label: Label
+@export var stats_label: Label
+@export var loser_label: Label
 
 var current_winner: CountryData
 var current_loser: CountryData
@@ -18,7 +18,7 @@ const COLOR_DANGER = Color(0.7, 0.2, 0.2)
 
 
 func _ready() -> void:
-	_setup_ui_elements()
+	#_setup_ui_elements()
 	self.hide()
 
 
@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_process_hover(map_pos)
 
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			_process_click(map_pos)
 
 
@@ -60,7 +60,7 @@ func _process_hover(map_pos: Vector2):
 		# 3. Apply NEW hover visual (if it's a valid land province belonging to the loser)
 		if hovered_pid > 1:
 			if MapManager.province_objects[hovered_pid].GetFunctionalOwner() == current_loser.country_name:
-				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5))
+				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -79,11 +79,11 @@ func _process_click(map_pos: Vector2):
 	if provinces_to_take.has(pid):
 		provinces_to_take.erase(pid)
 		# On deselect, return to hover state or normal state
-		_update_map_visual(pid, Color(1.5, 1.5, 1.5))
+		_update_map_visual(pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	else:
 		provinces_to_take.append(pid)
 		# On select, make it a distinct color (e.g., Cyan or the Player's color)
-		_update_map_visual(pid, Color(0.0, 1.0, 1.0))
+		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 
 	_update_summary()
 
@@ -201,7 +201,7 @@ func _on_annex_all_pressed():
 	for pid in MapManager.province_objects.keys():
 		if MapManager.province_objects[pid].GetFunctionalOwner() == current_loser.country_name:
 			provinces_to_take.append(pid)
-			_update_map_visual(pid, COLOR_SELECT)
+			_update_map_visual(pid, COLOR_SELECT, CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	_update_summary()
 
 
@@ -219,7 +219,7 @@ func _on_clear_selection_pressed():
 	_update_summary()
 
 func _reset_province_visual_immediate(pid: int):
-	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_objects[pid].GetFunctionalOwner(), Color.WHITE))
+	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_objects[pid].GetFunctionalOwner(), Color.WHITE), CountryManager.GetCountryColor(MapManager.province_objects[pid].country, Color.WHITE))
 
 
 # --- Logic & Integration ---
@@ -271,19 +271,18 @@ func get_province_with_radius(global_pos: Vector2, map_sprite: Sprite2D, radius:
 	return MapManager.get_province_with_radius(global_pos, map_sprite, radius)
 
 
-func _update_map_visual(pid: int, color: Color):
+func _update_map_visual(pid: int, color: Color, secondaryColor: Color):
 	# We call MapManager's lookup update to refresh the shader texture
-	if MapManager.has_method("_update_lookup"):
-		MapManager._update_lookup(pid, color)
+	if MapManager.has_method("update_lookup"):
+		MapManager.update_lookup(pid, color, secondaryColor)
 
 
 func _reset_province_visual(pid: int):
 	# If it's currently selected, keep the selected color
 	if provinces_to_take.has(pid):
-		_update_map_visual(pid, Color(0.0, 1.0, 1.0))
+		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	else:
 		# Otherwise, revert to the original country color
 		var country = MapManager.province_objects[pid].GetFunctionalOwner()
-		if country != "sea":
-			var original_color = CountryManager.GetCountryColor(country)
-			_update_map_visual(pid, original_color)
+		if country != "Sea":
+			_update_map_visual(pid, CountryManager.GetCountryColor(country), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))

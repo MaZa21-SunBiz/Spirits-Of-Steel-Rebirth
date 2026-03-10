@@ -2,50 +2,63 @@ extends CanvasLayer
 
 @export var map_sprite: Sprite2D
 
+var selectedCountry: String = ""
 var selected_pid: int = -1
 var hovered_pid: int = -1
 var original_pid_color: Color
 
-enum MODE {
-	PROVINCE,
-	FACTION,
-	COUNTRY,
-	CLAIMS,
-	ETHNICITY,
-	CITY,
+enum Tool {
+	NONE             = 0,
+	PAINT_OCCUPATION = 1,
+	PAINT_OWNER      = 2,
+	PAINT_FACTION    = 3,
 }
 
+enum Mode {
+	PROVINCE = 0,
+	FACTION  = 1,
+	POLITY   = 2,
+}
+
+var currentTool: Tool = Tool.NONE
+var currentMode: Mode = Mode.PROVINCE
+
+@export var leftSidebar: TabContainer
+
 # UI References (Ensure these match your .tscn node names)
-@onready 
-var status_label = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/StatusLabel
-@onready
-var input_country = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputCountry
-@onready
-var input_country_color = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputCountryColor
-@onready
-var input_city = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputCity
-@onready
-var input_pop = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputPop
-@onready
-var input_gdp = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputGDP
-@onready
-var input_eth_name = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputEthName
-@onready
-var input_eth_color = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/InputEthColor
-@onready 
-var input_claims = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/InputClaims
+@export var status_label: Label
+@export var input_country: LineEdit
+@export var inputOccupier: LineEdit
+@export var input_city: LineEdit
+@export var input_gdp: SpinBox
+@export var input_claims: TextEdit
 
-@onready var btn_apply = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/BtnApply
-@onready var btn_export = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/BtnExport
+@export var factionsItemList: ItemList
+@export var factionName: LineEdit
+@export var factionColor: ColorPickerButton
 
+@export var politiesItemList: ItemList
+@export var polityPuppet: CheckBox
+@export var polityOwner: LineEdit
+@export var polityInExile: CheckBox
+@export var polityHost: LineEdit
+@export var polityName: LineEdit
+@export var polityColor: ColorPickerButton
+@export var polityMoney: SpinBox
+@export var polityPoliticalPower: SpinBox
+@export var polityWarSupport: SpinBox
+@export var polityStability: SpinBox
+@export var polityPuppetList: VBoxContainer
+@export var polityPuppetTemplate: PanelContainer
+@export var polityFactionList: VBoxContainer
+@export var polityFactionTemplate: PanelContainer
 
 func _ready() -> void:
-	btn_apply.pressed.connect(_on_apply_pressed)
-	btn_export.pressed.connect(_on_export_pressed)
-
+	SetupFactionList()
+	SetupPolitiesList()
+	
 	if map_sprite == null:
 		map_sprite = get_node_or_null("../../MapContainer/CultureSprite")
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if MapManager._is_mouse_over_ui() or Console.is_visible():
@@ -57,7 +70,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_handle_click(event.position)
-
 
 func _handle_hover(screen_pos: Vector2) -> void:
 	if map_sprite == null:
@@ -76,7 +88,6 @@ func _handle_hover(screen_pos: Vector2) -> void:
 		MapManager.state_color_texture.update(MapManager.state_color_image)
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
-
 func _clear_hover() -> void:
 	if hovered_pid > 1:
 		MapManager.state_color_image.set_pixel(hovered_pid, 0, original_pid_color)
@@ -84,11 +95,31 @@ func _clear_hover() -> void:
 		hovered_pid = -1
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-
 func _handle_click(screen_pos: Vector2) -> void:
 	if hovered_pid > 1:
-		select_province(hovered_pid)
-
+		match currentMode:
+			Mode.PROVINCE:
+				select_province(hovered_pid)
+			Mode.FACTION:
+				match currentTool:
+					Tool.NONE:
+						select_province(hovered_pid)
+					Tool.PAINT_FACTION:
+						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+							pass
+			Mode.POLITY:
+				match currentTool:
+					Tool.NONE:
+						select_province(hovered_pid)
+					Tool.PAINT_OWNER:
+						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+							MapManager.transfer_ownership(hovered_pid, selectedCountry)
+					Tool.PAINT_OCCUPATION:
+						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+							if MapManager.province_objects[hovered_pid].country != selectedCountry:
+								MapManager.OccupyProvince(hovered_pid, selectedCountry)
+							else:
+								MapManager.DeoccupyProvince(hovered_pid)
 
 func select_province(pid: int) -> void:
 	selected_pid = pid
@@ -96,24 +127,15 @@ func select_province(pid: int) -> void:
 	if not prov:
 		return
 
-	var color_str = _color_to_rgb_string(prov.r_color) if prov.r_color else "Unknown"
-	status_label.text = "Selected PID: %d\nR_Color: %s" % [pid, color_str]
+	#var color_str = _color_to_rgb_string(prov.r_color) if prov.r_color else "Unknown"
+	#status_label.text = "Selected PID: %d\nR_Color: %s" % [pid, color_str]
 
 	# Set Fields
 	input_country.text = prov.country
+	inputOccupier.text = prov.occupier
 	input_city.text = prov.city
-	input_pop.value = prov.population
 	input_gdp.value = prov.gdp
-
-	# Set Country Color Picker
-	input_country_color.color = MapManager.country_colors.get(prov.country, Color.GRAY)
-
-	if prov.ethnicity.has("name"):
-		input_eth_name.text = prov.ethnicity["name"]
-	if prov.ethnicity.has("color"):
-		input_eth_color.text = prov.ethnicity["color"]
 	input_claims.text = ", ".join(prov.claims)
-
 
 func _on_apply_pressed() -> void:
 	if selected_pid <= 1:
@@ -124,19 +146,14 @@ func _on_apply_pressed() -> void:
 
 	var old_country = prov.country
 	var new_country = input_country.text.strip_edges()
-	var new_color = input_country_color.color
 
 	# 1. Update MapManager global data
-	MapManager.country_colors[new_country] = new_color
 
 	# 2. Update Province Object
 	prov.country = new_country
+	prov.occupier = inputOccupier.text.strip_edges()
 	prov.city = input_city.text.strip_edges()
-	prov.population = int(input_pop.value)
 	prov.gdp = float(input_gdp.value)
-	prov.ethnicity = {
-		"name": input_eth_name.text.strip_edges(), "color": input_eth_color.text.strip_edges()
-	}
 
 	var raw_claims = input_claims.text.split(",")
 	var final_claims = []
@@ -154,19 +171,8 @@ func _on_apply_pressed() -> void:
 			MapManager.country_to_provinces[new_country] = []
 		MapManager.country_to_provinces[new_country].append(selected_pid)
 
-	# 4. Global Map Refresh for this Country
-	# We loop through all provinces of this country and update their color in the lookup texture
-	var country_pids = MapManager.country_to_provinces.get(new_country, [])
-	for p_id in country_pids:
-		if p_id == hovered_pid:
-			original_pid_color = new_color
-			MapManager.state_color_image.set_pixel(p_id, 0, new_color.lightened(0.4))
-		else:
-			MapManager.state_color_image.set_pixel(p_id, 0, new_color)
-
 	MapManager.state_color_texture.update(MapManager.state_color_image)
 	print("MapEditor: Applied changes and updated colors for ", new_country)
-
 
 func _on_export_pressed() -> void:
 	# Export Province Data
@@ -175,16 +181,7 @@ func _on_export_pressed() -> void:
 		if pid <= 1:
 			continue
 		var p = MapManager.province_objects[pid]
-		if p.r_color == null:
-			continue
-		var key = _color_to_rgb_string(p.r_color)
-		prov_export[key] = {
-			"city": p.city,
-			"claims": p.claims,
-			"ethnicity": p.ethnicity,
-			"gdp": p.gdp,
-			"population": p.population
-		}
+		prov_export["%d" % p.id] = p.ToDict()
 
 	# Export Country Colors
 	var country_export = {}
@@ -196,15 +193,88 @@ func _on_export_pressed() -> void:
 	_save_json("user://exported_countries.json", country_export)
 	OS.shell_open(ProjectSettings.globalize_path("user://"))
 
-
 func _save_json(path: String, data: Dictionary) -> void:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(data, "\t"))
 		file.close()
 
+func m_OnTabContainerTabChanged(tab: int) -> void:
+	currentTool = Tool.NONE
+	currentMode = tab
+	leftSidebar.current_tab = tab
 
-func _color_to_rgb_string(c: Color) -> String:
-	return (
-		"(%d, %d, %d)" % [int(round(c.r * 255.0)), int(round(c.g * 255.0)), int(round(c.b * 255.0))]
-	)
+func SetupFactionList() -> void:
+	factionsItemList.clear()
+	for faction in FactionManager.factions.keys():
+		factionsItemList.add_item(faction)
+
+func SetupPolitiesList() -> void:
+	politiesItemList.clear()
+	for polity in CountryManager.countries.keys():
+		politiesItemList.add_item(polity)
+		
+func m_OnFactionSelected(index: int) -> void:
+	var faction: FactionData = FactionManager.factions[factionsItemList.get_item_text(index)]
+	factionName.text = faction.name
+	factionColor.color = faction.color
+	
+func m_OnPolitySelected(index: int) -> void:
+	selectedCountry = politiesItemList.get_item_text(index)
+	var polity: CountryData = CountryManager.countries[selectedCountry]
+	polityPuppet.set_pressed_no_signal(polity.is_puppet)
+	polityOwner.text = polity.owner
+	polityInExile.set_pressed_no_signal(polity.is_exiled)
+	polityHost.text = polity.host
+	polityName.text = polity.country_name
+	polityColor.color = polity.country_color
+	polityMoney.set_value_no_signal(polity.money)
+	polityPoliticalPower.set_value_no_signal(polity.political_power)
+	polityWarSupport.set_value_no_signal(polity.war_support)
+	polityStability.set_value_no_signal(polity.stability)
+	for child in polityPuppetList.get_children():
+		child.queue_free()
+	for puppet in polity.puppets:
+		var puppetEntry: PanelContainer = polityPuppetTemplate.clone()
+		puppetEntry.visible = true
+		puppetEntry.get_node("HBoxContainer/Label").text = puppet
+		polityPuppetList.add_child(puppetEntry)
+	for child in polityFactionList.get_children():
+		child.queue_free()
+	for faction in polity.factions:
+		var factionEntry: PanelContainer = polityFactionTemplate.clone()
+		factionEntry.visible = true
+		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
+		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.member == polity.country_name)].status))
+		polityFactionList.add_child(factionEntry)
+	pass # Replace with function body.
+
+func m_OnCitySubmitted(new_text: String) -> void:
+	if selected_pid in MapManager.province_objects:
+		MapManager.province_objects[selected_pid].city = new_text
+
+func m_OnProvinceGDPChanged(value: float) -> void:
+	if selected_pid in MapManager.province_objects:
+		MapManager.province_objects[selected_pid].gdp = value
+
+func m_OnColorChanged(color: Color) -> void:
+	MapManager.set_country_color(selectedCountry, color)
+
+func m_OnProvinceOccupierSubmitted(new_text: String) -> void:
+	if selected_pid in MapManager.province_objects:
+		if new_text.is_empty():
+			MapManager.DeoccupyProvince(selected_pid)
+		else:
+			MapManager.OccupyProvince(selected_pid, new_text)
+
+func m_NoneTool() -> void:
+	currentTool = Tool.NONE
+
+func m_PaintOwnerTool() -> void:
+	currentTool = Tool.PAINT_OWNER
+	
+func m_PaintOccupationTool() -> void:
+	currentTool = Tool.PAINT_OCCUPATION
+	
+func m_PaintFactionTool() -> void:
+	currentTool = Tool.PAINT_FACTION

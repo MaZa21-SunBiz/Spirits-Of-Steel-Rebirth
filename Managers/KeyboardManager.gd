@@ -17,13 +17,15 @@ func _process(_delta: float) -> void:
 	if Console.is_visible():
 		return
 	if Input.is_action_just_pressed("deselect_troops"):
-		if !TroopManager.troop_selection.selected_troops.is_empty():
-			TroopManager.troop_selection.deselect_all()
-		elif GameState.game_ui.is_open:
-			MapManager.close_sidemenu.emit()
-		else:
-			# get_tree().root.find_child("Menu", true, false).toggle_menu()
-			settings.visible = !settings.visible
+		match SceneSwitcher._current_type:
+			SceneSwitcher.Type.WORLD:
+				if !TroopManager.troop_selection.selected_troops.is_empty():
+					TroopManager.troop_selection.deselect_all()
+				elif GameState.game_ui.is_open:
+					MapManager.close_sidemenu.emit()
+				else:
+					# get_tree().root.find_child("Menu", true, false).toggle_menu()
+					settings.visible = !settings.visible
 
 	if Input.is_action_just_pressed("open_menu"):
 		if not _debounce:

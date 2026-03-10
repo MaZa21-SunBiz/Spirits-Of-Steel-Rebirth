@@ -6,6 +6,13 @@ func m_GatesOfHell() -> void:
 		for countryB in range(countryA, sizer):
 			m_StartWarSilent(CountryManager.countries.keys()[countryA], CountryManager.countries.keys()[countryB])
 
+func m_Editor() -> void:
+	print("Current Scene: %d" % SceneSwitcher._current_type)
+	if SceneSwitcher._current_type == SceneSwitcher.Type.WORLD:
+		SceneSwitcher.switch_to(SceneSwitcher.Type.EDITOR)
+	elif SceneSwitcher._current_type == SceneSwitcher.Type.EDITOR:
+		SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD)
+	
 func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
@@ -33,6 +40,7 @@ func _ready() -> void:
 	Console.add_command(
 		"cta", _call_to_arms, ["caller", "target"], 2, "Call a country to arms"
 	)
+	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 	
 
 func _show_releasables_country(country):

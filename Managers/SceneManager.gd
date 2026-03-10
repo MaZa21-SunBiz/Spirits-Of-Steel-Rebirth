@@ -5,7 +5,7 @@ enum Type { MENU, WORLD, EDITOR, SELECT_COUNTRY }
 const SCENE_MAP = {
 	Type.MENU: "res://Scenes/main_menu.tscn",
 	Type.WORLD: "res://Scenes/world.tscn",
-	Type.EDITOR: "res://Scenes/map_editor.tscn",
+	Type.EDITOR: "res://Scenes/MapEditor.tscn",
 	Type.SELECT_COUNTRY: "res://Scenes/select_country.tscn"
 }
 
