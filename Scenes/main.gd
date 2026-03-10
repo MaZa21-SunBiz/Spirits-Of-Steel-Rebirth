@@ -11,10 +11,4 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-<<<<<<< HEAD
 	GameState.main.clock.pause()
-=======
-	GameState.current_world.clock.pause()
-	GameState.game_ui._update_flag()
-	SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD)
->>>>>>> origin/SoiSauce

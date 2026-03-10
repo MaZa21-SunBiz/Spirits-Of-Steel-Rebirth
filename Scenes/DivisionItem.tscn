@@ -8,111 +8,29 @@
 [ext_resource type="Texture2D" uid="uid://e205c3hhc4jm" path="res://assets/icons/sword.svg" id="5_h235r"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="6_hwt8t"]
 
-<<<<<<< HEAD
-[node name="DivisionItem" type="Panel" unique_id=1555148910]
-=======
 [node name="DivisionItem" type="Panel" unique_id=73435440]
 material = ExtResource("1_h235r")
->>>>>>> origin/SoiSauce
 custom_minimum_size = Vector2(218, 60)
 offset_right = 218.0
 offset_bottom = 60.0
 theme = ExtResource("2_hwt8t")
 script = ExtResource("1_bl13n")
 
-<<<<<<< HEAD
-[node name="ColorRect" type="ColorRect" parent="." unique_id=882665673]
-=======
 [node name="ColorRect" type="ColorRect" parent="." unique_id=579032160]
 use_parent_material = true
->>>>>>> origin/SoiSauce
 layout_mode = 0
 offset_right = 218.0
 offset_bottom = 59.0
 color = Color(0.0253638, 0.0253638, 0.025363795, 1)
 
-<<<<<<< HEAD
-[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1423050650]
-=======
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=369652812]
 use_parent_material = true
->>>>>>> origin/SoiSauce
 layout_mode = 0
 offset_left = 5.0
 offset_top = 4.0
 offset_right = 214.0
 offset_bottom = 60.0
 
-<<<<<<< HEAD
-[node name="ProgressBar" type="ProgressBar" parent="ColorRect" unique_id=1443538472]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 28.0
-offset_right = 49.0
-offset_bottom = 58.0
-theme_override_fonts/font = ExtResource("3_1h1m1")
-
-[node name="label_division" type="Label" parent="ColorRect" unique_id=1232121290]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 5.0
-offset_right = 108.0
-offset_bottom = 28.0
-theme_override_fonts/font = ExtResource("3_1h1m1")
-text = "Division 1"
-
-[node name="TextureRect2" type="TextureRect" parent="ColorRect" unique_id=594573050]
-layout_mode = 0
-offset_left = 149.0
-offset_top = 35.0
-offset_right = 170.0
-offset_bottom = 55.0
-texture = ExtResource("4_7jmgu")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="ColorRect" unique_id=2026666353]
-layout_mode = 0
-offset_left = 146.0
-offset_top = 3.0
-offset_right = 171.0
-offset_bottom = 24.0
-texture = ExtResource("6_bl13n")
-expand_mode = 1
-
-[node name="label_attack" type="Label" parent="ColorRect" unique_id=133343453]
-layout_mode = 0
-offset_left = 181.0
-offset_top = 2.0
-offset_right = 217.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("3_1h1m1")
-text = "67"
-
-[node name="label_defense" type="Label" parent="ColorRect" unique_id=92399098]
-layout_mode = 0
-offset_left = 183.0
-offset_top = 36.0
-offset_right = 217.0
-offset_bottom = 59.0
-theme_override_fonts/font = ExtResource("3_1h1m1")
-text = "67"
-
-[node name="TextureRect4" type="TextureRect" parent="ColorRect" unique_id=2128477910]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 28.0
-offset_right = 114.0
-offset_bottom = 60.0
-texture = ExtResource("6_1h1m1")
-expand_mode = 1
-
-[node name="label_experience" type="Label" parent="ColorRect" unique_id=497812382]
-layout_mode = 0
-offset_left = 109.0
-offset_top = 34.0
-offset_right = 149.0
-offset_bottom = 57.0
-=======
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=1508940947]
 use_parent_material = true
 layout_mode = 2
@@ -176,7 +94,6 @@ expand_mode = 3
 [node name="label_defense" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1769695684]
 use_parent_material = true
 layout_mode = 2
->>>>>>> origin/SoiSauce
 theme_override_fonts/font = ExtResource("3_1h1m1")
 text = "67"
 

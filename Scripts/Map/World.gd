@@ -45,10 +45,8 @@ func _ready() -> void:
 	if not GameState.main.clock.hour_passed.is_connected(CountryManager._on_hour_passed):
 		GameState.main.clock.hour_passed.connect(CountryManager._on_hour_passed)
 
-<<<<<<< HEAD:Scripts/world.gd
 	if not GameState.main.clock.day_passed.is_connected(CountryManager._on_day_passed):
 		GameState.main.clock.day_passed.connect(CountryManager._on_day_passed)
-=======
 	
 	var path = "res://map_data/map_data.json" # Ensure path is correct
 	if not FileAccess.file_exists(path):
@@ -62,7 +60,6 @@ func _ready() -> void:
 	if MapManager.province_objects.is_empty():
 		load_map_data(mapData)
 
->>>>>>> origin/SoiSauce:Scripts/Map/World.gd
 
 	if not GameState.main.clock.day_passed.is_connected(EventManager.process_day):
 		GameState.main.clock.day_passed.connect(EventManager.process_day)

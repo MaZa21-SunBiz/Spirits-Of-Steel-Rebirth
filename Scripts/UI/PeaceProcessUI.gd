@@ -59,14 +59,8 @@ func _process_hover(map_pos: Vector2):
 
 		# 3. Apply NEW hover visual (if it's a valid land province belonging to the loser)
 		if hovered_pid > 1:
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-			var owner = MapManager.province_objects.get(hovered_pid, "").country
-			if owner == current_loser.country_name:
-				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5))
-=======
 			if MapManager.province_objects[hovered_pid].GetFunctionalOwner() == current_loser.country_name:
 				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -78,14 +72,8 @@ func _process_click(map_pos: Vector2):
 	var pid = get_province_with_radius(map_pos, GameState.current_map.map_sprite, 5)
 	if pid <= 1:
 		return
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-
-	var owner_name = MapManager.province_objects.get(pid, "").country
-	if owner_name != current_loser.country_name:
-=======
 		
 	if MapManager.province_objects[pid].GetFunctionalOwner() != current_loser.country_name:
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
 		return
 
 	if provinces_to_take.has(pid):
@@ -209,19 +197,11 @@ func _create_styled_button(btn_text: String, accent_color: Color) -> Button:
 
 func _on_annex_all_pressed():
 	provinces_to_take.clear()
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-
-	for province in MapManager.province_objects.values():
-		if province.country == current_loser.country_name:
-			provinces_to_take.append(province.id)
-			_update_map_visual(province.id, COLOR_SELECT)
-=======
 	# Iterate through MapManager to find all provinces belonging to loser
 	for pid in MapManager.province_objects.keys():
 		if MapManager.province_objects[pid].GetFunctionalOwner() == current_loser.country_name:
 			provinces_to_take.append(pid)
 			_update_map_visual(pid, COLOR_SELECT, CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
 	_update_summary()
 
 
@@ -239,13 +219,7 @@ func _on_clear_selection_pressed():
 	_update_summary()
 
 func _reset_province_visual_immediate(pid: int):
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-	var owner = MapManager.province_objects[pid].country
-	var original_color = MapManager.country_colors.get(owner, Color.WHITE)
-	_update_map_visual(pid, original_color)
-=======
 	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_objects[pid].GetFunctionalOwner(), Color.WHITE), CountryManager.GetCountryColor(MapManager.province_objects[pid].country, Color.WHITE))
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
 
 
 # --- Logic & Integration ---
@@ -267,13 +241,8 @@ func _update_summary():
 
 	# Calculate percentage for flavor
 	var total_loser_provinces = 0
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-	for p in MapManager.province_objects.duplicate().values():
-		if p.country == current_loser.country_name:
-=======
 	for p in MapManager.province_objects.values():
 		if p.GetFunctionalOwner() == current_loser.country_name:
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
 			total_loser_provinces += 1
 
 	if total_loser_provinces > 0:
@@ -308,13 +277,6 @@ func _reset_province_visual(pid: int):
 		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	else:
 		# Otherwise, revert to the original country color
-<<<<<<< HEAD:Scenes/peace_process_ui.gd
-		var country = MapManager.province_objects[pid].country
-		if country != "sea":
-			var original_color = MapManager.country_colors[country]
-			_update_map_visual(pid, original_color)
-=======
 		var country = MapManager.province_objects[pid].GetFunctionalOwner()
 		if country != "Sea":
 			_update_map_visual(pid, CountryManager.GetCountryColor(country), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
->>>>>>> origin/SoiSauce:Scripts/UI/PeaceProcessUI.gd
