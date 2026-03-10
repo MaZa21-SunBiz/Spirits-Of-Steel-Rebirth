@@ -204,6 +204,8 @@ func _write_stack_to_multimesh(
 ) -> int:
 	var mm = troop_multimesh.multimesh
 	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
+	var start_y = (stack.size() - 1) * scaled_offset * 0.5
+	var mm_scale := Vector2(_current_inv_zoom, _current_inv_zoom)
 
 	for i in range(stack.size()):
 		var troop = stack[i]
@@ -212,6 +214,13 @@ func _write_stack_to_multimesh(
 		var col = COLORS.border_other
 		if troop.country_name == player:
 			col = COLORS.border_selected if selected.has(troop) else COLORS.border_default
+
+		for m in [0]:
+			var final_pos = vertical_pos + Vector2(map_width * m, 0) + map_sprite.position
+			mm.set_instance_transform_2d(idx, Transform2D(0, mm_scale, 0, final_pos))
+			mm.set_instance_color(idx, col)
+			idx += 1
+	return idx
 
 
 

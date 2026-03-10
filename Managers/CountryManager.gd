@@ -9,7 +9,7 @@ var _hour_process_index: int = 0
 @export var hours_per_full_country_tick: int = 5
 
 
-func _on_hour_passed(ticks) -> void:
+func _on_hour_passed() -> void:
 	if GameState.is_loading_game:
 		return
 
@@ -34,7 +34,7 @@ func _on_hour_passed(ticks) -> void:
 		_hour_process_index = 0
 
 
-func _on_day_passed(date) -> void:
+func _on_day_passed() -> void:
 	if GameState.is_loading_game:
 		return
 
@@ -235,25 +235,6 @@ func get_factories_amount(country_name: String) -> int:
 			) if (MapManager.province_objects.has(pid)) else 0),
 		0
 	)
-
-
-	# 1. Active Troops on the field
-	for troop in TroopManager.get_troops_for_country(country_obj.country_name):
-		for div in troop.stored_divisions:
-			total_used += _get_manpower_from_template(div.type)
-
-	# 2. Ongoing Training (Already using templates, but cleaned up)
-	for training in country_obj.ongoing_training:
-		total_used += (
-			training.divisions_count * _get_manpower_from_template(training.division_type)
-		)
-
-	# 3. Troops in the "Ready" queue (deployment pool)
-	for batch in country_obj.ready_troops:
-		for div in batch.stored_divisions:
-			total_used += _get_manpower_from_template(div.type)
-
-	return total_used
 
 
 # Helper to keep the code DRY (Don't Repeat Yourself)

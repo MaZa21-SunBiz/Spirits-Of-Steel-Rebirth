@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b01800wvm674n"]
 
-[ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_logo"]
+[ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="3_1ehe0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Sidebar"]
 bg_color = Color(0.0431373, 0.0509804, 0.0705882, 0.784314)
@@ -166,5 +167,18 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 12
-text = "Made by Supremity"
+text = "Made by Supremity, Soilad, and Sockmit"
 horizontal_alignment = 1
+
+[node name="Starts" type="PanelContainer" parent="." unique_id=417914509]
+offset_left = 473.0
+offset_top = 198.0
+offset_right = 815.0
+offset_bottom = 500.0
+script = ExtResource("3_1ehe0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Starts" unique_id=1675077375]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Starts/ScrollContainer" unique_id=289421872]
+layout_mode = 2

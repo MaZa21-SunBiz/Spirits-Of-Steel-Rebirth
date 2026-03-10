@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 const SAVE_DIR = "user://saves/"
-@onready var camera = $"../../Camera2D/CameraController"
 
 
 func _ready() -> void:
@@ -22,7 +21,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	camera.move_map_around(delta)
+	if GameState.camera:
+		GameState.camera.move_map_around(delta)
 	return
 
 
@@ -54,7 +54,6 @@ func _check_for_saves() -> void:
 
 # Button Logic
 func _on_new_game_pressed() -> void:
-	MapManager.show_countries_map()
 	ConsoleManager.switch_scene("select")
 
 

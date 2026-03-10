@@ -1,18 +1,17 @@
 {
   "India":[
-    {"image": "assets/icons/trees.svg"},
-    {"plan": "Form Pakistan",
-      "condition": [{"func": "has_pid", "args": ["India", 1655]}],
-      "finished": [{"func": "play_as", "args": ["China"]}]
-    }
+	{"image": "assets/icons/trees.svg"},
+	{"plan": "Form Pakistan",
+	  "condition": [{"func": "has_pid", "args": ["India", 1655]}],
+	  "finished": [{"func": "play_as", "args": ["China"]}]
+	}
   ],
   "Russia":[
-    {"plan": "Form Soviet Union",
-      "condition": [
+	{"plan": "Form Soviet Union",
+	  "condition": [
 	{"func": "has_pids", "args": ["Russia", 724, 654, 600, 493, 298, 298, 448, 341, 406, 686, 755, 831, 986, 1038, 1291, 1142, 1432, 1435]},
-      ],
-      "finished": [{"func": "play_as", "args": ["China"]}]
-    }
+	  ],
+	  "finished": [{"func": "play_as", "args": ["China"]}]
+	}
   ]
 }
-

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dl045g47lsfkx"]
 
-[ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/world.gd" id="1_i23d3"]
+[ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/Map/World.gd" id="1_i23d3"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="2_l60jn"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="3_t5n76"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="4_d53xq"]
-[ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/TopbarUI.tscn" id="5_kn1br"]
-[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/decision_tree_ui.gd" id="6_hums5"]
-[ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scenes/peace_process_ui.gd" id="7_atiji"]
-[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="8_erpf8"]
+[ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="5_kn1br"]
+[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="6_hums5"]
+[ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scripts/UI/PeaceProcessUI.gd" id="7_atiji"]
+[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scripts/UI/ManageCountryUI.gd" id="8_erpf8"]
 [ext_resource type="Script" uid="uid://dgg5vvwt2yua6" path="res://Scenes/menu.gd" id="9_pcjer"]
 [ext_resource type="PackedScene" uid="uid://slfig273474k" path="res://Scenes/UI/BottomHUD/BottomHUD.tscn" id="10_0fj1v"]
 

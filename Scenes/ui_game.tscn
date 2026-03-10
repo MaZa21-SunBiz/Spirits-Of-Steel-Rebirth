@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
-[ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
+[ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/TopbarUI.gd" id="1_rp7y5"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/ModernDay/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
 [ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]
@@ -71,9 +71,8 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273]
 script = ExtResource("1_rp7y5")
-military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/MilitaryAccess")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
 layout_mode = 3

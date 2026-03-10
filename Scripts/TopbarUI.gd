@@ -1,25 +1,25 @@
 extends CanvasLayer
-class_name GameUI
+# class_name GameUI
 
 @onready var nation_flag: TextureRect = $Control/Topbar/nation_flag
 
 
-func _enter_tree() -> void:
-	GameState.game_ui = self
-
-
-func _ready() -> void:
-	GameState.game_ui = self
-
-	CountryManager.player_country_changed.connect(_on_player_change)
-	var clock = GameState.main.clock
-	clock.hour_passed.connect(_on_time_passed)
-	clock.speed_changed.connect(updateProgressBar)
-	%Plus.pressed.connect(clock.increase_speed)
-	%Minus.pressed.connect(clock.decrease_speed)
-
-	_on_time_passed(0)
-	updateProgressBar()
+# func _enter_tree() -> void:
+# 	GameState.game_ui = self
+#
+#
+# func _ready() -> void:
+# 	GameState.game_ui = self
+#
+# 	CountryManager.player_country_changed.connect(_on_player_change)
+# 	var clock = GameState.main.clock
+# 	clock.hour_passed.connect(_on_time_passed)
+# 	clock.speed_changed.connect(updateProgressBar)
+# 	%Plus.pressed.connect(clock.increase_speed)
+# 	%Minus.pressed.connect(clock.decrease_speed)
+#
+# 	_on_time_passed(0)
+# 	updateProgressBar()
 
 func _on_player_change() -> void:
 	_update_flag()

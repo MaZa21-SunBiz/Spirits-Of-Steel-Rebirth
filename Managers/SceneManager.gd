@@ -24,6 +24,7 @@ func switch_to(scene_type: Type) -> void:
 	if scene_type == _current_type: return
 		
 	var main := get_tree().current_scene
+	print(main.get_children())
 	var container := main.get_node("CurrentScene")
 	
 	# 1. Handle the scene we are LEAVING

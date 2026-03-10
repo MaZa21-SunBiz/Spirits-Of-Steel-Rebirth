@@ -10,7 +10,7 @@ var flag_cache: Dictionary = {} # { country_name: texture }
 
 var troop_selection: TroopSelection
 
-const TroopDataScript = preload("res://Scripts/TroopData.gd")
+const TroopDataScript = preload("res://Scripts/Divisions/TroopData.gd")
 
 
 func _process(delta: float) -> void:
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 ## TroopManager.gd
 
 
-func _update_moving_troop(troop: TroopData, _delta: float) -> void:
+func _update_moving_troop(troop: TroopData, delta: float) -> void:
 	# We no longer calculate position here.
 	# We only check if the logical time has expired.
 

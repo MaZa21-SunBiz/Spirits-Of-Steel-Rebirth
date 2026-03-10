@@ -1,5 +1,5 @@
 extends Resource
-class_name CountryData
+# class_name CountryData
 
 signal process_day_complete
 

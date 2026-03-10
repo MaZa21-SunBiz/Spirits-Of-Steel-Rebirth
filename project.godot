@@ -40,9 +40,9 @@ InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
 CountryAIManager="*uid://8a2gs10drptm"
-SceneSwitcher="*uid://d3xe17ngaqbie"
 EventManager="*uid://cyk5vve1r3vr5"
 PlansManager="*uid://2omlok4o48ss"
+SceneSwitcher="*uid://b6nuwg2ue50me"
 
 [debug]
 

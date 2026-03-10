@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name CountryManageUI
+# class_name CountryManageUI
 
 #region --- Theme Configuration ---
 const COLOR_BG_GLASS = Color(0.08, 0.09, 0.11, 0.96)

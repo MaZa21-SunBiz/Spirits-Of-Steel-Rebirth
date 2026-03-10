@@ -7,8 +7,8 @@ class_name Main
 
 func _enter_tree() -> void:
 	GameState.main = self
-	GameState.camera = camera_controller
 
 
 func _ready() -> void:
+	GameState.camera = camera_controller
 	GameState.main.clock.pause()
