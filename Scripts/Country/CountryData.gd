@@ -8,7 +8,6 @@ const BASE_ARMY_COST := 20
 # Important
 var country_name: String
 var is_player: bool = false
-var ai_controller: CountryAI = null
 
 var allowedCountries: Array[String] = []  # Countries allowed to have Troop Presence
 

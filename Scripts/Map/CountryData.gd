@@ -14,6 +14,7 @@ const BASE_ARMY_COST := 20
 var country_name: String
 var country_color: Color
 var is_player: bool = false
+var ai_controller: CountryAI = null
 var is_puppet: bool = false
 var is_exiled: bool = false
 

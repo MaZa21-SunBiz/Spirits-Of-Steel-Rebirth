@@ -225,7 +225,6 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 	if not id_map_image:
 		return 0
 
-	var size = id_map_image.get_size()
 	var x: int
 	var y: int
 	var size: Vector2i = id_map_image.get_size()
@@ -336,6 +335,7 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 	var player_country_name = CountryManager.player_country.country_name
 	var is_player_owned = province_objects[pid].country == player_country_name
+	var is_puppet_owned = province_objects[pid].owner == player_country_name
 
 	if GameState.choosing_deploy_city:
 		if is_player_owned and province_objects[pid].city != "":
@@ -365,11 +365,11 @@ func highlight_country(country_name: String) -> void:
 		return
 
 	var provinces = country_to_provinces.get(country_name, [])
-	var base_color = country_colors.get(country_name, Color.GRAY)
+	var base_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 	var light_color = base_color.lightened(0.2)
 
 	for pid in provinces:
-		_update_lookup(pid, light_color)
+		_update_lookup(pid, light_color, base_color)
 
 	state_color_texture.update(state_color_image)
 
@@ -380,10 +380,10 @@ func restore_country_color(country_name: String) -> void:
 		return
 
 	var provinces = country_to_provinces.get(country_name, [])
-	var original_color = country_colors.get(country_name, Color.GRAY)
+	var original_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
 
 	for pid in provinces:
-		_update_lookup(pid, original_color)
+		_update_lookup(pid, original_color, original_color)
 
 	state_color_texture.update(state_color_image)
 
