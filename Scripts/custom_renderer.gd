@@ -32,9 +32,8 @@ var _last_cam_zoom := Vector2.INF
 
 # --- Lifecycle ---
 func _ready() -> void:
-	z_index = 20  # Keep renderer high
+	z_index = 20 # Keep renderer high
 	_setup_multimesh()
-
 
 func _process(_delta: float) -> void:
 	# Use is_instance_valid in case the map sprite is from the deleted scene
@@ -84,6 +83,7 @@ func rebuild_troops():
 	mm.instance_count = total_instances
 
 	_update_multimesh_buffer()
+
 	queue_redraw()
 
 
@@ -100,7 +100,7 @@ func _setup_multimesh():
 	var mm = MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_2D
 	mm.use_colors = true
-	mm.use_custom_data = true
+	mm.use_custom_data = false # Simplified to avoid data corruption
 
 	var q_mesh = QuadMesh.new()
 	q_mesh.size = Vector2(LAYOUT.box_w + LAYOUT.box_w * 0.15, LAYOUT.box_h + LAYOUT.box_h * 0.15)
@@ -110,7 +110,11 @@ func _setup_multimesh():
 	var mat = ShaderMaterial.new()
 	mat.shader = Shader.new()
 	mat.shader.code = """
-shader_type canvas_item;
+	shader_type canvas_item;
+	void fragment() {
+		float zoom = max(0.4, COLOR.a); // we’ll encode zoom in alpha
+		float tx = 0.05 * zoom;
+		float ty = 0.1 * zoom;
 
 uniform float game_time;
 
@@ -200,8 +204,6 @@ func _write_stack_to_multimesh(
 ) -> int:
 	var mm = troop_multimesh.multimesh
 	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
-	var start_y = (stack.size() - 1) * scaled_offset * 0.5
-	var mm_scale := Vector2(_current_inv_zoom, _current_inv_zoom)
 
 	for i in range(stack.size()):
 		var troop = stack[i]
@@ -211,23 +213,19 @@ func _write_stack_to_multimesh(
 		if troop.country_name == player:
 			col = COLORS.border_selected if selected.has(troop) else COLORS.border_default
 
-		for m in [0]:
-			var final_pos = vertical_pos + Vector2(map_width * m, 0) + map_sprite.position
-			mm.set_instance_transform_2d(idx, Transform2D(0, mm_scale, 0, final_pos))
-			mm.set_instance_color(idx, col)
-			idx += 1
-	return idx
 
 
 func _draw() -> void:
 	if !map_sprite or map_width <= 0:
 		return
-	_draw_path_preview()
-	_draw_active_movements()
-	_draw_selection_box()
+	if !GameState.in_peace_process:
+		_draw_path_preview()
+		_draw_active_movements()
+		_draw_selection_box()
+		_draw_troops()
 	_draw_cities()
-	_draw_troops()
-	draw_battles()
+	if !GameState.in_peace_process:
+		draw_battles()
 
 
 func _draw_troops() -> void:
@@ -286,7 +284,7 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 	var w = LAYOUT.box_w
 	var h = LAYOUT.box_h
 	var hp_h = LAYOUT.hp_bar_h
-	var top_left = Vector2(-w / 2.0, -h / 2.0)
+	var top_left = Vector2(-w * 0.5, -h * 0.5)
 
 	# --- 1. THE MAIN PLATE ---
 	# Solid dark background
@@ -343,10 +341,7 @@ func _group_troops_by_visual_position(troops: Array) -> Dictionary:
 	var g = {}
 	for t in troops:
 		# Get interpolated position if moving, else static position
-		var visual_pos = t.position
-		if t.is_moving:
-			var progress = t.get_meta("progress", 0.0)
-			visual_pos = t.position.lerp(t.target_position, progress)
+		var visual_pos = t.position.lerp(t.target_position, t.get_meta("progress", 0.0)) if t.is_moving else t.position
 
 		if not g.has(visual_pos):
 			g[visual_pos] = []
@@ -373,54 +368,36 @@ func _draw_path_preview() -> void:
 		return
 	var path = TroopManager.troop_selection.right_path
 	for i in range(path.size()):
-		var p = path[i]["map_pos"] + map_sprite.position
-		var col = (
-			COLORS.path_active
-			if i < TroopManager.troop_selection.max_path_length
-			else COLORS.path_inactive
+		draw_circle(
+			path[i]["map_pos"] + map_sprite.position, 
+			1.0, 
+			(
+				COLORS.path_active
+				if i < TroopManager.troop_selection.max_path_length
+				else COLORS.path_inactive
+			)
 		)
-		draw_circle(p, 1.0, col)
 
 
 func _draw_active_movements() -> void:
 	var now = GameState.main.clock.total_game_seconds
 
 	for troop in TroopManager.troops:
-		if not troop.is_moving:
+		if !troop.is_moving:
 			continue
-
 		var start = troop.position + map_sprite.position
 		var end = troop.target_position + map_sprite.position
-
-		if not (_screen_rect.has_point(start) or _screen_rect.has_point(end)):
-			continue
-
-		var start_time = troop.get_meta("start_time", 0.0)
-		var duration = troop.get_meta("duration", 0.0)
-
-		var progress := 1.0
-		if duration > 0.0:
-			progress = clamp((now - start_time) / duration, 0.0, 1.0)
-
-		var current = start.lerp(end, progress)
-
-		# Full planned path (faint)
-		draw_line(start, end, Color(1, 0, 0, 0.2), 1.0)
-
-		# Active traveled portion (bright)
-		draw_line(start, current, COLORS.movement_active, 1.5)
-
+		if _screen_rect.has_point(start) or _screen_rect.has_point(end):
+			draw_line(start, end, Color(1, 0, 0, 0.2), 1.0)
+			draw_line(start, start.lerp(end, troop.get_meta("visual_progress", 0.0)), COLORS.movement_active, 1.5)
 
 func _update_screen_rect():
 	var canvas_xform := get_canvas_transform()
-	var viewport_rect := get_viewport_rect()
 
 	_screen_rect = Rect2(
-		-canvas_xform.origin / canvas_xform.get_scale(),
-		viewport_rect.size / canvas_xform.get_scale()
-	)
-
-	_screen_rect = _screen_rect.grow(200.0)
+		- canvas_xform.origin / canvas_xform.get_scale(),
+		get_viewport_rect().size / canvas_xform.get_scale()
+	).grow(200.0)
 
 
 func _draw_cities() -> void:
@@ -428,50 +405,60 @@ func _draw_cities() -> void:
 		return
 
 	var hovered_pid = MapManager.current_hovered_pid
-	var base_dot_radius := 4.0
-	var base_font_size := 24
-	var s := _current_inv_zoom
+	const base_dot_radius = 4.0
+	const base_font_size = 24
+	const offset = Vector2(10, base_font_size * 0.3)
+
+	var zoom_vec = Vector2(_current_inv_zoom, _current_inv_zoom)
 
 	for city_data in MapManager.all_cities:
 		var pid = city_data[0]
 		var city_name = city_data[1]
 
-		var base_pos: Vector2 = MapManager.province_centers.get(pid, Vector2.ZERO)
+		var base_pos = MapManager.province_centers.get(pid, Vector2.ZERO)
 		if base_pos == Vector2.ZERO:
 			continue
 
-		var world_pos := base_pos + map_sprite.position
-		if not _screen_rect.has_point(world_pos):
-			continue
+		for j in range(-1, 2):
+			var world_pos = base_pos + map_sprite.position + Vector2(map_width * j, 0)
+			if not _screen_rect.has_point(world_pos):
+				continue
 
-		var t := Transform2D(0, Vector2(s, s), 0, world_pos)
-		draw_set_transform_matrix(t)
+			var t := Transform2D(0, zoom_vec, 0, world_pos)
+			draw_set_transform_matrix(t)
 
-		draw_circle(Vector2.ZERO, base_dot_radius, Color.WHITE)
+			draw_circle(Vector2.ZERO, base_dot_radius, Color.WHITE)
 
-		if pid == hovered_pid:
-			var offset := Vector2(10, base_font_size * 0.3)
-
-			draw_string_outline(
-				_font,
-				offset,
-				city_name,
-				HORIZONTAL_ALIGNMENT_LEFT,
-				-1,
-				base_font_size,
-				4,
-				Color(0, 0, 0, 0.8)
-			)
-
-			draw_string(
-				_font, offset, city_name, HORIZONTAL_ALIGNMENT_LEFT, -1, base_font_size, Color.WHITE
-			)
+			if pid == hovered_pid:
+				draw_string_outline(
+					_font,
+					offset,
+					city_name,
+					HORIZONTAL_ALIGNMENT_LEFT,
+					-1,
+					base_font_size,
+					4,
+					Color(0, 0, 0, 0.8)
+				)
+				draw_string(
+					_font,
+					offset,
+					city_name,
+					HORIZONTAL_ALIGNMENT_LEFT,
+					-1,
+					base_font_size,
+					Color.WHITE
+				)
 
 	draw_set_transform_matrix(Transform2D())
 
 
 func draw_battles():
-	var player_country = CountryManager.player_country.country_name
+	var player_country = CountryManager.player_country.country_name if !GameState.selectingCountry else ""
+	const base_radius = 1.0
+	const ring_radius = 1.2
+	const line_width = 0.5
+	const start_angle = - PI * 0.5 # Top
 
 	for battle in WarManager.active_battles:
 		if not battle:
@@ -498,18 +485,9 @@ func draw_battles():
 			display_ratio = progress
 
 		# 2. Your Exact Sizes
-		var base_radius = 1.0
-		var ring_radius = 1.2
-		var line_width = 0.5
-		var start_angle = -PI / 2  # Top
 
 		# 3. Colors
-		var arc_color = Color.GOLD
-		if is_player_involved:
-			# High-saturation colors work better at tiny scales
-			arc_color = Color(0.0, 1.0, 0.0) if is_winning else Color(1.0, 0.0, 0.0)
-		else:
-			arc_color = Color(0.8, 0.5, 0.0)
+		var arc_color = (Color(0.0, 1.0, 0.0) if is_winning else Color(1.0, 0.0, 0.0)) if is_player_involved else Color(0.8, 0.5, 0.0)
 
 		# 4. Draw Background/Outline (Crucial for tiny icons)
 		# We draw a slightly larger black circle first so the icon "pops"

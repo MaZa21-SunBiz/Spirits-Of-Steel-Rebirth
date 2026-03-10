@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://capwjsyfscqfp"
+path="res://.godot/imported/Tchaikovsky - Dance of the Sugar Plum Fairy (The Nutcracker Suite) [sdduPpnqre4].mp3-78a63628c7d10433b041ceaee5e639dc.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/Tchaikovsky - Dance of the Sugar Plum Fairy (The Nutcracker Suite) [sdduPpnqre4].mp3"
+dest_files=["res://.godot/imported/Tchaikovsky - Dance of the Sugar Plum Fairy (The Nutcracker Suite) [sdduPpnqre4].mp3-78a63628c7d10433b041ceaee5e639dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

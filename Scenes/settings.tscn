@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://i3xg4d4cpxol"]
+
+[ext_resource type="Script" uid="uid://48v434jart4x" path="res://Scenes/settings.gd" id="1_aaqfp"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="1_i44u3"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_lhmql"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_lhmql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2dne"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aaqfp"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="Node2D" type="Node2D" unique_id=20089709]
+
+[node name="Settings" type="Control" parent="." unique_id=892394724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aaqfp")
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="Settings" unique_id=1651165939]
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 428.0
+offset_top = 191.0
+offset_right = 779.0
+offset_bottom = 446.0
+theme = ExtResource("2_lhmql")
+tab_alignment = 1
+current_tab = 2
+drag_to_rearrange_enabled = true
+
+[node name="Saves" type="PanelContainer" parent="Settings/TabContainer" unique_id=1381486399]
+visible = false
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_j2dne")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Saves" unique_id=38392474]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Saves/VBoxContainer" unique_id=136456174]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=1030447375]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+placeholder_text = "Search"
+
+[node name="SaveGame" type="Button" parent="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=530483480]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme = ExtResource("2_lhmql")
+text = "Save"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Settings/TabContainer/Saves/VBoxContainer" unique_id=1129944237]
+layout_mode = 2
+
+[node name="savelist" type="VBoxContainer" parent="Settings/TabContainer/Saves/VBoxContainer/ScrollContainer" unique_id=1708991261]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Audio" type="PanelContainer" parent="Settings/TabContainer" unique_id=750041884]
+visible = false
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio" unique_id=751349823]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=339645836]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1620347858]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1831225387]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=2026330459]
+clip_contents = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=160017134]
+material = ExtResource("1_lhmql")
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 0.5
+step = 0.01
+value = 0.1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1221755667]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2" unique_id=1746973344]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1913130775]
+clip_contents = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=369707613]
+material = ExtResource("1_lhmql")
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 0.5
+step = 0.01
+value = 0.1
+
+[node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=659766638]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Settings/TabContainer/Graphics" unique_id=1165669600]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Graphics/ScrollContainer" unique_id=1767833482]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer" unique_id=363933149]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1719360911]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Scan Lines"
+
+[node name="Label2" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=163635902]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Vignette Lower"
+
+[node name="Label3" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=232210971]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Vignette Upper"
+
+[node name="Label9" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1696087471]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "DayNight Contrast"
+
+[node name="Label10" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=471896850]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "DayNight Smooth"
+
+[node name="Label4" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=850260639]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Map Effects"
+
+[node name="Label5" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=372239059]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Province Borders"
+
+[node name="Label6" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=528680104]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "UI Highlights"
+
+[node name="Label7" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=1289333577]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "UI Shadow"
+
+[node name="Label8" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer" unique_id=43910900]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "UI Dirt"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer" unique_id=181683716]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 13
+
+[node name="HSlider2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=719313660]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 0.5
+step = 0.01
+
+[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=2004516307]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="HSlider3" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=915995424]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 4.0
+step = 0.01
+
+[node name="HSlider9" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=1797230289]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 0.4
+step = 0.01
+
+[node name="HSlider4" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=501460201]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 0.5
+step = 0.01
+
+[node name="HSlider10" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=1431056582]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+value = 1.0
+
+[node name="HSlider5" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=964149096]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="HSlider6" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=313223729]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+min_value = 0.2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="HSlider7" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=341002217]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="HSlider8" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2" unique_id=1917439108]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Exit" type="Button" parent="Settings" unique_id=1103568460]
+material = ExtResource("1_lhmql")
+layout_mode = 0
+offset_left = 436.0
+offset_top = 446.0
+offset_right = 771.0
+offset_bottom = 478.0
+theme = ExtResource("2_lhmql")
+text = "Save Settings"
+
+[connection signal="pressed" from="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer/SaveGame" to="Settings" method="_on_save_game_pressed"]
+[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/HSlider" to="Settings" method="_on_sfx_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/HSlider" to="Settings" method="_on_music_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Settings" method="_on_scanlines_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider" to="Settings" method="_on_vignette_lower_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider3" to="Settings" method="_on_vignette_upper_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider9" to="Settings" method="_on_daynight_contrast_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider4" to="Settings" method="_on_daynight_smoothness_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider10" to="Settings" method="_on_map_effects_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider5" to="Settings" method="_on_province_borders_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider6" to="Settings" method="_on_ui_upper_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider7" to="Settings" method="_on_ui_lower_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/HBoxContainer/VBoxContainer2/HSlider8" to="Settings" method="_on_ui_dirt_changed"]
+[connection signal="pressed" from="Settings/Exit" to="Settings" method="save_settings"]

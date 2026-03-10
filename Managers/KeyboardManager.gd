@@ -1,21 +1,35 @@
 extends Node
 
 # Use the same names as your MapManager functions for clarity
+<<<<<<< HEAD
 var current_view = MapManager.MapMode.POLITICAL
+=======
+enum MapView { COUNTRIES, POPULATION, INFRASTRUCTURE, GDP, ETHNICITY, FACTION }
+var current_view = MapView.COUNTRIES
+>>>>>>> origin/SoiSauce
+
+var settings = null
 
 signal toggle_menu
 
 var _debounce := false
 
+func OnWorldLoad() -> void:
+	settings = get_tree().root.find_child("Settings", true, false)
 
 func _process(_delta: float) -> void:
 	if Console.is_visible() or !SceneSwitcher.is_world_active():
 		return
 	if Input.is_action_just_pressed("deselect_troops"):
-		if !TroopManager.troop_selection.selected_troops.is_empty():
-			TroopManager.troop_selection.deselect_all()
-		else:
-			get_tree().root.find_child("Menu", true, false).toggle_menu()
+		match SceneSwitcher._current_type:
+			SceneSwitcher.Type.WORLD:
+				if !TroopManager.troop_selection.selected_troops.is_empty():
+					TroopManager.troop_selection.deselect_all()
+				elif GameState.game_ui.is_open:
+					MapManager.close_sidemenu.emit()
+				else:
+					# get_tree().root.find_child("Menu", true, false).toggle_menu()
+					settings.visible = !settings.visible
 
 	if Input.is_action_just_pressed("open_menu"):
 		if not _debounce:
@@ -42,5 +56,38 @@ func _process(_delta: float) -> void:
 
 
 func _cycle_map_mode() -> void:
+<<<<<<< HEAD
 	current_view = (current_view + 1) % MapManager.MapMode.size() as MapManager.MapMode
 	MapManager.update_map_view(current_view)
+=======
+	match current_view:
+		MapView.COUNTRIES:
+			current_view = MapView.POPULATION
+			MapManager.show_population_map()
+			print("Map Mode: Population")
+
+		MapView.POPULATION:
+			current_view = MapView.INFRASTRUCTURE
+			MapManager.ShowInfrastructureMap()
+			print("Map Mode: Infrastructure")
+
+		MapView.INFRASTRUCTURE:
+			current_view = MapView.GDP
+			MapManager.show_gdp_map()
+			print("Map Mode: GDP")
+			
+		MapView.GDP:
+			current_view = MapView.ETHNICITY
+			MapManager.show_ethnic_map()
+			print("Map Mode: Ethnicity")
+
+		MapView.ETHNICITY:
+			current_view = MapView.FACTION
+			MapManager.show_faction_map()
+			print("Map Mode: Factions")
+
+		MapView.FACTION:
+			current_view = MapView.COUNTRIES
+			MapManager.show_countries_map()
+			print("Map Mode: Countries")
+>>>>>>> origin/SoiSauce

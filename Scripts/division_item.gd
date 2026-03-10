@@ -3,12 +3,12 @@ extends Control
 signal clicked(card_node, associated_data)
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var texture_rect: TextureRect = $ColorRect/TextureRect
-@onready var progress_bar: ProgressBar = $ColorRect/ProgressBar
-@onready var label_division: Label = $ColorRect/label_division
-@onready var label_attack: Label = $ColorRect/label_attack
-@onready var label_defense: Label = $ColorRect/label_defense
-@onready var label_experience: Label = $ColorRect/label_experience
+@onready var texture_rect: TextureRect = $ColorRect/VBoxContainer/HBoxContainer2/TextureRect
+@onready var progress_bar: ProgressBar = $ColorRect/VBoxContainer/HBoxContainer/ProgressBar
+@onready var label_division: Label = $ColorRect/VBoxContainer/HBoxContainer2/label_division
+@onready var label_attack: Label = $ColorRect/VBoxContainer/HBoxContainer2/label_attack
+@onready var label_defense: Label = $ColorRect/VBoxContainer/HBoxContainer/label_defense
+@onready var label_experience: Label = $ColorRect/VBoxContainer/HBoxContainer/label_experience
 
 var data_payload  # Can be DivisionData OR Array[DivisionData]
 var is_selected: bool = false

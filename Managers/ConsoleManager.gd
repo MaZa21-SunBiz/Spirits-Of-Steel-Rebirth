@@ -1,13 +1,27 @@
 extends Node
 
+func m_GatesOfHell() -> void:
+	var sizer: int = CountryManager.countries.keys().size()
+	for countryA in range(sizer):
+		for countryB in range(countryA, sizer):
+			m_StartWarSilent(CountryManager.countries.keys()[countryA], CountryManager.countries.keys()[countryB])
 
+func m_Editor() -> void:
+	print("Current Scene: %d" % SceneSwitcher._current_type)
+	if SceneSwitcher._current_type == SceneSwitcher.Type.WORLD:
+		SceneSwitcher.switch_to(SceneSwitcher.Type.EDITOR)
+	elif SceneSwitcher._current_type == SceneSwitcher.Type.EDITOR:
+		SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD)
+	
 func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
+	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
 
+	Console.add_command("gates_of_hell", m_GatesOfHell, [], 0, "Start armageddon")
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
-	Console.add_command("annex", _annex, ["country_name"], 1, "Annex Country for Player")
+	Console.add_command("annex", _annex, ["annexer", "annexee"], 2, "Annex Country for Player")
 	Console.add_command("pp", _add_pp, ["amount"], 1, "Add Poltical power to player")
 	Console.add_command("manpower", _add_manpower, ["amount"], 1, "Add Manpower to Country")
 	Console.add_command(
@@ -16,8 +30,9 @@ func _ready() -> void:
 	Console.add_command(
 		"peace_treaty", _peace_treaty, ["country"], 1, "Spawns a peace treaty with country"
 	)
+	# TODO: Rework this.
 	Console.add_command(
-		"release", _release_country, ["country"], 1, "Releases a country based on all its cores"
+		"release", _release_country, ["country"], 1, "Releases a country based on all its claims; the country must exist, to create a new country, look to instantiate_country"
 	)
 	Console.add_command(
 		"releasables",
@@ -28,6 +43,11 @@ func _ready() -> void:
 	)
 
 	Console.add_command("switch", switch_scene, ["scene"], 1, "Switches scene")
+
+	Console.add_command(
+		"cta", _call_to_arms, ["caller", "target"], 2, "Call a country to arms"
+	)
+	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 
 
 func switch_scene(scene_name: String) -> void:
@@ -44,7 +64,7 @@ func switch_scene(scene_name: String) -> void:
 			print(
 				"Console Error: Unknown scene '%s'. Try 'world', 'menu', or 'editor'." % scene_name
 			)
-
+	
 
 func _show_releasables_country(country):
 	var releasables = MapManager.get_all_releasables(country)
@@ -52,12 +72,14 @@ func _show_releasables_country(country):
 
 
 func _release_country(country):
-	MapManager.release_country(country)
+	MapManager.ReleaseCountry(country)
 
 
 func _add_pp(amount):
 	CountryManager.player_country.political_power += float(amount)
 
+func _set_ideology(x, y):
+	CountryManager.player_country.ideology = Vector2(int(x), int(y))
 
 func _add_manpower(amount):
 	CountryManager.player_country.manpower += int(amount)
@@ -71,12 +93,12 @@ func _peace_treaty(country):
 	WarManager._handle_total_collapse(country, CountryManager.player_country.country_name)
 
 
-func _annex(country_name: String) -> void:
-	if CountryManager.countries.has(country_name):
-		MapManager.annex_country(country_name)
+func _annex(annexer: String, annexee) -> void:
+	if CountryManager.countries.has(annexee):
+		MapManager.annex_country(annexer, annexee)
 		return
 
-	Console.print_line("Unknown country: " + country_name)
+	Console.print_line("Unknown country: " + annexee)
 
 
 func _play_country(country_name: String) -> void:
@@ -99,3 +121,29 @@ func _start_war(country_name1: String, country_name2: String) -> void:
 		Console.print_line("Unknown country: " + country_name1)
 	if not country2:
 		Console.print_line("Unknown country: " + country_name2)
+
+func m_StartWarSilent(country_name1: String, country_name2: String) -> void:
+	var country1 := CountryManager.get_country(country_name1)
+	var country2 := CountryManager.get_country(country_name2)
+
+	if country1 and country2:
+		WarManager.declare_war(country1, country2, true)
+		return
+
+	if not country1:
+		Console.print_line("Unknown country: " + country_name1)
+	if not country2:
+		Console.print_line("Unknown country: " + country_name2)
+
+func _call_to_arms(caller_name: String, target_name: String) -> void:
+	var caller := CountryManager.get_country(caller_name)
+	var target := CountryManager.get_country(target_name)
+
+	if caller and target:
+		WarManager.call_to_arms(caller, target)
+		return
+
+	if not caller:
+		Console.print_line("Unknown country: " + caller_name)
+	if not target:
+		Console.print_line("Unknown country: " + target_name)

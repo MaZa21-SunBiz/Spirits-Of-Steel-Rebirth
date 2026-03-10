@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://ct6nbkh50os7e"]
+
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_sj0rh"]
+[ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scripts/UI/ManageCountryUI.gd" id="1_xesbs"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="2_xesbs"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_vvlv7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7hts"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="CountryManageUI" type="CanvasLayer" unique_id=570987311]
+script = ExtResource("1_xesbs")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=542448780]
+material = ExtResource("1_sj0rh")
+offset_left = 340.0
+offset_top = 108.0
+offset_right = 908.0
+offset_bottom = 532.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7hts")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=915670831]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=36553791]
+layout_mode = 2
+
+[node name="nation_flag" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=341438356]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+texture = ExtResource("2_xesbs")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1117245167]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "country1"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=893706572]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_vvlv7")
+text = "Dismiss"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1281740733]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=318015081]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=810723979]
+layout_mode = 2
+
+[node name="EconomicStatus" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=937801178]
+layout_mode = 2
+text = "Economic Status"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=249090007]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=225936235]
+layout_mode = 2
+text = "Treasury:
+Base Income:
+Factories:
+Army Upkeep:"
+
+[node name="Values" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1707953451]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0
+0
+0
+0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1218174066]
+layout_mode = 2
+
+[node name="ArmyLogistics" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=996787207]
+layout_mode = 2
+text = "Army Logistics"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer" unique_id=1862816020]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=545560069]
+layout_mode = 2
+text = "Active Personnel:
+Active Infantry:
+Active Armor:
+Active Artillery:"
+
+[node name="Value" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=119911072]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0
+0
+0
+0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=2087893247]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=873224743]
+layout_mode = 2
+
+[node name="MilitaryTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1041728115]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vvlv7")
+text = "MILITARY"
+
+[node name="EconomicTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=593127409]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vvlv7")
+text = "ECONOMY"
+
+[node name="CountryTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1115534465]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vvlv7")
+text = "COUNTRY"
+
+[node name="ReleasableTab" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1004354260]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vvlv7")
+text = "RELEASABLE"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=563426380]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ScrollContainer" unique_id=1103937466]
+material = ExtResource("1_sj0rh")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

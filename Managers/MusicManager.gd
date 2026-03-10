@@ -22,8 +22,8 @@ enum SFX {
 
 enum MUSIC { MAIN_THEME, BATTLE_THEME }
 
-const gameMusic = "res://assets/music/gameMusic"
-const warMusic = "res://assets/music/warMusic"
+const default_music_path = "res://assets/music/"
+const custom_music_path = "res://radios/"
 
 var sfx_map = {
 	SFX.TROOP_MOVE: preload("res://assets/snd/moveDivSound.mp3"),
@@ -50,14 +50,27 @@ var sfx_volume_map = {
 	SFX.POPUP: 0.5,
 }
 
-var music_map = {MUSIC.MAIN_THEME: [], MUSIC.BATTLE_THEME: []}
+var music_map = {MUSIC.MAIN_THEME: {}, MUSIC.BATTLE_THEME: {}}
+
+var radios = ["default"]
 
 var music_volume_map = {MUSIC.MAIN_THEME: 0.4, MUSIC.BATTLE_THEME: 0.5}
 
 
 func _ready():
-	_load_music_folder(gameMusic, MUSIC.MAIN_THEME)
-	_load_music_folder(warMusic, MUSIC.BATTLE_THEME)
+	for radio in DirAccess.open(default_music_path).get_directories():
+		if radio != "superevents":
+			music_map[MUSIC.MAIN_THEME][radio] = []
+			music_map[MUSIC.BATTLE_THEME][radio] = []
+			_load_music_folder(default_music_path, radio, MUSIC.MAIN_THEME)
+			_load_music_folder(default_music_path, radio, MUSIC.BATTLE_THEME)
+
+	for radio in DirAccess.open(custom_music_path).get_directories():
+		if radio != "superevents":
+			music_map[MUSIC.MAIN_THEME][radio] = []
+			music_map[MUSIC.BATTLE_THEME][radio] = []
+			_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
+			_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
 
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"
@@ -72,36 +85,94 @@ func _ready():
 
 	play_music(MUSIC.MAIN_THEME)
 
-
-func _load_music_folder(path: String, track_enum: int):
+func _load_music_folder(path: String, radio: String, track_enum: int):
+	path += radio
+	match track_enum:
+		MUSIC.MAIN_THEME:
+			path += "/gameMusic"
+		MUSIC.BATTLE_THEME:
+			path += "/warMusic"
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and not file_name.ends_with(".import"):
-				var full_path = path + "/" + file_name
-				var stream = load(full_path)
+				var stream = load(path + "/" + file_name)
 				if stream:
-					music_map[track_enum].append(stream)
+					music_map[track_enum][radio].append(stream)
 			file_name = dir.get_next()
 
 
+var last_track_type: int = MUSIC.MAIN_THEME
+var locking_custom_track: bool = false
+
 func play_music(track: int):
+	# If a custom track is playing and locked, ignore normal music requests
+	if locking_custom_track:
+		# Optionally, we could store the requested track as the "next" track to resume to
+		if track in [MUSIC.MAIN_THEME, MUSIC.BATTLE_THEME]:
+			last_track_type = track
+		return
+
 	if not music_map.has(track) or music_map[track].is_empty():
 		return
 
 	if current_track_type == track and music_player.playing:
 		return
 
+	# Store as last track if it's a valid standard track
+	if track in [MUSIC.MAIN_THEME, MUSIC.BATTLE_THEME]:
+		last_track_type = track
+
 	current_track_type = track
 
-	music_player.stream = music_map[track].pick_random()
+	var songs = []
+	for radio in radios:
+		songs.append_array(music_map[track][radio])
+	
+	if songs.is_empty():
+		return
+		
+	# print(radios)
+	# print(songs)
+	var song = songs.pick_random()
+	if GameState.game_ui and GameState.game_ui.now_playing:
+		GameState.game_ui.now_playing.text = song.resource_path.get_file()
+	music_player.stream = song
 	music_player.volume_db = linear_to_db(music_volume_map.get(track, 1.0))
 	music_player.play()
 
 
+func play_custom_file(full_path: String):
+	if not FileAccess.file_exists(full_path) and not ResourceLoader.exists(full_path):
+		push_warning("MusicManager: Custom file not found: " + full_path)
+		return
+
+	# Stop standard shuffle
+	current_track_type = -1
+	
+	var stream = load(full_path)
+	if stream:
+		locking_custom_track = true
+		music_player.stream = stream
+		music_player.volume_db = linear_to_db(1.0) # Default volume for events
+		music_player.play()
+
+
+func resume_last_track():
+	locking_custom_track = false # Ensure lock is released
+	if last_track_type != -1:
+		play_music(last_track_type)
+	else:
+		play_music(MUSIC.MAIN_THEME)
+
+
 func _on_music_finished():
+	if locking_custom_track:
+		resume_last_track()
+		return
+		
 	var temp_type = current_track_type
 	current_track_type = -1
 	play_music(temp_type)

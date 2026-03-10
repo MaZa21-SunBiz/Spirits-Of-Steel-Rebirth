@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://w74b3hnlyyxo"]
+
+[ext_resource type="Script" uid="uid://b1l4f6uhouw0j" path="res://Scripts/Events/super_event_popup.gd" id="1_uj0pn"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_jk02u"]
+[ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="2_u72vx"]
+[ext_resource type="FontFile" uid="uid://cee8mbnpx3w3h" path="res://font/arial.TTF" id="3_2njta"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="4_ptv18"]
+
+[node name="Alert" type="Control" unique_id=118916730]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uj0pn")
+
+[node name="Panel" type="ColorRect" parent="." unique_id=2056094251]
+material = ExtResource("2_jk02u")
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 252.0
+color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+
+[node name="background" type="TextureRect" parent="Panel" unique_id=197968334]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -408.0
+offset_top = 14.0
+offset_right = -12.0
+offset_bottom = 212.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+texture = ExtResource("2_u72vx")
+expand_mode = 1
+
+[node name="description" type="Label" parent="Panel" unique_id=1460318143]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = 16.0
+offset_right = 198.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_2njta")
+theme_override_font_sizes/font_size = 16
+text = "War"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="." unique_id=1096516728]
+material = ExtResource("2_jk02u")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 155.0
+offset_top = 236.0
+offset_right = 265.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_ptv18")
+text = "Ok"

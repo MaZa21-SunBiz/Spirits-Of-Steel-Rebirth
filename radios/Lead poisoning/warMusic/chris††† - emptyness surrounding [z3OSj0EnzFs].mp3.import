@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dicvo7yuw051v"
+path="res://.godot/imported/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3-1a1fc84a3d97e9286fae3bc44aad6f46.mp3str"
+
+[deps]
+
+source_file="res://radios/Lead poisoning/warMusic/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3"
+dest_files=["res://.godot/imported/chris††† - emptyness surrounding [z3OSj0EnzFs].mp3-1a1fc84a3d97e9286fae3bc44aad6f46.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

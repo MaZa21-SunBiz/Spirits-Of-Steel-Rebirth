@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tepev6u6wa6x"
+path="res://.godot/imported/[TNO] ＂Мы анархисты＂ Anthem of the Bratsk communal vanguard (All-Russian Liberation Vanguard) [jtMbD-XBmxc].mp3-62431a0598cacded014cd1be1200877f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/[TNO] ＂Мы анархисты＂ Anthem of the Bratsk communal vanguard (All-Russian Liberation Vanguard) [jtMbD-XBmxc].mp3"
+dest_files=["res://.godot/imported/[TNO] ＂Мы анархисты＂ Anthem of the Bratsk communal vanguard (All-Russian Liberation Vanguard) [jtMbD-XBmxc].mp3-62431a0598cacded014cd1be1200877f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

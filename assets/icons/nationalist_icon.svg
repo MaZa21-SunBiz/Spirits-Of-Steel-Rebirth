@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="iron-cross-bae334.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.0078125"
+     inkscape:cx="255.75097"
+     inkscape:cy="255.75097"
+     inkscape:window-width="3200"
+     inkscape:window-height="1800"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     fill="currentColor"
+     d="M486 371.316V142.75a399.06 399.06 0 0 1-185.685 69.28a399.14 399.14 0 0 1 70.973-186.002H142.72A399.06 399.06 0 0 1 212 211.714A399.14 399.14 0 0 1 26 140.74v228.57a399.06 399.06 0 0 1 185.685-69.28a399.14 399.14 0 0 1-70.973 185.944H369.28A399.06 399.06 0 0 1 300 300.342a399.14 399.14 0 0 1 186 70.974"
+     id="path1"
+     style="fill:#ffffff" />
+</svg>

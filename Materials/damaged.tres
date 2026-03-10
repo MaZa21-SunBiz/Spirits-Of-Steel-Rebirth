@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://btordm7082cxn"]
+
+[ext_resource type="Shader" uid="uid://dlydt51o072x8" path="res://shaders/damage.gdshader" id="1_5kvwk"]
+
+[sub_resource type="Gradient" id="Gradient_lpwmk"]
+offsets = PackedFloat32Array(0, 0.99630994, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.9618644, 0.9618644, 0.9618644, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lpwmk"]
+noise_type = 0
+fractal_gain = 0.905
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lpwmk"]
+width = 3840
+height = 2160
+noise = SubResource("FastNoiseLite_lpwmk")
+color_ramp = SubResource("Gradient_lpwmk")
+
+[resource]
+shader = ExtResource("1_5kvwk")
+shader_parameter/NOISE_PATTERN = SubResource("NoiseTexture2D_lpwmk")
+shader_parameter/upper = 0.865
+shader_parameter/lower = 0.115
+shader_parameter/dirt = 0.355
+shader_parameter/color = Vector3(0, 0, 0)

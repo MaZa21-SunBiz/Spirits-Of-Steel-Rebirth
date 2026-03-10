@@ -1,7 +1,33 @@
+<<<<<<< HEAD
 [gd_scene format=3 uid="uid://b01800wvm674n"]
 
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/main_menu.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_logo"]
+=======
+[gd_scene format=3 uid="uid://ef1nlqkm5anw"]
+
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_opfnp"]
+[ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="2_vtepg"]
+[ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
+[ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
+[ext_resource type="Shader" path="res://shaders/goober.gdshader" id="5_8dnnj"]
+[ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
+[ext_resource type="Shader" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
+[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
+[ext_resource type="Script" path="res://Scenes/starts.gd" id="14_8dnnj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
+shader = ExtResource("5_8dnnj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
+shader = ExtResource("6_m3bi6")
+>>>>>>> origin/SoiSauce
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Sidebar"]
 bg_color = Color(0.0431373, 0.0509804, 0.0705882, 0.784314)
@@ -18,6 +44,7 @@ border_color = Color(0.811765, 0.658824, 0.270588, 1)
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 
+<<<<<<< HEAD
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BtnHover"]
 content_margin_left = 22.0
 bg_color = Color(0.180392, 0.207843, 0.270588, 1)
@@ -38,6 +65,10 @@ corner_radius_bottom_right = 3
 script = ExtResource("1_script")
 
 [node name="ScreenTint" type="ColorRect" parent="." unique_id=2125947278]
+=======
+[node name="MainMenu" type="Control" unique_id=945632142]
+layout_mode = 3
+>>>>>>> origin/SoiSauce
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,6 +77,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.156863)
 
+<<<<<<< HEAD
 [node name="Sidebar" type="Panel" parent="." unique_id=2024933877]
 custom_minimum_size = Vector2(380, 0)
 anchors_preset = 9
@@ -54,6 +86,9 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_Sidebar")
 
 [node name="MarginContainer" type="MarginContainer" parent="Sidebar" unique_id=1117460472]
+=======
+[node name="Background" type="TextureRect" parent="." unique_id=120285262]
+>>>>>>> origin/SoiSauce
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,11 +111,130 @@ texture = ExtResource("2_logo")
 expand_mode = 1
 stretch_mode = 5
 
+<<<<<<< HEAD
 [node name="TitleGroup" type="VBoxContainer" parent="Sidebar/MarginContainer/Content" unique_id=1043312448]
+=======
+[node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_vtepg")
+USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("2_opfnp")])
+AvatarImage = NodePath("Avatar")
+
+[node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]
+material = SubResource("ShaderMaterial_vtepg")
+layout_mode = 0
+offset_left = 827.0
+offset_top = 222.0
+offset_right = 1105.4519
+offset_bottom = 419.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+
+[node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 845.00006
+offset_top = 179.0
+offset_right = 1100.0
+offset_bottom = 391.0
+rotation = -0.351973
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+
+[node name="Hand2" type="TextureRect" parent="Butter" unique_id=1333335628]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 986.0
+offset_top = 333.0
+offset_right = 1167.0
+offset_bottom = 459.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Hand3" type="TextureRect" parent="Butter" unique_id=2140408290]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 931.0
+offset_top = 258.0
+offset_right = 1129.0
+offset_bottom = 426.0
+rotation = 1.3656135
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Timer" type="Timer" parent="Butter" unique_id=1343216001]
+process_callback = 0
+wait_time = 20.0
+autostart = true
+
+[node name="Logo" type="TextureRect" parent="." unique_id=110353226]
+layout_mode = 0
+offset_left = 27.5
+offset_top = 30.0
+offset_right = 387.5
+offset_bottom = 390.0
+scale = Vector2(0.4138889, 0.4138889)
+texture = ExtResource("2_opfnp")
+
+[node name="Label2" type="Label" parent="." unique_id=624590657]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 145.0
+offset_right = 751.0
+offset_bottom = 248.0
+scale = Vector2(0.414, 0.414)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_cp0ys")
+theme_override_font_sizes/font_size = 67
+text = "Rebirth"
+
+[node name="Label" type="Label" parent="." unique_id=639883253]
+layout_mode = 0
+offset_left = 109.499985
+offset_top = 73.0
+offset_right = 1257.5
+offset_bottom = 276.0
+scale = Vector2(0.414, 0.414)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_constants/shadow_outline_size = 81
+theme_override_fonts/font = ExtResource("4_yhxw7")
+theme_override_font_sizes/font_size = 161
+text = "Spirits Of Steel"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 59.49994
+offset_top = 210.0
+offset_right = 287.49994
+offset_bottom = 438.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
+script = ExtResource("5_trj04")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=503985164]
+>>>>>>> origin/SoiSauce
 layout_mode = 2
 theme_override_constants/separation = -5
 
+<<<<<<< HEAD
 [node name="TitleLabel" type="Label" parent="Sidebar/MarginContainer/Content/TitleGroup" unique_id=457060405]
+=======
+[node name="New" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1326153105]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+>>>>>>> origin/SoiSauce
 layout_mode = 2
 theme_override_colors/font_color = Color(0.921569, 0.929412, 0.941176, 1)
 theme_override_font_sizes/font_size = 26
@@ -88,7 +242,13 @@ text = "SPIRITS OF STEEL"
 horizontal_alignment = 1
 uppercase = true
 
+<<<<<<< HEAD
 [node name="SubtitleLabel" type="Label" parent="Sidebar/MarginContainer/Content/TitleGroup" unique_id=822952760]
+=======
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2088481950]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+>>>>>>> origin/SoiSauce
 layout_mode = 2
 theme_override_colors/font_color = Color(0.811765, 0.658824, 0.270588, 1)
 theme_override_font_sizes/font_size = 18
@@ -96,15 +256,28 @@ text = "REBIRTH"
 horizontal_alignment = 1
 uppercase = true
 
+<<<<<<< HEAD
 [node name="HSeparator" type="HSeparator" parent="Sidebar/MarginContainer/Content" unique_id=803992632]
+=======
+[node name="Credits" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1433871763]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+>>>>>>> origin/SoiSauce
 layout_mode = 2
 theme_override_constants/separation = 25
 
+<<<<<<< HEAD
 [node name="MenuButtons" type="VBoxContainer" parent="Sidebar/MarginContainer/Content" unique_id=480493880]
 unique_name_in_owner = true
+=======
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=85919368]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+>>>>>>> origin/SoiSauce
 layout_mode = 2
 theme_override_constants/separation = 10
 
+<<<<<<< HEAD
 [node name="Continue" type="Button" parent="Sidebar/MarginContainer/Content/MenuButtons" unique_id=21356185]
 unique_name_in_owner = true
 visible = false
@@ -168,3 +341,116 @@ theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_font_sizes/font_size = 12
 text = "Made by Supremity"
 horizontal_alignment = 1
+=======
+[node name="Credits" type="Control" parent="." unique_id=1558337124]
+visible = false
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Credits" unique_id=1395319438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Credits" unique_id=585752186]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -100.5
+offset_right = 164.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/PanelContainer" unique_id=289431072]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="Credits/PanelContainer/VBoxContainer" unique_id=771123924]
+texture_filter = 2
+use_parent_material = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_trj04")
+text = "Z21
+CallMePol
+Soilad
+Sockmit
+EsatBoucaud icon-sets
+Rosseau
+Ariect Von don Koppan Finchendenstein II
+The spirit of GavGrub"
+
+[node name="Exit" type="Button" parent="Credits/PanelContainer/VBoxContainer" unique_id=1733367604]
+texture_filter = 2
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Thanks y'all"
+
+[node name="Starts" type="Control" parent="." unique_id=65741064]
+visible = false
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchor_left = 0.33950615
+anchor_top = 0.33950618
+anchor_right = 0.66049385
+anchor_bottom = 0.66049385
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_8dnnj")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Starts" unique_id=1804048672]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -100.5
+offset_right = 164.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Starts/PanelContainer2" unique_id=356775520]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=2040824027]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
+visible = false
+
+[connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer" method="_on_quit_pressed"]
+[connection signal="pressed" from="Credits/PanelContainer/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]
+>>>>>>> origin/SoiSauce

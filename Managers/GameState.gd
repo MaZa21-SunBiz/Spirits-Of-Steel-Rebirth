@@ -1,6 +1,6 @@
 extends Node
 
-enum IndustryType { DEFAULT = 0, FACTORY = 1, PORT = 2 }
+enum IndustryType { DEFAULT = 0, FACTORY = 1, PORT = 2, INFRASTRUCTURE = 3 }
 
 var current_world: World
 var current_map: MapContainer
@@ -13,6 +13,8 @@ var game_ui: GameUI
 
 var decision_menu_open: bool = false
 var in_peace_process: bool = false
+var lostTerritory: bool = false
+var selectingCountry: bool = true
 
 
 func reset_industry_building():

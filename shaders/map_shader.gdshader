@@ -1,5 +1,14 @@
 shader_type canvas_item;
 
+const float max_dist = 5.0;
+const float increment = 6.28/8.0;
+const vec3 sea = vec3(126, 142, 158)/255.0;
+const vec3 sea_border = vec3(105, 118, 132)/255.0;
+
+const float ratio = 625.0/1275.0;
+const float dist = 0.5/625.0;
+
+
 // --- INPUTS ---
 uniform sampler2D region_id_map : filter_nearest;
 uniform sampler2D type_map : filter_nearest;
@@ -10,6 +19,14 @@ uniform sampler2D ocean_noise : filter_nearest, repeat_enable;
 // ORIGINAL TEXTURE (To show the grid)
 uniform sampler2D original_texture : filter_linear_mipmap;
 uniform vec2 tex_size;
+uniform float lower : hint_range(0.0, 1.0) = 0.5;
+uniform float upper : hint_range(0.0, 4.0) = 1.8;
+uniform float scanlines : hint_range(0.0, 0.5) = 0.05;
+uniform int toggle = 1;
+uniform float contrast : hint_range(0.0, 0.5) = 0.05;
+uniform float smoothness : hint_range(0.0, 1.0) = 0.05;
+
+
 
 // --- COLORS ---
 // Shallow/deep don't exist just named that way
@@ -27,7 +44,7 @@ uniform float sea_pixel_size = 2.0;       // 1 = native pixels, 2–4 = chunkier
 uniform float sea_height_steps = 6.0;    // number of discrete wave levels
 uniform vec2 ocean_offset;
 // --- BORDER SETTINGS (From Old Version) ---
-uniform float internal_border_darkness : hint_range(0.0, 1.0) = 0.2;
+uniform float internal_border_darkness : hint_range(0.0, 1.0) = 0.82;
 
 // 8 constant directions for scanning neighbors
 const vec2 DIRS[8] = vec2[8](
@@ -39,18 +56,13 @@ const vec2 DIRS[8] = vec2[8](
 
 // --- ID HELPERS ---
 int get_id(vec2 uv) {
-    vec2 cuv = clamp(uv, vec2(0.0), vec2(1.0));
-    vec4 c = texture(region_id_map, cuv);
-    int r = int(round(c.r * 255.0));
-    int g = int(round(c.g * 255.0));
-    return r + g * 256;
+    vec4 c = texture(region_id_map, clamp(uv, vec2(0.0), vec2(1.0)));
+    return int(c.b * 255.0) + int(c.g * 255.0 * 256.0) + int(c.r * 255.0 * 256.0 * 256.0);
 }
 
-vec4 get_country_color(int id) {
+vec4 get_country_color(int id, float ev) {
     if (id <= 1) return vec4(0.0);
-    float u = (float(id) + 0.5) / float(textureSize(state_colors, 0).x);
-    vec4 col = texture(state_colors, vec2(u, 0.5));
-    return col; // This will return alpha 0 for sea provinces now
+    return texture(state_colors, vec2((float(id) + 0.5) / float(textureSize(state_colors, 0).x), 0.25 + 0.5 * ev)); // This will return alpha 0 for sea provinces now
 }
 // --- BORDER SCANNING LOGIC ---
 bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color, out bool is_black) {
@@ -78,7 +90,7 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
         // 2. If neighbor is LAND
         if (nid > 1) {
-            vec4 c = get_country_color(nid);
+            vec4 c = get_country_color(nid, 0.0);
             if (!found_color) {
                 reference = c;
                 found_color = true;
@@ -99,33 +111,80 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     return false;
 }
 void fragment() {
-    float p_type = texture(type_map, UV).r;
-    int id = get_id(UV);
-    
-    // 1. If type_map says Sea (0.0), render the animated water
-    if (p_type < 0.5) {
-        vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
-        float h = texture(ocean_noise, grid_uv + ocean_offset).r;
-        h = floor(h * sea_height_steps) / sea_height_steps;
-        vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
-        COLOR = vec4(water, 1.0);
-    } 
-    // 2. If it's Land (type_map 1.0) and a real province
-    else if (id > 1) {
-        COLOR = vec4(get_country_color(id).rgb, 1.0);
-    } 
-    // 3. If it's Land (type_map 1.0) and ID 1 (Border)
-    else {
-        vec4 c_detect = vec4(0.0);
-        bool must_be_black = false;
-        bool decided = detect_border_at_distance(UV, 1.0, c_detect, must_be_black);
-        
-        if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
+	if (toggle == 1) {
+		float p_type = texture(type_map, UV).r;
+		int id = get_id(UV);
+		float black = UV.x * tex_size.x + UV.y * tex_size.y;
 
-        if (decided) {
-            COLOR = must_be_black ? country_border_color : c_detect;
-        } else {
-            COLOR = country_border_color;
-        }
-    }
+		// 1. If type_map says Sea (0.0), render the animated water
+		if (p_type < 0.5) {
+		    vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
+		    float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+5.0*ocean_offset.x))/3.0;
+		    h = floor(h * sea_height_steps) / sea_height_steps;
+		    vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
+		    COLOR = vec4(water, 1.0);
+		} 
+		// 2. If it's Land (type_map 1.0) and a real province
+		else if (id > 1) {
+		    COLOR = vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
+		} 
+		// 3. If it's Land (type_map 1.0) and ID 1 (Border)
+		else {
+		    vec4 c_detect = vec4(0.0);
+		    bool must_be_black = false;
+		    bool decided = detect_border_at_distance(UV, 1.0, c_detect, must_be_black);
+		    
+		    if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
+
+		    if (decided) {
+		        COLOR = must_be_black ? country_border_color : c_detect;
+		    } else {
+		        COLOR = country_border_color;
+		    }
+		}
+
+		// 4. its soilading time
+		//for (float dist=0.0; dist <= max_dist; dist++) {
+			//for (float angle = 0.0; angle<6.28; angle+=increment) {
+				//vec4 color1 = texture(TEXTURE, UV + dist/600.0*vec2(ratio*cos(angle), sin(angle)));
+				//if (COLOR.rgb == vec3(0.0) && color1.rgb != vec3(0.0)) {
+					//COLOR.rgb = color1.rgb;
+					//break;
+				//} else if ((COLOR.rgb != sea && COLOR.rgb != sea_border) && (COLOR.rgb != color1.rgb) && color1.rgb != vec3(0.0)) {
+					//COLOR.rgb += 0.3*(0.4 - vec3(dist/10.0));
+					//break;
+				//}
+			//}
+		//}
+
+		//NOTE(soi): this works better but bcuz of smthng not getting updated the range for this is wacc so clamping it causes puppets to go black
+		//vec2 topvec = vec2(0.0, 1.0);
+		//vec2 leftvec = vec2(ratio, 0.0);
+		//vec4 left = texture(TEXTURE, UV-dist*leftvec);
+		//vec4 right = texture(TEXTURE, UV+dist*leftvec);
+		//vec4 top = texture(TEXTURE, UV-dist*topvec);
+		//vec4 bottom = texture(TEXTURE, UV+dist*topvec);
+		//vec4 clamped = ((top+left+bottom+right)
+					   ////+(top2+left2+bottom2+right2)
+					   //)/(4.0);
+		//clamped /= COLOR;
+		//clamped.a = 1.0;
+		////COLOR.rgb = vec3(clamped.g);
+		//
+		//if (clamped.g <= 0.7) {
+			////COLOR.rgb = (COLOR.rgb + vec3(0.0))/2.0;
+			//COLOR.rgb = vec3(0.0);
+		//}
+	}
+	float vignette = 4.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
+	COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
+	COLOR.rgb *= (1.0+upper)*(vignette)+lower*(1.0-vignette);
+	COLOR.rgb += vec3(
+		contrast/smoothness*
+		clamp(
+			sin(PI*.5*cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
+			-smoothness,
+			smoothness
+		)
+		);
 }

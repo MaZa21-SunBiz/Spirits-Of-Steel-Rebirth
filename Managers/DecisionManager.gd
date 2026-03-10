@@ -1,15 +1,55 @@
 extends Node
 # Autoload Name: DecisionManager
 
-var categories: Dictionary = {}
-var active_decisions: Dictionary = {}  # { "Germany": { "eco_1": 5 } }
+# var categories: Dictionary = {}  <-- REMOVED
+var default_categories: Dictionary = {}
+var country_decisions_map: Dictionary = {} # { "China": { "Economy": [...] } }
+
+var active_decisions: Dictionary = {} # { "Germany": { "eco_1": 5 } }
 var ui_overlay = null
 
 
 func _ready():
-	var file = FileAccess.get_file_as_string("res://decisions.json")
-	if file:
-		categories = JSON.parse_string(file).get("categories", {})
+	_load_decisions("res://decisions/")
+
+
+func load_decisions_from_path(base_path: String):
+	if not base_path.ends_with("/"):
+		base_path += "/"
+	_load_decisions(base_path)
+
+
+func _load_decisions(base_path: String):
+	# Clear existing data before loading new ones
+	default_categories.clear()
+	country_decisions_map.clear()
+	
+	# 1. Load Default
+	var default_path = base_path + "default.json"
+	if FileAccess.file_exists(default_path):
+		var default_text = FileAccess.get_file_as_string(default_path)
+		if default_text:
+			default_categories = JSON.parse_string(default_text).get("categories", {})
+	
+	# 2. Load Country Specific
+	var dir = DirAccess.open(base_path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir() and file_name.ends_with(".json") and file_name != "default.json":
+				var country_key = file_name.replace(".json", "").to_lower() # e.g. "India.json" -> "india"
+				
+				var content = FileAccess.get_file_as_string(base_path + file_name)
+				var json = JSON.parse_string(content)
+				if json and json.has("categories"):
+					country_decisions_map[country_key] = json["categories"]
+			
+			file_name = dir.get_next()
+
+
+func get_country_categories(country_name: String) -> Dictionary:
+	return country_decisions_map.get(country_name, default_categories)
 
 
 # --- TICKING SYSTEM ---
@@ -30,10 +70,11 @@ func process_country_day(country: CountryData):
 		if country == CountryManager.player_country:
 			# 1. Find the decision data to get the title
 			var decision_title = "Unknown Decision"
+			var country_cats = get_country_categories(country.country_name)
 
 			# Look through all categories to find the matching ID
-			for cat_name in DecisionManager.categories:
-				for decision in DecisionManager.categories[cat_name]:
+			for cat in country_cats.values():
+				for decision in cat:
 					if decision["id"] == key:
 						decision_title = decision["title"]
 						break
@@ -44,12 +85,12 @@ func process_country_day(country: CountryData):
 		tasks.erase(key)
 
 	if ui_overlay and ui_overlay.visible and country.is_player:
-		ui_overlay.refresh_status_only()  # Efficient refresh
+		ui_overlay.refresh_status_only() # Efficient refresh
 
 
 # --- ACTIONS ---
 func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
-	var data = categories[cat][index]
+	var data = get_country_categories(country.country_name)[cat][index]
 	var id = data["id"]
 
 	# 1. NEW: Check if busy with ANY decision
@@ -70,6 +111,9 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 	if country.political_power < data.get("cost_pp", 0):
 		return false
 
+	# 5. Check Cost
+	if data.get("reqs", {}):
+		return InterpreterManager.get_function(data.get("reqs", {}))
 	return true
 
 
@@ -77,7 +121,7 @@ func start_decision(country: CountryData, cat: String, index: int):
 	if not can_take_decision(country, cat, index):
 		return
 
-	var data = categories[cat][index]
+	var data = get_country_categories(country.country_name)[cat][index]
 	country.political_power -= data.get("cost_pp", 0)
 
 	if not active_decisions.has(country.country_name):
@@ -93,28 +137,14 @@ func _finalize_decision(country: CountryData, id: String):
 	country.set_meta("finished_" + id, true)
 
 	# Find the data to get the action (Slow search, but happens rarely)
-	for cat in categories:
-		for node in categories[cat]:
+	for cat in get_country_categories(country.country_name).values():
+		for node in cat:
 			if node["id"] == id:
 				_apply_reward(country, node.get("action", {}))
 				return
 
-
 func _apply_reward(country: CountryData, action: Dictionary):
-	match action.get("type", ""):
-		"increase_hourly_money":
-			country.hourly_money_income += action.get("amount", 0)
-		"increase_manpower":
-			country.manpower += action.get("amount", 0)
-		"increase_daily_pp":
-			country.daily_pp_gain += action.get("amount", 0)
-		"increase_stability":
-			country.stability = min(1.0, country.stability + action.get("amount", 0))
-		"army_level_up":
-			country.army_level += 1
-		"build_factory":
-			country.factories_amount += action.get("amount", 1)
-
+	InterpreterManager.get_function(action, country)
 
 # --- HELPERS ---
 func is_in_progress(country: CountryData, id: String) -> bool:
@@ -130,6 +160,4 @@ func get_days_left(country: CountryData, id: String) -> int:
 
 # Check if the country has ANY active timers
 func is_country_busy(country: CountryData) -> bool:
-	if not active_decisions.has(country.country_name):
-		return false
-	return not active_decisions[country.country_name].is_empty()
+	return not active_decisions.get(country.country_name, []).is_empty()

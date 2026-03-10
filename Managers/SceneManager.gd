@@ -5,29 +5,27 @@ enum Type { MENU, WORLD, EDITOR, SELECT_COUNTRY }
 const SCENE_MAP = {
 	Type.MENU: "res://Scenes/main_menu.tscn",
 	Type.WORLD: "res://Scenes/world.tscn",
-	Type.EDITOR: "res://Scenes/map_editor.tscn",
+	Type.EDITOR: "res://Scenes/MapEditor.tscn",
 	Type.SELECT_COUNTRY: "res://Scenes/select_country.tscn"
 }
 
-var _world_cache: Node = null  # We only care about saving this one
-var _current_type: int = -1
 
+
+var _world_cache: Node = null # We only care about saving this one
+var _current_type: int = -1
 
 func has_active_world() -> bool:
 	return is_instance_valid(_world_cache)
-
-
+	
 func is_world_active() -> bool:
 	return _current_type == Type.WORLD
 
-
 func switch_to(scene_type: Type) -> void:
-	if scene_type == _current_type:
-		return
-
+	if scene_type == _current_type: return
+		
 	var main := get_tree().current_scene
 	var container := main.get_node("CurrentScene")
-
+	
 	# 1. Handle the scene we are LEAVING
 	if container.get_child_count() > 0:
 		var old_scene = container.get_child(0)
@@ -40,7 +38,7 @@ func switch_to(scene_type: Type) -> void:
 
 	# 2. Handle the scene we are ENTERING
 	var next_scene: Node
-
+	
 	if scene_type == Type.WORLD:
 		if _world_cache:
 			next_scene = _world_cache
@@ -55,7 +53,6 @@ func switch_to(scene_type: Type) -> void:
 	if next_scene:
 		container.add_child(next_scene)
 		_current_type = scene_type
-
 
 func _instantiate_by_type(type: Type) -> Node:
 	var path = SCENE_MAP.get(type)

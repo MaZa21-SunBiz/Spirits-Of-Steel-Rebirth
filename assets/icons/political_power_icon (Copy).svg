@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.2"
+   width="48"
+   height="36"
+   viewBox="0 0 48 36"
+   overflow="inherit"
+   id="svg1"
+   sodipodi:docname="political-654f92.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="7.2690577"
+     inkscape:cx="16.577114"
+     inkscape:cy="8.3917342"
+     inkscape:window-width="1494"
+     inkscape:window-height="1097"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M 11.333,16 H 14 v 16 h 4 V 18 h 4 v 14 h 4 V 18 h 4 v 14 h 4 V 16 h 2.666 C 37.402,16 38,15.264 38,14.601 38,14.2 37.779,13.748 37.445,13.53 L 37.447,13.478 37.426,13.441 37.56,13.408 25,6.939 V 5.047 c 2,1.059 3.951,-0.765 7,0.332 V 1.2 C 28.949,0.104 27,1.927 25,0.868 V 0.6 C 25,0.269 24.369,0 24,0 23.631,0 23,0.269 23,0.6 v 6.339 l -12.559,6.456 0.271,0.021 0.288,0.011 v 0.002 c -1,0.218 -0.776,0.77 -0.776,1.171 -10e-4,0.664 0.373,1.4 1.109,1.4 z M 13,33 10,36 H 38 L 35,33 Z M 35,17 v 15 h 0.885 l 0.391,0.553 2.666,2.499 L 39.885,36 H 48 V 17 Z m 6,12 h -3 v -3 h 3 z m 0,-6 h -3 v -3 h 3 z m 4,6 h -2 v -3 h 2 z m 0,-6 h -2 v -3 h 2 z M 12.114,32 H 13 V 17 H 0 v 19 h 8.114 l 0.942,-0.848 2.667,-2.6 z M 5,29 H 3 V 26 H 5 Z M 5,23 H 3 v -3 h 2 z m 5,6 H 7 v -3 h 3 z m 0,-6 H 7 v -3 h 3 z"
+     id="path1"
+     style="fill:#ffffff" />
+</svg>

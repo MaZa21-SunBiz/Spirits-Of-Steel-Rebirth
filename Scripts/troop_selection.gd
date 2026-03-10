@@ -8,7 +8,7 @@ const FLAG_WIDTH_BASE := 24.0
 const FLAG_HEIGHT_BASE := 20.0
 const PADDING_BASE := 6.0
 const GAP_BASE := 8.0
-const CLICK_THRESHOLD := 1.0  # pixels – how far mouse can move and still count as a "click"
+const CLICK_THRESHOLD := 2.0 # pixels – how far mouse can move and still count as a "click"
 
 # --- State ---
 var dragging: bool = false
@@ -281,6 +281,89 @@ func _perform_path_assignment() -> void:
 # --- Helper functions for the logic above ---
 func _cleanup_empty_troops():
 	# If a troop gave away all its divisions, delete it from the world
+	for t in selected_troops:
+		if t.stored_divisions.is_empty():
+			TroopManager.remove_troop(t)
+
+
+# --- Helpers to keep logic clean ---
+
+
+func _find_template_troop_for_divs(batch: Array[DivisionData]) -> TroopData:
+	# Find which troop currently owns the first division in this batch
+	# to use as a template (country name, flag, etc)
+	for t in selected_troops:
+		if batch[0] in t.stored_divisions:
+			return t
+	return selected_troops[0]
+
+
+# --- MODE A: Move only the units clicked in the UI ---
+func _handle_selective_ui_move(div_objects: Array[DivisionData], path: Array) -> void:
+	# Group the divisions by their current "parent" troop so we can split them
+	var split_map = {} # { TroopData: Array[DivisionData] }
+	for div in div_objects:
+		var owner = TroopManager.find_troop_owning_division(div)
+		if owner:
+			if not split_map.has(owner):
+				split_map[owner] = []
+			split_map[owner].append(div)
+
+	for original_troop in split_map:
+		var divs_to_move = split_map[original_troop]
+
+		# Remove these objects from the original stack
+		for d in divs_to_move:
+			original_troop.stored_divisions.erase(d)
+
+		# Create the new troop instance for the split-off units
+		var new_troop = TroopManager._create_new_split_troop(original_troop, divs_to_move)
+		new_troop.path = path.duplicate()
+		TroopManager._start_next_leg(new_troop)
+
+		# If the original troop is now empty, delete it from the map
+		if original_troop.stored_divisions.is_empty():
+			TroopManager.remove_troop(original_troop)
+
+
+# --- MODE B: Spread the whole selected army across the path ---
+func _handle_frontline_spread(path: Array) -> void:
+	# Collect ALL division objects from all selected troops
+	var all_divs: Array[DivisionData] = []
+	for t in selected_troops:
+		all_divs.append_array(t.stored_divisions)
+		# We will effectively "re-distribute" all these, so clear the originals
+		t.stored_divisions.clear()
+
+	@warning_ignore("integer_division")
+	var divs_per_prov = max(1, all_divs.size() / path.size())
+	var remainder = all_divs.size() % path.size()
+
+	var div_index = 0
+	for i in range(path.size()):
+		var target_pid = path[i]
+		var count = divs_per_prov + (1 if i < remainder else 0)
+
+		var batch: Array[DivisionData] = []
+		for j in range(count):
+			if div_index < all_divs.size():
+				batch.append(all_divs[div_index])
+				div_index += 1
+
+		if batch.is_empty():
+			continue
+
+		# Create a new troop for this province's portion of the frontline
+		# We use the first selected troop as a template for country/flag
+		var template = selected_troops[0]
+		var new_troop = TroopManager._create_new_split_troop(template, batch)
+
+		# Generate a path to that specific point on the frontline
+		# (Assuming you have a pathfinder, otherwise just use the path subset)
+		new_troop.path = path.slice(0, i + 1)
+		TroopManager._start_next_leg(new_troop)
+
+	# Clean up the now-empty original troops
 	for t in selected_troops:
 		if t.stored_divisions.is_empty():
 			TroopManager.remove_troop(t)

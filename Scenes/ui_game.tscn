@@ -1,0 +1,1742 @@
+[gd_scene format=3 uid="uid://dgfixe44dvfny"]
+
+[ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
+[ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
+[ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]
+[ext_resource type="Texture2D" uid="uid://c8dketw2tw83t" path="res://assets/icons/money_icon.svg" id="7_lpwmk"]
+[ext_resource type="Texture2D" uid="uid://qfkxeawpeigd" path="res://assets/icons/man_power_icon.svg" id="8_qum3k"]
+[ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="9_5hlpc"]
+[ext_resource type="Texture2D" uid="uid://dhgqvklqmqkjn" path="res://assets/icons/nonaligned_icon.svg" id="10_aipye"]
+[ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="11_qum3k"]
+[ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="12_2a76p"]
+[ext_resource type="Texture2D" uid="uid://cj7k64j1jq62k" path="res://assets/icons/music.svg" id="13_0e43j"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="13_sdmnd"]
+[ext_resource type="Texture2D" uid="uid://byixjd4xhidnp" path="res://assets/icons/plus_icon.svg" id="13_ubr8q"]
+[ext_resource type="Texture2D" uid="uid://ddy7law3og0nb" path="res://assets/icons/minus_icon.svg" id="14_pvldk"]
+[ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="15_yp111"]
+[ext_resource type="Theme" uid="uid://6wluupp1lmut" path="res://tab_button_theme.tres" id="16_6c76w"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
+[ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
+[ext_resource type="Texture2D" uid="uid://blvxrdiioikq5" path="res://assets/ui/compass.svg" id="20_lpwmk"]
+[ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
+[ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
+[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
+[ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
+[ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
+[ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="27_2a76p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_uqxsi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qum3k"]
+bg_color = Color(0.22352941, 0.30980393, 0.22352941, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qum3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilaaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpwmk"]
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
+shadow_color = Color(0, 0, 0, 0.35686275)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pvldk"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 20.0
+thickness = 4
+vertical = true
+
+[sub_resource type="GDScript" id="GDScript_lpwmk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0e43j"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
+script = ExtResource("1_rp7y5")
+military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/MilitaryAccess")
+
+[node name="Control" type="Control" parent="." unique_id=1022296617]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Topbar" type="ColorRect" parent="Control" unique_id=1344645553]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar" unique_id=458722190]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 35.0
+theme_override_constants/separation = 20
+
+[node name="nation_flag" type="TextureRect" parent="Control/Topbar/HBoxContainer" unique_id=121734395]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("1_xar7q")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PoliticalPower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=946459751]
+layout_mode = 2
+tooltip_text = "Political power"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PoliticalPower" unique_id=110355969]
+layout_mode = 2
+
+[node name="icon_politicalpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=886319999]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+expand_mode = 3
+
+[node name="label_politicalpower" type="Label" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=2078116230]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="Money" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=2127845856]
+layout_mode = 2
+tooltip_text = "Money"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Money" unique_id=766928713]
+layout_mode = 2
+
+[node name="icon_money" type="TextureRect" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=1594976084]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+expand_mode = 3
+
+[node name="label_money" type="Label" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=309530038]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="Manpower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1136963302]
+layout_mode = 2
+tooltip_text = "Manpower"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Manpower" unique_id=435598385]
+layout_mode = 2
+
+[node name="icon_manpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=1872756692]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("8_qum3k")
+expand_mode = 3
+
+[node name="label_manpower" type="Label" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=964147615]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="Industry" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1070530185]
+layout_mode = 2
+tooltip_text = "Industry"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Industry" unique_id=669118819]
+layout_mode = 2
+
+[node name="icon_industry" type="TextureRect" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=408342431]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("9_5hlpc")
+expand_mode = 3
+
+[node name="label_industry" type="Label" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=1336028149]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="Stability" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=943424752]
+layout_mode = 2
+tooltip_text = "Stability"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Stability" unique_id=891553866]
+layout_mode = 2
+
+[node name="icon_stability" type="TextureRect" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=1546646896]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("10_aipye")
+expand_mode = 3
+
+[node name="label_stability" type="Label" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=788481322]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="WarSupport" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1561316651]
+layout_mode = 2
+tooltip_text = "Stability"
+theme_override_styles/panel = ExtResource("5_5phox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/WarSupport" unique_id=110085503]
+layout_mode = 2
+
+[node name="icon_war_support" type="TextureRect" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=1722293711]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("11_qum3k")
+expand_mode = 3
+
+[node name="label_war_support" type="Label" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=897470063]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 20
+text = "100"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_5hlpc")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer" unique_id=33152091]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=95724245]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 15.0
+show_percentage = false
+
+[node name="label_date" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar" unique_id=520160489]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+clip_contents = true
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 31.0
+theme = SubResource("Theme_uqxsi")
+theme_override_font_sizes/font_size = 16
+text = "00:00 1234-12-12 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=986642983]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GameSpeedControl" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=2134005269]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Plus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1044589756]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Increase game speed"
+focus_mode = 0
+icon = ExtResource("13_ubr8q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Minus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1047883681]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Decrease game speed"
+focus_mode = 0
+icon = ExtResource("14_pvldk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Music" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=283872825]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Radio"
+focus_mode = 0
+theme_override_constants/icon_max_width = 900
+icon = ExtResource("13_0e43j")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Music2" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1779393988]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+tooltip_text = "Radio"
+focus_mode = 0
+theme_override_constants/icon_max_width = 900
+text = ">"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(17, 0)
+layout_mode = 2
+texture = ExtResource("12_2a76p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="label_tension" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1256875266]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+text = "20%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MilitaryExtraPanel" type="PanelContainer" parent="Control" unique_id=1873248397]
+material = ExtResource("16_lpwmk")
+layout_mode = 1
+offset_left = 356.0
+offset_top = 401.0
+offset_right = 589.0
+offset_bottom = 648.0
+theme = ExtResource("13_sdmnd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtraPanel" unique_id=1745200345]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer" unique_id=1330084502]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 19
+
+[node name="button_infantry" type="Button" parent="Control/MilitaryExtraPanel/VBoxContainer/HBoxContainer" unique_id=1194038523]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("19_2igyl")
+icon_alignment = 1
+expand_icon = true
+
+[node name="button_artillery" type="Button" parent="Control/MilitaryExtraPanel/VBoxContainer/HBoxContainer" unique_id=377772696]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("20_patwf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="button_tank" type="Button" parent="Control/MilitaryExtraPanel/VBoxContainer/HBoxContainer" unique_id=1505714444]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("21_qnodh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer" unique_id=1435869281]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Type" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=1451488359]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type" unique_id=1818920470]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Type"
+
+[node name="type" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type" unique_id=481807798]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+text = "infantry"
+
+[node name="Stats" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=405077906]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats" unique_id=1473736820]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Atk / Def / HP"
+
+[node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats" unique_id=1660878643]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+text = "10 : 10 : 100"
+
+[node name="Count" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=6265053]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count" unique_id=1687114061]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_uqxsi")
+text = "Divisions"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count" unique_id=293571039]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="input_division" type="SpinBox" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer" unique_id=2119668414]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+
+[node name="Cost" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=693475866]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost" unique_id=1308475392]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Costs training/day:"
+
+[node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost" unique_id=1340317349]
+layout_mode = 2
+text = "100"
+
+[node name="Manpower" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=612873776]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower" unique_id=1107178966]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Manpower:"
+
+[node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower" unique_id=1283252395]
+layout_mode = 2
+text = "100"
+
+[node name="Button_Train" type="Button" parent="Control/MilitaryExtraPanel/VBoxContainer" unique_id=1300323521]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
+text = "TRAIN"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control" unique_id=86601275]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -613.0
+offset_right = 344.0
+grow_vertical = 0
+dragging_enabled = false
+dragger_visibility = 1
+drag_area_offset = 356
+
+[node name="SidemenuBG" type="PanelContainer" parent="Control/HSplitContainer" unique_id=1353435381]
+material = ExtResource("16_lpwmk")
+clip_contents = true
+custom_minimum_size = Vector2(356, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG" unique_id=1423441942]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=731782393]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("13_sdmnd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qum3k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=2118811652]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Flag" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1960292904]
+clip_children = 1
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag" unique_id=439858551]
+layout_mode = 2
+
+[node name="Flag" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer" unique_id=18398022]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(180, 90)
+layout_mode = 2
+texture = ExtResource("1_xar7q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="compass" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer" unique_id=1574630328]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("20_lpwmk")
+expand_mode = 2
+
+[node name="pointer" type="Sprite2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/compass" unique_id=2143726963]
+material = ExtResource("16_lpwmk")
+position = Vector2(49.999992, 50)
+scale = Vector2(0.038297877, 0.038297873)
+texture = ExtResource("21_lpwmk")
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1954831864]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_yp111")
+theme_override_font_sizes/font_size = 24
+text = "country1"
+horizontal_alignment = 1
+
+[node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1938162432]
+layout_mode = 2
+
+[node name="MilitaryAccess" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=829443985]
+texture_filter = 2
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 22
+text = "Military Access: No"
+horizontal_alignment = 1
+
+[node name="Context" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1596917807]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("13_sdmnd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
+current_tab = 0
+tabs_visible = false
+
+[node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+tab_0/icon = ExtResource("5_0e43j")
+tab_1/icon = ExtResource("7_lpwmk")
+tab_2/icon = ExtResource("8_qum3k")
+tab_3/icon = ExtResource("24_5hlpc")
+metadata/_tab_index = 0
+
+[node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=324260209]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel" unique_id=1263280391]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1595718017]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Diplomacy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1517342316]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=1525396862]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer" unique_id=409655859]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=939931474]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Manage Country"
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1961953376]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Research"
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1788664696]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Decisions"
+
+[node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=779262759]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Create Faction"
+
+[node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
+visible = false
+use_parent_material = true
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=319074674]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel" unique_id=1681540258]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=1911035227]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Economy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=2084192849]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+stretch_mode = 5
+
+[node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=1353097113]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy" unique_id=574716223]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1597600351]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+tooltip_text = "peepee poopoo"
+theme = ExtResource("13_sdmnd")
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Factory"
+popup/item_0/id = 0
+popup/item_1/text = "Port"
+popup/item_1/id = 1
+popup/item_2/text = "Infrastructure"
+popup/item_2/id = 2
+
+[node name="Queue" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=2015001235]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue" unique_id=855509954]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
+visible = false
+use_parent_material = true
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=1501629434]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel" unique_id=1929221443]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=2064020114]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Military Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=925378781]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("8_qum3k")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=608373696]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer" unique_id=801649026]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=2143465910]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Choose Deployment Province"
+
+[node name="TroopList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=940258689]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cultures" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1315655306]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = ""
+
+[node name="AcceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=114737541]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=1207119508]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("25_2a76p")
+text = "Accepted"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=895736875]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer" unique_id=41053949]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=802127427]
+layout_mode = 2
+theme_override_constants/separation = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_pvldk")
+
+[node name="UnacceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=470564074]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=957078040]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_styles/normal = ExtResource("26_ubr8q")
+text = "Demonized"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=1846953765]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer" unique_id=1864884055]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Enemy" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=305618823]
+visible = false
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+tab_0/icon = ExtResource("5_0e43j")
+tab_1/icon = ExtResource("7_lpwmk")
+tab_2/icon = ExtResource("8_qum3k")
+metadata/_tab_index = 1
+
+[node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy" unique_id=1083850577]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy" unique_id=1758383006]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel" unique_id=1001701770]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=829313179]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Diplomacy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=665498883]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy" unique_id=1221364533]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer" unique_id=570898825]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList" unique_id=848041002]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Propose Ceasefire"
+
+[node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy" unique_id=17172790]
+visible = false
+use_parent_material = true
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=944343034]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel" unique_id=270357454]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1833015955]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Economy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1355151102]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+stretch_mode = 5
+
+[node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=566937834]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Diplomacy" unique_id=1528252989]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy" unique_id=713610224]
+visible = false
+use_parent_material = true
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military" unique_id=2096196983]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel" unique_id=1167943882]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel/HBoxContainer" unique_id=1376277886]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Military Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel/HBoxContainer" unique_id=1607959720]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military" unique_id=1175496027]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer" unique_id=1887234474]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer/ActionsList" unique_id=1673693170]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Launch Nuke"
+
+[node name="Neutral" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
+visible = false
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+tab_0/icon = ExtResource("5_0e43j")
+tab_1/icon = ExtResource("7_lpwmk")
+tab_2/icon = ExtResource("8_qum3k")
+metadata/_tab_index = 2
+
+[node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=481997949]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy" unique_id=1192514552]
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/Panel" unique_id=2043958375]
+use_parent_material = true
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/Panel/HBoxContainer" unique_id=1587197366]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Diplomacy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/Panel/HBoxContainer" unique_id=381620997]
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy" unique_id=1126937039]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer" unique_id=1259284527]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=287123050]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Improve Relations"
+
+[node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=286592296]
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Invite To Faction"
+
+[node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=1421175975]
+material = ExtResource("16_lpwmk")
+use_parent_material = true
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Force Puppet"
+
+[node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=809065436]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy" unique_id=1573941070]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel" unique_id=306500858]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=303614205]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Economy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=265570064]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+stretch_mode = 5
+
+[node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy" unique_id=754704684]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Diplomacy" unique_id=2028102024]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Diplomacy/ActionsList" unique_id=1343803464]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Trade Deal"
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=173220231]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military" unique_id=1153108939]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel" unique_id=1414276886]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=724673175]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Military Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=1393378957]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("8_qum3k")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military" unique_id=386300872]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer" unique_id=593076686]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=678799358]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Declare War"
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=1571239659]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Request Access"
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=2131250622]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Launch Nuke"
+
+[node name="Puppet" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=2040957791]
+visible = false
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+tab_alignment = 1
+current_tab = 2
+clip_tabs = false
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+tab_0/icon = ExtResource("5_0e43j")
+tab_1/icon = ExtResource("7_lpwmk")
+tab_2/icon = ExtResource("8_qum3k")
+metadata/_tab_index = 3
+
+[node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=2126563439]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy" unique_id=247556838]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel" unique_id=1107272104]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel/HBoxContainer" unique_id=461911554]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Diplomacy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel/HBoxContainer" unique_id=912336174]
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy" unique_id=318226173]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer" unique_id=962088599]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=1697014369]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Annex Puppet"
+
+[node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=2122222714]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Release Puppet"
+
+[node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=243750632]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy" unique_id=1296693455]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel" unique_id=1784002997]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel/HBoxContainer" unique_id=1792790997]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Economy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel/HBoxContainer" unique_id=1008130762]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+stretch_mode = 5
+
+[node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy" unique_id=44064141]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy" unique_id=1408266887]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy/ActionsList" unique_id=1202195637]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Steal Money"
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=1403617755]
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military" unique_id=1230631981]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel" unique_id=217346371]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel/HBoxContainer" unique_id=593820633]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Military Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel/HBoxContainer" unique_id=1981376563]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("8_qum3k")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military" unique_id=471897206]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer" unique_id=241753113]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=645040993]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Steal Manpower"
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=2111600738]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Call to Arms"
+
+[node name="Ally" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1156143088]
+visible = false
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+tab_alignment = 1
+current_tab = 2
+clip_tabs = false
+all_tabs_in_front = true
+drag_to_rearrange_enabled = true
+tab_0/icon = ExtResource("5_0e43j")
+tab_1/icon = ExtResource("7_lpwmk")
+tab_2/icon = ExtResource("8_qum3k")
+metadata/_tab_index = 4
+
+[node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1671842405]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy" unique_id=1245854610]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel" unique_id=865560069]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel/HBoxContainer" unique_id=113081764]
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Diplomacy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel/HBoxContainer" unique_id=1699878909]
+layout_mode = 2
+texture = ExtResource("5_0e43j")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy" unique_id=233231260]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer" unique_id=1086754441]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1031120624]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Improve Relations"
+
+[node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1019195712]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Kick From Faction"
+
+[node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=2009539886]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Force Puppet"
+
+[node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=147033422]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy" unique_id=1392692773]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel" unique_id=354799227]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel/HBoxContainer" unique_id=412312968]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Economy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel/HBoxContainer" unique_id=1644720487]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("7_lpwmk")
+stretch_mode = 5
+
+[node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy" unique_id=1608048880]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy" unique_id=1620336062]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=231033924]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Trade Deal"
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=1662116374]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Kindly Ask For Money"
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1928349567]
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military" unique_id=1374568835]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel" unique_id=2005732805]
+layout_mode = 2
+
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel/HBoxContainer" unique_id=2061751209]
+texture_filter = 2
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
+text = "Military Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel/HBoxContainer" unique_id=2063340105]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+texture = ExtResource("8_qum3k")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military" unique_id=394845032]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer" unique_id=1038022110]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=860663546]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Call To Arms"
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=1319266632]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Kindly Ask For Manpower"
+
+[node name="Control" type="Control" parent="Control/HSplitContainer" unique_id=1378811327]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
+visible = false
+layout_mode = 0
+offset_left = 918.0
+offset_top = 235.0
+offset_right = 1149.0
+offset_bottom = 647.0
+theme = ExtResource("13_sdmnd")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TroopContainer" unique_id=208408317]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TroopContainer/ScrollContainer" unique_id=1354240878]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
+visible = false
+material = ExtResource("16_lpwmk")
+offset_left = 858.0
+offset_top = 43.0
+offset_right = 1144.0
+offset_bottom = 89.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Radios" unique_id=786990813]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
+use_parent_material = true
+layout_mode = 2
+text = "Now playing"
+
+[node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
+use_parent_material = true
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=663062883]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.5
+offset_top = -201.0
+offset_right = 364.5
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.051970966, 0.05197096, 0.05197095, 1)
+script = SubResource("GDScript_lpwmk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=126058036]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 43.0
+offset_right = 225.0
+offset_bottom = 343.0
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer" unique_id=188696686]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Country Daily Income"
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer" unique_id=1312218179]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Army Costs"
+
+[node name="Label3" type="Label" parent="ColorRect/VBoxContainer" unique_id=352323337]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Army Level"
+
+[node name="Label4" type="Label" parent="ColorRect/VBoxContainer" unique_id=1053140831]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Total Manpower"
+
+[node name="Label5" type="Label" parent="ColorRect/VBoxContainer" unique_id=939105941]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Available Manpower"
+
+[node name="Label6" type="Label" parent="ColorRect/VBoxContainer" unique_id=2088904382]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "In Field"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=1633182182]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 43.0
+offset_right = 425.0
+offset_bottom = 343.0
+
+[node name="income" type="Label" parent="ColorRect/VBoxContainer2" unique_id=1677557433]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="armycost" type="Label" parent="ColorRect/VBoxContainer2" unique_id=977455900]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="armylevel" type="Label" parent="ColorRect/VBoxContainer2" unique_id=1121123451]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="totalmanpower" type="Label" parent="ColorRect/VBoxContainer2" unique_id=34495283]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="availablemanpower" type="Label" parent="ColorRect/VBoxContainer2" unique_id=285284319]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="infield" type="Label" parent="ColorRect/VBoxContainer2" unique_id=2027973115]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1368765273]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 228.0
+offset_right = 716.0
+offset_bottom = 277.0
+focus_mode = 0
+text = "Increase Level"
+
+[node name="Button2" type="Button" parent="ColorRect" unique_id=1125014537]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 282.0
+offset_right = 708.0
+offset_bottom = 340.0
+focus_mode = 0
+text = "Decrease Level"
+
+[node name="basecost" type="Label" parent="ColorRect" unique_id=1668024908]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 144.0
+offset_right = 632.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 25
+text = "Base Cost Per Divsion:"
+
+[node name="armylevelagain" type="Label" parent="ColorRect" unique_id=575114217]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 182.0
+offset_right = 649.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 25
+text = "Army Level: "
+
+[node name="CreateFaction" type="PanelContainer" parent="." unique_id=1478231919]
+visible = false
+material = ExtResource("16_lpwmk")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -230.0
+offset_right = 170.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0e43j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateFaction" unique_id=1381981934]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateFaction/VBoxContainer" unique_id=1065785828]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=1417137941]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Faction Name"
+
+[node name="Button" type="Button" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=119683320]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+text = "Create Faction"
+
+[node name="ColorPicker" type="ColorPicker" parent="CreateFaction/VBoxContainer" unique_id=1452449253]
+layout_mode = 2
+edit_alpha = false
+edit_intensity = false
+sampler_visible = false
+color_modes_visible = false
+presets_visible = false
+
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("27_2a76p")]
+visible = false
+
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
+[connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
+[connection signal="button_up" from="Control/MilitaryExtraPanel/VBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
+[connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="open_manage_country"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="open_research_tree"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button2" to="." method="open_decisions_tree"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_open_faction"]
+[connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton" to="." method="_on_building_selected"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_propose_peace"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer/ActionsList/Button" to="." method="_launch_nuke"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList/Button2" to="." method="_declare_war"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_on_annex_country_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_release_puppet_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy/ActionsList/Button" to="." method="_on_steal_money_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button" to="." method="_on_steal_manpower_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
+[connection signal="button_up" from="ColorRect/Button" to="ColorRect" method="_on_button_button_up"]
+[connection signal="button_up" from="ColorRect/Button2" to="ColorRect" method="_on_button_2_button_up"]
+[connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]

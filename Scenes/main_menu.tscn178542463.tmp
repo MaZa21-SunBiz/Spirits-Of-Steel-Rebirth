@@ -1,0 +1,361 @@
+[gd_scene format=3 uid="uid://ef1nlqkm5anw"]
+
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_opfnp"]
+[ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
+[ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
+[ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
+[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://Scenes/goober.gdshader" id="10_5egv6"]
+[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
+[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://Scenes/petpet.gdshader" id="11_5egv6"]
+[ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="GDScript" id="GDScript_cp0ys"]
+script/source = "extends Control
+
+var countries = []
+@onready var country_select = $\"/root/MainMenu/CountrySelect\"
+@onready var search_input = country_select.get_node(\"PanelContainer2/TextEdit\")
+@onready var entry_list = country_select.get_node(\"ScrollContainer/VBoxContainer\")
+@onready var country_info = country_select.get_node(\"CountryInfo\")
+var damaged: ShaderMaterial = preload(\"res://Materials/damaged.tres\")
+
+
+func _ready():
+	var path = \"res://map_data/map_data.json\" # Ensure path is correct
+	if not FileAccess.file_exists(path):
+		push_error(\"Map Data JSON missing!\")
+		return
+	var mapData: Dictionary = {}
+	var file = FileAccess.open(path, FileAccess.READ)
+	var json_data = JSON.parse_string(file.get_as_text())
+	if json_data is Dictionary:
+		mapData = json_data
+	if MapManager.province_objects.is_empty():
+		IdeologyManager.Initialize(mapData[\"ideologies\"] as Dictionary)
+		MapManager.load_country_data(mapData[\"provinces\"] as Dictionary)
+		CountryManager.initialize_countries(mapData[\"polities\"] as Array[Dictionary])
+		MapManager.build_lookup_texture()
+		FactionManager.Initialize(mapData[\"factions\"])
+
+
+func _on_search() -> void:
+	for n in entry_list.get_children():
+		n.queue_free()
+	for country in countries:
+		if country.country_name.begins_with(search_input.text):
+			var country_entry = 	add_entry(country)
+			entry_list.add_child(country_entry)
+
+func add_entry(country):
+	var set_country = func():
+		CountryManager.set_player_country(country.country_name)
+		country_info.text = \"Selected: %s\\n\\nGDP: %d\\nManpower: %d\\nStability: %d\" % [country.country_name.capitalize(), country.gdp, country.manpower, country.stability*100]
+	var entry = Button.new()
+	entry.text = country.country_name.capitalize()
+	entry.icon = TroopManager.get_flag(country.country_name)
+	entry.material = damaged
+	entry.expand_icon = true
+	entry.pressed.connect(set_country)
+	return entry
+
+func _on_exit() -> void:
+	$\"/root/MainMenu/CountrySelect\".visible = false
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr1f0"]
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
+shader = ExtResource("10_5egv6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
+shader = ExtResource("11_5egv6")
+
+[node name="MainMenu" type="Control" unique_id=945632142]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="." unique_id=120285262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_48xlc")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Logo" type="TextureRect" parent="." unique_id=110353226]
+layout_mode = 0
+offset_left = 27.5
+offset_top = 30.0
+offset_right = 387.5
+offset_bottom = 390.0
+scale = Vector2(0.4138889, 0.4138889)
+texture = ExtResource("2_opfnp")
+
+[node name="Label2" type="Label" parent="." unique_id=624590657]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 145.0
+offset_right = 751.0
+offset_bottom = 248.0
+scale = Vector2(0.414, 0.414)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("3_cp0ys")
+theme_override_font_sizes/font_size = 67
+text = "Rebirth"
+
+[node name="Label" type="Label" parent="." unique_id=639883253]
+layout_mode = 0
+offset_left = 109.499985
+offset_top = 73.0
+offset_right = 1257.5
+offset_bottom = 276.0
+scale = Vector2(0.414, 0.414)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 55
+theme_override_constants/shadow_outline_size = 81
+theme_override_fonts/font = ExtResource("4_yhxw7")
+theme_override_font_sizes/font_size = 161
+text = "Spirits Of Steel"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 59.49994
+offset_top = 210.0
+offset_right = 287.49994
+offset_bottom = 438.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
+script = ExtResource("5_trj04")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=503985164]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="New" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1326153105]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "New Game
+"
+
+[node name="Settings" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2088481950]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1433871763]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=85919368]
+texture_filter = 2
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Quit
+"
+
+[node name="CountrySelect" type="Control" parent="." unique_id=1383980299]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cp0ys")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CountrySelect" unique_id=742479731]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 412.0
+offset_top = 210.0
+offset_right = 460.0
+offset_bottom = 280.0
+text = "Exit"
+
+[node name="Button2" type="Button" parent="CountrySelect" unique_id=1344543558]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 692.0
+offset_top = 210.0
+offset_right = 850.0
+offset_bottom = 280.0
+text = "Start Game"
+
+[node name="PanelContainer2" type="PanelContainer" parent="CountrySelect" unique_id=1245583328]
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -114.0
+offset_right = 114.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="TextEdit" type="TextEdit" parent="CountrySelect/PanelContainer2" unique_id=1460251216]
+material = ExtResource("5_yhxw7")
+layout_mode = 2
+placeholder_text = "Search country"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CountrySelect" unique_id=1571751802]
+material = ExtResource("5_yhxw7")
+layout_mode = 0
+offset_left = 462.0
+offset_top = 282.0
+offset_right = 690.0
+offset_bottom = 446.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CountrySelect/ScrollContainer" unique_id=1688162897]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="CountryInfo" type="Label" parent="CountrySelect" unique_id=1815496630]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 281.0
+offset_right = 847.0
+offset_bottom = 302.0
+text = "Selected: None"
+
+[node name="Credits" type="Control" parent="." unique_id=1558337124]
+visible = false
+material = ExtResource("5_yhxw7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Credits" unique_id=1395319438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Credits" unique_id=585752186]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -100.5
+offset_right = 164.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/PanelContainer" unique_id=289431072]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="Credits/PanelContainer/VBoxContainer" unique_id=771123924]
+texture_filter = 2
+use_parent_material = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_trj04")
+text = "Z21
+CallMePol
+Soilad
+Sockmit
+EsatBoucaud icon-sets
+Rosseau
+Ariect Von don Koppan Finchendenstein II
+The spirit of GavGrub"
+
+[node name="Exit" type="Button" parent="Credits/PanelContainer/VBoxContainer" unique_id=1733367604]
+texture_filter = 2
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("1_28flt")
+text = "Thanks y'all"
+
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
+visible = false
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1375568892]
+material = SubResource("ShaderMaterial_vtepg")
+layout_mode = 0
+offset_left = 827.0
+offset_top = 222.0
+offset_right = 1105.4519
+offset_bottom = 419.0
+texture = ExtResource("10_t1dhk")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1924079947]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 707.0
+offset_top = 207.0
+offset_right = 1152.0
+offset_bottom = 347.0
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+flip_h = true
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer" method="_on_quit_pressed"]
+[connection signal="pressed" from="CountrySelect/Button" to="CountrySelect" method="_on_exit"]
+[connection signal="pressed" from="CountrySelect/Button2" to="PanelContainer" method="_on_start"]
+[connection signal="text_changed" from="CountrySelect/PanelContainer2/TextEdit" to="CountrySelect" method="_on_search"]
+[connection signal="pressed" from="Credits/PanelContainer/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]

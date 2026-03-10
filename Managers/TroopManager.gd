@@ -5,8 +5,8 @@ var AUTO_MERGE = true
 var troops: Array = []
 var moving_troops: Array = []
 
-var path_cache: Dictionary = {}  # { start_id: { target_id: path_array } }
-var flag_cache: Dictionary = {}  # { country_name: texture }
+var path_cache: Dictionary = {} # { start_id: { target_id: path_array } }
+var flag_cache: Dictionary = {} # { country_name: texture }
 
 var troop_selection: TroopSelection
 
@@ -40,10 +40,45 @@ func _update_moving_troop(troop: TroopData, _delta: float) -> void:
 	# Update meta so _draw() knows where to put labels
 	troop.set_meta("progress", clamp(progress, 0.0, 1.0))
 
-	if progress >= 1.0:
-		troop.position = troop.target_position
+	var targetPID = troop.path.front()
+	var enemies = MapManager.province_objects[targetPID].troops_here.filter(
+		func(t):
+			return WarManager.is_at_war_names(t.country_name, troop.country_name)
+	)
+
+	if not enemies.is_empty() and not GameState.current_world.clock.paused:
+		WarManager.start_battle(troop.province_id, targetPID)
+		pause_troop(troop)
+		for enemy in enemies:
+			pause_troop(enemy)
+		return
+
+	var start = troop.get_meta("start_pos", troop.position)
+	var end = troop.target_position
+	var total_dist = start.distance_to(end)
+
+	# Safety check for instant arrival
+	if total_dist < 0.5:
+		troop.position = end
+		_arrive_at_leg_end(troop)
+		return
+
+	# Unified progress calculation
+	var move_progress = troop.get_meta("progress", 0.0)
+
+	var base_speed = 1
+
+	# Increment progress based on real-time and game speed
+	move_progress += (base_speed * (troop.country_obj.troop_speed_modifier if troop.country_obj else 1.0) * GameState.current_world.clock.time_scale * delta) / total_dist
+
+	if move_progress >= 1.0:
+		troop.position = end
 		troop.set_meta("progress", 0.0)
 		_arrive_at_leg_end(troop)
+	else:
+		# Smoothly slide from A to B
+		troop.position = start.lerp(end, move_progress)
+		troop.set_meta("progress", move_progress)
 
 
 func _start_next_leg(troop: TroopData) -> void:
@@ -51,16 +86,14 @@ func _start_next_leg(troop: TroopData) -> void:
 		_stop_troop(troop)
 		return
 
-	var next_pid = int(troop.path[0])
+	var next_pid = troop.path[0]
 
 	# --- Combat Check ---
-	var province = MapManager.province_objects.get(next_pid)
-	var local_troops = province.troops_here
-	var enemies = local_troops.filter(
+	var enemies = MapManager.province_objects.get(next_pid).troops_here.filter(
 		func(t): return WarManager.is_at_war_names(t.country_name, troop.country_name)
 	)
 
-	if not enemies.is_empty():
+	if not enemies.is_empty() and not GameState.current_world.clock.paused:
 		WarManager.start_battle(troop.province_id, next_pid)
 		pause_troop(troop)
 		for enemy in enemies:
@@ -94,8 +127,10 @@ func _arrive_at_leg_end(troop: TroopData) -> void:
 	_move_troop_to_province_logically(troop, arrived_pid)
 	MapManager.update_province_troop_state(arrived_pid)
 
+	# Trigger occupation/events
 	WarManager.resolve_province_arrival(arrived_pid, troop)
 
+	# Check if we keep going or stop
 	if troop.path.is_empty():
 		_stop_troop(troop)
 		if AUTO_MERGE:
@@ -144,30 +179,25 @@ func command_move_assigned(payload: Array) -> void:
 
 		for i in range(moves.size()):
 			var move_data = moves[i]
-			var target_pid = move_data["province_id"]
 			var requested_count = int(move_data.get("divisions", 1))
 
-			# Safety check: Don't try to take more than we have
-			var available = troop.stored_divisions.size()
-
 			# If this is the last move in the list OR we are requesting everything left
-			if i == moves.size() - 1 or requested_count >= available:
+			if i == moves.size() - 1 or requested_count >= troop.stored_divisions.size():
 				# No splitting needed for the final move; just move the original troop
-				_apply_movement_path(troop, target_pid)
+				_apply_movement_path(troop, move_data["province_id"])
 				break
 			else:
 				# Splitting logic:
 				var batch: Array[DivisionData] = []
 				for j in range(requested_count):
 					if not troop.stored_divisions.is_empty():
-						batch.append(troop.stored_divisions.pop_back())  # Take from the end
+						batch.append(troop.stored_divisions.pop_back()) # Take from the end
 
 				if batch.is_empty():
 					continue
 
 				# Create a new troop node for this small "detachment"
-				var split_troop = _create_new_split_troop(troop, batch)
-				_apply_movement_path(split_troop, target_pid)
+				_apply_movement_path(_create_new_split_troop(troop, batch), move_data["province_id"])
 
 
 # Helper to keep your code clean
@@ -241,6 +271,40 @@ func _create_new_split_troop(original: TroopData, specific_divisions: Array) -> 
 	return new_troop
 
 
+func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
+	if divs <= 0:
+		return null
+
+	var country_data = CountryManager.get_country(country)
+	var ideology = country_data.ideology_name if country_data else ""
+	var flag = get_flag(country, ideology)
+
+	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
+
+	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
+		country, prov_id, divs, pos, flag
+	)
+
+	# FIX: Assign the country object reference
+	troop.country_obj = CountryManager.get_country(country)
+
+	# Initialize runtime metadata
+	troop.set_meta("start_pos", pos)
+	troop.set_meta("time_left", 0.0)
+	troop.set_meta("progress", 0.0)
+	troop.is_moving = false
+	troop.path = []
+	troop.province_id = prov_id
+
+	troops.append(troop)
+	_add_troop_to_indexes(troop)
+
+	if AUTO_MERGE:
+		_auto_merge_in_province(prov_id, country)
+
+	return troop
+
+
 func _auto_merge_in_province(province_id: int, country: String) -> void:
 	if not AUTO_MERGE:
 		return
@@ -307,7 +371,7 @@ func move_to_garrison(troop: TroopData) -> void:
 	var center = MapManager.province_centers.get(troop.province_id, troop.position)
 	troop.position = center
 	troop.target_position = center
-	_stop_troop(troop)  # Stops any ongoing movement
+	_stop_troop(troop) # Stops any ongoing movement
 
 
 ## Adds a troop reference to the spatial and country dictionaries.
@@ -413,7 +477,7 @@ func clear_path_cache() -> void:
 func _sanitize_path_for_troop(path: Array, start_pid: int) -> Array:
 	if not path:
 		return []
-		# Duplicate to avoid mutating caller arrays
+	# Duplicate to avoid mutating caller arrays
 	var p = path.duplicate()
 	# Pop front while first entry equals start_pid
 	while p.size() > 0 and int(p[0]) == int(start_pid):
@@ -434,8 +498,7 @@ func get_troops_in_province(province_id):
 
 func get_province_strength(pid: int, country: String) -> int:
 	var total = 0
-	var list = MapManager.get_province(pid).troops_here
-	for t in list:
+	for t in MapManager.get_province(pid).troops_here:
 		if t.country_name == country:
 			total += t.divisions_count
 	return total
@@ -447,9 +510,7 @@ func deploy_specific_divisions(
 	if divisions_to_deploy.is_empty():
 		return null
 
-	if not flag_cache.has(country):
-		var path = "res://assets/flags/%s_flag.png" % country.to_lower()
-		flag_cache[country] = load(path) if ResourceLoader.exists(path) else null
+	var country_data = CountryManager.get_country(country)
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
@@ -477,24 +538,122 @@ func deploy_specific_divisions(
 	return troop
 
 
-func get_flag(country: String) -> Texture2D:
+# Used by popup for now
+var flag_redirects: Dictionary = {}
+
+func _ready() -> void:
+	_load_flag_redirects()
+
+func _load_flag_redirects() -> void:
+	var path = "res://assets/flags/flag_redirects.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var json = JSON.new()
+		var error = json.parse(file.get_as_text())
+		if error == OK:
+			flag_redirects = json.data
+		else:
+			push_error("TroopManager: Failed to parse flag_redirects.json")
+
+var custom_flag_path: String = ""
+
+func set_custom_flag_path(path: String):
+	if path != "" and not path.ends_with("/"):
+		path += "/"
+	custom_flag_path = path
+	flag_cache.clear() # Clear cache to force reload from new path
+
+
+func get_flag(country: String, ideology: String = "") -> Texture2D:
+	# Normalize the keys
 	country = country.to_lower()
+	ideology = ideology.to_lower()
+	
+	# Cache key needs to include ideology if provided
+	var cache_key = country
+	if ideology != "":
+		cache_key = "%s_%s" % [country, ideology]
 
-	if flag_cache.has(country):
-		return flag_cache[country]
+	# If already cached → return it
+	if flag_cache.has(cache_key):
+		return flag_cache[cache_key]
 
-	var formats = ["png", "webp", "svg", "jpg", "jpeg", "tga"]
-	var base_path = "res://assets/flags/%s_flag." % country
+	# 0. Check Redirects
+	if flag_redirects.has(country):
+		var redirect = flag_redirects[country]
+		var target_country = redirect["target"]
+		var target_ideology = redirect["ideology"]
+		
+		if ideology != "":
+			return get_flag(target_country, ideology)
+		else:
+			return get_flag(target_country, target_ideology)
 
-	for ext in formats:
-		var full_path = base_path + ext
-		if ResourceLoader.exists(full_path):
-			var tex := load(full_path) as Texture2D
+	var path = ""
+	
+	# Helper to check both custom and default locations
+	var find_resource = func(sub_path: String):
+		if custom_flag_path != "":
+			var full_custom = custom_flag_path + sub_path
+			if ResourceLoader.exists(full_custom):
+				return full_custom
+		var full_default = "res://assets/flags/" + sub_path
+		if ResourceLoader.exists(full_default):
+			return full_default
+		return ""
+
+	# 1. Try Specific Ideology Flag: {path}/country/ideology_flag.png
+	if ideology != "":
+		path = find_resource.call("%s/%s_flag.png" % [country, ideology])
+		if path != "":
+			var tex := load(path)
+			flag_cache[cache_key] = tex
+			return tex
+
+	# 2. Try Neutral/Default Flag in new structure: {path}/country/neutral_flag.png
+	path = find_resource.call("%s/neutral_flag.png" % country)
+	if path != "":
+		var tex := load(path)
+		flag_cache[cache_key] = tex
+		return tex
+
+	# 3. Fallback: Suffix Stripping / Semantic Fallback
+	var suffixes = {
+		"_kingdom": "monarchist",
+		"_empire": "monarchist",
+		"_republic": "liberal",
+		"_commune": "communist",
+		"_union": "communist",
+		"_socialist": "communist",
+		"_fascist": "facist",
+		"_national": "facist",
+		"_democratic": "liberal"
+	}
+	
+	for suffix in suffixes:
+		if country.ends_with(suffix):
+			var base_country = country.left(country.length() - suffix.length())
+			var fallback_ideology = suffixes[suffix]
+			var check_ideology = ideology if ideology != "" else fallback_ideology
+			
+			var tex = get_flag(base_country, check_ideology)
 			if tex:
-				flag_cache[country] = tex
+				flag_cache[cache_key] = tex
 				return tex
+			
+			if ideology != "":
+				tex = get_flag(base_country, "")
+				if tex:
+					flag_cache[cache_key] = tex
+					return tex
 
-	print("Flag not found for country: ", country)
+	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
+	path = find_resource.call("%s_flag.png" % country)
+	if path != "":
+		var tex := load(path)
+		flag_cache[cache_key] = tex
+		return tex
+
 	return null
 
 

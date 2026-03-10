@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyxwr6r76oet8"
+path="res://.godot/imported/＂Säkkijärven Polkka＂ - Finnish Folk Song [A14gZxbn0kM].mp3-b5dd0d44286b670fb16e0f0f00a71184.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/＂Säkkijärven Polkka＂ - Finnish Folk Song [A14gZxbn0kM].mp3"
+dest_files=["res://.godot/imported/＂Säkkijärven Polkka＂ - Finnish Folk Song [A14gZxbn0kM].mp3-b5dd0d44286b670fb16e0f0f00a71184.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

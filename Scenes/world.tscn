@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene format=3 uid="uid://dl045g47lsfkx"]
 
 [ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/world.gd" id="1_i23d3"]
@@ -10,6 +11,20 @@
 [ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scenes/country_manage_ui.gd" id="8_erpf8"]
 [ext_resource type="Script" uid="uid://dgg5vvwt2yua6" path="res://Scenes/menu.gd" id="9_pcjer"]
 [ext_resource type="PackedScene" uid="uid://slfig273474k" path="res://Scenes/UI/BottomHUD/BottomHUD.tscn" id="10_0fj1v"]
+=======
+[gd_scene format=3 uid="uid://chckoa2c7cmr1"]
+
+[ext_resource type="Script" uid="uid://pcq6svrgye6v" path="res://Scripts/Map/World.gd" id="1_go701"]
+[ext_resource type="PackedScene" uid="uid://dgfixe44dvfny" path="res://Scenes/ui_game.tscn" id="2_fo5ed"]
+[ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]
+[ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
+[ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
+[ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
+[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
+[ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
+>>>>>>> origin/SoiSauce
 
 [sub_resource type="QuadMesh" id="QuadMesh_o06y3"]
 
@@ -17,6 +32,7 @@
 custom_aabb = AABB(30, 20, 0, 0, 0, 0)
 mesh = SubResource("QuadMesh_o06y3")
 
+<<<<<<< HEAD
 [node name="World" type="Node2D" unique_id=1557365676]
 script = ExtResource("1_i23d3")
 
@@ -47,3 +63,34 @@ script = ExtResource("8_erpf8")
 script = ExtResource("9_pcjer")
 
 [node name="BottomHUD" parent="." unique_id=1645026149 instance=ExtResource("10_0fj1v")]
+=======
+[node name="World" type="Node2D" unique_id=431820296]
+script = ExtResource("1_go701")
+map_shader = ExtResource("3_k7acu")
+
+[node name="CustomRenderer" type="Node2D" parent="." unique_id=1175318338]
+script = ExtResource("5_o06y3")
+
+[node name="TroopMultiMesh" type="MultiMeshInstance2D" parent="CustomRenderer" unique_id=721109816]
+multimesh = SubResource("MultiMesh_k7acu")
+
+[node name="Clock" type="Node" parent="CustomRenderer" unique_id=1115487155]
+script = ExtResource("6_o06y3")
+
+[node name="TroopSelection" type="Node2D" parent="." unique_id=905291779]
+script = ExtResource("6_5ukr8")
+
+[node name="ui_game" parent="." unique_id=4700273 instance=ExtResource("2_fo5ed")]
+
+[node name="DecisionTreeUI" type="CanvasLayer" parent="." unique_id=739202993]
+script = ExtResource("9_5v1tr")
+
+[node name="CountryManageUI" parent="." unique_id=570987311 instance=ExtResource("11_7yui6")]
+visible = false
+
+[node name="PeaceProcessUI" parent="." unique_id=1219073297 instance=ExtResource("10_0fj1v")]
+visible = false
+
+[node name="LostTerritoryUI" parent="." unique_id=746887622 instance=ExtResource("13_c5t2i")]
+visible = false
+>>>>>>> origin/SoiSauce
