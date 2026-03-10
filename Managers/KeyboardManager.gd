@@ -1,12 +1,8 @@
 extends Node
 
 # Use the same names as your MapManager functions for clarity
-<<<<<<< HEAD
-var current_view = MapManager.MapMode.POLITICAL
-=======
 enum MapView { COUNTRIES, POPULATION, INFRASTRUCTURE, GDP, ETHNICITY, FACTION }
 var current_view = MapView.COUNTRIES
->>>>>>> origin/SoiSauce
 
 var settings = null
 
@@ -56,10 +52,6 @@ func _process(_delta: float) -> void:
 
 
 func _cycle_map_mode() -> void:
-<<<<<<< HEAD
-	current_view = (current_view + 1) % MapManager.MapMode.size() as MapManager.MapMode
-	MapManager.update_map_view(current_view)
-=======
 	match current_view:
 		MapView.COUNTRIES:
 			current_view = MapView.POPULATION
@@ -90,4 +82,3 @@ func _cycle_map_mode() -> void:
 			current_view = MapView.COUNTRIES
 			MapManager.show_countries_map()
 			print("Map Mode: Countries")
->>>>>>> origin/SoiSauce
