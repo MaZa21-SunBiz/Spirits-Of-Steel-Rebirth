@@ -15,11 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Spirits of Steel Rebirth"
-<<<<<<< HEAD
 run/main_scene="uid://bonl378c51366"
-=======
-run/main_scene="uid://ef1nlqkm5anw"
->>>>>>> origin/SoiSauce
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://lifcljm83dlp"
 config/icon="uid://claivv7l8p5lc"
@@ -38,23 +34,19 @@ KeyboardManager="*res://Managers/KeyboardManager.gd"
 ConsoleManager="*res://Managers/ConsoleManager.gd"
 Console="*uid://ouiu5xh1cs8n"
 DecisionManager="*res://Managers/DecisionManager.gd"
-<<<<<<< HEAD
-SceneSwitcher="*uid://d3xe17ngaqbie"
-EventManager="*uid://cyk5vve1r3vr5"
-=======
 EconomyManager="*res://Managers/EconomyManager.gd"
 SuperEventManager="*res://Managers/SuperEventManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
 FactionManager="*uid://dk4jr4fcfs7dl"
 IdeologyManager="*uid://yqhi3i86rxuf"
 CountryAIManager="*uid://8a2gs10drptm"
-SceneSwitcher="*uid://b6nuwg2ue50me"
+SceneSwitcher="*uid://d3xe17ngaqbie"
+EventManager="*uid://cyk5vve1r3vr5"
 PlansManager="*uid://2omlok4o48ss"
 
 [debug]
 
 file_logging/enable_file_logging=true
->>>>>>> origin/SoiSauce
 
 [display]
 
