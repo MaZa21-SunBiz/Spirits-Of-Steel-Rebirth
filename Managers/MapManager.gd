@@ -14,7 +14,7 @@ const SEA_MAIN = Color("#7e8e9e")
 const SEA_RASTER = Color("#697684")
 
 # --- DATA ---
-var id_map_image: Image
+@onready var id_map_image: Image
 var state_color_image: Image
 var state_color_texture: ImageTexture
 var max_province_id: int = 0
@@ -48,6 +48,8 @@ const CACHE_FOLDER = "res://map_data/"
 func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	var width: int = a_map.get_width()
 	var height: int = a_map.get_height()
+	print(width)
+	print(height)
 
 	id_map_image = Image.create(width, height, false, Image.FORMAT_RGB8)
 	var unique_regions = {}
@@ -1412,15 +1414,16 @@ func generate_type_mask() -> ImageTexture:
 	for y in range(h):
 		for x in range(w):
 			var pid = _get_pid_fast(x, y)
-			var province = province_objects[pid]
+			if province_objects.has(pid):
+				var province = province_objects[pid]
 
-			if province:
-				# 0 is usually Sea, anything else is Land
-				var color = Color.WHITE if province.type != 0 else Color.BLACK
-				type_img.set_pixel(x, y, color)
-			else:
-				# This pixel is a border (ID 1) or unassigned.
-				uncertain_pixels.append(Vector2i(x, y))
+				if province:
+					# 0 is usually Sea, anything else is Land
+					var color = Color.WHITE if province.type != 0 else Color.BLACK
+					type_img.set_pixel(x, y, color)
+				else:
+					# This pixel is a border (ID 1) or unassigned.
+					uncertain_pixels.append(Vector2i(x, y))
 
 	# --- PASS 2: Neighbor Check for Borders ---
 	for pos in uncertain_pixels:

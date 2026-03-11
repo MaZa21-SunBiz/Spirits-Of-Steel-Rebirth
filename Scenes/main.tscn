@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_kry3j"]
 [ext_resource type="Script" uid="uid://dfiom5fy34v8q" path="res://Scenes/map_container.gd" id="2_21xkr"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_6bp64"]
+[ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="4_6bp64"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_344ge"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dl045g47lsfkx" path="res://Scenes/world.tscn" id="7_6bp64"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fo5ed"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ukr8"]
 load_path = "res://.godot/imported/regions.png-75b8193867ba7ee4418b242a7a7efe49.ctex"
@@ -21,7 +20,7 @@ script = ExtResource("2_21xkr")
 map_shader = ExtResource("3_6bp64")
 
 [node name="CultureSprite" type="Sprite2D" parent="MapContainer" unique_id=889536622]
-texture = SubResource("CompressedTexture2D_fo5ed")
+texture = ExtResource("4_6bp64")
 centered = false
 
 [node name="RegionSprite" type="Sprite2D" parent="MapContainer" unique_id=282385221]

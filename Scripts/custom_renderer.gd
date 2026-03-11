@@ -159,6 +159,7 @@ void fragment() {
 
 
 func _update_multimesh_buffer():
+	if !CountryManager.player_country: return
 	var mm = troop_multimesh.multimesh
 	var total_troops = TroopManager.troops.size()
 

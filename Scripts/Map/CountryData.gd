@@ -7,6 +7,7 @@ var army_composition_cache: Dictionary = {"infantry": 0, "tank": 0, "artillery":
 const MANPOWER_RECOVERY_PER_YEAR := 0.10
 const MANPOWER_RECOVERY_PER_DAY := MANPOWER_RECOVERY_PER_YEAR / 365.0
 var military_size_ratio := 0.005
+signal process_day_complete
 const BASE_ARMY_COST := 20
 #endregion
 
@@ -97,6 +98,22 @@ class ReadyTroop:
 
 
 #region --- Lifecycle ---
+func setup_ai():
+	if not is_player:
+		ai_controller = CountryAI.new(self)
+
+
+#region --- Lifecycle ---
+func _init(p_country_name: String = "") -> void:
+	if p_country_name != "":
+		country_name = p_country_name
+		
+	allowedCountries.append_array([p_country_name, "sea"])
+	total_population = CountryManager.get_country_population(self.country_name)
+	
+	get_income()
+	setup_ai()
+
 #func _init(p_country_name: String = "") -> void:
 #	if p_country_name != "":
 #		country_name = p_country_name
@@ -135,38 +152,41 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	return country
 
 func process_hour() -> void:
-	if _is_loading:
-		return
-
-	political_power += daily_pp_gain
-
-	# Economic Cycle
-	# (GDP / Hours in a year) * Tax Rate + Factory Output
-	hourly_money_income = ((gdp * 0.0000228310502) + (factories_amount * factory_income)) * (1.0 - economy_law_penalty)
-	army_cost = calculate_army_upkeep()
-	income = hourly_money_income - army_cost
-	money += income
-
-	troop_speed_modifier = 1.0 + (army_level * 0.1)
-
+	update_political_power()
+	update_money()
 	update_manpower_pool()
-	_process_reinforcements()
+	
 	if not is_player:
-		CountryAIManager.ai_tick(self)
-		pass
+		ai_controller.think_hour()
 
 
 func process_day() -> void:
-	if _is_loading:
-		return
-
-	# Refresh stats that change daily/weekly
-	_refresh_economic_stats()
 	_process_training()
-	DecisionManager.process_country_day(self)
-	if not is_player:
-		pass
+	_process_reinforcements()
 
+	# note z21: needs to be replaced by eventmanager
+	DecisionManager.process_country_day(self)
+	process_day_complete.emit()
+	if not is_player:
+		ai_controller.think_day()
+
+#region --- Stats & Manpower ---
+func update_political_power() -> void:
+	political_power += daily_pp_gain
+
+func update_money():
+	var factories_income = factories_amount * factory_income
+	var gross_income = income + factories_income - army_cost
+	money += gross_income * (1.0 - economy_law_penalty)
+
+# Run only once
+func get_income():
+	income = 0
+	var provinces = MapManager.country_to_provinces_obj.get(country_name)
+	if provinces == null:
+		return
+	for province in provinces:
+		income += province.gdp
 
 func _refresh_economic_stats() -> void:
 	total_population = CountryManager.get_country_population(country_name)

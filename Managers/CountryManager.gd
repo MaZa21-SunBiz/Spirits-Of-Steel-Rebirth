@@ -57,7 +57,7 @@ func initialize_countries(a_countriesData: Array) -> void:
 		country.update_relations()
 		for puppeted: String in country.puppets:
 			InformPuppet(country, countries[puppeted])
-
+	set_player_country("Brazil")
 	print("CountryManager: Initialized %d countries." % countries.size())
 
 
