@@ -9,7 +9,6 @@ func _ready() -> void:
 		starts_folder = exe_dir + "starts"
 	else:
 		starts_folder = "res://starts/"
-	print(starts_folder)
 	var starts_dir = DirAccess.open(starts_folder)
 	for start in starts_dir.get_directories():
 		var entry = START_ENTRY_SCENE.instantiate()
@@ -19,4 +18,5 @@ func _ready() -> void:
 			starts_folder + start + "/thumbnail.png" ,
 			starts_folder + start + "/map_data.json"
 		)
-		print(start)
+		print("added ", start)
+	print(start_entry.get_children())

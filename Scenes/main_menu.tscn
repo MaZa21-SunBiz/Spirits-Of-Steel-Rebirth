@@ -266,7 +266,6 @@ theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
 [node name="Starts" type="Control" parent="." unique_id=65741064]
-visible = false
 material = ExtResource("5_yhxw7")
 layout_mode = 3
 anchor_left = 0.33950615
@@ -286,9 +285,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -100.5
-offset_right = 164.0
+offset_left = -292.0
+offset_top = -144.0
+offset_right = 269.0
 offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -301,7 +300,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
+columns = 4
 
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
 visible = false

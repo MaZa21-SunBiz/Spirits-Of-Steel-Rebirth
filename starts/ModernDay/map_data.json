@@ -35988,7 +35988,7 @@
 					"quality": 0.5
 				}
 			],
-			"city": "Old Delhi",
+			"city": "New Delhi",
 			"buildings": [
 				{
 					"type": "Factory",
@@ -62543,51 +62543,13 @@
 			"puppets": []
 		},
 		{
-			"name": "Soviet Union",
-			"color": "#FF0000",
-			"flag": "",
-			"money": 100000,
-			"ideology": [
-				0,
-				0
-			],
-			"political_power": 500,
-			"stability": 1.0,
-			"war_support": 1.0,
-			"accepted_cultures": [
-				"Russians",
-				"Evenkis",
-				"Nenets",
-				"Yakuts",
-				"Chukoktans",
-				"Komi",
-				"Finnish",
-				"Evens",
-				"Berlarussians",
-				"Mari",
-				"Tartars",
-				"Balkarsk",
-				"Chuvash",
-				"Mordvins",
-				"Tuvans",
-				"Mongols",
-				"Altayns",
-				"Udegens",
-				"Kalmykians",
-				"Dagestani",
-				"Checnyians"
-			],
-			"puppets": []
-		},
-
-		{
 			"name": "Russia",
 			"color": "#386038",
 			"flag": "",
 			"money": 100000,
 			"ideology": [
-				0,
-				0
+				50,
+				-50
 			],
 			"political_power": 500,
 			"stability": 1.0,
@@ -62615,7 +62577,7 @@
 				"Dagestani",
 				"Checnyians"
 			],
-			"puppets": []
+			"puppets": ["Belarus"]
 		},
 		{
 			"name": "Norway",
@@ -62826,7 +62788,7 @@
 			"war_support": 1.0,
 			"accepted_cultures": [
 				"Russians",
-                "Khazaks"
+				"Khazaks"
 			],
 			"puppets": []
 		},
@@ -62843,7 +62805,7 @@
 			"stability": 1.0,
 			"war_support": 1.0,
 			"accepted_cultures": [
-                "Germans"
+				"Germans"
 			],
 			"puppets": []
 		},

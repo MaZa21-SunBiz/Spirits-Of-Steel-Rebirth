@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="3_lmkek"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="4_035le"]
 
-[node name="Node2D" type="Node2D" unique_id=1017370163]
+[node name="StartEntry" type="Control" unique_id=1017370163]
+custom_minimum_size = Vector2(212, 166)
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_37b1d")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=181871694]

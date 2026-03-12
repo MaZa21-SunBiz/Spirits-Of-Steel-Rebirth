@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var background_rect: TextureRect = $"PanelContainer/VBoxContainer/background"
 # @onready var heading_label: Label = $"PanelContainer/VBoxContainer/description"
