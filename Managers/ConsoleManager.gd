@@ -17,7 +17,9 @@ func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
+	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
+	Console.add_command("reload_decisions", _reload_decisions, [], 0, "Reloads all the deecision trees")
 
 	Console.add_command("gates_of_hell", m_GatesOfHell, [], 0, "Start armageddon")
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
@@ -123,3 +125,6 @@ func _call_to_arms(caller_name: String, target_name: String) -> void:
 		Console.print_line("Unknown country: " + caller_name)
 	if not target:
 		Console.print_line("Unknown country: " + target_name)
+
+func _reload_decisions():
+	DecisionManager._load_decisions("res://decisions/")

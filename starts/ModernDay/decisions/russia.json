@@ -3,6 +3,7 @@
 		"Economy": [
 			{
 				"id": "eco_1",
+				"prereq": "eco_0",
 				"title": "Industrial Effort",
 				"pos": [
 					100.0,
@@ -76,18 +77,18 @@
 		"Military": [
 			{
 				"id": "mil_0",
-				"title": "WORLD WAR 3 (indian)",
+				"title": "WORLD WAR 3",
 				"pos": [
 					100.0,
 					300.0
 				],
-				"days": 10.0,
+				"days": 0.0,
 				"cost_pp": 20.0,
 				"action": {
 					"func": "declare_war",
 					"args": [
 						"China",
-						"Russia"
+						"India"
 					]
 				},
 				"desc": "Encourage enlistment."
@@ -96,7 +97,7 @@
 				"id": "mil_1",
 				"title": "Military Youth",
 				"pos": [
-					400.0,
+					200.0,
 					300.0
 				],
 				"days": 10.0,

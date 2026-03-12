@@ -62548,8 +62548,8 @@
 			"flag": "",
 			"money": 100000,
 			"ideology": [
-				0,
-				0
+				50,
+				-50
 			],
 			"political_power": 500,
 			"stability": 1.0,
@@ -62575,9 +62575,9 @@
 				"Udegens",
 				"Kalmykians",
 				"Dagestani",
-                "Checnyians"
+				"Checnyians"
 			],
-			"puppets": []
+			"puppets": ["Belarus"]
 		},
 		{
 			"name": "Norway",
@@ -62788,7 +62788,7 @@
 			"war_support": 1.0,
 			"accepted_cultures": [
 				"Russians",
-                "Khazaks"
+				"Khazaks"
 			],
 			"puppets": []
 		},
@@ -62805,7 +62805,7 @@
 			"stability": 1.0,
 			"war_support": 1.0,
 			"accepted_cultures": [
-                "Germans"
+				"Germans"
 			],
 			"puppets": []
 		},

@@ -122,17 +122,20 @@ func get_function(expression, country: CountryData = null):
 					get_variable(evaled_args[0]),
 					get_variable(evaled_args[1])
 				)
-		"increase_hourly_money":
-			country.hourly_money_income += evaled_args[0] if evaled_args.size() > 0 else 0
+		"add_ideology_drift":
+			country.driftTargets[args[0]] = IdeologyDriftTarget.FromDict(args[1])
+			result = country.driftTargets
+		"change_hourly_money":
+			country.hourly_money_income += evaled_args[0]
 			result = country.hourly_money_income
-		"increase_manpower":
-			country.manpower += evaled_args[0] if evaled_args.size() > 0 else 0
+		"change_manpower":
+			country.manpower += evaled_args[0]
 			result = country.manpower
-		"increase_daily_pp":
-			country.daily_pp_gain += evaled_args[0] if evaled_args.size() > 0 else 0
+		"change_daily_pp":
+			country.daily_pp_gain += evaled_args[0]
 			result = country.daily_pp_gain
-		"increase_stability":
-			country.stability = min(1.0, country.stability + (evaled_args[0] if evaled_args.size() > 0 else 0))
+		"change_stability":
+			country.stability = min(1.0, country.stability + evaled_args[0])
 			result = country.stability
 		"army_level_up":
 			country.army_level += 1

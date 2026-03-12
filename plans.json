@@ -1,15 +1,29 @@
 {
   "India":[
-	{"image": "assets/icons/trees.svg"},
-	{"button": "Form Pakistan",
-	  "condition": [{"func": "has_pid", "args": ["India", 1655]}],
-	  "finished": [{"func": "play_as", "args": ["China"]}]
+	{
+	  "type": "paragraph",
+	  "text": "the old world is dying and the new world is struggling to be born\nnow is the time of monsters"
+	},
+	{
+	  "type": "image",
+	  "path": "pinkman.png"
+	},
+	{
+	  "type": "button",
+	  "text": "Form Pakistan",
+	  "condition": [{"func": "return", "args": [true]}],
+	  "finished": [{"func": "add_ideology_drift", "args": ["bober", {"final_position": [50, 50], "drift_amount": 10}]}]
 	}
   ],
   "Russia":[
-	{"button": "Form Soviet Union",
+	{
+	  "type": "button",
+	  "text": "Form Soviet Union",
 	  "condition": [
-		{"func": "has_pids", "args": ["Russia", 724, 654, 600, 493, 298, 298, 448, 341, 406, 686, 755, 831, 986, 1038, 1291, 1142, 1432, 1435]},
+	{
+	  "func": "has_pids",
+	  "args": [ "Russia", 724, 654, 600, 493, 298, 298, 448, 341, 406, 686, 755, 831, 986, 1038, 1291, 1142, 1432, 1435 ]
+	}
 	  ],
 	  "finished": [{"func": "play_as", "args": ["China"]}]
 	}

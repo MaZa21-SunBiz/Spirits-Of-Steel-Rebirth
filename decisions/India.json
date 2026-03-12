@@ -3,7 +3,6 @@
 		"Economy": [
 			{
 				"id": "eco_1",
-				"prereq": "eco_0",
 				"title": "Industrial Effort",
 				"pos": [
 					100.0,
@@ -11,16 +10,6 @@
 				],
 				"days": 3.0,
 				"cost_pp": 25.0,
-				"reqs": [
-					{"func": "and",
-						"args": [
-							{ "func": "is_at_war", "args": [ "China", "India" ] },
-							{ "func": "is_at_war", "args": [ "Russia", "United_states" ] }
-						],
-						"store": "ww3"
-					}
-					
-				],
 				"action": {
 					"func": "change_hourly_money",
 					"args": [
@@ -75,7 +64,6 @@
 				],
 				"days": 30.0,
 				"cost_pp": 100.0,
-				"exclusive": ["eco_5"],
 				"action": {
 					"func": "change_hourly_money",
 					"args": [
@@ -83,42 +71,23 @@
 					]
 				},
 				"desc": "Complete state control of production."
-			},
-			{
-				"id": "eco_5",
-				"title": "Free Market",
-				"prereq": "eco_2",
-				"pos": [
-					700.0,
-					400.0
-				],
-				"days": 30.0,
-				"cost_pp": 100.0,
-				"exclusive": ["eco_4"],
-				"action": {
-					"func": "change_hourly_money",
-					"args": [
-						1200.0
-					]
-				},
-				"desc": "Deregulate the economy for private growth."
 			}
 		],
 		"Military": [
 			{
 				"id": "mil_0",
-				"title": "WORLD WAR 3",
+				"title": "WORLD WAR 3 (indian)",
 				"pos": [
 					100.0,
 					300.0
 				],
-				"days": 0.0,
+				"days": 10.0,
 				"cost_pp": 20.0,
 				"action": {
 					"func": "declare_war",
 					"args": [
 						"China",
-						"India"
+						"Russia"
 					]
 				},
 				"desc": "Encourage enlistment."
@@ -127,7 +96,7 @@
 				"id": "mil_1",
 				"title": "Military Youth",
 				"pos": [
-					200.0,
+					400.0,
 					300.0
 				],
 				"days": 10.0,
