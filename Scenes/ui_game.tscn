@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
 [ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/ModernDay/assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/Sockenheimer/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
 [ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]

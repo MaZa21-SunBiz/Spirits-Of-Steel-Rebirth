@@ -17,6 +17,8 @@ func any(...args) -> bool:
 func get_variable(variable):
 	if not variable is String:
 		return variable
+	# if CountryManager.countries.has(variable):
+	# 	return CountryManager.countries[variable]
 	match variable:
 		"player":
 			return CountryManager.player_country.country_name
@@ -61,15 +63,31 @@ func get_element(element, laws_grid):
 			laws_grid.add_child(entry)
 
 func get_function(expression, country: CountryData = null):
+	if !expression: return
+
 	if country == null:
 		country = CountryManager.player_country
 	
+	#for loop
+	if expression.has("for"):
+		for item in expression["in"]:
+			heap[expression["for"]] = item 
+			get_function(expression["do"])
+		heap.erase(expression["for"])
+	
+	#match statement
+	if expression.has("match"):
+		print(str(get_function(expression["match"])))
+		get_function(expression.get(str(get_function(expression["match"])), {}))
+		
+
 	# Handle multiple functions (Recusive Array Support)
 	if expression is Array:
 		var last_result = null
 		for item in expression:
 			last_result = get_function(item, country)
 		return last_result
+
 
 	if not expression is Dictionary:
 		push_error("Interpreter: Expression must be a Dictionary or Array.")
@@ -114,6 +132,8 @@ func get_function(expression, country: CountryData = null):
 			result = all(evaled_args)
 		"any":
 			result = any(evaled_args)
+		"probability":
+			result = bool(randi() % int(evaled_args[0]))
 
 		# Country stuff
 		"is_at_war":
@@ -163,6 +183,13 @@ func get_function(expression, country: CountryData = null):
 		"annex":
 			if evaled_args.size() >= 2:
 				MapManager.annex_country(evaled_args[0], evaled_args[1])
+				result = true
+		"make_puppet":
+			if evaled_args.size() >= 2:
+				print(evaled_args)
+				var puppeter = CountryManager.countries.get(get_variable(evaled_args[0]))
+				var puppetee = CountryManager.countries.get(get_variable(evaled_args[1]))
+				CountryManager.make_puppet(puppeter, puppetee)
 				result = true
 		"has_pid":
 			if evaled_args.size() >= 2:

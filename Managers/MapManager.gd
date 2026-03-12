@@ -969,12 +969,14 @@ func show_countries_map() -> void:
 
 		var country_name = province_objects[pid].country
 		var country_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
+		var owner_color = CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY)
 		var country_data = CountryManager.get_country(country_name)
 		if country_data and country_data.owner:
 			country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
+			owner_color = (owner_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
 
 		state_color_image.set_pixel(pid, 0, country_color)
-		state_color_image.set_pixel(pid, 1, CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+		state_color_image.set_pixel(pid, 1, owner_color)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES

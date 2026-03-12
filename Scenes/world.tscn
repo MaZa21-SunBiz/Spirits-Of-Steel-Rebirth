@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_o06y3"]
@@ -45,4 +46,7 @@ visible = false
 visible = false
 
 [node name="LostTerritoryUI" parent="." unique_id=746887622 instance=ExtResource("13_c5t2i")]
+visible = false
+
+[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("11_ikia7")]
 visible = false

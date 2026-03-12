@@ -217,6 +217,7 @@
 			{
 				"id": "pol_5_d",
 				"title": "A New Russia",
+				"exclusive": ["pol_5_c"],
 				"prereq": "pol_3_a",
 				"pos": [
 					950.0,
@@ -233,6 +234,7 @@
 			{
 				"id": "pol_5_c",
 				"title": "A New Union",
+				"exclusive": ["pol_5_d"],
 				"prereq": "pol_3_a",
 				"pos": [
 					950.0,
@@ -246,6 +248,26 @@
 					"args": ["bober", {"final_position": [-50, -50], "drift_amount": 0.4}]
 				},
 				"desc": "WHOOO YEA BABY THTS WHT IVE BEEN WAITING FOR"
+			},
+			{
+				"id": "pol_6_c",
+				"title": "Unify with Former Soviet Countries",
+				"prereq": "pol_5_c",
+				"pos": [
+					1250.0,
+					550.0
+				],
+				"days": 20.0,
+				"cost_pp": 50.0,
+				"action": {
+					"for": "country",
+					"in": ["Poland", "Hungary", "Slovakia", "Lithuania", "Latvia", "Estonia", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"],
+					"do": {
+						"match": {"func": "probability", "args": [2]},
+						"true": {"func": "make_puppet", "args": ["Russia", "country"]}
+					}
+				},
+				"desc": "get the homies all up in here"
 			}
 		]
 	}
