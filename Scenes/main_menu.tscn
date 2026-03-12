@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="2_vtepg"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
-[ext_resource type="Shader" path="res://shaders/goober.gdshader" id="5_8dnnj"]
+[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://shaders/goober.gdshader" id="5_8dnnj"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
-[ext_resource type="Shader" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
+[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
@@ -36,17 +36,10 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="MainMenu" type="Control" unique_id=945632142]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMenu" type="CanvasLayer" unique_id=1666967798]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="." unique_id=120285262]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,6 +51,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -118,7 +112,6 @@ wait_time = 20.0
 autostart = true
 
 [node name="Logo" type="TextureRect" parent="." unique_id=110353226]
-layout_mode = 0
 offset_left = 27.5
 offset_top = 30.0
 offset_right = 387.5
@@ -127,7 +120,6 @@ scale = Vector2(0.4138889, 0.4138889)
 texture = ExtResource("2_opfnp")
 
 [node name="Label2" type="Label" parent="." unique_id=624590657]
-layout_mode = 0
 offset_left = 463.0
 offset_top = 145.0
 offset_right = 751.0
@@ -141,7 +133,6 @@ theme_override_font_sizes/font_size = 67
 text = "Rebirth"
 
 [node name="Label" type="Label" parent="." unique_id=639883253]
-layout_mode = 0
 offset_left = 109.499985
 offset_top = 73.0
 offset_right = 1257.5
@@ -156,15 +147,17 @@ theme_override_fonts/font = ExtResource("4_yhxw7")
 theme_override_font_sizes/font_size = 161
 text = "Spirits Of Steel"
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662 node_paths=PackedStringArray("StartsUI", "SettingsUI", "CreditsUI")]
 material = ExtResource("5_yhxw7")
-layout_mode = 0
 offset_left = 59.49994
 offset_top = 210.0
 offset_right = 287.49994
 offset_bottom = 438.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 script = ExtResource("5_trj04")
+StartsUI = NodePath("../Starts")
+SettingsUI = NodePath("../Settings")
+CreditsUI = NodePath("../Credits")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=503985164]
 layout_mode = 2
@@ -204,7 +197,7 @@ text = "Quit
 [node name="Credits" type="Control" parent="." unique_id=1558337124]
 visible = false
 material = ExtResource("5_yhxw7")
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -268,7 +261,7 @@ text = "Thanks y'all"
 [node name="Starts" type="Control" parent="." unique_id=65741064]
 visible = false
 material = ExtResource("5_yhxw7")
-layout_mode = 1
+layout_mode = 3
 anchor_left = 0.33950615
 anchor_top = 0.33950618
 anchor_right = 0.66049385
