@@ -315,17 +315,36 @@ func m_OnPolityStabilityChanged(value: float) -> void:
 		CountryManager.countries[selectedCountry].stability = value
 
 func m_NoneTool() -> void:
+	match currentTool:
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				MapManager.ResetProvinceColor(pid)
+			multiSelectPID = []
 	currentTool = Tool.NONE
 
 func m_PaintOwnerTool() -> void:
+	match currentTool:
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				MapManager.ResetProvinceColor(pid)
+			multiSelectPID = []
 	currentTool = Tool.PAINT_OWNER
 	
 func m_PaintOccupationTool() -> void:
+	match currentTool:
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				MapManager.ResetProvinceColor(pid)
+			multiSelectPID = []
 	currentTool = Tool.PAINT_OCCUPATION
 	
 func m_PaintFactionTool() -> void:
+	match currentTool:
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				MapManager.ResetProvinceColor(pid)
+			multiSelectPID = []
 	currentTool = Tool.PAINT_FACTION
 
 func m_MultiSelectTool() -> void:
 	currentTool = Tool.MULTI_SELECT
-	multiSelectPID = []
