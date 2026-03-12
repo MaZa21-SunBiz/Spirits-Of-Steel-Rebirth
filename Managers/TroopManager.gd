@@ -694,6 +694,9 @@ func get_flag(country: String, ideology: String = "") -> Texture2D:
 
 	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
 	path = find_resource.call("%s_flag.png" % country)
+	if path == "":
+		path = find_resource.call("fallback_flag.png")
+	
 	if path != "":
 		var tex := load(path)
 		flag_cache[cache_key] = tex
