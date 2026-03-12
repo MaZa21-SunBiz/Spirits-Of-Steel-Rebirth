@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var map_sprite: Sprite2D
 
 var selectedCountry: String = ""
+var selectedFaction: String = ""
 var selected_pid: int = -1
 var hovered_pid: int = -1
 var original_pid_color: Color
@@ -27,6 +28,7 @@ var currentMode: Mode = Mode.PROVINCE
 
 # UI References (Ensure these match your .tscn node names)
 @export var status_label: Label
+@export var provinceName: LineEdit
 @export var input_country: LineEdit
 @export var inputOccupier: LineEdit
 @export var input_city: LineEdit
@@ -61,14 +63,14 @@ func _ready() -> void:
 		map_sprite = get_node_or_null("../../MapContainer/CultureSprite")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if MapManager._is_mouse_over_ui() or Console.is_visible():
+	if MapManager._is_mouse_over_ui() || Console.is_visible():
 		_clear_hover()
 		return
 
 	if event is InputEventMouseMotion:
 		_handle_hover(event.position)
 
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 		_handle_click(event.position)
 
 func _handle_hover(screen_pos: Vector2) -> void:
@@ -95,7 +97,7 @@ func _clear_hover() -> void:
 		hovered_pid = -1
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-func _handle_click(screen_pos: Vector2) -> void:
+func _handle_click(_screenPos: Vector2) -> void:
 	if hovered_pid > 1:
 		match currentMode:
 			Mode.PROVINCE:
@@ -105,17 +107,17 @@ func _handle_click(screen_pos: Vector2) -> void:
 					Tool.NONE:
 						select_province(hovered_pid)
 					Tool.PAINT_FACTION:
-						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedFaction in FactionManager.factions:
 							pass
 			Mode.POLITY:
 				match currentTool:
 					Tool.NONE:
 						select_province(hovered_pid)
 					Tool.PAINT_OWNER:
-						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
 					Tool.PAINT_OCCUPATION:
-						if MapManager.province_objects[hovered_pid].country != "Sea" and selectedCountry in CountryManager.countries:
+						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
 							if MapManager.province_objects[hovered_pid].country != selectedCountry:
 								MapManager.OccupyProvince(hovered_pid, selectedCountry)
 							else:
@@ -128,9 +130,10 @@ func select_province(pid: int) -> void:
 		return
 
 	#var color_str = _color_to_rgb_string(prov.r_color) if prov.r_color else "Unknown"
-	#status_label.text = "Selected PID: %d\nR_Color: %s" % [pid, color_str]
+	status_label.text = "Selected PID: %d" % [pid]
 
 	# Set Fields
+	provinceName.text = prov.name
 	input_country.text = prov.country
 	inputOccupier.text = prov.occupier
 	input_city.text = prov.city
@@ -138,6 +141,7 @@ func select_province(pid: int) -> void:
 	input_claims.text = ", ".join(prov.claims)
 
 func _on_apply_pressed() -> void:
+	return
 	if selected_pid <= 1:
 		return
 	var prov = MapManager.province_objects.get(selected_pid)
@@ -150,10 +154,6 @@ func _on_apply_pressed() -> void:
 	# 1. Update MapManager global data
 
 	# 2. Update Province Object
-	prov.country = new_country
-	prov.occupier = inputOccupier.text.strip_edges()
-	prov.city = input_city.text.strip_edges()
-	prov.gdp = float(input_gdp.value)
 
 	var raw_claims = input_claims.text.split(",")
 	var final_claims = []
@@ -201,7 +201,7 @@ func _save_json(path: String, data: Dictionary) -> void:
 
 func m_OnTabContainerTabChanged(tab: int) -> void:
 	currentTool = Tool.NONE
-	currentMode = tab
+	currentMode = tab as Mode
 	leftSidebar.current_tab = tab
 
 func SetupFactionList() -> void:
@@ -215,7 +215,8 @@ func SetupPolitiesList() -> void:
 		politiesItemList.add_item(polity)
 		
 func m_OnFactionSelected(index: int) -> void:
-	var faction: FactionData = FactionManager.factions[factionsItemList.get_item_text(index)]
+	selectedFaction = factionsItemList.get_item_text(index)
+	var faction: FactionData = FactionManager.factions[selectedFaction]
 	factionName.text = faction.name
 	factionColor.color = faction.color
 	
@@ -247,7 +248,6 @@ func m_OnPolitySelected(index: int) -> void:
 		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
 		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.member == polity.country_name)].status))
 		polityFactionList.add_child(factionEntry)
-	pass # Replace with function body.
 
 func m_OnCitySubmitted(new_text: String) -> void:
 	if selected_pid in MapManager.province_objects:
@@ -258,7 +258,18 @@ func m_OnProvinceGDPChanged(value: float) -> void:
 		MapManager.province_objects[selected_pid].gdp = value
 
 func m_OnColorChanged(color: Color) -> void:
-	MapManager.set_country_color(selectedCountry, color)
+	if selectedCountry in CountryManager.countries:
+		MapManager.set_country_color(selectedCountry, color)
+
+func m_OnProvinceNameSubmitted(new_text: String) -> void:
+	if selected_pid in MapManager.province_objects:
+		#if (new_text == MapManager.province_objects[selected_pid].occupier):
+		MapManager.province_objects[selected_pid].name = new_text
+
+func m_OnProvinceOwnerSubmitted(new_text: String) -> void:
+	if selected_pid in MapManager.province_objects && CountryManager.countries.has(new_text):
+		#if (new_text == MapManager.province_objects[selected_pid].occupier):
+		MapManager.transfer_ownership(selected_pid, new_text)
 
 func m_OnProvinceOccupierSubmitted(new_text: String) -> void:
 	if selected_pid in MapManager.province_objects:
@@ -266,6 +277,27 @@ func m_OnProvinceOccupierSubmitted(new_text: String) -> void:
 			MapManager.DeoccupyProvince(selected_pid)
 		else:
 			MapManager.OccupyProvince(selected_pid, new_text)
+
+func m_OnPolityNameSubmitted(new_text: String) -> void:
+	if selectedCountry in CountryManager.countries:
+		#CountryManager.RenameCountry(selectedCountry, new_text)
+		selectedCountry = new_text
+
+func m_OnPolityMoneyChanged(value: float) -> void:
+	if selectedCountry in CountryManager.countries:
+		CountryManager.countries[selectedCountry].money = value
+
+func m_OnPolityPoliticalPowerChanged(value: float) -> void:
+	if selectedCountry in CountryManager.countries:
+		CountryManager.countries[selectedCountry].political_power = value
+
+func m_OnPolityWarSupportChanged(value: float) -> void:
+	if selectedCountry in CountryManager.countries:
+		CountryManager.countries[selectedCountry].war_support = value
+
+func m_OnPolityStabilityChanged(value: float) -> void:
+	if selectedCountry in CountryManager.countries:
+		CountryManager.countries[selectedCountry].stability = value
 
 func m_NoneTool() -> void:
 	currentTool = Tool.NONE

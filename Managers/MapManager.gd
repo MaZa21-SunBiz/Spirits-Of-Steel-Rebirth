@@ -271,18 +271,34 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	var highlight_color = _get_contextual_highlight(pid)
 
 	if pid != last_hovered_pid:
-		_reset_last_hover() # Clean up the old one
-
-		if pid > 1 and highlight_color != Color.TRANSPARENT:
-			original_hover_color = state_color_image.get_pixel(pid, 0)
-			update_lookup(pid, highlight_color, highlight_color)
-
-			last_hovered_pid = pid
-			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
+		if GameState.selectingCountry:
+			if last_hovered_pid in province_objects && pid in province_objects && province_objects[last_hovered_pid].country == province_objects[pid].country:
+				pass
+			else:
+				if last_hovered_pid in province_objects && province_objects[last_hovered_pid].country != "Sea":
+					for province in country_to_provinces [province_objects[last_hovered_pid].country]:
+						update_lookup(province, original_hover_color, original_hover_color)
+				last_hovered_pid = -1
+				if pid in province_objects && province_objects[pid].country != "Sea" && highlight_color != Color.TRANSPARENT:
+					original_hover_color = state_color_image.get_pixel(pid, 0)
+					for province in country_to_provinces [province_objects[pid].country]:
+						update_lookup(province, highlight_color, highlight_color)
+					last_hovered_pid = pid
+					Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+					province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
 		else:
-			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-			province_hovered.emit(-1, "")
+			_reset_last_hover() # Clean up the old one
+
+			if pid > 1 and highlight_color != Color.TRANSPARENT:
+				original_hover_color = state_color_image.get_pixel(pid, 0)
+				update_lookup(pid, highlight_color, highlight_color)
+
+				last_hovered_pid = pid
+				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+				province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
+			else:
+				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+				province_hovered.emit(-1, "")
 
 
 func _reset_last_hover() -> void:
@@ -310,12 +326,10 @@ func _get_contextual_highlight(pid: int) -> Color:
 			return Color.CYAN
 		else:
 			return Color.TRANSPARENT
-
 	elif GameState.choosing_deploy_city:
 		if province_objects[pid].city.length() > 0:
 			return Color.CYAN.lightened(0.3)
 		return Color.TRANSPARENT # Don't highlight non-city provinces during deploy
-
 	elif GameState.industry_building != GameState.IndustryType.DEFAULT:
 		return state_color_image.get_pixel(pid, 0).lightened(0.2).blend(Color.GREEN_YELLOW)
 

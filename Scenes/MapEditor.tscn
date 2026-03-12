@@ -46,10 +46,11 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 5
 
-[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "factionsItemList", "factionName", "factionColor", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "factionsItemList", "factionName", "factionColor", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
 script = ExtResource("1_mcl4l")
 leftSidebar = NodePath("Sidebar/TabContainer")
 status_label = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/StatusLabel")
+provinceName = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputName")
 input_country = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCountry")
 inputOccupier = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputOccupier")
 input_city = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCity")
@@ -94,9 +95,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 0
+current_tab = 2
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -131,13 +133,20 @@ theme = ExtResource("2_5xoin")
 [node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1239453382]
 layout_mode = 2
 theme = ExtResource("2_5xoin")
-text = "Selected PID: None
-R_Color: None"
+text = "Selected PID: None"
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1740113436]
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 columns = 2
+
+[node name="LabelName" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1446195573]
+layout_mode = 2
+text = "Name:"
+
+[node name="InputName" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=891120182]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="LabelCountry" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer" unique_id=1733643887]
 layout_mode = 2
@@ -417,7 +426,6 @@ layout_mode = 2
 text = "Add Member"
 
 [node name="Polity" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=217037870]
-visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 2
@@ -797,12 +805,18 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [connection signal="tab_changed" from="PanelContainer/VBoxContainer/TabContainer" to="." method="m_OnTabContainerTabChanged"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnProvinceNameSubmitted"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCountry" to="." method="m_OnProvinceOwnerSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputOccupier" to="." method="m_OnProvinceOccupierSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCity" to="." method="m_OnCitySubmitted"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputGDP" to="." method="m_OnProvinceGDPChanged"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnFactionSelected"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnPolitySelected"]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnColorChanged"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputMoney" to="." method="m_OnPolityMoneyChanged"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputPoliticalPower" to="." method="m_OnPolityPoliticalPowerChanged"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputWarSupport" to="." method="m_OnPolityWarSupportChanged"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputStability" to="." method="m_OnPolityStabilityChanged"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnApply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnExport" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]

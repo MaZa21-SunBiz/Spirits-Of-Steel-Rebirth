@@ -22,6 +22,7 @@ texture = ExtResource("4_fevyy")
 centered = false
 
 [node name="RegionSprite" type="Sprite2D" parent="MapContainer" unique_id=2123006699]
+visible = false
 texture = ExtResource("5_hibaj")
 centered = false
 
