@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bl37j3o36eynq" path="res://Scripts/UI/MapEditor/MapEditorUI.gd" id="1_mcl4l"]
 [ext_resource type="Theme" uid="uid://cu2peiqhvt7tx" path="res://UI/MapEditor/MapEditorTheme.tres" id="2_5xoin"]
 [ext_resource type="StyleBox" uid="uid://0mslv70mgr34" path="res://UI/CloseButton.tres" id="2_kkefn"]
-[ext_resource type="Texture2D" uid="uid://cfcs8yypqofyp" path="res://assets/icons/merge_icon.png" id="4_3jorg"]
+[ext_resource type="Texture2D" uid="uid://d12li82tjifxv" path="res://assets/icons/MapEditor/NoneTool.svg" id="4_kdxsy"]
 [ext_resource type="Texture2D" uid="uid://ctol3gcbufcx" path="res://assets/icons/political_power_icon (Copy).svg" id="5_eo7xe"]
 [ext_resource type="Texture2D" uid="uid://bwfmtjlbsxvny" path="res://assets/icons/monarchist_icon.svg" id="6_eo7xe"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="7_kdxsy"]
@@ -48,7 +48,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 5
 
-[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "factionsItemList", "factionName", "factionColor", "factionMemberList", "factionMemberTemplate", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "provincePopulationList", "provincePopulationTemplate", "provinceResourcesList", "provinceResourcesTemplate", "factionsItemList", "factionName", "factionColor", "factionMemberList", "factionMemberTemplate", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
 script = ExtResource("1_mcl4l")
 leftSidebar = NodePath("Sidebar/TabContainer")
 status_label = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/StatusLabel")
@@ -58,6 +58,10 @@ inputOccupier = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/Mar
 input_city = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCity")
 input_gdp = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputGDP")
 input_claims = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/InputClaims")
+provincePopulationList = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer")
+provincePopulationTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template")
+provinceResourcesList = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer")
+provinceResourcesTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template")
 factionsItemList = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList")
 factionName = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputName")
 factionColor = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputColor")
@@ -712,7 +716,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_3jorg")
+texture_normal = ExtResource("4_kdxsy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -744,7 +748,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_3jorg")
+texture_normal = ExtResource("4_kdxsy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -788,7 +792,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_3jorg")
+texture_normal = ExtResource("4_kdxsy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1090,6 +1094,8 @@ text = "Add Member"
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputOccupier" to="." method="m_OnProvinceOccupierSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCity" to="." method="m_OnCitySubmitted"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputGDP" to="." method="m_OnProvinceGDPChanged"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/BtnApply" to="." method="AddProvincePopulation"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/BtnApply" to="." method="AddProvinceResource"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnFactionSelected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/NewFaction" to="PopupPanel" method="m_OpenScreen" binds= [0]]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnFactionColorChanged"]

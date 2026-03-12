@@ -27,13 +27,14 @@ func _process(_delta: float) -> void:
 					# get_tree().root.find_child("Menu", true, false).toggle_menu()
 					settings.visible = !settings.visible
 
-	if Input.is_action_just_pressed("open_menu"):
-		if not _debounce:
-			_debounce = true
-			toggle_menu.emit()
+	if SceneSwitcher._current_type != SceneSwitcher.Type.EDITOR:
+		if Input.is_action_just_pressed("open_menu"):
+			if not _debounce:
+				_debounce = true
+				toggle_menu.emit()
 
-	if Input.is_action_just_released("open_menu"):
-		_debounce = false
+		if Input.is_action_just_released("open_menu"):
+			_debounce = false
 
 	# --- 2. MAP MODE CYCLING (Independent of Menu) ---
 	if Input.is_action_just_pressed("cycle_map_mode"):

@@ -37,6 +37,10 @@ var currentMode: Mode = Mode.PROVINCE
 @export var input_city: LineEdit
 @export var input_gdp: SpinBox
 @export var input_claims: TextEdit
+@export var provincePopulationList: VBoxContainer
+@export var provincePopulationTemplate: PanelContainer
+@export var provinceResourcesList: VBoxContainer
+@export var provinceResourcesTemplate: PanelContainer
 
 @export var factionsItemList: ItemList
 @export var factionName: LineEdit
@@ -140,6 +144,12 @@ func _handle_click(_screenPos: Vector2) -> void:
 								multiSelectPID.push_back(hovered_pid)
 								MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
 
+func IndexOfText(a_itemList: ItemList, a_text: String) -> int:
+	for i in range(a_itemList.item_count):
+		if a_itemList.get_item_text(i) == a_text:
+			return i
+	return -1
+
 func select_province(pid: int) -> void:
 	selected_pid = pid
 	var prov = MapManager.province_objects.get(pid)
@@ -156,6 +166,44 @@ func select_province(pid: int) -> void:
 	input_city.text = prov.city
 	input_gdp.value = prov.gdp
 	input_claims.text = ", ".join(prov.claims)
+	
+	for child in provincePopulationList.get_children():
+		child.queue_free()
+	for population: PopulationData in prov.population:
+		var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
+		populationEntry.visible = true
+		populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
+			prov.population.erase(population)
+			populationEntry.queue_free()
+		)
+		populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity
+		populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text_submitted.connect(func (a_ethnicity: String): population.ethnicity = a_ethnicity)
+		populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value = population.amount
+		populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value_changed.connect(func (a_amount: float): population.amount = a_amount)
+		provincePopulationList.add_child(populationEntry)
+		
+	for child in provinceResourcesList.get_children():
+		child.queue_free()
+	for resource: ResourceNode in prov.resources:
+		var resourceEntry: PanelContainer = provinceResourcesTemplate.duplicate()
+		resourceEntry.visible = true
+		resourceEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
+			prov.resources.erase(resource)
+			resourceEntry.queue_free()
+		)
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text = resource.type
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text_submitted.connect(func (a_type: String): resource.type = a_type)
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value = resource.amount
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value_changed.connect(func (a_amount: float): resource.amount = a_amount)
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value = resource.amount
+		resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value_changed.connect(func (a_quality: float): resource.quality = a_quality)
+		provinceResourcesList.add_child(resourceEntry)
+	
+	if currentMode == Mode.POLITY:
+		if prov.country != "Sea":
+			var itemIndex: int = IndexOfText(politiesItemList, prov.country)
+			politiesItemList.select(itemIndex)
+			politiesItemList.item_selected.emit(itemIndex)
 
 func _on_apply_pressed() -> void:
 	return
@@ -314,7 +362,7 @@ func m_OnProvinceOccupierSubmitted(new_text: String) -> void:
 
 func m_OnPolityNameSubmitted(new_text: String) -> void:
 	if selectedCountry in CountryManager.countries:
-		#CountryManager.RenameCountry(selectedCountry, new_text)
+		CountryManager.RenameCountry(selectedCountry, new_text)
 		selectedCountry = new_text
 
 func m_OnPolityMoneyChanged(value: float) -> void:
@@ -380,3 +428,42 @@ func AddedFactionMember() -> void:
 	memberEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(member.status))
 	memberEntry.get_node("HBoxContainer/OptionButton").item_selected.connect(func (a_index: int): FactionManager.factions[selectedFaction].UpdateMemberStatus(member.polity, a_index))
 	factionMemberList.add_child(memberEntry)
+
+func AddProvincePopulation() -> void:
+	var prov: Province = MapManager.province_objects[selected_pid]
+	prov.population.push_back(PopulationData.FromDict({
+		"ethnicity": "Unknown",
+		"amount": 1
+	}))
+	var population: PopulationData = prov.population.back()
+	var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
+	populationEntry.visible = true
+	populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
+		prov.population.erase(population)
+		populationEntry.queue_free()
+	)
+	populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity
+	populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text_submitted.connect(func (a_ethnicity: String): population.ethnicity = a_ethnicity)
+	populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value = population.amount
+	populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value_changed.connect(func (a_amount: float): population.amount = a_amount)
+	provincePopulationList.add_child(populationEntry)
+
+func AddProvinceResource() -> void:
+	var prov: Province = MapManager.province_objects[selected_pid]
+	prov.resources.push_back(ResourceNode.FromDict({
+		"type": "Unknown"
+	}))
+	var resource: ResourceNode = prov.resources.back()
+	var resourceEntry: PanelContainer = provinceResourcesTemplate.duplicate()
+	resourceEntry.visible = true
+	resourceEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
+		prov.resources.erase(resource)
+		resourceEntry.queue_free()
+	)
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text = resource.type
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text_submitted.connect(func (a_type: String): resource.type = a_type)
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value = resource.amount
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value_changed.connect(func (a_amount: float): resource.amount = a_amount)
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value = resource.amount
+	resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value_changed.connect(func (a_quality: float): resource.quality = a_quality)
+	provinceResourcesList.add_child(resourceEntry)
