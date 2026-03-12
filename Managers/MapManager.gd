@@ -206,6 +206,17 @@ func update_province_color(pid: int, country_name: String) -> void:
 		original_hover_color = new_color
 		update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0), new_color + Color(0.15, 0.15, 0.15, 0))
 
+func SetProvinceColor(pid: int, primaryColor: Color) -> void:
+	if pid <= 1 or pid > max_province_id:
+		return
+		
+	update_lookup(pid, primaryColor, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY))
+
+func ResetProvinceColor(pid: int) -> void:
+	if pid <= 1 or pid > max_province_id:
+		return
+		
+	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY))
 
 func set_country_color(country_name: String, custom_color: Color = Color.TRANSPARENT) -> void:
 	var new_color = custom_color
@@ -1230,7 +1241,7 @@ func ReleaseCountry(a_countryName: String) -> void:
 func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
 	CountryManager.add_country(a_countryData)
 	
-	for obj in province_objects.values():
+	for obj: Province in province_objects.values():
 		if obj.claims.has(a_countryData["name"]):
 			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
 				if is_instance_valid(troop):

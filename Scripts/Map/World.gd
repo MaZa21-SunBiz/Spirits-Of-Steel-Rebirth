@@ -30,7 +30,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	KeyboardManager.OnWorldLoad()
+	KeyboardManager.settings = $ui_game/Settings
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
 
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.

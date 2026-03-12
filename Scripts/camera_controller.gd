@@ -9,30 +9,29 @@ const MAP_HEIGHT = 625
 
 
 func _process(delta: float) -> void:
-	if Console.is_visible() or GameState.decision_menu_open:
+	if get_viewport().gui_get_focus_owner() != null || GameState.decision_menu_open:
 		return
 	_handle_keyboard_movement(delta)
 
 
 func _is_mouse_over_ui() -> bool:
-	var hovered = get_viewport().gui_get_hovered_control()
-	return hovered != null
+	return get_viewport().gui_get_hovered_control() != null
 
 
 func _input(event: InputEvent) -> void:
 	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y, - (MAP_HEIGHT + TOP_BAR_HEIGHT) / camera.zoom.y + MAP_HEIGHT)
 
-	if Console.is_visible() or _is_mouse_over_ui():
+	if Console.is_visible() || _is_mouse_over_ui():
 		return
 
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_MIDDLE:
 		is_dragging = event.pressed
 		get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseMotion and is_dragging:
+	if event is InputEventMouseMotion && is_dragging:
 		camera.position -= event.relative / camera.zoom.x
 
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton && event.is_pressed():
 		var zoom_dir = 0
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_dir = 1

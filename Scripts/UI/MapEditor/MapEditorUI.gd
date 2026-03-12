@@ -8,11 +8,14 @@ var selected_pid: int = -1
 var hovered_pid: int = -1
 var original_pid_color: Color
 
+var multiSelectPID: PackedInt32Array = []
+
 enum Tool {
 	NONE             = 0,
 	PAINT_OCCUPATION = 1,
 	PAINT_OWNER      = 2,
 	PAINT_FACTION    = 3,
+	MULTI_SELECT     = 4,
 }
 
 enum Mode {
@@ -85,19 +88,23 @@ func _handle_hover(screen_pos: Vector2) -> void:
 
 	if pid > 1:
 		hovered_pid = pid
-		original_pid_color = MapManager.state_color_image.get_pixel(pid, 0)
-		MapManager.state_color_image.set_pixel(pid, 0, original_pid_color.lightened(0.4))
-		MapManager.state_color_texture.update(MapManager.state_color_image)
+		if hovered_pid not in multiSelectPID:
+			original_pid_color = MapManager.state_color_image.get_pixel(pid, 0)
+			MapManager.state_color_image.set_pixel(pid, 0, original_pid_color.lightened(0.4))
+			MapManager.state_color_texture.update(MapManager.state_color_image)
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _clear_hover() -> void:
 	if hovered_pid > 1:
-		MapManager.state_color_image.set_pixel(hovered_pid, 0, original_pid_color)
-		MapManager.state_color_texture.update(MapManager.state_color_image)
+		if hovered_pid not in multiSelectPID:
+			MapManager.state_color_image.set_pixel(hovered_pid, 0, original_pid_color)
+			MapManager.state_color_texture.update(MapManager.state_color_image)
 		hovered_pid = -1
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _handle_click(_screenPos: Vector2) -> void:
+	get_viewport().gui_release_focus()
+	
 	if hovered_pid > 1:
 		match currentMode:
 			Mode.PROVINCE:
@@ -122,6 +129,14 @@ func _handle_click(_screenPos: Vector2) -> void:
 								MapManager.OccupyProvince(hovered_pid, selectedCountry)
 							else:
 								MapManager.DeoccupyProvince(hovered_pid)
+					Tool.MULTI_SELECT:
+						if MapManager.province_objects[hovered_pid].country != "Sea":
+							if hovered_pid in multiSelectPID:
+								multiSelectPID.erase(hovered_pid)
+								MapManager.ResetProvinceColor(hovered_pid)
+							else:
+								multiSelectPID.push_back(hovered_pid)
+								MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
 
 func select_province(pid: int) -> void:
 	selected_pid = pid
@@ -236,14 +251,14 @@ func m_OnPolitySelected(index: int) -> void:
 	for child in polityPuppetList.get_children():
 		child.queue_free()
 	for puppet in polity.puppets:
-		var puppetEntry: PanelContainer = polityPuppetTemplate.clone()
+		var puppetEntry: PanelContainer = polityPuppetTemplate.duplicate()
 		puppetEntry.visible = true
 		puppetEntry.get_node("HBoxContainer/Label").text = puppet
 		polityPuppetList.add_child(puppetEntry)
 	for child in polityFactionList.get_children():
 		child.queue_free()
 	for faction in polity.factions:
-		var factionEntry: PanelContainer = polityFactionTemplate.clone()
+		var factionEntry: PanelContainer = polityFactionTemplate.duplicate()
 		factionEntry.visible = true
 		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
 		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.member == polity.country_name)].status))
@@ -310,3 +325,7 @@ func m_PaintOccupationTool() -> void:
 	
 func m_PaintFactionTool() -> void:
 	currentTool = Tool.PAINT_FACTION
+
+func m_MultiSelectTool() -> void:
+	currentTool = Tool.MULTI_SELECT
+	multiSelectPID = []
