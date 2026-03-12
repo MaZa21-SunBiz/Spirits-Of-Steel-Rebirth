@@ -2,7 +2,8 @@ extends PopupPanel
 
 enum CreationMode {
 	CREATE_FACTION = 0,
-	CREATE_POLITY  = 1
+	CREATE_POLITY  = 1,
+	CREATE_MEMBER  = 2,
 }
 
 @export var mapEditor: CanvasLayer
@@ -24,6 +25,9 @@ enum CreationMode {
 @export var polityHost: OptionButton
 @export var polityClaims: TextEdit
 
+@export var memberPolity: OptionButton
+@export var memberStatus: OptionButton
+
 func m_OpenScreen(a_mode: CreationMode) -> void:
 	match a_mode:
 		CreationMode.CREATE_FACTION:
@@ -39,6 +43,13 @@ func m_OpenScreen(a_mode: CreationMode) -> void:
 			for country in CountryManager.countries.keys():
 				polityOwner.add_item(country)
 				polityHost.add_item(country)
+		CreationMode.CREATE_MEMBER:
+			tabs.current_tab = a_mode as int
+			memberPolity.clear()
+			var faction: FactionData = FactionManager.factions[mapEditor.selectedFaction]
+			for country in CountryManager.countries.keys():
+				if !faction.members.any(func (a_member: FactionMember): return a_member.polity == country):
+					memberPolity.add_item(country)
 	visible = true
 
 func m_CreateFaction() -> void:
@@ -77,4 +88,10 @@ func m_CreatePolity() -> void:
 	if polityOwner.text != "None":
 		CountryManager.make_puppet(CountryManager.countries[polityOwner.text], CountryManager.countries[polityName.text])
 	mapEditor.SetupPolitiesList()
+	visible = false
+
+
+func m_CreateMember() -> void:
+	FactionManager.factions[mapEditor.selectedFaction].members.append(FactionMember.FromValues(memberPolity.text, memberStatus.text))
+	mapEditor.AddedFactionMember()
 	visible = false

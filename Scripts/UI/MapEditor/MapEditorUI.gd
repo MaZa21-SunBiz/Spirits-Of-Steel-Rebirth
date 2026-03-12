@@ -41,6 +41,8 @@ var currentMode: Mode = Mode.PROVINCE
 @export var factionsItemList: ItemList
 @export var factionName: LineEdit
 @export var factionColor: ColorPickerButton
+@export var factionMemberList: VBoxContainer
+@export var factionMemberTemplate: PanelContainer
 
 @export var politiesItemList: ItemList
 @export var polityPuppet: CheckBox
@@ -215,7 +217,7 @@ func _save_json(path: String, data: Dictionary) -> void:
 		file.close()
 
 func m_OnTabContainerTabChanged(tab: int) -> void:
-	currentTool = Tool.NONE
+	m_NoneTool()
 	currentMode = tab as Mode
 	leftSidebar.current_tab = tab
 
@@ -228,12 +230,25 @@ func SetupPolitiesList() -> void:
 	politiesItemList.clear()
 	for polity in CountryManager.countries.keys():
 		politiesItemList.add_item(polity)
-		
+
 func m_OnFactionSelected(index: int) -> void:
 	selectedFaction = factionsItemList.get_item_text(index)
 	var faction: FactionData = FactionManager.factions[selectedFaction]
 	factionName.text = faction.name
 	factionColor.color = faction.color
+	for child in factionMemberList.get_children():
+		child.queue_free()
+	for member: FactionMember in faction.members:
+		var memberEntry: PanelContainer = factionMemberTemplate.duplicate()
+		memberEntry.visible = true
+		memberEntry.get_node("HBoxContainer/Button").pressed.connect(func (): 
+			FactionManager.factions[selectedFaction].KickMember(member.polity)
+			memberEntry.queue_free()
+		)
+		memberEntry.get_node("HBoxContainer/LineEdit").text = member.polity
+		memberEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(member.status))
+		memberEntry.get_node("HBoxContainer/OptionButton").item_selected.connect(func (a_index: int): FactionManager.factions[selectedFaction].UpdateMemberStatus(member.polity, a_index))
+		factionMemberList.add_child(memberEntry)
 	
 func m_OnPolitySelected(index: int) -> void:
 	selectedCountry = politiesItemList.get_item_text(index)
@@ -275,6 +290,10 @@ func m_OnProvinceGDPChanged(value: float) -> void:
 func m_OnColorChanged(color: Color) -> void:
 	if selectedCountry in CountryManager.countries:
 		MapManager.set_country_color(selectedCountry, color)
+
+func m_OnFactionColorChanged(color: Color) -> void:
+	if selectedFaction in FactionManager.factions:
+		FactionManager.factions[selectedFaction].color = color
 
 func m_OnProvinceNameSubmitted(new_text: String) -> void:
 	if selected_pid in MapManager.province_objects:
@@ -348,3 +367,16 @@ func m_PaintFactionTool() -> void:
 
 func m_MultiSelectTool() -> void:
 	currentTool = Tool.MULTI_SELECT
+
+func AddedFactionMember() -> void:
+	var member: FactionMember = FactionManager.factions[selectedFaction].members.back()
+	var memberEntry: PanelContainer = factionMemberTemplate.duplicate()
+	memberEntry.visible = true
+	memberEntry.get_node("HBoxContainer/Button").pressed.connect(func (): 
+		FactionManager.factions[selectedFaction].KickMember(member.polity)
+		memberEntry.queue_free()
+	)
+	memberEntry.get_node("HBoxContainer/LineEdit").text = member.polity
+	memberEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(member.status))
+	memberEntry.get_node("HBoxContainer/OptionButton").item_selected.connect(func (a_index: int): FactionManager.factions[selectedFaction].UpdateMemberStatus(member.polity, a_index))
+	factionMemberList.add_child(memberEntry)

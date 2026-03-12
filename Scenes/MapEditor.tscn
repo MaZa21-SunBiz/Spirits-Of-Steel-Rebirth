@@ -48,7 +48,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 5
 
-[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "factionsItemList", "factionName", "factionColor", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "factionsItemList", "factionName", "factionColor", "factionMemberList", "factionMemberTemplate", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
 script = ExtResource("1_mcl4l")
 leftSidebar = NodePath("Sidebar/TabContainer")
 status_label = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/StatusLabel")
@@ -61,6 +61,8 @@ input_claims = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/Marg
 factionsItemList = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList")
 factionName = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputName")
 factionColor = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputColor")
+factionMemberList = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer")
+factionMemberTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/Template")
 politiesItemList = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/ItemList")
 polityPuppet = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer2/Puppet")
 polityOwner = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer2/Owner")
@@ -97,10 +99,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 0
+current_tab = 1
 tab_focus_mode = 0
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -193,31 +196,22 @@ visible = false
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer" unique_id=1672469653]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer" unique_id=1727471900]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1154747749]
+[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer" unique_id=1154747749]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer/Template" unique_id=2013225206]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template" unique_id=2013225206]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer" unique_id=1130758222]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template/MarginContainer" unique_id=1130758222]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=236627398]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=236627398]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
@@ -232,15 +226,24 @@ theme_override_styles/disabled = ExtResource("2_kkefn")
 theme_override_styles/focus = ExtResource("2_kkefn")
 text = "X"
 
-[node name="InputEthName" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=125009688]
+[node name="InputEthName" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=125009688]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Ethnicity"
 
-[node name="InputPop" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=789657053]
+[node name="InputPop" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=789657053]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2000000000.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer" unique_id=1672469653]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/ScrollContainer" unique_id=1727471900]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BtnApply" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer" unique_id=1388219520]
 layout_mode = 2
@@ -257,31 +260,22 @@ visible = false
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer" unique_id=1257989921]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer" unique_id=2123242665]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1589588648]
+[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer" unique_id=1589588648]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template" unique_id=254549510]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template" unique_id=254549510]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer" unique_id=351096669]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template/MarginContainer" unique_id=351096669]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=2096961162]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=2096961162]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
@@ -296,21 +290,30 @@ theme_override_styles/disabled = ExtResource("2_kkefn")
 theme_override_styles/focus = ExtResource("2_kkefn")
 text = "X"
 
-[node name="InputResource" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=96617134]
+[node name="InputResource" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=96617134]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Resource"
 
-[node name="InputAmount" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=1667618246]
+[node name="InputAmount" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=1667618246]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2000000000.0
 
-[node name="InputQuality" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=705429050]
+[node name="InputQuality" type="SpinBox" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/Template/MarginContainer/HBoxContainer" unique_id=705429050]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2000000000.0
 step = 0.0999999999999968
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer" unique_id=1257989921]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/ScrollContainer" unique_id=2123242665]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BtnApply" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer" unique_id=304424410]
 layout_mode = 2
@@ -328,7 +331,6 @@ theme = ExtResource("2_5xoin")
 wrap_mode = 1
 
 [node name="Faction" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=741194933]
-visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 1
@@ -385,6 +387,35 @@ text = "Color:"
 [node name="InputColor" type="ColorPickerButton" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer" unique_id=478386821]
 layout_mode = 2
 
+[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=233941625]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/Template" unique_id=394760105]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/Template/HBoxContainer" unique_id=1503650402]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Kick"
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/Template/HBoxContainer" unique_id=548043188]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Polity"
+editable = false
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/Template/HBoxContainer" unique_id=1212012333]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Leader"
+popup/item_0/id = 0
+popup/item_1/text = "Member"
+popup/item_1/id = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=271697651]
 layout_mode = 2
 size_flags_vertical = 3
@@ -395,35 +426,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=233941625]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Template" unique_id=394760105]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Template/HBoxContainer" unique_id=1503650402]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "Kick"
-
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Template/HBoxContainer" unique_id=548043188]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Polity"
-editable = false
-
-[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Template/HBoxContainer" unique_id=1212012333]
-layout_mode = 2
-size_flags_horizontal = 3
-selected = 0
-item_count = 2
-popup/item_0/text = "Leader"
-popup/item_0/id = 0
-popup/item_1/text = "Member"
-popup/item_1/id = 1
-
-[node name="MenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=413311168]
+[node name="MenuButton" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=1460216577]
 layout_mode = 2
 text = "Add Member"
 
@@ -678,12 +681,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dhjfk")
 
 [node name="TabContainer" type="TabContainer" parent="Sidebar" unique_id=1933241066]
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 switch_on_drag_hover = false
 
 [node name="Province" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1407875551]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 0
@@ -759,6 +761,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Polity" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1910358666]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 2
@@ -825,7 +828,7 @@ texture_normal = ExtResource("8_id73f")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PopupPanel" type="PopupPanel" parent="." unique_id=957807822 node_paths=PackedStringArray("mapEditor", "tabs", "factionName", "factionColor", "factionFounder", "polityName", "polityOwner", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityType", "polityHost", "polityClaims")]
+[node name="PopupPanel" type="PopupPanel" parent="." unique_id=957807822 node_paths=PackedStringArray("mapEditor", "tabs", "factionName", "factionColor", "factionFounder", "polityName", "polityOwner", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityType", "polityHost", "polityClaims", "memberPolity", "memberStatus")]
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(230, 360)
@@ -846,6 +849,8 @@ polityStability = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContai
 polityType = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContainer/TabContainer")
 polityHost = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContainer/TabContainer/Exile/MarginContainer/GridContainer/OptionButton")
 polityClaims = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContainer/TabContainer/Manual/TextEdit")
+memberPolity = NodePath("TabContainer/CreateMember/MarginContainer/GridContainer/Polity")
+memberStatus = NodePath("TabContainer/CreateMember/MarginContainer/GridContainer/Status")
 
 [node name="TabContainer" type="TabContainer" parent="PopupPanel" unique_id=991231941]
 offset_left = 4.0
@@ -1036,6 +1041,49 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Create Polity"
 
+[node name="CreateMember" type="VBoxContainer" parent="PopupPanel/TabContainer" unique_id=1043578466]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/TabContainer/CreateMember" unique_id=1931215474]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/TabContainer/CreateMember/MarginContainer" unique_id=1668783242]
+layout_mode = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="PopupPanel/TabContainer/CreateMember/MarginContainer/GridContainer" unique_id=15727801]
+layout_mode = 2
+text = "Polity:"
+
+[node name="Polity" type="OptionButton" parent="PopupPanel/TabContainer/CreateMember/MarginContainer/GridContainer" unique_id=1984183905]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FounderLabel" type="Label" parent="PopupPanel/TabContainer/CreateMember/MarginContainer/GridContainer" unique_id=1759400434]
+layout_mode = 2
+text = "Status:"
+
+[node name="Status" type="OptionButton" parent="PopupPanel/TabContainer/CreateMember/MarginContainer/GridContainer" unique_id=1756730606]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "Leader"
+popup/item_0/id = 0
+popup/item_1/id = 1
+
+[node name="HSeparator" type="HSeparator" parent="PopupPanel/TabContainer/CreateMember" unique_id=2042784741]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="PopupPanel/TabContainer/CreateMember" unique_id=1332545572]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Add Member"
+
 [connection signal="tab_changed" from="PanelContainer/VBoxContainer/TabContainer" to="." method="m_OnTabContainerTabChanged"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnProvinceNameSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCountry" to="." method="m_OnProvinceOwnerSubmitted"]
@@ -1044,6 +1092,8 @@ text = "Create Polity"
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputGDP" to="." method="m_OnProvinceGDPChanged"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnFactionSelected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/NewFaction" to="PopupPanel" method="m_OpenScreen" binds= [0]]
+[connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnFactionColorChanged"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/MenuButton" to="PopupPanel" method="m_OpenScreen" binds= [2]]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnPolitySelected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/NewPolity" to="PopupPanel" method="m_OpenScreen" binds= [1]]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnColorChanged"]
@@ -1062,3 +1112,4 @@ text = "Create Polity"
 [connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
 [connection signal="pressed" from="PopupPanel/TabContainer/CreateFaction/Button" to="PopupPanel" method="m_CreateFaction"]
 [connection signal="pressed" from="PopupPanel/TabContainer/CreatePolity/Button" to="PopupPanel" method="m_CreatePolity"]
+[connection signal="pressed" from="PopupPanel/TabContainer/CreateMember/Button" to="PopupPanel" method="m_CreateMember"]

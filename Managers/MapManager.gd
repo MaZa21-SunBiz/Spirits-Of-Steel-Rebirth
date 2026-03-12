@@ -838,14 +838,13 @@ func show_faction_map() -> void:
 			continue
 
 		var total: int = 0
+		faction_color = Color.GRAY
 		for faction in FactionManager.factions:
 			if FactionManager.factions[faction].members.find_custom(func(a_factionMember: FactionMember): return a_factionMember.polity == province_objects[pid].country) != -1:
 				total += 1
 				faction_color = FactionManager.factions[faction].color
-			else:
-				faction_color = Color.GRAY
-			state_color_image.set_pixel(pid, 0, faction_color / total)
-			state_color_image.set_pixel(pid, 1, faction_color / total)
+		state_color_image.set_pixel(pid, 0, faction_color / total)
+		state_color_image.set_pixel(pid, 1, faction_color / total)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.FACTION

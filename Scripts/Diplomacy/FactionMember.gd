@@ -34,3 +34,12 @@ static func GetIndex(a_status: String) -> int:
 			return 1
 		_:
 			return -1
+
+static func GetString(a_status: int) -> String:
+	match a_status:
+		0:
+			return "Leader"
+		1:
+			return "Member"
+		_:
+			return ""
