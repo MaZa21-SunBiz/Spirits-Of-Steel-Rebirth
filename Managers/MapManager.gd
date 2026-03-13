@@ -209,6 +209,12 @@ func SetProvinceColor(pid: int, primaryColor: Color) -> void:
 		
 	update_lookup(pid, primaryColor, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY))
 
+func SetProvinceColors(a_pid: int, a_primaryColor: Color, a_secondaryColor: Color) -> void:
+	if a_pid <= 1 or a_pid > max_province_id:
+		return
+		
+	update_lookup(a_pid, a_primaryColor, a_secondaryColor)
+
 func ResetProvinceColor(pid: int) -> void:
 	if pid <= 1 or pid > max_province_id:
 		return
@@ -984,6 +990,7 @@ func show_industry_country(country_name: String) -> void:
 			color = Color.LIGHT_SKY_BLUE
 		
 		state_color_image.set_pixel(pid, 0, color)
+		state_color_image.set_pixel(pid, 1, color)
 
 	state_color_texture.update(state_color_image)
 

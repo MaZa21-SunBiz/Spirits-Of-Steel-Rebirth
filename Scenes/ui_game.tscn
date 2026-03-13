@@ -110,6 +110,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="PoliticalPower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=946459751]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Political power"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -127,11 +128,13 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_uqxsi")
 theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="Money" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=2127845856]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Money"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -154,6 +157,7 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="Manpower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1136963302]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Manpower"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -176,6 +180,7 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="Industry" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1070530185]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Industry"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -198,6 +203,7 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="Stability" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=943424752]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -220,6 +226,7 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 
 [node name="WarSupport" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1561316651]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -252,19 +259,25 @@ layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=95724245]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(130, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 1
 value = 15.0
 show_percentage = false
 
-[node name="label_date" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar" unique_id=520160489]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar" unique_id=878388901]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label_date" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar/MarginContainer" unique_id=520160489]
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 clip_contents = true
-layout_mode = 0
-offset_right = 130.0
-offset_bottom = 31.0
+layout_mode = 2
 theme = SubResource("Theme_uqxsi")
 theme_override_font_sizes/font_size = 16
 text = "00:00 1234-12-12 "
@@ -435,6 +448,9 @@ size_flags_vertical = 3
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+min_value = 0.999999999999968
+max_value = 999.999999999968
+value = 0.999999999999968
 
 [node name="Cost" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=693475866]
 layout_mode = 2

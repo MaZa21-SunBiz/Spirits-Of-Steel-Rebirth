@@ -9,7 +9,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var topbar: HBoxContainer = $Control/Topbar/HBoxContainer
 
 @onready var nation_flag: TextureRect = topbar.get_node("nation_flag")
-@onready var label_date: Label = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar/label_date")
+@onready var label_date: Label = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar/MarginContainer/label_date")
 @onready var stats_labels := {
 	"pp": topbar.get_node("PoliticalPower/HBoxContainer/label_politicalpower"),
 	"manpower": topbar.get_node("Manpower/HBoxContainer/label_manpower"),

@@ -17,11 +17,9 @@ const COLOR_GOLD = Color(0.85, 0.65, 0.2)
 const COLOR_SELECT = Color(0.0, 1.0, 0.8)  # Cyan/Teal for treaty selection
 const COLOR_DANGER = Color(0.7, 0.2, 0.2)
 
-
 func _ready() -> void:
 	#_setup_ui_elements()
 	self.hide()
-
 
 func _input(event: InputEvent) -> void:
 	if not self.visible:
@@ -46,7 +44,6 @@ func _input(event: InputEvent) -> void:
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			_process_click(map_pos)
 
-
 func _process_hover(map_pos: Vector2):
 	# 1. Get the PID using your radius logic
 	var pid = get_province_with_radius(map_pos, GameState.current_world.map_sprite, 5)
@@ -68,13 +65,12 @@ func _process_hover(map_pos: Vector2):
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-
 func _process_click(map_pos: Vector2):
 	var pid = get_province_with_radius(map_pos, GameState.current_world.map_sprite, 5)
 	if pid <= 1:
 		return
 		
-	if MapManager.province_objects[pid].GetFunctionalOwner() != current_loser.country_name:
+	if MapManager.province_objects[pid].country != current_loser.country_name:
 		return
 
 	if provinces_to_take.has(pid):
@@ -87,7 +83,6 @@ func _process_click(map_pos: Vector2):
 		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 
 	_update_summary()
-
 
 func _setup_ui_elements():
 	# Sidebar Setup
@@ -174,7 +169,6 @@ func _setup_ui_elements():
 	confirm_btn.pressed.connect(_on_confirm_pressed)
 	v_box.add_child(confirm_btn)
 
-
 func _create_styled_button(btn_text: String, accent_color: Color) -> Button:
 	var btn = Button.new()
 	btn.text = btn_text
@@ -195,7 +189,6 @@ func _create_styled_button(btn_text: String, accent_color: Color) -> Button:
 	btn.add_theme_color_override("font_color", Color.WHITE)
 	return btn
 
-
 func _on_annex_all_pressed():
 	provinces_to_take.clear()
 	# Iterate through MapManager to find all provinces belonging to loser
@@ -204,7 +197,6 @@ func _on_annex_all_pressed():
 			provinces_to_take.append(pid)
 			_update_map_visual(pid, COLOR_SELECT, CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	_update_summary()
-
 
 func _on_puppet_pressed():
 	puppeting = !puppeting
@@ -220,9 +212,7 @@ func _on_clear_selection_pressed():
 func _reset_province_visual_immediate(pid: int):
 	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_objects[pid].GetFunctionalOwner(), Color.WHITE), CountryManager.GetCountryColor(MapManager.province_objects[pid].country, Color.WHITE))
 
-
 # --- Logic & Integration ---
-
 
 func open_menu(winner: CountryData, loser: CountryData):
 	self.show()
@@ -238,19 +228,17 @@ func open_menu(winner: CountryData, loser: CountryData):
 	GameState.in_peace_process = true
 	_update_summary()
 
-
 func _update_summary():
 	summary_label.text = "Provinces Selected: %d" % provinces_to_take.size()
 
 	# Calculate percentage for flavor
 	var total_loser_provinces = 0
 	for p in MapManager.province_objects.values():
-		if p.GetFunctionalOwner() == current_loser.country_name:
+		if p.country == current_loser.country_name:
 			total_loser_provinces += 1
 
 	if total_loser_provinces > 0:
 		stats_label.text = "Total Country Loss: %d%%" % int((float(provinces_to_take.size()) / total_loser_provinces) * 100)
-
 
 func _on_confirm_pressed():
 	for pid in provinces_to_take:
@@ -267,18 +255,14 @@ func _on_confirm_pressed():
 
 	self.hide()
 
-
 # Your existing logic function
 func get_province_with_radius(global_pos: Vector2, map_sprite: Sprite2D, radius: int) -> int:
 	# This uses the code logic you already have in MapManager
 	return MapManager.get_province_with_radius(global_pos, map_sprite, radius)
 
-
 func _update_map_visual(pid: int, color: Color, secondaryColor: Color):
-	# We call MapManager's lookup update to refresh the shader texture
-	if MapManager.has_method("update_lookup"):
-		MapManager.update_lookup(pid, color, secondaryColor)
-
+# We call MapManager's lookup update to refresh the shader texture
+	MapManager.SetProvinceColors(pid, color, secondaryColor)
 
 func _reset_province_visual(pid: int):
 	# If it's currently selected, keep the selected color

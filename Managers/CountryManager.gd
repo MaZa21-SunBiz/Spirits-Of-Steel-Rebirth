@@ -4,6 +4,8 @@ signal player_country_changed
 var countries: Dictionary[String, CountryData] = {}
 var player_country: CountryData
 
+var Releasables: Array[ReleasableData] = []
+
 
 func _on_hour_passed() -> void:
 	#if GameState.is_loading_game:
