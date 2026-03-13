@@ -115,22 +115,29 @@ func get_country_gdp(country_name: String) -> int:
 	if not MapManager.country_to_provinces.has(country_name):
 		return 0
 	var total_gdp: int = 0
-	for pid in MapManager.country_to_provinces[country_name]:
+	for pid: int in MapManager.country_to_provinces[country_name]:
 		if MapManager.province_objects.has(pid):
 			total_gdp += MapManager.province_objects[pid].gdp
 	return total_gdp
 
 
 func get_factories_amount(country_name: String) -> int:
-	return MapManager.country_to_provinces.get(country_name, []).reduce(
-		func(pid: int, accum: int):
-			return (accum + MapManager.province_objects[pid].buildings.reduce(
-				func(building: BuildingData, b_accum: int): 
-					return (b_accum + 1) if (building.type == "Factory" && building.state == BuildingData.BuildingState.FUNCTIONAL) else b_accum,\
-				0
-			) if (MapManager.province_objects.has(pid)) else 0),
-		0
-	)
+	var factoryCount: int = 0
+	for province: int in MapManager.country_to_provinces[country_name]:
+		for building: BuildingData in MapManager.province_objects[province].buildings:
+			#print("Checking %d, it is a %s in the %s state." % [province, building.type, building.state])
+			if building.type == "Factory" && building.state == BuildingData.BuildingState.FUNCTIONAL:
+				factoryCount += 1
+	return factoryCount
+	#return MapManager.country_to_provinces.get(country_name, []).reduce(
+	#	func(pid: int, accum: int):
+	#		return (accum + MapManager.province_objects[pid].buildings.reduce(
+	#			func(building: BuildingData, b_accum: int): 
+	#				return (b_accum + 1) if (building.type == "Factory" && building.state == BuildingData.BuildingState.FUNCTIONAL) else b_accum,\
+	#			0
+	#		) if (MapManager.province_objects.has(pid)) else 0),
+	#	0
+	#)
 
 # NOTE(pol): We should keep track of the manpower used instead of recalculating
 # In CountryManager.gd (or wherever this static function lives)
@@ -165,7 +172,7 @@ func cleanup_empty_countries() -> void:
 	
 	for c_name in countries.keys():
 		var provinces = MapManager.country_to_provinces.get(countries[c_name].country_name, [])
-		if provinces.is_empty():
+		if provinces.is_empty() && !countries[c_name].is_exiled:
 			to_remove.append(c_name)
 
 	for c_name in to_remove:

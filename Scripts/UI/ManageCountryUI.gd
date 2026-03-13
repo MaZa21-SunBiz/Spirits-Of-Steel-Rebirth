@@ -156,7 +156,11 @@ func _refresh_full_data() -> void:
 func _refresh_army_counts() -> void:
 	# 1. Economic Status
 	if economic_status_val:
-		economic_status_val.text = "$%s\n%.1f\n+$%.1f\n+$%.1f\n-$%.1f" % [_format_money(current_country.money), current_country.political_power, current_country.gdp * 0.0000228310502, current_country.factories_amount * current_country.factory_income, current_country.army_cost]
+		economic_status_val.text = "$%s\n+$%.1f\n+$%.1f\n-$%.1f" % [
+			_format_money(current_country.money),
+			current_country.gdp * 0.0000228310502, 
+			current_country.factories_amount * current_country.factory_income, 
+			current_country.army_cost]
 
 	# 2. Army Logistics
 	if army_logistics_val:

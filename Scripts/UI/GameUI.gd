@@ -754,7 +754,7 @@ var division_type_selected: String = "infantry"
 
 # --- Main Update Logic ---
 func update_division_menu():
-	var count = int(input_division.value)
+	var count = int(input_division.value) 
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
 
 	if not stats:
