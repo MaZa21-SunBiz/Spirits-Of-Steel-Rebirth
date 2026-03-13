@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_k7acu"]
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
-[ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_o06y3"]
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
@@ -27,9 +26,6 @@ script = ExtResource("5_o06y3")
 
 [node name="TroopMultiMesh" type="MultiMeshInstance2D" parent="CustomRenderer" unique_id=721109816]
 multimesh = SubResource("MultiMesh_k7acu")
-
-[node name="Clock" type="Node" parent="CustomRenderer" unique_id=1115487155]
-script = ExtResource("6_o06y3")
 
 [node name="TroopSelection" type="Node2D" parent="." unique_id=905291779]
 script = ExtResource("6_5ukr8")

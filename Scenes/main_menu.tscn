@@ -296,12 +296,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Starts/PanelContainer2" unique_id=356775520]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=1941325871]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 4
+columns = 3
 
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("9_trj04")]
 visible = false

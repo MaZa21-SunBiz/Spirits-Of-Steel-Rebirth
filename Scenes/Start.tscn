@@ -34,6 +34,7 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("3_lmkek")
 expand_mode = 3
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=343436503]
 material = ExtResource("4_035le")

@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 
 func _enter_tree() -> void:
 	GameState.current_world = self
-	clock = $CustomRenderer/Clock
+	clock = $/root/Main/Clock
 
 
 func _ready() -> void:
@@ -157,6 +157,8 @@ func _ready() -> void:
 		push_error("CustomRenderer node not found!")
 
 	SettingsManager.apply_settings()
+	
+	clock.pause()
 
 func load_map_data(mapData):
 		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
