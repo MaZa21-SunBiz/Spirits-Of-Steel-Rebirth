@@ -16,7 +16,9 @@ func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 	for faction in inviter.factions:
 		print(faction)
-		if factions[faction].members[factions[faction].members.find_custom(func(a_faction): return a_faction.polity == inviter.country_name)].status == "Leader":
+		if factions[faction].members[factions[faction].members.find_custom(
+			func(a_faction): return a_faction.polity == inviter.country_name
+			)].status == "Leader":
 			factions[faction].members.append(FactionMember.FromValues(invitee.country_name, "Member"))
 			invitee.factions.append_array(inviter.factions)
 	print(factions)

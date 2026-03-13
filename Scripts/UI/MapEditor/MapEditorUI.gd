@@ -169,11 +169,11 @@ func select_province(pid: int) -> void:
 	
 	for child in provincePopulationList.get_children():
 		child.queue_free()
-	for population: PopulationData in prov.population:
+	for population: PopulationData in prov.populations:
 		var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
 		populationEntry.visible = true
 		populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
-			prov.population.erase(population)
+			prov.populations.erase(population)
 			populationEntry.queue_free()
 		)
 		populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity
@@ -241,27 +241,25 @@ func _on_apply_pressed() -> void:
 
 func _on_export_pressed() -> void:
 	# Export Province Data
-	var prov_export = {}
-	for pid in MapManager.province_objects.keys():
-		if pid <= 1:
-			continue
-		var p = MapManager.province_objects[pid]
-		prov_export["%d" % p.id] = p.ToDict()
+	var export = {"provinces": {}, "polities": [], "ideologies": IdeologyManager.ideologies, "factions": []}
+	for index in MapManager.unique_regions:
+		var next_id = MapManager.unique_regions[index]
+		var province = MapManager.province_objects[next_id]
+		export["provinces"][index] = province.ToDict()
 
-	# Export Country Colors
-	var country_export = {}
-	for c_name in MapManager.country_colors.keys():
-		var col = MapManager.country_colors[c_name]
-		country_export[c_name] = {"color": [int(col.r8), int(col.g8), int(col.b8)]}
+	for country in CountryManager.countries.values():
+		export["polities"].append(country.ToDict())
+	
+	for faction in FactionManager.factions:
+		export["factions"].append(FactionManager.factions[faction].ToDict())
 
-	_save_json("user://exported_map_data.json", prov_export)
-	_save_json("user://exported_countries.json", country_export)
-	OS.shell_open(ProjectSettings.globalize_path("user://"))
+	# print(JSON.stringify(export, " "))
+	# print(JSON.stringify(export["polities"], " "))
+	print(JSON.stringify(export["factions"], "\t"))
 
-func _save_json(path: String, data: Dictionary) -> void:
-	var file = FileAccess.open(path, FileAccess.WRITE)
+	var file = FileAccess.open("user://exported_map_data.json", FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(data, "\t"))
+		file.store_string(JSON.stringify(export, "\t"))
 		file.close()
 
 func m_OnTabContainerTabChanged(tab: int) -> void:
@@ -431,15 +429,15 @@ func AddedFactionMember() -> void:
 
 func AddProvincePopulation() -> void:
 	var prov: Province = MapManager.province_objects[selected_pid]
-	prov.population.push_back(PopulationData.FromDict({
+	prov.populations.push_back(PopulationData.FromDict({
 		"ethnicity": "Unknown",
 		"amount": 1
 	}))
-	var population: PopulationData = prov.population.back()
+	var population: PopulationData = prov.populations.back()
 	var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
 	populationEntry.visible = true
 	populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
-		prov.population.erase(population)
+		prov.populations.erase(population)
 		populationEntry.queue_free()
 	)
 	populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity

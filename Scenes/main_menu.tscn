@@ -72,21 +72,32 @@ expand_mode = 1
 [node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 787.6218
-offset_top = 264.56232
-offset_right = 989.52826
-offset_bottom = 419.17804
+offset_left = 859.06256
+offset_top = 286.78296
+offset_right = 942.1681
+offset_bottom = 350.42346
 rotation = -0.351973
+texture = ExtResource("12_vtepg")
+expand_mode = 1
+
+[node name="Hand5" type="TextureRect" parent="Butter" unique_id=1572649922]
+material = SubResource("ShaderMaterial_8dnnj")
+layout_mode = 0
+offset_left = 927.00006
+offset_top = 241.0
+offset_right = 1010.1056
+offset_bottom = 304.6405
+rotation = 0.21252406
 texture = ExtResource("12_vtepg")
 expand_mode = 1
 
 [node name="Hand4" type="TextureRect" parent="Butter" unique_id=885631731]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 885.0
-offset_top = 514.0
-offset_right = 1086.9065
-offset_bottom = 668.6157
+offset_left = 935.77277
+offset_top = 434.75848
+offset_right = 988.23926
+offset_bottom = 474.93622
 rotation = -1.6544858
 texture = ExtResource("12_vtepg")
 expand_mode = 1
@@ -94,10 +105,10 @@ expand_mode = 1
 [node name="Hand2" type="TextureRect" parent="Butter" unique_id=1333335628]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 1145.0
-offset_top = 438.99994
-offset_right = 1326.0
-offset_bottom = 564.99994
+offset_left = 1097.9028
+offset_top = 415.8679
+offset_right = 1192.7743
+offset_bottom = 481.91098
 rotation = 2.9900136
 texture = ExtResource("12_vtepg")
 expand_mode = 1
@@ -105,11 +116,11 @@ expand_mode = 1
 [node name="Hand3" type="TextureRect" parent="Butter" unique_id=2140408290]
 material = SubResource("ShaderMaterial_8dnnj")
 layout_mode = 0
-offset_left = 1097.0001
-offset_top = 164.99998
-offset_right = 1295.0001
-offset_bottom = 333.0
-rotation = 1.3656135
+offset_left = 1012.0
+offset_top = 249.99998
+offset_right = 1086.0137
+offset_bottom = 312.7995
+rotation = 0.5416184
 texture = ExtResource("12_vtepg")
 expand_mode = 1
 

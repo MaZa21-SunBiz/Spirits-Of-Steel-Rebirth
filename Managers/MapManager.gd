@@ -33,6 +33,7 @@ var current_hovered_pid: int = -1
 var last_hovered_pid: int = -1
 var original_hover_color: Color
 var province_centers: Dictionary = {} # Stores {ID: Vector2(x, y)}
+var unique_regions = {} # NOTE(soi): eh
 
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
@@ -57,7 +58,6 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	var height: int = a_map.get_height()
 
 	id_map_image = Image.create(width, height, false, Image.FORMAT_RGB8)
-	var unique_regions = {}
 	var next_id = 2
 
 	var mapImage = a_map.get_image()
@@ -880,9 +880,9 @@ func show_ethnic_map() -> void:
 			continue
 
 		var province: Province = province_objects[pid]
-		if (province.population.size() <= 0):
+		if (province.populations.size() <= 0):
 			continue
-		var eth_name = province.population[0].ethnicity # Assuming this is the String name (e.g., "Igbo")
+		var eth_name = province.populations[0].ethnicity # Assuming this is the String name (e.g., "Igbo")
 
 		# Default to black or transparent if ethnicity not found
 		var display_color = Color.BLACK
