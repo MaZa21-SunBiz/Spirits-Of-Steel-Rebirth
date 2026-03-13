@@ -134,7 +134,6 @@ func _try_load_cached_data() -> bool:
 	build_lookup_texture()
 	return true
 
-
 func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> void:
 	if not image:
 		push_warning("No Image provided for drawing centroids!")
@@ -148,7 +147,6 @@ func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> 
 		# stay inside bounds
 		if x >= 0 and x < image.get_width() and y >= 0 and y < image.get_height():
 			image.set_pixel(x, y, color)
-
 
 func _build_country_to_provinces():
 	var result: Dictionary = {}
@@ -167,7 +165,6 @@ func _build_country_to_provinces():
 	country_to_provinces = result
 	country_to_owned_provinces = result2
 	return
-
 
 func build_lookup_texture() -> void:
 	state_color_image = Image.create(max_province_id + 1, 2, false, Image.FORMAT_RGBA8)
@@ -189,14 +186,11 @@ func build_lookup_texture() -> void:
 
 	state_color_texture = ImageTexture.create_from_image(state_color_image)
 
-
 func _is_sea(c: Color) -> bool:
 	return _dist_sq(c, SEA_RASTER) < 0.001 or _dist_sq(c, SEA_MAIN) < 0.001
 
-
 func _dist_sq(c1: Color, c2: Color) -> float:
 	return (c1.r - c2.r) ** 2 + (c1.g - c2.g) ** 2 + (c1.b - c2.b) ** 2
-
 
 func update_province_color(pid: int, country_name: String) -> void:
 	if pid <= 1 or pid > max_province_id:
@@ -239,7 +233,6 @@ func set_country_color(country_name: String, custom_color: Color = Color.TRANSPA
 			original_hover_color = new_color
 			update_lookup(pid, new_color + Color(0.15, 0.15, 0.15, 0), new_color + Color(0.15, 0.15, 0.15, 0))
 
-
 func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 	if not id_map_image:
 		return 0
@@ -272,7 +265,6 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 
 	var c = id_map_image.get_pixel(x, y)
 	return c.to_rgba32() >> 8
-
 
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or GameState.in_peace_process:
@@ -317,12 +309,10 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 				province_hovered.emit(-1, "")
 
-
 func _reset_last_hover() -> void:
 	if last_hovered_pid > 1:
 		update_lookup(last_hovered_pid, original_hover_color, original_hover_color)
 	last_hovered_pid = -1
-
 
 func _get_contextual_highlight(pid: int) -> Color:
 	if pid <= 1:
@@ -352,13 +342,11 @@ func _get_contextual_highlight(pid: int) -> Color:
 
 	return Color.TRANSPARENT
 
-
 func handle_click_down(_global_pos: Vector2, _map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or Console.is_visible():
 		return
 
 	TroopManager.troop_selection.deselect_all()
-
 
 func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or Console.is_visible() or GameState.in_peace_process:
@@ -402,13 +390,11 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
 			country_clicked.emit(province_objects[pid].GetFunctionalOwner())
 
-
 func _execute_deployment(pid: int, player_name: String) -> void:
 	country_clicked.emit(player_name)
 	CountryManager.player_country.deploy_pid = pid
 	GameState.choosing_deploy_city = false
 	_cleanup_interaction_state()
-
 
 func _province_build_industry(pid: int, player_name: String) -> void:
 	var type := GameState.industry_building
@@ -453,13 +439,11 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 
 	country_clicked.emit(player_name)
 
-
 func _cleanup_interaction_state() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	if last_hovered_pid > 1:
 		update_lookup(last_hovered_pid, original_hover_color, original_hover_color)
 		last_hovered_pid = -1
-
 
 # To probe around and still register a click if we hit province/coutnry border
 func get_province_with_radius(center: Vector2, map_sprite: Sprite2D, radius: int) -> int:
@@ -482,12 +466,10 @@ func get_province_with_radius(center: Vector2, map_sprite: Sprite2D, radius: int
 
 	return -1
 
-
 func update_lookup(pid: int, colorMain: Color, colorSecondary: Color) -> void:
 	state_color_image.set_pixel(pid, 0, colorMain)
 	state_color_image.set_pixel(pid, 1, colorSecondary)
 	state_color_texture.update(state_color_image)
-
 
 func _calculate_province_centroids() -> void:
 	# Use a dictionary to accumulate data: {ID: [total_x, total_y, pixel_count]}
@@ -525,7 +507,6 @@ func _calculate_province_centroids() -> void:
 				province_objects[pid].center = Vector2(center_x, center_y)
 
 	print("MapManager: Centroids calculated for %d provinces." % province_centers.size())
-
 
 func _build_adjacency_list() -> void:
 	var w = id_map_image.get_width()
@@ -591,7 +572,6 @@ func _build_adjacency_list() -> void:
 
 	print("MapManager: Adjacency list built and synced to Province objects.")
 
-
 func _scan_across_border(x: int, y: int, pid: int) -> int:
 	var w: int = id_map_image.get_width()
 	var h: int = id_map_image.get_height()
@@ -610,11 +590,9 @@ func _scan_across_border(x: int, y: int, pid: int) -> int:
 
 	return -1
 
-
 # Faster direct pid fetch
 func _get_pid_fast(x: int, y: int) -> int:
 	return id_map_image.get_pixel(x, y).to_rgba32() >> 8
-
 
 # --- Pathfinding section kinda. Should be in own file tbh.. ---#
 
@@ -624,7 +602,6 @@ func _get_pid_fast(x: int, y: int) -> int:
 var path_cache: Dictionary = {}
 
 const HEURISTIC_SCALE: float = 1.0 # / 50.0
-
 
 func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> Array[int]:
 	if start_pid == end_pid:
@@ -642,7 +619,6 @@ func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = 
 		path_cache[cache_key] = path.duplicate()
 
 	return path
-
 
 func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[String]) -> Array[int]:
 	# 1. Optimize Allowed Check: O(1) Lookup
@@ -737,14 +713,12 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 
 	return []
 
-
 func heuristic(a: int, b: int) -> float:
 	var prov_a = province_objects.get(a)
 	var prov_b = province_objects.get(b)
 
 	var dist_pixels = prov_a.center.distance_to(prov_b.center)
 	return dist_pixels * HEURISTIC_SCALE
-
 
 func _reconstruct_path(came_from: Dictionary, current: int) -> Array[int]:
 	var path: Array[int] = [current]
@@ -754,18 +728,14 @@ func _reconstruct_path(came_from: Dictionary, current: int) -> Array[int]:
 	path.reverse()
 	return path
 
-
 func get_path_length(path: Array[int]) -> int:
 	return path.size() - 1 if path.size() > 1 else 0
-
 
 func is_path_possible(start_pid: int, end_pid: int) -> bool:
 	return not find_path(start_pid, end_pid).is_empty()
 
-
 func print_cache_stats() -> void:
 	print("Path Cache Stats: %d paths cached" % path_cache.size())
-
 
 func force_bidirectional_connections() -> void:
 	var fix_count = 0
@@ -803,11 +773,9 @@ func force_bidirectional_connections() -> void:
 
 	print("Graph Repair Complete: Fixed %d one-way connections in Province Resources." % fix_count)
 
-
 func _is_mouse_over_ui() -> bool:
 	var hovered = get_viewport().gui_get_hovered_control()
 	return hovered != null
-
 
 func _get_heatmap_color(pop: int, max_pop: float) -> Color:
 	# If population is 0, return a neutral "empty" color (dark slate/gray)
@@ -896,7 +864,6 @@ func ShowInfrastructureMap() -> void:
 	state_color_texture.update(state_color_image)
 	print("MapManager: Infrastructure View Updated.")
 
-
 func show_ethnic_map() -> void:
 	if province_objects.is_empty():
 		return
@@ -924,7 +891,6 @@ func show_ethnic_map() -> void:
 	state_color_texture.update(state_color_image)
 	print("MapManager: Ethnic View Updated.")
 
-
 func _get_gdp_heatmap_color(gdp: int, max_gdp: float) -> Color:
 	if gdp <= 0:
 		return Color(0.1, 0.1, 0.1) # Dark gray for no data
@@ -942,7 +908,6 @@ func _get_gdp_heatmap_color(gdp: int, max_gdp: float) -> Color:
 		col = Color.ALICE_BLUE.lerp(Color(0.0, 0.4, 1.0), (intensity - 0.5) * 2.0)
 
 	return col
-
 
 func show_gdp_map() -> void:
 	if province_objects.is_empty():
@@ -986,7 +951,6 @@ func show_countries_map() -> void:
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES
 
-
 func province_updated():
 	if GameState.industry_building:
 		show_industry_country(CountryManager.player_country.country_name)
@@ -1022,7 +986,6 @@ func show_industry_country(country_name: String) -> void:
 		state_color_image.set_pixel(pid, 0, color)
 
 	state_color_texture.update(state_color_image)
-
 
 func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	var old_owner_name = MapManager.province_objects[pid].country
@@ -1117,7 +1080,6 @@ func _parse_color_string(s: String) -> Vector3:
 	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")
 	return Vector3(float(parts[0]), float(parts[1]), float(parts[2]))
 
-
 # Helper to ensure we never return a single String when an Array is expected
 func _force_array(data) -> Array:
 	if data is Array:
@@ -1125,7 +1087,6 @@ func _force_array(data) -> Array:
 	elif data is String:
 		return [data] # Wrap the single country in a list
 	return []
-
 
 func _get_gdp_from_color(c: Color) -> int:
 	var r = int(c.r * 255.0)
@@ -1158,7 +1119,6 @@ func _get_gdp_from_color(c: Color) -> int:
 
 	return 0
 
-
 func get_provinces_near_sea(country_name: String) -> Array[int]:
 	var provinces_near_sea: Array[int] = []
 
@@ -1173,7 +1133,6 @@ func get_provinces_near_sea(country_name: String) -> Array[int]:
 				break
 
 	return provinces_near_sea
-
 
 ## Returns an array of province IDs that are on the border of a different country
 func get_border_provinces(country_name: String) -> Array[int]:
@@ -1273,14 +1232,12 @@ func get_all_cities() -> Array:
 			pids.append([obj.id, obj.city])
 	return pids
 
-
 func get_cities_province_country(country_name) -> Array:
 	var provinces = []
 	for pid in country_to_provinces.get(country_name, []):
 		if province_objects[pid].GetFunctionalOwner() == country_name and len(province_objects[pid].city) > 0:
 			provinces.append(pid)
 	return provinces
-
 
 ## Returns provinces that specifically border a certain enemy
 func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> Array[int]:
@@ -1293,7 +1250,6 @@ func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> 
 				break
 
 	return specific_borders
-
 
 func annex_country(annexer: String, annexee: String) -> void:
 	#var playerobj = CountryManager.player_country
@@ -1312,7 +1268,6 @@ func annex_country(annexer: String, annexee: String) -> void:
 
 	#playerobj.reset_manpower()
 	print("ANNEXATION COMPLETE: ", annexer, " has taken all of ", annexee)
-
 
 func _build_global_registry():
 	global_claims_registry.clear()

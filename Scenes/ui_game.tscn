@@ -476,6 +476,7 @@ anchor_bottom = 1.0
 offset_top = -613.0
 offset_right = 344.0
 grow_vertical = 0
+mouse_filter = 2
 dragging_enabled = false
 dragger_visibility = 1
 drag_area_offset = 356
@@ -1504,6 +1505,7 @@ text = "Kindly Ask For Manpower"
 [node name="Control" type="Control" parent="Control/HSplitContainer" unique_id=1378811327]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
 visible = false

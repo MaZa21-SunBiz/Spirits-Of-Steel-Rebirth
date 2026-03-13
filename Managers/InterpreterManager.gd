@@ -203,7 +203,7 @@ func get_function(expression, country: CountryData = null):
 			var province_owner = evaled_args[i]
 			i += 1
 			print(province_owner)
-			var tmp = (province_owner == (MapManager.province_objects[int(evaled_args[i])].GetFunctionalprovince_owner()))
+			var tmp = (province_owner == (MapManager.province_objects[int(evaled_args[i])].GetFunctionalOwner()))
 			i += 1
 			print(tmp)
 			if tmp:
@@ -211,7 +211,7 @@ func get_function(expression, country: CountryData = null):
 					if !tmp:
 						result = false
 					print(province_owner, evaled_args[i])
-					tmp = tmp and (province_owner == (MapManager.province_objects[evaled_args[i]].GetFunctionalprovince_owner()))
+					tmp = tmp and (province_owner == (MapManager.province_objects[evaled_args[i]].GetFunctionalOwner()))
 					i += 1
 					print(tmp)
 

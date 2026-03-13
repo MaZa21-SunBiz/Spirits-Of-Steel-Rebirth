@@ -22,7 +22,8 @@ func process_economy_day():
 				finished_projects.append(pid)
 				_complete_construction(pid, project)
 		elif country.is_player:
-			print("Construction stalled in %d: Need %d money" % [pid, cost])
+			#print("Construction stalled in %d: Need %d money" % [pid, cost])
+			pass
 
 	for pid in finished_projects:
 		construction_queue.erase(pid)

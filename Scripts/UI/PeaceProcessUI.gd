@@ -9,6 +9,7 @@ var current_winner: CountryData
 var current_loser: CountryData
 var provinces_to_take: Array = []
 var hovered_pid: int = -1
+var puppeting = false
 
 # Color Palette
 const COLOR_BG = Color(0.1, 0.1, 0.12, 0.98)
@@ -206,9 +207,7 @@ func _on_annex_all_pressed():
 
 
 func _on_puppet_pressed():
-	current_winner.allowedCountries.append(current_loser.country_name)
-	current_winner.puppets.append(current_loser.country_name)
-	current_loser.is_puppet = true
+	puppeting = !puppeting
 	print(current_winner.puppets)
 	_update_summary()
 
@@ -230,6 +229,7 @@ func open_menu(winner: CountryData, loser: CountryData):
 	current_winner = winner
 	current_loser = loser
 	provinces_to_take.clear()
+	puppeting = false
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
 		game_ui.visible = false
@@ -255,6 +255,9 @@ func _update_summary():
 func _on_confirm_pressed():
 	for pid in provinces_to_take:
 		MapManager.transfer_ownership(pid, current_winner.country_name)
+	
+	if puppeting:
+		CountryManager.make_puppet(current_winner, current_loser)
 
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
