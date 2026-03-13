@@ -5,10 +5,10 @@ extends Node
 var construction_queue: Dictionary = {}
 
 func process_economy_day():
-	var finished_projects = []
+	var finished_projects: PackedInt32Array = []
 
 	for pid in construction_queue.keys():
-		var project = construction_queue[pid]
+		var project: Dictionary = construction_queue[pid]
 		var country: CountryData = project["country"]
 		var cost = project["daily_cost"]
 

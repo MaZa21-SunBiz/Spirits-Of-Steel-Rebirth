@@ -93,6 +93,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	_calculate_province_centroids()
 	_build_country_to_provinces()
 	_build_adjacency_list()
+	_build_global_registry()
 
 func load_country_data(a_provinceData: Dictionary) -> void:
 	#var dir = DirAccess.open("res://")
@@ -384,14 +385,17 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				print("Action Failed: Province not owned by player or not a city.")
 
 		elif GameState.industry_building != GameState.IndustryType.DEFAULT:
-			if is_player_owned:
-				_province_build_industry(pid, player_country_name)
-			elif is_puppet_owned:
-				_province_build_industry(pid, province_objects[pid].GetFunctionalOwner())
+			if EconomyManager.is_province_building(pid):
+				print("Action Failed: Already building there.")
 			else:
-				print("Action Failed: Cannot build in foreign territory.")
-				GameState.reset_industry_building()
-				show_countries_map()
+				if is_player_owned:
+					_province_build_industry(pid, player_country_name)
+				elif is_puppet_owned:
+					_province_build_industry(pid, province_objects[pid].GetFunctionalOwner())
+				else:
+					print("Action Failed: Cannot build in foreign territory.")
+					GameState.reset_industry_building()
+					show_countries_map()
 
 		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
 			country_clicked.emit(province_objects[pid].GetFunctionalOwner())
@@ -978,9 +982,8 @@ func show_industry_country(country_name: String) -> void:
 		
 		#elif province.factory == province.FACTORY_BUILT:
 		#	color = Color.GREEN
-		#elif province.factory == province.FACTORY_BUILDING:
-		#	color = Color.ORANGE # Show progress
-		#	
+		elif EconomyManager.is_province_building(pid):
+			color = Color.ORANGE # Show progress
 		#elif province.port == province.PORT_BUILT:
 		#	color = Color.BLUE
 		#elif province.port == province.PORT_BUILDING:
