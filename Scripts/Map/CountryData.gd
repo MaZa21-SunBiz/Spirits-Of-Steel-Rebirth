@@ -32,12 +32,13 @@ var hourly_money_income: float = 0.0 # Calculated value
 signal ideology_changed
 
 # Politics
+var driftTargets: Dictionary[String, IdeologyDriftTarget]
 var political_power: float = 5000.0
 var daily_pp_gain: float = 0.04
 var stability: float = 0.5
 var war_support: float = 0.5
 var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100))
-var ideology_name: String = "neutral"
+var ideology_name: String = IdeologyManager.get_ideology_name(ideology)
 
 func set_ideology(value: Vector2) -> void:
 	ideology = value
@@ -158,6 +159,13 @@ func process_hour() -> void:
 func process_day() -> void:
 	if _is_loading:
 		return
+
+	if ideology != Vector2(0, 0):
+		print(ideology)
+	var moveAmount: Vector2 = Vector2(0, 0)
+	for ideaTarget in driftTargets.values():
+		moveAmount += ideology.direction_to(ideaTarget.finalPosition) * ideaTarget.driftAmount
+	ideology += moveAmount
 
 	# Refresh stats that change daily/weekly
 	_refresh_economic_stats()

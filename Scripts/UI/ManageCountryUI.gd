@@ -69,7 +69,7 @@ func _build_ui() -> void:
 	
 	# Category Tabs
 	var tabs_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
-	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/ScrollContainer/VBoxContainer")
+	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer")
 	
 	# Connect existing category buttons in the scene
 	tabs_hbox.get_node("MilitaryTab").pressed.connect(_switch_category.bind(Category.MILITARY))
@@ -116,20 +116,12 @@ func _populate_economy() -> void:
 	laws_grid.add_child(lbl)
 
 func _populate_country() -> void:
-	for element in PlansManager.plans[current_country.country_name]:
-		if element.has("plan"):
-			var entry = Button.new()
-			entry.text = element["plan"]
-			# entry.disabled = !InterpreterManager.get_function(element["condition"])
-			entry.connect("pressed", func():
-				for condition in element["condition"]:
-					print(condition)
-					InterpreterManager.get_function(condition)
+	if not PlansManager.plans.has(current_country.country_name):
+		return
 
-				if InterpreterManager.get_function(element["condition"]):
-					InterpreterManager.get_function(element["finished"]))
-			laws_grid.add_child(entry)
-			entry.material = laws_grid.material
+	for element in PlansManager.plans[current_country.country_name]:
+		InterpreterManager.get_element(element, laws_grid)
+		print(laws_grid.get_children())
 
 func _populate_releasables(player_country: String) -> void:
 	for child in laws_grid.get_children():
@@ -459,4 +451,7 @@ func _format_number(amount: int) -> String:
 	if amount >= 1000:
 		return "%.1fK" % (amount * 0.001)
 	return str(amount)
+
+
+
 #endregion

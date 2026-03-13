@@ -7,10 +7,11 @@ const LINE_WIDTH = 4.0
 const NODE_SIZE = Vector2(220, 90)
 
 # Colors (No transparency)
-const COL_BG = Color(0.05, 0.05, 0.05, 1.0)  # Solid Black-Grey
-const COL_GRID = Color(0.2, 0.2, 0.2, 1.0)  # Visible Grey Grid
+const COL_BG = Color(0.05, 0.05, 0.05, 1.0) # Solid Black-Grey
+const COL_GRID = Color(0.2, 0.2, 0.2, 1.0) # Visible Grey Grid
 const COL_LINE_INACTIVE = Color(0.3, 0.3, 0.3)
 const COL_LINE_ACTIVE = Color(0.2, 0.8, 0.2)
+const COL_LINE_EXCLUSIVE = Color(0.8, 0.2, 0.2)
 
 # --- NODES ---
 var tree_canvas: Node2D
@@ -37,6 +38,10 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if visible:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+			tree_canvas.position += Input.get_last_mouse_velocity() * delta /2
+			tree_canvas.queue_redraw()
+
 		var input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if input != Vector2.ZERO:
 			tree_canvas.position -= input * MOVE_SPEED * delta
@@ -45,8 +50,7 @@ func _process(delta: float) -> void:
 		# --- UPDATE CUSTOM TOOLTIP POSITION ---
 		if tooltip_panel and tooltip_panel.visible:
 			var mouse_pos = get_viewport().get_mouse_position()
-			tooltip_panel.global_position = mouse_pos + Vector2(20, 20)  # Offset from cursor
-
+			tooltip_panel.global_position = mouse_pos + Vector2(20, 20) # Offset from cursor
 
 
 func _create_full_ui():
@@ -61,7 +65,7 @@ func _create_full_ui():
 	var canvas_anchor = Control.new()
 	canvas_anchor.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas_anchor.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	canvas_anchor.clip_contents = false  # IMPORTANT: This allows negative coordinates to show up
+	canvas_anchor.clip_contents = false # IMPORTANT: This allows negative coordinates to show up
 	add_child(canvas_anchor)
 
 	# Add the Node2D tree_canvas to the anchor
@@ -79,7 +83,7 @@ func _create_full_ui():
 	var header = Panel.new()
 	header.custom_minimum_size.y = 80
 	header.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	static_ui.add_child(header)  # Changed from ui_layer to static_ui
+	static_ui.add_child(header) # Changed from ui_layer to static_ui
 
 	tabs_container = HBoxContainer.new()
 	tabs_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT)
@@ -101,7 +105,7 @@ func _create_full_ui():
 	info_panel = Panel.new()
 	info_panel.custom_minimum_size.y = 160
 	info_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	static_ui.add_child(info_panel)  # Changed from ui_layer to static_ui
+	static_ui.add_child(info_panel) # Changed from ui_layer to static_ui
 
 	info_text = RichTextLabel.new()
 	info_text.bbcode_enabled = true
@@ -131,7 +135,6 @@ func _create_full_ui():
 	tooltip_label.fit_content = true
 	tooltip_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tooltip_panel.add_child(tooltip_label)
-
 
 
 # --- LOGIC ---
@@ -199,11 +202,30 @@ func _load_category(cat_name: String):
 			if start != Vector2.ZERO:
 				connection_lines.append(
 					{
+						"type": "prereq",
 						"from": start,
 						"to": Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE * 0.5),
 						"active": player.has_meta("finished_" + node["prereq"])
 					}
 				)
+				
+		if node.has("exclusive"):
+			var exclusives = node["exclusive"]
+			if not exclusives is Array:
+				exclusives = [exclusives]
+			for ex_id in exclusives:
+				var start = _get_node_center(nodes, ex_id)
+				if start != Vector2.ZERO:
+					# Only draw one line between mutually exclusive nodes
+					if node["id"] > ex_id:
+						connection_lines.append(
+							{
+								"type": "exclusive",
+								"from": start,
+								"to": Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE * 0.5),
+								"active": false
+							}
+						)
 	tree_canvas.queue_redraw()
 
 
@@ -211,7 +233,7 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	var btn = Button.new()
 	btn.position = Vector2(data["pos"][0], data["pos"][1])
 	btn.custom_minimum_size = NODE_SIZE
-	btn.mouse_filter = Control.MOUSE_FILTER_STOP  # Ensures hover works
+	btn.mouse_filter = Control.MOUSE_FILTER_STOP # Ensures hover works
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 	# Events
@@ -227,7 +249,6 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	tree_canvas.add_child(btn)
 
 
-
 func _show_info(data: Dictionary):
 	info_text.text = "[b][font_size=26][color=yellow]%s[/color][/font_size][/b]\n" % data["title"]
 	info_text.text += "[font_size=18][i]%s[/i][/font_size]\n\n" % data.get("desc", "")
@@ -235,6 +256,10 @@ func _show_info(data: Dictionary):
 		"[color=orange]Time: %d Days | Cost: %d Political Power[/color]"
 		% [data["days"], data["cost_pp"]]
 	)
+
+	var tooltip_lines = []
+	if data.has("desc") and data["desc"] != "":
+		tooltip_lines.append("[center]%s[/center]" % data["desc"])
 
 	if data.has("reqs"):
 		var reqs = data["reqs"]
@@ -257,18 +282,19 @@ func _show_info(data: Dictionary):
 		if not final_req_texts.is_empty():
 			var full_text = "\n".join(final_req_texts)
 			info_text.text += "\n[color=red]Requirement: %s[/color]" % full_text
-			
-			# Update custom tooltip
-			tooltip_label.text = "[center]%s[/center]" % full_text
-			tooltip_panel.show()
+			tooltip_lines.append("[center][color=red]Requirement: %s[/color][/center]" % full_text)
 
+	if tooltip_lines.size() > 0:
+		tooltip_label.text = "\n".join(tooltip_lines)
+		tooltip_panel.show()
+	else:
+		tooltip_panel.hide()
 
 
 func _reset_info():
 	info_text.text = "[center][color=gray]Hover over a node to see info[/color][/center]"
 	if tooltip_panel:
 		tooltip_panel.hide()
-
 
 
 func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
@@ -286,19 +312,34 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 		btn.disabled = true
 	elif DecisionManager.is_in_progress(player, id):
 		btn.text = data["title"] + "\n⌛ %d Days" % DecisionManager.get_days_left(player, id)
-		style.bg_color = Color(0.1, 0.2, 0.5)  # Dark Blue
-		btn.disabled = true
-	elif data.has("prereq") and not player.has_meta("finished_" + data["prereq"]):
-		btn.text = data["title"]
-		style.bg_color = Color(0.241, 0.102, 0.101, 1.0)
+		style.bg_color = Color(0.1, 0.2, 0.5) # Dark Blue
 		btn.disabled = true
 	else:
-		btn.text = data["title"] + "\n%d PP" % data["cost_pp"]
-		style.bg_color = Color(0.2, 0.2, 0.2)
-		# Also check if another decision is already running
-		btn.disabled = (
-			player.political_power < data["cost_pp"] or DecisionManager.is_country_busy(player)
-		)
+		var is_mutually_locked = false
+		if data.has("exclusive"):
+			var exclusives = data["exclusive"]
+			if not exclusives is Array:
+				exclusives = [exclusives]
+			for ex_id in exclusives:
+				if player.has_meta("finished_" + ex_id) or DecisionManager.is_in_progress(player, ex_id):
+					is_mutually_locked = true
+					break
+		
+		if is_mutually_locked:
+			btn.text = data["title"] + "\n[LOCKED]"
+			style.bg_color = Color(0.4, 0.1, 0.1)
+			btn.disabled = true
+		elif data.has("prereq") and not player.has_meta("finished_" + data["prereq"]):
+			btn.text = data["title"]
+			style.bg_color = Color(0.241, 0.102, 0.101, 1.0)
+			btn.disabled = true
+		else:
+			btn.text = data["title"] + "\n%d PP" % data["cost_pp"]
+			style.bg_color = Color(0.2, 0.2, 0.2)
+			# Also check if another decision is already running
+			btn.disabled = (
+				player.political_power < data["cost_pp"] or DecisionManager.is_country_busy(player)
+			)
 
 	btn.add_theme_stylebox_override("normal", style)
 	btn.add_theme_stylebox_override("disabled", style)
@@ -308,7 +349,7 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 func _on_draw_canvas():
 	var vp_size = get_viewport().size
 	# Where is the (0,0) of the screen relative to our moving canvas?
-	var rel_origin = -tree_canvas.position
+	var rel_origin = - tree_canvas.position
 
 	# Find the first grid line to the left/top of the current view
 	var start_x = floor(rel_origin.x / GRID_SIZE) * GRID_SIZE
@@ -331,7 +372,28 @@ func _on_draw_canvas():
 
 	# Connections
 	for line in connection_lines:
-		tree_canvas.draw_line(line["from"], line["to"], COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE, LINE_WIDTH, true)
+		if line.get("type", "prereq") == "exclusive":
+			_draw_dashed_line(tree_canvas, line["from"], line["to"], COL_LINE_EXCLUSIVE, LINE_WIDTH, 15.0)
+		else:
+			tree_canvas.draw_line(line["from"], line["to"], COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE, LINE_WIDTH, true)
+
+func _draw_dashed_line(canvas: Node2D, from: Vector2, to: Vector2, color: Color, width: float, dash_length: float = 10.0):
+	var length = (to - from).length()
+	var normal = (to - from).normalized()
+	var current_pos = from
+	var drawn_length = 0.0
+
+	while drawn_length < length:
+		var step_end = current_pos + normal * dash_length
+		if drawn_length + dash_length > length:
+			step_end = to
+		
+		# Draw dash
+		canvas.draw_line(current_pos, step_end, color, width, true)
+		
+		# Move past dash and gap
+		current_pos = step_end + normal * dash_length
+		drawn_length += dash_length * 2.0
 
 
 func _get_node_center(nodes: Array, id: String) -> Vector2:

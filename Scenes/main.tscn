@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_k12tt"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="2_h1bgf"]
-[ext_resource type="Shader" path="res://shaders/ball.gdshader" id="3_b3802"]
+[ext_resource type="Shader" uid="uid://d4a355an8fg8s" path="res://shaders/ball.gdshader" id="3_b3802"]
 [ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="4_fevyy"]
 [ext_resource type="Texture2D" uid="uid://noat3k35lsya" path="res://maps/regions.png" id="5_hibaj"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="6_pdsj5"]

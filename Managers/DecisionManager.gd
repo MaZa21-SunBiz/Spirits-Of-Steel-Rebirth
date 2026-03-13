@@ -38,12 +38,13 @@ func _load_decisions(base_path: String):
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.ends_with(".json") and file_name != "default.json":
-				var country_key = file_name.replace(".json", "").to_lower() # e.g. "India.json" -> "india"
+				var country_key = file_name.replace(".json", "")
 				
 				var content = FileAccess.get_file_as_string(base_path + file_name)
 				var json = JSON.parse_string(content)
 				if json and json.has("categories"):
 					country_decisions_map[country_key] = json["categories"]
+				print(country_key)
 			
 			file_name = dir.get_next()
 
@@ -106,6 +107,15 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 		var parent_id = data["prereq"]
 		if not country.has_meta("finished_" + parent_id):
 			return false
+
+	# 3.5 Check Mutually Exclusive
+	if data.has("exclusive"):
+		var exclusives = data["exclusive"]
+		if not exclusives is Array:
+			exclusives = [exclusives]
+		for ex_id in exclusives:
+			if country.has_meta("finished_" + ex_id) or is_in_progress(country, ex_id):
+				return false
 
 	# 4. Check Cost
 	if country.political_power < data.get("cost_pp", 0):
