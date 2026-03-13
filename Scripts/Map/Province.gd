@@ -37,18 +37,18 @@ func ToDict() -> Dictionary:
 		building_array.append(buildingData.ToDict())
 
 	var province_dict = {
-		"type" : type,
-		"name": name,
-		"polity": country,
-		"occupier": occupier,
-		"biome": biome,
+		"type" : self.type,
+		"name": self.name,
+		"polity": self.country,
+		"occupier": self.occupier,
+		"biome": self.biome,
 		"resources": resource_array,
-		"city": city,
+		"city": self.city,
 		"buildings": building_array,
 		"populations": population_array,
-		"gdp": gdp,
-		"infrastructure": infrastructure,
-		"maxInfrastructure": maxInfrastructure,
+		"gdp": self.gdp,
+		"infrastructure": self.infrastructure,
+		"max_infrastructure": self.maxInfrastructure,
 	}
 	return province_dict
 
