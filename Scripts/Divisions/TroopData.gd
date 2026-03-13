@@ -22,7 +22,7 @@ var progress: float = 0.0
 
 
 func _init(
-	p_country: String, p_province_id: int, p_divisions: int, p_position: Vector2, p_flag: Texture2D
+	p_country: String, p_province_id: int, p_divisions: int, p_position: Vector2, _p_flag: Texture2D
 ) -> void:
 	if p_country == "": return
 	country_name = p_country

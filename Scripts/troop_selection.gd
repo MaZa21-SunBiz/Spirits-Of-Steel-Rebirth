@@ -356,7 +356,7 @@ func _handle_frontline_spread(path: Array) -> void:
 
 	var div_index = 0
 	for i in range(path.size()):
-		var target_pid = path[i]
+		# var target_pid = path[i]
 		var count = divs_per_prov + (1 if i < remainder else 0)
 
 		var batch: Array[DivisionData] = []

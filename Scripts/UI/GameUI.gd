@@ -63,24 +63,24 @@ var current_category: Category = Category.GENERAL
 
 # ── Constants ──────────────────────────────────────────
 var action_costs := {
-	"_declare_war": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5},
+	"_declare_war": func(player: CountryData, _selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5},
 	"_request_access": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.get_relation_with(selected.country_name) > 150},
 	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)},
-	"_release_puppet": func(player: CountryData, selected: CountryData): return {"cost": 50, "can_afford": true},
-	"improve_stability": func(player: CountryData, selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true},
-	"_improve_relations": func(player: CountryData, selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true},
-	"_propose_peace": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_launch_nuke": func(player: CountryData, selected: CountryData): return {"cost": 250, "can_afford": true},
+	"_release_puppet": func(_player: CountryData, _selected: CountryData): return {"cost": 50, "can_afford": true},
+	"improve_stability": func(player: CountryData, _selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true},
+	"_improve_relations": func(player: CountryData, _selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true},
+	"_propose_peace": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"_launch_nuke": func(_player: CountryData, _selected: CountryData): return {"cost": 250, "can_afford": true},
 	"_form_alliance": func(player: CountryData, selected: CountryData): return {"cost": 100, "can_afford": player.ideology_name == selected.ideology_name},
 	"_demand_tribute": func(player: CountryData, selected: CountryData): return {"cost": 75, "can_afford": player.ideology_name == selected.ideology_name},
 	"_trade_deal": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.ideology_name == selected.ideology_name},
-	"open_research_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_decisions_tree": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_open_faction": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_manage_country": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_factory": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_port": func(player: CountryData, selected: CountryData): return {"cost": 0, "can_afford": true},
-	"m_BuildInfrastructure": func(a_player: CountryData, a_selected: CountryData): return {"cost": 0, "can_afford": true}
+	"open_research_tree": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"open_decisions_tree": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"_open_faction": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"open_manage_country": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"_build_factory": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"_build_port": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
+	"m_BuildInfrastructure": func(_a_player: CountryData, _a_selected: CountryData): return {"cost": 0, "can_afford": true}
 }
 
 # Yeah, not a bad idea.
@@ -362,12 +362,12 @@ func _create_styled_label(text_content: String, size: int, score_ref: int) -> La
 	return l
 
 func _get_simple_flag(c_name: String, ideology: String = "") -> TextureRect:
-	var tr = TextureRect.new()
-	tr.texture = TroopManager.get_flag(c_name, ideology)
-	tr.custom_minimum_size = Vector2(42, 26)
-	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	return tr
+	var tex = TextureRect.new()
+	tex.texture = TroopManager.get_flag(c_name, ideology)
+	tex.custom_minimum_size = Vector2(42, 26)
+	tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	return tex
 
 func _on_tab_changed(new_category_index: int) -> void:
 	current_category = new_category_index as Category
@@ -511,7 +511,7 @@ func _declare_war():
 	open_menu(Context.ENEMY, Category.GENERAL)
 
 
-func _conscript(data: Dictionary):
+func _conscript(_data: Dictionary):
 	#var manpower = data.manpower * 0.0001
 	CountryManager.player_country.train_troops(1, "infantry")
 	update_topbar_stats()

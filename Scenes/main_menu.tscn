@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="9_trj04"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
-[ext_resource type="Script" path="res://Scenes/starts.gd" id="14_8dnnj"]
+[ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
 shader = ExtResource("5_8dnnj")
@@ -290,7 +290,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
 [node name="ScrollContainer" type="ScrollContainer" parent="Starts/PanelContainer2" unique_id=356775520]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=2040824027]
+[node name="GridContainer" type="GridContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=1941325871]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

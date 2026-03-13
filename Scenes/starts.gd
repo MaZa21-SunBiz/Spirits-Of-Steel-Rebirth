@@ -16,6 +16,3 @@ func _ready() -> void:
 		start_entry.add_child(entry)
 		entry.setup(start, starts_folder + start + "/thumbnail.png", starts_folder + start + "/map_data.json")
 		print(start)
-
-func _process(delta: float) -> void:
-	pass

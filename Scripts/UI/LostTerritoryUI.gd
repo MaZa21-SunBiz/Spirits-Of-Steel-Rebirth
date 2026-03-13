@@ -19,7 +19,7 @@ func _ready() -> void:
 	self.hide()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if not self.visible:
 		return
 

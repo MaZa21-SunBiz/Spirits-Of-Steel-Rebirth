@@ -62,6 +62,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 
 	for i in range(width * height):
 		var x: int = i % width
+		@warning_ignore("integer_division")
 		var y: int = i / width
 		var r_color = mapImage.get_pixel(x, y)
 
@@ -347,7 +348,7 @@ func _get_contextual_highlight(pid: int) -> Color:
 	return Color.TRANSPARENT
 
 
-func handle_click_down(global_pos: Vector2, map_sprite: Sprite2D) -> void:
+func handle_click_down(_global_pos: Vector2, _map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or Console.is_visible():
 		return
 
