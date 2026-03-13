@@ -18,8 +18,7 @@ static func FromDict(a_data: Dictionary) -> FactionData:
 	var faction: FactionData = FactionData.new()
 	
 	faction.name = a_data["name"]
-	faction.color = a_data["color"]
-
+	faction.color = Color.html(a_data.get("color", "#FFFFFF"))
 	for factionMemberData: Dictionary in a_data["members"]:
 		faction.members.append(FactionMember.FromDict(factionMemberData))
 	
@@ -28,7 +27,7 @@ static func FromDict(a_data: Dictionary) -> FactionData:
 func ToDict() -> Dictionary:
 	var data: Dictionary = {
 		"name": self.name,
-		"color": self.color,
+		"color": "#"+color.to_html(false).to_upper(),
 		"members": []
 	}
 

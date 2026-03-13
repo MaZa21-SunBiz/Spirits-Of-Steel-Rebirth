@@ -169,11 +169,11 @@ func select_province(pid: int) -> void:
 	
 	for child in provincePopulationList.get_children():
 		child.queue_free()
-	for population: PopulationData in prov.population:
+	for population: PopulationData in prov.populations:
 		var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
 		populationEntry.visible = true
 		populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
-			prov.population.erase(population)
+			prov.populations.erase(population)
 			populationEntry.queue_free()
 		)
 		populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity
@@ -241,7 +241,7 @@ func _on_apply_pressed() -> void:
 
 func _on_export_pressed() -> void:
 	# Export Province Data
-	var export = {"provinces": {}, "polities": [], "ideologies": IdeologyManager.ideologies, "factions": {}}
+	var export = {"provinces": {}, "polities": [], "ideologies": IdeologyManager.ideologies, "factions": []}
 	for index in MapManager.unique_regions:
 		var next_id = MapManager.unique_regions[index]
 		var province = MapManager.province_objects[next_id]
@@ -249,11 +249,13 @@ func _on_export_pressed() -> void:
 
 	for country in CountryManager.countries.values():
 		export["polities"].append(country.ToDict())
-
-	# TODO(soi): factions how ????
+	
+	for faction in FactionManager.factions:
+		export["factions"].append(FactionManager.factions[faction].ToDict())
 
 	# print(JSON.stringify(export, " "))
 	# print(JSON.stringify(export["polities"], " "))
+	print(JSON.stringify(export["factions"], "\t"))
 
 	var file = FileAccess.open("user://exported_map_data.json", FileAccess.WRITE)
 	if file:
@@ -427,15 +429,15 @@ func AddedFactionMember() -> void:
 
 func AddProvincePopulation() -> void:
 	var prov: Province = MapManager.province_objects[selected_pid]
-	prov.population.push_back(PopulationData.FromDict({
+	prov.populations.push_back(PopulationData.FromDict({
 		"ethnicity": "Unknown",
 		"amount": 1
 	}))
-	var population: PopulationData = prov.population.back()
+	var population: PopulationData = prov.populations.back()
 	var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
 	populationEntry.visible = true
 	populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func (): 
-		prov.population.erase(population)
+		prov.populations.erase(population)
 		populationEntry.queue_free()
 	)
 	populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity

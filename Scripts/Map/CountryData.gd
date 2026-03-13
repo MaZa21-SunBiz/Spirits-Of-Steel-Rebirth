@@ -117,7 +117,7 @@ func ToDict() -> Dictionary:
 	"name": country_name,
 	"color": "#"+country_color.to_html(false).to_upper(),
 	"money": money,
-	"ideology": ideology,
+	"ideology": [ideology.x, ideology.y],
 	"political_power": political_power,
 	"stability": stability,
 	"war_support": war_support,
@@ -141,11 +141,12 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.accepted_cultures = a_data.get("accepted_cultures", [])
 	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
-	country._refresh_economic_stats()
-	country.refresh_ideology_name()
+	# country._refresh_economic_stats()
+	# country.refresh_ideology_name()
 	
 	# NOTE(Sockmit2007): Urgh...
 	# NOTE(soi): indeed
+	# NOTE(soi): ok the refresh things cause the map editor to crash when u make a country so...
 	#country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
 	
 	return country

@@ -880,9 +880,9 @@ func show_ethnic_map() -> void:
 			continue
 
 		var province: Province = province_objects[pid]
-		if (province.population.size() <= 0):
+		if (province.populations.size() <= 0):
 			continue
-		var eth_name = province.population[0].ethnicity # Assuming this is the String name (e.g., "Igbo")
+		var eth_name = province.populations[0].ethnicity # Assuming this is the String name (e.g., "Igbo")
 
 		# Default to black or transparent if ethnicity not found
 		var display_color = Color.BLACK

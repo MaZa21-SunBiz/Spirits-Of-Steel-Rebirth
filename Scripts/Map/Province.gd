@@ -31,15 +31,20 @@ func ToDict() -> Dictionary:
 	for populationData in populations:
 		population_array.append(populationData.ToDict())
 
+
+	var building_array = []
+	for buildingData in buildings:
+		building_array.append(buildingData.ToDict())
+
 	var province_dict = {
 		"type" : type,
 		"name": name,
-		"country": country,
+		"polity": country,
 		"occupier": occupier,
 		"biome": biome,
 		"resources": resource_array,
 		"city": city,
-		"buildings": buildings,
+		"buildings": building_array,
 		"populations": population_array,
 		"gdp": gdp,
 		"infrastructure": infrastructure,
@@ -51,7 +56,7 @@ func ToDict() -> Dictionary:
 static func FromDict(a_data: Dictionary) -> Province:
 	var province: Province = Province.new()
 	
-	if a_data.get("type", "Sea") == "Sea":
+	if a_data.get("type", Province.SEA) == Province.SEA:
 		# SEA LOGIC: Unique ID, but 0 stats
 		province.type = Province.SEA
 		province.name = "Sea"
