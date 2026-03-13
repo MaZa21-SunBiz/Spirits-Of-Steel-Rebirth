@@ -21,6 +21,28 @@ enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACT
 @export var infrastructure: int = 0
 @export var maxInfrastructure: int = 3
 
+
+func ToDict() -> Dictionary:
+	var resource_dict = []
+	for resourceData in resources:
+		resource_dict.append(resourceData.ToDict())
+	var province_dict = {
+		"type" : type,
+		"name ": name,
+		"country ": country,
+		"occupier ": occupier,
+		"biome ": biome,
+		"resources": resources,
+		"city ": city,
+		"buildings ": buildings,
+		"population ": population,
+		"gdp ": gdp,
+		"infrastructure ": infrastructure,
+		"maxInfrastructure ": maxInfrastructure,
+	}
+	return province_dict
+
+
 static func FromDict(a_data: Dictionary) -> Province:
 	var province: Province = Province.new()
 	
@@ -32,7 +54,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.occupier = ""
 		province.biome = a_data.get("biome", "Sea")
 		for resourceData: Dictionary in a_data.get("resources", []):
-			province.resourrces.append(ResourceNode.FromDict(resourceData))
+			province.resources.append(ResourceNode.FromDict(resourceData))
 		province.city = ""
 		province.buildings = []
 		province.population = []
