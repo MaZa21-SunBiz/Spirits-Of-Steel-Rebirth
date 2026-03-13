@@ -241,27 +241,23 @@ func _on_apply_pressed() -> void:
 
 func _on_export_pressed() -> void:
 	# Export Province Data
-	var prov_export = {}
-	for pid in MapManager.province_objects.keys():
-		if pid <= 1:
-			continue
-		var p = MapManager.province_objects[pid]
-		prov_export["%d" % p.id] = p.ToDict()
+	var export = {"provinces": {}, "polities": [], "ideologies": IdeologyManager.ideologies, "factions": {}}
+	for index in MapManager.unique_regions:
+		var next_id = MapManager.unique_regions[index]
+		var province = MapManager.province_objects[next_id]
+		export["provinces"][index] = province.ToDict()
 
-	# Export Country Colors
-	var country_export = {}
-	for c_name in MapManager.country_colors.keys():
-		var col = MapManager.country_colors[c_name]
-		country_export[c_name] = {"color": [int(col.r8), int(col.g8), int(col.b8)]}
+	for country in CountryManager.countries.values():
+		export["polities"].append(country.ToDict())
 
-	_save_json("user://exported_map_data.json", prov_export)
-	_save_json("user://exported_countries.json", country_export)
-	OS.shell_open(ProjectSettings.globalize_path("user://"))
+	# TODO(soi): factions how ????
 
-func _save_json(path: String, data: Dictionary) -> void:
-	var file = FileAccess.open(path, FileAccess.WRITE)
+	# print(JSON.stringify(export, " "))
+	# print(JSON.stringify(export["polities"], " "))
+
+	var file = FileAccess.open("user://exported_map_data.json", FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(data, "\t"))
+		file.store_string(JSON.stringify(export, "\t"))
 		file.close()
 
 func m_OnTabContainerTabChanged(tab: int) -> void:

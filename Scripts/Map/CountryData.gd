@@ -111,6 +111,22 @@ class ReadyTroop:
 #	manpower = int((total_population * military_size_ratio) - manpower_used)
 #	_setup_starting_army()
 
+
+func ToDict() -> Dictionary:
+	return {
+	"name": country_name,
+	"color": "#"+country_color.to_html(false).to_upper(),
+	"money": money,
+	"ideology": ideology,
+	"political_power": political_power,
+	"stability": stability,
+	"war_support": war_support,
+	"puppets": puppets,
+	"accepted_cultures": accepted_cultures,
+	"hostedGovernments": hostedGovernments,
+	}
+	# NOTE(soi): AAAAUHHHHHGGG
+
 static func FromDict(a_data: Dictionary) -> CountryData:
 	var country: CountryData = CountryData.new()
 	
