@@ -1074,6 +1074,7 @@ text = "Status:"
 [node name="Status" type="OptionButton" parent="PopupPanel/TabContainer/CreateMember/MarginContainer/GridContainer" unique_id=1756730606]
 layout_mode = 2
 size_flags_horizontal = 3
+selected = 1
 item_count = 2
 popup/item_0/text = "Leader"
 popup/item_0/id = 0
