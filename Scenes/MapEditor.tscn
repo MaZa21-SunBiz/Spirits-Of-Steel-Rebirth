@@ -1103,6 +1103,7 @@ text = "Add Member"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/MenuButton" to="PopupPanel" method="m_OpenScreen" binds= [2]]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnPolitySelected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/NewPolity" to="PopupPanel" method="m_OpenScreen" binds= [1]]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer2/Owner" to="." method="m_OnPolityOwnerSubmitted"]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnColorChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputMoney" to="." method="m_OnPolityMoneyChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputPoliticalPower" to="." method="m_OnPolityPoliticalPowerChanged"]

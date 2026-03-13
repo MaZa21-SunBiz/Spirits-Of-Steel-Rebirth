@@ -275,9 +275,15 @@ func _consider_declaring_war(country: CountryData) -> void:
 
 	var best_score = -INF
 	var best_target = null
+	
+	var puppeter: PackedStringArray = []
+	
+	if country.is_puppet:
+		puppeter.append(country.owner)
+		puppeter.append_array(CountryManager.countries[country.owner].puppets)
 
 	for target_name in candidates:
-		if WarManager.is_at_war_names(country.country_name, target_name):
+		if WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
 			continue
 
 		# 4. STRENGTH & DISTANCE ANALYSIS

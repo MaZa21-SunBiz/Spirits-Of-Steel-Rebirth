@@ -363,6 +363,13 @@ func m_OnPolityNameSubmitted(new_text: String) -> void:
 		CountryManager.RenameCountry(selectedCountry, new_text)
 		selectedCountry = new_text
 
+func m_OnPolityOwnerSubmitted(new_text: String) -> void:
+	if selectedCountry in MapManager.countries:
+		if (CountryManager.countries[selectedCountry].owner in CountryManager.countries):
+			CountryManager.release_puppet(CountryManager.countries[selectedCountry], CountryManager.countries[CountryManager.countries[selectedCountry].owner])
+		if (new_text in MapManager.countries):
+			CountryManager.MakePuppet(CountryManager.countries[selectedCountry], CountryManager.countries[new_text])
+
 func m_OnPolityMoneyChanged(value: float) -> void:
 	if selectedCountry in CountryManager.countries:
 		CountryManager.countries[selectedCountry].money = value

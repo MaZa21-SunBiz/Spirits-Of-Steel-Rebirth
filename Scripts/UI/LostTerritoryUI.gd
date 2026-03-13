@@ -141,6 +141,7 @@ func m_OnDissolvePressed():
 		CountryManager.release_puppet(CountryManager.countries[CountryManager.player_country.owner], CountryManager.player_country)
 	
 	for puppet in CountryManager.player_country.puppets:
+		print("Deleting Puppet: %s" % puppet)
 		CountryManager.release_puppet(CountryManager.player_country, CountryManager.countries[puppet])
 	
 	CountryManager.countries.erase(CountryManager.player_country.country_name)

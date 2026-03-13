@@ -187,7 +187,13 @@ func cleanup_empty_countries() -> void:
 				lostTerritoryUI.open_menu(country)
 			pass
 		else:
+			var deleting: CountryData = CountryManager.countries[c_name]
+			#CountryManager.Releasables.append(ReleasableData.FromDict({}))
+			for puppet: String in deleting.puppets:
+				CountryManager.release_puppet(deleting, CountryManager.countries[puppet])
 			MapManager.country_to_provinces.erase(c_name)
+			MapManager.country_to_occupied_provinces.erase(c_name)
+			MapManager.country_to_owned_provinces.erase(c_name)
 			countries.erase(c_name)
 
 func InformPuppet(puppeter: CountryData, puppetee: CountryData):
