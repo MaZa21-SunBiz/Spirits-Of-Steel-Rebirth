@@ -1,8 +1,8 @@
 extends Control
 
-@onready var background_rect: TextureRect = $"PanelContainer/VBoxContainer/background"
+@onready var background_rect: TextureRect = $"VBoxContainer/background"
 # @onready var heading_label: Label = $"PanelContainer/VBoxContainer/description"
-@onready var button: Button = $"PanelContainer/VBoxContainer/Button"
+@onready var button: Button = $"VBoxContainer/Button"
 
 func _ready():
 	pass
@@ -23,7 +23,6 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				DecisionManager.load_decisions_from_path(start_folder + "decisions/")
 				SuperEventManager.load_events_from_path(start_folder + "superevents.json")
 				TroopManager.set_custom_flag_path(start_folder + "flags/")
-				PlansManager.load_plans_from_path(start_folder + "plans.json")
 				
 				# Initialize managers with map data
 				IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)

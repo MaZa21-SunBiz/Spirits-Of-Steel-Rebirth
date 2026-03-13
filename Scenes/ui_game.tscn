@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
 [ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/Sockenheimer/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/ModernDay/assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
 [ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
+[ext_resource type="Texture2D" uid="uid://d3fu8mlb0k686" path="res://assets/flags/fallback_flag.png" id="21_ubr8q"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
 [ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
@@ -514,7 +515,7 @@ layout_mode = 2
 material = ExtResource("16_lpwmk")
 custom_minimum_size = Vector2(180, 90)
 layout_mode = 2
-texture = ExtResource("1_xar7q")
+texture = ExtResource("21_ubr8q")
 expand_mode = 1
 stretch_mode = 5
 

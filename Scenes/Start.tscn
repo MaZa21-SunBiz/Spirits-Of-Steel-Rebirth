@@ -7,11 +7,12 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="4_035le"]
 
 [node name="PanelContainer" type="PanelContainer" unique_id=181871694]
-custom_minimum_size = Vector2(0, 166)
+custom_minimum_size = Vector2(212, 166)
 offset_right = 212.0
 offset_bottom = 166.0
 size_flags_horizontal = 3
 theme = ExtResource("1_1lxxj")
+script = ExtResource("1_37b1d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1965051531]
 layout_mode = 2
@@ -39,6 +40,3 @@ material = ExtResource("4_035le")
 layout_mode = 2
 theme = ExtResource("1_1lxxj")
 text = "Ok"
-
-[node name="Node2D" type="Node2D" parent="." unique_id=1017370163]
-script = ExtResource("1_37b1d")
