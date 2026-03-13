@@ -11,6 +11,8 @@ signal close_sidemenu
 const SEA_MAIN = Color("#7e8e9e")
 const SEA_RASTER = Color("#697684")
 
+var hoveredCountry: String = "Sea"
+
 # --- DATA ---
 var id_map_image: Image
 var state_color_image: Image
@@ -287,17 +289,20 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			if last_hovered_pid in province_objects && pid in province_objects && province_objects[last_hovered_pid].country == province_objects[pid].country:
 				pass
 			else:
-				if last_hovered_pid in province_objects && province_objects[last_hovered_pid].country != "Sea":
-					for province in country_to_provinces [province_objects[last_hovered_pid].country]:
-						update_lookup(province, original_hover_color, original_hover_color)
 				last_hovered_pid = -1
-				if pid in province_objects && province_objects[pid].country != "Sea" && highlight_color != Color.TRANSPARENT:
-					original_hover_color = state_color_image.get_pixel(pid, 0)
-					for province in country_to_provinces [province_objects[pid].country]:
-						update_lookup(province, highlight_color, highlight_color)
-					last_hovered_pid = pid
-					Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-					province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
+				if pid > 1 and highlight_color != Color.TRANSPARENT:
+					if hoveredCountry != province_objects[pid].country:
+						for province in country_to_provinces[hoveredCountry]:
+							update_lookup(province, original_hover_color, original_hover_color)
+						if pid in province_objects:
+							if province_objects[pid].country != "Sea" && highlight_color != Color.TRANSPARENT:
+								original_hover_color = state_color_image.get_pixel(pid, 0)
+								for province in country_to_provinces[province_objects[pid].country]:
+									update_lookup(province, highlight_color, highlight_color)
+								last_hovered_pid = pid
+								Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+								province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
+							hoveredCountry = province_objects[pid].country
 		else:
 			_reset_last_hover() # Clean up the old one
 
@@ -372,6 +377,7 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if GameState.selectingCountry:
 		CountryManager.set_player_country(MapManager.province_objects[pid].country)
 		GameState.selectingCountry = false
+		show_countries_map()
 	else:
 		var player_country_name = CountryManager.player_country.country_name
 		var is_player_owned = MapManager.province_objects[pid].GetFunctionalOwner() == player_country_name
@@ -959,6 +965,12 @@ func show_gdp_map() -> void:
 	KeyboardManager.current_view = KeyboardManager.MapView.GDP
 	print("MapManager: GDP View Updated. Max GDP: ", current_max_gdp)
 
+func GetCountryDisplayColor(a_countryName: String) -> Color:
+	var country_color = CountryManager.GetCountryColor(a_countryName, Color.GRAY)
+	var country_data = CountryManager.get_country(a_countryName)
+	if country_data and country_data.owner:
+		country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
+	return country_color
 
 func show_countries_map() -> void:
 	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
@@ -968,16 +980,8 @@ func show_countries_map() -> void:
 		if pid <= 1:
 			continue
 
-		var country_name = province_objects[pid].country
-		var country_color = CountryManager.GetCountryColor(country_name, Color.GRAY)
-		var owner_color = CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY)
-		var country_data = CountryManager.get_country(country_name)
-		if country_data and country_data.owner:
-			country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
-			owner_color = (owner_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
-
-		state_color_image.set_pixel(pid, 0, country_color)
-		state_color_image.set_pixel(pid, 1, owner_color)
+		state_color_image.set_pixel(pid, 0, GetCountryDisplayColor(province_objects[pid].country))
+		state_color_image.set_pixel(pid, 1, GetCountryDisplayColor(province_objects[pid].GetFunctionalOwner()))
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES
