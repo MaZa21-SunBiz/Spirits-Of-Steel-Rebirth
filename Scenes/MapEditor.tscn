@@ -79,9 +79,9 @@ polityPoliticalPower = NodePath("PanelContainer/VBoxContainer/TabContainer/Polit
 polityWarSupport = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputWarSupport")
 polityStability = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputStability")
 polityPuppetList = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/ScrollContainer/VBoxContainer")
-polityPuppetTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/Template")
+polityPuppetTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/Template")
 polityFactionList = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/ScrollContainer/VBoxContainer")
-polityFactionTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/Template")
+polityFactionTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=403020217]
 anchors_preset = 11
@@ -555,28 +555,28 @@ layout_mode = 2
 folded = true
 title = "Puppets"
 
-[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets" unique_id=1122990713]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/Template" unique_id=1532854598]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/Template/HBoxContainer" unique_id=1940548948]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Release"
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/Template/HBoxContainer" unique_id=664250207]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Country"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets" unique_id=948597267]
 visible = false
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+
+[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer" unique_id=1122990713]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/Template" unique_id=1532854598]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/Template/HBoxContainer" unique_id=1940548948]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Release"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/Template/HBoxContainer" unique_id=664250207]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Country"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer" unique_id=700545202]
 layout_mode = 2
@@ -597,26 +597,31 @@ layout_mode = 2
 folded = true
 title = "Factions"
 
-[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions" unique_id=1068825194]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions" unique_id=916333658]
+visible = false
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Template" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer" unique_id=1068825194]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/Template" unique_id=2072216139]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template" unique_id=2072216139]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/Template/HBoxContainer" unique_id=77511048]
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template/HBoxContainer" unique_id=77511048]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "Leave"
 
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/Template/HBoxContainer" unique_id=1322503382]
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template/HBoxContainer" unique_id=1322503382]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Faction"
 editable = false
 
-[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/Template/HBoxContainer" unique_id=1634950533]
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template/HBoxContainer" unique_id=1634950533]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -625,11 +630,6 @@ popup/item_0/text = "Leader"
 popup/item_0/id = 0
 popup/item_1/text = "Member"
 popup/item_1/id = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions" unique_id=916333658]
-visible = false
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer" unique_id=2083530188]
 layout_mode = 2
