@@ -277,6 +277,7 @@ func _consider_declaring_war(country: CountryData) -> void:
 	var best_target = null
 	
 	var puppeter: PackedStringArray = []
+	puppeter.append_array(country.puppets)
 	
 	if country.is_puppet:
 		puppeter.append(country.owner)
