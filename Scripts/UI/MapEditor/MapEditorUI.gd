@@ -368,9 +368,9 @@ func m_OnPolityNameSubmitted(new_text: String) -> void:
 func m_OnPolityOwnerSubmitted(new_text: String) -> void:
 	if selectedCountry in CountryManager.countries:
 		if (CountryManager.countries[selectedCountry].owner in CountryManager.countries):
-			CountryManager.release_puppet(CountryManager.countries[selectedCountry], CountryManager.countries[CountryManager.countries[selectedCountry].owner])
+			CountryManager.release_puppet(CountryManager.countries[CountryManager.countries[selectedCountry].owner], CountryManager.countries[selectedCountry])
 		if (new_text in CountryManager.countries):
-			CountryManager.make_puppet(CountryManager.countries[selectedCountry], CountryManager.countries[new_text])
+			CountryManager.make_puppet(CountryManager.countries[new_text], CountryManager.countries[selectedCountry])
 
 func m_OnPolityMoneyChanged(value: float) -> void:
 	if selectedCountry in CountryManager.countries:
