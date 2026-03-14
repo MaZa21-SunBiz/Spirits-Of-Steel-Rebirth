@@ -1,68 +1,56 @@
 [gd_scene format=3 uid="uid://c6f4eocjc5ppw"]
 
 [ext_resource type="Script" uid="uid://cxpww8jayfiw3" path="res://Scripts/Events/alert_popup.gd" id="1_uj0pn"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://assets/flags/abkhazia/neutral_flag.png" id="2_ok8f1"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_xfewa"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/ModernDay/assets/flags/abkhazia/neutral_flag.png" id="2_ok8f1"]
 [ext_resource type="FontFile" uid="uid://cee8mbnpx3w3h" path="res://font/arial.TTF" id="3_2njta"]
 
-[node name="Alert" type="Control"]
+[node name="Alert" type="Control" unique_id=647992424]
+material = ExtResource("1_xfewa")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uj0pn")
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2024818354]
+use_parent_material = true
 layout_mode = 0
 offset_right = 252.0
-offset_bottom = 93.0
-color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+offset_bottom = 112.0
 
-[node name="flag_left" type="TextureRect" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1678071657]
+use_parent_material = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=2061257591]
+use_parent_material = true
+layout_mode = 2
+
+[node name="flag_left" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1835858709]
+use_parent_material = true
 custom_minimum_size = Vector2(50, 25)
-layout_mode = 1
-offset_right = 50.0
-offset_bottom = 25.0
+layout_mode = 2
+size_flags_horizontal = 2
 texture = ExtResource("2_ok8f1")
-expand_mode = 1
+expand_mode = 5
 
-[node name="flag_right" type="TextureRect" parent="Panel"]
+[node name="flag_right" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1404902719]
+use_parent_material = true
 custom_minimum_size = Vector2(50, 25)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -50.0
-offset_bottom = 25.0
-grow_horizontal = 0
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_ok8f1")
+expand_mode = 5
+
+[node name="description" type="Label" parent="PanelContainer/VBoxContainer" unique_id=619606403]
+use_parent_material = true
+layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_ok8f1")
-expand_mode = 1
-
-[node name="description" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
+size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("3_2njta")
 theme_override_font_sizes/font_size = 16
 text = "War"
 
-[node name="Button" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -31.0
-offset_right = 36.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=160309950]
+use_parent_material = true
+layout_mode = 2
 text = "Ok"

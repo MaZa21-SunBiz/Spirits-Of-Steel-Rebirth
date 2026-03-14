@@ -5,6 +5,9 @@ const MOVE_SPEED = 800.0
 const GRID_SIZE = 60.0
 const LINE_WIDTH = 4.0
 const NODE_SIZE = Vector2(220, 90)
+const ZOOM_STEP = 0.1
+const MIN_ZOOM = 0.2
+const MAX_ZOOM = 3.0
 
 # Colors (No transparency)
 const COL_BG = Color(0.05, 0.05, 0.05, 1.0) # Solid Black-Grey
@@ -12,129 +15,65 @@ const COL_GRID = Color(0.2, 0.2, 0.2, 1.0) # Visible Grey Grid
 const COL_LINE_INACTIVE = Color(0.3, 0.3, 0.3)
 const COL_LINE_ACTIVE = Color(0.2, 0.8, 0.2)
 const COL_LINE_EXCLUSIVE = Color(0.8, 0.2, 0.2)
+const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 
 # --- NODES ---
-var tree_canvas: Node2D
-var tabs_container: HBoxContainer
-var info_text: RichTextLabel
-var info_panel: Panel
-
-var tooltip_panel: Panel
-var tooltip_label: RichTextLabel
+@onready var tree_canvas: Node2D = $CanvasAnchor/TreeCanvas
+@onready var tabs_container: HBoxContainer = $StaticUI/Header/TabsContainer
+@onready var info_text: RichTextLabel = $StaticUI/InfoPanel/InfoText
+@onready var info_panel: Panel = $StaticUI/InfoPanel
+# @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
+@onready var close_button: Button = $StaticUI/Header/CloseButton
 
 
 var current_category: String = "Economy"
 var node_buttons: Dictionary = {}
 var connection_lines: Array = []
+var current_zoom: float = 1.0
 
 
 func _ready():
-	layer = 100
-	hide()
 	DecisionManager.ui_overlay = self
-	tree_canvas = Node2D.new()
-	_create_full_ui()
+	tree_canvas.draw.connect(_on_draw_canvas)
+	close_button.pressed.connect(close_menu)
 
 
 func _process(delta: float) -> void:
 	if visible:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-			tree_canvas.position += Input.get_last_mouse_velocity() * delta /2
-			tree_canvas.queue_redraw()
-
 		var input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if input != Vector2.ZERO:
-			tree_canvas.position -= input * MOVE_SPEED * delta
+			tree_canvas.position -= input * MOVE_SPEED * delta / current_zoom
 			tree_canvas.queue_redraw()
 		
-		# --- UPDATE CUSTOM TOOLTIP POSITION ---
-		if tooltip_panel and tooltip_panel.visible:
-			var mouse_pos = get_viewport().get_mouse_position()
-			tooltip_panel.global_position = mouse_pos + Vector2(20, 20) # Offset from cursor
+
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+		
+	if event is InputEventMouseMotion:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+			tree_canvas.position += event.relative
+			tree_canvas.queue_redraw()
+	
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_zoom_at_mouse(1.0 + ZOOM_STEP)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_zoom_at_mouse(1.0 - ZOOM_STEP)
 
 
-func _create_full_ui():
-	# 1. SOLID BACKGROUND
-	var bg = ColorRect.new()
-	bg.color = COL_BG
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
-
-	# 2. THE MOVABLE CANVAS WRAPPER (This is the "ui_layer" / Anchor)
-	# This node stays at 0,0 and lets the tree_canvas move inside it
-	var canvas_anchor = Control.new()
-	canvas_anchor.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	canvas_anchor.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	canvas_anchor.clip_contents = false # IMPORTANT: This allows negative coordinates to show up
-	add_child(canvas_anchor)
-
-	# Add the Node2D tree_canvas to the anchor
-	tree_canvas.draw.connect(_on_draw_canvas)
-	canvas_anchor.add_child(tree_canvas)
-
-	# 3. STATIC UI LAYER (Header/Footer/Close Button)
-	# We create a separate container for these so they don't move with the canvas
-	var static_ui = Control.new()
-	static_ui.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	static_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(static_ui)
-
-	# --- HEADER ---
-	var header = Panel.new()
-	header.custom_minimum_size.y = 80
-	header.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	static_ui.add_child(header) # Changed from ui_layer to static_ui
-
-	tabs_container = HBoxContainer.new()
-	tabs_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER_LEFT)
-	tabs_container.position = Vector2(20, 0)
-	tabs_container.add_theme_constant_override("separation", 15)
-	header.add_child(tabs_container)
-
-	# --- CLOSE BUTTON ---
-	var close_btn = Button.new()
-	close_btn.text = "  CLOSE MENU [X]  "
-	close_btn.custom_minimum_size = Vector2(150, 40)
-	close_btn.set_anchors_and_offsets_preset(Control.PRESET_CENTER_RIGHT)
-	close_btn.position.x -= 20
-	close_btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	close_btn.pressed.connect(close_menu)
-	header.add_child(close_btn)
-
-	# --- FOOTER (Description Box) ---
-	info_panel = Panel.new()
-	info_panel.custom_minimum_size.y = 160
-	info_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
-	static_ui.add_child(info_panel) # Changed from ui_layer to static_ui
-
-	info_text = RichTextLabel.new()
-	info_text.bbcode_enabled = true
-	info_text.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	info_text.offset_left = 30
-	info_text.offset_top = 20
-	info_text.offset_right = -30
-	info_text.offset_bottom = -10
-	info_text.text = "[center][color=gray]Hover over a node to see info[/color][/center]"
-	info_panel.add_child(info_text)
-
-	# --- 4. CUSTOM TOOLTIP LAYER ---
-	tooltip_panel = Panel.new()
-	tooltip_panel.visible = false
-	tooltip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	tooltip_panel.custom_minimum_size = Vector2(200, 40)
-	static_ui.add_child(tooltip_panel)
-
-
-	tooltip_label = RichTextLabel.new()
-	tooltip_label.bbcode_enabled = true
-	tooltip_label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	tooltip_label.offset_left = 10
-	tooltip_label.offset_right = -10
-	tooltip_label.offset_top = 5
-	tooltip_label.offset_bottom = -5
-	tooltip_label.fit_content = true
-	tooltip_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	tooltip_panel.add_child(tooltip_label)
+func _zoom_at_mouse(factor: float):
+	var old_zoom = current_zoom
+	current_zoom = clamp(current_zoom * factor, MIN_ZOOM, MAX_ZOOM)
+	var final_factor = current_zoom / old_zoom
+	
+	var mouse_pos = tree_canvas.get_local_mouse_position()
+	
+	tree_canvas.scale = Vector2(current_zoom, current_zoom)
+	# Adjust position to zoom towards the mouse cursor
+	tree_canvas.position -= mouse_pos * (final_factor - 1.0) * old_zoom
+	tree_canvas.queue_redraw()
 
 
 # --- LOGIC ---
@@ -167,7 +106,8 @@ func _rebuild_tabs():
 	for c in tabs_container.get_children():
 		c.queue_free()
 	
-	var all_decisions = DecisionManager.get_country_categories(CountryManager.player_country.country_name)
+	var player_country = CountryManager.player_country
+	var all_decisions = DecisionManager.get_country_categories(player_country.country_name)
 	
 	for cat in all_decisions.keys():
 		var btn = Button.new()
@@ -181,6 +121,7 @@ func _rebuild_tabs():
 				_load_category(cat)
 		)
 		tabs_container.add_child(btn)
+		btn.material = DAMAGED_MAT
 
 
 func _load_category(cat_name: String):
@@ -204,7 +145,8 @@ func _load_category(cat_name: String):
 					{
 						"type": "prereq",
 						"from": start,
-						"to": Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE * 0.5),
+						"to": Vector2(node["pos"][0], node["pos"][1]) \
+							+ (NODE_SIZE * 0.5),
 						"active": player.has_meta("finished_" + node["prereq"])
 					}
 				)
@@ -222,7 +164,8 @@ func _load_category(cat_name: String):
 							{
 								"type": "exclusive",
 								"from": start,
-								"to": Vector2(node["pos"][0], node["pos"][1]) + (NODE_SIZE * 0.5),
+								"to": Vector2(node["pos"][0], node["pos"][1]) \
+									+ (NODE_SIZE * 0.5),
 								"active": false
 							}
 						)
@@ -240,6 +183,20 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	btn.mouse_entered.connect(func(): _show_info(data))
 	btn.mouse_exited.connect(func(): _reset_info())
 	btn.pressed.connect(func(): DecisionManager.start_decision(player, current_category, idx))
+	
+	var tt = data["title"]
+	if data.has("desc") and data["desc"] != "":
+		tt += "\n" + data["desc"]
+	
+	var reqs_text = InterpreterManager.format_functions(data.get("reqs", []))
+	if reqs_text != "":
+		tt += "\n\n[ Requirements ]\n" + reqs_text
+
+	var action_text = InterpreterManager.format_functions(data.get("action", []))
+	if action_text != "":
+		tt += "\n\n[ On Finished ]\n" + action_text
+	
+	btn.tooltip_text = tt
 
 	_apply_node_style(btn, data, player)
 	btn.set_meta("id", data["id"])
@@ -247,6 +204,7 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 
 	node_buttons[data["id"]] = btn
 	tree_canvas.add_child(btn)
+	btn.material = DAMAGED_MAT
 
 
 func _show_info(data: Dictionary):
@@ -256,10 +214,6 @@ func _show_info(data: Dictionary):
 		"[color=orange]Time: %d Days | Cost: %d Political Power[/color]"
 		% [data["days"], data["cost_pp"]]
 	)
-
-	var tooltip_lines = []
-	if data.has("desc") and data["desc"] != "":
-		tooltip_lines.append("[center]%s[/center]" % data["desc"])
 
 	if data.has("reqs"):
 		var reqs = data["reqs"]
@@ -282,19 +236,10 @@ func _show_info(data: Dictionary):
 		if not final_req_texts.is_empty():
 			var full_text = "\n".join(final_req_texts)
 			info_text.text += "\n[color=red]Requirement: %s[/color]" % full_text
-			tooltip_lines.append("[center][color=red]Requirement: %s[/color][/center]" % full_text)
-
-	if tooltip_lines.size() > 0:
-		tooltip_label.text = "\n".join(tooltip_lines)
-		tooltip_panel.show()
-	else:
-		tooltip_panel.hide()
 
 
 func _reset_info():
 	info_text.text = "[center][color=gray]Hover over a node to see info[/color][/center]"
-	if tooltip_panel:
-		tooltip_panel.hide()
 
 
 func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
@@ -321,7 +266,8 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 			if not exclusives is Array:
 				exclusives = [exclusives]
 			for ex_id in exclusives:
-				if player.has_meta("finished_" + ex_id) or DecisionManager.is_in_progress(player, ex_id):
+				if player.has_meta("finished_" + ex_id) or \
+					DecisionManager.is_in_progress(player, ex_id):
 					is_mutually_locked = true
 					break
 		
@@ -348,16 +294,17 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 
 func _on_draw_canvas():
 	var vp_size = get_viewport().size
-	# Where is the (0,0) of the screen relative to our moving canvas?
-	var rel_origin = - tree_canvas.position
+	# Viewport rect in local canvas space
+	var rel_origin = - tree_canvas.position / current_zoom
+	var view_size = vp_size / current_zoom
 
 	# Find the first grid line to the left/top of the current view
 	var start_x = floor(rel_origin.x / GRID_SIZE) * GRID_SIZE
 	var start_y = floor(rel_origin.y / GRID_SIZE) * GRID_SIZE
 
-	# Draw enough lines to fill the screen + 1 extra for safety
-	var end_x = start_x + vp_size.x + GRID_SIZE
-	var end_y = start_y + vp_size.y + GRID_SIZE
+	# Draw enough lines to fill the screen
+	var end_x = start_x + view_size.x + GRID_SIZE
+	var end_y = start_y + view_size.y + GRID_SIZE
 
 	# Grid logic
 	var x = start_x
@@ -373,11 +320,21 @@ func _on_draw_canvas():
 	# Connections
 	for line in connection_lines:
 		if line.get("type", "prereq") == "exclusive":
-			_draw_dashed_line(tree_canvas, line["from"], line["to"], COL_LINE_EXCLUSIVE, LINE_WIDTH, 15.0)
+			_draw_dashed_line(
+				tree_canvas, line["from"], line["to"], COL_LINE_EXCLUSIVE, LINE_WIDTH, 15.0
+			)
 		else:
-			tree_canvas.draw_line(line["from"], line["to"], COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE, LINE_WIDTH, true)
+			var color = COL_LINE_ACTIVE if line["active"] else COL_LINE_INACTIVE
+			tree_canvas.draw_line(line["from"], line["to"], color, LINE_WIDTH, true)
 
-func _draw_dashed_line(canvas: Node2D, from: Vector2, to: Vector2, color: Color, width: float, dash_length: float = 10.0):
+func _draw_dashed_line(
+	canvas: Node2D,
+	from: Vector2,
+	to: Vector2,
+	color: Color,
+	width: float,
+	dash_length: float = 10.0
+):
 	var length = (to - from).length()
 	var normal = (to - from).normalized()
 	var current_pos = from
@@ -407,7 +364,8 @@ func refresh_status_only():
 	if not visible:
 		return
 	var player = CountryManager.player_country
-	var nodes = DecisionManager.get_country_categories(player.country_name).get(current_category, [])
+	var country_categories = DecisionManager.get_country_categories(player.country_name)
+	var nodes = country_categories.get(current_category, [])
 	for btn in node_buttons.values():
 		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
 	tree_canvas.queue_redraw()

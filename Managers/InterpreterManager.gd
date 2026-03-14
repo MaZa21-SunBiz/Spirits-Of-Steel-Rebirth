@@ -24,6 +24,8 @@ func get_variable(variable):
 			return CountryManager.player_country.country_name
 		"current_date":
 			return GameState.current_world.clock.get_date_string()
+		"null":
+			return null
 		_:
 			return heap.get(variable, variable)
 
@@ -43,8 +45,8 @@ func get_element(element, laws_grid):
 			laws_grid.add_child(entry)
 			entry.material = laws_grid.material
 			entry.tooltip_text = "Condition - %s\nFinished - %s" % [
-				_format_functions(element["condition"]),
-				_format_functions(element["finished"])
+				format_functions(element["condition"]),
+				format_functions(element["finished"])
 			]
 		"image":
 			var entry = TextureRect.new()
@@ -66,6 +68,7 @@ func get_element(element, laws_grid):
 			laws_grid.add_child(entry)
 
 func get_function(expression, country: CountryData = null):
+	# print(expression)
 	if !expression: return
 
 	if country == null:
@@ -190,8 +193,9 @@ func get_function(expression, country: CountryData = null):
 				MapManager.annex_country(evaled_args[0], evaled_args[1])
 				result = true
 		"add_ideology_drift":
-			CountryManager.countries[evaled_args[0]].driftTargets[args[1]] = IdeologyDriftTarget.FromDict(args[2])
-			result = CountryManager.countries[evaled_args[0]].driftTargets
+			var country_obj = CountryManager.countries[evaled_args[0]]
+			country_obj.driftTargets[args[1]] = IdeologyDriftTarget.FromDict(args[2])
+			result = country_obj.driftTargets
 		"make_puppet":
 			if evaled_args.size() >= 2:
 				var puppeter = CountryManager.countries[evaled_args[0]]
@@ -219,29 +223,84 @@ func get_function(expression, country: CountryData = null):
 					func(element): return element == args[0]
 				)
 			)
+		"event":
+			# evaled_args[0] is 'type' (String)
+			# evaled_args[1] is 'c1' (CountryData)
+			# evaled_args[2] is 'c2' (CountryData)
+			if evaled_args.size() > 1 and evaled_args[1] is String:
+				evaled_args[1] = CountryManager.get_country(evaled_args[1])
+			if evaled_args.size() > 2 and evaled_args[2] is String:
+				evaled_args[2] = CountryManager.get_country(evaled_args[2])
+			
+			PopupManager.callv("show_alert", evaled_args)
 
 	if store_key != "":
 		heap[store_key] = result
 	
 	return result
 
-# shitty helper function
-func _format_functions(function_array: Array) -> String:
+func format_functions(expression, indent: String = "", no_bullet: bool = false) -> String:
+	var functions = []
+	if expression is Array:
+		functions = expression
+	elif expression is Dictionary:
+		functions = [expression]
+	else:
+		return ""
+
 	var formatted: String = ""
-	for function in function_array:
-		if function.has("func") and function.has("args"):
-			var formatted_args: Array = []
-			for arg in function["args"]:
-				var is_number = typeof(arg) == TYPE_INT or typeof(arg) == TYPE_FLOAT
-				if is_number and MapManager.province_objects.has(int(arg)):
-					var prov = MapManager.province_objects[int(arg)]
-					if prov.city != "":
-						formatted_args.append(prov.city)
+	for function in functions:
+		if not function is Dictionary: continue
+		
+		# Handle 'for' loop
+		if function.has("for"):
+			formatted += indent + ("• " if not no_bullet else "") + "For each " + str(function["for"]).capitalize()
+			formatted += " in " + str(function.get("in", "[]")) + ":\n"
+			formatted += format_functions(function.get("do", {}), indent + "  ") + "\n"
+			continue
+			
+		# Handle 'match' statement
+		if function.has("match"):
+			var match_header = format_functions(function["match"], "", true).strip_edges()
+			formatted += indent + ("• " if not no_bullet else "") + "Match " + match_header + ":\n"
+			for key in function.keys():
+				if key in ["match", "func", "args", "store"]: continue
+				formatted += indent + "  - " + str(key).capitalize() + ":\n"
+				formatted += format_functions(function[key], indent + "    ") + "\n"
+			continue
+
+		if function.has("func"):
+			var func_name = function["func"]
+			var args = function.get("args", [])
+			if not args is Array:
+				args = [args]
+			
+			formatted += indent + ("• " if not no_bullet else "") + func_name.capitalize()
+			
+			# Check if args contain nested functions (like in 'and', 'or', 'all', 'any')
+			var nested_found = false
+			for arg in args:
+				if (arg is Dictionary and arg.has("func")) or arg is Array:
+					nested_found = true
+					break
+			
+			if nested_found:
+				formatted += ":\n"
+				formatted += format_functions(args, indent + "  ") + "\n"
+			else:
+				var formatted_args: Array = []
+				for arg in args:
+					var is_number = typeof(arg) == TYPE_INT or typeof(arg) == TYPE_FLOAT
+					# Only lookup province names for specific functions to avoid constant collisions
+					var should_lookup_prov = func_name in ["has_pids", "annex", "release"]
+					if should_lookup_prov and is_number and MapManager.province_objects.has(int(arg)):
+						var prov = MapManager.province_objects[int(arg)]
+						formatted_args.append(prov.city if prov.city != "" else prov.name)
 					else:
-						formatted_args.append(prov.name)
-				else:
-					formatted_args.append(str(arg))
-			formatted += "%s:\n" % function["func"]
-			for f_a in formatted_args:
-				formatted += "  - %s\n" % f_a
-	return formatted
+						formatted_args.append(str(arg))
+				
+				if not formatted_args.is_empty():
+					formatted += ": " + ", ".join(formatted_args)
+				formatted += "\n"
+				
+	return formatted.strip_edges() if indent == "" else formatted

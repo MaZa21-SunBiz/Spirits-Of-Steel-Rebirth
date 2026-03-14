@@ -1,9 +1,9 @@
 extends Control
 
-@onready var flag_left: TextureRect = $Panel/flag_left
-@onready var flag_right: TextureRect = $Panel/flag_right
-@onready var description: Label = $Panel/description
-@onready var button: Button = $Panel/Button
+@onready var flag_left: TextureRect = $PanelContainer/VBoxContainer/HBoxContainer/flag_left
+@onready var flag_right: TextureRect = $PanelContainer/VBoxContainer/HBoxContainer/flag_right
+@onready var description: Label = $PanelContainer/VBoxContainer/description
+@onready var button: Button =  $PanelContainer/VBoxContainer/Button
 
 var data = {}
 

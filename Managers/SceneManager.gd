@@ -1,6 +1,6 @@
 extends Node
 
-enum Type { MENU, WORLD, EDITOR, SELECT_COUNTRY }
+enum Type {MENU, WORLD, EDITOR, SELECT_COUNTRY}
 
 const SCENE_MAP = {
 	Type.MENU: "res://Scenes/main_menu.tscn",
@@ -8,7 +8,6 @@ const SCENE_MAP = {
 	Type.EDITOR: "res://Scenes/MapEditor.tscn",
 	Type.SELECT_COUNTRY: "res://Scenes/select_country.tscn"
 }
-
 
 
 var _world_cache: Node = null # We only care about saving this one

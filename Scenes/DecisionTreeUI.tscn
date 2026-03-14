@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://do6xny8ouo78x"]
+
+[ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="1_x8y2v"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_qq7pm"]
+
+[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269]
+layer = 100
+script = ExtResource("1_x8y2v")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1064194189]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.05, 1)
+
+[node name="CanvasAnchor" type="Control" parent="." unique_id=494863825]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TreeCanvas" type="Node2D" parent="CanvasAnchor" unique_id=1189539722]
+
+[node name="StaticUI" type="Control" parent="." unique_id=1099787569]
+material = ExtResource("2_qq7pm")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Header" type="Panel" parent="StaticUI" unique_id=1830681304]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TabsContainer" type="HBoxContainer" parent="StaticUI/Header" unique_id=1925350161]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="CloseButton" type="Button" parent="StaticUI/Header" unique_id=1140388651]
+use_parent_material = true
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "  CLOSE MENU [X]  "
+
+[node name="InfoPanel" type="Panel" parent="StaticUI" unique_id=1980925476]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InfoText" type="RichTextLabel" parent="StaticUI/InfoPanel" unique_id=1403528079]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = -30.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][color=gray]Hover over a node to see info[/color][/center]"
+
+[node name="TooltipPanel" type="Panel" parent="StaticUI" unique_id=320893541]
+visible = false
+use_parent_material = true
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TooltipLabel" type="RichTextLabel" parent="StaticUI/TooltipPanel" unique_id=1802959515]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true

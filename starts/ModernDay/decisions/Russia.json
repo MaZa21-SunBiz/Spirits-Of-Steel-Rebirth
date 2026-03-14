@@ -178,9 +178,9 @@
 				"cost_pp": 50.0,
 				"action": {
 					"func": "change_stability",
-					"args": [-50.0]
+					"args": [-0.5]
 				},
-				"desc": "This war has gone on for far too long. its bettterwe cut our losses here instead of prolonging the suffering of our people"
+				"desc": "This war has gone on for far too long. its better we cut our losses here instead of prolonging the suffering of our people"
 			},
 			{
 				"id": "pol_2_a",
@@ -196,7 +196,7 @@
 					"func": "change_manpower",
 					"args": [5000.0]
 				},
-				"desc": "The ceasefire with ukreaine has sparked outrage amongst the people of russia, time will only tell what our fate will be."
+				"desc": "The ceasefire with ukraine has sparked outrage amongst the people of russia, time will only tell what our fate will be."
 			},
 			{
 				"id": "pol_3_a",
@@ -208,10 +208,16 @@
 				],
 				"days": 20.0,
 				"cost_pp": 50.0,
-				"action": {
-					"func": "change_stability",
-					"args": [-50.0]
-				},
+				"action": [
+					{
+						"func": "event",
+						"args": [ "custom", "Russia", "Russia", "The Assassination of Vladimir Putin" ]
+					},
+					{
+						"func": "change_stability",
+						"args": [-0.5]
+					} 
+				],
 				"desc": "KILL THE TRAITOR, KILL THE DEMON THAT HAD SOILED OUR GREAT NATION"
 			},
 			{
@@ -225,10 +231,9 @@
 				],
 				"days": 20.0,
 				"cost_pp": 50.0,
-				"action": {
-					"func": "add_ideology_drift",
-					"args": ["Russia", "bober", {"final_position": [-50, 50], "drift_amount": 0.2}]
-				},
+				"action": [ 
+					{"func": "add_ideology_drift", "args": ["Russia", "bober", {"final_position": [-50, 50], "drift_amount": 0.2}]}
+				],
 				"desc": "in order for our country to not be tarnished by facist demagogues like putin, we must embrace democracy to weed out these facist scum"
 			},
 			{

@@ -1,7 +1,7 @@
 extends Node
 
 # Use the same names as your MapManager functions for clarity
-enum MapView { COUNTRIES, POPULATION, INFRASTRUCTURE, GDP, ETHNICITY, FACTION }
+enum MapView {COUNTRIES, POPULATION, INFRASTRUCTURE, GDP, ETHNICITY, FACTION}
 var current_view = MapView.COUNTRIES
 
 var settings = null

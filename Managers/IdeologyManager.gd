@@ -8,9 +8,7 @@ var ideology_names: Array = []
 func Initialize(a_ideologyData: Dictionary):
 	ideologies = a_ideologyData
 	ideology_names = ideologies.keys()
-	print(ideology_names)
 	ideology_names.sort_custom(func(a, b): return _area(ideologies[a]["region"]) < _area(ideologies[b]["region"]))
-	print(ideology_names)
 
 func get_ideology_name(coords: Vector2):
 	for ideology in ideology_names:
@@ -21,5 +19,4 @@ func get_ideology_name(coords: Vector2):
 	return "neutral"
 
 func _area(a):
-	print(abs((a[0][0]-a[1][0]) * (a[0][1]-a[1][1])))
 	return abs((a[0][0]-a[1][0]) * (a[0][1]-a[1][1]))

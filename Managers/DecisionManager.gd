@@ -154,11 +154,12 @@ func _finalize_decision(country: CountryData, id: String):
 	# Find the data to get the action (Slow search, but happens rarely)
 	for cat in get_country_categories(country.country_name).values():
 		for node in cat:
-			if node["id"] == id:
+			if node["id"] ==id:
 				_apply_reward(country, node.get("action", {}))
 				return
 
 func _apply_reward(country: CountryData, action):
+	print(action)
 	InterpreterManager.get_function(action, country)
 
 # --- HELPERS ---
