@@ -33,6 +33,9 @@ func get_element(element, laws_grid):
 			var entry = Button.new()
 			entry.text = element["text"]
 			
+			if not get_function(element["condition"]):
+				entry.disabled = true
+			
 			entry.pressed.connect(func():
 				if get_function(element["condition"]):
 					get_function(element["finished"])
@@ -71,13 +74,12 @@ func get_function(expression, country: CountryData = null):
 	#for loop
 	if expression.has("for"):
 		for item in expression["in"]:
-			heap[expression["for"]] = item 
+			heap[expression["for"]] = item
 			get_function(expression["do"])
 		heap.erase(expression["for"])
 	
 	#match statement
 	if expression.has("match"):
-		print(str(get_function(expression["match"])))
 		get_function(expression.get(str(get_function(expression["match"])), {}))
 		
 
@@ -95,6 +97,7 @@ func get_function(expression, country: CountryData = null):
 
 	var args: Array = expression.get("args", []).duplicate()
 	for i in range(args.size()):
+		args[i] = get_variable(args[i])
 		if (args[i] is Dictionary and args[i].has("func")) or args[i] is Array:
 			args[i] = get_function(args[i], country)
 	var evaled_args = args
@@ -109,19 +112,19 @@ func get_function(expression, country: CountryData = null):
 		# Comparison stuff
 		"and":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) and get_variable(evaled_args[1])
+				result = evaled_args[0] and evaled_args[1]
 		"not":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0])
+				result = !evaled_args[0]
 		"or":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) or get_variable(evaled_args[1])
+				result = evaled_args[0] or evaled_args[1]
 		"xor":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) ^ get_variable(evaled_args[1])
+				result = evaled_args[0] ^ evaled_args[1]
 		"eq":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) == get_variable(evaled_args[1])
+				result = evaled_args[0] == evaled_args[1]
 		"gt":
 			if evaled_args.size() >= 2:
 				result = get_variable(evaled_args[0]) > get_variable(evaled_args[1])
@@ -142,9 +145,7 @@ func get_function(expression, country: CountryData = null):
 					get_variable(evaled_args[0]),
 					get_variable(evaled_args[1])
 				)
-		"add_ideology_drift":
-			country.driftTargets[args[0]] = IdeologyDriftTarget.FromDict(args[1])
-			result = country.driftTargets
+
 		"change_hourly_money":
 			country.hourly_money_income += evaled_args[0]
 			result = country.hourly_money_income
@@ -165,8 +166,8 @@ func get_function(expression, country: CountryData = null):
 			result = country.factories_amount
 		"declare_war":
 			if evaled_args.size() >= 2:
-				var attacker = CountryManager.countries.get(get_variable(evaled_args[0]))
-				var defender = CountryManager.countries.get(get_variable(evaled_args[1]))
+				var attacker = CountryManager.countries[evaled_args[0]]
+				var defender = CountryManager.countries[evaled_args[1]]
 				if attacker and defender:
 					WarManager.declare_war(attacker, defender)
 					result = true
@@ -178,42 +179,46 @@ func get_function(expression, country: CountryData = null):
 				result = true
 		"play_as":
 			if evaled_args.size() >= 1:
-				CountryManager.set_player_country(evaled_args[0])
+				if CountryManager.countries.has(args[0]):
+					print("player country now " + (args[0]))
+					CountryManager.set_player_country((args[0]))
+
+				print("Unknown country: " + (args[0]))
 				result = true
 		"annex":
 			if evaled_args.size() >= 2:
 				MapManager.annex_country(evaled_args[0], evaled_args[1])
 				result = true
+		"add_ideology_drift":
+			CountryManager.countries[evaled_args[0]].driftTargets[args[1]] = IdeologyDriftTarget.FromDict(args[2])
+			result = CountryManager.countries[evaled_args[0]].driftTargets
 		"make_puppet":
 			if evaled_args.size() >= 2:
-				print(evaled_args)
-				var puppeter = CountryManager.countries.get(get_variable(evaled_args[0]))
-				var puppetee = CountryManager.countries.get(get_variable(evaled_args[1]))
+				var puppeter = CountryManager.countries[evaled_args[0]]
+				var puppetee = CountryManager.countries[evaled_args[1]]
 				CountryManager.make_puppet(puppeter, puppetee)
 				result = true
-		"has_pid":
-			if evaled_args.size() >= 2:
-				print(int(evaled_args[1]), MapManager.province_objects[int(evaled_args[1])].city)
-				# for province in MapManager.province_objects:
-				# 	if MapManager.province_objects[province].GetFunctionalOwner() == "Pakistan":
-				# 		print(MapManager.province_objects[province].GetFunctionalOwner(), province - evaled_args[1])
-				result = (evaled_args[0] == MapManager.province_objects[evaled_args[1]].GetFunctionalOwner())
 		"has_pids":
-			var i = 0
-			var province_owner = evaled_args[i]
-			i += 1
-			print(province_owner)
-			var tmp = (province_owner == (MapManager.province_objects[int(evaled_args[i])].GetFunctionalOwner()))
-			i += 1
-			print(tmp)
-			if tmp:
+			if evaled_args.size() >= 2:
+				var i = 1
+				var province_owner = evaled_args[0]
+				var all_owned = true
 				while i < evaled_args.size():
-					if !tmp:
-						result = false
-					print(province_owner, evaled_args[i])
-					tmp = tmp and (province_owner == (MapManager.province_objects[evaled_args[i]].GetFunctionalOwner()))
+					var pid = int(evaled_args[i])
+					var prov_obj = MapManager.province_objects[pid]
+					if province_owner != prov_obj.GetFunctionalOwner():
+						all_owned = false
+						break
 					i += 1
-					print(tmp)
+				result = all_owned
+		"add_plans":
+			PlansManager.plans[country.country_name].append_array(args)
+		"remove_plan":
+			PlansManager.plans[country.country_name].remove_at(
+				PlansManager.plans[country.country_name].find_custom(
+					func(element): return element == args[0]
+				)
+			)
 
 	if store_key != "":
 		heap[store_key] = result
@@ -225,5 +230,18 @@ func _format_functions(function_array: Array) -> String:
 	var formatted: String = ""
 	for function in function_array:
 		if function.has("func") and function.has("args"):
-			formatted += "%s: %s\n" % [function["func"], function["args"]]
+			var formatted_args: Array = []
+			for arg in function["args"]:
+				var is_number = typeof(arg) == TYPE_INT or typeof(arg) == TYPE_FLOAT
+				if is_number and MapManager.province_objects.has(int(arg)):
+					var prov = MapManager.province_objects[int(arg)]
+					if prov.city != "":
+						formatted_args.append(prov.city)
+					else:
+						formatted_args.append(prov.name)
+				else:
+					formatted_args.append(str(arg))
+			formatted += "%s:\n" % function["func"]
+			for f_a in formatted_args:
+				formatted += "  - %s\n" % f_a
 	return formatted

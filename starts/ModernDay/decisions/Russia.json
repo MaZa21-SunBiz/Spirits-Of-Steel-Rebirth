@@ -227,7 +227,7 @@
 				"cost_pp": 50.0,
 				"action": {
 					"func": "add_ideology_drift",
-					"args": ["bober", {"final_position": [-50, 50], "drift_amount": 0.2}]
+					"args": ["Russia", "bober", {"final_position": [-50, 50], "drift_amount": 0.2}]
 				},
 				"desc": "in order for our country to not be tarnished by facist demagogues like putin, we must embrace democracy to weed out these facist scum"
 			},
@@ -242,11 +242,24 @@
 				],
 				"days": 20.0,
 				"cost_pp": 50.0,
-				"action": {
-
-					"func": "add_ideology_drift",
-					"args": ["bober", {"final_position": [-50, -50], "drift_amount": 0.4}]
-				},
+				"action": [
+					{ "func": "add_ideology_drift", "args": ["Russia", "bober", { "final_position": [ -50, -50 ], "drift_amount": 0.4 }] },
+					{ "func": "add_plans",
+							"args": [
+							{
+								"type": "button",
+								"text": "Form Soviet Union",
+								"condition": [
+								{
+									"func": "has_pids",
+									"args": [ "Russia", 573, 469, 626, 424, 383, 322, 282, 953, 801, 725, 658, 1165, 1270, 1315, 1004, 1106, 1253, 1393, 695, 1369 ]
+								}
+								],
+								"finished": [{"func": "play_as", "args": ["China"]}]
+							}
+						]
+					}
+				],
 				"desc": "WHOOO YEA BABY THTS WHT IVE BEEN WAITING FOR"
 			},
 			{
@@ -261,10 +274,11 @@
 				"cost_pp": 50.0,
 				"action": {
 					"for": "country",
-					"in": ["Poland", "Hungary", "Slovakia", "Lithuania", "Latvia", "Estonia", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"],
+					"in": ["Azerbaijan", "Georgia", "Armenia", "Ukraine", "Czechia", "Romania", "Bulgaria", "Poland", "Hungary", "Slovakia", "Lithuania", "Latvia", "Estonia", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"],
 					"do": {
 						"match": {"func": "probability", "args": [2]},
-						"true": {"func": "make_puppet", "args": ["Russia", "country"]}
+						"true": {"func": "make_puppet", "args": ["Russia", "country"]},
+						"false": {"func": "add_ideology_drift", "args": ["country", "bober", { "final_position": [ -50, -50 ], "drift_amount": 0.4 } ]}
 					}
 				},
 				"desc": "get the homies all up in here"

@@ -269,6 +269,90 @@
 				}
 			],
 			"name": "NATO"
+		},
+		{
+			"color": "#00D3FF",
+			"members": [
+				{
+					"polity": "Tanzania",
+					"status": "Leader"
+				},
+				{
+					"polity": "Dr_congo",
+					"status": "Member"
+				},
+				{
+					"polity": "Kenya",
+					"status": "Member"
+				},
+				{
+					"polity": "Uganda",
+					"status": "Member"
+				},
+				{
+					"polity": "South_sudan",
+					"status": "Member"
+				},
+				{
+					"polity": "Rwanda",
+					"status": "Member"
+				},
+				{
+					"polity": "Burundi",
+					"status": "Member"
+				},
+				{
+					"polity": "Somalia",
+					"status": "Member"
+				}
+			],
+			"name": "East African Federation"
+		},
+		{
+			"color": "#EFFF00",
+			"members": [
+				{
+					"polity": "Philippines",
+					"status": "Member"
+				},
+				{
+					"polity": "Thailand",
+					"status": "Member"
+				},
+				{
+					"polity": "Vietnam",
+					"status": "Member"
+				},
+				{
+					"polity": "Laos",
+					"status": "Member"
+				},
+				{
+					"polity": "Cambodia",
+					"status": "Member"
+				},
+				{
+					"polity": "Singapore",
+					"status": "Member"
+				},
+				{
+					"polity": "Indonesia",
+					"status": "Member"
+				},
+				{
+					"polity": "Malaysia",
+					"status": "Member"
+				},
+				{
+					"polity": "Brunei",
+					"status": "Member"
+				},
+				{
+					"polity": "Myanmar",
+					"status": "Member"
+				}
+			],
+			"name": "ASEAN"
 		}
 	],
 	"ideologies": {
@@ -360,7 +444,7 @@
 			],
 			"money": 2221785.53275247,
 			"name": "Canada",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -378,7 +462,7 @@
 			],
 			"money": 1068960.14702221,
 			"name": "Denmark",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -415,12 +499,12 @@
 			],
 			"money": 17228327.4100108,
 			"name": "Russia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [
-				"Belarus",
 				"Abkhazia",
 				"South_ossetia",
-				"Luhansk"
+				"Luhansk",
+				"Donetsk"
 			],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -437,7 +521,7 @@
 			],
 			"money": 270159.840756987,
 			"name": "Norway",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -454,7 +538,7 @@
 			],
 			"money": 72438393.3070154,
 			"name": "United_states",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -471,7 +555,7 @@
 			],
 			"money": 362256.149592567,
 			"name": "Finland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -488,7 +572,7 @@
 			],
 			"money": 541212.476585266,
 			"name": "Sweden",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -505,7 +589,7 @@
 			],
 			"money": 162873.289104665,
 			"name": "Iceland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -522,7 +606,7 @@
 			],
 			"money": 380733.213971505,
 			"name": "Estonia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -545,7 +629,7 @@
 			],
 			"money": 4091584.09596938,
 			"name": "United_kingdom",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -563,7 +647,7 @@
 			],
 			"money": 572039.41862013,
 			"name": "Latvia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -581,7 +665,7 @@
 			],
 			"money": 421853.563098592,
 			"name": "Lithuania",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -598,7 +682,7 @@
 			],
 			"money": 175195.935596235,
 			"name": "Belarus",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -615,7 +699,7 @@
 			],
 			"money": 193701.871806165,
 			"name": "Ireland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -633,7 +717,7 @@
 			],
 			"money": 536421.297851452,
 			"name": "Kazakhstan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -650,7 +734,7 @@
 			],
 			"money": 3015889.22865484,
 			"name": "Germany",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -667,7 +751,7 @@
 			],
 			"money": 686060.660885082,
 			"name": "Poland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -684,7 +768,7 @@
 			],
 			"money": 243514.099301473,
 			"name": "Netherlands",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -709,7 +793,7 @@
 			],
 			"money": 52130236.8851058,
 			"name": "China",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -728,7 +812,7 @@
 			],
 			"money": 489792.548187799,
 			"name": "Ukraine",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -745,7 +829,7 @@
 			],
 			"money": 169163.862886812,
 			"name": "Mongolia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -763,7 +847,7 @@
 			],
 			"money": 180374.388626335,
 			"name": "Belgium",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -788,7 +872,7 @@
 			],
 			"money": 7158305.70257758,
 			"name": "France",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -805,7 +889,7 @@
 			],
 			"money": 211472.042126586,
 			"name": "Czechia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -822,7 +906,7 @@
 			],
 			"money": 159532.583309719,
 			"name": "Luxembourg",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -839,7 +923,7 @@
 			],
 			"money": 165462.84508319,
 			"name": "Slovakia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -856,7 +940,7 @@
 			],
 			"money": 210695.288291935,
 			"name": "Austria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -873,7 +957,7 @@
 			],
 			"money": 178232.109565069,
 			"name": "Hungary",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -891,7 +975,7 @@
 			],
 			"money": 100651.745980925,
 			"name": "Moldova",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -909,7 +993,7 @@
 			],
 			"money": 225510.87055667,
 			"name": "Romania",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -927,7 +1011,7 @@
 			],
 			"money": 100145.60940621,
 			"name": "Transnistria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -947,7 +1031,7 @@
 			],
 			"money": 202380.625425533,
 			"name": "Switzerland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -964,7 +1048,7 @@
 			],
 			"money": 100807.306528683,
 			"name": "Liechtenstein",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -983,7 +1067,7 @@
 			],
 			"money": 1196154.21860537,
 			"name": "Italy",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1000,7 +1084,7 @@
 			],
 			"money": 103427.401753739,
 			"name": "Slovenia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1017,7 +1101,7 @@
 			],
 			"money": 165121.830220594,
 			"name": "Croatia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1035,7 +1119,7 @@
 			],
 			"money": 227349.841586326,
 			"name": "Serbia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1053,7 +1137,7 @@
 			],
 			"money": 160656.161322019,
 			"name": "Bosnia_and_herzegovina",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1070,7 +1154,7 @@
 			],
 			"money": 188901.293204805,
 			"name": "Uzbekistan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1087,7 +1171,7 @@
 			],
 			"money": 6983098.86384181,
 			"name": "Japan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1104,7 +1188,7 @@
 			],
 			"money": 173882.492492837,
 			"name": "Bulgaria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1125,7 +1209,7 @@
 			],
 			"money": 1272343.10323693,
 			"name": "Spain",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1142,7 +1226,7 @@
 			],
 			"money": 100022.806940612,
 			"name": "San_marino",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1159,7 +1243,7 @@
 			],
 			"money": 100025.792283076,
 			"name": "Monaco",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1176,7 +1260,7 @@
 			],
 			"money": 100032.838767083,
 			"name": "Abkhazia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1193,7 +1277,7 @@
 			],
 			"money": 100331.709200503,
 			"name": "Montenegro",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1210,7 +1294,7 @@
 			],
 			"money": 100236.971643539,
 			"name": "Kosovo",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1227,7 +1311,7 @@
 			],
 			"money": 161384.154563133,
 			"name": "Georgia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1244,7 +1328,7 @@
 			],
 			"money": 160332.144084983,
 			"name": "Kyrgyzstan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1261,7 +1345,7 @@
 			],
 			"money": 100068.66287663,
 			"name": "Andorra",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1278,7 +1362,7 @@
 			],
 			"money": 100007.59783104,
 			"name": "South_ossetia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1296,7 +1380,7 @@
 			],
 			"money": 265450.449575615,
 			"name": "Turkmenistan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1313,7 +1397,7 @@
 			],
 			"money": 283122.506946422,
 			"name": "North_korea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1330,7 +1414,7 @@
 			],
 			"money": 160756.950248835,
 			"name": "Albania",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1348,7 +1432,7 @@
 			],
 			"money": 103329.140954776,
 			"name": "North_macedonia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1365,7 +1449,7 @@
 			],
 			"money": 175281.4885185,
 			"name": "Azerbaijan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1382,7 +1466,7 @@
 			],
 			"money": 189804.762724238,
 			"name": "Portugal",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1401,7 +1485,7 @@
 			],
 			"money": 1262138.81265146,
 			"name": "Turkey",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1418,7 +1502,7 @@
 			],
 			"money": 100000.511004563,
 			"name": "Vatican_city",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1435,7 +1519,7 @@
 			],
 			"money": 307426.82548247,
 			"name": "Greece",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1452,7 +1536,7 @@
 			],
 			"money": 160535.053239979,
 			"name": "Armenia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1469,7 +1553,7 @@
 			],
 			"money": 160975.122303363,
 			"name": "Tajikistan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1492,7 +1576,7 @@
 			],
 			"money": 955366.594680205,
 			"name": "Iran",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1512,7 +1596,7 @@
 			],
 			"money": 168705.847057575,
 			"name": "Afghanistan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1529,7 +1613,7 @@
 			],
 			"money": 1466609.7723477,
 			"name": "South_korea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1546,7 +1630,7 @@
 			],
 			"money": 162883.885725655,
 			"name": "Tunisia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1565,7 +1649,7 @@
 			],
 			"money": 416523.772178221,
 			"name": "Iraq",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1583,7 +1667,7 @@
 			],
 			"money": 174441.275985292,
 			"name": "Syria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1607,7 +1691,7 @@
 			],
 			"money": 555066.551304865,
 			"name": "Pakistan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1625,7 +1709,7 @@
 			],
 			"money": 229109.324365002,
 			"name": "Algeria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1644,7 +1728,7 @@
 			],
 			"money": 263851.395262529,
 			"name": "Morocco",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1661,7 +1745,7 @@
 			],
 			"money": 100291.568447127,
 			"name": "Malta",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1678,7 +1762,7 @@
 			],
 			"money": 107722.274100009,
 			"name": "Turkish_cyprus",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1726,7 +1810,7 @@
 			],
 			"money": 35720196.1206153,
 			"name": "India",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1743,7 +1827,7 @@
 			],
 			"money": 118519.208881146,
 			"name": "Cyprus",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1760,7 +1844,7 @@
 			],
 			"money": 100369.133561182,
 			"name": "Lebanon",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1778,7 +1862,7 @@
 			],
 			"money": 238305.160887812,
 			"name": "Libya",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1795,7 +1879,7 @@
 			],
 			"money": 186834.723504177,
 			"name": "Israel",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1812,7 +1896,7 @@
 			],
 			"money": 165094.451133868,
 			"name": "Jordan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1829,7 +1913,7 @@
 			],
 			"money": 1868747.5911151,
 			"name": "Mexico",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1846,7 +1930,7 @@
 			],
 			"money": 663017.77063969,
 			"name": "Saudi_arabia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1863,7 +1947,7 @@
 			],
 			"money": 159268.689794065,
 			"name": "Palestine",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1880,7 +1964,7 @@
 			],
 			"money": 381015.017430235,
 			"name": "Egypt",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1897,7 +1981,7 @@
 			],
 			"money": 163802.376089815,
 			"name": "Nepal",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1914,7 +1998,7 @@
 			],
 			"money": 161542.834928231,
 			"name": "Kuwait",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1931,7 +2015,7 @@
 			],
 			"money": 237287.925542064,
 			"name": "Bhutan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1948,7 +2032,7 @@
 			],
 			"money": 184778.406421207,
 			"name": "Myanmar",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1965,7 +2049,7 @@
 			],
 			"money": 100059.222739654,
 			"name": "Western_sahara",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1982,7 +2066,7 @@
 			],
 			"money": 160254.188993759,
 			"name": "Mauritania",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -1999,7 +2083,7 @@
 			],
 			"money": 100848.294473831,
 			"name": "Bahrain",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2016,7 +2100,7 @@
 			],
 			"money": 208339.35334757,
 			"name": "Bangladesh",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2033,7 +2117,7 @@
 			],
 			"money": 161691.913786492,
 			"name": "Qatar",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2050,7 +2134,7 @@
 			],
 			"money": 258510.913442666,
 			"name": "Oman",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2067,7 +2151,7 @@
 			],
 			"money": 221870.850561182,
 			"name": "Taiwan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2088,7 +2172,7 @@
 			],
 			"money": 161309.292394273,
 			"name": "Mali",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2105,7 +2189,7 @@
 			],
 			"money": 177578.655753098,
 			"name": "United_arab_emirates",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2125,7 +2209,7 @@
 			],
 			"money": 161288.072257315,
 			"name": "Niger",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2142,7 +2226,7 @@
 			],
 			"money": 164119.400632796,
 			"name": "Cuba",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2160,7 +2244,7 @@
 			],
 			"money": 161476.014357536,
 			"name": "Chad",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2182,7 +2266,7 @@
 			],
 			"money": 232612.018680258,
 			"name": "Sudan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2199,7 +2283,7 @@
 			],
 			"money": 272509.155167511,
 			"name": "Vietnam",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2216,7 +2300,7 @@
 			],
 			"money": 160651.562280933,
 			"name": "Laos",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2237,7 +2321,7 @@
 			],
 			"money": 380651.364813008,
 			"name": "Thailand",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2254,7 +2338,7 @@
 			],
 			"money": 869513.384141681,
 			"name": "Haiti",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2271,7 +2355,7 @@
 			],
 			"money": 173369.538041416,
 			"name": "Dominican_republic",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2288,7 +2372,7 @@
 			],
 			"money": 100053.440319569,
 			"name": "Belize",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2305,7 +2389,7 @@
 			],
 			"money": 995196.24807713,
 			"name": "Yemen",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2322,7 +2406,7 @@
 			],
 			"money": 159089.972670997,
 			"name": "Jamaica",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2339,7 +2423,7 @@
 			],
 			"money": 364473.060030647,
 			"name": "Philippines",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2356,7 +2440,7 @@
 			],
 			"money": 168368.336358124,
 			"name": "Guatemala",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2373,7 +2457,7 @@
 			],
 			"money": 159152.059725717,
 			"name": "Eritrea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2390,7 +2474,7 @@
 			],
 			"money": 100638.096780032,
 			"name": "Cabo_verde",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2407,7 +2491,7 @@
 			],
 			"money": 100012.680981718,
 			"name": "St_kitts_and_nevis",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2427,7 +2511,7 @@
 			],
 			"money": 162586.440726026,
 			"name": "Senegal",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2444,7 +2528,7 @@
 			],
 			"money": 101965.713536375,
 			"name": "Honduras",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2464,7 +2548,7 @@
 			],
 			"money": 160123.842487063,
 			"name": "Burkina_faso",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2481,7 +2565,7 @@
 			],
 			"money": 100925.832692914,
 			"name": "El_salvador",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2498,7 +2582,7 @@
 			],
 			"money": 160729.893901837,
 			"name": "Nicaragua",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2520,7 +2604,7 @@
 			],
 			"money": 255588.032380277,
 			"name": "Ethiopia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2537,7 +2621,7 @@
 			],
 			"money": 162347.546091614,
 			"name": "Cambodia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2554,7 +2638,7 @@
 			],
 			"money": 100018.127214594,
 			"name": "Dominica",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2573,7 +2657,7 @@
 			],
 			"money": 507051.575025256,
 			"name": "Nigeria",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2590,7 +2674,7 @@
 			],
 			"money": 148763.363729488,
 			"name": "Gambia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2607,7 +2691,7 @@
 			],
 			"money": 100072.024748766,
 			"name": "Barbados",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2624,7 +2708,7 @@
 			],
 			"money": 100049.51365291,
 			"name": "St_lucia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2641,7 +2725,7 @@
 			],
 			"money": 100059.881666591,
 			"name": "Guinea_bissau",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2661,7 +2745,7 @@
 			],
 			"money": 162020.866251837,
 			"name": "Guinea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2679,7 +2763,7 @@
 			],
 			"money": 392578.830031066,
 			"name": "Colombia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2696,7 +2780,7 @@
 			],
 			"money": 238878.87109258,
 			"name": "Venezuela",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2713,7 +2797,7 @@
 			],
 			"money": 100030.270296768,
 			"name": "Grenada",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2730,7 +2814,7 @@
 			],
 			"money": 101695.324883739,
 			"name": "Benin",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2747,7 +2831,7 @@
 			],
 			"money": 120200.561824265,
 			"name": "Djibouti",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2766,7 +2850,7 @@
 			],
 			"money": 168343.108869572,
 			"name": "Cameroon",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2789,7 +2873,7 @@
 			],
 			"money": 160883.02045416,
 			"name": "South_sudan",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2806,7 +2890,7 @@
 			],
 			"money": 161827.787210978,
 			"name": "Somalia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2823,7 +2907,7 @@
 			],
 			"money": 159316.872145602,
 			"name": "Somaliland",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2840,7 +2924,7 @@
 			],
 			"money": 165976.364329126,
 			"name": "Costa_rica",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2858,7 +2942,7 @@
 			],
 			"money": 100816.477715883,
 			"name": "Togo",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2875,7 +2959,7 @@
 			],
 			"money": 105195.42376068,
 			"name": "Maldives",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2892,7 +2976,7 @@
 			],
 			"money": 168228.791769257,
 			"name": "Ghana",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2912,7 +2996,7 @@
 			],
 			"money": 160112.075934572,
 			"name": "Central_african_republic",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2929,7 +3013,7 @@
 			],
 			"money": 127584.36263703,
 			"name": "Trinidad_and_tobago",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2949,7 +3033,7 @@
 			],
 			"money": 182612.615518545,
 			"name": "Ivory_coast",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2967,7 +3051,7 @@
 			],
 			"money": 100342.668903688,
 			"name": "Sierra_leone",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -2984,7 +3068,7 @@
 			],
 			"money": 166552.548871786,
 			"name": "Panama",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3001,7 +3085,7 @@
 			],
 			"money": 163345.134583531,
 			"name": "Sri_lanka",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3018,7 +3102,7 @@
 			],
 			"money": 159429.346939986,
 			"name": "Liberia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3035,7 +3119,7 @@
 			],
 			"money": 160147.348697086,
 			"name": "Guyana",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3052,7 +3136,7 @@
 			],
 			"money": 100004.491461182,
 			"name": "Palau",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3070,7 +3154,7 @@
 			],
 			"money": 105449.124079999,
 			"name": "Nauru",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3087,7 +3171,7 @@
 			],
 			"money": 250290.746005393,
 			"name": "Malaysia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3104,7 +3188,7 @@
 			],
 			"money": 159065.807534041,
 			"name": "Suriname",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3139,7 +3223,7 @@
 			],
 			"money": 91399946.2377256,
 			"name": "Indonesia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3159,7 +3243,7 @@
 			],
 			"money": 4621657.62079981,
 			"name": "Brazil",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3184,7 +3268,7 @@
 			],
 			"money": 303454.725461211,
 			"name": "Dr_congo",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3205,7 +3289,7 @@
 			],
 			"money": 170160.717398233,
 			"name": "Kenya",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3222,7 +3306,7 @@
 			],
 			"money": 108984.267112147,
 			"name": "Brunei",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3241,7 +3325,7 @@
 			],
 			"money": 165026.944741261,
 			"name": "Uganda",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3258,7 +3342,7 @@
 			],
 			"money": 100523.833469669,
 			"name": "Equatorial_guinea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3278,7 +3362,7 @@
 			],
 			"money": 222755.802961888,
 			"name": "Congo",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3299,7 +3383,7 @@
 			],
 			"money": 161903.187279378,
 			"name": "Gabon",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3316,7 +3400,7 @@
 			],
 			"money": 164470.380084413,
 			"name": "Singapore",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3333,7 +3417,7 @@
 			],
 			"money": 168011.466906506,
 			"name": "Ecuador",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3350,7 +3434,7 @@
 			],
 			"money": 100015.343584455,
 			"name": "Sao_tome_and_principe",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3367,7 +3451,7 @@
 			],
 			"money": 349264.450275314,
 			"name": "Peru",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3384,7 +3468,7 @@
 			],
 			"money": 100445.313583921,
 			"name": "Rwanda",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3408,7 +3492,7 @@
 			],
 			"money": 255023.79702358,
 			"name": "Tanzania",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3425,7 +3509,7 @@
 			],
 			"money": 100431.583698096,
 			"name": "Burundi",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3444,7 +3528,7 @@
 			],
 			"money": 642145.506615381,
 			"name": "Papua_new_guinea",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3463,7 +3547,7 @@
 			],
 			"money": 1020115.43950742,
 			"name": "Angola",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3480,7 +3564,7 @@
 			],
 			"money": 102432.260704748,
 			"name": "Seychelles",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3497,7 +3581,7 @@
 			],
 			"money": 130050.57825041,
 			"name": "Solomon_islands",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3516,7 +3600,7 @@
 			],
 			"money": 164833.596750631,
 			"name": "Zambia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3533,7 +3617,7 @@
 			],
 			"money": 127325.202637346,
 			"name": "East_timor",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3550,7 +3634,7 @@
 			],
 			"money": 100215.401871879,
 			"name": "Tuvalu",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3568,7 +3652,7 @@
 			],
 			"money": 159797.431597058,
 			"name": "Malawi",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3586,7 +3670,7 @@
 			],
 			"money": 230629.96644528,
 			"name": "Bolivia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3607,7 +3691,7 @@
 			],
 			"money": 162431.297050413,
 			"name": "Mozambique",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3624,7 +3708,7 @@
 			],
 			"money": 1725881.85128519,
 			"name": "Australia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3642,7 +3726,7 @@
 			],
 			"money": 161943.516297598,
 			"name": "Madagascar",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3659,7 +3743,7 @@
 			],
 			"money": 118232.535319861,
 			"name": "Vanuatu",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3679,7 +3763,7 @@
 			],
 			"money": 162863.445543029,
 			"name": "Zimbabwe",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3696,7 +3780,7 @@
 			],
 			"money": 136044.702147087,
 			"name": "Fiji",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3716,7 +3800,7 @@
 			],
 			"money": 160322.529130653,
 			"name": "Namibia",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3733,7 +3817,7 @@
 			],
 			"money": 100034.062488543,
 			"name": "Niue",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3750,7 +3834,7 @@
 			],
 			"money": 223321.700102764,
 			"name": "Chile",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3769,7 +3853,7 @@
 			],
 			"money": 159872.387898336,
 			"name": "Botswana",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3786,7 +3870,7 @@
 			],
 			"money": 163829.553464207,
 			"name": "Paraguay",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3803,7 +3887,7 @@
 			],
 			"money": 100084.732625464,
 			"name": "Mauritius",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3820,7 +3904,7 @@
 			],
 			"money": 102020.727212105,
 			"name": "Tonga",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3837,7 +3921,7 @@
 			],
 			"money": 1511134.03835515,
 			"name": "Argentina",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3860,7 +3944,7 @@
 			],
 			"money": 445498.987294213,
 			"name": "South_africa",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3877,7 +3961,7 @@
 			],
 			"money": 124676.719763919,
 			"name": "Eswatini",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3894,7 +3978,7 @@
 			],
 			"money": 100077.524771593,
 			"name": "Lesotho",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3911,7 +3995,7 @@
 			],
 			"money": 164828.527047439,
 			"name": "Uruguay",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3928,7 +4012,7 @@
 			],
 			"money": 253764.622352668,
 			"name": "New_zealand",
-			"political_power": 523.759999999995,
+			"political_power": 524.439999999994,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -3943,7 +4027,7 @@
 			],
 			"money": 133.372191615441,
 			"name": "Luhansk",
-			"political_power": 23.7599999999997,
+			"political_power": 24.4399999999997,
 			"puppets": [],
 			"stability": 0.0,
 			"war_support": 0.0
@@ -3953,12 +4037,12 @@
 			"color": "#0C2E71",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				50.0,
+				-50.0
 			],
 			"money": 133.372191615441,
 			"name": "Donetsk",
-			"political_power": 23.7599999999997,
+			"political_power": 24.4399999999997,
 			"puppets": [],
 			"stability": 0.0,
 			"war_support": 0.0
@@ -4033,7 +4117,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,
@@ -24680,7 +24764,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Jordan",
+			"polity": "Saudi_arabia",
 			"populations": [
 				{
 					"amount": 1439500,
@@ -85697,7 +85781,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,
@@ -86064,7 +86148,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,

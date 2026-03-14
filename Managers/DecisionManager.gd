@@ -7,6 +7,7 @@ var country_decisions_map: Dictionary = {} # { "China": { "Economy": [...] } }
 
 var active_decisions: Dictionary = {} # { "Germany": { "eco_1": 5 } }
 var ui_overlay = null
+var debug = false
 
 
 func _ready():
@@ -63,7 +64,7 @@ func process_country_day(country: CountryData):
 
 	for key in tasks.keys():
 		tasks[key] -= 1
-		if tasks[key] <= 0:
+		if (tasks[key] <= 0) || debug:
 			finished.append(key)
 			_finalize_decision(country, key)
 
@@ -93,6 +94,7 @@ func process_country_day(country: CountryData):
 func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 	var data = get_country_categories(country.country_name)[cat][index]
 	var id = data["id"]
+	if debug: return true
 
 	# 1. NEW: Check if busy with ANY decision
 	if is_country_busy(country):
@@ -139,6 +141,9 @@ func start_decision(country: CountryData, cat: String, index: int):
 
 	active_decisions[country.country_name][data["id"]] = data.get("days", 5)
 
+	if debug:
+		process_country_day(country)
+
 	if ui_overlay and country.is_player:
 		ui_overlay.refresh_status_only()
 
@@ -153,7 +158,7 @@ func _finalize_decision(country: CountryData, id: String):
 				_apply_reward(country, node.get("action", {}))
 				return
 
-func _apply_reward(country: CountryData, action: Dictionary):
+func _apply_reward(country: CountryData, action):
 	InterpreterManager.get_function(action, country)
 
 # --- HELPERS ---

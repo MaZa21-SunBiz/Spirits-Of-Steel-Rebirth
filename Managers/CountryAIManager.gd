@@ -245,6 +245,7 @@ func _handle_deployment(country: CountryData) -> void:
 
 # -- War Declaration Logic -- #
 func _consider_declaring_war(country: CountryData) -> void:
+	if country.is_puppet: return
 	# 1. THE STOCHASTIC GATE (Randomness + World Tension)
 	# If tension is 0.1, chance is roughly 10%. If tension is 1.0, it's 100%.
 	var current_tension = world_tension  # Assuming this exists
@@ -300,6 +301,7 @@ func _consider_declaring_war(country: CountryData) -> void:
 		# Assuming you have access to target's money or GDP
 		var target_data = CountryManager.get_country(target_name)
 		if target_data:
+			if _same_faction(country.factions, target_data.factions): return
 			score += (target_data.money / 50000.0)  # Prefer rich targets
 
 		# Target Cities (Existing)
@@ -356,3 +358,8 @@ func _get_neighbor_countries(country: CountryData) -> Array:
 			if owner and owner != country.country_name:
 				neighbors[owner] = true
 	return neighbors.keys()
+
+
+# NOTE(soi): thank you deepseek
+func _same_faction(arr1, arr2):
+	return arr2.any(func(element): return arr1.has(element))

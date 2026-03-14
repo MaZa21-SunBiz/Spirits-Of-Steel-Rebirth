@@ -5,14 +5,10 @@ var current_start_folder: String = ""
 
 
 func _ready() -> void:
-	_load_plans("res://plans.json")
+	load_plans_from_path("res://plans.json")
 
 
 func load_plans_from_path(path: String):
-	_load_plans(path)
-
-
-func _load_plans(path: String):
 	current_start_folder = path.get_base_dir() + "/"
 	plans.clear()
 	if not FileAccess.file_exists(path):

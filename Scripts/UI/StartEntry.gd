@@ -20,6 +20,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 			var start_folder = mapdata_path.get_base_dir() + "/"
 			
 			# Load start-specific assets
+			PlansManager.load_plans_from_path(start_folder + "plans.json")
 			DecisionManager.load_decisions_from_path(start_folder + "decisions/")
 			SuperEventManager.load_events_from_path(start_folder + "superevents.json")
 			TroopManager.set_custom_flag_path(start_folder + "flags/")

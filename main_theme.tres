@@ -132,3 +132,4 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_a2l2q")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_wow46")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_wow46")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_h7yuw")
+TooltipLabel/font_sizes/font_size = 8
