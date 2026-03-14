@@ -30,6 +30,8 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 			CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
 			MapManager.build_lookup_texture()
 			FactionManager.Initialize(mapData["factions"])
+
+			Console.add_command_autocomplete_list("play_as", CountryManager.countries.keys())
 			
 			# Change scene to Main which contains World
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD)

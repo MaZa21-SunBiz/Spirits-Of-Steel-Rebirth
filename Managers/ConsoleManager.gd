@@ -16,6 +16,7 @@ func m_Editor() -> void:
 func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
+	#Console.add_command_autocomplete_list("play_as", CountryManager.)
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
@@ -45,9 +46,11 @@ func _ready() -> void:
 	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 	
 
+
 func _show_releasables_country(country):
 	var releasables = MapManager.get_all_releasables(country)
 	Console.print_info(JSON.stringify(releasables))
+
 
 func _release_country(country):
 	MapManager.ReleaseCountry(country)
@@ -56,8 +59,10 @@ func _release_country(country):
 func _add_pp(amount):
 	CountryManager.player_country.political_power += float(amount)
 
+
 func _set_ideology(x, y):
 	CountryManager.player_country.ideology = Vector2(int(x), int(y))
+
 
 func _add_manpower(amount):
 	CountryManager.player_country.manpower += int(amount)

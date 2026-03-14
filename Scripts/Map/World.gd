@@ -37,7 +37,6 @@ func _ready() -> void:
 	clock.hour_passed.connect(CountryManager._on_hour_passed)
 	clock.day_passed.connect(CountryManager._on_day_passed)
 
-	
 	var path = "res://map_data/map_data.json" # Ensure path is correct
 	if not FileAccess.file_exists(path):
 		push_error("Map Data JSON missing!")
@@ -49,7 +48,6 @@ func _ready() -> void:
 	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
 	if MapManager.province_objects.is_empty():
 		load_map_data(mapData)
-
 
 	print("World: Map is ready -> configuring visuals...")
 
@@ -161,11 +159,13 @@ func _ready() -> void:
 	clock.pause()
 
 func load_map_data(mapData):
-		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
-		MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary)
-		CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
-		MapManager.build_lookup_texture()
-		FactionManager.Initialize(mapData["factions"])
+	IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
+	MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary)
+	CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
+	MapManager.build_lookup_texture()
+	FactionManager.Initialize(mapData["factions"])
+	
+	Console.add_command_autocomplete_list("play_as", CountryManager.countries.keys())
 
 func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	var ghost := Sprite2D.new()

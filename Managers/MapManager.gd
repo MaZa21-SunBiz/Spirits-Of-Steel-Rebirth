@@ -84,7 +84,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 			unique_regions[index] = next_id
 
 			var province = Province.FromDict(a_provinceData.get(index, {}))
-			print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d For Country: %s" % [next_id, province.country])
+			# print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d For Country: %s" % [next_id, province.country])
 			province.id = next_id
 
 			province_objects[next_id] = province
