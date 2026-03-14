@@ -5,13 +5,13 @@ extends Node
 
 var is_dragging := false
 var TOP_BAR_HEIGHT = 32
-var MAP_HEIGHT = 625
 
 
 func _process(delta: float) -> void:
 	if get_viewport().gui_get_focus_owner() != null || GameState.decision_menu_open:
 		return
 	_handle_keyboard_movement(delta)
+	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y,  MapManager.MAP_HEIGHT)
 
 
 func _is_mouse_over_ui() -> bool:
@@ -19,8 +19,6 @@ func _is_mouse_over_ui() -> bool:
 
 
 func _input(event: InputEvent) -> void:
-	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y, - (MAP_HEIGHT + TOP_BAR_HEIGHT) / camera.zoom.y + MAP_HEIGHT)
-
 	if Console.is_visible() || _is_mouse_over_ui():
 		return
 

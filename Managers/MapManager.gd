@@ -52,18 +52,20 @@ const CACHE_FOLDER = "res://map_data/"
 @export var ethnicity_texture: Texture2D
 @export var claims_texture: Texture2D
 
+@export var MAP_HEIGHT: int = 625
+
 
 func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	var width: int = a_map.get_width()
-	var height: int = a_map.get_height()
+	MAP_HEIGHT = a_map.get_height()
 
-	id_map_image = Image.create(width, height, false, Image.FORMAT_RGB8)
+	id_map_image = Image.create(width, MAP_HEIGHT, false, Image.FORMAT_RGB8)
 	var next_id = 2
 
 	var mapImage = a_map.get_image()
 	($"../Main/MapContainer/CultureSprite" as Sprite2D).texture = a_map
 
-	for i in range(width * height):
+	for i in range(width * MAP_HEIGHT):
 		var x: int = i % width
 		@warning_ignore("integer_division")
 		var y: int = i / width

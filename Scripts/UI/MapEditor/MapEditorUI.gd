@@ -324,7 +324,7 @@ func m_OnPolitySelected(index: int) -> void:
 		var factionEntry: PanelContainer = polityFactionTemplate.duplicate()
 		factionEntry.visible = true
 		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
-		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.member == polity.country_name)].status))
+		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.polity == polity.country_name)].status))
 		polityFactionList.add_child(factionEntry)
 
 func m_OnCitySubmitted(new_text: String) -> void:
