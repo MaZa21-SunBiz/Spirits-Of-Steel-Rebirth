@@ -162,7 +162,7 @@ func _ready() -> void:
 
 func load_map_data(mapData):
 		IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
-		MapManager.load_country_data(mapData["provinces"] as Dictionary)
+		MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary)
 		CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
 		MapManager.build_lookup_texture()
 		FactionManager.Initialize(mapData["factions"])

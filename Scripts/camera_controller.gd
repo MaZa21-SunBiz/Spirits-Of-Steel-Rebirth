@@ -4,8 +4,8 @@ extends Node
 @export var base_speed: float = 600.0
 
 var is_dragging := false
-const TOP_BAR_HEIGHT = 32
-const MAP_HEIGHT = 625
+var TOP_BAR_HEIGHT = 32
+var MAP_HEIGHT = 625
 
 
 func _process(delta: float) -> void:

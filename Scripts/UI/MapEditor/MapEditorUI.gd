@@ -271,11 +271,13 @@ func SetupFactionList() -> void:
 	factionsItemList.clear()
 	for faction in FactionManager.factions.keys():
 		factionsItemList.add_item(faction)
+	factionsItemList.sort_items_by_text()
 
 func SetupPolitiesList() -> void:
 	politiesItemList.clear()
 	for polity in CountryManager.countries.keys():
 		politiesItemList.add_item(polity)
+	politiesItemList.sort_items_by_text()
 
 func m_OnFactionSelected(index: int) -> void:
 	selectedFaction = factionsItemList.get_item_text(index)

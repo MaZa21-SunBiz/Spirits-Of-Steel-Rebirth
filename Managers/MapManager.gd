@@ -61,6 +61,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	var next_id = 2
 
 	var mapImage = a_map.get_image()
+	($"../Main/MapContainer/CultureSprite" as Sprite2D).texture = a_map
 
 	for i in range(width * height):
 		var x: int = i % width
@@ -95,7 +96,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	_build_adjacency_list()
 	_build_global_registry()
 
-func load_country_data(a_provinceData: Dictionary) -> void:
+func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictionary) -> void:
 	#var dir = DirAccess.open("res://")
 	#if dir and not dir.dir_exists(CACHE_FOLDER):
 	#	dir.make_dir_recursive(CACHE_FOLDER)
@@ -105,8 +106,7 @@ func load_country_data(a_provinceData: Dictionary) -> void:
 	#		print("MapManager: Loaded cached data with Province Objects.")
 	#		return
 
-	var region = preload("res://maps/regions.png")
-	Initialize(region, a_provinceData)
+	Initialize(region_map, a_provinceData)
 
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
@@ -288,11 +288,13 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			if last_hovered_pid in province_objects && pid in province_objects && province_objects[last_hovered_pid].country == province_objects[pid].country:
 				pass
 			else:
+				
 				last_hovered_pid = -1
 				if pid > 1 and highlight_color != Color.TRANSPARENT:
 					if hoveredCountry != province_objects[pid].country:
-						for province in country_to_provinces[hoveredCountry]:
-							update_lookup(province, original_hover_color, original_hover_color)
+						if hoveredCountry != "Sea":
+							for province in country_to_provinces[hoveredCountry]:
+								update_lookup(province, original_hover_color, original_hover_color)
 						if pid in province_objects:
 							if province_objects[pid].country != "Sea" && highlight_color != Color.TRANSPARENT:
 								original_hover_color = state_color_image.get_pixel(pid, 0)
