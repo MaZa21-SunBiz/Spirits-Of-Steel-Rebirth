@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	if get_viewport().gui_get_focus_owner() != null || GameState.decision_menu_open:
 		return
 	_handle_keyboard_movement(delta)
-	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y,  MapManager.MAP_HEIGHT)
+	camera.position.y = clampf(camera.position.y, -TOP_BAR_HEIGHT / camera.zoom.y,  MapManager.MAP_HEIGHT - camera.get_viewport_rect().size.y)
 
 
 func _is_mouse_over_ui() -> bool:
