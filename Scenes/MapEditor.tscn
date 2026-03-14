@@ -103,11 +103,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -335,6 +334,7 @@ theme = ExtResource("2_5xoin")
 wrap_mode = 1
 
 [node name="Faction" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=741194933]
+visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 1
@@ -685,12 +685,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dhjfk")
 
 [node name="TabContainer" type="TabContainer" parent="Sidebar" unique_id=1933241066]
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 switch_on_drag_hover = false
 
 [node name="Province" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1407875551]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 0
@@ -766,6 +765,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Polity" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1910358666]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 2
