@@ -288,9 +288,7 @@ func _consider_declaring_war(country: CountryData) -> void:
 			continue
 
 		# 4. STRENGTH & DISTANCE ANALYSIS
-		var my_strength = _estimate_country_strength(country.country_name)
-		var their_strength = _estimate_country_strength(target_name)
-		var ratio = my_strength / max(1.0, their_strength)
+		var ratio = _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))
 
 		if ratio < MIN_STRENGTH_RATIO:
 			continue
@@ -305,8 +303,7 @@ func _consider_declaring_war(country: CountryData) -> void:
 			score += (target_data.money / 50000.0)  # Prefer rich targets
 
 		# Target Cities (Existing)
-		var target_cities = MapManager.get_cities_province_country(target_name)
-		score += min(target_cities.size(), 3) * 0.5
+		score += min(MapManager.get_cities_province_country(target_name).size(), 3) * 0.5
 
 		# 6. FINAL THRESHOLD
 		# We add a bit of randomness to the score so it's not always the same neighbor
