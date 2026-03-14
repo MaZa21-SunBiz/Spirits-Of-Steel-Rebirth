@@ -85,7 +85,7 @@
 			],
 			"money": 100000.0,
 			"name": "Qhosh",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -100,7 +100,7 @@
 			],
 			"money": 100000.0,
 			"name": "Chavos",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -115,7 +115,7 @@
 			],
 			"money": 100000.0,
 			"name": "Enqian",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -130,7 +130,7 @@
 			],
 			"money": 100000.0,
 			"name": "Ynead",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -145,7 +145,7 @@
 			],
 			"money": 100000.0,
 			"name": "Ermelhei",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -160,7 +160,7 @@
 			],
 			"money": 100000.0,
 			"name": "Banilrendyn",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -175,7 +175,7 @@
 			],
 			"money": 100000.0,
 			"name": "Liben",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -190,7 +190,7 @@
 			],
 			"money": 100000.0,
 			"name": "Timwal",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -205,7 +205,7 @@
 			],
 			"money": 100000.0,
 			"name": "Smot",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -220,7 +220,7 @@
 			],
 			"money": 100000.0,
 			"name": "Nightan",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -235,7 +235,7 @@
 			],
 			"money": 100000.0,
 			"name": "Mithlon",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -250,7 +250,7 @@
 			],
 			"money": 100000.0,
 			"name": "Grastormian",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -265,7 +265,7 @@
 			],
 			"money": 100000.0,
 			"name": "Deadcalia",
-			"political_power": 205.23999999999,
+			"political_power": 202.79999999999,
 			"puppets": [],
 			"stability": 1.0,
 			"war_support": 1.0
@@ -282,12 +282,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 4000,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -301,12 +296,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -320,12 +310,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -339,12 +324,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -358,12 +338,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -377,12 +352,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -396,12 +366,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -415,12 +380,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 16201,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -434,12 +394,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -453,12 +408,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 8729,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -472,12 +422,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -491,12 +436,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -510,12 +450,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -529,12 +464,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -548,12 +478,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -567,12 +492,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -586,12 +506,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -605,12 +520,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -624,12 +534,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -643,12 +548,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -662,12 +562,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -681,12 +576,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -700,12 +590,7 @@
 			"name": "Sea",
 			"occupier": "",
 			"polity": "Sea",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 0
 		},
@@ -719,12 +604,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -738,12 +618,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -757,12 +632,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -776,12 +646,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -795,12 +660,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -814,12 +674,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -833,12 +688,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -852,12 +702,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -871,12 +716,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -890,12 +730,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -909,12 +744,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -928,12 +758,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -947,12 +772,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -966,31 +786,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"133": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Rethethyr",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 7000,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1004,12 +814,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1023,12 +828,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1042,12 +842,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1061,12 +856,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1080,12 +870,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1099,12 +884,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1118,12 +898,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1137,12 +912,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1156,12 +926,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1175,12 +940,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1194,12 +954,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1213,12 +968,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1232,12 +982,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1251,12 +996,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1270,12 +1010,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1289,12 +1024,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1308,12 +1038,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1327,12 +1052,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1346,12 +1066,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1365,12 +1080,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1384,12 +1094,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1403,12 +1108,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1422,12 +1122,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1441,12 +1136,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1460,12 +1150,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1479,12 +1164,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1498,12 +1178,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1517,12 +1192,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1536,12 +1206,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1555,12 +1220,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1574,12 +1234,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1593,12 +1248,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1612,12 +1262,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Mithlon",
-			"populations": [
-				{
-					"amount": 1300,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1631,12 +1276,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1650,12 +1290,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Mithlon",
-			"populations": [
-				{
-					"amount": 19000,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1669,12 +1304,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Mithlon",
-			"populations": [
-				{
-					"amount": 28262,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1688,12 +1318,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1707,12 +1332,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1726,12 +1346,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1745,12 +1360,7 @@
 			"name": "Rhikkekt",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 9000,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1764,12 +1374,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1783,12 +1388,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1802,12 +1402,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Mithlon",
-			"populations": [
-				{
-					"amount": 14087,
-					"ethnicity": "Eldar"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1821,12 +1416,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1840,12 +1430,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1859,12 +1444,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1878,12 +1458,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1897,12 +1472,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1916,12 +1486,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1935,12 +1500,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1954,12 +1514,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1973,12 +1528,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -1992,12 +1542,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2011,12 +1556,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2030,12 +1570,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2049,12 +1584,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2068,12 +1598,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2087,12 +1612,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2106,12 +1626,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2125,12 +1640,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2144,50 +1654,35 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"19": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Kralit",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 6013,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"190": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Glatalolot",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 2776,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2201,12 +1696,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2220,12 +1710,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2239,12 +1724,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 7000,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2258,12 +1738,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2277,12 +1752,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 7000,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2296,12 +1766,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2315,12 +1780,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2334,12 +1794,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2353,12 +1808,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2372,12 +1822,7 @@
 			"name": "Sea",
 			"occupier": "",
 			"polity": "Sea",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 0
 		},
@@ -2391,12 +1836,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2410,12 +1850,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 5923,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2429,12 +1864,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2448,31 +1878,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"203": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Dawngulf",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 4228,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2486,12 +1906,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2505,12 +1920,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2524,12 +1934,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2543,12 +1948,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2562,12 +1962,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2581,12 +1976,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 4507,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2600,12 +1990,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 3834,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2619,12 +2004,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2638,12 +2018,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2657,12 +2032,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2676,12 +2046,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2695,12 +2060,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2714,12 +2074,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2733,12 +2088,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2752,12 +2102,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 2756,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2771,12 +2116,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2790,12 +2130,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2809,12 +2144,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2828,12 +2158,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2847,12 +2172,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2866,12 +2186,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2885,12 +2200,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2904,12 +2214,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2923,12 +2228,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2942,12 +2242,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2961,12 +2256,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2980,12 +2270,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 5100,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -2999,12 +2284,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3018,12 +2298,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3037,31 +2312,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"231": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Dawnfall",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 6074,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3075,12 +2340,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3094,12 +2354,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3113,12 +2368,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3132,12 +2382,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3151,12 +2396,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3170,12 +2410,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 9800,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3189,12 +2424,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Grastormian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3208,12 +2438,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3227,12 +2452,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3246,12 +2466,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3265,12 +2480,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 14477,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3284,12 +2494,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3303,12 +2508,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3322,31 +2522,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 6225,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"245": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Autumn",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 6001,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3360,12 +2550,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Banilrendyn",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3379,12 +2564,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3398,12 +2578,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3417,12 +2592,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Liben",
-			"populations": [
-				{
-					"amount": 17639,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3436,31 +2606,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 482,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"250": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Hlamben",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 11738,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3474,31 +2634,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 4541,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"252": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Rrharnavethei",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 5023,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3512,12 +2662,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3531,12 +2676,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3550,12 +2690,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3569,12 +2704,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Deadcalia",
-			"populations": [
-				{
-					"amount": 12600,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3588,12 +2718,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 4671,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3607,31 +2732,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"259": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Szithloladar",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 2879,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3645,12 +2760,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3664,12 +2774,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3683,31 +2788,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 8000,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"262": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Undrith",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Liben",
-			"populations": [
-				{
-					"amount": 4662,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3721,12 +2816,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3740,12 +2830,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3759,31 +2844,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"266": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Hlaugheimydhem",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Liben",
-			"populations": [
-				{
-					"amount": 2975,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3797,12 +2872,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3816,12 +2886,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3835,12 +2900,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3854,12 +2914,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3873,31 +2928,21 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
 		"271": {
 			"biome": "Plains",
 			"buildings": [],
-			"city": "Olind",
+			"city": "",
 			"gdp": 1000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
 			"polity": "Ermelhei",
-			"populations": [
-				{
-					"amount": 5244,
-					"ethnicity": "Trow"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3911,12 +2956,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3930,12 +2970,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3949,12 +2984,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3968,12 +2998,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -3987,12 +3012,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4006,12 +3026,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4025,12 +3040,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4044,12 +3054,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Smot",
-			"populations": [
-				{
-					"amount": 4449,
-					"ethnicity": "Dail"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4063,12 +3068,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4082,12 +3082,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Timwal",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4101,12 +3096,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4120,12 +3110,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 3188,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4139,12 +3124,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4158,12 +3138,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4177,12 +3152,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4196,12 +3166,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4215,12 +3180,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4234,12 +3194,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4253,12 +3208,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4272,12 +3222,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4291,12 +3236,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4310,12 +3250,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4329,12 +3264,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4348,12 +3278,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4367,12 +3292,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4386,12 +3306,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4405,12 +3320,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4424,12 +3334,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4443,12 +3348,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4462,12 +3362,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4481,12 +3376,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4500,12 +3390,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4519,12 +3404,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4538,12 +3418,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Qhosh",
-			"populations": [
-				{
-					"amount": 7040,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4557,12 +3432,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4576,12 +3446,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4595,12 +3460,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 5000,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4614,12 +3474,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4633,12 +3488,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4652,12 +3502,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4671,12 +3516,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4690,12 +3530,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4709,12 +3544,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4728,12 +3558,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4747,12 +3572,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 1018,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4766,12 +3586,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4785,12 +3600,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4804,12 +3614,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4823,12 +3628,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4842,12 +3642,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4861,12 +3656,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4880,12 +3670,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4899,12 +3684,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4918,12 +3698,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4937,12 +3712,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4956,12 +3726,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4975,12 +3740,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -4994,12 +3754,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5013,12 +3768,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5032,12 +3782,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5051,12 +3796,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5070,12 +3810,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5089,12 +3824,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5108,12 +3838,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5127,12 +3852,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5146,12 +3866,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5165,12 +3880,7 @@
 			"name": "Chix",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 2466,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5184,12 +3894,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5203,12 +3908,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5222,12 +3922,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5241,12 +3936,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5260,12 +3950,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5279,12 +3964,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 26562,
-					"ethnicity": "Arago"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5298,12 +3978,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5317,12 +3992,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5336,12 +4006,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5355,12 +4020,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5374,12 +4034,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Chavos",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5393,12 +4048,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5412,12 +4062,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Nightan",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5431,12 +4076,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5450,12 +4090,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5469,12 +4104,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5488,12 +4118,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5507,12 +4132,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Enqian",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5526,12 +4146,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5545,12 +4160,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		},
@@ -5564,12 +4174,7 @@
 			"name": "",
 			"occupier": "",
 			"polity": "Ynead",
-			"populations": [
-				{
-					"amount": 100000,
-					"ethnicity": "Unknown"
-				}
-			],
+			"populations": [],
 			"resources": [],
 			"type": 1
 		}
