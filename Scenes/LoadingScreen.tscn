@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://sdnifuur5yt6"]
+
+[ext_resource type="Script" uid="uid://cjc32l8emagnw" path="res://Scripts/UI/LoadingScreen.gd" id="1_script"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_m6rkq"]
+[ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="2_qjj4j"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_theme"]
+[ext_resource type="Shader" uid="uid://di44vounul5l7" path="res://Scenes/conveyorpet.gdshader" id="4_68uam"]
+[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="5_68uam"]
+[ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="7_634pj"]
+
+[sub_resource type="Shader" id="Shader_am871"]
+code = "shader_type canvas_item;
+
+uniform float count = 10.0;
+void fragment() {
+	vec2 conveyor_uv = UV;
+	conveyor_uv.x = count * mod(UV.x - TIME/4., 1./count);
+	COLOR = texture(TEXTURE, conveyor_uv);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p6t7"]
+shader = SubResource("Shader_am871")
+shader_parameter/count = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jepyk"]
+shader = ExtResource("4_68uam")
+shader_parameter/count = 10.0
+shader_parameter/gas = 10.0
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=188040853]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1819908501]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qjj4j")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=733587004]
+material = SubResource("ShaderMaterial_6p6t7")
+offset_left = 1.0
+offset_top = 419.0
+offset_right = 1151.0
+offset_bottom = 521.0
+texture = ExtResource("5_68uam")
+expand_mode = 1
+
+[node name="Hand5" type="TextureRect" parent="Avatar" unique_id=1684581321]
+material = SubResource("ShaderMaterial_jepyk")
+layout_mode = 0
+offset_top = -33.0
+offset_right = 1159.0
+offset_bottom = 70.0
+texture = ExtResource("7_634pj")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=192904048]
+material = ExtResource("2_m6rkq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel" unique_id=608802625]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = 276.0
+offset_right = 557.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=1195200524]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 247.0
+offset_right = 42.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+horizontal_alignment = 1

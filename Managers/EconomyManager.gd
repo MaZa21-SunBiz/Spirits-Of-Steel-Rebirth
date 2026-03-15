@@ -66,7 +66,7 @@ func _complete_construction(pid: int, project: Dictionary):
 				MapManager.province_objects[pid].infrastructure += 1
 
 	if project["country"].is_player:
-		#PopupManager.show_alert("economy", country, null, "Construction of %s complete!" % type.capitalize())
+		#EventManager.show_alert("economy", country, null, "Construction of %s complete!" % type.capitalize())
 		if GameState.industry_building:
 			MusicManager.play_sfx(MusicManager.SFX.CLAPPING)
 		MapManager.province_updated()

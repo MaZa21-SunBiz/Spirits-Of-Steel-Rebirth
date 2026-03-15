@@ -37,13 +37,13 @@ var political_power: float = 5000.0
 var daily_pp_gain: float = 0.04
 var stability: float = 0.5
 var war_support: float = 0.5
-var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100))
-var ideology_name: String = IdeologyManager.get_ideology_name(ideology)
+var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100)):
+	set(value):
+		ideology = value
+		refresh_ideology_name()
+		ideology_changed.emit()
+var ideology_name: String = "neutral" # Initialized, will be updated by setter
 
-func set_ideology(value: Vector2) -> void:
-	ideology = value
-	refresh_ideology_name()
-	ideology_changed.emit()
 
 
 # Population & Manpower

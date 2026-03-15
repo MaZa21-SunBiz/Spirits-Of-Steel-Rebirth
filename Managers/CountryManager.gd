@@ -23,7 +23,7 @@ func _on_day_passed() -> void:
 	for c_name: String in countries:
 		countries[c_name].process_day()
 	
-	SuperEventManager.check_events()
+	EventManager.check_super_events()
 	
 
 func initialize_countries(a_countriesData: Array) -> void:
@@ -41,6 +41,12 @@ func initialize_countries(a_countriesData: Array) -> void:
 			InformPuppet(country, countries[puppeted])
 
 	print("CountryManager: Initialized %d countries." % countries.size())
+
+func save_countries() -> Array:
+	var polities = []
+	for country in countries.values():
+		polities.append(country.ToDict())
+	return polities
 
 
 func get_country(c_name: String) -> CountryData:
@@ -73,6 +79,7 @@ func set_player_country(country_name: String) -> void:
 func add_country(a_countryData: Dictionary) -> CountryData:
 	if a_countryData["name"] == "Sea": return
 	var tempName = a_countryData["name"]
+	var tempIdeology = Vector2(a_countryData["ideology"][0], a_countryData["ideology"][0])
 
 	# 1. Check if it already exists
 	if countries.has(tempName):
@@ -80,7 +87,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 		return countries[tempName]
 
 	# 2. Check if the flag exists before proceeding
-	var flag = TroopManager.get_flag(tempName)
+	var flag = TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(tempIdeology))
 	if flag == null:
 		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % tempName
 		push_error(err_msg)
@@ -202,7 +209,6 @@ func InformPuppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.is_puppet = true
 	puppetee.owner = puppeter.country_name
 	puppetee.ideology = puppeter.ideology
-	puppetee.ideology_name = puppeter.ideology_name
 	puppetee.relations[puppeter.country_name] = 200
 
 func make_puppet(puppeter: CountryData, puppetee: CountryData):
@@ -212,8 +218,8 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.is_puppet = true
 	puppetee.owner = puppeter.country_name
 	puppetee.ideology = puppeter.ideology
-	puppetee.ideology_name = puppeter.ideology_name
 	puppetee.relations[puppeter.country_name] = 200
+	puppetee.factions = puppeter.factions  
 	FactionManager.invite_faction(puppeter, puppetee)
 	MapManager.show_countries_map()
 
@@ -223,6 +229,7 @@ func release_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.allowedCountries.erase(puppeter.country_name)
 	puppetee.is_puppet = false
 	puppetee.owner = ""
+	puppetee.factions = []
 	MapManager.show_countries_map()
 
 func MakeHost(a_host: CountryData, a_hosted: CountryData) -> void:

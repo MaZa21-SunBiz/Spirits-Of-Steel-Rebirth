@@ -317,7 +317,7 @@ func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void
 	)
 
 	if is_involved:
-		PopupManager.show_alert("war", a, b)
+		EventManager.show_alert("war", a, b)
 		MusicManager.play_music(MusicManager.MUSIC.BATTLE_THEME)
 		MusicManager.play_sfx(MusicManager.SFX.DECLARE_WAR)
 
@@ -449,7 +449,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		MusicManager.play_music(MusicManager.MUSIC.MAIN_THEME)
 		MusicManager.play_sfx(MusicManager.SFX.POPUP)
 
-		PopupManager.show_alert("capitulated", loser, loser)
+		EventManager.show_alert("capitulated", loser, loser)
 
 	if loser.is_player:
 		MusicManager.play_sfx(MusicManager.SFX.GAME_OVER)

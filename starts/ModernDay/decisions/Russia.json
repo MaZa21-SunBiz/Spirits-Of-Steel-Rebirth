@@ -211,7 +211,23 @@
 				"action": [
 					{
 						"func": "event",
-						"args": [ "custom", "Russia", "Russia", "The Assassination of Vladimir Putin" ]
+						"args": [
+							{
+								"event": "custom",
+								"contents": [
+									{
+										"type": "paragraph",
+										"text": "The Kremlin is silent. The man who ruled for decades is no more. \n\nVladimir Putin has been assassinated. Russia stands at a crossroads."
+									},
+									{
+										"type": "button",
+										"text": "A New Dawn?",
+										"condition": { "func": "return", "args": [ true ] },
+										"finished": { "func": "return", "args": [ true ] }
+									}
+								]
+							}
+						]
 					},
 					{
 						"func": "change_stability",
@@ -257,7 +273,29 @@
 								"condition": [
 								{
 									"func": "has_pids",
-									"args": [ "Russia", 573, 469, 626, 424, 383, 322, 282, 953, 801, 725, 658, 1165, 1270, 1315, 1004, 1106, 1253, 1393, 695, 1369 ]
+									"args": [
+										"Russia",
+										573,
+										469,
+										626,
+										424,
+										383,
+										322,
+										282,
+										953,
+										801,
+										725,
+										658,
+										1165,
+										1270,
+										1315,
+										1004,
+										1106,
+										1253,
+										1393,
+										695,
+										1369
+									]
 								}
 								],
 								"finished": [{"func": "play_as", "args": ["China"]}]
@@ -279,7 +317,26 @@
 				"cost_pp": 50.0,
 				"action": {
 					"for": "country",
-					"in": ["Azerbaijan", "Georgia", "Armenia", "Ukraine", "Czechia", "Romania", "Bulgaria", "Poland", "Hungary", "Slovakia", "Lithuania", "Latvia", "Estonia", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kyrgyzstan", "Tajikistan"],
+					"in": [
+						"Azerbaijan",
+						"Georgia",
+						"Armenia",
+						"Ukraine",
+						"Czechia",
+						"Romania",
+						"Bulgaria",
+						"Poland",
+						"Hungary",
+						"Slovakia",
+						"Lithuania",
+						"Latvia",
+						"Estonia",
+						"Kazakhstan",
+						"Uzbekistan",
+						"Turkmenistan",
+						"Kyrgyzstan",
+						"Tajikistan"
+					],
 					"do": {
 						"match": {"func": "probability", "args": [2]},
 						"true": {"func": "make_puppet", "args": ["Russia", "country"]},

@@ -4,8 +4,26 @@ extends Control
 @onready var desc_label: Label = $"Panel/description"
 @onready var button: Button = $"Button"
 
+var manually_positioned = false
+var dragging = false
+var drag_offset = Vector2.ZERO
+
 func _ready():
+	$Panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	button.pressed.connect(_on_button_pressed)
+
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+				drag_offset = get_global_mouse_position() - global_position
+				manually_positioned = true
+			else:
+				dragging = false
+	
+	if event is InputEventMouseMotion and dragging:
+		global_position = get_global_mouse_position() - drag_offset
 
 func setup(data: Dictionary):
 	# Data format: { "background": "ww3", "desc": "...", "button": "..." }

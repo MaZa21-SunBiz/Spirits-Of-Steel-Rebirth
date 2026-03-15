@@ -120,6 +120,14 @@ func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictiona
 
 	ResourceSaver.save(map_data, MAP_DATA_PATH)
 
+func save_country_data() -> Dictionary:
+	var provinces = {}
+	for index in unique_regions:
+		var next_id = unique_regions[index]
+		var province = province_objects[next_id]
+		provinces[index] = province.ToDict()
+	return provinces
+
 func _try_load_cached_data() -> bool:
 	if not ResourceLoader.exists(MAP_DATA_PATH):
 		return false

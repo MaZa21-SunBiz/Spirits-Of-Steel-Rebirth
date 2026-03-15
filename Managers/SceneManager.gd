@@ -12,6 +12,15 @@ const SCENE_MAP = {
 
 var _world_cache: Node = null # We only care about saving this one
 var _current_type: int = -1
+var _loading_screen: Node = null
+
+func _ready() -> void:
+	# Instantiate loading screen and add it as a sibling of CurrentScene's parent (Main)
+	# or just add it to the scene tree root to be persistent
+	var ls_scene = load("res://Scenes/LoadingScreen.tscn")
+	if ls_scene:
+		_loading_screen = ls_scene.instantiate()
+		add_child(_loading_screen)
 
 func has_active_world() -> bool:
 	return is_instance_valid(_world_cache)
@@ -19,9 +28,16 @@ func has_active_world() -> bool:
 func is_world_active() -> bool:
 	return _current_type == Type.WORLD
 
-func switch_to(scene_type: Type) -> void:
+func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 	if scene_type == _current_type: return
 		
+	if _loading_screen:
+		_loading_screen.show_screen()
+		_loading_screen.set_progress(0)
+
+	# Small delay to ensure loading screen is visible
+	await get_tree().create_timer(0.1).timeout
+
 	var main := get_tree().current_scene
 	var container := main.get_node("CurrentScene")
 	
@@ -29,29 +45,51 @@ func switch_to(scene_type: Type) -> void:
 	if container.get_child_count() > 0:
 		var old_scene = container.get_child(0)
 		if _current_type == Type.WORLD:
-			# If it's the world, just detach it so we keep the data
 			container.remove_child(old_scene)
 		else:
-			# If it's a menu/editor, delete it to save memory
 			old_scene.queue_free()
 
 	# 2. Handle the scene we are ENTERING
 	var next_scene: Node
 	
-	if scene_type == Type.WORLD:
-		if _world_cache:
-			next_scene = _world_cache
-		else:
-			next_scene = _instantiate_by_type(scene_type)
-			_world_cache = next_scene
+	if scene_type == Type.WORLD and _world_cache:
+		next_scene = _world_cache
+		if _loading_screen: _loading_screen.set_progress(1.0)
 	else:
-		# Always a fresh copy for menus/editors
-		next_scene = _instantiate_by_type(scene_type)
+		var path = SCENE_MAP.get(scene_type)
+		ResourceLoader.load_threaded_request(path)
+		
+		var progress = []
+		while true:
+			var status = ResourceLoader.load_threaded_get_status(path, progress)
+			if status == ResourceLoader.THREAD_LOAD_LOADED:
+				break
+			elif status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				if _loading_screen:
+					_loading_screen.set_progress(progress[0])
+			else:
+				push_error("Failed to load scene: " + path)
+				break
+			await get_tree().process_frame
+		
+		var packed_scene = ResourceLoader.load_threaded_get(path)
+		next_scene = packed_scene.instantiate()
+		if scene_type == Type.WORLD:
+			_world_cache = next_scene
+
+	# 2.5 Execute initialization callback if provided
+	if init_callback.is_valid():
+		init_callback.call()
 
 	# 3. Add to tree
 	if next_scene:
 		container.add_child(next_scene)
 		_current_type = scene_type
+
+	if _loading_screen:
+		_loading_screen.set_progress(1.0)
+		await get_tree().create_timer(0.2).timeout # Stay at 100% briefly
+		_loading_screen.hide_screen()
 
 func _instantiate_by_type(type: Type) -> Node:
 	var path = SCENE_MAP.get(type)

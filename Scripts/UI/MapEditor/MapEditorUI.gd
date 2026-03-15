@@ -237,25 +237,20 @@ func _on_apply_pressed() -> void:
 		MapManager.country_to_provinces[new_country].append(selected_pid)
 
 	MapManager.state_color_texture.update(MapManager.state_color_image)
-	print("MapEditor: Applied changes and updated colors for ", new_country)
+	print("MapEditor: Applied changes and updated colors for " , new_country)
 
 func _on_export_pressed() -> void:
 	# Export Province Data
-	var export = {"provinces": {}, "polities": [], "ideologies": IdeologyManager.ideologies, "factions": []}
-	for index in MapManager.unique_regions:
-		var next_id = MapManager.unique_regions[index]
-		var province = MapManager.province_objects[next_id]
-		export ["provinces"][index] = province.ToDict()
-
-	for country in CountryManager.countries.values():
-		export ["polities"].append(country.ToDict())
-	
-	for faction in FactionManager.factions:
-		export ["factions"].append(FactionManager.factions[faction].ToDict())
+	var export = {
+		"provinces": MapManager.save_country_data(),
+		"polities": CountryManager.save_countries(),
+		"ideologies": IdeologyManager.ideologies,
+		"factions": FactionManager.save_factions()
+	}
 
 	# print(JSON.stringify(export, " "))
 	# print(JSON.stringify(export["polities"], " "))
-	print(JSON.stringify(export ["factions"], "\t"))
+	# print(JSON.stringify(export ["factions"], "\t"))
 
 	var file = FileAccess.open("user://exported_map_data.json", FileAccess.WRITE)
 	if file:

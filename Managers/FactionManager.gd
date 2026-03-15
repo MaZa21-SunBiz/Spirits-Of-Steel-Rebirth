@@ -8,10 +8,19 @@ func Initialize(a_factionData: Array) -> void:
 		for member: FactionMember in factions[factionData["name"]].members:
 			CountryManager.get_country(member.polity).factions.append(factionData["name"])
 
+
+func save_factions() -> Array:
+	var factions_array = []
+	for faction in factions:
+		factions_array.append(FactionManager.factions[faction].ToDict())
+	return factions_array
+
+
 func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 	factions[a_name] = FactionData.FromValues(a_name, a_color, [FactionMember.FromValues(a_leader, "Leader")])
 	CountryManager.get_country(a_leader).factions.append(a_name)
 	print(factions)
+
 
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 	for faction in inviter.factions:
@@ -23,8 +32,62 @@ func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 			invitee.factions.append_array(inviter.factions)
 	print(factions)
 
+
 func in_faction(inviter: CountryData, invitee: CountryData) -> bool:
 	for faction in invitee.factions:
 		if faction in inviter.factions:
 			return true
 	return false
+
+
+func kick_faction(kicker: CountryData, kickee: CountryData) -> void:
+	for faction in kicker.factions:
+		var faction_data: FactionData = factions[faction]
+		var kicker_index = faction_data.members.find_custom(func(m): return m.polity == kicker.country_name)
+		
+		if kicker_index != -1 and faction_data.members[kicker_index].status == "Leader":
+			var kickee_index = faction_data.members.find_custom(func(m): return m.polity == kickee.country_name)
+			if kickee_index != -1:
+				var member_to_kick: FactionMember = faction_data.members[kickee_index]
+				if member_to_kick.status == "Leader" and faction_data.members.size() > 1:
+					for i in range(faction_data.members.size()):
+						if i != kickee_index:
+							faction_data.members[i].status = "Leader"
+							break
+				faction_data.members.remove_at(kickee_index)
+				kickee.factions.erase(faction)
+	print(factions)
+
+
+func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
+	if not faction_name in factions:
+		return
+	
+	var faction_data: FactionData = factions[faction_name]
+	var dissolver_index = faction_data.members.find_custom(func(m): return m.polity == dissolver.country_name)
+	
+	if dissolver_index != -1 and faction_data.members[dissolver_index].status == "Leader":
+		for member in faction_data.members:
+			var member_country = CountryManager.get_country(member.polity)
+			if member_country:
+				member_country.factions.erase(faction_name)
+		factions.erase(faction_name)
+	print(factions)
+
+
+func get_faction_member(country_name: String) -> FactionMember:
+	for faction_name in factions:
+		var faction_data = factions[faction_name]
+		var index = faction_data.members.find_custom(func(m): return m.polity == country_name)
+		if index != -1:
+			return faction_data.members[index]
+	return null
+
+
+func update_member_status(faction_name: String, member_name: String, status: int) -> void:
+	if not faction_name in factions:
+		return
+	var faction_data = factions[faction_name]
+	var index = faction_data.members.find_custom(func(m): return m.polity == member_name)
+	if index != -1:
+		faction_data.members[index].status = FactionMember.GetString(status)

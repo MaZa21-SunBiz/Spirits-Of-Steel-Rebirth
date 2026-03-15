@@ -4,7 +4,7 @@ extends Node
 @export var base_speed: float = 600.0
 
 var is_dragging := false
-var TOP_BAR_HEIGHT = 32
+var top_bar_height = 32
 
 
 func _process(delta: float) -> void:
@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	_handle_keyboard_movement(delta)
 	camera.position.y = clampf(
 		camera.position.y, 
-		-TOP_BAR_HEIGHT / camera.zoom.y,  
+		-top_bar_height / camera.zoom.y,  
 		MapManager.MAP_HEIGHT - (camera.get_viewport_rect().size.y / camera.zoom.y)
 	)
 
@@ -23,15 +23,20 @@ func _is_mouse_over_ui() -> bool:
 
 
 func _input(event: InputEvent) -> void:
-	if Console.is_visible() || _is_mouse_over_ui():
-		return
-
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_MIDDLE:
-		is_dragging = event.pressed
-		get_viewport().set_input_as_handled()
+		if event.pressed:
+			if !Console.is_visible() && !_is_mouse_over_ui():
+				is_dragging = true
+				get_viewport().set_input_as_handled()
+		else:
+			is_dragging = false
 
 	if event is InputEventMouseMotion && is_dragging:
 		camera.position -= event.relative / camera.zoom.x
+		return
+
+	if Console.is_visible() || _is_mouse_over_ui():
+		return
 
 	if event is InputEventMouseButton && event.is_pressed():
 		var zoom_dir = 0
@@ -51,6 +56,9 @@ func _handle_keyboard_movement(delta: float) -> void:
 func _perform_zoom(direction: int) -> void:
 	var mouse_pos_before := camera.get_global_mouse_position()
 
-	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(Vector2.ONE, Vector2.ONE * 12)
+	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(
+		Vector2.ONE,
+		Vector2.ONE * 12
+	)
 
 	camera.position += mouse_pos_before - camera.get_global_mouse_position()

@@ -29,8 +29,35 @@ func get_variable(variable):
 		_:
 			return heap.get(variable, variable)
 
-func get_element(element, laws_grid):
+func get_element(element, grid):
 	match element.get("type", ""):
+		"country_header":
+			var entry = HBoxContainer.new()
+			entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			
+			var tr1 = TextureRect.new()
+			tr1.texture = TroopManager.get_flag(element["country1"])
+			tr1.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr1.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr1.custom_minimum_size = Vector2(80, 50)
+			entry.add_child(tr1)
+			
+			var spacer = Control.new()
+			spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			entry.add_child(spacer)
+			
+			var tr2 = TextureRect.new()
+			tr2.texture = TroopManager.get_flag(element["country2"])
+			tr2.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr2.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr2.custom_minimum_size = Vector2(80, 50)
+			entry.add_child(tr2)
+			
+			grid.add_child(entry)
+			entry.material = grid.material
+			tr1.material = grid.material
+			tr2.material = grid.material
+
 		"button":
 			var entry = Button.new()
 			entry.text = element["text"]
@@ -42,8 +69,8 @@ func get_element(element, laws_grid):
 				if get_function(element["condition"]):
 					get_function(element["finished"])
 			)
-			laws_grid.add_child(entry)
-			entry.material = laws_grid.material
+			grid.add_child(entry)
+			entry.material = grid.material
 			entry.tooltip_text = "Condition - %s\nFinished - %s" % [
 				format_functions(element["condition"]),
 				format_functions(element["finished"])
@@ -56,8 +83,8 @@ func get_element(element, laws_grid):
 			entry.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			entry.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			entry.custom_minimum_size = Vector2(100, 100)
-			laws_grid.add_child(entry)
-			entry.material = laws_grid.material
+			grid.add_child(entry)
+			entry.material = grid.material
 		"paragraph":
 			var entry = RichTextLabel.new()
 			entry.add_theme_font_size_override("normal_font_size", 18)
@@ -65,7 +92,7 @@ func get_element(element, laws_grid):
 			entry.fit_content = true
 			entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			entry.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-			laws_grid.add_child(entry)
+			grid.add_child(entry)
 
 func get_function(expression, country: CountryData = null):
 	# print(expression)
@@ -224,15 +251,19 @@ func get_function(expression, country: CountryData = null):
 				)
 			)
 		"event":
-			# evaled_args[0] is 'type' (String)
-			# evaled_args[1] is 'c1' (CountryData)
-			# evaled_args[2] is 'c2' (CountryData)
-			if evaled_args.size() > 1 and evaled_args[1] is String:
-				evaled_args[1] = CountryManager.get_country(evaled_args[1])
-			if evaled_args.size() > 2 and evaled_args[2] is String:
-				evaled_args[2] = CountryManager.get_country(evaled_args[2])
-			
-			PopupManager.callv("show_alert", evaled_args)
+			# New Support: If the first arg is a dictionary, pass it directly
+			if evaled_args.size() > 0 and evaled_args[0] is Dictionary:
+				EventManager.show_alert(evaled_args[0])
+				result = true
+			else:
+				# Legacy Support: Handle positional args [type, c1, c2, text, params]
+				if evaled_args.size() > 1 and evaled_args[1] is String:
+					evaled_args[1] = CountryManager.get_country(evaled_args[1])
+				if evaled_args.size() > 2 and evaled_args[2] is String:
+					evaled_args[2] = CountryManager.get_country(evaled_args[2])
+				
+				EventManager.callv("show_alert", evaled_args)
+				result = true
 
 	if store_key != "":
 		heap[store_key] = result

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c6f4eocjc5ppx"]
+
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_2masg"]
+[ext_resource type="Script" uid="uid://n2knpwm35gb0" path="res://Scripts/Events/custom_event_popup.gd" id="1_uj0pn"]
+
+[node name="CustomEvent" type="Control" unique_id=101309782]
+material = ExtResource("1_2masg")
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uj0pn")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=36434118]
+use_parent_material = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2020475721]
+material = ExtResource("1_2masg")
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 10

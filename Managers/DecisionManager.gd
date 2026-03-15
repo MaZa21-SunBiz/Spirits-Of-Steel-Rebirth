@@ -82,7 +82,7 @@ func process_country_day(country: CountryData):
 						break
 
 			# 2. Show the alert with the actual title
-			PopupManager.show_alert("event", country, null, "%s completed" % decision_title)
+			EventManager.show_alert("event", country, null, "%s completed" % decision_title)
 
 		tasks.erase(key)
 

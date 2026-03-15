@@ -19,6 +19,8 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
 }
 
+@onready var notif_box: HBoxContainer = $Notifications
+
 # ── Speed Controls ────────────────────────────────────
 @onready var plus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Plus")
 @onready var minus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Minus")
@@ -63,24 +65,86 @@ var current_category: Category = Category.GENERAL
 
 # ── Constants ──────────────────────────────────────────
 var action_costs := {
-	"_declare_war": func(player: CountryData, _selected: CountryData): return {"cost": 150, "can_afford": player.war_support > 0.5},
-	"_request_access": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.get_relation_with(selected.country_name) > 150},
-	"_force_puppet": func(player: CountryData, selected: CountryData): return {"cost": 150, "can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)},
-	"_release_puppet": func(_player: CountryData, _selected: CountryData): return {"cost": 50, "can_afford": true},
-	"improve_stability": func(player: CountryData, _selected: CountryData): return {"cost": int(50 * (1.0 + player.stability)), "can_afford": true},
-	"_improve_relations": func(player: CountryData, _selected: CountryData): return {"cost": 40 if player.ideology_name == "liberal" else 50, "can_afford": true},
-	"_propose_peace": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_launch_nuke": func(_player: CountryData, _selected: CountryData): return {"cost": 250, "can_afford": true},
-	"_form_alliance": func(player: CountryData, selected: CountryData): return {"cost": 100, "can_afford": player.ideology_name == selected.ideology_name},
-	"_demand_tribute": func(player: CountryData, selected: CountryData): return {"cost": 75, "can_afford": player.ideology_name == selected.ideology_name},
-	"_trade_deal": func(player: CountryData, selected: CountryData): return {"cost": 25, "can_afford": player.ideology_name == selected.ideology_name},
-	"open_research_tree": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_decisions_tree": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_open_faction": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"open_manage_country": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_factory": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"_build_port": func(_player: CountryData, _selected: CountryData): return {"cost": 0, "can_afford": true},
-	"m_BuildInfrastructure": func(_a_player: CountryData, _a_selected: CountryData): return {"cost": 0, "can_afford": true}
+	"_declare_war": func(player: CountryData, _selected: CountryData): return {
+		"cost": 150 ,
+		"can_afford": player.war_support > 0.5
+	},
+	"_request_access": func(player: CountryData, selected: CountryData): return {
+		"cost": 25 ,
+		"can_afford": player.get_relation_with(selected.country_name) > 70
+	},
+	"_force_puppet": func(player: CountryData, selected: CountryData): return {
+		"cost": 150 ,
+		"can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)
+	},
+	"_release_puppet": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 50 ,
+		"can_afford": true
+	},
+	"improve_stability": func(player: CountryData, _selected: CountryData): return {
+		"cost": int(50 * (1.0 + player.stability)) ,
+		"can_afford": true
+	},
+	"_improve_relations": func(player: CountryData, _selected: CountryData): return {
+		"cost": 40 if player.ideology_name == "liberal" else 50 ,
+		"can_afford": true
+	},
+	"_propose_peace": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"_launch_nuke": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 250
+		,
+		"can_afford": true
+	},
+	"_form_alliance": func(player: CountryData, selected: CountryData): return {
+		"cost": 100 ,
+		"can_afford": player.ideology_name == selected.ideology_name
+	},
+	"_demand_tribute": func(player: CountryData, selected: CountryData): return {
+		"cost": 75 ,
+		"can_afford": player.ideology_name == selected.ideology_name
+	},
+	"_trade_deal": func(player: CountryData, selected: CountryData): return {
+		"cost": 25 ,
+		"can_afford": player.ideology_name == selected.ideology_name
+	},
+	"open_research_tree": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"open_decisions_tree": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"_open_faction": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"open_manage_country": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"_build_factory": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"_build_port": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	},
+	"_on_invite_faction_pressed": func(_player: CountryData, _selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": (
+			_player.get_relation_with(_selected.country_name) > 120)
+			&& FactionManager.get_faction_member(_player.country_name)
+			&& (FactionManager.get_faction_member(_player.country_name).status == "Leader")
+	},
+	"m_BuildInfrastructure": func(_a_player: CountryData, _a_selected: CountryData): return {
+		"cost": 0 ,
+		"can_afford": true
+	}
 }
 
 # Yeah, not a bad idea.
@@ -91,6 +155,7 @@ var action_costs := {
 # yeah.
 # Then we can have immigrants.
 # Hexagons Before Immigrants???
+# NOTE(soi): huh?
 
 func _enter_tree() -> void:
 	GameState.game_ui = self
@@ -822,6 +887,9 @@ func _on_invite_faction_pressed() -> void:
 	FactionManager.invite_faction(CountryManager.player_country, selected_country)
 	# MapManager.show_faction_map()
 
+func _on_kick_faction_pressed() -> void:
+	FactionManager.kick_faction(CountryManager.player_country, selected_country)
+
 func _on_steal_manpower_pressed() -> void:
 	if selected_country.total_population > 0:
 		CountryManager.player_country.total_population += 1_000
@@ -855,3 +923,6 @@ func update_cultures() -> void:
 
 func _on_next_song_pressed() -> void:
 	MusicManager._on_music_finished()
+
+func add_notif():
+	pass

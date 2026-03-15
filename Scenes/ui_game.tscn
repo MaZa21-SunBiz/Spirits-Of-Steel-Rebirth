@@ -575,7 +575,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 2
+current_tab = 4
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
@@ -985,6 +985,7 @@ theme = ExtResource("13_sdmnd")
 text = "Launch Nuke"
 
 [node name="Neutral" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -1339,12 +1340,11 @@ theme = ExtResource("13_sdmnd")
 text = "Call to Arms"
 
 [node name="Ally" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1156143088]
-visible = false
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
@@ -1354,7 +1354,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 4
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1671842405]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
@@ -1467,6 +1466,7 @@ theme = ExtResource("13_sdmnd")
 text = "Kindly Ask For Money"
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1928349567]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
@@ -1728,6 +1728,12 @@ presets_visible = false
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("27_2a76p")]
 visible = false
 
+[node name="Notifications" type="HBoxContainer" parent="." unique_id=1074458046]
+offset_left = 355.0
+offset_top = 36.0
+offset_right = 822.0
+offset_bottom = 62.0
+
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
@@ -1752,7 +1758,7 @@ visible = false
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button" to="." method="_on_steal_manpower_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_kick_faction_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]

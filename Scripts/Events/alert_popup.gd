@@ -8,13 +8,33 @@ extends Control
 var data = {}
 
 
+var manually_positioned = false
+var dragging = false
+var drag_offset = Vector2.ZERO
+
+
 func setup_alert(config: Dictionary):
 	data = config
 
 
 func _ready():
+	$PanelContainer.mouse_filter = Control.MOUSE_FILTER_PASS
 	button.pressed.connect(_on_ok)
 	_build_ui()
+
+
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+				drag_offset = get_global_mouse_position() - global_position
+				manually_positioned = true
+			else:
+				dragging = false
+	
+	if event is InputEventMouseMotion and dragging:
+		global_position = get_global_mouse_position() - drag_offset
 
 
 func _build_ui():
