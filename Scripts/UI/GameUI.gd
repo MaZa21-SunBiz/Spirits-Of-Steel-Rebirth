@@ -28,15 +28,16 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 
 # ── Side Menu Nodes ───────────────────────────────────
 @onready var sidemenu: Control = $Control/HSplitContainer/SidemenuBG
-@onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/Flag")
-@onready var sidemenu_pointer: Sprite2D = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/compass/pointer")
-@onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/Label")
+# NOTE(soi): relations already hv the flag so ehhh
+# @onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/HFlowContainer/Flag/HBoxContainer/VBoxContainer/Flag")
+@onready var sidemenu_pointer: Sprite2D = sidemenu.get_node("VBoxContainer2/PanelContainer/HBoxContainer/compass/pointer")
+@onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/HFlowContainer/Label")
 @onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 @onready var sidemenu_buildings: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 
 @onready var troop_container: PanelContainer = $Control/TroopContainer
-@onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/PanelContainer/VBoxContainer/RelationsHbox")
+@onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/RelationsHbox")
 @onready var faction_prompt: PanelContainer = $CreateFaction
 
 @onready var accepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
@@ -66,31 +67,31 @@ var current_category: Category = Category.GENERAL
 # ── Constants ──────────────────────────────────────────
 var action_costs := {
 	"_declare_war": func(player: CountryData, _selected: CountryData): return {
-		"cost": 150 ,
+		"cost": 150,
 		"can_afford": player.war_support > 0.5
 	},
 	"_request_access": func(player: CountryData, selected: CountryData): return {
-		"cost": 25 ,
+		"cost": 25,
 		"can_afford": player.get_relation_with(selected.country_name) > 70
 	},
 	"_force_puppet": func(player: CountryData, selected: CountryData): return {
-		"cost": 150 ,
+		"cost": 150,
 		"can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)
 	},
 	"_release_puppet": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 50 ,
+		"cost": 50,
 		"can_afford": true
 	},
 	"improve_stability": func(player: CountryData, _selected: CountryData): return {
-		"cost": int(50 * (1.0 + player.stability)) ,
+		"cost": int(50 * (1.0 + player.stability)),
 		"can_afford": true
 	},
 	"_improve_relations": func(player: CountryData, _selected: CountryData): return {
-		"cost": 40 if player.ideology_name == "liberal" else 50 ,
+		"cost": 40 if player.ideology_name == "liberal" else 50,
 		"can_afford": true
 	},
 	"_propose_peace": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"_launch_nuke": func(_player: CountryData, _selected: CountryData): return {
@@ -99,50 +100,50 @@ var action_costs := {
 		"can_afford": true
 	},
 	"_form_alliance": func(player: CountryData, selected: CountryData): return {
-		"cost": 100 ,
+		"cost": 100,
 		"can_afford": player.ideology_name == selected.ideology_name
 	},
 	"_demand_tribute": func(player: CountryData, selected: CountryData): return {
-		"cost": 75 ,
+		"cost": 75,
 		"can_afford": player.ideology_name == selected.ideology_name
 	},
 	"_trade_deal": func(player: CountryData, selected: CountryData): return {
-		"cost": 25 ,
+		"cost": 25,
 		"can_afford": player.ideology_name == selected.ideology_name
 	},
 	"open_research_tree": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"open_decisions_tree": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"_open_faction": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"open_manage_country": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"_build_factory": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"_build_port": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	},
 	"_on_invite_faction_pressed": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": (
 			_player.get_relation_with(_selected.country_name) > 120)
 			&& FactionManager.get_faction_member(_player.country_name)
 			&& (FactionManager.get_faction_member(_player.country_name).status == "Leader")
 	},
 	"m_BuildInfrastructure": func(_a_player: CountryData, _a_selected: CountryData): return {
-		"cost": 0 ,
+		"cost": 0,
 		"can_afford": true
 	}
 }
@@ -238,7 +239,7 @@ func _update_radio_visuals() -> void:
 
 
 func _update_sidemenu_visuals(country_name: String) -> void:
-	sidemenu_flag.texture = TroopManager.get_flag(country_name, selected_country.ideology_name)
+	# sidemenu_flag.texture = TroopManager.get_flag(country_name, selected_country.ideology_name)
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + country_name.capitalize()
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
@@ -287,7 +288,7 @@ func _on_province_clicked(country_name: String) -> void:
 		# elif selected_country.country_name in CountryManager.player_country.puppets:
 		# 	new_context = Context.PUPPET
 
-		self.military_access_label.text = (
+		relations_hbox.tooltip_text = (
 			"Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No")
 		)
 
@@ -302,7 +303,7 @@ func toggle_menu(context := Context.PLAYER) -> void:
 	else:
 		selected_country = CountryManager.player_country
 		sidemenu_country_label.text = CountryManager.player_country.country_name
-		sidemenu_flag.texture = nation_flag.texture
+		# sidemenu_flag.texture = nation_flag.texture
 		open_menu(context, Category.GENERAL)
 		_update_context_actions_visuals()
 
@@ -343,36 +344,39 @@ func _update_relations_visuals() -> void:
 	if player and target and player != target:
 		relations_hbox.visible = true
 		
-		# 1. FAR LEFT: Player Flag
-		relations_hbox.add_child(_get_simple_flag(player.country_name, player.ideology_name))
+		# 1. FAR LEFT:  Target Flag
+		relations_hbox.add_child(_get_simple_flag(target.country_name, target.ideology_name))
 
 		# 2. SPACER (Justify-Between)
 		var spacer1 = Control.new()
 		spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		spacer1.use_parent_material = true
 		relations_hbox.add_child(spacer1)
 		
 		# 3. CENTER: Dual Opinions
 		var our_val = player.get_relation_with(target.country_name)
 		var their_val = target.get_relation_with(player.country_name)
 		
-		# "Our view"
-		relations_hbox.add_child(_create_styled_label(str(our_val), 20, our_val))
+
+		# "Their view"
+		relations_hbox.add_child(_create_styled_label(str(their_val), 20, their_val))
 		
 		# Visual Divider
 		var mid_icon = _create_styled_label(" ↔ ", 20, 50) # Neutral color for divider
 		mid_icon.modulate.a = 0.4
 		relations_hbox.add_child(mid_icon)
 		
-		# "Their view"
-		relations_hbox.add_child(_create_styled_label(str(their_val), 20, their_val))
+		# "Our view"
+		relations_hbox.add_child(_create_styled_label(str(our_val), 20, our_val))
 
 		# 4. SECOND SPACER
 		var spacer2 = Control.new()
 		spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		spacer2.use_parent_material = true
 		relations_hbox.add_child(spacer2)
 
-		# 5. FAR RIGHT: Target Flag
-		relations_hbox.add_child(_get_simple_flag(target.country_name, target.ideology_name))
+		# 5. FAR RIGHT: Player Flag
+		relations_hbox.add_child(_get_simple_flag(player.country_name, player.ideology_name))
 	else:
 		relations_hbox.visible = false
 
@@ -408,6 +412,7 @@ func _update_context_actions_visuals() -> void:
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
 	var l = Label.new()
 	l.text = text_content
+	l.use_parent_material = true
 	
 	# Apply the Custom Font
 	if custom_font:
@@ -429,6 +434,7 @@ func _create_styled_label(text_content: String, size: int, score_ref: int) -> La
 func _get_simple_flag(c_name: String, ideology: String = "") -> TextureRect:
 	var tex = TextureRect.new()
 	tex.texture = TroopManager.get_flag(c_name, ideology)
+	tex.use_parent_material = true
 	tex.custom_minimum_size = Vector2(42, 26)
 	tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

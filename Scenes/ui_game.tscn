@@ -23,11 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
-[ext_resource type="Texture2D" uid="uid://d3fu8mlb0k686" path="res://assets/flags/fallback_flag.png" id="21_ubr8q"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
+[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="25_pvldk"]
 [ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
+[ext_resource type="Texture2D" uid="uid://bbdjq5vt3uloi" path="res://assets/ui/fish1.png" id="26_w7nfq"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="27_2a76p"]
+[ext_resource type="Texture2D" uid="uid://c7iqt8unxm2ec" path="res://assets/ui/fish2.png" id="27_bfmcl"]
+[ext_resource type="Texture2D" uid="uid://m0vdhqgoy3y6" path="res://assets/ui/fish3.jpg" id="28_1nbba"]
+[ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
@@ -74,7 +78,7 @@ bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
 [node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
 script = ExtResource("1_rp7y5")
-military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/MilitaryAccess")
+military_access_label = NodePath("")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
 layout_mode = 3
@@ -508,48 +512,14 @@ theme = ExtResource("13_sdmnd")
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG" unique_id=1423441942]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=731782393]
-use_parent_material = true
-custom_minimum_size = Vector2(0, 180)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("13_sdmnd")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qum3k")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=2118811652]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Flag" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1960292904]
-clip_children = 1
-layout_mode = 2
-theme = ExtResource("13_sdmnd")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag" unique_id=439858551]
-layout_mode = 2
-
-[node name="Flag" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer" unique_id=18398022]
+[node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1938162432]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(180, 90)
 layout_mode = 2
-texture = ExtResource("21_ubr8q")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="compass" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer" unique_id=1574630328]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(100, 100)
+[node name="HFlowContainer" type="HFlowContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1411926768]
 layout_mode = 2
-texture = ExtResource("20_lpwmk")
-expand_mode = 2
 
-[node name="pointer" type="Sprite2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer/Flag/HBoxContainer/compass" unique_id=2143726963]
-material = ExtResource("16_lpwmk")
-position = Vector2(49.999992, 50)
-scale = Vector2(0.038297877, 0.038297873)
-texture = ExtResource("21_lpwmk")
-
-[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1954831864]
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/HFlowContainer" unique_id=1954831864]
 texture_filter = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_yp111")
@@ -557,17 +527,88 @@ theme_override_font_sizes/font_size = 24
 text = "country1"
 horizontal_alignment = 1
 
-[node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=1938162432]
+[node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=731782393]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("13_sdmnd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qum3k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=439858551]
 layout_mode = 2
 
-[node name="MilitaryAccess" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/VBoxContainer" unique_id=829443985]
-texture_filter = 2
+[node name="compass" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1574630328]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme = ExtResource("13_sdmnd")
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 22
-text = "Military Access: No"
-horizontal_alignment = 1
+texture = ExtResource("20_lpwmk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="pointer" type="Sprite2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/compass" unique_id=2143726963]
+material = ExtResource("16_lpwmk")
+position = Vector2(49.999992, 50)
+scale = Vector2(0.038297877, 0.038297873)
+texture = ExtResource("21_lpwmk")
+
+[node name="Leader" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=569434129]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(120, 90)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("25_pvldk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1476466952]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/ScrollContainer" unique_id=2060822970]
+custom_minimum_size = Vector2(0, 46.52)
+layout_mode = 2
+
+[node name="Leader" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/ScrollContainer/HBoxContainer" unique_id=1313802170]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("26_w7nfq")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Leader2" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/ScrollContainer/HBoxContainer" unique_id=556543488]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("27_bfmcl")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Leader3" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/ScrollContainer/HBoxContainer" unique_id=916581279]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("28_1nbba")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Leader4" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/ScrollContainer/HBoxContainer" unique_id=513574810]
+material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("29_anvjc")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Context" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1596917807]
 material = ExtResource("16_lpwmk")
@@ -575,11 +616,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 4
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -1340,6 +1380,7 @@ theme = ExtResource("13_sdmnd")
 text = "Call to Arms"
 
 [node name="Ally" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1156143088]
+visible = false
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")

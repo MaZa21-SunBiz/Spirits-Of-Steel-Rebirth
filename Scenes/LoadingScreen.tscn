@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_m6rkq"]
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="2_qjj4j"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://dfsodrjldvwq5" path="res://assets/ui/ariect2.png" id="3_68uam"]
 [ext_resource type="Shader" uid="uid://di44vounul5l7" path="res://Scenes/conveyorpet.gdshader" id="4_68uam"]
-[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="5_68uam"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="7_634pj"]
 
 [sub_resource type="Shader" id="Shader_am871"]
@@ -50,7 +50,7 @@ offset_left = 1.0
 offset_top = 419.0
 offset_right = 1151.0
 offset_bottom = 521.0
-texture = ExtResource("5_68uam")
+texture = ExtResource("3_68uam")
 expand_mode = 1
 
 [node name="Hand5" type="TextureRect" parent="Avatar" unique_id=1684581321]
