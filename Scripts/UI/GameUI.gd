@@ -498,6 +498,7 @@ func update_topbar_stats() -> void:
 
 func _on_hour_passed() -> void:
 	update_topbar_stats()
+	update_division_menu()
 	if is_open:
 		_update_context_actions_visuals()
 		update_economy_menu()

@@ -103,10 +103,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 0
+current_tab = 1
 tab_focus_mode = 0
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -334,7 +335,6 @@ theme = ExtResource("2_5xoin")
 wrap_mode = 1
 
 [node name="Faction" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=741194933]
-visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 1

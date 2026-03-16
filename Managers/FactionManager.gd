@@ -22,7 +22,15 @@ func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 	#print(factions)
 
 
+func clear_faction(country: CountryData):
+	for faction in factions.values():
+		faction.members.erase(
+			FactionMember.FromValues(country.country_name, "Member")
+		)
+
+
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
+	# NOTE(soi): we should add an option to choose which faction to invite to
 	for faction in inviter.factions:
 		#print(faction)
 		if factions[faction].members[factions[faction].members.find_custom(
@@ -30,7 +38,6 @@ func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 			)].status == "Leader":
 			factions[faction].members.append(FactionMember.FromValues(invitee.country_name, "Member"))
 			invitee.factions.append_array(inviter.factions)
-	#print(factions)
 
 
 func in_faction(inviter: CountryData, invitee: CountryData) -> bool:

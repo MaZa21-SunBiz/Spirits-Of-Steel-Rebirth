@@ -223,6 +223,7 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppetee.ideology = puppeter.ideology
 	puppetee.relations[puppeter.country_name] = 200
 	puppetee.factions = puppeter.factions  
+	FactionManager.clear_faction(puppetee)
 	FactionManager.invite_faction(puppeter, puppetee)
 	MapManager.show_countries_map()
 

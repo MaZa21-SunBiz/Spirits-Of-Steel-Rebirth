@@ -19,6 +19,8 @@ func _ready() -> void:
 	#Console.add_command_autocomplete_list("play_as", CountryManager.)
 	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
+	Console.add_command("puppet", _puppet_country, ["country_name"], 1, "Change player country")
+	Console.add_command("invite", _invite_country, ["country_name"], 1, "Change player country")
 	Console.add_command("debug_decisions", _debug_decisions, [], 0, "Lets u do any focus and does it instantly")
 	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
 	Console.add_command("reload_decisions", _reload_decisions, [], 0, "Reloads all the deecision trees")
@@ -137,3 +139,11 @@ func _reload_decisions():
 
 func _debug_decisions():
 	DecisionManager.debug = !DecisionManager.debug
+
+
+func _puppet_country(country_name: String):
+	CountryManager.make_puppet(CountryManager.player_country, CountryManager.countries[country_name])
+
+
+func _invite_country(country_name: String):
+	FactionManager.invite_faction(CountryManager.player_country, CountryManager.countries[country_name])
