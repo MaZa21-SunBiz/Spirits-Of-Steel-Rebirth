@@ -69,8 +69,11 @@ func set_player_country(country_name: String) -> void:
 	if player_country:
 		player_country.is_player = false
 
+	if player_country:
+		player_country.setup_ai()
 	player_country = country
 	player_country.is_player = true
+	player_country.ai_controller = null
 
 	print("Player is now playing as: ", country_name)
 	emit_signal("player_country_changed")
