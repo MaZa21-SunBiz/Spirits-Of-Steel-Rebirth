@@ -26,7 +26,7 @@ func _ready() -> void:
 	visible = false
 	#_build_ui()
 
-func open_menu(country: CountryData) -> void:
+func open_menu(country: CountryData, cat: Category = Category.MILITARY) -> void:
 	if current_country and current_country.ideology_changed.is_connected(_refresh_full_data):
 		current_country.ideology_changed.disconnect(_refresh_full_data)
 
@@ -34,7 +34,7 @@ func open_menu(country: CountryData) -> void:
 	current_country.ideology_changed.connect(_refresh_full_data)
 	
 	_build_ui()
-	_switch_category(Category.MILITARY) # Default to Military
+	_switch_category(cat) # Use requested category
 	_refresh_full_data()
 	show()
 

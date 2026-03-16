@@ -18,7 +18,6 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
 	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
 }
-
 @onready var notif_box: HBoxContainer = $Notifications
 
 # ── Speed Controls ────────────────────────────────────
@@ -95,8 +94,7 @@ var action_costs := {
 		"can_afford": true
 	},
 	"_launch_nuke": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 250
-		,
+		"cost": 250,
 		"can_afford": true
 	},
 	"_form_alliance": func(player: CountryData, selected: CountryData): return {
@@ -147,6 +145,8 @@ var action_costs := {
 		"can_afford": true
 	}
 }
+
+var all_notifs: Dictionary = {}
 
 # Yeah, not a bad idea.
 # Not sure how to impl that though.
@@ -492,6 +492,8 @@ func update_topbar_stats() -> void:
 	stats_labels.money.text = format_number(CountryManager.player_country.money)
 	stats_labels.industry.text = str(CountryManager.player_country.factories_amount)
 	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
+	
+	_update_notifications()
 
 
 func _on_hour_passed() -> void:
@@ -704,9 +706,9 @@ func open_decisions_tree():
 func _open_faction():
 	faction_prompt.visible = !faction_prompt.visible
 
-func open_manage_country():
+func open_manage_country(cat: CountryManageUI.Category = CountryManageUI.Category.MILITARY):
 	get_tree().root.find_child("CountryManageUI", true, false).open_menu(
-		CountryManager.player_country
+		CountryManager.player_country, cat
 	)
 
 	#GameState.current_world.set_process(false)
@@ -923,12 +925,71 @@ func update_cultures() -> void:
 	for culture in CountryManager.player_country.accepted_cultures:
 		var entry = Button.new()
 		entry.text = culture
-		entry.material = preload("res://Materials/damaged.tres")
+		entry.use_parent_material = true
 		accepted_cultures.add_child(entry)
 
 
 func _on_next_song_pressed() -> void:
 	MusicManager._on_music_finished()
 
-func add_notif():
-	pass
+func add_notif(type: String, tooltip: String):
+	if all_notifs.has(type):
+		return
+	var notif = Button.new()
+	notif.icon = load("res://assets/icons/" + type + ".svg")
+	notif.expand_icon = true
+	notif.use_parent_material = true
+	notif.custom_minimum_size = Vector2(30, 0)
+	notif.tooltip_text = tooltip
+	notif.pressed.connect(func():
+		match type:
+			"decision":
+				open_decisions_tree()
+			"plan":
+				open_manage_country(CountryManageUI.Category.COUNTRY)
+	)
+	notif_box.add_child(notif)
+	all_notifs[type] = notif
+
+func remove_notif(type: String):
+	if all_notifs.has(type):
+		var notif = all_notifs[type]
+		if is_instance_valid(notif):
+			notif.queue_free()
+		all_notifs.erase(type)
+
+func _update_notifications():
+	print(all_notifs)
+	var player = CountryManager.player_country
+	if !player:
+		return
+	
+	if player.stability < 0.5:
+		add_notif("stability", "Low Stability")
+	else:
+		remove_notif("stability")
+	
+	if player.war_support < 0.5:
+		add_notif("war_support", "Low War Support")
+	else:
+		remove_notif("war_support")
+	
+	if player.political_power < 0:
+		add_notif("political_power", "Political Crisis")
+	else:
+		remove_notif("political_power")
+	
+	if player.money < 0:
+		add_notif("money_icon", "Financial Crisis")
+	else:
+		remove_notif("money_icon")
+	
+	if DecisionManager.has_available_decisions(player):
+		add_notif("decision", "Decision Available")
+	else:
+		remove_notif("decision")
+	
+	if PlansManager.has_available_plans(player):
+		add_notif("plan", "Plan Available")
+	else:
+		remove_notif("plan")

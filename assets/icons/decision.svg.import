@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhgqvklqmqkjn"
-path="res://.godot/imported/nonaligned_icon.svg-247420dd26c3fd17a4cb4008512ea003.ctex"
+uid="uid://cenvc2ywijqbq"
+path="res://.godot/imported/decision.svg-ec01f65848a2ec34779db4d574885cbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/nonaligned_icon.svg"
-dest_files=["res://.godot/imported/nonaligned_icon.svg-247420dd26c3fd17a4cb4008512ea003.ctex"]
+source_file="res://assets/icons/decision.svg"
+dest_files=["res://.godot/imported/decision.svg-ec01f65848a2ec34779db4d574885cbd.ctex"]
 
 [params]
 

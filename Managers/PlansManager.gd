@@ -22,3 +22,13 @@ func load_plans_from_path(path: String):
 	var error = json.parse(json_string)
 	if error == OK:
 		plans = json.data
+
+func has_available_plans(country: CountryData) -> bool:
+	if not plans.has(country.country_name):
+		return false
+	
+	for element in plans[country.country_name]:
+		if element.get("type", "") == "button":
+			if InterpreterManager.get_function(element.get("condition", {}), country):
+				return true
+	return false
