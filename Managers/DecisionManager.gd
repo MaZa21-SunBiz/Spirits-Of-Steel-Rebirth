@@ -124,8 +124,9 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 		return false
 
 	# 5. Check Cost
-	if data.get("reqs", {}):
-		return InterpreterManager.get_function(data.get("reqs", {}))
+	var reqs = data.get("reqs", {}) 
+	if reqs:
+		return InterpreterManager.get_function(reqs) 
 	return true
 
 
@@ -177,3 +178,12 @@ func get_days_left(country: CountryData, id: String) -> int:
 # Check if the country has ANY active timers
 func is_country_busy(country: CountryData) -> bool:
 	return not active_decisions.get(country.country_name, []).is_empty()
+
+func has_available_decisions(country: CountryData) -> bool:
+	var categories = get_country_categories(country.country_name)
+	for cat in categories.keys():
+		var decisions = categories[cat]
+		for i in range(decisions.size()):
+			if can_take_decision(country, cat, i):
+				return true
+	return false

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8dketw2tw83t" path="res://assets/icons/money_icon.svg" id="7_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://qfkxeawpeigd" path="res://assets/icons/man_power_icon.svg" id="8_qum3k"]
 [ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="9_5hlpc"]
-[ext_resource type="Texture2D" uid="uid://dhgqvklqmqkjn" path="res://assets/icons/nonaligned_icon.svg" id="10_aipye"]
+[ext_resource type="Texture2D" uid="uid://omi12cnq6lfo" path="res://assets/icons/stability.svg" id="10_qnodh"]
 [ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="11_qum3k"]
 [ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="12_2a76p"]
 [ext_resource type="Texture2D" uid="uid://cj7k64j1jq62k" path="res://assets/icons/music.svg" id="13_0e43j"]
@@ -32,6 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://c7iqt8unxm2ec" path="res://assets/ui/fish2.png" id="27_bfmcl"]
 [ext_resource type="Texture2D" uid="uid://m0vdhqgoy3y6" path="res://assets/ui/fish3.jpg" id="28_1nbba"]
 [ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hlpc"]
 content_margin_left = 2.0
@@ -76,9 +79,8 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273]
 script = ExtResource("1_rp7y5")
-military_access_label = NodePath("")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
 layout_mode = 3
@@ -90,20 +92,15 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Topbar" type="ColorRect" parent="Control" unique_id=1344645553]
+[node name="Topbar" type="PanelContainer" parent="Control" unique_id=2113396861]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 35.0
-grow_horizontal = 2
-color = Color(0.09803922, 0.09803922, 0.09803922, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar" unique_id=458722190]
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 35.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnodh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar" unique_id=458722190]
+layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="nation_flag" type="TextureRect" parent="Control/Topbar/HBoxContainer" unique_id=121734395]
@@ -218,7 +215,7 @@ layout_mode = 2
 [node name="icon_stability" type="TextureRect" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=1546646896]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-texture = ExtResource("10_aipye")
+texture = ExtResource("10_qnodh")
 expand_mode = 3
 
 [node name="label_stability" type="Label" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=788481322]
@@ -493,8 +490,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -613.0
-offset_right = 344.0
+offset_top = -612.0
+offset_right = 368.0
 grow_vertical = 0
 mouse_filter = 2
 dragging_enabled = false
@@ -1770,10 +1767,11 @@ presets_visible = false
 visible = false
 
 [node name="Notifications" type="HBoxContainer" parent="." unique_id=1074458046]
-offset_left = 355.0
+material = ExtResource("16_lpwmk")
+offset_left = 356.0
 offset_top = 36.0
 offset_right = 822.0
-offset_bottom = 62.0
+offset_bottom = 64.0
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
