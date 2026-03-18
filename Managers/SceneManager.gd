@@ -84,6 +84,7 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 
 		while bongo.is_alive():
 			_loading_screen.set_progress(progress[0])
+			await get_tree().process_frame
 
 		bongo.wait_to_finish()
 
