@@ -16,7 +16,7 @@ func setup(p_data: Dictionary):
 	if data.has("contents") and data["contents"] is Array:
 		for element in data["contents"]:
 			var count_before = content_list.get_child_count()
-			InterpreterManager.get_element(element, content_list)
+			InterpreterManager.get_element(element, content_list, CountryManager.player_country)
 			var count_after = content_list.get_child_count()
 			
 			if count_after > count_before:

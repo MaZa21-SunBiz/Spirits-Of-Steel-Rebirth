@@ -1833,7 +1833,7 @@ visible = false
 material = ExtResource("16_lpwmk")
 offset_left = 356.0
 offset_top = 36.0
-offset_right = 822.0
+offset_right = 1152.0
 offset_bottom = 64.0
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]

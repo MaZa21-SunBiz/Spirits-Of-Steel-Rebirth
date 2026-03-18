@@ -34,8 +34,6 @@ var current_zoom: float = 1.0
 
 func _ready():
 	DecisionManager.ui_overlay = self
-	tree_canvas.draw.connect(_on_draw_canvas)
-	close_button.pressed.connect(close_menu)
 
 
 func _process(delta: float) -> void:
@@ -129,7 +127,7 @@ func _load_category(cat_name: String):
 		c.queue_free()
 	node_buttons.clear()
 	connection_lines.clear()
-	tree_canvas.position = Vector2.ZERO
+	# tree_canvas.position = Vector2.ZERO
 
 	var player = CountryManager.player_country
 	var nodes = DecisionManager.get_country_categories(player.country_name).get(cat_name, [])
@@ -369,3 +367,8 @@ func refresh_status_only():
 	for btn in node_buttons.values():
 		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
 	tree_canvas.queue_redraw()
+
+
+func _on_reload_decisions_pressed():
+	DecisionManager._load_decisions("res://starts/"+GameState.current_start+"/decisions/")
+	_load_category(current_category)

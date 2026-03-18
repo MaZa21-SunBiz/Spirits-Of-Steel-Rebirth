@@ -17,6 +17,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 	"industry": topbar.get_node("Industry/HBoxContainer/label_industry"),
 	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
 	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
+	"world_tension": topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/label_tension"),
 }
 @onready var notif_box: HBoxContainer = $Notifications
 
@@ -492,6 +493,7 @@ func update_topbar_stats() -> void:
 	stats_labels.money.text = format_number(CountryManager.player_country.money)
 	stats_labels.industry.text = str(CountryManager.player_country.factories_amount)
 	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
+	stats_labels.world_tension.text = str(round(MapManager.world_tension * 100)) + "%"
 	
 	_update_notifications()
 
@@ -961,7 +963,6 @@ func remove_notif(type: String):
 		all_notifs.erase(type)
 
 func _update_notifications():
-	print(all_notifs)
 	var player = CountryManager.player_country
 	if !player:
 		return

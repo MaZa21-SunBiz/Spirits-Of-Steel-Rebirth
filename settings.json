@@ -1,18 +1,15 @@
 {
-  "daynight_contrast": 0.08,
-  "daynight_smoothness": 0.11,
-  "map_effects": 1.0,
-  "music_volume": 0.1,
-  "province_borders": 0.66,
-  "radios": [
-    "default",
-    "Lead poisoning"
-  ],
-  "scanlines": 0.0,
+  "daynight_contrast": 0.0,
+  "daynight_smoothness": 0.01,
+  "map_effects": true,
+  "music_volume": 0.0,
+  "province_borders": 0.09,
+  "radios": [],
+  "scanlines": 0.04,
   "sfx_volume": 0.14,
-  "ui_dirt": 0.48,
-  "ui_lower": 0.07,
-  "ui_upper": 0.74,
-  "vignette_lower": 0.58,
-  "vignette_upper": 1.43
+  "ui_dirt": 0.39,
+  "ui_lower": 0.08,
+  "ui_upper": 0.64,
+  "vignette_lower": 1.0,
+  "vignette_upper": 0.0
 }

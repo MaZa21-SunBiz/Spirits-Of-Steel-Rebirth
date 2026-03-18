@@ -277,7 +277,6 @@ theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
 [node name="Starts" type="Control" parent="." unique_id=65741064]
-visible = false
 material = ExtResource("5_yhxw7")
 layout_mode = 3
 anchor_left = 0.33950615

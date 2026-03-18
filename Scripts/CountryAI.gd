@@ -132,7 +132,14 @@ func _execute_war():
 	if country.money < MIN_ECONOMY_FOR_WAR:
 		return
 
-	var candidates = _get_neighbor_countries()
+	var candidates = _get_neighbor_countries().filter(
+		func(enemy):
+			return (
+				!FactionManager.in_faction(CountryManager.countries[enemy], country)
+				&& !CountryManager.countries[enemy].is_puppet
+			)
+	)
+	print(candidates)
 	if candidates.is_empty():
 		return
 

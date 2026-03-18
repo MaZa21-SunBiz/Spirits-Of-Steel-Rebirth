@@ -27,8 +27,16 @@ func has_available_plans(country: CountryData) -> bool:
 	if not plans.has(country.country_name):
 		return false
 	
+	var choices = []
 	for element in plans[country.country_name]:
 		if element.get("type", "") == "button":
 			if InterpreterManager.get_function(element.get("condition", {}), country):
-				return true
+				if country.is_player:
+					return true
+				else:
+					choices.append(element.get("finished", {}))
+
+	var choice = choices.pick_random()
+	if choice:
+		InterpreterManager.get_function(choice, country)
 	return false

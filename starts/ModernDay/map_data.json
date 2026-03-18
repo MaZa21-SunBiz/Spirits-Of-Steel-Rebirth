@@ -136,6 +136,14 @@
 				{
 					"polity": "Armenia",
 					"status": "Member"
+				},
+				{
+					"polity": "Donetsk",
+					"status": "Member"
+				},
+				{
+					"polity": "Luhansk",
+					"status": "Member"
 				}
 			],
 			"name": "CSTO"
@@ -265,6 +273,10 @@
 				},
 				{
 					"polity": "Sweden",
+					"status": "Member"
+				},
+				{
+					"polity": "Israel",
 					"status": "Member"
 				}
 			],
@@ -539,7 +551,9 @@
 			"money": 72438393.3070154,
 			"name": "United_states",
 			"political_power": 524.439999999994,
-			"puppets": [],
+			"puppets": [
+				"Israel"
+			],
 			"stability": 1.0,
 			"war_support": 1.0
 		},
