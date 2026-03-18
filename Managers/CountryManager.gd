@@ -46,10 +46,10 @@ func initialize_countries(a_countriesData: Array) -> void:
 	#	add_country(country)
 	#print("Adding Countries took %f" % (Time.get_unix_time_from_system() - timeStart))
 
-	for country: CountryData in countries.values():
-		country.update_relations()
-		for puppeted: String in country.puppets:
-			InformPuppet(country, countries[puppeted])
+	for country: String in countryNames:
+		countries[country].update_relations()
+		for puppeted: String in countries[country].puppets:
+			InformPuppet(countries[country], countries[puppeted])
 
 	print("CountryManager: Initialized %d countries." % countries.size())
 
