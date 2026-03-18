@@ -35,4 +35,3 @@ func ToDict() -> Dictionary:
 		data["members"].append(factionMember.ToDict())
 
 	return data
-
