@@ -134,8 +134,8 @@ class Battle:
 		var att_eff = attacker_stats.get_attack_efficiency() if attacker_stats else 1.0
 		var def_eff = defender_stats.get_defense_efficiency() if defender_stats else 1.0
 
-		var final_attack = total_atk_power * (att_morale / 100.0) * att_eff
-		var final_defense = total_def_power * (def_morale / 100.0) * def_eff
+		var final_attack = total_atk_power * (att_morale * 0.01) * att_eff
+		var final_defense = total_def_power * (def_morale * 0.01) * def_eff
 
 		# --- 3. Apply Damage ---
 		manager.apply_casualties(defender_pid, defender_country, final_attack)

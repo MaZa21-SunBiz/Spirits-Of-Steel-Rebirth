@@ -610,7 +610,7 @@ func improve_stability():
 
 
 func _on_building_selected(index: int):
-	print()
+	#print()
 	match index:
 		0:
 			GameState.industry_building = GameState.IndustryType.FACTORY
@@ -962,7 +962,7 @@ func remove_notif(type: String):
 		all_notifs.erase(type)
 
 func _update_notifications():
-	print(all_notifs)
+	#print(all_notifs)
 	var player = CountryManager.player_country
 	if !player:
 		return

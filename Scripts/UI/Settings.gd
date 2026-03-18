@@ -167,4 +167,3 @@ func _on_daynight_contrast_changed(value: float) -> void:
 func _on_daynight_smoothness_changed(value: float) -> void:
 	SettingsManager.settings.daynight_smoothness = value
 	SettingsManager.apply_settings()
-

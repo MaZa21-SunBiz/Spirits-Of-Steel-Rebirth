@@ -14,7 +14,7 @@ const MIN_DIVISIONS_PER_SPLIT := 1  # Smallest split size
 const MAX_SPLITS_PER_TROOP := 10  # Limit splits to prevent micro-management overhead
 
 # --- AI DIPLOMACY/WAR LOGIC---
-const DECLARE_WAR_COOLDOWN_FRAMES := 60 * 10
+const DECLARE_WAR_COOLDOWN_FRAMES := 600
 const MIN_STRENGTH_RATIO := 1.1
 const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
@@ -69,9 +69,7 @@ func _manage_frontline_logic(country: CountryData) -> void:
 		var troop_pos = MapManager.province_centers[troop.province_id]
 		targets.sort_custom(
 			func(a, b):
-				var dist_a = troop_pos.distance_to(MapManager.province_centers[a.id]) / 100.0
-				var dist_b = troop_pos.distance_to(MapManager.province_centers[b.id]) / 100.0
-				return (a.score / (dist_a + 1.0)) > (b.score / (dist_b + 1.0))
+				return (a.score / (troop_pos.distance_to(MapManager.province_centers[a.id]) * 0.01 + 1.0)) > (b.score / (troop_pos.distance_to(MapManager.province_centers[b.id]) * 0.01 + 1.0))
 		)
 
 		var divisions_left = troop.divisions_count
@@ -285,6 +283,8 @@ func _consider_declaring_war(country: CountryData) -> void:
 		puppeter.append_array(CountryManager.countries[country.owner].puppets)
 
 	for target_name in candidates:
+		#if country.country_name in ["Peru", "Bolivia", "Argentina"]:
+		#	print("%s is considering %s: %s %s %d %d %d" % [country.country_name, target_name, WarManager.is_at_war_names(country.country_name, target_name), puppeter.has(target_name),  _estimate_country_strength(country.country_name), max(1.0, _estimate_country_strength(target_name)),  _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))])
 		if WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
 			continue
 
@@ -302,7 +302,8 @@ func _consider_declaring_war(country: CountryData) -> void:
 		var target_data = CountryManager.get_country(target_name)
 		if target_data:
 			if _same_faction(country.factions, target_data.factions): return
-			score += (target_data.money / 50000.0)  # Prefer rich targets
+			score += (target_data.money * 0.00002)  # Prefer rich targets
+			
 
 		# Target Cities (Existing)
 		score += min(MapManager.get_cities_province_country(target_name).size(), 3) * 0.5

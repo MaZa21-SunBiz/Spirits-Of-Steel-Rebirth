@@ -356,7 +356,7 @@ func _draw_dashed_line(
 func _get_node_center(nodes: Array, id: String) -> Vector2:
 	for n in nodes:
 		if n["id"] == id:
-			return Vector2(n["pos"][0], n["pos"][1]) + (NODE_SIZE / 2)
+			return Vector2(n["pos"][0], n["pos"][1]) + (NODE_SIZE * 0.5)
 	return Vector2.ZERO
 
 

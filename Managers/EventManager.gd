@@ -119,8 +119,8 @@ func _restack_popups():
 		return
 		
 	var viewport_size = viewport.get_visible_rect().size
-	var center_x = viewport_size.x / 2
-	var center_y = viewport_size.y / 2
+	var center_y = viewport_size.y * 0.5
+	var center_x = viewport_size.x * 0.5
 	var spacing = 25
 
 	for i in range(active_popups.size()):
@@ -128,8 +128,8 @@ func _restack_popups():
 		if popup.get("manually_positioned") == true:
 			continue
 			
-		var pos_x = center_x - (popup.size.x / 2)
-		var pos_y = center_y + (i * (popup.size.y + spacing)) - (popup.size.y / 2)
+		var pos_x = center_x - (popup.size.x * 0.5)
+		var pos_y = center_y + (i * (popup.size.y + spacing)) - (popup.size.y * 0.5)
 		popup.position = Vector2(pos_x, pos_y)
 
 

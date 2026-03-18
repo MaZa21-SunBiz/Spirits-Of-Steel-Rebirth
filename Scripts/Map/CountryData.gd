@@ -177,8 +177,8 @@ func process_day() -> void:
 	if _is_loading:
 		return
 
-	if ideology != Vector2(0, 0):
-		print(ideology)
+	#if ideology != Vector2(0, 0):
+	#	print(ideology)
 	var moveAmount: Vector2 = Vector2(0, 0)
 	for ideaTarget in driftTargets.values():
 		moveAmount += ideology.direction_to(ideaTarget.finalPosition) * ideaTarget.driftAmount
@@ -359,7 +359,7 @@ func _setup_starting_army() -> void:
 	# We use the same math as process_hour to see our projected income
 	# Don't spend more than 25% of hourly income on starting upkeep
 	# 2. Determine count (Strictly capped to prevent icon spam)
-	var final_count = clampi(int(((((gdp / 8760.0) * 0.2) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
+	var final_count = clampi(int((((gdp* 0.0000228310502) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
 
 	# 3. Manpower Check
 	var template = DivisionData.TEMPLATES.get("infantry")
@@ -436,7 +436,7 @@ func update_relations() -> void:
 		if CountryManager.countries.has(otherName):
 			relations[otherName] = 141 - ideology.distance_to(CountryManager.countries[otherName].ideology)
 		else:
-			print(otherName)
+			#print(otherName)
 			relations[otherName] = 50
 
 func get_relation_with(other_country_name: String) -> int:
