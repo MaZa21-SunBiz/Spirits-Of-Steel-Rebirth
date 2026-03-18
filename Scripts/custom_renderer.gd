@@ -309,7 +309,7 @@ func _draw_cities() -> void:
 		var pid = city_data[0]
 		var city_name = city_data[1]
 
-		var base_pos = MapManager[pid]
+		var base_pos = MapManager.province_centers[pid]
 		if base_pos == Vector2.ZERO:
 			continue
 		base_pos += map_sprite.position

@@ -36,7 +36,7 @@ func setup_training(training_obj) -> void:
 	# CHANGED: Use .divisions_count (the integer)
 	base_text = "Training %d Divs" % training_obj.divisions_count
 
-	if not is_node_ready():
+	if !is_node_ready():
 		await ready
 	button.disabled = true
 	button.modulate = Color.GOLD
