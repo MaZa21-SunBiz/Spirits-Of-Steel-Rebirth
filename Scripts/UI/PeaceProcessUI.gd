@@ -245,7 +245,10 @@ func _on_confirm_pressed():
 		MapManager.transfer_ownership(pid, current_winner.country_name)
 	
 	if puppeting:
+		print("a")
 		CountryManager.make_puppet(current_winner, current_loser)
+		print("a")
+	print(current_winner.puppets)
 
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:

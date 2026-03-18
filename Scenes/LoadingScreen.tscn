@@ -77,9 +77,9 @@ autostart = true
 [node name="Avatar" type="TextureRect" parent="." unique_id=733587004]
 material = SubResource("ShaderMaterial_6p6t7")
 offset_left = 1.0
-offset_top = 546.0
+offset_top = 26.0
 offset_right = 1151.0
-offset_bottom = 648.0
+offset_bottom = 128.0
 texture = ExtResource("3_68uam")
 expand_mode = 1
 

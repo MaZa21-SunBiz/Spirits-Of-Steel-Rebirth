@@ -17,6 +17,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 	"industry": topbar.get_node("Industry/HBoxContainer/label_industry"),
 	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
 	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
+	"world_tension": topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/label_tension"),
 }
 @onready var notif_box: HBoxContainer = $Notifications
 
@@ -492,12 +493,14 @@ func update_topbar_stats() -> void:
 	stats_labels.money.text = format_number(CountryManager.player_country.money)
 	stats_labels.industry.text = str(CountryManager.player_country.factories_amount)
 	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
+	stats_labels.world_tension.text = str(round(MapManager.world_tension * 100)) + "%"
 	
 	_update_notifications()
 
 
 func _on_hour_passed() -> void:
 	update_topbar_stats()
+	update_division_menu()
 	if is_open:
 		_update_context_actions_visuals()
 		update_economy_menu()
@@ -577,9 +580,7 @@ func _declare_war():
 	for puppet in selected_country.puppets:
 		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[ puppet ])
 
-	GameState.game_ui.military_access_label.text = (
-		"Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No")
-	)
+	# GameState.game_ui.military_access_label.text = ( "Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No"))
 
 	open_menu(Context.ENEMY, Category.GENERAL)
 

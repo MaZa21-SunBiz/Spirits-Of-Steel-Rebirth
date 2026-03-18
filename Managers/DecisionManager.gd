@@ -160,7 +160,6 @@ func _finalize_decision(country: CountryData, id: String):
 				return
 
 func _apply_reward(country: CountryData, action):
-	print(action)
 	InterpreterManager.get_function(action, country)
 
 # --- HELPERS ---
@@ -182,8 +181,15 @@ func is_country_busy(country: CountryData) -> bool:
 func has_available_decisions(country: CountryData) -> bool:
 	var categories = get_country_categories(country.country_name)
 	for cat in categories.keys():
+		var choices = []
 		var decisions = categories[cat]
 		for i in range(decisions.size()):
 			if can_take_decision(country, cat, i):
-				return true
+				if country.is_player:
+					return true
+				else:
+					choices.append([country, cat, i])
+		var choice = choices.pick_random()
+		if choice:
+			start_decision(choice[0], choice[1], choice[2])
 	return false

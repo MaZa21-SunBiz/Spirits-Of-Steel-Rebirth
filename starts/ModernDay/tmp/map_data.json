@@ -539,7 +539,7 @@
 			"money": 72438393.3070154,
 			"name": "United_states",
 			"political_power": 524.439999999994,
-			"puppets": [],
+			"puppets": ["Israel"],
 			"stability": 1.0,
 			"war_support": 1.0
 		},
@@ -4117,7 +4117,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,
@@ -85781,7 +85781,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,
@@ -86148,7 +86148,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Ukraine",
+			"polity": "Russia",
 			"populations": [
 				{
 					"amount": 991892,

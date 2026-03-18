@@ -21,6 +21,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 		var load_map_data = func():
 			var start_folder = mapdata_path.get_base_dir() + "/"
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func():
+				GameState.current_start = a_text
 				PlansManager.load_plans_from_path(start_folder + "plans.json")
 				DecisionManager.load_decisions_from_path(start_folder + "decisions/")
 				EventManager.load_super_events(start_folder + "superevents.json")

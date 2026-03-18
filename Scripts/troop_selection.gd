@@ -180,6 +180,11 @@ func _sample_province_under_mouse() -> void:
 	if pid <= 0:
 		return
 
+	# Check for military access
+	var prov = MapManager.province_objects.get(pid)
+	if not prov or not CountryManager.player_country.allowedCountries.has(prov.GetFunctionalOwner()):
+		return
+
 	# Don't add duplicate consecutive provinces
 	if right_path.size() > 0 and right_path[-1]["pid"] == pid:
 		return

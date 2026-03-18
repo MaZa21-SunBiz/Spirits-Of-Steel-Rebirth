@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
+[ext_resource type="Script" uid="uid://cxtx0rygv0x2i" path="res://Scripts/UI/input_division.gd" id="21_w7nfq"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="25_pvldk"]
@@ -479,6 +480,7 @@ theme = ExtResource("13_sdmnd")
 min_value = 0.999999999999968
 max_value = 999.999999999968
 value = 0.999999999999968
+script = ExtResource("21_w7nfq")
 
 [node name="Cost" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=693475866]
 layout_mode = 2
@@ -1821,7 +1823,7 @@ visible = false
 material = ExtResource("16_lpwmk")
 offset_left = 356.0
 offset_top = 36.0
-offset_right = 822.0
+offset_right = 1152.0
 offset_bottom = 64.0
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]

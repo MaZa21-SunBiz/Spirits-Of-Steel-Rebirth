@@ -37,11 +37,15 @@ var unique_regions = {} # NOTE(soi): eh
 
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
-
+var world_tension: float = 0.1 # Global tension level (0.1 to 1.0)
 
 var all_cities = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
+
+
+func increase_world_tension(amount: float) -> void:
+	world_tension = clamp(world_tension + amount, 0.1, 1.0)
 const CACHE_FOLDER = "res://map_data/"
 
 @export var region_texture: Texture2D

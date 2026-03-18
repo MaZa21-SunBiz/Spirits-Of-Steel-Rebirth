@@ -183,7 +183,7 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 	var t := Transform2D(0, Vector2(_current_inv_zoom, _current_inv_zoom), 0, pos)
 	draw_set_transform_matrix(t)
 	
-	var top_left = Vector2(-(LAYOUT.flag_width + LAYOUT.min_text_width) * 0.5, -LAYOUT.flag_height * 0.5)
+	var top_left = Vector2(- (LAYOUT.flag_width + LAYOUT.min_text_width) * 0.5, -LAYOUT.flag_height * 0.5)
 
 	# Draw Text (Right side)
 	var label = str(troop.divisions_count)
@@ -195,29 +195,29 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 
 	draw_texture_rect(
 		TroopManager.get_flag(
-			troop.country_name, 
+			troop.country_name,
 			troop.country_obj.ideology_name if troop.country_obj else ""
-		), 
+		),
 		Rect2(
-			top_left, 
+			top_left,
 			Vector2(
-				LAYOUT.flag_width, 
+				LAYOUT.flag_width,
 				LAYOUT.flag_height
 			)
-		).grow(-1.0), 
+		).grow(-1.0),
 		false
 	)
 
 	draw_string(
-		_font, 
+		_font,
 		Vector2(
-			top_left.x + LAYOUT.flag_width + (LAYOUT.min_text_width - text_size.x) * 0.5, 
+			top_left.x + LAYOUT.flag_width + (LAYOUT.min_text_width - text_size.x) * 0.5,
 			text_size.y * 0.3
-		), 
-		label, 
-		HORIZONTAL_ALIGNMENT_LEFT, 
-		-1, 
-		font_size, 
+		),
+		label,
+		HORIZONTAL_ALIGNMENT_LEFT,
+		-1,
+		font_size,
 		COLORS.text
 	)
 
@@ -241,25 +241,41 @@ func _draw_selection_box() -> void:
 	if not TroopManager.troop_selection.dragging:
 		return
 	var ts = TroopManager.troop_selection
-	var rect = Rect2(ts.drag_start, ts.drag_end - ts.drag_start).abs()
-	draw_rect(rect, Color(1, 1, 1, 0.3), true)
-	draw_rect(rect, Color(1, 1, 1, 1), false, 1.0)
+	if ts.drag_start != ts.drag_end:
+		var rect = Rect2(ts.drag_start, ts.drag_end - ts.drag_start).abs()
+		draw_rect(rect, Color(1, 1, 1, 0.3), true)
+		draw_rect(rect, Color(1, 1, 1, 1), false, 1.0)
 
 
 func _draw_path_preview() -> void:
 	if not TroopManager.troop_selection.right_dragging:
 		return
 	var path = TroopManager.troop_selection.right_path
+	var max_len = TroopManager.troop_selection.max_path_length
+	
+	if path.size() < 2:
+		if path.size() == 1:
+			draw_circle(path[0]["map_pos"] + map_sprite.position, 2.0, COLORS.path_active if max_len > 0 else COLORS.path_inactive)
+		return
+
+	var active_points: PackedVector2Array = []
+	var inactive_points: PackedVector2Array = []
+	
 	for i in range(path.size()):
-		draw_circle(
-			path[i]["map_pos"] + map_sprite.position, 
-			1.0, 
-			(
-				COLORS.path_active
-				if i < TroopManager.troop_selection.max_path_length
-				else COLORS.path_inactive
-			)
-		)
+		var p = path[i]["map_pos"] + map_sprite.position
+		if i <= max_len:
+			active_points.append(p)
+			# The connection point between active and inactive needs to be in both
+			if i == max_len and i < path.size() - 1:
+				inactive_points.append(p)
+		else:
+			inactive_points.append(p)
+
+	if active_points.size() >= 2:
+		draw_polyline(active_points, COLORS.path_active, 1.5)
+	
+	if inactive_points.size() >= 2:
+		draw_polyline(inactive_points, COLORS.path_inactive, 1.5)
 
 
 func _draw_active_movements() -> void:

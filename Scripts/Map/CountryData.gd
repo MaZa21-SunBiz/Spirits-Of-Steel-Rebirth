@@ -16,6 +16,7 @@ var country_color: Color
 var is_player: bool = false
 var is_puppet: bool = false
 var is_exiled: bool = false
+var ai_controller: CountryAI = null
 
 var relations: Dictionary = {}
 
@@ -95,9 +96,14 @@ class ReadyTroop:
 
 #endregion
 
+func setup_ai():
+	if not is_player:
+		ai_controller = CountryAI.new(self)
 
 #region --- Lifecycle ---
-#func _init(p_country_name: String = "") -> void:
+
+func _init() -> void:
+# NOTE(soi): why was this commented out?
 #	if p_country_name != "":
 #		country_name = p_country_name
 #	if _is_loading:
@@ -110,6 +116,7 @@ class ReadyTroop:
 #	var manpower_used = CountryManager.get_country_used_manpower(self)
 #	manpower = int((total_population * military_size_ratio) - manpower_used)
 #	_setup_starting_army()
+	setup_ai()
 
 
 func ToDict() -> Dictionary:
@@ -168,9 +175,9 @@ func process_hour() -> void:
 
 	update_manpower_pool()
 	_process_reinforcements()
+
 	if not is_player:
-		CountryAIManager.ai_tick(self)
-		pass
+		ai_controller.think_hour()
 
 
 func process_day() -> void:
@@ -189,7 +196,7 @@ func process_day() -> void:
 	_process_training()
 	DecisionManager.process_country_day(self)
 	if not is_player:
-		pass
+		ai_controller.think_day()
 
 
 func _refresh_economic_stats() -> void:
