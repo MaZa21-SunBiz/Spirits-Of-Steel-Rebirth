@@ -15,7 +15,9 @@
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="13_sdmnd"]
 [ext_resource type="Texture2D" uid="uid://byixjd4xhidnp" path="res://assets/icons/plus_icon.svg" id="13_ubr8q"]
 [ext_resource type="Texture2D" uid="uid://ddy7law3og0nb" path="res://assets/icons/minus_icon.svg" id="14_pvldk"]
+[ext_resource type="Texture2D" uid="uid://cfcs8yypqofyp" path="res://assets/icons/merge_icon.png" id="15_bfmcl"]
 [ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="15_yp111"]
+[ext_resource type="Texture2D" uid="uid://cbnb2bc0uek4x" path="res://assets/icons/plan.svg" id="16_1nbba"]
 [ext_resource type="Theme" uid="uid://6wluupp1lmut" path="res://tab_button_theme.tres" id="16_6c76w"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
@@ -61,7 +63,20 @@ content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0.20990813, 0.20990813, 0.20990801, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 shadow_color = Color(0, 0, 0, 0.35686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfmcl"]
+bg_color = Color(0.35906905, 0.35906908, 0.35906896, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_pvldk"]
 color = Color(1, 1, 1, 1)
@@ -79,8 +94,9 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
 script = ExtResource("1_rp7y5")
+military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
 layout_mode = 3
@@ -326,12 +342,40 @@ icon = ExtResource("13_0e43j")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Music2" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1779393988]
+[node name="GameSpeedControl2" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=462928643]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Next" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2" unique_id=1021096501]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Increase game speed"
+focus_mode = 0
+icon = ExtResource("15_bfmcl")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Pause" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2" unique_id=2109854423]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Decrease game speed"
+focus_mode = 0
+icon = ExtResource("16_1nbba")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1606167960]
+layout_mode = 2
+
+[node name="Next" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1779393988]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 tooltip_text = "Radio"
 focus_mode = 0
-theme_override_constants/icon_max_width = 900
+theme_override_constants/icon_max_width = 9
 text = ">"
 icon_alignment = 1
 expand_icon = true
@@ -559,6 +603,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1476466952]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -607,6 +652,11 @@ texture = ExtResource("29_anvjc")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=825848418]
+layout_mode = 2
+text = "Military Access: No"
+horizontal_alignment = 1
+
 [node name="Context" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1596917807]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
@@ -641,6 +691,7 @@ metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=324260209]
 material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
 
@@ -662,6 +713,7 @@ vertical_alignment = 1
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=1525396862]
@@ -678,6 +730,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfmcl")
 text = "Manage Country"
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1961953376]
@@ -685,6 +738,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfmcl")
 text = "Research"
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1788664696]
@@ -692,6 +746,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfmcl")
 text = "Decisions"
 
 [node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=779262759]
@@ -699,6 +754,7 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfmcl")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
@@ -710,6 +766,7 @@ metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=319074674]
 material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
 
@@ -731,6 +788,7 @@ vertical_alignment = 1
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=1353097113]
@@ -746,6 +804,7 @@ size_flags_vertical = 3
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 tooltip_text = "peepee poopoo"
+focus_mode = 0
 theme = ExtResource("13_sdmnd")
 alignment = 1
 selected = 0
@@ -777,6 +836,7 @@ metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=1501629434]
 material = ExtResource("16_lpwmk")
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lpwmk")
 
@@ -798,6 +858,7 @@ vertical_alignment = 1
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 texture = ExtResource("8_qum3k")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=608373696]
@@ -1774,7 +1835,8 @@ offset_right = 822.0
 offset_bottom = 64.0
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
-[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music2" to="." method="_on_next_song_pressed"]
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
+[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/VBoxContainer/Next" to="." method="_on_next_song_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="button_up" from="Control/MilitaryExtraPanel/VBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]

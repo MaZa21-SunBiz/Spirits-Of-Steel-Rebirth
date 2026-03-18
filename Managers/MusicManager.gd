@@ -210,3 +210,6 @@ func set_music_volume(volume_linear: float):
 func set_sfx_volume(volume_linear: float):
 	for p in sfx_players:
 		p.volume_db = linear_to_db(volume_linear)
+		
+func _toggle_pause() -> void:
+	music_player.playing = !music_player.playing

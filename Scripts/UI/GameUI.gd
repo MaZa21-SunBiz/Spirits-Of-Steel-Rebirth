@@ -931,6 +931,9 @@ func update_cultures() -> void:
 
 func _on_next_song_pressed() -> void:
 	MusicManager._on_music_finished()
+	
+func _on_pause_pressed() -> void:
+	MusicManager._toggle_pause()
 
 func add_notif(type: String, tooltip: String):
 	if all_notifs.has(type):

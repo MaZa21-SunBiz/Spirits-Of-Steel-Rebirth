@@ -19,18 +19,18 @@ func save_factions() -> Array:
 func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 	factions[a_name] = FactionData.FromValues(a_name, a_color, [FactionMember.FromValues(a_leader, "Leader")])
 	CountryManager.get_country(a_leader).factions.append(a_name)
-	print(factions)
+	#print(factions)
 
 
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 	for faction in inviter.factions:
-		print(faction)
+		#print(faction)
 		if factions[faction].members[factions[faction].members.find_custom(
 			func(a_faction): return a_faction.polity == inviter.country_name
 			)].status == "Leader":
 			factions[faction].members.append(FactionMember.FromValues(invitee.country_name, "Member"))
 			invitee.factions.append_array(inviter.factions)
-	print(factions)
+	#print(factions)
 
 
 func in_faction(inviter: CountryData, invitee: CountryData) -> bool:
@@ -56,7 +56,7 @@ func kick_faction(kicker: CountryData, kickee: CountryData) -> void:
 							break
 				faction_data.members.remove_at(kickee_index)
 				kickee.factions.erase(faction)
-	print(factions)
+	#print(factions)
 
 
 func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
@@ -72,7 +72,7 @@ func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
 			if member_country:
 				member_country.factions.erase(faction_name)
 		factions.erase(faction_name)
-	print(factions)
+	#print(factions)
 
 
 func get_faction_member(country_name: String) -> FactionMember:
