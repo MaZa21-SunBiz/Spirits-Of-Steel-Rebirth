@@ -51,6 +51,7 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 
 	# 2. Handle the scene we are ENTERING
 	var next_scene: Node
+	var progress = []
 	
 	if scene_type == Type.WORLD and _world_cache:
 		next_scene = _world_cache
@@ -59,7 +60,6 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 		var path = SCENE_MAP.get(scene_type)
 		ResourceLoader.load_threaded_request(path)
 		
-		var progress = []
 		while true:
 			var status = ResourceLoader.load_threaded_get_status(path, progress)
 			if status == ResourceLoader.THREAD_LOAD_LOADED:
@@ -84,7 +84,7 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 
 		while bongo.is_alive():
 			_loading_screen.set_progress(progress[0])
-			
+
 		bongo.wait_to_finish()
 
 	# 3. Add to tree
