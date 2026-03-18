@@ -176,12 +176,12 @@ func get_days_left(country: CountryData, id: String) -> int:
 
 # Check if the country has ANY active timers
 func is_country_busy(country: CountryData) -> bool:
-	return not active_decisions.get(country.country_name, []).is_empty()
+	return !active_decisions.get(country.country_name, []).is_empty()
 
 func has_available_decisions(country: CountryData) -> bool:
-	var categories = get_country_categories(country.country_name)
+	var categories: Dictionary = get_country_categories(country.country_name)
+	var choices = []
 	for cat in categories.keys():
-		var choices = []
 		var decisions = categories[cat]
 		for i in range(decisions.size()):
 			if can_take_decision(country, cat, i):
@@ -189,7 +189,9 @@ func has_available_decisions(country: CountryData) -> bool:
 					return true
 				else:
 					choices.append([country, cat, i])
-		var choice = choices.pick_random()
-		if choice:
-			start_decision(choice[0], choice[1], choice[2])
+	if choices.size() == 0:
+		print("No available decisions for %s")
+	var choice = choices.pick_random()
+	if choice:
+		start_decision(choice[0], choice[1], choice[2])
 	return false

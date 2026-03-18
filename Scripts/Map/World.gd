@@ -71,20 +71,23 @@ func _ready() -> void:
 	# @warning_ignore("narrowing_conversion")
 	var type_img := Image.create_empty(map_width, map_height, false, Image.FORMAT_L8)
 	var uncertain_pixels := []
+	var x: int
+	var y: int
 	# --- PASS 1: Direct Mapping ---
-	for y in range(map_height):
-		for x in range(map_width):
-			var pid = MapManager._get_pid_fast(x, y)
-			var province = MapManager.province_objects.get(pid)
+	for i in range(map_height * map_width):
+		x = i % map_width
+		@warning_ignore("integer_division")
+		y = i / map_width
+		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
 
-			if province:
-				if province.type == Province.SEA: # SEA
-					type_img.set_pixel(x, y, Color(0, 0, 0))
-				else: # LAND
-					type_img.set_pixel(x, y, Color(1, 1, 1))
-			else:
-				# It's a border (PID 1 or null). Mark as uncertain for now.
-				uncertain_pixels.append(Vector2i(x, y))
+		if province:
+			if province.type == Province.SEA: # SEA
+				type_img.set_pixel(x, y, Color(0, 0, 0))
+			else: # LAND
+				type_img.set_pixel(x, y, Color(1, 1, 1))
+		else:
+			# It's a border (PID 1 or null). Mark as uncertain for now.
+			uncertain_pixels.append(Vector2i(x, y))
 
 	# --- PASS 2: Intelligent Flood-Check ---
 	for pos in uncertain_pixels:

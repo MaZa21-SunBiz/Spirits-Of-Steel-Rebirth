@@ -2,6 +2,7 @@ extends Node
 
 signal player_country_changed
 var countries: Dictionary[String, CountryData] = {}
+var countryNames: PackedStringArray = []
 var player_country: CountryData
 
 var Releasables: Array[ReleasableData] = []
@@ -10,19 +11,24 @@ var Releasables: Array[ReleasableData] = []
 func _on_hour_passed() -> void:
 	#if GameState.is_loading_game:
 	#	return
+	#var timeStart = Time.get_unix_time_from_system()
+	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_hour(), countryNames.size()))
 
-	for c_name: String in countries:
-		countries[c_name].process_hour()
-		
+	#for c_name: String in countries:
+	#	countries[c_name].process_hour()
+	#print("Hour passing took %f" % (Time.get_unix_time_from_system() - timeStart))
 
 func _on_day_passed() -> void:
 	#if GameState.is_loading_game:
 	#	return
 
 	EconomyManager.process_economy_day()
-	for c_name: String in countries:
-		countries[c_name].process_day()
+	#var timeStart = Time.get_unix_time_from_system()
+	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_day(), countryNames.size()))
 	
+	#for c_name: String in countries:
+	#	countries[c_name].process_day()
+	#print("Day passing took %f" % (Time.get_unix_time_from_system() - timeStart))
 	EventManager.check_super_events()
 	
 
@@ -31,10 +37,15 @@ func initialize_countries(a_countriesData: Array) -> void:
 		print("CountryManager: Skipping initialization (loading save)")
 		return
 	countries.clear()
+	countryNames.clear()
+	
+	#var timeStart = Time.get_unix_time_from_system()
+	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): add_country(a_countriesData[a_index]), a_countriesData.size()))
+	
+	#for country: Dictionary in a_countriesData:
+	#	add_country(country)
+	#print("Adding Countries took %f" % (Time.get_unix_time_from_system() - timeStart))
 
-	for countryData: Dictionary in a_countriesData:
-		add_country(countryData)
-		
 	for country: CountryData in countries.values():
 		country.update_relations()
 		for puppeted: String in country.puppets:
@@ -44,7 +55,7 @@ func initialize_countries(a_countriesData: Array) -> void:
 
 func save_countries() -> Array:
 	var polities = []
-	for country in countries.values():
+	for country: CountryData in countries.values():
 		polities.append(country.ToDict())
 	return polities
 
@@ -68,8 +79,6 @@ func set_player_country(country_name: String) -> void:
 
 	if player_country:
 		player_country.is_player = false
-
-	if player_country:
 		player_country.setup_ai()
 	player_country = country
 	player_country.is_player = true
@@ -82,16 +91,14 @@ func set_player_country(country_name: String) -> void:
 func add_country(a_countryData: Dictionary) -> CountryData:
 	if a_countryData["name"] == "Sea": return
 	var tempName = a_countryData["name"]
-	var tempIdeology = Vector2(a_countryData["ideology"][0], a_countryData["ideology"][0])
-
+	
 	# 1. Check if it already exists
 	if countries.has(tempName):
 		push_warning("CountryManager: Country '%s' already exists!" % tempName)
 		return countries[tempName]
 
 	# 2. Check if the flag exists before proceeding
-	var flag = TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(tempIdeology))
-	if flag == null:
+	if TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(Vector2(a_countryData["ideology"][0], a_countryData["ideology"][0]))) == null:
 		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % tempName
 		push_error(err_msg)
 		return null
@@ -100,11 +107,12 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	var new_country: CountryData = CountryData.FromDict(a_countryData)
 	
 	# NOTE Z21: Relations should be based on political affinity and stuff
-	for existing_name in countries.keys():
-		new_country.set_relation_with(existing_name, 50)
-		countries[existing_name].set_relation_with(tempName, 50)
+	#for existing_name in countries.keys():
+	#	new_country.set_relation_with(existing_name, 50)
+	#	countries[existing_name].set_relation_with(tempName, 50)
 	
 	countries[tempName] = new_country
+	countryNames.append(tempName)
 	return new_country
 
 
@@ -112,7 +120,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 
 
 func get_country_population(country_name: String) -> int:
-	if not MapManager.country_to_provinces.has(country_name):
+	if !MapManager.country_to_provinces.has(country_name):
 		return 0
 	var total_pop: int = 0
 	for pid in MapManager.country_to_provinces[country_name]:
@@ -122,7 +130,7 @@ func get_country_population(country_name: String) -> int:
 
 
 func get_country_gdp(country_name: String) -> int:
-	if not MapManager.country_to_provinces.has(country_name):
+	if !MapManager.country_to_provinces.has(country_name):
 		return 0
 	var total_gdp: int = 0
 	for pid: int in MapManager.country_to_provinces[country_name]:
@@ -205,6 +213,7 @@ func cleanup_empty_countries() -> void:
 			MapManager.country_to_occupied_provinces.erase(c_name)
 			MapManager.country_to_owned_provinces.erase(c_name)
 			countries.erase(c_name)
+			countryNames.erase(c_name)
 
 func InformPuppet(puppeter: CountryData, puppetee: CountryData):
 	puppeter.allowedCountries.append(puppetee.country_name)

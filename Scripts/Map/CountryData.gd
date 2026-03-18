@@ -176,7 +176,7 @@ func process_hour() -> void:
 	update_manpower_pool()
 	_process_reinforcements()
 
-	if not is_player:
+	if !is_player:
 		ai_controller.think_hour()
 
 
@@ -187,7 +187,7 @@ func process_day() -> void:
 	#if ideology != Vector2(0, 0):
 	#	print(ideology)
 	var moveAmount: Vector2 = Vector2(0, 0)
-	for ideaTarget in driftTargets.values():
+	for ideaTarget: IdeologyDriftTarget in driftTargets.values():
 		moveAmount += ideology.direction_to(ideaTarget.finalPosition) * ideaTarget.driftAmount
 	ideology += moveAmount
 
@@ -195,7 +195,7 @@ func process_day() -> void:
 	_refresh_economic_stats()
 	_process_training()
 	DecisionManager.process_country_day(self)
-	if not is_player:
+	if !is_player:
 		ai_controller.think_day()
 
 
@@ -415,9 +415,7 @@ func _deploy_initial_force(divisions: Array[DivisionData]) -> void:
 
 
 func _process_reinforcements():
-	var all_my_troops = TroopManager.get_troops_for_country(country_name)
-
-	for troop in all_my_troops:
+	for troop in TroopManager.get_troops_for_country(country_name):
 		if troop.is_moving:
 			continue
 

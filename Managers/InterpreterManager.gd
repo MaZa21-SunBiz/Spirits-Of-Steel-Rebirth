@@ -1,7 +1,6 @@
 extends Node
 
 var heap: Dictionary = {}
-var _assign_re: RegEx = null
 const DUMMY_FUNC = {"func": "return", "args": [true]}
 
 func all(...args) -> bool:
@@ -17,7 +16,7 @@ func any(...args) -> bool:
 	return false
 
 func get_variable(variable):
-	if not variable is String:
+	if !variable is String:
 		return variable
 	# if CountryManager.countries.has(variable):
 	# 	return CountryManager.countries[variable]
@@ -138,15 +137,15 @@ func get_function(block, country: CountryData = null):
 		return last_result
 
 
-	if not block is Dictionary:
+	if !block is Dictionary:
 		push_error("Interpreter: block must be a Dictionary or Array.")
 		return null
 
 	var args: Array = block.get("args", []).duplicate()
-	for i in range(args.size()):
-		args[i] = get_variable(args[i])
-		if (args[i] is Dictionary and args[i].has("func")) or args[i] is Array:
-			args[i] = get_function(args[i], country)
+	for arg in args:
+		arg = get_variable(arg)
+		if (arg is Dictionary && arg.has("func")) || arg is Array:
+			arg = get_function(arg, country)
 	var evaled_args = args
 	var store_key: String = block.get("store", "")
 	var result = null
@@ -159,13 +158,13 @@ func get_function(block, country: CountryData = null):
 		# Comparison stuff
 		"and":
 			if evaled_args.size() >= 2:
-				result = evaled_args[0] and evaled_args[1]
+				result = evaled_args[0] && evaled_args[1]
 		"not":
 			if evaled_args.size() >= 2:
 				result = !evaled_args[0]
 		"or":
 			if evaled_args.size() >= 2:
-				result = evaled_args[0] or evaled_args[1]
+				result = evaled_args[0] || evaled_args[1]
 		"xor":
 			if evaled_args.size() >= 2:
 				result = evaled_args[0] ^ evaled_args[1]
@@ -240,8 +239,8 @@ func get_function(block, country: CountryData = null):
 			result = country.factories_amount
 		"declare_war":
 			if evaled_args.size() >= 2:
-				var attacker = CountryManager.countries[evaled_args[0]]
-				var defender = CountryManager.countries[evaled_args[1]]
+				var attacker: CountryData = CountryManager.countries[evaled_args[0]]
+				var defender: CountryData = CountryManager.countries[evaled_args[1]]
 				if attacker and defender:
 					WarManager.declare_war(attacker, defender)
 					result = true
@@ -264,24 +263,20 @@ func get_function(block, country: CountryData = null):
 				MapManager.annex_country(evaled_args[0], evaled_args[1])
 				result = true
 		"add_ideology_drift":
-			var country_obj = CountryManager.countries[evaled_args[0]]
+			var country_obj: CountryData = CountryManager.countries[evaled_args[0]]
 			country_obj.driftTargets[args[1]] = IdeologyDriftTarget.FromDict(args[2])
 			result = country_obj.driftTargets
 		"make_puppet":
 			if evaled_args.size() >= 2:
-				var puppeter = CountryManager.countries[evaled_args[0]]
-				var puppetee = CountryManager.countries[evaled_args[1]]
-				CountryManager.make_puppet(puppeter, puppetee)
+				CountryManager.make_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
 				result = true
 		"has_pids":
 			if evaled_args.size() >= 2:
-				var i = 1
+				var i: int = 1
 				var province_owner = evaled_args[0]
 				var all_owned = true
 				while i < evaled_args.size():
-					var pid = int(evaled_args[i])
-					var prov_obj = MapManager.province_objects[pid]
-					if province_owner != prov_obj.GetFunctionalOwner():
+					if province_owner != MapManager.province_objects[int(evaled_args[i])].GetFunctionalOwner():
 						all_owned = false
 						break
 					i += 1
@@ -295,7 +290,7 @@ func get_function(block, country: CountryData = null):
 				)
 			)
 		"event":
-			if evaled_args.size() > 0 and evaled_args[0] is Dictionary:
+			if evaled_args.size() > 0 && evaled_args[0] is Dictionary:
 				EventManager.show_alert(evaled_args[0])
 				result = true
 		"invite":

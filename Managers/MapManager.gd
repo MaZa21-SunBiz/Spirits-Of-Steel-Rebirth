@@ -64,7 +64,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 	MAP_HEIGHT = a_map.get_height()
 
 	id_map_image = Image.create(width, MAP_HEIGHT, false, Image.FORMAT_RGB8)
-	var next_id = 2
+	var next_id: int = 2
 
 	var mapImage = a_map.get_image()
 	($"../Main/MapContainer/CultureSprite" as Sprite2D).texture = a_map

@@ -577,8 +577,8 @@ func _declare_war():
 
 	if selected_country.owner:
 		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[selected_country.owner])
-	for puppet in selected_country.puppets:
-		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[ puppet ])
+	for puppet: String in selected_country.puppets:
+		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[puppet])
 
 	# GameState.game_ui.military_access_label.text = ( "Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No"))
 
@@ -964,7 +964,7 @@ func remove_notif(type: String):
 
 func _update_notifications():
 	#print(all_notifs)
-	var player = CountryManager.player_country
+	var player: CountryData = CountryManager.player_country
 	if !player:
 		return
 	

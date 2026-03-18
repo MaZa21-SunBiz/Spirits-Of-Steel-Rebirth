@@ -144,6 +144,7 @@ func m_OnDissolvePressed():
 		print("Deleting Puppet: %s" % puppet)
 		CountryManager.release_puppet(CountryManager.player_country, CountryManager.countries[puppet])
 	
+	CountryManager.countryNames.erase(CountryManager.player_country.country_name)
 	CountryManager.countries.erase(CountryManager.player_country.country_name)
 	
 	var game_ui = get_tree().root.find_child("ui_game", true, false)

@@ -270,7 +270,7 @@ func SetupFactionList() -> void:
 
 func SetupPolitiesList() -> void:
 	politiesItemList.clear()
-	for polity in CountryManager.countries.keys():
+	for polity in CountryManager.countryNames:
 		politiesItemList.add_item(polity)
 	politiesItemList.sort_items_by_text()
 
