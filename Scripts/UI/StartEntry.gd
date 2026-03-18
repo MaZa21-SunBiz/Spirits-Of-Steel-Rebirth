@@ -20,31 +20,31 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 		
 		var load_map_data = func():
 			var start_folder = mapdata_path.get_base_dir() + "/"
-			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: float):
+			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: Array):
 				GameState.current_start = a_text
-				a_percent = 0
+				a_percent[0] = 0
 				PlansManager.load_plans_from_path(start_folder + "plans.json")
-				a_percent = 0.06
+				a_percent[0] = 0.06
 				DecisionManager.load_decisions_from_path(start_folder + "decisions/")
-				a_percent = 0.12
+				a_percent[0] = 0.12
 				EventManager.load_super_events(start_folder + "superevents.json")
-				a_percent = 0.18
+				a_percent[0] = 0.18
 				TroopManager.set_custom_flag_path(start_folder + "flags/")
-				a_percent = 0.2
+				a_percent[0] = 0.2
 				
 				IdeologyManager.Initialize(map_data.get("ideologies", {}) as Dictionary)
-				a_percent = 0.3
+				a_percent[0] = 0.3
 				MapManager.load_country_data(load(start_folder + "regions.png"), map_data.get("provinces", {}) as Dictionary)
-				a_percent = 0.6
+				a_percent[0] = 0.6
 				CountryManager.initialize_countries(map_data.get("polities", []) as Array)
-				a_percent = 0.75
+				a_percent[0] = 0.75
 				MapManager.build_lookup_texture()
-				a_percent = 0.85
+				a_percent[0] = 0.85
 				FactionManager.Initialize(map_data.get("factions", []))
-				a_percent = 0.9
+				a_percent[0] = 0.9
 
 				Console.add_command_autocomplete_list("play_as", CountryManager.countryNames)
-				a_percent = 1.0
+				a_percent[0] = 1.0
 			)
 		button.pressed.connect(load_map_data)
 		

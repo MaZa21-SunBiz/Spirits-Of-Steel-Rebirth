@@ -80,7 +80,7 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 	# 2.5 Execute initialization callback if provided
 	if init_callback.is_valid():
 		var bongo: Thread = Thread.new()
-		bongo.start(init_callback.bind(progress[0]))
+		bongo.start(init_callback.bind(progress))
 
 		while bongo.is_alive():
 			_loading_screen.set_progress(progress[0])
