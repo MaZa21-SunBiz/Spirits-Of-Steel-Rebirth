@@ -5,141 +5,135 @@ const TICK_RATE_PEACE := 12  # Slower thinking in peace time
 const TICK_RATE_WAR := 2  # Think fast during war
 const SATURATION_IDEAL := 1.0  # Target: At least 1 division equivalent per province
 const SATURATION_MAX := 4.0  # Avoid overstacking; redistribute if exceeding
-const ATTACK_WEIGHT := 2.0  # Multiplier for provinces with enemy troops
-const DEFENSE_WEIGHT := 1.5  # Multiplier for defending own borders under threat
-const CITY_BONUS := 50.0  # Extra score for cities
 const DISTANCE_PENALTY := 0.1  # Reduce score per unit distance to discourage far moves
 const MIN_DIVISIONS_PER_SPLIT := 1  # Smallest split size
 const MAX_SPLITS_PER_TROOP := 10  # Limit splits to prevent micro-management overhead
 
 # --- AI DIPLOMACY/WAR LOGIC---
 const DECLARE_WAR_COOLDOWN_FRAMES := 600
-const MIN_STRENGTH_RATIO := 1.1
 const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
 const MAX_WAR_DECLARATIONS_PER_TICK := 1
 
-const WAR_PROBABILITY_BASE := 0.1
-const MIN_ECONOMY_FOR_WAR := 15000.0
-const TENSION_AGGRESSION_FACTOR := 2.0
 
 var country: CountryData
-var personality := {"economy": 1.0, "military": 1.0, "aggression": 1.0}
+var personality: Dictionary[String, Variant]= {
+	"economy": {
+		"trade": 1.0,
+		"industry_amount_factor": 0.05,
+		"industry": 1.0,
+		"surplus": 1.0
+	},
+	"military": {
+		"training_factor": 1.0,
+		"max_economic_ratio": 0.7,
+	},
+	"war": {
+		"probability": {
+			"base": 0.1,
+			"tension_factor": 2.0,
+		},
+		"score": {
+			"strength": 2.0,
+			"money_factor": 0.00002,
+			"max_cities": 3,
+			"cities": 0.5
+		},
+		"combat": {
+			"attack_weight": 2.0,
+			"defense_weight": 1.5,
+			"city_bonus": 50.0,
+		},
+		"min_strength_ratio": 1.1,
+		"min_economy": 15000,
+	},
+	"aggression": 1.0,
+}
 var _last_declare_frame: int = -999999
 
 
-func _init(_country: CountryData):
+func _init(_country: CountryData) -> void:
 	country = _country
 
 
-func think_hour():
-	var tick_rate = TICK_RATE_WAR if _is_at_war() else TICK_RATE_PEACE
-	if Engine.get_frames_drawn() % tick_rate != 0:
+func think_hour() -> void:
+	if Engine.get_frames_drawn() % (TICK_RATE_WAR if _is_at_war() else TICK_RATE_PEACE) != 0:
 		return
 
-	var actions = [
+	_execute_best([
 		{"score": _score_frontline(), "action": _execute_frontline}
-	]
-	_execute_best(actions)
+	])
 
 
-func think_day():
-	var actions = [
+func think_day() -> void:
+	_execute_best([
 		{"score": _score_factory(), "action": _execute_factory},
 		{"score": _score_train(), "action": _execute_train},
 		{"score": _score_war(), "action": _execute_war}
-	]
-	_execute_best(actions)
+	])
 
 
-func _execute_best(actions: Array):
-	actions.sort_custom(func(a, b): return a.score > b.score)
+func _execute_best(actions: Array) -> void:
 	if actions.size() == 0:
 		return
 	
-	# We can execute multiple actions if their score is high enough, 
-	# but for now let's stick to the best one that's > 0
+	actions.sort_custom(func(a, b): return a.score > b.score)
+	
 	if actions[0].score > 0:
 		actions[0].action.call()
 
 
 func _score_factory() -> float:
-	# Prefer building factories if we have money and low factory count
-	if country.money < 1000: return 0.0
-	var score = 1.0 - (float(country.factories_amount) / 20.0)
-	return max(0.1, score) * personality.economy
+	return 0 if country.money < 1000 else max(0.1, 1.0 - (float(country.factories_amount) * personality["economy"]["industry_amount_factor"])) * personality["economy"]["industry"]
 
 
 func _score_train() -> float:
-	# Train more if manpower is high and we have money
-	if country.money < 500 or country.manpower < 1000: return 0.0
-	return 1.0 * personality.military
+	return 0 if country.money < 500 || country.manpower < 1000 else personality["military"]["training_factor"]
 
 
 func _score_war() -> float:
-	# War urgency based on tension and borders
-	var tension = MapManager.world_tension
-	return tension * personality.aggression
+	return 0 if country.is_puppet else MapManager.world_tension * personality["aggression"]
 
 
 func _score_frontline() -> float:
 	return 1.0 # Always high priority to manage frontline
 
 
-func _execute_factory():
+func _execute_factory() -> void:
 	pass
 
 
-func _execute_train():
+func _execute_train() -> void:
 	# Improved: Recruit based on current needs (e.g., more if at war)
 	var template = DivisionData.TEMPLATES["infantry"]  # Could vary templates based on tech/manpower
-	var cost_per = template["cost"]
-	var mp_per = template["manpower"]
-	var max_affordable = mini(int(country.money / cost_per), int(country.manpower / mp_per))
+	var max_affordable = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
 	if max_affordable < 1:
 		return
-
-	var target_recruit = clampi(max_affordable, 1, 10)
-	if _is_at_war():
-		target_recruit *= 2  # Recruit more aggressively in war
-	target_recruit = mini(target_recruit, max_affordable)
-
-	country.train_troops(target_recruit, "infantry")
+	
+	country.train_troops(clampi(max_affordable, 1, 20 if _is_at_war() else 10), "infantry")
 
 
-func _execute_war():
-	if country.is_puppet: return
+func _execute_war() -> void:
 	# 1. THE STOCHASTIC GATE (Randomness + World Tension)
 	# If tension is 0.1, chance is roughly 10%. If tension is 1.0, it's 100%.
-	var current_tension = MapManager.world_tension
-	var roll = randf()
 
 	# Only proceed if we pass the probability check
-	if roll > (current_tension * TENSION_AGGRESSION_FACTOR):
-		if roll > WAR_PROBABILITY_BASE:  # Even at 0 tension, a small base chance
-			return
+	if randf() > (personality["war"]["probability"]["base"] + MapManager.world_tension * personality["war"]["probability"]["tension_factor"]):
+		return
 
 	# 2. COOLDOWNS & OVEREXTENSION (Existing)
 	var frame_now = Engine.get_frames_drawn()
-	if frame_now - _last_declare_frame < DECLARE_WAR_COOLDOWN_FRAMES:
-		return
-
-	if WarManager.get_enemies_of(country.country_name).size() >= MAX_PARALLEL_WARS:
-		return
-
-	# 3. ECONOMIC PRUDENCE
-	# AI won't start a war if they can't afford to sustain it
-	if country.money < MIN_ECONOMY_FOR_WAR:
+	if frame_now - _last_declare_frame < DECLARE_WAR_COOLDOWN_FRAMES || WarManager.get_enemies_of(country.country_name).size() >= MAX_PARALLEL_WARS || country.money < personality["war"]["min_economy"]:
 		return
 
 	var candidates = _get_neighbor_countries().filter(
 		func(enemy):
 			return (
 				!FactionManager.in_faction(CountryManager.countries[enemy], country)
-				&& !CountryManager.countries[enemy].is_puppet
+				#&& !CountryManager.countries[enemy].is_puppet
 			)
 	)
-	print(candidates)
+	#print(candidates)
 	if candidates.is_empty():
 		return
 
@@ -154,33 +148,31 @@ func _execute_war():
 		puppeter.append_array(CountryManager.countries[country.owner].puppets)
 
 	for target_name in candidates:
-		if WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
+		var target_data = CountryManager.countries[target_name]
+		if _same_faction(country.factions, target_data.factions) || WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
 			continue
 
 		# 4. STRENGTH & DISTANCE ANALYSIS
 		var ratio = _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))
 
-		if ratio < MIN_STRENGTH_RATIO:
+		if ratio < personality["war"]["min_strength_ratio"]:
 			continue
 
 		# 5. DYNAMIC SCORING
-		var score = (ratio - 1.0) * 2.0
+		var score = (ratio - 1.0) * personality["war"]["score"]["strength"]  # Strength advantage
 
 		# Economic Gain: Is this neighbor rich? (GDP check)
 		# Assuming you have access to target's money or GDP
-		var target_data = CountryManager.get_country(target_name)
-		if target_data:
-			if _same_faction(country.factions, target_data.factions): continue
-			score += (target_data.money / 50000.0)  # Prefer rich targets
+		score += target_data.money * personality["war"]["score"]["money_factor"]  # Prefer rich targets
 
 		# Target Cities (Existing)
-		score += min(MapManager.get_cities_province_country(target_name).size(), 3) * 0.5
+		score += min(MapManager.get_cities_province_country(target_name).size(), personality["war"]["score"]["max_cities"]) * personality["war"]["score"]["cities"]  # More cities = more score, capped at 3 for balance
 
 		# 6. FINAL THRESHOLD
 		# We add a bit of randomness to the score so it's not always the same neighbor
 		score += randf_range(-0.5, 0.5)
 
-		if score > best_score and score > WAR_SCORE_THRESHOLD:
+		if score > best_score && score > WAR_SCORE_THRESHOLD:
 			best_score = score
 			best_target = target_name
 
@@ -190,13 +182,11 @@ func _execute_war():
 
 
 func _execute_war_declaration(target_name: String, frame: int):
-	var target_data = CountryManager.get_country(target_name)
-	if target_data:
-		WarManager.declare_war(country, target_data)
-		# Increasing tension on every war slows down/speeds up the global state
-		MapManager.increase_world_tension(0.02)
+	WarManager.declare_war(country, CountryManager.countries[target_name])
+	# Increasing tension on every war slows down/speeds up the global state
+	MapManager.increase_world_tension(0.02)
 
-		_last_declare_frame = frame
+	_last_declare_frame = frame
 
 
 func _execute_frontline():
@@ -205,8 +195,7 @@ func _execute_frontline():
 
 
 func _manage_frontline_logic() -> void:
-	var my_troops = TroopManager.get_troops_for_country(country.country_name)
-	var idle_troops = my_troops.filter(func(t): return not t.is_moving)
+	var idle_troops = TroopManager.get_troops_for_country(country.country_name).filter(func(t): return not t.is_moving)
 	if idle_troops.is_empty():
 		return
 
@@ -231,7 +220,7 @@ func _manage_frontline_logic() -> void:
 				return (a.score / (troop_pos.distance_to(MapManager.province_centers[a.id]) * 0.01 + 1.0)) > (b.score / (troop_pos.distance_to(MapManager.province_centers[b.id]) * 0.01 + 1.0))
 		)
 
-		var divisions_left = troop.divisions_count
+		var divisions_left: int = troop.divisions_count
 
 		for target in targets:
 			if divisions_left <= 0:
@@ -242,16 +231,12 @@ func _manage_frontline_logic() -> void:
 			# DETERMINISTIC SPLITTING:
 			# If target is empty, only send 1-2 divisions to "capture" it.
 			# If target has enemies, send enough to beat them (or everything left).
-			var needed = SATURATION_IDEAL
-			if target.enemy_strength > 0:
-				needed = target.enemy_strength * 1.2  # Bring 20% more than them
-
-			var amount_to_send = clamp(needed, 1, divisions_left)
+			var amount_to_send: int = clamp(target.enemy_strength * 1.2 if target.enemy_strength > 0 else SATURATION_IDEAL, 1, divisions_left)
 
 			# Only split if it's worth the micro-overhead
 			if (
 				amount_to_send < divisions_left
-				and (divisions_left - amount_to_send) < MIN_DIVISIONS_PER_SPLIT
+				&& (divisions_left - amount_to_send) < MIN_DIVISIONS_PER_SPLIT
 			):
 				amount_to_send = divisions_left
 
@@ -262,7 +247,7 @@ func _manage_frontline_logic() -> void:
 			target.virtual_strength += amount_to_send
 			divisions_left -= amount_to_send
 
-	if not move_payload.is_empty():
+	if !move_payload.is_empty():
 		TroopManager.command_move_assigned(move_payload)
 
 
@@ -274,24 +259,19 @@ func _analyze_frontline_targets(enemies: Array) -> Array:
 		var border_pids = MapManager.get_provinces_bordering_enemy(country.country_name, enemy_name)
 
 		for my_pid in border_pids:
-			var neighbors = MapManager.adjacency_list.get(my_pid, [])
-			for n_id in neighbors:
+			for n_id in MapManager.adjacency_list.get(my_pid, []):
 				# Check if it's enemy territory
-				if MapManager.province_objects[n_id].GetFunctionalOwner() == enemy_name and not seen.has(n_id):
+				if MapManager.province_objects[n_id].GetFunctionalOwner() == enemy_name && !seen.has(n_id):
 					seen[n_id] = true
 					var e_str = TroopManager.get_province_strength(n_id, enemy_name)
 					var score = 10.0
 
-					# PRIORITY 1: Enemy Armies (Seek and Destroy)
-					if e_str > 0:
-						score += (e_str * ATTACK_WEIGHT)
-
-					# PRIORITY 2: Cities (Victory Points)
 					if n_id in MapManager.all_cities:
-						score += CITY_BONUS
+						score += personality["war"]["combat"]["city_bonus"]
 
-					# PRIORITY 3: Opportunity (Unoccupied Provinces)
-					if e_str == 0:
+					if e_str > 0:
+						score += (e_str * personality["war"]["combat"]["attack_weight"])
+					else:
 						score += 15.0  # High priority to flip "free" land fast
 
 					targets.append(
@@ -306,22 +286,17 @@ func _analyze_frontline_targets(enemies: Array) -> Array:
 					# --- BLITZKRIEG LOGIC ---
 					# Look at the neighbor's neighbors (2 tiles deep)
 					# If an enemy city is just behind the front line and empty, go for it!
-					var deep_neighbors = MapManager.adjacency_list.get(n_id, [])
-					for dn_id in deep_neighbors:
-						if (
-							MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name
-							and not seen.has(dn_id)
-						):
-							if dn_id in MapManager.all_cities:
-								targets.append(
-									{
-										"id": dn_id,
-										"virtual_strength": 0.0,
-										"enemy_strength":
-										TroopManager.get_province_strength(dn_id, enemy_name),
-										"score": CITY_BONUS * 0.8  # Slightly lower priority than immediate targets
-									}
-								)
+					for dn_id in MapManager.adjacency_list.get(n_id, []):
+						if (MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name && !seen.has(dn_id) && dn_id in MapManager.all_cities):
+							targets.append(
+								{
+									"id": dn_id,
+									"virtual_strength": 0.0,
+									"enemy_strength":
+									TroopManager.get_province_strength(dn_id, enemy_name),
+									"score": personality["war"]["combat"]["city_bonus"] * 0.8
+								}
+							)
 	return targets
 
 
@@ -329,17 +304,15 @@ func _handle_peace_movement(idle_troops: Array) -> void:
 	var hubs = _get_peace_hubs()
 	var move_payload = []
 	for troop in idle_troops:
-		if not hubs.has(troop.province_id):
+		if !hubs.has(troop.province_id):
 			# Choose closest hub to avoid unnecessary long moves
-			var troop_pos = MapManager.province_centers[troop.province_id]
+			var troop_pos: Vector2 = MapManager.province_centers[troop.province_id]
 			hubs.sort_custom(
 				func(a, b):
-					var dist_a = troop_pos.distance_to(MapManager.province_centers[a])
-					var dist_b = troop_pos.distance_to(MapManager.province_centers[b])
-					return dist_a < dist_b
+					return troop_pos.distance_squared_to(MapManager.province_centers[a]) < troop_pos.distance_squared_to(MapManager.province_centers[b])
 			)
 			move_payload.append({"troop": troop, "province_id": hubs[0]})
-	if not move_payload.is_empty():
+	if !move_payload.is_empty():
 		TroopManager.command_move_assigned(move_payload)
 
 
@@ -355,12 +328,10 @@ func _handle_deployment() -> void:
 	# We duplicate to safely erase during iteration
 	for troop_data in country.ready_troops.duplicate():
 		# Pick a random city from the full list to ensure spreading
-		var deploy_id = cities.pick_random()
-		
 		TroopManager.deploy_specific_divisions(
 			country.country_name, 
 			troop_data.stored_divisions, 
-			deploy_id
+			cities.pick_random()
 		)
 		
 		country.ready_troops.erase(troop_data)
@@ -369,30 +340,24 @@ func _handle_deployment() -> void:
 # --- UTILITIES ---
 
 func _is_at_war() -> bool:
-	return not WarManager.get_enemies_of(country.country_name).is_empty()
+	return !WarManager.get_enemies_of(country.country_name).is_empty()
 
 
 func _get_peace_hubs() -> Array:
 	# Check if we have a valid list of all cities
-	var cities = MapManager.get_cities_province_country(country.country_name)
+	var cities: Array = MapManager.get_cities_province_country(country.country_name)
 	
-	# Fallback: If the country has no cities, use all their provinces
-	if cities.is_empty():
-		cities = MapManager.country_to_provinces.get(country.country_name, [])
-		
-	return cities
+	return MapManager.country_to_provinces.get(country.country_name, []) if cities.is_empty() else cities
 
 
 func _get_neighbor_countries() -> Array:
-	var neighbors := {}
-	var provs = MapManager.country_to_provinces.get(country.country_name, [])
-	for pid in provs:
-		var adj = MapManager.adjacency_list.get(pid, [])
-		for nid in adj:
-			var owner = MapManager.province_objects[nid].GetFunctionalOwner()
-			if owner and owner != country.country_name:
-				neighbors[owner] = true
-	return neighbors.keys()
+	var neighbors: PackedStringArray = []
+	for pid in MapManager.country_to_provinces.get(country.country_name, []):
+		for nid in MapManager.adjacency_list.get(pid, []):
+			var owner: String = MapManager.province_objects[nid].GetFunctionalOwner()
+			if owner && owner != country.country_name:
+				neighbors.append(owner)
+	return neighbors
 
 
 func _estimate_country_strength(country_name: String) -> float:
@@ -401,14 +366,12 @@ func _estimate_country_strength(country_name: String) -> float:
 	if c:
 		total += float(c.manpower)
 		total += float(c.money) * 0.1
-	if TroopManager.has_method("get_troops_for_country"):
-		var troops = TroopManager.get_troops_for_country(country_name)
-		for t in troops:
-			for div in t.stored_divisions:
-				total += float(div.max_manpower)
-				total += float(div.hp)
+	for t in TroopManager.get_troops_for_country(country_name):
+		for div in t.stored_divisions:
+			total += float(div.max_manpower)
+			total += float(div.hp)
 	return max(0.1, total)
 
 
-func _same_faction(arr1, arr2):
+func _same_faction(arr1: PackedStringArray, arr2: Array[String]) -> bool:
 	return arr2.any(func(element): return arr1.has(element))

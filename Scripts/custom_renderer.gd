@@ -42,15 +42,11 @@ func _process(_delta: float) -> void:
 		return
 
 	var cam := get_viewport().get_camera_2d()
-	if not cam:
+	if !cam:
 		return
 
-	var zoom_changed := cam.zoom != _last_cam_zoom
-	var pos_changed := cam.global_position != _last_cam_pos
-
-	if zoom_changed or pos_changed:
-		var raw_scale := 1.0 / cam.zoom.x
-		_current_inv_zoom = clamp(raw_scale, ZOOM_LIMITS.min_scale, ZOOM_LIMITS.max_scale)
+	if cam.zoom != _last_cam_zoom || cam.global_position != _last_cam_pos:
+		_current_inv_zoom = clamp(1.0 / cam.zoom.x, ZOOM_LIMITS.min_scale, ZOOM_LIMITS.max_scale)
 
 		_update_screen_rect()
 
@@ -64,7 +60,7 @@ func _process(_delta: float) -> void:
 
 # --- MultiMesh Setup ---
 func _setup_multimesh():
-	if not troop_multimesh:
+	if !troop_multimesh:
 		troop_multimesh = MultiMeshInstance2D.new()
 		troop_multimesh.name = "TroopMultiMesh"
 #		troop_multimesh.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -106,19 +102,18 @@ func _setup_multimesh():
 
 
 func _update_multimesh_buffer():
-	if not map_sprite or map_width <= 0 or not troop_multimesh:
+	if !map_sprite || map_width <= 0 || !troop_multimesh:
 		return
 
-	var troops = TroopManager.troops
 	var mm = troop_multimesh.multimesh
-	var needed = troops.size() * 3
+	var needed = TroopManager.troops.size() * 3
 
 	if mm.instance_count != needed:
 		mm.instance_count = needed
 
 	var player_country = CountryManager.player_country.country_name if !GameState.selectingCountry else ""
 	var selected_troops = TroopManager.troop_selection.selected_troops
-	var groups = _group_troops_by_visual_position(troops)
+	var groups = _group_troops_by_visual_position(TroopManager.troops)
 	var idx = 0
 	var zoom_vec = Vector2(_current_inv_zoom, _current_inv_zoom)
 	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
@@ -151,6 +146,9 @@ func _draw() -> void:
 		_draw_active_movements()
 		_draw_selection_box()
 		_draw_troops()
+		
+	troop_multimesh.visible = !GameState.in_peace_process
+	
 	_draw_cities()
 	if !GameState.in_peace_process:
 		draw_battles()
@@ -161,12 +159,12 @@ func _draw_troops() -> void:
 		return # LOD optimization
 
 	# Use the same grouping logic but account for movement
-	var groups = _group_troops_by_visual_position(TroopManager.troops)
-	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
+	var groups: Dictionary = _group_troops_by_visual_position(TroopManager.troops)
+	var scaled_offset: float = STACKING_OFFSET_Y * _current_inv_zoom
 
 	for base_pos in groups:
 		var stack = groups[base_pos]
-		var start_y = (stack.size() - 1) * scaled_offset * 0.5
+		var start_y: float = (stack.size() - 1) * scaled_offset * 0.5
 
 		for i in range(stack.size()):
 			var troop = stack[i]
@@ -180,16 +178,14 @@ func _draw_troops() -> void:
 
 
 func _draw_troop(troop: TroopData, pos: Vector2) -> void:
-	var t := Transform2D(0, Vector2(_current_inv_zoom, _current_inv_zoom), 0, pos)
-	draw_set_transform_matrix(t)
+	draw_set_transform_matrix(Transform2D(0, Vector2(_current_inv_zoom, _current_inv_zoom), 0, pos))
 	
 	var top_left = Vector2(- (LAYOUT.flag_width + LAYOUT.min_text_width) * 0.5, -LAYOUT.flag_height * 0.5)
 
 	# Draw Text (Right side)
 	var label = str(troop.divisions_count)
 	# Use the base font size; the transform handles the zoom-scaling for us!
-	var font_size := LAYOUT.font_size
-	var text_size := _font.get_string_size(label, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size)
+	var text_size := _font.get_string_size(label, HORIZONTAL_ALIGNMENT_CENTER, -1, LAYOUT.font_size)
 
 	# Position text relative to the flag's right edge
 
@@ -217,12 +213,12 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 		label,
 		HORIZONTAL_ALIGNMENT_LEFT,
 		-1,
-		font_size,
+		LAYOUT.font_size,
 		COLORS.text
 	)
 
 	# 3. Reset transform so other things draw correctly
-	draw_set_transform_matrix(Transform2D())
+	draw_set_transform_matrix(Transform2D.IDENTITY)
 
 
 func _group_troops_by_visual_position(troops: Array) -> Dictionary:
@@ -231,14 +227,14 @@ func _group_troops_by_visual_position(troops: Array) -> Dictionary:
 		# Get interpolated position if moving, else static position
 		var visual_pos = t.position.lerp(t.target_position, t.get_meta("progress", 0.0)) if t.is_moving else t.position
 
-		if not g.has(visual_pos):
+		if !g.has(visual_pos):
 			g[visual_pos] = []
 		g[visual_pos].append(t)
 	return g
 
 
 func _draw_selection_box() -> void:
-	if not TroopManager.troop_selection.dragging:
+	if !TroopManager.troop_selection.dragging:
 		return
 	var ts = TroopManager.troop_selection
 	if ts.drag_start != ts.drag_end:
@@ -248,7 +244,7 @@ func _draw_selection_box() -> void:
 
 
 func _draw_path_preview() -> void:
-	if not TroopManager.troop_selection.right_dragging:
+	if !TroopManager.troop_selection.right_dragging:
 		return
 	var path = TroopManager.troop_selection.right_path
 	var max_len = TroopManager.troop_selection.max_path_length
@@ -266,7 +262,7 @@ func _draw_path_preview() -> void:
 		if i <= max_len:
 			active_points.append(p)
 			# The connection point between active and inactive needs to be in both
-			if i == max_len and i < path.size() - 1:
+			if i == max_len && i < path.size() - 1:
 				inactive_points.append(p)
 		else:
 			inactive_points.append(p)
@@ -284,7 +280,7 @@ func _draw_active_movements() -> void:
 			continue
 		var start = troop.position + map_sprite.position
 		var end = troop.target_position + map_sprite.position
-		if _screen_rect.has_point(start) or _screen_rect.has_point(end):
+		if _screen_rect.has_point(start) || _screen_rect.has_point(end):
 			draw_line(start, end, Color(1, 0, 0, 0.2), 1.0)
 			draw_line(start, start.lerp(end, troop.get_meta("visual_progress", 0.0)), COLORS.movement_active, 1.5)
 
@@ -299,7 +295,7 @@ func _update_screen_rect():
 
 
 func _draw_cities() -> void:
-	if not MapManager.id_map_image:
+	if !MapManager.id_map_image:
 		return
 
 	var hovered_pid = MapManager.current_hovered_pid
@@ -313,17 +309,17 @@ func _draw_cities() -> void:
 		var pid = city_data[0]
 		var city_name = city_data[1]
 
-		var base_pos = MapManager.province_centers.get(pid, Vector2.ZERO)
+		var base_pos = MapManager[pid]
 		if base_pos == Vector2.ZERO:
 			continue
+		base_pos += map_sprite.position
 
 		for j in range(-1, 2):
-			var world_pos = base_pos + map_sprite.position + Vector2(map_width * j, 0)
-			if not _screen_rect.has_point(world_pos):
+			var world_pos = base_pos + Vector2(map_width * j, 0)
+			if !_screen_rect.has_point(world_pos):
 				continue
 
-			var t := Transform2D(0, zoom_vec, 0, world_pos)
-			draw_set_transform_matrix(t)
+			draw_set_transform_matrix(Transform2D(0, zoom_vec, 0, world_pos))
 
 			draw_circle(Vector2.ZERO, base_dot_radius, Color.WHITE)
 
@@ -348,7 +344,7 @@ func _draw_cities() -> void:
 					Color.WHITE
 				)
 
-	draw_set_transform_matrix(Transform2D())
+	draw_set_transform_matrix(Transform2D.IDENTITY)
 
 
 func draw_battles():
@@ -356,51 +352,45 @@ func draw_battles():
 	const base_radius = 1.0
 	const ring_radius = 1.2
 	const line_width = 0.5
-	const start_angle = - PI * 0.5 # Top
+	const START_ANGLE = -PI * 0.5 # Top
+	var start_angle: float
+	var end_angle: float
+	var pos: Vector2
+	var is_player_involved: bool
+	var is_winning: bool
+	var display_ratio: float
 
 	for battle in WarManager.active_battles:
-		if not battle:
+		if !battle:
 			continue
 
-		var pos: Vector2 = battle.position
-		var progress: float = battle.attack_progress
+		pos = battle.position
 
 		# 1. Determine Win/Loss relative to player
-		var is_player_involved = false
-		var is_winning = false
-		var display_ratio = progress
+		is_player_involved = false
+		is_winning = true
+		display_ratio = battle.attack_progress
 
 		if battle.attacker_country == player_country:
 			is_player_involved = true
-			is_winning = progress > 0.5
-			display_ratio = progress
+			is_winning = display_ratio > 0.5
 		elif battle.defender_country == player_country:
 			is_player_involved = true
-			is_winning = (1.0 - progress) > 0.5
-			display_ratio = 1.0 - progress
-		else:
-			is_winning = true
-			display_ratio = progress
-
-		# 2. Your Exact Sizes
-
-		# 3. Colors
-		var arc_color = (Color(0.0, 1.0, 0.0) if is_winning else Color(1.0, 0.0, 0.0)) if is_player_involved else Color(0.8, 0.5, 0.0)
+			display_ratio = 1.0 - display_ratio
+			is_winning = display_ratio > 0.5
 
 		# 4. Draw Background/Outline (Crucial for tiny icons)
 		# We draw a slightly larger black circle first so the icon "pops"
 		draw_circle(pos, ring_radius + 0.3, Color(0, 0, 0, 0.8))
 
 		# 5. Draw Progress Arc
-		var end_angle: float
+		start_angle = START_ANGLE
+		end_angle = START_ANGLE
 		if is_winning:
-			# Clockwise Green
-			end_angle = start_angle + (display_ratio * TAU)
-			draw_arc(pos, ring_radius, start_angle, end_angle, 16, arc_color, line_width, true)
+			end_angle += display_ratio * TAU
 		else:
-			# Counter-Clockwise Red
-			end_angle = start_angle - (display_ratio * TAU)
-			draw_arc(pos, ring_radius, end_angle, start_angle, 16, arc_color, line_width, true)
+			start_angle -= display_ratio * TAU
+		draw_arc(pos, ring_radius, start_angle, end_angle, 16, (Color(0.0, 1.0, 0.0) if is_winning else Color(1.0, 0.0, 0.0)) if is_player_involved else Color(0.8, 0.5, 0.0), line_width, true)
 
 		# 6. Static Center White Dot (No Pulse)
 		draw_circle(pos, base_radius, Color.WHITE)

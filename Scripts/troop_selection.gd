@@ -25,9 +25,8 @@ var max_path_length: int = 0
 
 var selected_troops: Array[TroopData] = []
 
-
 func _input(event) -> void:
-	if not map_sprite or Console.is_visible():
+	if !map_sprite || Console.is_visible():
 		return
 
 	if event is InputEventMouseButton:
@@ -35,7 +34,6 @@ func _input(event) -> void:
 			_handle_left_mouse(event)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			_handle_right_mouse(event)
-
 	elif event is InputEventMouseMotion:
 		_handle_mouse_motion()
 
@@ -48,27 +46,22 @@ func deselect_all() -> void:
 func _handle_mouse_motion() -> void:
 	if dragging:
 		drag_end = get_global_mouse_position()
-		var drag_distance = drag_start.distance_to(drag_end)
-
-		if drag_distance >= CLICK_THRESHOLD:
+		if drag_start.distance_to(drag_end) >= CLICK_THRESHOLD:
 			_perform_selection()
 
-	if right_dragging:
-		if drag_start.distance_to(get_global_mouse_position()) >= CLICK_THRESHOLD:
+	if right_dragging && drag_start.distance_to(get_global_mouse_position()) >= CLICK_THRESHOLD:
 			_sample_province_under_mouse()
 
 
 func _handle_left_mouse(event: InputEventMouseButton) -> void:
-	if !dragging and MapManager._is_mouse_over_ui():
+	if !dragging && MapManager._is_mouse_over_ui():
 		return
+	
 	if event.pressed:
 		dragging = true
 		drag_start = get_global_mouse_position()
 		drag_end = drag_start
-	else:
-		if not dragging:
-			return
-
+	elif dragging:
 		drag_end = get_global_mouse_position()
 		dragging = false
 
@@ -87,17 +80,14 @@ func _handle_right_mouse(event: InputEventMouseButton) -> void:
 		drag_start = get_global_mouse_position()
 		right_path.clear()
 		_sample_province_under_mouse()
-	else:
-		if not right_dragging:
-			return
-
+	elif right_dragging:
 		_perform_path_assignment()
 		right_path.clear()
 		right_dragging = false
 
 
 func _perform_selection() -> void:
-	if not map_sprite:
+	if !map_sprite:
 		return
 
 	var world_rect := Rect2(drag_start, drag_end - drag_start).abs()
@@ -107,34 +97,27 @@ func _perform_selection() -> void:
 
 	var selected_list: Array[TroopData] = []
 	var flag_size = Vector2(FLAG_WIDTH_BASE, FLAG_HEIGHT_BASE) * inv_zoom
-	var pad = PADDING_BASE * inv_zoom
+	var pad = PADDING_BASE * inv_zoom * 2
+	var baseBoxSize = Vector2(flag_size.x + (GAP_BASE * inv_zoom) + pad, pad)
 
 	for t in TroopManager.troops:
 		if t.country_name != CountryManager.player_country.country_name:
 			continue
 
-		var label = str(t.divisions_count)
-		var font_size := CustomRenderer.LAYOUT.font_size
 		var text_size = (
-			font.get_string_size(label, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size) * inv_zoom
+			font.get_string_size(str(t.divisions_count), HORIZONTAL_ALIGNMENT_CENTER, -1, CustomRenderer.LAYOUT.font_size) * inv_zoom
 		)
 
-		var w = flag_size.x + (GAP_BASE * inv_zoom) + text_size.x + (pad * 2)
-		var h = max(flag_size.y, text_size.y) + (pad * 2)
-		var box_size = Vector2(w, h)
-		var troop_world_center = t.position + map_sprite.position
-		var troop_rect = Rect2(troop_world_center - box_size * 0.5, box_size)
-
-		if _check_rect_intersection(world_rect, troop_rect, t.position.x, texture_width):
+		var box_size = baseBoxSize + Vector2(text_size.x, max(flag_size.y, text_size.y))
+		if _check_rect_intersection(world_rect, Rect2(t.position + map_sprite.position - box_size * 0.5, box_size), t.position.x, texture_width):
 			selected_list.append(t)
 
 	# Apply selection
-	var additive = Input.is_key_pressed(KEY_SHIFT)
-	if not additive:
+	if !Input.is_key_pressed(KEY_SHIFT):
 		selected_troops.clear()
 
 	for t in selected_list:
-		if not selected_troops.has(t):
+		if !selected_troops.has(t):
 			selected_troops.append(t)
 
 	# Update max_path_length based on current live selection
@@ -151,7 +134,7 @@ func _check_rect_intersection(
 		return true
 
 	# Ghost check (Wrapping)
-	var GHOST_MARGIN = 600.0
+	const GHOST_MARGIN = 600.0
 	if tx < GHOST_MARGIN:
 		var wrapped = troop_rect
 		wrapped.position.x += tex_w
@@ -167,30 +150,29 @@ func _check_rect_intersection(
 
 
 func _sample_province_under_mouse() -> void:
-	if not map_sprite:
+	if !map_sprite:
 		return
 
 	# Stop sampling if we've reached max provinces
 	if right_path.size() >= max_path_length:
 		return
 
-	var local_pos = get_global_mouse_position()
-	var pid = MapManager.get_province_at_pos(local_pos, map_sprite)
+	var pid = MapManager.get_province_at_pos(get_global_mouse_position(), map_sprite)
 
 	if pid <= 0:
 		return
 
 	# Check for military access
-	var prov = MapManager.province_objects.get(pid)
-	if not prov or not CountryManager.player_country.allowedCountries.has(prov.GetFunctionalOwner()):
+	var prov = MapManager.province_objects[pid]
+	if !prov || !CountryManager.player_country.allowedCountries.has(prov.GetFunctionalOwner()):
 		return
 
 	# Don't add duplicate consecutive provinces
-	if right_path.size() > 0 and right_path[-1]["pid"] == pid:
+	if right_path.size() > 0 && right_path[-1]["pid"] == pid:
 		return
 
-	var center_tex = MapManager.province_centers.get(pid)
-	if not center_tex:
+	var center_tex = MapManager.province_centers[pid]
+	if !center_tex:
 		return
 
 	right_path.append({"pid": pid, "map_pos": center_tex, "texture_pos": center_tex})
@@ -204,18 +186,18 @@ func _perform_path_assignment() -> void:
 
 	var path_pids = []
 	for entry in right_path:
-		if path_pids.is_empty() or path_pids[-1] != entry["pid"]:
+		if path_pids.is_empty() || path_pids[-1] != entry["pid"]:
 			path_pids.append(entry["pid"])
 
 	if path_pids.is_empty():
 		return
 
 	# 1. Cast the moving pool correctly
-	var ui_selected = GameState.game_ui.selected_division_objects.duplicate()
+	var ui_selected = GameState.game_ui.selected_division_objects
 	var moving_pool: Array[DivisionData] = []
 
-	if not ui_selected.is_empty():
-		moving_pool = ui_selected
+	if !ui_selected.is_empty():
+		moving_pool = ui_selected.duplicate()
 	else:
 		for t in selected_troops:
 			moving_pool.append_array(t.stored_divisions)
@@ -227,10 +209,9 @@ func _perform_path_assignment() -> void:
 		var owner = TroopManager.find_troop_owning_division(div)
 		if owner:
 			var origin_id = owner.province_id
-			if not pool_by_origin.has(origin_id):
-				# Initialize as a typed array
-				var new_list: Array[DivisionData] = []
-				pool_by_origin[origin_id] = new_list
+			if !pool_by_origin.has(origin_id):
+				# Initialize as a typed arrays
+				pool_by_origin[origin_id] = [] as Array[DivisionData]
 			pool_by_origin[origin_id].append(div)
 
 	var all_assignments = []
@@ -245,26 +226,22 @@ func _perform_path_assignment() -> void:
 				template = t
 				break
 
-		if not template:
+		if !template:
 			var troops_at_origin = TroopManager.get_troops_in_province(origin_id)
-			if not troops_at_origin.is_empty():
+			if !troops_at_origin.is_empty():
 				template = troops_at_origin[0]
-
-		if not template:
-			continue
+			else:
+				continue
 
 		@warning_ignore("integer_division")
-		var divs_per_target = max(1, origin_batch.size() / path_pids.size())
-		var remainder = origin_batch.size() % path_pids.size()
-		var current_batch_idx = 0
+		var divs_per_target: int = max(1, origin_batch.size() / path_pids.size())
+		var remainder: int = origin_batch.size() % path_pids.size()
+		var current_batch_idx: int = 0
 
 		for province_idx in range(path_pids.size()):
-			var target_pid = path_pids[province_idx]
-			var count_needed = divs_per_target + (1 if province_idx < remainder else 0)
-
 			# 4. Initialize the specific batch as a typed array
 			var final_divs: Array[DivisionData] = []
-			for i in range(count_needed):
+			for i in range(divs_per_target + (1 if province_idx < remainder else 0)):
 				if current_batch_idx < origin_batch.size():
 					var div = origin_batch[current_batch_idx]
 					_remove_division_from_current_owner(div)
@@ -276,8 +253,7 @@ func _perform_path_assignment() -> void:
 
 			# This will now succeed because final_divs is Array[DivisionData]
 			var new_troop = TroopManager._create_new_split_troop(template, final_divs)
-
-			all_assignments.append({"troop": new_troop, "province_id": target_pid})
+			all_assignments.append({"troop": new_troop, "province_id": path_pids[province_idx]})
 
 	TroopManager.command_move_assigned(all_assignments)
 	_cleanup_empty_troops()
@@ -323,9 +299,9 @@ func _handle_selective_ui_move(div_objects: Array[DivisionData], path: Array) ->
 	# Group the divisions by their current "parent" troop so we can split them
 	var split_map = {} # { TroopData: Array[DivisionData] }
 	for div in div_objects:
-		var owner = TroopManager.find_troop_owning_division(div)
+		var owner: TroopData = TroopManager.find_troop_owning_division(div)
 		if owner:
-			if not split_map.has(owner):
+			if !split_map.has(owner):
 				split_map[owner] = []
 			split_map[owner].append(div)
 
@@ -356,16 +332,14 @@ func _handle_frontline_spread(path: Array) -> void:
 		t.stored_divisions.clear()
 
 	@warning_ignore("integer_division")
-	var divs_per_prov = max(1, all_divs.size() / path.size())
-	var remainder = all_divs.size() % path.size()
+	var divs_per_prov: int = max(1, all_divs.size() / path.size())
+	var remainder: int = all_divs.size() % path.size()
 
-	var div_index = 0
+	var div_index: int = 0
 	for i in range(path.size()):
 		# var target_pid = path[i]
-		var count = divs_per_prov + (1 if i < remainder else 0)
-
 		var batch: Array[DivisionData] = []
-		for j in range(count):
+		for j in range(divs_per_prov + (1 if i < remainder else 0)):
 			if div_index < all_divs.size():
 				batch.append(all_divs[div_index])
 				div_index += 1
@@ -373,13 +347,7 @@ func _handle_frontline_spread(path: Array) -> void:
 		if batch.is_empty():
 			continue
 
-		# Create a new troop for this province's portion of the frontline
-		# We use the first selected troop as a template for country/flag
-		var template = selected_troops[0]
-		var new_troop = TroopManager._create_new_split_troop(template, batch)
-
-		# Generate a path to that specific point on the frontline
-		# (Assuming you have a pathfinder, otherwise just use the path subset)
+		var new_troop: TroopData = TroopManager._create_new_split_troop(selected_troops[0], batch)
 		new_troop.path = path.slice(0, i + 1)
 		TroopManager._start_next_leg(new_troop)
 
@@ -392,7 +360,6 @@ func _handle_frontline_spread(path: Array) -> void:
 func _print_troop_details(troop: TroopData) -> void:
 	print("--- Selected Troop (Prov: %d) ---" % troop.province_id)
 	for div in troop.stored_divisions:
-		var hp_percent = int(div.hp)
 		var exp_level = "Green"
 		if div.experience > 0.7:
 			exp_level = "Veteran"
@@ -402,6 +369,6 @@ func _print_troop_details(troop: TroopData) -> void:
 		print(
 			(
 				" > %s [%s] - HP: %d%% - Exp: %s"
-				% [div.name, div.type.to_upper(), hp_percent, exp_level]
+				% [div.name, div.type.to_upper(), div.hp, exp_level]
 			)
 		)

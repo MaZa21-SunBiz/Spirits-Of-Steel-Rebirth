@@ -63,7 +63,7 @@ func update_visuals():
 
 
 func _on_mouse_entered():
-	if not is_selected:
+	if !is_selected:
 		color_rect.color = COLOR_HOVER
 
 
@@ -72,7 +72,7 @@ func _on_mouse_exited():
 
 
 func _gui_input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton && event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			clicked.emit(self, data_payload)
 			get_viewport().set_input_as_handled()
