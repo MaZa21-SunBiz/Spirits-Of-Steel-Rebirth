@@ -59,7 +59,7 @@ func initialize_countries(a_countriesData: Array) -> void:
 
 	# NOTE(soi): highkirkenuenly hv 0 idea why it crashes here sometimes
 	for country: String in countryNames:
-		if countries.get(country, false):
+		if countries.has(country):
 			countries[country].update_relations()
 			for puppeted: String in countries[country].puppets:
 				InformPuppet(countries[country], countries[puppeted])

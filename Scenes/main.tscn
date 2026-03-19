@@ -1,15 +1,42 @@
 [gd_scene format=3 uid="uid://bm4eje12awfbn"]
 
 [ext_resource type="Script" uid="uid://c3nxggltuv8i0" path="res://Scenes/main.gd" id="1_k12tt"]
+[ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="2_344ge"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="2_h1bgf"]
-[ext_resource type="Shader" path="res://shaders/ball.gdshader" id="3_b3802"]
+[ext_resource type="Texture2D" uid="uid://bh4l3y04f327r" path="res://utils/asdfa/regions.png" id="3_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="4_fevyy"]
 [ext_resource type="Texture2D" uid="uid://noat3k35lsya" path="res://maps/regions.png" id="5_hibaj"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="6_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://ef1nlqkm5anw" path="res://Scenes/main_menu.tscn" id="7_6bp64"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hptm8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d1ilt"]
+noise = SubResource("FastNoiseLite_hptm8")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
-shader = ExtResource("3_b3802")
+shader = ExtResource("2_344ge")
+shader_parameter/region_id_map = ExtResource("3_ynf5e")
+shader_parameter/ocean_noise = SubResource("NoiseTexture2D_d1ilt")
+shader_parameter/tex_size = Vector2(0, 0)
+shader_parameter/lower = 0.50000002375
+shader_parameter/upper = 1.8
+shader_parameter/scanlines = 0.05
+shader_parameter/toggle = 1
+shader_parameter/contrast = 0.05
+shader_parameter/smoothness = 0.05
+shader_parameter/water_color_deep = Color(0.1, 0.25, 0.45, 1)
+shader_parameter/water_color_shallow = Color(0.25, 0.45, 0.65, 1)
+shader_parameter/sun_glint_color = Color(0.9, 0.95, 1, 0.3)
+shader_parameter/country_border_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/sea_speed = 0.02
+shader_parameter/wave_scale = 1.5
+shader_parameter/distortion_strength = 0.15
+shader_parameter/grid_opacity = 0.3
+shader_parameter/sea_pixel_size = 2.0
+shader_parameter/sea_height_steps = 6.0
+shader_parameter/ocean_offset = Vector2(0, 0)
+shader_parameter/internal_border_darkness = 0.82
 
 [node name="Main" type="Node2D" unique_id=567585559]
 script = ExtResource("1_k12tt")

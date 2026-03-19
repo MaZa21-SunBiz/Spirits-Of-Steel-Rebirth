@@ -428,40 +428,62 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 
 	# 1. Safety Check: Is there already something there or currently building?
 	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
-	if type == GameState.IndustryType.FACTORY:
-		if province.buildings.size() >= 4:
-			print("Cannot build: Factory slot is busy or full.")
-			return
-			
-		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.get_country(player_name))
-		
-		_cleanup_interaction_state()
-		show_industry_country(player_name)
 
-	elif type == GameState.IndustryType.PORT:
-		if province.buildings.size() >= 4 && province.buildings.find_custom(func(a_building: BuildingData): return a_building.type != "Port") == -1:
-			print("Cannot build: Port slot is busy or full.")
-			return
-			
-		# 3. Sea check for Ports
-		if pid in get_provinces_near_sea(player_name):
-			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.get_country(player_name))
-			
-			_cleanup_interaction_state()
-			show_industry_country(player_name)
-		else:
-			print("Action Failed: Port must be on a coast!")
-			return
-
-	elif type == GameState.IndustryType.INFRASTRUCTURE:
-		if province.infrastructure >= province.maxInfrastructure:
-			print("Cannot build: Infrastructure is already maxeda.")
-			return
-			
-		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.get_country(player_name))
-		
-		_cleanup_interaction_state()
-		show_industry_country(player_name)
+	# NOTE (soi): dont mind me jst comment this out
+	# match type:
+	# 	GameState.IndustryType.FACTORY:
+	# 		if province.buildings.size() >= 4:
+	# 			print("Cannot build: Factory slot is busy or full.")
+	# 			return
+	#
+	# 		EconomyManager.start_construction(
+	# 			pid,
+	# 			"Factory",
+	# 			10,
+	# 			150.0,
+	# 			CountryManager.get_country(player_name)
+	# 		)
+	#
+	# 		_cleanup_interaction_state()
+	# 		show_industry_country(player_name)
+	#
+	# 	GameState.IndustryType.PORT:
+	# 		if province.buildings.size() >= 4 && province.buildings.find_custom(
+	# 			func(a_building: BuildingData): return a_building.type != "Port"
+	# 		) == -1:
+	# 			print("Cannot build: Port slot is busy or full.")
+	# 			return
+	#
+	# 		# 3. Sea check for Ports
+	# 		if pid in get_provinces_near_sea(player_name):
+	# 			EconomyManager.start_construction(
+	# 				pid,
+	# 				"Port",
+	# 				10,
+	# 				150.0,
+	# 				CountryManager.get_country(player_name)
+	# 			)
+	#
+	# 			_cleanup_interaction_state()
+	# 			show_industry_country(player_name)
+	# 		else:
+	# 			print("Action Failed: Port must be on a coast!")
+	# 			return
+	#
+	# 	GameState.IndustryType.INFRASTRUCTURE:
+	# 		if province.infrastructure >= province.maxInfrastructure:
+	# 			print("Cannot build: Infrastructure is already maxeda.")
+	# 			return
+	#
+	# 		EconomyManager.StartInfrastructureConstruction(
+	# 			pid,
+	# 			10,
+	# 			150.0,
+	# 			CountryManager.get_country(player_name)
+	# 		)
+	#
+	# 		_cleanup_interaction_state()
+	# 		show_industry_country(player_name)
 
 	country_clicked.emit(player_name)
 
