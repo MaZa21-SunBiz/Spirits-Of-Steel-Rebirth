@@ -6,7 +6,9 @@ func Initialize(a_factionData: Array) -> void:
 	for factionData: Dictionary in a_factionData:
 		factions[factionData["name"]] = FactionData.FromDict(factionData)
 		for member: FactionMember in factions[factionData["name"]].members:
-			CountryManager.get_country(member.polity).factions.append(factionData["name"])
+			var country = CountryManager.get_country(member.polity)
+			if country:
+				country.factions.append(factionData["name"])
 
 
 func save_factions() -> Array:

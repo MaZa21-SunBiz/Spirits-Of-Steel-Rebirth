@@ -40,16 +40,29 @@ func initialize_countries(a_countriesData: Array) -> void:
 	countryNames.clear()
 	
 	#var timeStart = Time.get_unix_time_from_system()
-	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): add_country(a_countriesData[a_index]), a_countriesData.size()))
+	WorkerThreadPool.wait_for_group_task_completion(
+		WorkerThreadPool.add_group_task(
+			func (a_index: int): add_country(a_countriesData[a_index]),
+			a_countriesData.size()
+		)
+	)
 	
 	#for country: Dictionary in a_countriesData:
 	#	add_country(country)
 	#print("Adding Countries took %f" % (Time.get_unix_time_from_system() - timeStart))
 
+	# print(countries.size())
+	# print(JSON.stringify(countries, " "))
+	# print()
+	# print(countryNames.size())
+	# print(JSON.stringify(countryNames, " "))
+
+	# NOTE(soi): highkirkenuenly hv 0 idea why it crashes here sometimes
 	for country: String in countryNames:
-		countries[country].update_relations()
-		for puppeted: String in countries[country].puppets:
-			InformPuppet(countries[country], countries[puppeted])
+		if countries.get(country, false):
+			countries[country].update_relations()
+			for puppeted: String in countries[country].puppets:
+				InformPuppet(countries[country], countries[puppeted])
 
 	print("CountryManager: Initialized %d countries." % countries.size())
 

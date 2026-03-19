@@ -61,15 +61,15 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 		ResourceLoader.load_threaded_request(path)
 		
 		while true:
-			var status = ResourceLoader.load_threaded_get_status(path, progress)
-			if status == ResourceLoader.THREAD_LOAD_LOADED:
-				break
-			elif status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-				if _loading_screen:
-					_loading_screen.set_progress(progress[0])
-			else:
-				push_error("Failed to load scene: " + path)
-				break
+			match ResourceLoader.load_threaded_get_status(path, progress):
+				ResourceLoader.THREAD_LOAD_LOADED:
+					break
+				ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+					if _loading_screen:
+						_loading_screen.set_progress(progress[0])
+				_:
+					push_error("Failed to load scene: " + path)
+					break
 			await get_tree().process_frame
 		
 		var packed_scene = ResourceLoader.load_threaded_get(path)

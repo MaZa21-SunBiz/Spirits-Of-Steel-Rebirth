@@ -189,9 +189,10 @@ func has_available_decisions(country: CountryData) -> bool:
 					return true
 				else:
 					choices.append([country, cat, i])
-	if choices.size() == 0:
+	if choices.is_empty():
 		print("No available decisions for %s")
-	var choice = choices.pick_random()
-	if choice:
-		start_decision(choice[0], choice[1], choice[2])
+	else:
+		var choice = choices.pick_random()
+		if choice:
+			start_decision(choice[0], choice[1], choice[2])
 	return false
