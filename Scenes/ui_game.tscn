@@ -38,6 +38,7 @@
 [ext_resource type="StyleBox" uid="uid://c7a4lb0uslu15" path="res://UI/GameUI/SectionHeader.tres" id="32_anvjc"]
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="38_youyo"]
+[ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -76,6 +77,16 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odnp1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
 [node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
 script = ExtResource("1_rp7y5")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
@@ -91,9 +102,11 @@ mouse_filter = 2
 
 [node name="Topbar" type="PanelContainer" parent="Control" unique_id=2113396861]
 material = ExtResource("16_lpwmk")
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 36.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qnodh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar" unique_id=458722190]
@@ -108,7 +121,6 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="PoliticalPower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=946459751]
-custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Political power"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -127,12 +139,10 @@ texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Money" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=2127845856]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Money"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -150,12 +160,10 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Manpower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1136963302]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Manpower"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -173,12 +181,10 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Industry" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1070530185]
-custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 tooltip_text = "Industry"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -196,12 +202,10 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Stability" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=943424752]
-custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -219,12 +223,10 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="WarSupport" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1561316651]
-custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
@@ -242,8 +244,7 @@ expand_mode = 3
 texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
@@ -277,7 +278,7 @@ material = ExtResource("16_lpwmk")
 clip_contents = true
 layout_mode = 2
 theme = SubResource("Theme_uqxsi")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "00:00 1234-12-12 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -287,7 +288,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="GameSpeedControl" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=2134005269]
-custom_minimum_size = Vector2(18, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
@@ -313,9 +314,8 @@ expand_icon = true
 
 [node name="Music" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=283872825]
 material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 tooltip_text = "Radio"
 focus_mode = 0
 theme_override_constants/icon_max_width = 900
@@ -324,7 +324,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="GameSpeedControl2" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=462928643]
-custom_minimum_size = Vector2(18, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
@@ -332,7 +332,7 @@ theme_override_constants/separation = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Increase game speed"
+tooltip_text = "Skips Song?"
 focus_mode = 0
 icon = ExtResource("15_bfmcl")
 icon_alignment = 1
@@ -342,22 +342,9 @@ expand_icon = true
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Decrease game speed"
+tooltip_text = "Pauses Music?"
 focus_mode = 0
 icon = ExtResource("16_1nbba")
-icon_alignment = 1
-expand_icon = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1606167960]
-layout_mode = 2
-
-[node name="Next" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1779393988]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-tooltip_text = "Radio"
-focus_mode = 0
-theme_override_constants/icon_max_width = 9
-text = ">"
 icon_alignment = 1
 expand_icon = true
 
@@ -374,6 +361,7 @@ texture_filter = 2
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 14
 text = "20%"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -516,7 +504,7 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -612.0
+offset_top = -622.0
 offset_right = 368.0
 grow_vertical = 0
 mouse_filter = 2
@@ -654,7 +642,7 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -664,6 +652,7 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -810,7 +799,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
@@ -831,7 +819,6 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
-theme_override_font_sizes/font_size = 22
 text = "Military Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -858,6 +845,14 @@ focus_mode = 0
 theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Choose Deployment Province"
+
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=1602099174]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = ExtResource("33_oouja")
+text = "Deploy All"
 
 [node name="TroopList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=940258689]
 layout_mode = 2
@@ -1613,11 +1608,12 @@ mouse_filter = 2
 
 [node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
 visible = false
+material = ExtResource("16_lpwmk")
 layout_mode = 0
 offset_left = 918.0
 offset_top = 235.0
-offset_right = 1149.0
-offset_bottom = 647.0
+offset_right = 1152.0
+offset_bottom = 613.0
 theme = ExtResource("13_sdmnd")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TroopContainer" unique_id=208408317]
@@ -1698,9 +1694,9 @@ visible = false
 [node name="Notifications" type="HBoxContainer" parent="." unique_id=1074458046]
 material = ExtResource("16_lpwmk")
 offset_left = 356.0
-offset_top = 36.0
+offset_top = 26.000002
 offset_right = 1152.0
-offset_bottom = 64.0
+offset_bottom = 54.0
 
 [node name="BuildingDesigner" type="PanelContainer" parent="." unique_id=527526215]
 visible = false
@@ -1720,6 +1716,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=1029955428]
+visible = false
 layout_mode = 2
 text = "Building Designer"
 
@@ -1856,10 +1853,38 @@ use_parent_material = true
 layout_mode = 2
 text = "Port"
 
+[node name="MapSwitcher" type="PanelContainer" parent="." unique_id=17159635]
+material = ExtResource("16_lpwmk")
+clip_contents = true
+offset_left = 964.0
+offset_top = 613.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_odnp1")
+
+[node name="TabBar" type="TabBar" parent="MapSwitcher" unique_id=1711270607]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 10
+current_tab = 0
+tab_count = 6
+tab_0/tooltip = "Polities"
+tab_0/icon = ExtResource("39_e0ul0")
+tab_1/tooltip = "Population"
+tab_1/icon = ExtResource("8_qum3k")
+tab_2/tooltip = "Infrastucture"
+tab_2/icon = ExtResource("9_5hlpc")
+tab_3/tooltip = "GDP"
+tab_3/icon = ExtResource("7_lpwmk")
+tab_4/tooltip = "Ethnicities"
+tab_4/icon = ExtResource("24_5hlpc")
+tab_5/tooltip = "Factions"
+tab_5/icon = ExtResource("21_lpwmk")
+
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/VBoxContainer/Next" to="." method="_on_next_song_pressed"]
 [connection signal="value_changed" from="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="button_up" from="Control/MilitaryExtraPanel/VBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]
@@ -1869,6 +1894,7 @@ text = "Port"
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_open_faction"]
 [connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton" to="." method="_on_building_selected"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_deploy_all_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_propose_peace"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]
@@ -1886,3 +1912,4 @@ text = "Port"
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
 [connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]
+[connection signal="tab_changed" from="MapSwitcher/TabBar" to="." method="_on_map_changed"]

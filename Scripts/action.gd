@@ -9,10 +9,12 @@ var _callback: Callable
 var source_object: Variant = null
 
 signal training_finished
+signal pressed
 
 
 func _ready() -> void:
-	button.pressed.connect(_on_button_pressed)
+	button.pressed.connect(func(): pressed.emit())
+	pressed.connect(_on_button_pressed)
 	# Assuming GameState is a global singleton
 	if GameState.current_world and GameState.current_world.clock:
 		GameState.current_world.clock.day_passed.connect(refresh_ui)

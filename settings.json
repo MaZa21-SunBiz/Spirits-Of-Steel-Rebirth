@@ -1,7 +1,7 @@
 {
-  "daynight_contrast": 0.0,
-  "daynight_smoothness": 0.01,
-  "debug_mode": false,
+  "daynight_contrast": 0.01,
+  "daynight_smoothness": 0.03,
+  "debug_mode": true,
   "map_effects": true,
   "music_volume": 0.0,
   "province_borders": 0.09,

@@ -258,37 +258,19 @@
 									},
 									{
 										"type": "button",
-										"text": "A New Dawn?",
-										"condition": [
-											{
-												"func": "return",
-												"args": [
-													true
-												]
-											}
-										],
-										"finished": [
-											{
-												"func": "return",
-												"args": [
-													true
-												]
-											}
-										]
+										"text": "A New Dawn?"
 									}
 								]
 							}
 						]
 					},
-					[
-						{
-							"func": "add_country_attr",
-							"args": [
-								"stability",
-								-0.5
-							]
-						}
-					]
+					{
+						"func": "add_country_attr",
+						"args": [
+							"stability",
+							-0.5
+						]
+					}
 				],
 				"desc": "KILL THE TRAITOR, KILL THE DEMON THAT HAD SOILED OUR GREAT NATION"
 			},

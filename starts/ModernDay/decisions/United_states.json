@@ -219,7 +219,7 @@
 			{
 				"id": "pol_1",
 				"title": "The State Of The Union",
-				"pos": [50, 50],
+				"pos": [50, 150],
 				"days": 20.0,
 				"cost_pp": 50.0,
 				"action": [
@@ -241,10 +241,28 @@
 						]
 					},
 					{"func": "add_country_attr",
-						"args": [-0.5]
+						"args": [
+							"stability",
+							-0.5
+						]
 					}
 				]
-
+			},
+			{
+				"id": "pol_2",
+				"prereq": "pol_1",
+				"title": "Invade Venezuela",
+				"pos": [350, 150],
+				"days": 20.0,
+				"cost_pp": 50.0,
+				"action": [
+					{"func": "declare_war",
+						"args": [
+							"United_states",
+							"Venezuela"
+						]
+					}
+				]
 			}
 		]
 	}
