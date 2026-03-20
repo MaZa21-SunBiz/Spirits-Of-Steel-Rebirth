@@ -66,3 +66,4 @@ script = ExtResource("2_h1bgf")
 [node name="CurrentScene" type="Node2D" parent="." unique_id=556924462]
 
 [node name="MainMenu" parent="CurrentScene" unique_id=945632142 instance=ExtResource("7_6bp64")]
+visible = false

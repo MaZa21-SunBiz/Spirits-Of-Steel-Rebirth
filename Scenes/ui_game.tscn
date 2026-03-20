@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
 [ext_resource type="StyleBox" uid="uid://c7a4lb0uslu15" path="res://UI/GameUI/SectionHeader.tres" id="32_anvjc"]
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
+[ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="38_youyo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -68,8 +69,6 @@ grow_end = 20.0
 thickness = 4
 vertical = true
 
-[sub_resource type="GDScript" id="GDScript_lpwmk"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0e43j"]
 content_margin_left = 14.0
 content_margin_top = 14.0
@@ -89,7 +88,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Topbar" type="PanelContainer" parent="Control" unique_id=2113396861]
 material = ExtResource("16_lpwmk")
@@ -1644,133 +1642,12 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
-use_parent_material = true
 layout_mode = 2
 text = "Now playing"
 
 [node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
 use_parent_material = true
 layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=663062883]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -364.5
-offset_top = -201.0
-offset_right = 364.5
-offset_bottom = 201.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.051970966, 0.05197096, 0.05197095, 1)
-script = SubResource("GDScript_lpwmk")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=126058036]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 43.0
-offset_right = 225.0
-offset_bottom = 343.0
-
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer" unique_id=188696686]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Country Daily Income"
-
-[node name="Label2" type="Label" parent="ColorRect/VBoxContainer" unique_id=1312218179]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Army Costs"
-
-[node name="Label3" type="Label" parent="ColorRect/VBoxContainer" unique_id=352323337]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Army Level"
-
-[node name="Label4" type="Label" parent="ColorRect/VBoxContainer" unique_id=1053140831]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Total Manpower"
-
-[node name="Label5" type="Label" parent="ColorRect/VBoxContainer" unique_id=939105941]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Available Manpower"
-
-[node name="Label6" type="Label" parent="ColorRect/VBoxContainer" unique_id=2088904382]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "In Field"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect" unique_id=1633182182]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 43.0
-offset_right = 425.0
-offset_bottom = 343.0
-
-[node name="income" type="Label" parent="ColorRect/VBoxContainer2" unique_id=1677557433]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="armycost" type="Label" parent="ColorRect/VBoxContainer2" unique_id=977455900]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="armylevel" type="Label" parent="ColorRect/VBoxContainer2" unique_id=1121123451]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="totalmanpower" type="Label" parent="ColorRect/VBoxContainer2" unique_id=34495283]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="availablemanpower" type="Label" parent="ColorRect/VBoxContainer2" unique_id=285284319]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="infield" type="Label" parent="ColorRect/VBoxContainer2" unique_id=2027973115]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-
-[node name="Button" type="Button" parent="ColorRect" unique_id=1368765273]
-layout_mode = 0
-offset_left = 567.0
-offset_top = 228.0
-offset_right = 716.0
-offset_bottom = 277.0
-focus_mode = 0
-text = "Increase Level"
-
-[node name="Button2" type="Button" parent="ColorRect" unique_id=1125014537]
-layout_mode = 0
-offset_left = 568.0
-offset_top = 282.0
-offset_right = 708.0
-offset_bottom = 340.0
-focus_mode = 0
-text = "Decrease Level"
-
-[node name="basecost" type="Label" parent="ColorRect" unique_id=1668024908]
-layout_mode = 0
-offset_left = 365.0
-offset_top = 144.0
-offset_right = 632.0
-offset_bottom = 179.0
-theme_override_font_sizes/font_size = 25
-text = "Base Cost Per Divsion:"
-
-[node name="armylevelagain" type="Label" parent="ColorRect" unique_id=575114217]
-layout_mode = 0
-offset_left = 501.0
-offset_top = 182.0
-offset_right = 649.0
-offset_bottom = 217.0
-theme_override_font_sizes/font_size = 25
-text = "Army Level: "
 
 [node name="CreateFaction" type="PanelContainer" parent="." unique_id=1478231919]
 visible = false
@@ -1825,6 +1702,160 @@ offset_top = 36.0
 offset_right = 1152.0
 offset_bottom = 64.0
 
+[node name="BuildingDesigner" type="PanelContainer" parent="." unique_id=527526215]
+visible = false
+material = ExtResource("16_lpwmk")
+offset_left = 421.0
+offset_top = 179.0
+offset_right = 936.0
+offset_bottom = 485.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner" unique_id=425955570]
+use_parent_material = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/HBoxContainer" unique_id=746532199]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=1029955428]
+layout_mode = 2
+text = "Building Designer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=2067866561]
+use_parent_material = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BuildingDesigner/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1350628917]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = ExtResource("38_youyo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextEdit" type="TextEdit" parent="BuildingDesigner/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=529636001]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Building Name"
+
+[node name="GridContainer" type="GridContainer" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=1452782030]
+use_parent_material = true
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=1495251980]
+layout_mode = 2
+text = "Power"
+
+[node name="HSlider" type="HSlider" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=1213016304]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -1.0
+max_value = 1.0
+
+[node name="Label2" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=344417037]
+layout_mode = 2
+text = "Water"
+
+[node name="HSlider2" type="HSlider" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=1271156725]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -1.0
+max_value = 1.0
+
+[node name="Label3" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=903462251]
+layout_mode = 2
+text = "Electricity"
+
+[node name="HSlider3" type="HSlider" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=620739132]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -1.0
+max_value = 1.0
+
+[node name="Label4" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=1778537423]
+layout_mode = 2
+text = "Population"
+
+[node name="HSlider4" type="HSlider" parent="BuildingDesigner/HBoxContainer/VBoxContainer/GridContainer" unique_id=852663532]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -1.0
+max_value = 1.0
+
+[node name="Label2" type="Label" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=1284686764]
+layout_mode = 2
+text = "smthng smthng show stats 
+here im too lazy for
+placeholder"
+
+[node name="Button" type="Button" parent="BuildingDesigner/HBoxContainer/VBoxContainer" unique_id=1602404120]
+use_parent_material = true
+layout_mode = 2
+text = "Add building"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/HBoxContainer" unique_id=395027308]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingDesigner/HBoxContainer/ScrollContainer" unique_id=1016428227]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=1425627364]
+layout_mode = 2
+text = "Building functionalities:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=1056062432]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckButton" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1184768885]
+use_parent_material = true
+layout_mode = 2
+text = "Factory capable"
+
+[node name="CheckButton2" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1553871111]
+use_parent_material = true
+layout_mode = 2
+text = "Supply position"
+
+[node name="CheckButton3" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1629849758]
+use_parent_material = true
+layout_mode = 2
+text = "Gather resources"
+
+[node name="CheckButton4" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=572635612]
+use_parent_material = true
+layout_mode = 2
+text = "Heal"
+
+[node name="CheckButton5" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1888904918]
+use_parent_material = true
+layout_mode = 2
+text = "Storage"
+
+[node name="CheckButton6" type="CheckButton" parent="BuildingDesigner/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=468091909]
+use_parent_material = true
+layout_mode = 2
+text = "Port"
+
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Pause" to="." method="_on_pause_pressed"]
@@ -1854,6 +1885,4 @@ offset_bottom = 64.0
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
-[connection signal="button_up" from="ColorRect/Button" to="ColorRect" method="_on_button_button_up"]
-[connection signal="button_up" from="ColorRect/Button2" to="ColorRect" method="_on_button_2_button_up"]
 [connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]

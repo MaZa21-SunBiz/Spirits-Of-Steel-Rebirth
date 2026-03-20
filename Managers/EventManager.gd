@@ -55,10 +55,10 @@ func show_alert(
 
 
 func _show_standard_alert(
-	type: String, 
-	c1: CountryData, 
-	c2: CountryData, 
-	text: String, 
+	type: String,
+	c1: CountryData,
+	c2: CountryData,
+	text: String,
 	params: Dictionary
 ):
 	var popup = ALERT_POPUP_SCENE.instantiate()

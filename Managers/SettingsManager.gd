@@ -15,7 +15,8 @@ var settings = {
 	"ui_lower": 0.8,
 	"ui_dirt": 0.8,
 	"daynight_contrast": 0.01,
-	"daynight_smoothness": 0.01
+	"daynight_smoothness": 0.01,
+	"debug_mode": false
 }
 
 func _ready():
@@ -54,6 +55,8 @@ func apply_settings():
 	MusicManager.set_sfx_volume(settings.sfx_volume)
 	MusicManager.set_music_volume(settings.music_volume)
 	MusicManager.radios = settings.radios
+	InterpreterManager.debug = settings.debug_mode
+	DecisionManager.debug = settings.debug_mode
 	
 	# Graphics (These require GameState.current_world to be set)
 	if GameState.current_world and GameState.current_world.map_sprite:

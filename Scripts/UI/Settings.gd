@@ -22,6 +22,7 @@ var settings = {}
 @onready var ui_dirt_slider = ui_path.get_node("Dirt2")
 @onready var daynight_contrast_slider = graphics_path.get_node("Contrast2")
 @onready var daynight_smoothness_slider = graphics_path.get_node("Smoothness2")
+@onready var debug_mode_btn = $TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode
 
 func _ready():
 	_refresh_saves()
@@ -42,6 +43,7 @@ func _initialize_ui_values():
 	ui_dirt_slider.value = s.ui_dirt
 	daynight_contrast_slider.value = s.daynight_contrast
 	daynight_smoothness_slider.value = s.daynight_smoothness
+	debug_mode_btn.button_pressed = s.debug_mode
 
 
 func save_settings() -> void:
@@ -166,4 +168,9 @@ func _on_daynight_contrast_changed(value: float) -> void:
 
 func _on_daynight_smoothness_changed(value: float) -> void:
 	SettingsManager.settings.daynight_smoothness = value
+	SettingsManager.apply_settings()
+
+
+func _on_debug_mode_pressed() -> void:
+	SettingsManager.settings.debug_mode = !SettingsManager.settings.debug_mode
 	SettingsManager.apply_settings()

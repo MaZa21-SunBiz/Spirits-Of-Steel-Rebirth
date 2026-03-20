@@ -124,9 +124,9 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 		return false
 
 	# 5. Check Cost
-	var reqs = data.get("reqs", {}) 
+	var reqs = data.get("reqs", {})
 	if reqs:
-		return InterpreterManager.get_function(reqs) 
+		return InterpreterManager.get_function(reqs)
 	return true
 
 
@@ -155,7 +155,7 @@ func _finalize_decision(country: CountryData, id: String):
 	# Find the data to get the action (Slow search, but happens rarely)
 	for cat in get_country_categories(country.country_name).values():
 		for node in cat:
-			if node["id"] ==id:
+			if node["id"] == id:
 				_apply_reward(country, node.get("action", {}))
 				return
 

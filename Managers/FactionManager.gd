@@ -25,21 +25,29 @@ func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 
 
 func clear_faction(country: CountryData):
-	for faction in factions.values():
-		faction.members.erase(
-			FactionMember.FromValues(country.country_name, "Member")
-		)
+	var country_factions_copy = country.factions.duplicate()
+	for faction_name in country_factions_copy:
+		if faction_name in factions:
+			var faction = factions[faction_name]
+			var index = faction.members.find_custom(func(m): return m.polity == country.country_name)
+			if index != -1:
+				faction.members.remove_at(index)
+				country.factions.erase(faction_name)
 
 
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 	# NOTE(soi): we should add an option to choose which faction to invite to
-	for faction in inviter.factions:
+	inviter.factions = invitee.factions
+	var inviter_factions_copy = inviter.factions.duplicate()
+	for faction in inviter_factions_copy:
 		#print(faction)
 		if factions[faction].members[factions[faction].members.find_custom(
 			func(a_faction): return a_faction.polity == inviter.country_name
 			)].status == "Leader":
 			factions[faction].members.append(FactionMember.FromValues(invitee.country_name, "Member"))
-			invitee.factions.append_array(inviter.factions)
+			if not faction in invitee.factions:
+				invitee.factions.append(faction)
+		print(factions[faction].members)
 
 
 func in_faction(inviter: CountryData, invitee: CountryData) -> bool:

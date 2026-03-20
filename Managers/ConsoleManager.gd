@@ -15,9 +15,9 @@ func m_Editor() -> void:
 	
 func _ready() -> void:
 	Console.add_command("play_country", _play_country, ["country_name"], 1, "Change player country")
-	Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
-	#Console.add_command_autocomplete_list("play_as", CountryManager.)
-	Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
+	# Console.add_command("play_as", _play_country, ["country_name"], 1, "Change player country")
+	# Console.add_command_autocomplete_list("play_as", CountryManager.)
+	# Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("puppet", _puppet_country, ["country_name"], 1, "Change player country")
 	Console.add_command("invite", _invite_country, ["country_name"], 1, "Change player country")

@@ -187,5 +187,5 @@ void fragment() {
 			//smoothness
 		//)
 	//);
-	COLOR.rgb += (.5+.5*sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x)))*mix(.5-.5*(lower-upper), 0, vignette);
+	COLOR.rgb += (.5+.5*asin(sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x))))*clamp(mix(.5-.5*(lower), -upper, vignette), 0., 1.);
 }
