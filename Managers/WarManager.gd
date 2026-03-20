@@ -233,8 +233,8 @@ func end_battle(battle: Battle):
 
 
 func apply_casualties(pid: int, country: String, damage_amount: float):
-	var troops_list = TroopManager.get_troops_in_province(pid).filter(
-		func(t): return t.country_name == country
+	var troops_list: Array = TroopManager.get_troops_in_province(pid).filter(
+		func(t: TroopData): return t.country_name == country
 	)
 
 	if troops_list.is_empty() || damage_amount <= 0:
@@ -243,7 +243,7 @@ func apply_casualties(pid: int, country: String, damage_amount: float):
 	# Distribute total damage among all army stacks in the province
 	var damage_per_troop = damage_amount / troops_list.size()
 
-	for t in troops_list:
+	for t: TroopData in troops_list:
 		if t.stored_divisions.is_empty():
 			continue
 
@@ -294,6 +294,7 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void:
 	if a == b || is_at_war(a, b):
 		return
+	print("%s declared war on %s" % [a.country_name, b.country_name])
 	_snapshot_country_territory(a.country_name)
 	_snapshot_country_territory(b.country_name)
 	if !add_war_silent(a, b) || a_silent:
@@ -319,13 +320,18 @@ func _snapshot_country_territory(c_name: String) -> void:
 func add_war_silent(a: CountryData, b: CountryData) -> bool:
 	if a == b || is_at_war(a, b):
 		return false
-	if !wars.has(a):
-		wars[a] = {}
-	if !wars.has(b):
-		wars[b] = {}
+	##
+	wars.get_or_add(a, {})[b] = true
+	wars.get_or_add(b, {})[a] = true
 
-	wars[a][b] = true
-	wars[b][a] = true
+	##
+	#if !wars.has(a):
+	#	wars[a] = {}
+	#if !wars.has(b):
+	#	wars[b] = {}
+	#
+	#wars[a][b] = true
+	#wars[b][a] = true
 
 	if !a.allowedCountries.has(b.country_name):
 		a.allowedCountries.append(b.country_name)
@@ -339,20 +345,18 @@ func is_at_war(a: CountryData, b: CountryData) -> bool:
 	return wars.has(a) && wars[a].has(b)
 
 func is_country_at_war(country_name: String) -> bool:
-	var country_data = CountryManager.get_country(country_name)
-	if !country_data:
-		return false
+	var country_data = CountryManager.get(country_name)
 
 	return wars.has(country_data) && !wars[country_data].is_empty()
 
 func is_at_war_names(a_name: String, b_name: String) -> bool:
-	if !CountryManager:
-		return false
-	var a_data = CountryManager.get_country(a_name)
-	var b_data = CountryManager.get_country(b_name)
-	if a_data and b_data:
-		return is_at_war(a_data, b_data)
-	return false
+	## 0.15 ms
+	return wars.has(CountryManager.countries.get(a_name)) && wars[CountryManager.countries.get(a_name)].has(CountryManager.countries.get(b_name))
+	## 1.49 ms
+	#var a: CountryData = CountryManager.countries.get(a_name)
+	#return wars.has(a) && wars[a].has(CountryManager.countries.get(b_name))
+	## 2.76 ms
+	#return is_at_war(CountryManager.countries.get(a_name), CountryManager.countries.get(b_name)) 
 
 
 # API for AI Manager
@@ -363,13 +367,13 @@ func get_countries_at_war() -> Array:
 ## Returns an array of country names that are currently at war with the given country name
 func get_enemies_of(country_name: String) -> Array[String]:
 	var enemies: Array[String] = []
-	var country_data = CountryManager.get_country(country_name)
+	var country_data = CountryManager.countries.get(country_name)
 
 	if !country_data || !wars.has(country_data):
 		return enemies
 
 	# wars[country_data] returns a Dictionary where keys are enemy CountryData objects
-	for enemy_data in wars[country_data].keys():
+	for enemy_data: CountryData in wars[country_data]:
 		enemies.append(enemy_data.country_name)
 
 	#MapManager.get_cities_province_country(country_name)

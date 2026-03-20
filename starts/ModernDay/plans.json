@@ -1,29 +1,29 @@
 {
   "India":[
-    {
-      "type": "country_header",
-      "country1": "India",
-      "country2": "China"
-    },
-    {
-      "type": "paragraph",
-      "text": "the old world is dying and the new world is struggling to be born\nnow is the time of monsters"
-    },
-    {
-      "type": "image",
-      "path": "pinkman.png"
-    },
-    {
-      "type": "button",
-      "text": "Form Pakistan",
-      "condition": [{"func": "return", "args": [true]}],
-      "finished": [{"func": "play_as", "args": ["China"]}]
-    }
+	{
+	  "type": "country_header",
+	  "country1": "India",
+	  "country2": "China"
+	},
+	{
+	  "type": "paragraph",
+	  "text": "the old world is dying and the new world is struggling to be born\nnow is the time of monsters"
+	},
+	{
+	  "type": "image",
+	  "path": "pinkman.png"
+	},
+	{
+	  "type": "button",
+	  "text": "Form Pakistan",
+	  "condition": [{"func": "return", "args": [true]}],
+	  "finished": [{"func": "play_as", "args": ["China"]}]
+	}
   ],
   "Russia":[
-    {
-      "type": "image",
-      "path": "pinkman.png"
-    }
+	{
+	  "type": "image",
+	  "path": "pinkman.png"
+	}
   ]
 }

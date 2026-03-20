@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name SuperEvent
 
 static func FromDict(a_data: Dictionary) -> SuperEvent:

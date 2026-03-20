@@ -58,6 +58,8 @@ var is_open := false
 var pos_open := Vector2.ZERO
 var pos_closed := Vector2.ZERO
 
+var economyUpdate: bool = false
+
 # Navigation State
 var current_context: Context = Context.PLAYER
 var current_category: Category = Category.GENERAL
@@ -238,8 +240,14 @@ func _update_radio_visuals() -> void:
 		else:
 			child.modulate = Color(0.5, 0.5, 0.5)
 
+var sidemenuLatch: bool = false
 
 func _update_sidemenu_visuals(country_name: String) -> void:
+	if !sidemenuLatch:
+		sidemenuLatch = true
+		DoUpdateSidemenuVisuals.call_deferred(country_name)
+
+func DoUpdateSidemenuVisuals(country_name: String) -> void:
 	# sidemenu_flag.texture = TroopManager.get_flag(country_name, selected_country.ideology_name)
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + country_name.capitalize()
 	
@@ -247,6 +255,7 @@ func _update_sidemenu_visuals(country_name: String) -> void:
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
 	
 	_update_relations_visuals()
+	sidemenuLatch = false
 
 func _on_selected_country_ideology_changed():
 	if selected_country:
@@ -264,7 +273,7 @@ func _on_player_change() -> void:
 
 
 func _on_province_clicked(country_name: String) -> void:
-	if selected_country and selected_country.ideology_changed.is_connected(_on_selected_country_ideology_changed):
+	if selected_country && selected_country.ideology_changed.is_connected(_on_selected_country_ideology_changed):
 		selected_country.ideology_changed.disconnect(_on_selected_country_ideology_changed)
 
 	selected_country = CountryManager.get_country(country_name)
@@ -381,7 +390,14 @@ func _update_relations_visuals() -> void:
 	else:
 		relations_hbox.visible = false
 
+var contextLatch: bool = false
+
 func _update_context_actions_visuals() -> void:
+	if !contextLatch:
+		contextLatch = true
+		DoUpdateContextActionsVisuals.call_deferred()
+
+func DoUpdateContextActionsVisuals() -> void:
 	# Iterate through all context tabs to find action buttons
 	for context_node in sidemenu_context.get_children():
 		# Try to find ScrollContainer/ActionsList/ in each tab
@@ -400,16 +416,14 @@ func _update_context_actions_visuals() -> void:
 						# NOTE(soi): look man idk anymore
 						var AAAAAA = action_costs[method].call(CountryManager.player_country, selected_country)
 						var cost = AAAAAA["cost"]
-						var can_afford = AAAAAA["can_afford"]
-						
-						child.disabled = !can_afford
+						child.disabled = !AAAAAA["can_afford"]
 						
 						# Update text to show cost if > 0
 						child.text = child.text.split(" (")[0] + (" (%d PP)" % cost if cost > 0 else "")
 						
 						# Visual feedback for disabled buttons
-						child.modulate = Color.WHITE if can_afford else Color(1, 0.5, 0.5, 0.7)
-
+						child.modulate = Color(1, 0.5, 0.5, 0.7) if child.disabled else Color.WHITE
+	contextLatch = false
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
 	var l = Label.new()
 	l.text = text_content
@@ -538,7 +552,7 @@ func _update_flag() -> void:
 	if !CountryManager.player_country:
 		return
 	nation_flag.texture = TroopManager.get_flag(CountryManager.player_country.country_name, CountryManager.player_country.ideology_name)
-	_update_relations_visuals()
+	#_update_relations_visuals.call_deferred()
 
 
 func close_menu() -> void:
@@ -627,19 +641,28 @@ func _on_building_selected(index: int):
 	update_economy_menu()
 
 
-func update_economy_menu():
-	for child in sidemenu_buildings.get_children():
-		child.queue_free()
-	for building in EconomyManager.construction_queue.values():
-		var entry = ProgressBar.new()
-		entry.value = 10 - building["days"]
-		entry.max_value = 10
-		entry.use_parent_material = true
-		var text = Label.new()
-		text.text = building["type"]
-		text.use_parent_material = true
-		entry.add_child(text)
-		sidemenu_buildings.add_child(entry)
+func update_economy_menu() -> void:
+	if !economyUpdate:
+		DoEconomyMenuUpdate.call_deferred()
+		economyUpdate = true
+
+func DoEconomyMenuUpdate() -> void:
+	if CountryManager.player_country:
+		var playerProvinces: Array = MapManager.country_to_owned_provinces[CountryManager.player_country.country_name]
+		for child in sidemenu_buildings.get_children():
+			child.queue_free()
+		for pid: int in EconomyManager.construction_queue:
+			if pid in playerProvinces:
+				var entry = ProgressBar.new()
+				entry.value = 10 - EconomyManager.construction_queue[pid]["days"]
+				entry.max_value = 10
+				entry.use_parent_material = true
+				var text = Label.new()
+				text.text = EconomyManager.construction_queue[pid]["type"]
+				text.use_parent_material = true
+				entry.add_child(text)
+				sidemenu_buildings.add_child(entry)
+	economyUpdate = false
 	
 
 func _request_access():

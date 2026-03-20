@@ -82,7 +82,7 @@ func process_country_day(country: CountryData):
 						break
 
 			# 2. Show the alert with the actual title
-			EventManager.show_alert("event", country, null, "%s completed" % decision_title)
+			EventManager.show_alert.call_deferred("event", country, null, "%s completed" % decision_title)
 
 		tasks.erase(key)
 
@@ -180,7 +180,7 @@ func is_country_busy(country: CountryData) -> bool:
 
 func has_available_decisions(country: CountryData) -> bool:
 	var categories: Dictionary = get_country_categories(country.country_name)
-	var choices = []
+	var choices: Array = []
 	for cat in categories.keys():
 		var decisions = categories[cat]
 		for i in range(decisions.size()):
@@ -189,8 +189,9 @@ func has_available_decisions(country: CountryData) -> bool:
 					return true
 				else:
 					choices.append([country, cat, i])
-	if choices.size() == 0:
-		print("No available decisions for %s")
+	if choices.is_empty():
+		print("No available decisions for %s" % country.country_name)
+		return false
 	var choice = choices.pick_random()
 	if choice:
 		start_decision(choice[0], choice[1], choice[2])

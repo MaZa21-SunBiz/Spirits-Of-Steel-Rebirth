@@ -1,5 +1,5 @@
 extends Node
-var DEBUG_MODE = false
+var DEBUG_MODE: bool = false
 
 signal province_hovered(province_id: int, country_name: String)
 signal country_clicked(country_name: String)
@@ -8,8 +8,8 @@ signal country_clicked(country_name: String)
 signal close_sidemenu
 
 # The exact colors you provided
-const SEA_MAIN = Color("#7e8e9e")
-const SEA_RASTER = Color("#697684")
+const SEA_MAIN: Color = Color("#7e8e9e")
+const SEA_RASTER: Color = Color("#697684")
 
 var hoveredCountry: String = "Sea"
 
@@ -33,13 +33,13 @@ var current_hovered_pid: int = -1
 var last_hovered_pid: int = -1
 var original_hover_color: Color
 var province_centers: Dictionary = {} # Stores {ID: Vector2(x, y)}
-var unique_regions = {} # NOTE(soi): eh
+var unique_regions: Dictionary = {} # NOTE(soi): eh
 
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
 var world_tension: float = 0.1 # Global tension level (0.1 to 1.0)
 
-var all_cities = []
+var all_cities: Array[Array] = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
@@ -56,23 +56,27 @@ const CACHE_FOLDER = "res://map_data/"
 @export var ethnicity_texture: Texture2D
 @export var claims_texture: Texture2D
 
+@export var MAP_WIDTH: int = 0
 @export var MAP_HEIGHT: int = 625
 
 
-func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
-	var width: int = a_map.get_width()
+func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
+	MAP_WIDTH = a_map.get_width()
 	MAP_HEIGHT = a_map.get_height()
 
-	id_map_image = Image.create(width, MAP_HEIGHT, false, Image.FORMAT_RGB8)
+	id_map_image = Image.create(MAP_WIDTH, MAP_HEIGHT, false, Image.FORMAT_RGB8)
 	var next_id: int = 2
 
 	var mapImage = a_map.get_image()
 	($"../Main/MapContainer/CultureSprite" as Sprite2D).texture = a_map
 
-	for i in range(width * MAP_HEIGHT):
-		var x: int = i % width
+	var inc: float = 0.2 / (MAP_WIDTH * MAP_HEIGHT)
+
+	for i in range(MAP_WIDTH * MAP_HEIGHT):
+		a_progress[0] += inc
+		var x: int = i % MAP_WIDTH
 		@warning_ignore("integer_division")
-		var y: int = i / width
+		var y: int = i / MAP_WIDTH
 		var r_color = mapImage.get_pixel(x, y)
 
 		var index: String = "%d" % (r_color.to_rgba32() >> 8) # I hate alpha.
@@ -84,10 +88,10 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 			continue
 
 		# If this is a new region (Unique Sea Zone or Land Province)
-		if not unique_regions.has(index):
+		if !unique_regions.has(index):
 			unique_regions[index] = next_id
 
-			var province = Province.FromDict(a_provinceData.get(index, {}))
+			var province: Province = Province.FromDict(a_provinceData.get(index, {}))
 			# print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d For Country: %s" % [next_id, province.country])
 			province.id = next_id
 
@@ -96,13 +100,18 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary) -> void:
 
 		# Write the unique ID to your id_map_image
 		id_map_image.set_pixel(x, y, Color.hex((unique_regions[index] << 8) | 0x000000FF))
+		
 	max_province_id = next_id - 1
 	_calculate_province_centroids()
+	a_progress[0] += 0.025
 	_build_country_to_provinces()
+	a_progress[0] += 0.025
 	_build_adjacency_list()
+	a_progress[0] += 0.025
 	_build_global_registry()
+	a_progress[0] += 0.025
 
-func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictionary) -> void:
+func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
 	#var dir = DirAccess.open("res://")
 	#if dir and not dir.dir_exists(CACHE_FOLDER):
 	#	dir.make_dir_recursive(CACHE_FOLDER)
@@ -112,7 +121,7 @@ func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictiona
 	#		print("MapManager: Loaded cached data with Province Objects.")
 	#		return
 
-	Initialize(region_map, a_provinceData)
+	Initialize(region_map, a_provinceData, a_progress)
 
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
@@ -154,10 +163,10 @@ func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> 
 		push_warning("No Image provided for drawing centroids!")
 		return
 
-	for pid in province_centers.keys():
-		var center = province_centers[pid]
-		var x = int(round(center.x))
-		var y = int(round(center.y))
+	for pid: int in province_centers.keys():
+		var center: Vector2 = province_centers[pid]
+		var x: int = int(round(center.x))
+		var y: int = int(round(center.y))
 
 		# stay inside bounds
 		if x >= 0 and x < image.get_width() and y >= 0 and y < image.get_height():
@@ -170,7 +179,7 @@ func _build_country_to_provinces():
 	for pid in province_objects.keys():
 		var country: String = province_objects[pid].country
 
-		if not result.has(country):
+		if !result.has(country):
 			result[country] = []
 			result2[country] = []
 
@@ -260,7 +269,6 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 
 	var x: int
 	var y: int
-	var size: Vector2i = id_map_image.get_size()
 
 	if map_sprite:
 		var local: Vector2 = map_sprite.to_local(pos)
@@ -281,11 +289,10 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 		y = int(pos.y)
 
 	# Y is not infinite, so we strictly check bounds
-	if y < 0 or y >= size.y or x < 0 or x >= size.x:
+	if y < 0 || y >= MAP_HEIGHT || x < 0 || x >= MAP_WIDTH:
 		return 0
 
-	var c = id_map_image.get_pixel(x, y)
-	return c.to_rgba32() >> 8
+	return id_map_image.get_pixel(x, y).to_rgba32() >> 8
 
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or GameState.in_peace_process:
@@ -405,16 +412,24 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				print("Action Failed: Already building there.")
 			else:
 				if is_player_owned:
-					_province_build_industry(pid, player_country_name)
+					if _province_build_industry(pid, player_country_name, GameState.industry_building):
+						_cleanup_interaction_state()
+						show_industry_country(player_country_name)
+						country_clicked.emit(player_country_name)
 				elif is_puppet_owned:
-					_province_build_industry(pid, province_objects[pid].GetFunctionalOwner())
+					if _province_build_industry(pid, province_objects[pid].GetFunctionalOwner(), GameState.industry_building):
+						_cleanup_interaction_state()
+						show_industry_country(province_objects[pid].GetFunctionalOwner())
+						country_clicked.emit(province_objects[pid].GetFunctionalOwner())
 				else:
 					print("Action Failed: Cannot build in foreign territory.")
 					GameState.reset_industry_building()
 					show_countries_map()
 
 		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
+			print("Prae Emit Click")
 			country_clicked.emit(province_objects[pid].GetFunctionalOwner())
+			print("Post Emit Click")
 
 func _execute_deployment(pid: int, player_name: String) -> void:
 	country_clicked.emit(player_name)
@@ -422,48 +437,37 @@ func _execute_deployment(pid: int, player_name: String) -> void:
 	GameState.choosing_deploy_city = false
 	_cleanup_interaction_state()
 
-func _province_build_industry(pid: int, player_name: String) -> void:
-	var type := GameState.industry_building
+func _province_build_industry(pid: int, player_name: String, type: GameState.IndustryType) -> bool:
 	var province = province_objects[pid]
 
 	# 1. Safety Check: Is there already something there or currently building?
 	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
 	if type == GameState.IndustryType.FACTORY:
 		if province.buildings.size() >= 4:
-			print("Cannot build: Factory slot is busy or full.")
-			return
+			#print("Cannot build: Factory slot is busy or full.")
+			return false
 			
 		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.get_country(player_name))
-		
-		_cleanup_interaction_state()
-		show_industry_country(player_name)
-
 	elif type == GameState.IndustryType.PORT:
 		if province.buildings.size() >= 4 && province.buildings.find_custom(func(a_building: BuildingData): return a_building.type != "Port") == -1:
-			print("Cannot build: Port slot is busy or full.")
-			return
+			#print("Cannot build: Port slot is busy or full.")
+			return false
 			
 		# 3. Sea check for Ports
 		if pid in get_provinces_near_sea(player_name):
 			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.get_country(player_name))
-			
-			_cleanup_interaction_state()
-			show_industry_country(player_name)
 		else:
 			print("Action Failed: Port must be on a coast!")
-			return
-
+			return false
 	elif type == GameState.IndustryType.INFRASTRUCTURE:
 		if province.infrastructure >= province.maxInfrastructure:
-			print("Cannot build: Infrastructure is already maxeda.")
-			return
+			#print("Cannot build: Infrastructure is already maxeda.")
+			return false
 			
 		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.get_country(player_name))
 		
-		_cleanup_interaction_state()
-		show_industry_country(player_name)
+	return true
 
-	country_clicked.emit(player_name)
 
 func _cleanup_interaction_state() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -486,7 +490,7 @@ func get_province_with_radius(center: Vector2, map_sprite: Sprite2D, radius: int
 	]
 
 	for off in offsets:
-		var pid = get_province_at_pos(center + off, map_sprite)
+		var pid: int = get_province_at_pos(center + off, map_sprite)
 		if pid > 1:
 			return pid
 
@@ -505,21 +509,20 @@ func _calculate_province_centroids() -> void:
 	for i in range(2, max_province_id + 1):
 		accumulators[i] = [0.0, 0.0, 0]
 
-	var w = id_map_image.get_width()
-	var h = id_map_image.get_height()
-
 	# --- Pass 1: Accumulate Coordinates ---
-	for y in range(h):
-		for x in range(w):
-			var pid = get_province_at_pos(Vector2(x, y), null) # Use direct coordinates, sprite is null
+	for i in range(MAP_WIDTH * MAP_HEIGHT):
+		var x: int = i % MAP_WIDTH
+		@warning_ignore("integer_division")
+		var y: int = i / MAP_WIDTH
+		var pid: int = get_province_at_pos(Vector2(x, y), null) # Use direct coordinates, sprite is null
 
-			if pid > 1 and accumulators.has(pid):
-				accumulators[pid][0] += x
-				accumulators[pid][1] += y
-				accumulators[pid][2] += 1
+		if pid > 1 && accumulators.has(pid):
+			accumulators[pid][0] += x
+			accumulators[pid][1] += y
+			accumulators[pid][2] += 1
 
 	# --- Pass 2: Calculate Average (Centroid) ---
-	for pid in accumulators:
+	for pid: int in accumulators:
 		var data = accumulators[pid]
 		var total_pixels = data[2]
 
@@ -535,50 +538,48 @@ func _calculate_province_centroids() -> void:
 	print("MapManager: Centroids calculated for %d provinces." % province_centers.size())
 
 func _build_adjacency_list() -> void:
-	var w = id_map_image.get_width()
-	var h = id_map_image.get_height()
-
 	adjacency_list.clear()
 
 	# Prepare dictionary for unique tracking
 	var unique_neighbors := {}
 
-	for y in range(h):
-		for x in range(w):
-			var pid = _get_pid_fast(x, y)
-			if pid <= 1:
+	for i in range(MAP_WIDTH * MAP_HEIGHT):
+		var x: int = i % MAP_WIDTH
+		@warning_ignore("integer_division")
+		var y: int = i / MAP_WIDTH
+		var pid = _get_pid_fast(x, y)
+		if pid <= 1:
+			continue
+
+		if not unique_neighbors.has(pid):
+			#print("Unique Neighbor: %d" % pid)
+			unique_neighbors[pid] = {}
+
+		# 4-directional neighbors
+
+		for d: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+			var nx = x + d.x
+			var ny = y + d.y
+			if nx < 0 || ny < 0 || nx >= MAP_WIDTH || ny >= MAP_HEIGHT:
+				#print("Skipping: (%d, %d)" % [nx, ny])
 				continue
 
-			if not unique_neighbors.has(pid):
-				#print("Unique Neighbor: %d" % pid)
-				unique_neighbors[pid] = {}
+			var neighbor = _get_pid_fast(nx, ny)
+			#print("Checking Neighbor: %d %d" % [pid, neighbor])
 
-			# 4-directional neighbors
-			var dirs = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
+			# Normal adjacency (Land-to-Land)
+			if neighbor > 0 && neighbor != pid:
+				#print("Neighborship: %d = %d" % [pid, neighbor])
+				unique_neighbors[pid][neighbor] = true
+				continue
 
-			for d in dirs:
-				var nx = x + d.x
-				var ny = y + d.y
-				if nx < 0 or ny < 0 or nx >= w or ny >= h:
-					#print("Skipping: (%d, %d)" % [nx, ny])
-					continue
-
-				var neighbor = _get_pid_fast(nx, ny)
-				#print("Checking Neighbor: %d %d" % [pid, neighbor])
-
-				# Normal adjacency (Land-to-Land)
-				if neighbor > 0 and neighbor != pid:
-					#print("Neighborship: %d = %d" % [pid, neighbor])
-					unique_neighbors[pid][neighbor] = true
-					continue
-
-				# Border pixel scan (ID=1)
-				if neighbor == 0:
-					#print("Across: %d" % pid)
-					var across = _scan_across_border(nx, ny, pid)
-					if across > 0 and across != pid:
-						#print("Across Neighborship: %d = %d" % [pid, across])
-						unique_neighbors[pid][across] = true
+			# Border pixel scan (ID=1)
+			if neighbor == 0:
+				#print("Across: %d" % pid)
+				var across = _scan_across_border(nx, ny, pid)
+				if across > 0 and across != pid:
+					#print("Across Neighborship: %d = %d" % [pid, across])
+					unique_neighbors[pid][across] = true
 
 	# --- THE FIX: Convert to Typed Arrays and Populate Objects ---
 	for pid in unique_neighbors:
@@ -599,17 +600,14 @@ func _build_adjacency_list() -> void:
 	print("MapManager: Adjacency list built and synced to Province objects.")
 
 func _scan_across_border(x: int, y: int, pid: int) -> int:
-	var w: int = id_map_image.get_width()
-	var h: int = id_map_image.get_height()
-
 	# Check right
-	if x + 1 < w:
+	if x + 1 < MAP_WIDTH:
 		var n: int = _get_pid_fast(x + 1, y)
 		if n > 0 and n != pid:
 			return n
 
 	# Check down
-	if y + 1 < h:
+	if y + 1 < MAP_HEIGHT:
 		var n: int = _get_pid_fast(x, y + 1)
 		if n > 0 and n != pid:
 			return n
@@ -636,12 +634,12 @@ func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = 
 	var use_cache = allowed_countries.is_empty()
 	var cache_key := Vector2i(start_pid, end_pid)
 
-	if use_cache and path_cache.has(cache_key):
+	if use_cache && path_cache.has(cache_key):
 		return path_cache[cache_key].duplicate()
 
 	var path = _find_path_astar(start_pid, end_pid, allowed_countries)
 
-	if use_cache and not path.is_empty():
+	if use_cache && !path.is_empty():
 		path_cache[cache_key] = path.duplicate()
 
 	return path
@@ -663,8 +661,8 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 	var open_set_hash: Dictionary = {start_pid: true}
 
 	# For fallback (closest reached node)
-	var closest_pid_so_far = start_pid
-	var closest_dist_so_far = f_score[start_pid]
+	var closest_pid_so_far: int = start_pid
+	var closest_dist_so_far: float = f_score[start_pid]
 
 	while open_set.size() > 0:
 		# --- FIND LOWEST F-SCORE ---
@@ -694,7 +692,7 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 		var current_prov: Province = province_objects[current]
 
 		# Fallback tracking
-		var dist_to_target = heuristic(current, end_pid)
+		var dist_to_target: float = heuristic(current, end_pid)
 		if dist_to_target < closest_dist_so_far:
 			closest_dist_so_far = dist_to_target
 			closest_pid_so_far = current
@@ -740,11 +738,7 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 	return []
 
 func heuristic(a: int, b: int) -> float:
-	var prov_a = province_objects.get(a)
-	var prov_b = province_objects.get(b)
-
-	var dist_pixels = prov_a.center.distance_to(prov_b.center)
-	return dist_pixels * HEURISTIC_SCALE
+	return province_centers[a].distance_to(province_centers[b]) * HEURISTIC_SCALE
 
 func _reconstruct_path(came_from: Dictionary, current: int) -> Array[int]:
 	var path: Array[int] = [current]
@@ -767,7 +761,7 @@ func force_bidirectional_connections() -> void:
 	var fix_count = 0
 
 	# 1. Iterate through every province object
-	for pid_a in province_objects.keys():
+	for pid_a: int in province_objects.keys():
 		var prov_a: Province = province_objects[pid_a]
 
 		var neighbors_of_a = prov_a.neighbors
@@ -800,8 +794,7 @@ func force_bidirectional_connections() -> void:
 	print("Graph Repair Complete: Fixed %d one-way connections in Province Resources." % fix_count)
 
 func _is_mouse_over_ui() -> bool:
-	var hovered = get_viewport().gui_get_hovered_control()
-	return hovered != null
+	return get_viewport().gui_get_hovered_control() != null
 
 func _get_heatmap_color(pop: int, max_pop: float) -> Color:
 	# If population is 0, return a neutral "empty" color (dark slate/gray)
@@ -957,11 +950,13 @@ func show_gdp_map() -> void:
 	print("MapManager: GDP View Updated. Max GDP: ", current_max_gdp)
 
 func GetCountryDisplayColor(a_countryName: String) -> Color:
-	var country_color = CountryManager.GetCountryColor(a_countryName, Color.GRAY)
-	var country_data = CountryManager.get_country(a_countryName)
-	if country_data and country_data.owner:
-		country_color = (country_color + 3 * CountryManager.GetCountryColor(country_data.owner, Color.GRAY)) * 0.25
-	return country_color
+	var country_data: CountryData = CountryManager.countries.get(a_countryName)
+	if !country_data:
+		return Color.GRAY
+	var owner_data: CountryData = CountryManager.countries.get(country_data.owner)
+	if !owner_data:
+		return country_data.country_color
+	return (country_data.country_color + 3 * owner_data.country_color) * 0.25
 
 func show_countries_map() -> void:
 	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
@@ -1114,66 +1109,33 @@ func _force_array(data) -> Array:
 		return [data] # Wrap the single country in a list
 	return []
 
-func _get_gdp_from_color(c: Color) -> int:
-	var r = int(c.r * 255.0)
-	var g = int(c.g * 255.0)
-	var b = int(c.b * 255.0)
+func get_provinces_near_sea(country_name: String) -> PackedInt32Array:
+	var provinces_near_sea: PackedInt32Array = []
 
-	var exact_key = "(%d, %d, %d)" % [r, g, b]
+	for pid: int in country_to_provinces.get(country_name, []):
+		for neighbor_id: int in adjacency_list.get(pid, []):
+			var neighbor_province: Province = province_objects.get(neighbor_id)
 
-	if gdp_map.has(exact_key):
-		return int(gdp_map[exact_key])
-
-	var tight_key = "(%d,%d,%d)" % [r, g, b]
-	if gdp_map.has(tight_key):
-		return int(gdp_map[tight_key])
-
-	var best_gdp = 0
-	var min_dist = 999999.0
-
-	for color_str in gdp_map.keys():
-		var target_rgb = _parse_color_string(color_str)
-		# Using Euclidean distance squared to find the closest color
-		var dist = (Vector3(r, g, b) - target_rgb).length_squared()
-
-		if dist < min_dist:
-			min_dist = dist
-			best_gdp = int(gdp_map[color_str])
-
-	if min_dist < 200:
-		return best_gdp
-
-	return 0
-
-func get_provinces_near_sea(country_name: String) -> Array[int]:
-	var provinces_near_sea: Array[int] = []
-
-	for pid in country_to_provinces.get(country_name, []):
-		var neighbors = adjacency_list.get(pid, [])
-
-		for neighbor_id in neighbors:
-			var neighbor_province = province_objects.get(neighbor_id)
-
-			if neighbor_province and neighbor_province.type == 0: # Assuming 0 is SEA
+			if neighbor_province && neighbor_province.type == 0: # Assuming 0 is SEA
 				provinces_near_sea.append(pid)
 				break
 
 	return provinces_near_sea
 
 ## Returns an array of province IDs that are on the border of a different country
-func get_border_provinces(country_name: String) -> Array[int]:
-	var border_provinces: Array[int] = []
+func get_border_provinces(country_name: String) -> PackedInt32Array:
+	var border_provinces: PackedInt32Array = []
 
 	# Get all provinces owned by this country
 
-	for prov_id in country_to_provinces.get(country_name, []):
+	for prov_id: int in country_to_provinces.get(country_name, []):
 		var province_data: Province = province_objects.get(prov_id)
 
-		if not province_data:
+		if !province_data:
 			continue
 
 		# Check neighbors of this province
-		for neighbor_id in province_data.neighbors:
+		for neighbor_id: int in province_data.neighbors:
 			# If the neighbor is owned by someone else (and isn't sea/neutral)
 			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() != country_name:
 				border_provinces.append(prov_id)
@@ -1221,7 +1183,7 @@ func _country_exists_on_map(c_name: String) -> bool:
 func ReleaseCountry(a_countryName: String) -> void:
 	for obj in province_objects.values():
 		if obj.claims.has(a_countryName):
-			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
+			for troop in TroopManager.troops_by_province.get(obj.id, []):
 				if is_instance_valid(troop):
 					TroopManager.remove_troop(troop)
 
@@ -1234,7 +1196,7 @@ func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
 	
 	for obj: Province in province_objects.values():
 		if obj.claims.has(a_countryData["name"]):
-			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
+			for troop in TroopManager.troops_by_province.get(obj.id, []):
 				if is_instance_valid(troop):
 					TroopManager.remove_troop(troop)
 
@@ -1244,16 +1206,16 @@ func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
 func InstantiateCountryFromProvinces(a_countryData: Dictionary, a_claims: PackedInt32Array) -> void:
 	CountryManager.add_country(a_countryData)
 	for pid: int in a_claims:
-		for troop in TroopManager.troops_by_province.get(pid, []).duplicate():
+		for troop in TroopManager.troops_by_province.get(pid, []):
 			if is_instance_valid(troop):
 				TroopManager.remove_troop(troop)
 
 		transfer_ownership(pid, a_countryData["name"])
 	CountryManager.cleanup_empty_countries()
 
-func get_all_cities() -> Array:
-	var pids = []
-	for obj in province_objects.values():
+func get_all_cities() -> Array[Array]:
+	var pids: Array[Array] = []
+	for obj: Province in province_objects.values():
 		if len(obj.city) > 0:
 			pids.append([obj.id, obj.city])
 	return pids
@@ -1266,11 +1228,11 @@ func get_cities_province_country(country_name) -> Array:
 	return provinces
 
 ## Returns provinces that specifically border a certain enemy
-func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> Array[int]:
-	var specific_borders: Array[int] = []
+func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> PackedInt32Array:
+	var specific_borders: PackedInt32Array = []
 	
-	for prov_id in country_to_provinces.get(country_name, []):
-		for neighbor_id in province_objects.get(prov_id).neighbors:
+	for prov_id: int in country_to_provinces.get(country_name, []):
+		for neighbor_id: int in province_objects.get(prov_id).neighbors:
 			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() == enemy_name:
 				specific_borders.append(prov_id)
 				break
@@ -1280,10 +1242,10 @@ func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> 
 func annex_country(annexer: String, annexee: String) -> void:
 	#var playerobj = CountryManager.player_country
 
-	for troop in TroopManager.get_troops_for_country(annexee).duplicate():
+	for troop: TroopData in TroopManager.get_troops_for_country(annexee):
 		TroopManager.remove_troop(troop)
 
-	var provinces_to_transfer = country_to_provinces.get(annexee, []).duplicate()
+	var provinces_to_transfer = country_to_provinces.get(annexee, [])
 
 	if provinces_to_transfer.is_empty():
 		print("MapManager: No provinces found for ", annexee)

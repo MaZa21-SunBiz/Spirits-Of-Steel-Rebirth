@@ -34,7 +34,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				
 				IdeologyManager.Initialize(map_data.get("ideologies", {}) as Dictionary)
 				a_percent[0] = 0.3
-				MapManager.load_country_data(load(start_folder + "regions.png"), map_data.get("provinces", {}) as Dictionary)
+				MapManager.load_country_data(load(start_folder + "regions.png"), map_data.get("provinces", {}) as Dictionary, a_percent)
 				a_percent[0] = 0.6
 				CountryManager.initialize_countries(map_data.get("polities", []) as Array)
 				a_percent[0] = 0.75

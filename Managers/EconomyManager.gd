@@ -6,8 +6,7 @@ var construction_queue: Dictionary = {}
 
 func process_economy_day():
 	var finished_projects: PackedInt32Array = []
-
-	for pid in construction_queue.keys():
+	for pid in construction_queue:
 		var project: Dictionary = construction_queue[pid]
 		var country: CountryData = project["country"]
 		var cost = project["daily_cost"]
@@ -31,6 +30,7 @@ func process_economy_day():
 func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dailyCost: float, a_country: CountryData) -> void:
 	if a_country == CountryManager.player_country:
 		MusicManager.play_sfx(MusicManager.SFX.BUILD)
+		GameState.game_ui.update_economy_menu()
 	
 	construction_queue[a_provinceID] = {
 		"type": "Infrastructure",
@@ -46,6 +46,7 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 	
 	if country == CountryManager.player_country:
 		MusicManager.play_sfx(MusicManager.SFX.BUILD)
+		GameState.game_ui.update_economy_menu()
 
 	construction_queue[pid] = {
 		"type": type,
@@ -54,7 +55,6 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 		"daily_cost": daily_cost,
 		"country": country
 	}
-	GameState.game_ui.update_economy_menu()
 
 func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state

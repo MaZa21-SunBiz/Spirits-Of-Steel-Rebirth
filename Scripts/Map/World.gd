@@ -27,31 +27,33 @@ func _process(_delta: float) -> void:
 func _enter_tree() -> void:
 	GameState.current_world = self
 	clock = $/root/Main/Clock
-
-
-func _ready() -> void:
 	KeyboardManager.settings = $ui_game/Settings
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
-
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.
 	clock.hour_passed.connect(CountryManager._on_hour_passed)
 	clock.day_passed.connect(CountryManager._on_day_passed)
 
+func DoSetup(a_progress: Array) -> void:
 	var path = "res://map_data/map_data.json" # Ensure path is correct
 	if not FileAccess.file_exists(path):
 		push_error("Map Data JSON missing!")
 		return
 
+	a_progress[0] = 0.01
 	var json_data = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
+	a_progress[0] = 0.03
 	var mapData: Dictionary = json_data if json_data is Dictionary else {}
+	a_progress[0] = 0.05
 
 	# NOTE(soi): this is here bcuz sometimes main menu is used and im too lazy to comment this out
 	if MapManager.province_objects.is_empty():
 		load_map_data(mapData)
+	a_progress[0] = 0.2
 
 	print("World: Map is ready -> configuring visuals...")
 
 	MapManager.all_cities = MapManager.get_all_cities()
+	a_progress[0] = 0.21
 
 	if !CountryManager.player_country:
 		# CountryManager.set_player_country(CountryManager.countries.keys().pick_random())
@@ -59,9 +61,11 @@ func _ready() -> void:
 		# NOTE(soi): wait so like when i click on a country this should magically play as it?????. damm
 	# For debugging purposes. Create some troops first
 	MapManager.force_bidirectional_connections()
+	a_progress[0] = 0.30
 	MapManager._build_global_registry()
-	var map_width := MapManager.id_map_image.get_width()
-	var map_height := MapManager.id_map_image.get_height()
+	a_progress[0] = 0.35
+	var map_width: int = MapManager.MAP_WIDTH
+	var map_height: int = MapManager.MAP_HEIGHT
 
 	var mat := ShaderMaterial.new()
 	mat.shader = map_shader
@@ -73,6 +77,7 @@ func _ready() -> void:
 	var uncertain_pixels := []
 	var x: int
 	var y: int
+	var inc: float = 0.45 / (map_width * map_height) # Adjust this based on how long you want the loading to take
 	# --- PASS 1: Direct Mapping ---
 	for i in range(map_height * map_width):
 		x = i % map_width
@@ -81,6 +86,7 @@ func _ready() -> void:
 		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
 
 		if province:
+			a_progress[0] += inc
 			if province.type == Province.SEA: # SEA
 				type_img.set_pixel(x, y, Color(0, 0, 0))
 			else: # LAND
@@ -91,7 +97,8 @@ func _ready() -> void:
 
 	# --- PASS 2: Intelligent Flood-Check ---
 	for pos in uncertain_pixels:
-		var touches_land = false
+		a_progress[0] += inc
+		var touches_land: bool = false
 		#var touches_sea = false
 
 		# Check 8-way neighbors (Radius 1 ONLY - very important)
@@ -103,7 +110,7 @@ func _ready() -> void:
 				var nx = pos.x + dx
 				var ny = pos.y + dy
 
-				if nx >= 0 and nx < map_width and ny >= 0 and ny < map_height:
+				if nx >= 0 && nx < map_width && ny >= 0 && ny < map_height:
 					var nid = MapManager._get_pid_fast(nx, ny)
 					if nid > 1:
 						var n_prov: Province = MapManager.province_objects.get(nid)
@@ -143,13 +150,15 @@ func _ready() -> void:
 
 	mat.set_shader_parameter("original_texture", map_sprite.texture)
 	mat.set_shader_parameter("sea_speed", 0.00) # Changed by MainClock
-	mat.set_shader_parameter("tex_size", Vector2(map_width, MapManager.id_map_image.get_height()))
+	mat.set_shader_parameter("tex_size", Vector2(map_width, map_height))
 	mat.set_shader_parameter("country_border_color", Color.BLACK)
 
 	map_sprite.material = mat
+	a_progress[0] = 0.9
 
 	for i in [-2, -1, 1, 2]:
 		_create_ghost_map(Vector2(i * map_width, 0), mat)
+		a_progress[0] += 0.015
 
 	if troop_renderer:
 		troop_renderer.map_sprite = map_sprite
@@ -158,8 +167,8 @@ func _ready() -> void:
 		push_error("CustomRenderer node not found!")
 
 	SettingsManager.apply_settings()
-	
-	clock.pause()
+
+	a_progress[0] = 1.0
 
 func load_map_data(mapData):
 	IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)

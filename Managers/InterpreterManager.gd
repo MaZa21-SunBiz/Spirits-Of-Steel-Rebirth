@@ -115,20 +115,6 @@ func get_function(block, country: CountryData = null):
 	if country == null:
 		country = CountryManager.player_country
 
-	#for loop
-	if block.has("for"):
-		for item in block["in"]:
-			heap[block["for"]] = item
-			var substituted = _substitute(block["do"].duplicate(true), heap)
-			print(heap)
-			print(substituted)
-			get_function(substituted)
-		heap.erase(block["for"])
-	#match statement
-	if block.has("match"):
-		get_function(block.get(str(get_function(block["match"])), {}))
-
-
 	# Handle multiple functions (Recusive Array Support)
 	if block is Array:
 		var last_result = null
@@ -141,12 +127,27 @@ func get_function(block, country: CountryData = null):
 		push_error("Interpreter: block must be a Dictionary or Array.")
 		return null
 
+	#for loop
+	if block.has("for"):
+		for item in block["in"]:
+			heap[block["for"]] = item
+			var substituted = _substitute(block["do"].duplicate(true), heap)
+			print(heap)
+			print(substituted)
+			get_function(substituted)
+		heap.erase(block["for"])
+	
+	#match statement
+	if block.has("match"):
+		get_function(block.get(str(get_function(block["match"])), {}))
+	
 	var args: Array = block.get("args", []).duplicate()
+	var evaled_args = []
 	for arg in args:
 		arg = get_variable(arg)
 		if (arg is Dictionary && arg.has("func")) || arg is Array:
 			arg = get_function(arg, country)
-	var evaled_args = args
+		evaled_args.push_back(arg)
 	var store_key: String = block.get("store", "")
 	var result = null
 

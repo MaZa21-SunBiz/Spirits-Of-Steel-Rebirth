@@ -2,10 +2,13 @@ extends Node
 
 var AUTO_MERGE = true
 
+var emptyLatch: bool = false
+
+var to_remove: Array = []
 var troops: Array = []
 var moving_troops: Array = []
-var troops_by_province: Dictionary = {} # { province_id: [TroopData, ...] }
-var troops_by_country: Dictionary = {} # { country_name: [TroopData, ...] }
+var troops_by_province: Dictionary[int, Array] = {} # { province_id: [TroopData, ...] }
+var troops_by_country: Dictionary[String, Array] = {} # { country_name: [TroopData, ...] }
 
 var path_cache: Dictionary = {} # { start_id: { target_id: path_array } }
 var flag_cache: Dictionary = {} # { country_name: texture }
@@ -76,10 +79,10 @@ func _start_next_leg(troop: TroopData) -> void:
 	# Check for Combat (WarManager logic)
 	var local_troops = troops_by_province.get(next_pid, [])
 	var enemies = local_troops.filter(
-		func(t): return WarManager.is_at_war_names(t.country_name, troop.country_name)
+		func(t): return WarManager.is_at_war_names(t.country_name, troop.country_name) && t
 	)
 
-	if not enemies.is_empty() and not GameState.current_world.clock.paused:
+	if !enemies.is_empty() and not GameState.current_world.clock.paused:
 		WarManager.start_battle(troop.province_id, next_pid)
 		pause_troop(troop)
 		for enemy in enemies:
@@ -92,7 +95,7 @@ func _start_next_leg(troop: TroopData) -> void:
 	troop.set_meta("progress", 0.0)
 	troop.is_moving = true
 
-	if not moving_troops.has(troop):
+	if !moving_troops.has(troop):
 		moving_troops.append(troop)
 
 
@@ -126,9 +129,7 @@ func _stop_troop(troop: TroopData) -> void:
 # Pause a troop along its path
 func pause_troop(troop: TroopData) -> void:
 	moving_troops.erase(troop)
-
 	troop.target_position = troop.position
-
 	troop.is_moving = false
 
 
@@ -234,8 +235,8 @@ func _split_and_send_troop(troop: TroopData, target_pids: Array, paths: Dictiona
 
 	# 2. Calculate distribution
 	@warning_ignore("integer_division")
-	var base_count = total_divs / num_targets
-	var remainder = total_divs % num_targets
+	var base_count: int = total_divs / num_targets
+	var remainder: int = total_divs % num_targets
 
 	var original_used = false
 	var current_div_index = 0
@@ -243,8 +244,8 @@ func _split_and_send_troop(troop: TroopData, target_pids: Array, paths: Dictiona
 	# We duplicate the array reference so we can slice it safely
 	var all_divisions = troop.stored_divisions.duplicate()
 
-	for i in range(num_targets):
-		var pid = target_distances[i].pid
+	for i: int in range(num_targets):
+		var pid: int = target_distances[i].pid
 
 		# Determine how many divisions go to this specific target
 		var count_for_this_leg = base_count
@@ -260,7 +261,7 @@ func _split_and_send_troop(troop: TroopData, target_pids: Array, paths: Dictiona
 
 		var troop_to_move: TroopData
 
-		if not original_used:
+		if !original_used:
 			# The original troop instance stays alive and takes the first batch
 			troop_to_move = troop
 			troop_to_move.stored_divisions = divisions_for_this_leg
@@ -293,9 +294,9 @@ func _split_and_send_troop(troop: TroopData, target_pids: Array, paths: Dictiona
 
 
 func _create_new_split_troop(original: TroopData, specific_divisions: Array) -> TroopData:
-	var pos = original.position
+	var pos: Vector2 = original.position
 
-	var new_troop = load("res://Scripts/Divisions/TroopData.gd").new(
+	var new_troop: TroopData = TroopData.new(
 		original.country_name, original.province_id, 0, pos, TroopManager.get_flag(original.country_name)
 	)
 
@@ -323,14 +324,11 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 	if divs <= 0:
 		return null
 
-	var country_data = CountryManager.get_country(country)
-	var ideology = country_data.ideology_name if country_data else ""
-	var flag = get_flag(country, ideology)
+	var country_data: CountryData = CountryManager.get_country(country)
+	var pos: Vector2 = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
-	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
-
-	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
-		country, prov_id, divs, pos, flag
+	var troop: TroopData = TroopData.new(
+		country, prov_id, divs, pos, get_flag(country, country_data.ideology_name if country_data else "")
 	)
 
 	# FIX: Assign the country object reference
@@ -354,33 +352,32 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 
 
 func _auto_merge_in_province(province_id: int, country: String) -> void:
-	if not AUTO_MERGE:
+	if !AUTO_MERGE:
 		return
 
-	var local_troops = troops_by_province.get(province_id, [])
-	var candidates: Array = []
+	var candidates: Array[TroopData] = []
 
 	# 1. Collect Valid Candidates
-	for t in local_troops:
-		if t.country_name == country and not t.is_moving:
+	for t: TroopData in troops_by_province.get(province_id, []):
+		if t.country_name == country && !t.is_moving:
 			candidates.append(t)
 
 	if candidates.size() <= 1:
 		return
 
 	# 2. Pick the BEST Primary (The one to keep)
-	var primary = candidates[0]
-	var current_selection = null
+	var primary: TroopData = candidates[0]
+	var current_selection: TroopData = null
 
 	# Check selection safely
-	if troop_selection and "selected_troop" in troop_selection:
+	if troop_selection && "selected_troop" in troop_selection:
 		current_selection = troop_selection.selected_troop
 
-	for i in range(1, candidates.size()):
-		var current = candidates[i]
+	for i: int in range(1, candidates.size()):
+		var current: TroopData = candidates[i]
 
 		# Prioritize keeping the selected unit
-		if current_selection and current_selection == current:
+		if current_selection && current_selection == current:
 			primary = current
 			break
 
@@ -389,8 +386,7 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 			primary = current
 
 	# 3. Merge others into Primary
-	var to_remove = []
-	for t in candidates:
+	for t: TroopData in candidates:
 		if t == primary:
 			continue
 
@@ -400,22 +396,25 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 		# Clear 't' divisions so they don't get messy during deletion
 		t.stored_divisions.clear()
 
-		to_remove.append(t)
+		remove_troop(t)
 
 		# Update selection if we just merged the selected unit into another
-		if current_selection and current_selection == t:
+		if current_selection && current_selection == t:
 			if troop_selection.has_method("select_troop"):
 				troop_selection.select_troop(primary)
 			elif "selected_troop" in troop_selection:
 				troop_selection.selected_troop = primary
+	
 
-	for troop in to_remove:
-		remove_troop(troop)
-
+func remove_troop(a_troop: TroopData) -> void:
+	to_remove.append(a_troop)
+	if !emptyLatch:
+		emptyLatch = true
+		remove_troops.call_deferred()
 
 ## Public hook for the WarManager to force a troop to its home province center.
 func move_to_garrison(troop: TroopData) -> void:
-	var center = MapManager.province_centers.get(troop.province_id, troop.position)
+	var center: Vector2 = MapManager.province_centers.get(troop.province_id, troop.position)
 	troop.position = center
 	troop.target_position = center
 	_stop_troop(troop) # Stops any ongoing movement
@@ -423,35 +422,41 @@ func move_to_garrison(troop: TroopData) -> void:
 
 ## Adds a troop reference to the spatial and country dictionaries.
 func _add_troop_to_indexes(troop: TroopData) -> void:
-	var pid = troop.province_id
-	var country = troop.country_name
+	var pid: int = troop.province_id
+	var country: String = troop.country_name
 
 	# Province Index
-	if not troops_by_province.has(pid):
-		troops_by_province[pid] = []
-	troops_by_province[pid].append(troop)
+	if !troops_by_province.has(pid):
+		troops_by_province[pid] = [troop]
+	else:
+		troops_by_province[pid].append(troop)
 
 	# Country Index
-	if not troops_by_country.has(country):
-		troops_by_country[country] = []
-	troops_by_country[country].append(troop)
+	if !troops_by_country.has(country):
+		troops_by_country[country] = [troop]
+	else:
+		troops_by_country[country].append(troop)
 
 
 ## Removes a troop reference from all data structures (master, moving, indexes).
-func remove_troop(troop: TroopData) -> void:
-	troops.erase(troop)
-	moving_troops.erase(troop)
+func remove_troops() -> void:
+	print(to_remove)
+	for troop: TroopData in to_remove:
+		troops.erase(troop)
+		moving_troops.erase(troop)
 
-	var pid = troop.province_id
-	var country = troop.country_name
+		var pid: int = troop.province_id
+		var country: String = troop.country_name
 
-	if troops_by_province.has(pid):
-		troops_by_province[pid].erase(troop)
-		if troops_by_province[pid].is_empty():
-			troops_by_province.erase(pid)
+		if troops_by_province.has(pid):
+			troops_by_province[pid].erase(troop)
+			if troops_by_province[pid].is_empty():
+				troops_by_province.erase(pid)
 
-	if troops_by_country.has(country):
-		troops_by_country[country].erase(troop)
+		if troops_by_country.has(country):
+			troops_by_country[country].erase(troop)
+	to_remove.clear()
+	emptyLatch = false
 
 
 ## Updates the troop's location in the spatial index (troops_by_province).
@@ -468,9 +473,10 @@ func _move_troop_to_province_logically(troop: TroopData, new_pid: int) -> void:
 
 	# Add to new province list and update troop object
 	troop.province_id = new_pid
-	if not troops_by_province.has(new_pid):
-		troops_by_province[new_pid] = []
-	troops_by_province[new_pid].append(troop)
+	if !troops_by_province.has(new_pid):
+		troops_by_province[new_pid] = [troop]
+	else:
+		troops_by_province[new_pid].append(troop)
 
 
 # Careful using this
@@ -494,23 +500,21 @@ func teleport_troop_to_province(troop: TroopData, target_pid: int) -> void:
 	troop.is_moving = false
 
 	# Add to new province index
-	if not troops_by_province.has(target_pid):
-		troops_by_province[target_pid] = []
-	troops_by_province[target_pid].append(troop)
+	if !troops_by_province.has(target_pid):
+		troops_by_province[target_pid] = [troop]
+	else:
+		troops_by_province[target_pid].append(troop)
 
 
 func get_province_division_count(pid: int) -> int:
-	var total = 0
-	var list = troops_by_province.get(pid, [])
-	for troop in list:
+	var total: int = 0
+	for troop: TroopData in troops_by_province.get(pid, []):
 		total += troop.divisions_count
 	return total
 
 
 func have_troops_in_both_provinces(province_id_a: int, province_id_b: int) -> bool:
-	var has_troops_in_a: bool = troops_by_province.has(province_id_a)
-	var has_troops_in_b: bool = troops_by_province.has(province_id_b)
-	return has_troops_in_a and has_troops_in_b
+	return troops_by_province.has(province_id_a) && troops_by_province.has(province_id_b)
 
 
 func clear_path_cache() -> void:
@@ -520,10 +524,10 @@ func clear_path_cache() -> void:
 
 # Remove leading waypoints that are equal to the troop's current province.
 func _sanitize_path_for_troop(path: Array, start_pid: int) -> Array:
-	if not path:
+	if !path:
 		return []
 	# Duplicate to avoid mutating caller arrays
-	var p = path.duplicate()
+	var p: Array = path.duplicate()
 	# Pop front while first entry equals start_pid
 	while p.size() > 0 and int(p[0]) == int(start_pid):
 		p.pop_front()
@@ -531,17 +535,17 @@ func _sanitize_path_for_troop(path: Array, start_pid: int) -> Array:
 
 
 # extra helper functions. Not made by AI
-func get_troops_for_country(country):
+func get_troops_for_country(country: String) -> Array:
 	return troops_by_country.get(country, [])
 
 
-func get_troops_in_province(province_id):
+func get_troops_in_province(province_id: int) -> Array:
 	return troops_by_province.get(province_id, [])
 
 
 func get_province_strength(pid: int, country: String) -> int:
-	var total = 0
-	for t in troops_by_province.get(pid, []):
+	var total: int = 0
+	for t: TroopData in troops_by_province.get(pid, []):
 		if t.country_name == country:
 			total += t.divisions_count
 	return total

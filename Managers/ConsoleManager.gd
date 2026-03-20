@@ -1,9 +1,9 @@
 extends Node
 
 func m_GatesOfHell() -> void:
-	var sizer: int = CountryManager.countries.keys().size()
-	for countryA in range(sizer):
-		for countryB in range(countryA, sizer):
+	var sizer: int = CountryManager.countryNames.size()
+	for countryA: int in range(sizer):
+		for countryB: int in range(countryA, sizer):
 			m_StartWarSilent(CountryManager.countries.keys()[countryA], CountryManager.countries.keys()[countryB])
 
 func m_Editor() -> void:

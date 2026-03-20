@@ -20,7 +20,7 @@ var hour: int = start_hour
 var date_dict: Dictionary = {"year": start_year, "month": start_month, "day": start_day}
 var accumulated_time: float = 0.0
 
-var paused: bool
+var paused: bool = true
 
 
 func _process(delta: float) -> void:

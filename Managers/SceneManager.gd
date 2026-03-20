@@ -79,6 +79,7 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 
 	# 2.5 Execute initialization callback if provided
 	if init_callback.is_valid():
+		progress = [0]
 		var bongo: Thread = Thread.new()
 		bongo.start(init_callback.bind(progress))
 
@@ -91,6 +92,16 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 	# 3. Add to tree
 	if next_scene:
 		container.add_child(next_scene)
+		if _current_type == Type.MENU && scene_type == Type.WORLD:
+			progress = [0]
+			var bingo: Thread = Thread.new()
+			bingo.start(next_scene.DoSetup.bind(progress))
+			
+			while bingo.is_alive():
+				_loading_screen.set_progress(progress[0])
+				await get_tree().process_frame
+
+			bingo.wait_to_finish()
 		_current_type = scene_type
 
 	if _loading_screen:

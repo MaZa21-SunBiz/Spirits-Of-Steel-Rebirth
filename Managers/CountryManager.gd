@@ -54,25 +54,24 @@ func initialize_countries(a_countriesData: Array) -> void:
 	print("CountryManager: Initialized %d countries." % countries.size())
 
 func save_countries() -> Array:
-	var polities = []
+	var polities: Array = []
 	for country: CountryData in countries.values():
 		polities.append(country.ToDict())
 	return polities
 
 
 func get_country(c_name: String) -> CountryData:
-	if c_name == "Sea":
-		return null
-	if countries.has(c_name):
-		return countries[c_name]
-	push_warning("CountryManager: Requested non-existent country '%s'" % c_name)
-	return null
+	#if c_name == "Sea":
+	#	return null
+	return countries.get(c_name)
+	#push_warning("CountryManager: Requested non-existent country '%s'" % c_name)
+	#return null
 
 func GetCountryColor(a_country: String, a_defaultColor: Color = Color.BLACK) -> Color:
 	return countries[a_country].country_color if countries.has(a_country) else a_defaultColor
 
 func set_player_country(country_name: String) -> void:
-	var country := countries.get(country_name) as CountryData
+	var country: CountryData = countries.get(country_name)
 	if !country:
 		push_error("CountryManager: Requested non-existent country '%s'" % country_name)
 		return
@@ -85,7 +84,7 @@ func set_player_country(country_name: String) -> void:
 	player_country.ai_controller = null
 
 	print("Player is now playing as: ", country_name)
-	emit_signal("player_country_changed")
+	player_country_changed.emit()
 
 
 func add_country(a_countryData: Dictionary) -> CountryData:
@@ -99,8 +98,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 
 	# 2. Check if the flag exists before proceeding
 	if TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(Vector2(a_countryData["ideology"][0], a_countryData["ideology"][0]))) == null:
-		var err_msg = "CountryManager: Cannot add '%s'. No flag found." % tempName
-		push_error(err_msg)
+		push_error("CountryManager: Cannot add '%s'. No flag found." % tempName)
 		return null
 
 	# 3. If flag exists, create and store the country
@@ -185,15 +183,21 @@ static func get_country_used_manpower(country_obj: CountryData) -> int:
 static func _get_manpower_from_template(type: String) -> int:
 	return DivisionData.TEMPLATES.get(type, DivisionData.TEMPLATES["infantry"])["manpower"]
 
+var cleanupLock: bool = false
+
 func cleanup_empty_countries() -> void:
-	var to_remove: Array[String] = []
+	if !cleanupLock:
+		cleanupLock = true
+		do_cleanup_empty_countries.call_deferred()
+
+func do_cleanup_empty_countries() -> void:
+	var to_remove: PackedStringArray = []
 	
-	for c_name in countries.keys():
-		var provinces = MapManager.country_to_provinces.get(countries[c_name].country_name, [])
-		if provinces.is_empty() && !countries[c_name].is_exiled:
+	for c_name: String in countries.keys():
+		if MapManager.country_to_provinces.get(c_name, []).is_empty() && !countries[c_name].is_exiled:
 			to_remove.append(c_name)
 
-	for c_name in to_remove:
+	for c_name: String in to_remove:
 		print("CountryManager: Removing '%s' (No provinces found)." % c_name)
 		# So here, we offer options: Government In Exile, or Dissolution
 		var country: CountryData = countries[c_name]

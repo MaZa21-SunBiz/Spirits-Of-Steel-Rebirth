@@ -121,16 +121,16 @@ func _init() -> void:
 
 func ToDict() -> Dictionary:
 	return {
-	"name": country_name,
-	"color": "#"+country_color.to_html(false).to_upper(),
-	"money": money,
-	"ideology": [ideology.x, ideology.y],
-	"political_power": political_power,
-	"stability": stability,
-	"war_support": war_support,
-	"puppets": puppets,
-	"accepted_cultures": accepted_cultures,
-	"hostedGovernments": hostedGovernments,
+		"name": country_name,
+		"color": "#"+country_color.to_html(false).to_upper(),
+		"money": money,
+		"ideology": [ideology.x, ideology.y],
+		"political_power": political_power,
+		"stability": stability,
+		"war_support": war_support,
+		"puppets": puppets,
+		"accepted_cultures": accepted_cultures,
+		"hostedGovernments": hostedGovernments,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -250,7 +250,7 @@ func _process_training() -> void:
 
 func _graduate_troops(training: TroopTraining) -> void:
 	var new_divisions: Array[DivisionData] = []
-	for d in range(training.divisions_count):
+	for i: int in range(training.divisions_count):
 		new_divisions.append(DivisionData.create_division(training.division_type))
 
 	ready_troops.append(ReadyTroop.new(new_divisions))
@@ -261,9 +261,8 @@ func _graduate_troops(training: TroopTraining) -> void:
 
 #region --- Stats & Manpower ---
 func update_manpower_pool() -> void:
-	var max_allowed_manpower = int(total_population * military_size_ratio)
-
-	var used_manpower = CountryManager.get_country_used_manpower(self)
+	var max_allowed_manpower: int = int(total_population * military_size_ratio)
+	var used_manpower: int = CountryManager.get_country_used_manpower(self)
 
 	if manpower + used_manpower < max_allowed_manpower:
 		manpower += max(1, int(total_population * 0.0001))
