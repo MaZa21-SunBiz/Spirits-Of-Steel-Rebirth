@@ -407,6 +407,8 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 	
 
 func remove_troop(a_troop: TroopData) -> void:
+	if a_troop in to_remove:
+		return
 	to_remove.append(a_troop)
 	if !emptyLatch:
 		emptyLatch = true
