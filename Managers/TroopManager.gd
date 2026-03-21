@@ -442,7 +442,7 @@ func _add_troop_to_indexes(troop: TroopData) -> void:
 
 ## Removes a troop reference from all data structures (master, moving, indexes).
 func remove_troops() -> void:
-	print(to_remove)
+	#print(to_remove)
 	for troop: TroopData in to_remove:
 		troops.erase(troop)
 		moving_troops.erase(troop)
