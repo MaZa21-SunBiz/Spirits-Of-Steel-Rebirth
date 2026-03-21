@@ -51,7 +51,7 @@ func show_alert(
 		"custom":
 			_trigger_custom_event(data)
 		_:
-			_show_standard_alert(type, c1, c2, custom_text, extra_params)
+			_show_standard_alert.call_deferred(type, c1, c2, custom_text, extra_params)
 
 
 func _show_standard_alert(
