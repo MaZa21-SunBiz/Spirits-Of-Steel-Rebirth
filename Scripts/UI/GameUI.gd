@@ -36,7 +36,6 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 @onready var sidemenu_buildings: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 
-@onready var troop_container: PanelContainer = $Control/TroopContainer
 @onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/RelationsHbox")
 @onready var faction_prompt: PanelContainer = $CreateFaction
 
@@ -50,6 +49,23 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var now_playing: Label = $Radios/ScrollContainer/NowPlaying
 @onready var map_tabs: TabBar = $MapSwitcher/TabBar
 
+
+# --- MilitaryExtraPanel ---
+@onready var military_extra_panel: Control = $Control/MilitaryExtra
+
+@onready var input_division: SpinBox = military_extra_panel.get_node("Deploy/HBoxContainer/input_division")
+@onready var button_train: Button = military_extra_panel.get_node("Deploy/HBoxContainer/Button_Train")
+
+@onready var div_type = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Type/amount")
+@onready var div_stats = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Stats/amount")
+@onready var costs = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Cost/amount")
+@onready var manpower = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Manpower/amount")
+
+@onready var troop_container: PanelContainer = $Control/TroopContainer
+@onready var troop_list_parent: VBoxContainer = troop_container.get_node("ScrollContainer/VBoxContainer")
+
+# --- State ---
+var division_type_selected: String = "infantry"
 # ── State Variables ───────────────────────────────────
 var selected_country: CountryData = null
 
@@ -728,8 +744,10 @@ func open_research_tree():
 func open_decisions_tree():
 	get_tree().root.find_child("DecisionTreeUI", true, false).open_menu()
 
+
 func _open_faction():
 	faction_prompt.visible = !faction_prompt.visible
+
 
 func open_manage_country(cat: CountryManageUI.Category = CountryManageUI.Category.MILITARY):
 	get_tree().root.find_child("CountryManageUI", true, false).open_menu(
@@ -742,13 +760,13 @@ func open_manage_country(cat: CountryManageUI.Category = CountryManageUI.Categor
 	#GameState.current_world.find_child("CameraController").set_process(false)
 
 
-# Note (Z21)
-# Everything below is made by a Clanker. I am way too lazy for UI stuff
-@onready var troop_list_parent: VBoxContainer = $Control/TroopContainer/ScrollContainer/VBoxContainer
+# NOTE(Z21): Everything below is made by a Clanker. I am way too lazy for UI stuff
+# NOTE(soi): DAMM YOU Z21
 
 # Theme colors for the military look
 
 # 1. Add this variable at the top with your other @onready variables
+# NOTE(soi): he did not infact add this at the top
 var selected_division_objects: Array[DivisionData] = []
 const DIVISION_CARD_SCENE = preload("res://Scenes/DivisionItem.tscn") # Path to your card
 
@@ -759,20 +777,6 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 		child.queue_free()
 
 	for troop in selected_troops:
-		# --- Create a Province Header ---
-		var header_panel = PanelContainer.new()
-		var h_style = StyleBoxFlat.new()
-		h_style.bg_color = Color(0.12, 0.13, 0.15, 0.95) # Cleaner military dark
-		h_style.border_width_bottom = 2
-		h_style.border_color = Color.GOLD
-		header_panel.add_theme_stylebox_override("panel", h_style)
-
-		var header_label = Label.new()
-		header_label.text = "  PROVINCE %d" % troop.province_id
-		header_label.add_theme_color_override("font_color", Color.GOLD)
-		header_panel.add_child(header_label)
-		troop_list_parent.add_child(header_panel)
-
 		# --- Group Divisions by Type ---
 		# Resulting dict will look like: {"infantry": [div1, div2], "tank": [div3]}
 		var groups: Dictionary = {}
@@ -791,7 +795,7 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 
 			# FIX: Pass 'divisions_of_type' (the Array) as the second argument
 			# We no longer pass 'count' here because the card calculates it from the array
-			card.setup_grouped(type, divisions_of_type, divisions_of_type[0] in selected_division_objects)
+			card.setup_grouped(troop.province_id, type, divisions_of_type, divisions_of_type[0] in selected_division_objects)
 
 			# Update the signal connection
 			if not card.is_connected("clicked", _on_group_clicked):
@@ -832,24 +836,6 @@ func close_troop_container() -> void:
 	troop_container.visible = false
 
 
-# --- References ---
-@onready var military_extra_panel: PanelContainer = $Control/MilitaryExtraPanel
-# @onready var input_division: SpinBox = $VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division
-@onready var input_division: SpinBox = military_extra_panel.get_node("VBoxContainer/VBoxContainer/Count/HBoxContainer/input_division")
-@onready var button_train: Button = military_extra_panel.get_node("VBoxContainer/Button_Train")
-
-# Grouping UI labels makes them easier to manage
-@onready var ui_labels = {
-	"type": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Type/type"),
-	"div_stats": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Stats/amount"),
-	"costs": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Cost/amount"),
-	"manpower": military_extra_panel.get_node("VBoxContainer/VBoxContainer/Manpower/amount")
-}
-
-# --- State ---
-var division_type_selected: String = "infantry"
-
-
 # --- Main Update Logic ---
 func update_division_menu():
 	var count = int(input_division.value)
@@ -858,13 +844,13 @@ func update_division_menu():
 	if not stats:
 		return # Safety check
 
-	ui_labels.type.text = division_type_selected.capitalize()
-	ui_labels.div_stats.text = "%s : %s : %s" % [stats.attack, stats.defense, stats.hp]
+	div_type.text = division_type_selected.capitalize()
+	div_stats.text = "%s\n%s\n%s" % [stats.attack , stats.defense , stats.hp]
 
 	var total_manpower = stats.manpower * count
 
-	ui_labels.costs.text = format_number(stats.cost * count)
-	ui_labels.manpower.text = format_number(total_manpower)
+	costs.text = format_number(stats.cost * count)
+	manpower.text = format_number(total_manpower)
 
 	# 4. Check Affordability
 	var player = CountryManager.player_country
@@ -872,29 +858,10 @@ func update_division_menu():
 
 	# 5. Update Button State & Visuals
 	button_train.disabled = not can_afford
-	_update_train_button_visuals(can_afford)
-
-
-# --- Button Styling Helper ---
-func _update_train_button_visuals(is_affordable: bool) -> void:
-	# Create a new StyleBoxFlat to override the background color
-	var style = StyleBoxFlat.new()
-	style.set_corner_radius_all(4) # Optional: match your game's rounded corners
-
-	if is_affordable:
-		style.bg_color = Color("#394f39") # Greenish
-		# Apply to Normal and Hover states
-		button_train.add_theme_stylebox_override("normal", style)
-		button_train.add_theme_stylebox_override("hover", style)
-		button_train.remove_theme_stylebox_override("disabled")
-	else:
-		style.bg_color = Color("#5a3f39") # Reddish
-		# Apply specifically to the Disabled state
-		button_train.add_theme_stylebox_override("disabled", style)
 
 
 func _on_button_train_troops() -> void:
-	if CountryManager.player_country.train_troops(int(input_division.value), division_type_selected):
+	if CountryManager.player_country.train_troops(int(input_division.value+1), division_type_selected):
 		_build_trooplist()
 	update_division_menu()
 
@@ -904,17 +871,17 @@ func _on_division_type_button(type: String) -> void:
 	update_division_menu()
 
 
-func _on_input_division_text_changed(_new_text: float) -> void:
-	update_division_menu()
-
-
 func _on_music_pressed():
 	$Radios.visible = !$Radios.visible
 	SettingsManager.save_settings()
 
 
 func _on_create_faction_pressed() -> void:
-	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text, faction_prompt.get_node("VBoxContainer/ColorPicker").color)
+	FactionManager.create_faction(
+		CountryManager.player_country.country_name,
+		faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text,
+		faction_prompt.get_node("VBoxContainer/ColorPicker").color
+	)
 	faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text = ""
 	faction_prompt.get_node("VBoxContainer/ColorPicker").color = Color.WHITE
 	faction_prompt.visible = !faction_prompt.visible

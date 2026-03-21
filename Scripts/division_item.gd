@@ -2,36 +2,36 @@ extends Control
 
 signal clicked(card_node, associated_data)
 
-@onready var color_rect: ColorRect = $ColorRect
-@onready var texture_rect: TextureRect = $ColorRect/VBoxContainer/HBoxContainer2/TextureRect
-@onready var progress_bar: ProgressBar = $ColorRect/VBoxContainer/HBoxContainer/ProgressBar
-@onready var label_division: Label = $ColorRect/VBoxContainer/HBoxContainer2/label_division
-@onready var label_attack: Label = $ColorRect/VBoxContainer/HBoxContainer2/label_attack
-@onready var label_defense: Label = $ColorRect/VBoxContainer/HBoxContainer/label_defense
-@onready var label_experience: Label = $ColorRect/VBoxContainer/HBoxContainer/label_experience
+@onready var texture_rect: TextureRect = $VBoxContainer/HBoxContainer2/TextureRect
+@onready var label_division: Label = $VBoxContainer/HBoxContainer2/label_division
+@onready var label_attack: Label = $VBoxContainer/HBoxContainer2/label_attack
+@onready var label_defense: Label = $VBoxContainer/HBoxContainer/label_defense
+@onready var label_experience: Label = $VBoxContainer/HBoxContainer/label_experience
+@onready var progress_bar: ProgressBar = $VBoxContainer/HBoxContainer/ProgressBar
 
-var data_payload  # Can be DivisionData OR Array[DivisionData]
+var data_payload # Can be DivisionData OR Array[DivisionData]
 var is_selected: bool = false
 
-const COLOR_NORMAL = Color(0.1, 0.1, 0.1, 0.7)
-const COLOR_SELECTED = Color(0.1, 0.4, 0.6, 0.9)
-const COLOR_HOVER = Color(0.2, 0.2, 0.2, 0.8)
+const COLOR_NORMAL = Color(0.6, 0.6, 0.6, 0.9)
+const COLOR_SELECTED = Color(0.2, 0.6, 0.9, 1.0)
+const COLOR_HOVER = Color(0.8, 0.8, 0.8, 0.95)
 
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	for child in color_rect.get_children():
+	# mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for child in get_children():
 		if child is Control:
 			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 ## Setup for the new Grouped View
-func setup_grouped(type: String, divisions: Array, currently_selected: bool) -> void:
+func setup_grouped(pid: int, type: String, divisions: Array, currently_selected: bool) -> void:
 	data_payload = divisions
 	is_selected = currently_selected
 
 	var count = divisions.size()
+	# label_division.text = "%dx %s at Province %d" % [count, type.capitalize(), pid]
 	label_division.text = "%dx %s" % [count, type.capitalize()]
 
 	# Calculate Group Averages
@@ -59,20 +59,20 @@ func setup_grouped(type: String, divisions: Array, currently_selected: bool) -> 
 
 
 func update_visuals():
-	color_rect.color = COLOR_SELECTED if is_selected else COLOR_NORMAL
+	self.modulate = COLOR_SELECTED if is_selected else COLOR_NORMAL
 
 
 func _on_mouse_entered():
 	if !is_selected:
-		color_rect.color = COLOR_HOVER
+		self.modulate = COLOR_HOVER
 
 
 func _on_mouse_exited():
 	update_visuals()
 
 
-func _gui_input(event):
+func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			clicked.emit(self, data_payload)
+			clicked.emit(self , data_payload)
 			get_viewport().set_input_as_handled()

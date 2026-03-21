@@ -1,7 +1,11 @@
-# res://Scripts/DivisionData.gd
 class_name DivisionData extends Resource
 
 # --- CONFIGURATION (Game Balance) ---
+
+# NOTE(soi):ideally the player should make their own division templates ala hoi4 style but for now its enum time
+
+
+
 const TEMPLATES = {
 	"infantry":
 	{
@@ -42,6 +46,29 @@ const TEMPLATES = {
 @export var max_hp: float = 100.0  # Max HP (for UI bars)
 @export var experience: float = 0.0
 @export var max_manpower: int = 10000
+
+# NOTE(sockmit): This isnt sockmit BUT SOILAD
+
+func FromDict(a_dict: Dictionary):
+	var division = DivisionData.new()
+	division.name = a_dict["name"]
+	division.type = a_dict["type"]
+	division.hp = a_dict["hp"]
+	division.max_hp = a_dict["max_hp"]
+	division.experience = a_dict["experience"]
+	division.max_manpower = a_dict["max_manpower"]
+	return division
+
+
+func ToDict():
+	return {
+		"name": name,
+		"type": type,
+		"hp": hp,
+		"max_hp": max_hp,
+		"experience": experience,
+		"max_manpower": max_manpower
+	}
 
 
 # --- Helper to get stats safely ---

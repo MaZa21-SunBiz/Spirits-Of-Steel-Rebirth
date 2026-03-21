@@ -2,101 +2,88 @@
 
 [ext_resource type="Script" uid="uid://bmffrhl6hb5bl" path="res://Scripts/division_item.gd" id="1_bl13n"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_h235r"]
-[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_hwt8t"]
 [ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="3_1h1m1"]
 [ext_resource type="Texture2D" uid="uid://dnw0n3ysnfn3e" path="res://assets/icons/shield.svg" id="4_bl13n"]
 [ext_resource type="Texture2D" uid="uid://e205c3hhc4jm" path="res://assets/icons/sword.svg" id="5_h235r"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="6_hwt8t"]
 
-[node name="DivisionItem" type="Panel" unique_id=73435440]
+[node name="PanelContainer" type="PanelContainer" unique_id=686024187]
 material = ExtResource("1_h235r")
-custom_minimum_size = Vector2(218, 60)
-offset_right = 218.0
-offset_bottom = 60.0
-theme = ExtResource("2_hwt8t")
+offset_right = 201.0
+offset_bottom = 64.0
 script = ExtResource("1_bl13n")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=579032160]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=369652812]
 use_parent_material = true
-layout_mode = 0
-offset_right = 218.0
-offset_bottom = 59.0
-color = Color(0.0253638, 0.0253638, 0.025363795, 1)
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=369652812]
-use_parent_material = true
-layout_mode = 0
-offset_left = 5.0
-offset_top = 4.0
-offset_right = 214.0
-offset_bottom = 60.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=1508940947]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1508940947]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer2" unique_id=239336309]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=239336309]
 use_parent_material = true
 layout_mode = 2
 expand_mode = 3
 
-[node name="label_division" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2" unique_id=1723291493]
+[node name="label_division" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1723291493]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1h1m1")
 text = "Division 1"
 
-[node name="TextureRect3" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer2" unique_id=219889975]
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=219889975]
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_h235r")
 expand_mode = 3
 
-[node name="label_attack" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer2" unique_id=1217923476]
+[node name="label_attack" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1217923476]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1h1m1")
 text = "67"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=1630579707]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1630579707]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="ProgressBar" type="ProgressBar" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1708349552]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer" unique_id=1708349552]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_1h1m1")
+show_percentage = false
 
-[node name="TextureRect2" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=943877991]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=943877991]
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("6_hwt8t")
 expand_mode = 3
 
-[node name="label_experience" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1649880088]
+[node name="label_experience" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1649880088]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1h1m1")
 text = "67"
 
-[node name="TextureRect4" type="TextureRect" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1833218014]
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1833218014]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("4_bl13n")
 expand_mode = 3
 
-[node name="label_defense" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer" unique_id=1769695684]
+[node name="label_defense" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1769695684]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_1h1m1")
 text = "67"
 
-[connection signal="gui_input" from="." to="." method="_gui_input"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

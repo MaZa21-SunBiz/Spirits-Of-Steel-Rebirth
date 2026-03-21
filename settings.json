@@ -5,7 +5,9 @@
   "map_effects": true,
   "music_volume": 0.0,
   "province_borders": 0.09,
-  "radios": [],
+  "radios": [
+    "default"
+  ],
   "scanlines": 0.04,
   "sfx_volume": 0.14,
   "ui_dirt": 0.39,

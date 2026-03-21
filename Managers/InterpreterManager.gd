@@ -316,6 +316,8 @@ func get_function(block, country: CountryData = null):
 					i += 1
 				result = all_owned
 		"add_plans":
+			if !PlansManager.plans.has(country.country_name):
+				PlansManager.plans[country.country_name] = []
 			PlansManager.plans[country.country_name].append(evaled_args[0])
 		"remove_plan":
 			PlansManager.plans[country.country_name].remove_at(
