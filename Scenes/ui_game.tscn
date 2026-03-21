@@ -51,6 +51,11 @@ content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -112,6 +117,7 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qnodh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar" unique_id=458722190]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -123,143 +129,156 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="PoliticalPower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=946459751]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Political power"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PoliticalPower" unique_id=110355969]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_politicalpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=886319999]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 expand_mode = 3
 
 [node name="label_politicalpower" type="Label" parent="Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer" unique_id=2078116230]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Money" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=2127845856]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Money"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Money" unique_id=766928713]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_money" type="TextureRect" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=1594976084]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 expand_mode = 3
 
 [node name="label_money" type="Label" parent="Control/Topbar/HBoxContainer/Money/HBoxContainer" unique_id=309530038]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Manpower" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1136963302]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Manpower"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Manpower" unique_id=435598385]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_manpower" type="TextureRect" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=1872756692]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 expand_mode = 3
 
 [node name="label_manpower" type="Label" parent="Control/Topbar/HBoxContainer/Manpower/HBoxContainer" unique_id=964147615]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Industry" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1070530185]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Industry"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Industry" unique_id=669118819]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_industry" type="TextureRect" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=408342431]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("9_5hlpc")
 expand_mode = 3
 
 [node name="label_industry" type="Label" parent="Control/Topbar/HBoxContainer/Industry/HBoxContainer" unique_id=1336028149]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Stability" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=943424752]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/Stability" unique_id=891553866]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_stability" type="TextureRect" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=1546646896]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("10_qnodh")
 expand_mode = 3
 
 [node name="label_stability" type="Label" parent="Control/Topbar/HBoxContainer/Stability/HBoxContainer" unique_id=788481322]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="WarSupport" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1561316651]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Stability"
 theme_override_styles/panel = ExtResource("5_5phox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/WarSupport" unique_id=110085503]
+use_parent_material = true
 layout_mode = 2
 
 [node name="icon_war_support" type="TextureRect" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=1722293711]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("11_qum3k")
 expand_mode = 3
 
 [node name="label_war_support" type="Label" parent="Control/Topbar/HBoxContainer/WarSupport/HBoxContainer" unique_id=897470063]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Topbar/HBoxContainer" unique_id=1907264093]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_styles/panel = SubResource("StyleBoxFlat_5hlpc")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer" unique_id=33152091]
+use_parent_material = true
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=95724245]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -267,6 +286,7 @@ value = 15.0
 show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar" unique_id=878388901]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,7 +296,7 @@ grow_vertical = 2
 
 [node name="label_date" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar/MarginContainer" unique_id=520160489]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 clip_contents = true
 layout_mode = 2
 theme = SubResource("Theme_uqxsi")
@@ -286,16 +306,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2" unique_id=986642983]
+use_parent_material = true
 layout_mode = 2
-theme_override_constants/separation = 10
 
 [node name="GameSpeedControl" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=2134005269]
+use_parent_material = true
 custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="Plus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1044589756]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Increase game speed"
@@ -305,7 +326,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Minus" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl" unique_id=1047883681]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Decrease game speed"
@@ -315,7 +336,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Music" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=283872825]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(28, 0)
 layout_mode = 2
 tooltip_text = "Radio"
@@ -326,12 +347,13 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="GameSpeedControl2" type="VBoxContainer" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=462928643]
+use_parent_material = true
 custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="Next" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2" unique_id=1021096501]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Skips Song?"
@@ -341,7 +363,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Pause" type="Button" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2" unique_id=2109854423]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Pauses Music?"
@@ -351,7 +373,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=874825053]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(17, 0)
 layout_mode = 2
 texture = ExtResource("12_2a76p")
@@ -360,7 +382,7 @@ stretch_mode = 5
 
 [node name="label_tension" type="Label" parent="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer" unique_id=1256875266]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_override_font_sizes/font_size = 14
@@ -372,8 +394,8 @@ vertical_alignment = 1
 material = ExtResource("16_lpwmk")
 layout_mode = 1
 offset_left = 356.0
-offset_top = 401.0
-offset_right = 589.0
+offset_top = 445.0
+offset_right = 542.0
 offset_bottom = 648.0
 theme = ExtResource("13_sdmnd")
 
@@ -426,11 +448,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type" unique_id=1818920470]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
 text = "Type"
 
 [node name="type" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Type" unique_id=481807798]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 14
 text = "infantry"
 
 [node name="Stats" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=405077906]
@@ -439,11 +463,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats" unique_id=1473736820]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
 text = "Atk / Def / HP"
 
 [node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Stats" unique_id=1660878643]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 14
 text = "10 : 10 : 100"
 
 [node name="Count" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=6265053]
@@ -454,6 +480,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 14
 text = "Divisions"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Count" unique_id=293571039]
@@ -475,10 +502,12 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost" unique_id=1308475392]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
 text = "Costs training/day:"
 
 [node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Cost" unique_id=1340317349]
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Manpower" type="HBoxContainer" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer" unique_id=612873776]
@@ -487,10 +516,12 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower" unique_id=1107178966]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
 text = "Manpower:"
 
 [node name="amount" type="Label" parent="Control/MilitaryExtraPanel/VBoxContainer/VBoxContainer/Manpower" unique_id=1283252395]
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
 text = "100"
 
 [node name="Button_Train" type="Button" parent="Control/MilitaryExtraPanel/VBoxContainer" unique_id=1300323521]
@@ -498,17 +529,17 @@ material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
 text = "TRAIN"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Control" unique_id=86601275]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -622.0
+offset_top = 26.0
 offset_right = 368.0
-grow_vertical = 0
+grow_vertical = 2
 mouse_filter = 2
 dragging_enabled = false
 dragger_visibility = 1
@@ -1871,6 +1902,7 @@ size_flags_stretch_ratio = 0.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_odnp1")
 
 [node name="TabBar" type="TabBar" parent="MapSwitcher" unique_id=1711270607]
+use_parent_material = true
 clip_contents = true
 layout_mode = 2
 theme_override_constants/icon_max_width = 10
