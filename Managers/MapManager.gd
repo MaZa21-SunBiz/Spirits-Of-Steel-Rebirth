@@ -1245,8 +1245,11 @@ func annex_country(annexer: String, annexee: String) -> void:
 
 	for troop: TroopData in TroopManager.get_troops_for_country(annexee):
 		TroopManager.remove_troop(troop)
+		
+	for pid: int in country_to_occupied_provinces.get(annexee, []):
+		DeoccupyProvince(pid)
 
-	var provinces_to_transfer = country_to_provinces.get(annexee, [])
+	var provinces_to_transfer = country_to_owned_provinces.get(annexee, [])
 
 	if provinces_to_transfer.is_empty():
 		print("MapManager: No provinces found for ", annexee)

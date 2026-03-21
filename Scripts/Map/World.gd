@@ -30,8 +30,6 @@ func _enter_tree() -> void:
 	KeyboardManager.settings = $ui_game/Settings
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.
-	clock.hour_passed.connect(CountryManager._on_hour_passed)
-	clock.day_passed.connect(CountryManager._on_day_passed)
 
 func DoSetup(a_progress: Array) -> void:
 	var path = "res://map_data/map_data.json" # Ensure path is correct
@@ -169,6 +167,9 @@ func DoSetup(a_progress: Array) -> void:
 	SettingsManager.apply_settings()
 
 	a_progress[0] = 1.0
+	
+	clock.hour_passed.connect(CountryManager._on_hour_passed)
+	clock.day_passed.connect(CountryManager._on_day_passed)
 
 func load_map_data(mapData):
 	IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)

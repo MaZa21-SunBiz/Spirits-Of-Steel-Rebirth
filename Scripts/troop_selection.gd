@@ -206,9 +206,9 @@ func _perform_path_assignment() -> void:
 	var pool_by_origin = {}
 
 	for div in moving_pool:
-		var owner = TroopManager.find_troop_owning_division(div)
-		if owner:
-			var origin_id = owner.province_id
+		var owningPolity = TroopManager.find_troop_owning_division(div)
+		if owningPolity:
+			var origin_id = owningPolity.province_id
 			if !pool_by_origin.has(origin_id):
 				# Initialize as a typed arrays
 				pool_by_origin[origin_id] = [] as Array[DivisionData]
@@ -299,11 +299,11 @@ func _handle_selective_ui_move(div_objects: Array[DivisionData], path: Array) ->
 	# Group the divisions by their current "parent" troop so we can split them
 	var split_map = {} # { TroopData: Array[DivisionData] }
 	for div in div_objects:
-		var owner: TroopData = TroopManager.find_troop_owning_division(div)
-		if owner:
-			if !split_map.has(owner):
-				split_map[owner] = []
-			split_map[owner].append(div)
+		var owningPoltiy: TroopData = TroopManager.find_troop_owning_division(div)
+		if owningPoltiy:
+			if !split_map.has(owningPoltiy):
+				split_map[owningPoltiy] = []
+			split_map[owningPoltiy].append(div)
 
 	for original_troop in split_map:
 		var divs_to_move = split_map[original_troop]

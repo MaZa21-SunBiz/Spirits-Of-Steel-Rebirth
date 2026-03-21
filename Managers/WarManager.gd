@@ -301,9 +301,9 @@ func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void
 		return
 
 	if a.is_player || b.is_player || is_at_war(CountryManager.player_country, a) || is_at_war(CountryManager.player_country, b):
-		EventManager.show_alert.call_deferred("war", a, b)
-		MusicManager.play_music.call_deferred(MusicManager.MUSIC.BATTLE_THEME)
-		MusicManager.play_sfx.call_deferred(MusicManager.SFX.DECLARE_WAR)
+		EventManager.show_alert("war", a, b)
+		MusicManager.play_music(MusicManager.MUSIC.BATTLE_THEME)
+		MusicManager.play_sfx(MusicManager.SFX.DECLARE_WAR)
 
 
 func _snapshot_country_territory(c_name: String) -> void:
@@ -462,4 +462,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 				#original_territories[MapManager.province_objects[pid].country].append(pid)
 			
 		original_territories.erase(fallen_name)
+		if loser.is_player:
+			pass
+			
 		CountryManager.cleanup_empty_countries()
