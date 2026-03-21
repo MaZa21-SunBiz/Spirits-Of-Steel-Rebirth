@@ -111,10 +111,10 @@ func _execute_best(actions: Array) -> void:
 	
 	actions.sort_custom(func(a, b): return a.score > b.score)
 	
-	if country == GameState.game_ui.selected_country:
-		print(country.country_name + ": ")
-		for entry in actions:
-			print("%s - %f" % [str(entry.action), entry.score])
+	#if country == GameState.game_ui.selected_country:
+	#	print(country.country_name + ": ")
+	#	for entry in actions:
+	#		print("%s - %f" % [str(entry.action), entry.score])
 	
 	for action: Dictionary in actions:
 		if action.score < 0 || action.action.call():
@@ -162,15 +162,15 @@ func _execute_war() -> bool:
 
 	# Only proceed if we pass the probability check
 	if randf() > (personality["war"]["probability"]["base"] + MapManager.world_tension * personality["war"]["probability"]["tension_factor"]):
-		if country == GameState.game_ui.selected_country:
-			print("%s decided not to go to war" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s decided not to go to war" % country.country_name)
 		return false
 
 	# 2. COOLDOWNS & OVEREXTENSION (Existing)
 	var frame_now = Engine.get_frames_drawn()
 	if frame_now - _last_declare_frame < DECLARE_WAR_COOLDOWN_FRAMES || WarManager.get_enemies_of(country.country_name).size() >= MAX_PARALLEL_WARS || country.money < personality["war"]["min_economy"]:
-		if country == GameState.game_ui.selected_country:
-			print("%s didn't go to war due to cooldown, too many enemies, or a weak economy" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s didn't go to war due to cooldown, too many enemies, or a weak economy" % country.country_name)
 		return false
 
 	var candidates = _get_neighbor_countries().filter(
@@ -183,8 +183,8 @@ func _execute_war() -> bool:
 	)
 	#print(candidates)
 	if candidates.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no candidates to go to war with" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no candidates to go to war with" % country.country_name)
 		return false
 
 	var best_score = -INF
@@ -228,16 +228,16 @@ func _execute_war() -> bool:
 
 	# 7. EXECUTION
 	if best_target:
-		if country == GameState.game_ui.selected_country:
-			print("%s is declaring war on %s" % [country.country_name, best_target])
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s is declaring war on %s" % [country.country_name, best_target])
 		WarManager.declare_war(country, CountryManager.countries[best_target])
 		# Increasing tension on every war slows down/speeds up the global state
 		MapManager.increase_world_tension(0.02)
 
 		_last_declare_frame = frame_now
 	
-	if country == GameState.game_ui.selected_country:
-		print("%s executed war" % country.country_name)
+	#if country == GameState.game_ui.selected_country:
+	#	print("%s executed war" % country.country_name)
 	return true
 
 
@@ -267,14 +267,14 @@ func _execute_frontline():
 	
 	var idle_troops = TroopManager.get_troops_for_country(country.country_name).filter(func(t): return not t.is_moving)
 	if idle_troops.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no idle troops" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no idle troops" % country.country_name)
 		return
 
 	var enemies = WarManager.get_enemies_of(country.country_name)
 	if enemies.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no enemies" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no enemies" % country.country_name)
 		var hubs = _get_peace_hubs()
 		var move_payload: Array = []
 		for troop in idle_troops:
@@ -337,8 +337,8 @@ func _execute_frontline():
 								}
 							)
 	if targets.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no targets" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no targets" % country.country_name)
 		return
 
 	var move_payload = []
@@ -381,8 +381,8 @@ func _execute_frontline():
 
 	if !move_payload.is_empty():
 		TroopManager.command_move_assigned(move_payload)
-	if country == GameState.game_ui.selected_country:
-		print("%s executed their frontline" % country.country_name)
+	#if country == GameState.game_ui.selected_country:
+	#	print("%s executed their frontline" % country.country_name)
 
 # --- UTILITIES ---
 

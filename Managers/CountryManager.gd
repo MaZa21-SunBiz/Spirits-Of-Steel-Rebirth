@@ -7,6 +7,7 @@ var player_country: CountryData
 
 var Releasables: Array[ReleasableData] = []
 
+var mutexer: Mutex = Mutex.new()
 
 func _on_hour_passed() -> void:
 	#if GameState.is_loading_game:
@@ -122,8 +123,10 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	#	new_country.set_relation_with(existing_name, 50)
 	#	countries[existing_name].set_relation_with(tempName, 50)
 	
+	mutexer.lock()
 	countries[tempName] = new_country
 	countryNames.append(tempName)
+	mutexer.unlock()
 	return new_country
 
 
