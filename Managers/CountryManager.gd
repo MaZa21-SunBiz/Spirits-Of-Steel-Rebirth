@@ -7,16 +7,16 @@ var player_country: CountryData
 
 var Releasables: Array[ReleasableData] = []
 
-var mutexer: Mutex = Mutex.new()
+#var mutexer: Mutex = Mutex.new()
 
 func _on_hour_passed() -> void:
 	#if GameState.is_loading_game:
 	#	return
 	#var timeStart = Time.get_unix_time_from_system()
-	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_hour(), countryNames.size()))
+	#WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_hour(), countryNames.size()))
 
-	#for c_name: String in countries:
-	#	countries[c_name].process_hour()
+	for c_name: String in countryNames:
+		countries[c_name].process_hour()
 	#print("Hour passing took %f" % (Time.get_unix_time_from_system() - timeStart))
 
 func _on_day_passed() -> void:
@@ -25,10 +25,10 @@ func _on_day_passed() -> void:
 
 	EconomyManager.process_economy_day()
 	#var timeStart = Time.get_unix_time_from_system()
-	WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_day(), countryNames.size()))
+	#WorkerThreadPool.wait_for_group_task_completion(WorkerThreadPool.add_group_task(func (a_index: int): countries[countryNames[a_index]].process_day(), countryNames.size()))
 	
-	#for c_name: String in countries:
-	#	countries[c_name].process_day()
+	for c_name: String in countryNames:
+		countries[c_name].process_day()
 	#print("Day passing took %f" % (Time.get_unix_time_from_system() - timeStart))
 	EventManager.check_super_events()
 	
@@ -123,10 +123,10 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	#	new_country.set_relation_with(existing_name, 50)
 	#	countries[existing_name].set_relation_with(tempName, 50)
 	
-	mutexer.lock()
+	#mutexer.lock()
 	countries[tempName] = new_country
 	countryNames.append(tempName)
-	mutexer.unlock()
+	#mutexer.unlock()
 	return new_country
 
 
@@ -209,7 +209,7 @@ func cleanup_empty_countries() -> void:
 func do_cleanup_empty_countries() -> void:
 	var to_remove: PackedStringArray = []
 	
-	for c_name: String in countries.keys():
+	for c_name: String in countryNames:
 		if MapManager.country_to_provinces.get(c_name, []).is_empty() && !countries[c_name].is_exiled:
 			to_remove.append(c_name)
 

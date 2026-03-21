@@ -404,15 +404,21 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 				troop_selection.select_troop(primary)
 			elif "selected_troop" in troop_selection:
 				troop_selection.selected_troop = primary
-	
 
-func remove_troop(a_troop: TroopData) -> void:
-	if a_troop in to_remove:
-		return
-	to_remove.append(a_troop)
-	if !emptyLatch:
-		emptyLatch = true
-		remove_troops.call_deferred()
+func remove_troop(troop: TroopData) -> void:
+	troops.erase(troop)
+	moving_troops.erase(troop)
+
+	var pid: int = troop.province_id
+	var country: String = troop.country_name
+
+	if troops_by_province.has(pid):
+		troops_by_province[pid].erase(troop)
+		if troops_by_province[pid].is_empty():
+			troops_by_province.erase(pid)
+
+	if troops_by_country.has(country):
+		troops_by_country[country].erase(troop)
 
 ## Public hook for the WarManager to force a troop to its home province center.
 func move_to_garrison(troop: TroopData) -> void:
@@ -438,28 +444,6 @@ func _add_troop_to_indexes(troop: TroopData) -> void:
 		troops_by_country[country] = [troop]
 	else:
 		troops_by_country[country].append(troop)
-
-
-## Removes a troop reference from all data structures (master, moving, indexes).
-func remove_troops() -> void:
-	#print(to_remove)
-	for troop: TroopData in to_remove:
-		troops.erase(troop)
-		moving_troops.erase(troop)
-
-		var pid: int = troop.province_id
-		var country: String = troop.country_name
-
-		if troops_by_province.has(pid):
-			troops_by_province[pid].erase(troop)
-			if troops_by_province[pid].is_empty():
-				troops_by_province.erase(pid)
-
-		if troops_by_country.has(country):
-			troops_by_country[country].erase(troop)
-	to_remove.clear()
-	emptyLatch = false
-
 
 ## Updates the troop's location in the spatial index (troops_by_province).
 func _move_troop_to_province_logically(troop: TroopData, new_pid: int) -> void:

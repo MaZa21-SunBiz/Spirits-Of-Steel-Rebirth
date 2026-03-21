@@ -294,9 +294,9 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void:
 	if a == b || is_at_war(a, b):
 		return
-	print("%s declared war on %s" % [a.country_name, b.country_name])
-	_snapshot_country_territory(a.country_name)
-	_snapshot_country_territory(b.country_name)
+	#print("%s declared war on %s" % [a.country_name, b.country_name])
+	#_snapshot_country_territory(a.country_name)
+	#_snapshot_country_territory(b.country_name)
 	if !add_war_silent(a, b) || a_silent:
 		return
 
@@ -391,7 +391,7 @@ func check_country_collapse(country_name: String, victor_name: String):
 
 
 func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
-	print("Total Collapse of " + fallen_name + " to " + victor_name)
+	#print("Total Collapse of " + fallen_name + " to " + victor_name)
 	var loser := CountryManager.get_country(fallen_name)
 	var winner := CountryManager.get_country(victor_name)
 	
@@ -437,7 +437,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	# --- 2. Return territory occupied BY the loser to original owners ---
 	for pid in MapManager.country_to_provinces.get(fallen_name, []).duplicate():
 		if !MapManager.country_to_owned_provinces.get(fallen_name).has(pid):
-			print("Deoccupying %d" % pid)
+			#print("Deoccupying %d" % pid)
 			MapManager.DeoccupyProvince(pid)
 
 	# --- 3. Territory preview (for peace UI only) ---
@@ -453,11 +453,11 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	else: # --- 5. AI takes everything ---
 		for pid in MapManager.country_to_owned_provinces.get(fallen_name).duplicate():
 			if MapManager.province_objects[pid].occupier == "":
-				print("%d is going to victor " % pid + victor_name)
+				#print("%d is going to victor " % pid + victor_name)
 				MapManager.transfer_ownership(pid, victor_name)
 				#original_territories[victor_name].append(pid)
 			else:
-				print("%d is going to occupier " % pid + MapManager.province_objects[pid].occupier)
+				#print("%d is going to occupier " % pid + MapManager.province_objects[pid].occupier)
 				MapManager.transfer_ownership(pid, MapManager.province_objects[pid].occupier)
 				#original_territories[MapManager.province_objects[pid].country].append(pid)
 			
