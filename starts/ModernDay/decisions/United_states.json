@@ -218,44 +218,51 @@
 		"Political": [
 			{
 				"id": "pol_1",
-				"title": "State Propaganda",
-				"pos": [
-					100.0,
-					300.0
-				],
-				"days": 10.0,
-				"cost_pp": 15.0,
-				"action": [
-					{
-						"func": "add_country_attr",
-						"args": [
-							"stability",
-							0.1
-						]
-					}
-				],
-				"desc": "Posters on every wall."
-			},
-			{
-				"id": "pol_2",
-				"title": "Secret Police",
-				"prereq": "pol_1",
-				"pos": [
-					400.0,
-					300.0
-				],
+				"title": "The State Of The Union",
+				"pos": [50, 150],
 				"days": 20.0,
 				"cost_pp": 50.0,
 				"action": [
-					{
-						"func": "add_country_attr",
+					{"func": "event",
 						"args": [
-							"daily_pp_gain",
-							0.05
+							{
+								"event": "custom",
+								"contents": [
+									{
+										"type": "paragraph",
+										"text": "unlike all the previous state of the unions, everytime trump said one sentence everyone clapped, all while Trump just makes shit up"
+									},
+									{
+										"type": "button",
+										"text": "21st century schitzoid man"
+									}
+								]
+							}
+						]
+					},
+					{"func": "add_country_attr",
+						"args": [
+							"stability",
+							-0.5
 						]
 					}
-				],
-				"desc": "Silencing dissent changes political power."
+				]
+			},
+			{
+				"id": "pol_2",
+				"prereq": "pol_1",
+				"title": "Invade Venezuela",
+				"pos": [350, 150],
+				"days": 20.0,
+				"cost_pp": 50.0,
+				"action": [
+					{"func": "declare_war",
+						"args": [
+							"United_states",
+							"Venezuela"
+						]
+					}
+				]
 			}
 		]
 	}

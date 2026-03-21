@@ -43,6 +43,7 @@ var all_cities: Array[Array] = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
+var gay: Label = Label.new()
 
 func increase_world_tension(amount: float) -> void:
 	world_tension = clamp(world_tension + amount, 0.1, 1.0)

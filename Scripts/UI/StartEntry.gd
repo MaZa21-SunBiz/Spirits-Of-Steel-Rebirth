@@ -43,7 +43,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				FactionManager.Initialize(map_data.get("factions", []))
 				a_percent[0] = 0.9
 
-				Console.add_command_autocomplete_list("play_as", CountryManager.countryNames)
+				Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 				a_percent[0] = 1.0
 			)
 		button.pressed.connect(load_map_data)

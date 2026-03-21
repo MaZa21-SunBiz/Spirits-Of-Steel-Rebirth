@@ -35,7 +35,12 @@ func has_available_plans(country: CountryData) -> bool:
 					return true
 				else:
 					choices.append(element.get("finished", {}))
+<<<<<<< HEAD
 	if choices.size() > 0:
+=======
+
+	if !choices.is_empty():
+>>>>>>> 4a01a913a9e9ae9672f0a1319ae9df339a99a4dd
 		var choice = choices.pick_random()
 		if choice:
 			InterpreterManager.get_function(choice, country)

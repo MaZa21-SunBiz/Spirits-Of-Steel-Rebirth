@@ -1,15 +1,18 @@
 extends Node
 
+var debug: bool:
+	get:
+		return SettingsManager.settings.debug_mode
 var heap: Dictionary = {}
 const DUMMY_FUNC = {"func": "return", "args": [true]}
 
-func all(...args) -> bool:
+func all(args: Array) -> bool:
 	for arg in args:
 		if not arg:
 			return false
 	return true
 
-func any(...args) -> bool:
+func any(args: Array) -> bool:
 	for arg in args:
 		if arg:
 			return true
@@ -115,6 +118,15 @@ func get_function(block, country: CountryData = null):
 	if country == null:
 		country = CountryManager.player_country
 
+	
+
+	#match statement
+	if block.has("match"):
+		var match_val = str(get_function(block["match"]))
+		if match_val != "match": # Prevent collision with 'match' key itself
+			get_function(block.get(match_val, {}))
+
+
 	# Handle multiple functions (Recusive Array Support)
 	if block is Array:
 		var last_result = null
@@ -129,20 +141,25 @@ func get_function(block, country: CountryData = null):
 
 	#for loop
 	if block.has("for"):
+		var var_name = block["for"]
+		var had_prev = heap.has(var_name)
+		var prev_val = heap.get(var_name)
 		for item in block["in"]:
-			heap[block["for"]] = item
+			heap[var_name] = item
 			var substituted = _substitute(block["do"].duplicate(true), heap)
-			print(heap)
-			print(substituted)
 			get_function(substituted)
-		heap.erase(block["for"])
-	
+		
+		if had_prev:
+			heap[var_name] = prev_val
+		else:
+			heap.erase(var_name)
+			
 	#match statement
 	if block.has("match"):
 		get_function(block.get(str(get_function(block["match"])), {}))
 	
 	var args: Array = block.get("args", []).duplicate()
-	var evaled_args = []
+	var evaled_args: Array = []
 	for arg in args:
 		arg = get_variable(arg)
 		if (arg is Dictionary && arg.has("func")) || arg is Array:
@@ -158,26 +175,32 @@ func get_function(block, country: CountryData = null):
 				result = evaled_args[0]
 		# Comparison stuff
 		"and":
-			if evaled_args.size() >= 2:
-				result = evaled_args[0] && evaled_args[1]
+			result = true
+			for val in evaled_args:
+				if not val:
+					result = false
+					break
 		"not":
-			if evaled_args.size() >= 2:
+			if evaled_args.size() >= 1:
 				result = !evaled_args[0]
 		"or":
-			if evaled_args.size() >= 2:
-				result = evaled_args[0] || evaled_args[1]
+			result = false
+			for val in evaled_args:
+				if val:
+					result = true
+					break
 		"xor":
 			if evaled_args.size() >= 2:
-				result = evaled_args[0] ^ evaled_args[1]
+				result = bool(evaled_args[0]) != bool(evaled_args[1])
 		"eq":
 			if evaled_args.size() >= 2:
 				result = evaled_args[0] == evaled_args[1]
 		"gt":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) > get_variable(evaled_args[1])
+				result = evaled_args[0] > evaled_args[1]
 		"lt":
 			if evaled_args.size() >= 2:
-				result = get_variable(evaled_args[0]) < get_variable(evaled_args[1])
+				result = evaled_args[0] < evaled_args[1]
 		"all":
 			result = all(evaled_args)
 		"any":
@@ -186,7 +209,11 @@ func get_function(block, country: CountryData = null):
 			result = bool(randi() % int(evaled_args[0]))
 		"get":
 			if evaled_args.size() >= 2:
-				result = evaled_args[0] + evaled_args[1]
+				var country_obj = CountryManager.countries.get(evaled_args[0])
+				if country_obj:
+					result = country_obj.get(evaled_args[1])
+				else:
+					result = null
 
 		# Math stuff**
 		"add":
@@ -196,42 +223,48 @@ func get_function(block, country: CountryData = null):
 		"is_at_war":
 			if evaled_args.size() >= 2:
 				result = WarManager.is_at_war_names(
-					get_variable(evaled_args[0]),
-					get_variable(evaled_args[1])
+					evaled_args[0],
+					evaled_args[1]
 				)
 
-		"change_hourly_money":
-			country.hourly_money_income += evaled_args[0]
-			result = country.hourly_money_income
-		"loose_money":
-			country.money -= evaled_args[0]
-			result = country.money >= evaled_args[0]
-		"has_money":
-			result = country.money >= evaled_args[0]
-		"loose_manpower":
-			country.manpower -= evaled_args[0]
-			result = country.manpower
-		"change_manpower":
-			country.manpower += evaled_args[0]
-			result = country.manpower
-		"has_manpower":
-			result = country.manpower >= evaled_args[0]
-		"loose_pp":
-			country.daily_pp_gain += evaled_args[0]
-			result = country.daily_pp_gain
-		"change_daily_pp":
-			country.daily_pp_gain += evaled_args[0]
-			result = country.daily_pp_gain
-		"has_pp":
-			result = country.political_power >= evaled_args[0]
-		"loose_stability":
-			country.stability -= evaled_args[0]
-			result = country.stability
-		"change_stability":
-			country.stability = min(1.0, country.stability + evaled_args[0])
-			result = country.stability
-		"has_stability":
-			result = country.stability >= evaled_args[0]
+		"set_country_attr":
+			country[evaled_args[0]] = evaled_args[1]
+			result = country[evaled_args[0]]
+		"add_country_attr":
+			country[evaled_args[0]] += evaled_args[1]
+			result = country[evaled_args[0]]
+		# "change_hourly_money":
+		# 	country.hourly_money_income += evaled_args[0]
+		# 	result = country.hourly_money_income
+		# "loose_money":
+		# 	country.money -= evaled_args[0]
+		# 	result = country.money >= evaled_args[0]
+		# "has_money":
+		# 	result = country.money >= evaled_args[0]
+		# "loose_manpower":
+		# 	country.manpower -= evaled_args[0]
+		# 	result = country.manpower
+		# "change_manpower":
+		# 	country.manpower += evaled_args[0]
+		# 	result = country.manpower
+		# "has_manpower":
+		# 	result = country.manpower >= evaled_args[0]
+		# "loose_pp":
+		# 	country.daily_pp_gain += evaled_args[0]
+		# 	result = country.daily_pp_gain
+		# "change_daily_pp":
+		# 	country.daily_pp_gain += evaled_args[0]
+		# 	result = country.daily_pp_gain
+		# "has_pp":
+		# 	result = country.political_power >= evaled_args[0]
+		# "loose_stability":
+		# 	country.stability -= evaled_args[0]
+		# 	result = country.stability
+		# "change_stability":
+		# 	country.stability = min(1.0, country.stability + evaled_args[0])
+		# 	result = country.stability
+		# "has_stability":
+		# 	result = country.stability >= evaled_args[0]
 		"army_level_up":
 			country.army_level += 1
 			result = country.army_level
@@ -371,20 +404,24 @@ func format_functions(expression, indent: String = "", no_bullet: bool = false) 
 				
 	return formatted.strip_edges() if indent == "" else formatted
 
-# NOTE(soi): pain
-func _substitute(expression, _heap: Dictionary):
-	print(_heap)
+# NOTE(soi): recursive string substitution with cycle detection
+func _substitute(expression, _heap: Dictionary, visited: Array = []):
 	if expression is Dictionary:
 		for key in expression.keys():
-			expression[key] = _substitute(expression[key], _heap)
-		return expression  # Return the (modified) dictionary for assignment
+			expression[key] = _substitute(expression[key], _heap, visited)
+		return expression
 	elif expression is Array:
 		for i in range(expression.size()):
-			expression[i] = _substitute(expression[i], _heap)
+			expression[i] = _substitute(expression[i], _heap, visited)
 		return expression
 	elif expression is String:
 		if _heap.has(expression):
-			return _substitute(_heap[expression], _heap)
+			if expression in visited:
+				push_error("Interpreter: Circular reference detected for variable '%s'" % expression)
+				return expression
+			var new_visited = visited.duplicate()
+			new_visited.append(expression)
+			return _substitute(_heap[expression], _heap, new_visited)
 		else:
 			return expression
 	else:

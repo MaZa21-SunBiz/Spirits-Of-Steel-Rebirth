@@ -1,6 +1,7 @@
 {
-  "daynight_contrast": 0.0,
-  "daynight_smoothness": 0.01,
+  "daynight_contrast": 0.01,
+  "daynight_smoothness": 0.03,
+  "debug_mode": true,
   "map_effects": true,
   "music_volume": 0.0,
   "province_borders": 0.09,
@@ -10,6 +11,6 @@
   "ui_dirt": 0.39,
   "ui_lower": 0.08,
   "ui_upper": 0.64,
-  "vignette_lower": 1.0,
+  "vignette_lower": 0.75,
   "vignette_upper": 0.0
 }

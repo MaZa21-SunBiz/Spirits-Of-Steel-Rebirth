@@ -20,7 +20,7 @@ uniform sampler2D ocean_noise : filter_nearest, repeat_enable;
 uniform sampler2D original_texture : filter_linear_mipmap;
 uniform vec2 tex_size;
 uniform float lower : hint_range(0.0, 1.0) = 0.5;
-uniform float upper : hint_range(0.0, 4.0) = 1.8;
+uniform float upper : hint_range(0.0, 1.0) = 0.8;
 uniform float scanlines : hint_range(0.0, 0.5) = 0.05;
 uniform int toggle = 1;
 uniform float contrast : hint_range(0.0, 0.5) = 0.05;
@@ -111,11 +111,9 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     return false;
 }
 void fragment() {
-	if (toggle == 1) {
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
 		float black = UV.x * tex_size.x + UV.y * tex_size.y;
-
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
 		    vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
@@ -142,7 +140,6 @@ void fragment() {
 		        COLOR = country_border_color;
 		    }
 		}
-
 		// 4. its soilading time
 		//for (float dist=0.0; dist <= max_dist; dist++) {
 			//for (float angle = 0.0; angle<6.28; angle+=increment) {
@@ -175,16 +172,19 @@ void fragment() {
 			////COLOR.rgb = (COLOR.rgb + vec3(0.0))/2.0;
 			//COLOR.rgb = vec3(0.0);
 		//}
-	}
-	float vignette = 4.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
-	COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
-	COLOR.rgb *= (1.0+upper)*(vignette)+lower*(1.0-vignette);
-	COLOR.rgb += vec3(
-		contrast/smoothness*
-		clamp(
-			sin(PI*.5*cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
-			-smoothness,
-			smoothness
-		)
+
+	if (toggle == 1) {
+		float vignette = 16.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
+		COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
+		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
+		COLOR.rgb += vec3(
+			contrast/smoothness*
+			clamp(
+				sin(PI*.5*cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
+				-smoothness,
+				smoothness
+			)
 		);
+		COLOR.rgb += (.5+.5*asin(sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x))))*clamp(mix(.5-.5*(lower), -upper, vignette), 0., 1.);
+	}
 }

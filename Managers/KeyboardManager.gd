@@ -83,3 +83,4 @@ func _cycle_map_mode() -> void:
 			current_view = MapView.COUNTRIES
 			MapManager.show_countries_map()
 			print("Map Mode: Countries")
+	GameState.game_ui.map_tabs.current_tab = current_view

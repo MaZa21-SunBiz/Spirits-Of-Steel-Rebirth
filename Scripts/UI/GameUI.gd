@@ -48,6 +48,7 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 
 @onready var radio_list: VBoxContainer = $Radios/RadioList
 @onready var now_playing: Label = $Radios/ScrollContainer/NowPlaying
+@onready var map_tabs: TabBar = $MapSwitcher/TabBar
 
 # ── State Variables ───────────────────────────────────
 var selected_country: CountryData = null
@@ -592,7 +593,7 @@ func _declare_war():
 	if selected_country.owner:
 		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[selected_country.owner])
 	for puppet: String in selected_country.puppets:
-		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[puppet])
+		WarManager.declare_war(CountryManager.player_country, CountryManager.countries[ puppet ])
 
 	# GameState.game_ui.military_access_label.text = ( "Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No"))
 
@@ -902,12 +903,15 @@ func _on_division_type_button(type: String) -> void:
 	division_type_selected = type
 	update_division_menu()
 
+
 func _on_input_division_text_changed(_new_text: float) -> void:
 	update_division_menu()
+
 
 func _on_music_pressed():
 	$Radios.visible = !$Radios.visible
 	SettingsManager.save_settings()
+
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(CountryManager.player_country.country_name, faction_prompt.get_node("VBoxContainer/HBoxContainer/TextEdit").text, faction_prompt.get_node("VBoxContainer/ColorPicker").color)
@@ -915,12 +919,15 @@ func _on_create_faction_pressed() -> void:
 	faction_prompt.get_node("VBoxContainer/ColorPicker").color = Color.WHITE
 	faction_prompt.visible = !faction_prompt.visible
 
+
 func _on_invite_faction_pressed() -> void:
 	FactionManager.invite_faction(CountryManager.player_country, selected_country)
 	# MapManager.show_faction_map()
 
+
 func _on_kick_faction_pressed() -> void:
 	FactionManager.kick_faction(CountryManager.player_country, selected_country)
+
 
 func _on_steal_manpower_pressed() -> void:
 	if selected_country.total_population > 0:
@@ -939,8 +946,10 @@ func _on_steal_money_pressed() -> void:
 func _on_annex_country_pressed() -> void:
 	MapManager.annex_country(CountryManager.player_country.country_name, selected_country.country_name)
 
+
 func _on_call_to_arms_pressed() -> void:
 	WarManager.call_to_arms(CountryManager.player_country, selected_country)
+
 
 func update_cultures() -> void:
 	for child in accepted_cultures.get_children():
@@ -956,8 +965,10 @@ func update_cultures() -> void:
 func _on_next_song_pressed() -> void:
 	MusicManager._on_music_finished()
 	
+
 func _on_pause_pressed() -> void:
 	MusicManager._toggle_pause()
+
 
 func add_notif(type: String, tooltip: String):
 	if all_notifs.has(type):
@@ -978,12 +989,14 @@ func add_notif(type: String, tooltip: String):
 	notif_box.add_child(notif)
 	all_notifs[type] = notif
 
+
 func remove_notif(type: String):
 	if all_notifs.has(type):
 		var notif = all_notifs[type]
 		if is_instance_valid(notif):
 			notif.queue_free()
 		all_notifs.erase(type)
+
 
 func _update_notifications():
 	#print(all_notifs)
@@ -1020,3 +1033,35 @@ func _update_notifications():
 		add_notif("plan", "Plan Available")
 	else:
 		remove_notif("plan")
+
+
+func _on_deploy_all_pressed():
+	for troop in sidemenu_trooplist.get_children():
+		troop.pressed.emit()
+
+
+func _on_map_changed(tab: int) -> void:
+	match tab:
+		KeyboardManager.MapView.COUNTRIES:
+			MapManager.show_countries_map()
+			print("Map Mode: Countries")
+
+		KeyboardManager.MapView.POPULATION:
+			MapManager.show_population_map()
+			print("Map Mode: Population")
+
+		KeyboardManager.MapView.INFRASTRUCTURE:
+			MapManager.ShowInfrastructureMap()
+			print("Map Mode: Infrastructure")
+			
+		KeyboardManager.MapView.GDP:
+			MapManager.show_gdp_map()
+			print("Map Mode: GDP")
+
+		KeyboardManager.MapView.ETHNICITY:
+			MapManager.show_ethnic_map()
+			print("Map Mode: Ethnicity")
+
+		KeyboardManager.MapView.FACTION:
+			MapManager.show_faction_map()
+			print("Map Mode: Factions")
