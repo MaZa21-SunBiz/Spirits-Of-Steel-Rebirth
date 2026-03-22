@@ -714,6 +714,7 @@ layout_mode = 2
 [node name="None" type="TextureButton" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer" unique_id=1452232604]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "None Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("4_kdxsy")
@@ -746,6 +747,7 @@ layout_mode = 2
 [node name="None" type="TextureButton" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer" unique_id=1179999718]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "None Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("4_kdxsy")
@@ -758,6 +760,7 @@ layout_mode = 2
 [node name="FactionPaint" type="TextureButton" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1971015809]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "Paint Faction Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("5_eo7xe")
@@ -790,6 +793,7 @@ layout_mode = 2
 [node name="None" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer" unique_id=938564763]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "None Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("4_kdxsy")
@@ -802,6 +806,7 @@ layout_mode = 2
 [node name="OwnerPaint" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1771027249]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "Paint Owner Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("6_eo7xe")
@@ -814,6 +819,7 @@ layout_mode = 2
 [node name="OccupationPaint" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer3" unique_id=940849632]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "Paint Occupier Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("7_kdxsy")
@@ -826,6 +832,7 @@ layout_mode = 2
 [node name="MultiSelect" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer4" unique_id=632020462]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+tooltip_text = "Multi Select Tool"
 focus_mode = 0
 theme = ExtResource("2_5xoin")
 texture_normal = ExtResource("8_id73f")
