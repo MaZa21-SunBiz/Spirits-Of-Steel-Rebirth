@@ -128,6 +128,7 @@ func _handle_click(_screenPos: Vector2) -> void:
 						select_province(hovered_pid)
 					Tool.PAINT_OWNER:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
+							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
 					Tool.PAINT_OCCUPATION:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
