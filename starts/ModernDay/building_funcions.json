@@ -1,3 +1,32 @@
 {
-	"Factory capable"
+	"Factory capable": {
+		"reqs_effects": { "produces": 69 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Heal": {
+		"reqs_effects": { "heal_amount": 42 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Gather resources": {
+		"reqs_effects": { "heal_amount": 42 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Supply": {
+		"reqs_effects": { "supply_amount": 42 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Storage": {
+		"reqs_effects": { "storage": 42 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Port": {
+		"reqs_effects": { "on_coast": 42 },
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	}
 }

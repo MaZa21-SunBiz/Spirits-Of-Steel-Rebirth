@@ -77,6 +77,7 @@ script = ExtResource("2_h1bgf")
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1458542396]
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=256264364 node_paths=PackedStringArray("tabs", "resourceTemplate", "resourcesList", "provinceName", "provinceDescription", "provinceInfrastructure", "provinceConstructionIcon", "provinceOccupiedIcon", "provinceDestroyedIcon")]
 offset_right = 40.0

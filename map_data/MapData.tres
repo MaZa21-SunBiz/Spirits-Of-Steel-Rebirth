@@ -1746,7 +1746,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xhod5"]
 script = ExtResource("1_5ko5j")
 id = 126
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "140, 204, 189"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ymkqp")])
 gdp = 20000
@@ -2484,7 +2484,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_hbxb6"]
 script = ExtResource("1_5ko5j")
 id = 177
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "140, 204, 189"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k106d")])
 gdp = 20000
@@ -2932,7 +2932,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_w85sx"]
 script = ExtResource("1_5ko5j")
 id = 203
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "140, 204, 189"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qe7dw")])
 gdp = 20000
@@ -3004,7 +3004,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rfsde"]
 script = ExtResource("1_5ko5j")
 id = 207
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_af2fg")])
 gdp = 20000
@@ -3696,7 +3696,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_fwf1i"]
 script = ExtResource("1_5ko5j")
 id = 249
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "140, 204, 189"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7iai4")])
 gdp = 20000
@@ -4297,7 +4297,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_fxsf1"]
 script = ExtResource("1_5ko5j")
 id = 285
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dpad6")])
 gdp = 20000
@@ -4436,7 +4436,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5t8pe"]
 script = ExtResource("1_5ko5j")
 id = 293
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_j4joe")])
 gdp = 20000
@@ -4542,7 +4542,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_i75yv"]
 script = ExtResource("1_5ko5j")
 id = 299
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dr5yt")])
 gdp = 20000
@@ -5052,7 +5052,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xddps"]
 script = ExtResource("1_5ko5j")
 id = 328
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7kook")])
 gdp = 20000
@@ -5181,7 +5181,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ttj5h"]
 script = ExtResource("1_5ko5j")
 id = 335
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8hm0k")])
 gdp = 20000
@@ -5421,7 +5421,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_57syx"]
 script = ExtResource("1_5ko5j")
 id = 347
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_67y6m")])
 gdp = 20000
@@ -6115,7 +6115,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mgln1"]
 script = ExtResource("1_5ko5j")
 id = 393
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_aqvr6")])
 gdp = 20000
@@ -6344,7 +6344,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tivrq"]
 script = ExtResource("1_5ko5j")
 id = 406
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_lqalg")])
 gdp = 20000
@@ -6594,7 +6594,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_fplur"]
 script = ExtResource("1_5ko5j")
 id = 420
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pjjb4")])
 gdp = 20000
@@ -6800,7 +6800,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jyfuf"]
 script = ExtResource("1_5ko5j")
 id = 431
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8p7wj")])
 gdp = 20000
@@ -6818,7 +6818,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_a65ss"]
 script = ExtResource("1_5ko5j")
 id = 432
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jcbp1")])
 gdp = 20000
@@ -6836,7 +6836,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xdfjf"]
 script = ExtResource("1_5ko5j")
 id = 433
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4lom7")])
 gdp = 20000
@@ -7034,7 +7034,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5kpak"]
 script = ExtResource("1_5ko5j")
 id = 444
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mx6af")])
 gdp = 20000
@@ -7106,7 +7106,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xaej2"]
 script = ExtResource("1_5ko5j")
 id = 448
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_myir5")])
 gdp = 20000
@@ -7485,7 +7485,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7fm7c"]
 script = ExtResource("1_5ko5j")
 id = 468
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fth52")])
 gdp = 20000
@@ -7737,7 +7737,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rgte6"]
 script = ExtResource("1_5ko5j")
 id = 482
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ojhn0")])
 gdp = 20000
@@ -7899,7 +7899,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_te3s3"]
 script = ExtResource("1_5ko5j")
 id = 491
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ke3tp")])
 gdp = 20000
@@ -8195,7 +8195,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yhjcd"]
 script = ExtResource("1_5ko5j")
 id = 507
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3h47f")])
 gdp = 20000
@@ -8303,7 +8303,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tmiyh"]
 script = ExtResource("1_5ko5j")
 id = 513
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4s70m")])
 gdp = 20000
@@ -8563,7 +8563,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_y3ci1"]
 script = ExtResource("1_5ko5j")
 id = 527
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_c257o")])
 gdp = 20000
@@ -8581,7 +8581,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3f4vh"]
 script = ExtResource("1_5ko5j")
 id = 528
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7oqf4")])
 gdp = 20000
@@ -8769,7 +8769,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rkh02"]
 script = ExtResource("1_5ko5j")
 id = 538
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "149, 174, 210"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2ljjn")])
 gdp = 20000
@@ -8988,7 +8988,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1oer3"]
 script = ExtResource("1_5ko5j")
 id = 550
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vmojp")])
 gdp = 20000
@@ -9240,7 +9240,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_71ts1"]
 script = ExtResource("1_5ko5j")
 id = 564
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6owxf")])
 gdp = 20000
@@ -9258,7 +9258,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pnq3j"]
 script = ExtResource("1_5ko5j")
 id = 565
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nile2")])
 gdp = 20000
@@ -9276,7 +9276,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_w3awn"]
 script = ExtResource("1_5ko5j")
 id = 566
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_q00os")])
 gdp = 20000
@@ -9294,7 +9294,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_i6jf6"]
 script = ExtResource("1_5ko5j")
 id = 567
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_avb7e")])
 gdp = 20000
@@ -9544,7 +9544,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_txoul"]
 script = ExtResource("1_5ko5j")
 id = 580
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_frmax")])
 gdp = 20000
@@ -9562,7 +9562,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_s36mf"]
 script = ExtResource("1_5ko5j")
 id = 581
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m0nwh")])
 gdp = 10000
@@ -9958,7 +9958,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_k2ufd"]
 script = ExtResource("1_5ko5j")
 id = 606
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_23o3o")])
 gdp = 20000
@@ -9976,7 +9976,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vhpk2"]
 script = ExtResource("1_5ko5j")
 id = 607
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nbf1t")])
 gdp = 10000
@@ -9994,7 +9994,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_r1w3e"]
 script = ExtResource("1_5ko5j")
 id = 608
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_272tb")])
 gdp = 20000
@@ -10012,7 +10012,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ig2td"]
 script = ExtResource("1_5ko5j")
 id = 609
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2tj0r")])
 gdp = 20000
@@ -10747,7 +10747,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_o84hk"]
 script = ExtResource("1_5ko5j")
 id = 651
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nihd6")])
 gdp = 20000
@@ -10765,7 +10765,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3x4ws"]
 script = ExtResource("1_5ko5j")
 id = 652
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nci30")])
 gdp = 20000
@@ -10783,7 +10783,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8h6nq"]
 script = ExtResource("1_5ko5j")
 id = 653
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xab7k")])
 gdp = 20000
@@ -10891,7 +10891,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pybxi"]
 script = ExtResource("1_5ko5j")
 id = 659
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ocg1x")])
 gdp = 10000
@@ -11012,7 +11012,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_04uui"]
 script = ExtResource("1_5ko5j")
 id = 666
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vhfe8")])
 gdp = 10000
@@ -11538,7 +11538,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8fg0q"]
 script = ExtResource("1_5ko5j")
 id = 693
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6al5t")])
 gdp = 10000
@@ -11703,7 +11703,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_77e76"]
 script = ExtResource("1_5ko5j")
 id = 702
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_gqpeg")])
 gdp = 20000
@@ -11901,7 +11901,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mjt3e"]
 script = ExtResource("1_5ko5j")
 id = 713
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k4kee")])
 gdp = 20000
@@ -12081,7 +12081,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0i17n"]
 script = ExtResource("1_5ko5j")
 id = 723
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3102b")])
 gdp = 10000
@@ -12099,7 +12099,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1j68u"]
 script = ExtResource("1_5ko5j")
 id = 724
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pamwe")])
 gdp = 20000
@@ -12267,7 +12267,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rrqbe"]
 script = ExtResource("1_5ko5j")
 id = 732
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ydoay")])
 gdp = 10000
@@ -12285,7 +12285,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_smol7"]
 script = ExtResource("1_5ko5j")
 id = 733
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_f16r8")])
 gdp = 10000
@@ -12303,7 +12303,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_f83x8"]
 script = ExtResource("1_5ko5j")
 id = 734
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mm3fe")])
 gdp = 20000
@@ -12509,7 +12509,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1op7l"]
 script = ExtResource("1_5ko5j")
 id = 745
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_j3o37")])
 gdp = 10000
@@ -12527,7 +12527,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_v88w6"]
 script = ExtResource("1_5ko5j")
 id = 746
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_agbc3")])
 gdp = 10000
@@ -12545,7 +12545,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4anot"]
 script = ExtResource("1_5ko5j")
 id = 747
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jqir6")])
 gdp = 10000
@@ -12751,7 +12751,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qc66r"]
 script = ExtResource("1_5ko5j")
 id = 758
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k5edc")])
 gdp = 10000
@@ -12769,7 +12769,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kk6y7"]
 script = ExtResource("1_5ko5j")
 id = 759
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_v03oh")])
 gdp = 10000
@@ -12909,7 +12909,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_omnbd"]
 script = ExtResource("1_5ko5j")
 id = 766
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_0xxvg")])
 city = "Ulaanbaatar"
@@ -12929,7 +12929,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3rqkp"]
 script = ExtResource("1_5ko5j")
 id = 767
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jg3aj")])
 gdp = 10000
@@ -12947,7 +12947,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7lgqk"]
 script = ExtResource("1_5ko5j")
 id = 768
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "0, 87, 78"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_r3hfj")])
 gdp = 20000
@@ -13145,7 +13145,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3pakm"]
 script = ExtResource("1_5ko5j")
 id = 779
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_57brr")])
 gdp = 10000
@@ -13266,7 +13266,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_h22jq"]
 script = ExtResource("1_5ko5j")
 id = 786
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_r3ds3")])
 gdp = 10000
@@ -13606,7 +13606,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_116bj"]
 script = ExtResource("1_5ko5j")
 id = 804
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dalq0")])
 gdp = 20000
@@ -14070,7 +14070,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1c45e"]
 script = ExtResource("1_5ko5j")
 id = 828
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hpyag")])
 gdp = 10000
@@ -14088,7 +14088,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_85m8l"]
 script = ExtResource("1_5ko5j")
 id = 829
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3n777")])
 gdp = 20000
@@ -14106,7 +14106,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ipuxn"]
 script = ExtResource("1_5ko5j")
 id = 830
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wnqmo")])
 gdp = 20000
@@ -14235,7 +14235,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tlaq0"]
 script = ExtResource("1_5ko5j")
 id = 837
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_oa7h7")])
 gdp = 10000
@@ -14253,7 +14253,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7itwa"]
 script = ExtResource("1_5ko5j")
 id = 838
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qyxbd")])
 gdp = 10000
@@ -14271,7 +14271,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3heg5"]
 script = ExtResource("1_5ko5j")
 id = 839
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_o15j6")])
 gdp = 10000
@@ -14567,7 +14567,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jtaf8"]
 script = ExtResource("1_5ko5j")
 id = 855
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4i3m6")])
 gdp = 20000
@@ -14773,7 +14773,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7lmi8"]
 script = ExtResource("1_5ko5j")
 id = 866
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ojp6i")])
 gdp = 20000
@@ -15023,7 +15023,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3myuj"]
 script = ExtResource("1_5ko5j")
 id = 879
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6ases")])
 gdp = 10000
@@ -15301,7 +15301,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rmkg7"]
 script = ExtResource("1_5ko5j")
 id = 894
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jtnbj")])
 gdp = 10000
@@ -15319,7 +15319,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2moko"]
 script = ExtResource("1_5ko5j")
 id = 895
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_27y36")])
 gdp = 10000
@@ -15957,7 +15957,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vll8y"]
 script = ExtResource("1_5ko5j")
 id = 934
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_w3dvo")])
 gdp = 20000
@@ -16200,7 +16200,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kbvht"]
 script = ExtResource("1_5ko5j")
 id = 950
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hk4wu")])
 gdp = 10000
@@ -16218,7 +16218,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3s4hf"]
 script = ExtResource("1_5ko5j")
 id = 951
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_65uju")])
 gdp = 10000
@@ -16242,7 +16242,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6uncr"]
 script = ExtResource("1_5ko5j")
 id = 952
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_falmx")])
 city = "Harbin"
@@ -16589,7 +16589,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_y388j"]
 script = ExtResource("1_5ko5j")
 id = 971
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_uol34")])
 gdp = 20000
@@ -16607,7 +16607,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_uip4n"]
 script = ExtResource("1_5ko5j")
 id = 972
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6vk3n")])
 gdp = 10000
@@ -16859,7 +16859,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wp2he"]
 script = ExtResource("1_5ko5j")
 id = 986
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tb4tq")])
 gdp = 10000
@@ -16877,7 +16877,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5sf6m"]
 script = ExtResource("1_5ko5j")
 id = 987
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vi21m")])
 gdp = 10000
@@ -16895,7 +16895,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_b3kbv"]
 script = ExtResource("1_5ko5j")
 id = 988
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3c4ts")])
 gdp = 10000
@@ -16913,7 +16913,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5nven"]
 script = ExtResource("1_5ko5j")
 id = 989
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_r4di2")])
 gdp = 10000
@@ -17163,7 +17163,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_013bt"]
 script = ExtResource("1_5ko5j")
 id = 1003
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xpvxb")])
 gdp = 10000
@@ -17405,7 +17405,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_82c3o"]
 script = ExtResource("1_5ko5j")
 id = 1016
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_b811a")])
 gdp = 20000
@@ -17423,7 +17423,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8yhq1"]
 script = ExtResource("1_5ko5j")
 id = 1017
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e48yt")])
 gdp = 10000
@@ -17441,7 +17441,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_74o1l"]
 script = ExtResource("1_5ko5j")
 id = 1018
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_y32h7")])
 gdp = 10000
@@ -17459,7 +17459,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gfbip"]
 script = ExtResource("1_5ko5j")
 id = 1019
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4feyj")])
 gdp = 20000
@@ -17781,7 +17781,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_g2sfi"]
 script = ExtResource("1_5ko5j")
 id = 1037
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fkhhj")])
 gdp = 20000
@@ -18327,7 +18327,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_f1flb"]
 script = ExtResource("1_5ko5j")
 id = 1067
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_rrt6l")])
 gdp = 20000
@@ -18345,7 +18345,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mjyjg"]
 script = ExtResource("1_5ko5j")
 id = 1068
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ffufd")])
 gdp = 20000
@@ -18636,7 +18636,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_it1bu"]
 script = ExtResource("1_5ko5j")
 id = 1084
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_b213u")])
 gdp = 20000
@@ -18971,7 +18971,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3f14u"]
 script = ExtResource("1_5ko5j")
 id = 1102
-country = "Mongolia"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hbxcp")])
 gdp = 10000
@@ -18989,7 +18989,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_256fc"]
 script = ExtResource("1_5ko5j")
 id = 1103
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_uakpc")])
 gdp = 20000
@@ -19366,7 +19366,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_irkrb"]
 script = ExtResource("1_5ko5j")
 id = 1122
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "129, 66, 41"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_um8dq")])
 gdp = 20000
@@ -19793,7 +19793,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6l8t7"]
 script = ExtResource("1_5ko5j")
 id = 1146
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_70uel")])
 gdp = 20000
@@ -20246,7 +20246,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lcuj3"]
 script = ExtResource("1_5ko5j")
 id = 1172
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ybjru")])
 gdp = 20000
@@ -20498,7 +20498,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_heeqo"]
 script = ExtResource("1_5ko5j")
 id = 1186
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jfy4t")])
 gdp = 20000
@@ -20804,7 +20804,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_fb0lx"]
 script = ExtResource("1_5ko5j")
 id = 1203
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_grilc")])
 gdp = 20000
@@ -21136,7 +21136,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_84w0c"]
 script = ExtResource("1_5ko5j")
 id = 1221
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "245, 231, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_l1cfm")])
 gdp = 20000
@@ -21378,7 +21378,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xueeb"]
 script = ExtResource("1_5ko5j")
 id = 1234
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6p741")])
 gdp = 20000
@@ -21396,7 +21396,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_g1mrq"]
 script = ExtResource("1_5ko5j")
 id = 1235
-country = "Russia"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cnbrv")])
 gdp = 20000
@@ -22073,7 +22073,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5s485"]
 script = ExtResource("1_5ko5j")
 id = 1272
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "129, 66, 41"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nsea5")])
 gdp = 20000
@@ -22318,7 +22318,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kdcnp"]
 script = ExtResource("1_5ko5j")
 id = 1285
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_a8yan")])
 gdp = 20000
@@ -22336,7 +22336,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5snbr"]
 script = ExtResource("1_5ko5j")
 id = 1286
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_55445")])
 gdp = 20000
@@ -22354,7 +22354,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5p5aj"]
 script = ExtResource("1_5ko5j")
 id = 1287
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_c8nxo")])
 gdp = 40000
@@ -22560,7 +22560,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_71vep"]
 script = ExtResource("1_5ko5j")
 id = 1298
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "170, 95, 61"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e4d7n")])
 gdp = 20000
@@ -22578,7 +22578,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wrgvb"]
 script = ExtResource("1_5ko5j")
 id = 1299
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k74nv")])
 gdp = 20000
@@ -22596,7 +22596,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_26ibg"]
 script = ExtResource("1_5ko5j")
 id = 1300
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4df42")])
 gdp = 20000
@@ -22954,7 +22954,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8dcx8"]
 script = ExtResource("1_5ko5j")
 id = 1319
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_veb6o")])
 gdp = 40000
@@ -23777,7 +23777,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2ndrv"]
 script = ExtResource("1_5ko5j")
 id = 1369
-country = "Uzbekistan"
+country = "East_asian_anarchist_federation"
 biome = "129, 66, 41"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_evj6c")])
 gdp = 5000
@@ -23819,7 +23819,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_oh47r"]
 script = ExtResource("1_5ko5j")
 id = 1371
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fyh37")])
 city = "Beijing"
@@ -24159,7 +24159,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_nh10s"]
 script = ExtResource("1_5ko5j")
 id = 1392
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pncul")])
 gdp = 40000
@@ -24523,7 +24523,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8rmi4"]
 script = ExtResource("1_5ko5j")
 id = 1410
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_myqyr")])
 gdp = 20000
@@ -24541,7 +24541,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_l613f"]
 script = ExtResource("1_5ko5j")
 id = 1411
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_h3lnn")])
 gdp = 20000
@@ -24961,7 +24961,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8wrra"]
 script = ExtResource("1_5ko5j")
 id = 1433
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qn1ld")])
 gdp = 40000
@@ -25348,7 +25348,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8l3of"]
 script = ExtResource("1_5ko5j")
 id = 1455
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ftal5")])
 gdp = 20000
@@ -25456,7 +25456,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_53s63"]
 script = ExtResource("1_5ko5j")
 id = 1461
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2x1iq")])
 gdp = 20000
@@ -25474,7 +25474,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_snnya"]
 script = ExtResource("1_5ko5j")
 id = 1462
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wqktc")])
 gdp = 20000
@@ -25492,7 +25492,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vwh07"]
 script = ExtResource("1_5ko5j")
 id = 1463
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8lg4t")])
 gdp = 20000
@@ -25523,7 +25523,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pddwn"]
 script = ExtResource("1_5ko5j")
 id = 1465
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_h285a")])
 gdp = 40000
@@ -26115,7 +26115,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1fl1w"]
 script = ExtResource("1_5ko5j")
 id = 1497
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_l4tvw")])
 gdp = 20000
@@ -26133,7 +26133,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qf5xy"]
 script = ExtResource("1_5ko5j")
 id = 1498
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xwat6")])
 gdp = 20000
@@ -26151,7 +26151,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rliio"]
 script = ExtResource("1_5ko5j")
 id = 1499
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_305fi")])
 gdp = 20000
@@ -26175,7 +26175,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_s6r74"]
 script = ExtResource("1_5ko5j")
 id = 1500
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_emr6q")])
 city = "Pyongyang"
@@ -26465,7 +26465,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_nvmpq"]
 script = ExtResource("1_5ko5j")
 id = 1516
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ux87r")])
 gdp = 20000
@@ -26805,7 +26805,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_hjif5"]
 script = ExtResource("1_5ko5j")
 id = 1534
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_06h7c")])
 gdp = 20000
@@ -27115,7 +27115,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ryufq"]
 script = ExtResource("1_5ko5j")
 id = 1550
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vx65d")])
 city = "Lanzhou"
@@ -27135,7 +27135,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4v65g"]
 script = ExtResource("1_5ko5j")
 id = 1551
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e6sp7")])
 gdp = 20000
@@ -27315,7 +27315,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_uy60h"]
 script = ExtResource("1_5ko5j")
 id = 1561
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hg1yr")])
 gdp = 20000
@@ -27333,7 +27333,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_deok6"]
 script = ExtResource("1_5ko5j")
 id = 1562
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_t7fau")])
 gdp = 20000
@@ -27351,7 +27351,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pq1rd"]
 script = ExtResource("1_5ko5j")
 id = 1563
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_467bv")])
 gdp = 40000
@@ -27799,7 +27799,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6l75k"]
 script = ExtResource("1_5ko5j")
 id = 1587
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3h4jl")])
 gdp = 20000
@@ -27817,7 +27817,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_i5j5b"]
 script = ExtResource("1_5ko5j")
 id = 1588
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mm6wx")])
 gdp = 40000
@@ -27941,7 +27941,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_77crl"]
 script = ExtResource("1_5ko5j")
 id = 1594
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_bimuj")])
 gdp = 20000
@@ -27959,7 +27959,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3ujf7"]
 script = ExtResource("1_5ko5j")
 id = 1595
-country = "North_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_igsp8")])
 gdp = 40000
@@ -28156,7 +28156,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pkrm7"]
 script = ExtResource("1_5ko5j")
 id = 1606
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_1olb2")])
 gdp = 20000
@@ -28174,7 +28174,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_k1oht"]
 script = ExtResource("1_5ko5j")
 id = 1607
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ff23t")])
 gdp = 40000
@@ -28403,7 +28403,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_c2v8e"]
 script = ExtResource("1_5ko5j")
 id = 1620
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_5pkab")])
 gdp = 20000
@@ -28421,7 +28421,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cdeus"]
 script = ExtResource("1_5ko5j")
 id = 1621
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vq63n")])
 gdp = 20000
@@ -28445,7 +28445,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7q8k2"]
 script = ExtResource("1_5ko5j")
 id = 1622
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8hkvw")])
 city = "Seoul"
@@ -28859,7 +28859,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ggf3k"]
 script = ExtResource("1_5ko5j")
 id = 1645
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mm3et")])
 gdp = 20000
@@ -29020,7 +29020,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_a2kr1"]
 script = ExtResource("1_5ko5j")
 id = 1654
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_aqfyu")])
 city = "Qingdao"
@@ -29040,7 +29040,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_687c8"]
 script = ExtResource("1_5ko5j")
 id = 1655
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_uf8a0")])
 gdp = 20000
@@ -29058,7 +29058,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wkdtu"]
 script = ExtResource("1_5ko5j")
 id = 1656
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vdng6")])
 gdp = 40000
@@ -29325,7 +29325,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_03dcy"]
 script = ExtResource("1_5ko5j")
 id = 1670
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_f7qmj")])
 gdp = 40000
@@ -29637,7 +29637,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ohsev"]
 script = ExtResource("1_5ko5j")
 id = 1686
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_5qock")])
 gdp = 20000
@@ -29655,7 +29655,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_twmvk"]
 script = ExtResource("1_5ko5j")
 id = 1687
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_bvp0t")])
 gdp = 40000
@@ -30174,7 +30174,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gcstx"]
 script = ExtResource("1_5ko5j")
 id = 1716
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hp8o1")])
 gdp = 20000
@@ -30192,7 +30192,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ia8fw"]
 script = ExtResource("1_5ko5j")
 id = 1717
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m0hut")])
 gdp = 20000
@@ -30210,7 +30210,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5280e"]
 script = ExtResource("1_5ko5j")
 id = 1718
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_54ri8")])
 gdp = 20000
@@ -30398,7 +30398,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gbylk"]
 script = ExtResource("1_5ko5j")
 id = 1728
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ebjk3")])
 gdp = 20000
@@ -30714,7 +30714,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2gsxd"]
 script = ExtResource("1_5ko5j")
 id = 1750
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fxo1a")])
 gdp = 20000
@@ -30758,7 +30758,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_svwsh"]
 script = ExtResource("1_5ko5j")
 id = 1753
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_867yc")])
 gdp = 40000
@@ -30782,7 +30782,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_sy3jo"]
 script = ExtResource("1_5ko5j")
 id = 1754
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7csi8")])
 city = "Busan"
@@ -31584,7 +31584,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rfomk"]
 script = ExtResource("1_5ko5j")
 id = 1800
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8yv4h")])
 gdp = 20000
@@ -31776,7 +31776,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yauna"]
 script = ExtResource("1_5ko5j")
 id = 1811
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cc2py")])
 gdp = 20000
@@ -31794,7 +31794,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cjsh5"]
 script = ExtResource("1_5ko5j")
 id = 1812
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_gootq")])
 gdp = 40000
@@ -32367,7 +32367,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_oxu0u"]
 script = ExtResource("1_5ko5j")
 id = 1843
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ev415")])
 gdp = 20000
@@ -32770,7 +32770,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_74w1k"]
 script = ExtResource("1_5ko5j")
 id = 1865
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jcxsi")])
 gdp = 20000
@@ -33045,7 +33045,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_uite3"]
 script = ExtResource("1_5ko5j")
 id = 1879
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_p8gx2")])
 gdp = 20000
@@ -33063,7 +33063,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_deomf"]
 script = ExtResource("1_5ko5j")
 id = 1880
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_a8ksy")])
 gdp = 20000
@@ -33358,7 +33358,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cdy5q"]
 script = ExtResource("1_5ko5j")
 id = 1896
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_rhxg4")])
 gdp = 20000
@@ -33502,7 +33502,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_b04fd"]
 script = ExtResource("1_5ko5j")
 id = 1904
-country = "South_korea"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_10an1")])
 gdp = 1500000
@@ -33819,7 +33819,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8yd4x"]
 script = ExtResource("1_5ko5j")
 id = 1920
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6ra4s")])
 city = "Nanjing"
@@ -34066,7 +34066,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kk6kq"]
 script = ExtResource("1_5ko5j")
 id = 1933
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8048g")])
 gdp = 20000
@@ -34363,7 +34363,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2imy6"]
 script = ExtResource("1_5ko5j")
 id = 1948
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nj424")])
 gdp = 20000
@@ -34695,7 +34695,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_en3vq"]
 script = ExtResource("1_5ko5j")
 id = 1966
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_olxb7")])
 gdp = 20000
@@ -34713,7 +34713,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_l3btc"]
 script = ExtResource("1_5ko5j")
 id = 1967
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_d7145")])
 gdp = 20000
@@ -34731,7 +34731,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5tcor"]
 script = ExtResource("1_5ko5j")
 id = 1968
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mve00")])
 gdp = 20000
@@ -34901,7 +34901,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lveuw"]
 script = ExtResource("1_5ko5j")
 id = 1977
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_gopvl")])
 gdp = 20000
@@ -35283,7 +35283,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_bcxv0"]
 script = ExtResource("1_5ko5j")
 id = 1997
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7u57q")])
 city = "Chongqing"
@@ -35303,7 +35303,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yin3m"]
 script = ExtResource("1_5ko5j")
 id = 1998
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nr60w")])
 gdp = 20000
@@ -35460,7 +35460,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_faaot"]
 script = ExtResource("1_5ko5j")
 id = 2007
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_h1h2n")])
 gdp = 20000
@@ -35730,7 +35730,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rywh3"]
 script = ExtResource("1_5ko5j")
 id = 2022
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cbls0")])
 gdp = 20000
@@ -35748,7 +35748,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kvd35"]
 script = ExtResource("1_5ko5j")
 id = 2023
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_n0yyd")])
 gdp = 20000
@@ -35988,7 +35988,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_21a66"]
 script = ExtResource("1_5ko5j")
 id = 2035
-country = "India"
+country = "Banglanadu_zone"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fhj48")])
 gdp = 5000
@@ -36038,7 +36038,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0xoak"]
 script = ExtResource("1_5ko5j")
 id = 2037
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fq0hx")])
 city = "Shanghai"
@@ -36238,7 +36238,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jqb4i"]
 script = ExtResource("1_5ko5j")
 id = 2048
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hqmwb")])
 gdp = 20000
@@ -36256,7 +36256,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ii32f"]
 script = ExtResource("1_5ko5j")
 id = 2049
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qxnll")])
 gdp = 20000
@@ -36593,7 +36593,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ri3cf"]
 script = ExtResource("1_5ko5j")
 id = 2072
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_73d5d")])
 gdp = 20000
@@ -36611,7 +36611,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cwr1w"]
 script = ExtResource("1_5ko5j")
 id = 2073
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_t0mud")])
 gdp = 20000
@@ -36988,7 +36988,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_55p37"]
 script = ExtResource("1_5ko5j")
 id = 2096
-country = "Nepal"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tkwog")])
 gdp = 2500
@@ -37006,7 +37006,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jmeop"]
 script = ExtResource("1_5ko5j")
 id = 2097
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3hsat")])
 gdp = 20000
@@ -37197,7 +37197,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ivvxw"]
 script = ExtResource("1_5ko5j")
 id = 2108
-country = "India"
+country = "Banglanadu_zone"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_31o15")])
 gdp = 5000
@@ -37215,7 +37215,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gua43"]
 script = ExtResource("1_5ko5j")
 id = 2109
-country = "Nepal"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ngl73")])
 gdp = 2500
@@ -37233,7 +37233,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3ahm6"]
 script = ExtResource("1_5ko5j")
 id = 2110
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_rtg1y")])
 gdp = 20000
@@ -37449,7 +37449,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lw54s"]
 script = ExtResource("1_5ko5j")
 id = 2122
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_luuto")])
 gdp = 20000
@@ -37467,7 +37467,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_btbn6"]
 script = ExtResource("1_5ko5j")
 id = 2123
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "146, 216, 71"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mqbe2")])
 gdp = 20000
@@ -37485,7 +37485,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gn0n2"]
 script = ExtResource("1_5ko5j")
 id = 2124
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wesy3")])
 gdp = 20000
@@ -37642,7 +37642,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0h7d4"]
 script = ExtResource("1_5ko5j")
 id = 2133
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_q0bo8")])
 gdp = 20000
@@ -37830,7 +37830,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_l4bv3"]
 script = ExtResource("1_5ko5j")
 id = 2143
-country = "Nepal"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hh8xn")])
 gdp = 2500
@@ -37848,7 +37848,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_eyncr"]
 script = ExtResource("1_5ko5j")
 id = 2144
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jy0ub")])
 gdp = 20000
@@ -37992,7 +37992,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1ohuv"]
 script = ExtResource("1_5ko5j")
 id = 2152
-country = "India"
+country = "Banglanadu_zone"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_b56we")])
 gdp = 5000
@@ -38010,7 +38010,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_sodnu"]
 script = ExtResource("1_5ko5j")
 id = 2153
-country = "India"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ef7e2")])
 gdp = 5000
@@ -38028,7 +38028,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_j4k5p"]
 script = ExtResource("1_5ko5j")
 id = 2154
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mj0da")])
 gdp = 20000
@@ -38186,7 +38186,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_33hyg"]
 script = ExtResource("1_5ko5j")
 id = 2162
-country = "Nepal"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dd2l3")])
 city = "Kathmandu"
@@ -38206,7 +38206,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qsxfg"]
 script = ExtResource("1_5ko5j")
 id = 2163
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_piqf5")])
 gdp = 20000
@@ -38350,7 +38350,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_t5g00"]
 script = ExtResource("1_5ko5j")
 id = 2171
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jijjj")])
 gdp = 5000
@@ -38368,7 +38368,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_dwhow"]
 script = ExtResource("1_5ko5j")
 id = 2172
-country = "China"
+country = "Funan"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tnwnn")])
 gdp = 20000
@@ -38386,7 +38386,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jp1a0"]
 script = ExtResource("1_5ko5j")
 id = 2173
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3yjk0")])
 gdp = 20000
@@ -38512,7 +38512,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1tud6"]
 script = ExtResource("1_5ko5j")
 id = 2180
-country = "Nepal"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vr51m")])
 gdp = 2500
@@ -38530,7 +38530,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_s3jb6"]
 script = ExtResource("1_5ko5j")
 id = 2181
-country = "China"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_klk1r")])
 gdp = 20000
@@ -38584,7 +38584,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_hnxrl"]
 script = ExtResource("1_5ko5j")
 id = 2184
-country = "India"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_athgd")])
 gdp = 5000
@@ -38602,7 +38602,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gt46f"]
 script = ExtResource("1_5ko5j")
 id = 2185
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_iqyhf")])
 gdp = 20000
@@ -38620,7 +38620,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ut6ea"]
 script = ExtResource("1_5ko5j")
 id = 2186
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_12mjq")])
 gdp = 20000
@@ -38708,7 +38708,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0on4u"]
 script = ExtResource("1_5ko5j")
 id = 2191
-country = "India"
+country = "Banglanadu_zone"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7j0r3")])
 gdp = 5000
@@ -38726,7 +38726,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ukeic"]
 script = ExtResource("1_5ko5j")
 id = 2192
-country = "India"
+country = "Banglanadu_zone"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_53u6n")])
 gdp = 5000
@@ -38744,7 +38744,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_p37tn"]
 script = ExtResource("1_5ko5j")
 id = 2193
-country = "India"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dlbvw")])
 gdp = 5000
@@ -38762,7 +38762,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8eoym"]
 script = ExtResource("1_5ko5j")
 id = 2194
-country = "Bhutan"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_bcyw6")])
 gdp = 1500000
@@ -38780,7 +38780,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_j0r5l"]
 script = ExtResource("1_5ko5j")
 id = 2195
-country = "Myanmar"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_78dem")])
 gdp = 2500
@@ -38816,7 +38816,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_hpfjc"]
 script = ExtResource("1_5ko5j")
 id = 2197
-country = "Bhutan"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_klt27")])
 gdp = 1500000
@@ -38834,7 +38834,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xpdce"]
 script = ExtResource("1_5ko5j")
 id = 2198
-country = "Bhutan"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k1avw")])
 gdp = 1500000
@@ -38852,7 +38852,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_odkhk"]
 script = ExtResource("1_5ko5j")
 id = 2199
-country = "India"
+country = "Banglanadu_zone"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_sj04a")])
 gdp = 5000
@@ -38870,7 +38870,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_y0w7b"]
 script = ExtResource("1_5ko5j")
 id = 2200
-country = "India"
+country = "Banglanadu_zone"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vixvm")])
 gdp = 5000
@@ -39115,7 +39115,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pns8n"]
 script = ExtResource("1_5ko5j")
 id = 2213
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tkwcj")])
 gdp = 5000
@@ -39139,7 +39139,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3bwou"]
 script = ExtResource("1_5ko5j")
 id = 2214
-country = "Bhutan"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ndwqu")])
 city = "Thimphu"
@@ -39159,7 +39159,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ujm32"]
 script = ExtResource("1_5ko5j")
 id = 2215
-country = "Bhutan"
+country = "Banglanadu_zone"
 biome = "41, 131, 132"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7b07a")])
 gdp = 1500000
@@ -39177,7 +39177,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_72t0j"]
 script = ExtResource("1_5ko5j")
 id = 2216
-country = "China"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qot0i")])
 gdp = 20000
@@ -39249,7 +39249,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vxnt1"]
 script = ExtResource("1_5ko5j")
 id = 2220
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tmqld")])
 gdp = 5000
@@ -39267,7 +39267,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_kxgoh"]
 script = ExtResource("1_5ko5j")
 id = 2221
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_lvq0x")])
 gdp = 20000
@@ -39411,7 +39411,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wysjl"]
 script = ExtResource("1_5ko5j")
 id = 2229
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_p7m4l")])
 gdp = 5000
@@ -39429,7 +39429,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_v1xf7"]
 script = ExtResource("1_5ko5j")
 id = 2230
-country = "India"
+country = "Banglanadu_zone"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_l61j7")])
 gdp = 5000
@@ -39447,7 +39447,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_015ax"]
 script = ExtResource("1_5ko5j")
 id = 2231
-country = "Myanmar"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cmnkl")])
 gdp = 2500
@@ -39617,7 +39617,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vx7d2"]
 script = ExtResource("1_5ko5j")
 id = 2241
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_6upl7")])
 gdp = 20000
@@ -39697,7 +39697,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_01hak"]
 script = ExtResource("1_5ko5j")
 id = 2245
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wvcn0")])
 gdp = 20000
@@ -39805,7 +39805,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_sp7ub"]
 script = ExtResource("1_5ko5j")
 id = 2251
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_020a1")])
 gdp = 5000
@@ -39823,7 +39823,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7133q"]
 script = ExtResource("1_5ko5j")
 id = 2252
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_04my0")])
 gdp = 5000
@@ -39841,7 +39841,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ytxg3"]
 script = ExtResource("1_5ko5j")
 id = 2253
-country = "India"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_sps2s")])
 gdp = 5000
@@ -39859,7 +39859,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_g1k2n"]
 script = ExtResource("1_5ko5j")
 id = 2254
-country = "China"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ydnts")])
 gdp = 20000
@@ -39877,7 +39877,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_upo0i"]
 script = ExtResource("1_5ko5j")
 id = 2255
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2lduw")])
 gdp = 20000
@@ -39962,7 +39962,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7q2sp"]
 script = ExtResource("1_5ko5j")
 id = 2260
-country = "India"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7aa2u")])
 gdp = 5000
@@ -39980,7 +39980,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_jsisf"]
 script = ExtResource("1_5ko5j")
 id = 2261
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_onx7b")])
 gdp = 20000
@@ -40122,7 +40122,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tv53q"]
 script = ExtResource("1_5ko5j")
 id = 2268
-country = "India"
+country = "Banglanadu_zone"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_1atcs")])
 gdp = 5000
@@ -40194,7 +40194,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tln2x"]
 script = ExtResource("1_5ko5j")
 id = 2272
-country = "India"
+country = "Banglanadu_zone"
 biome = "155, 149, 14"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fsve0")])
 gdp = 5000
@@ -40243,7 +40243,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pi541"]
 script = ExtResource("1_5ko5j")
 id = 2275
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_o7ua6")])
 gdp = 20000
@@ -40612,7 +40612,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ojdut"]
 script = ExtResource("1_5ko5j")
 id = 2301
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m6ewn")])
 city = "Dhaka"
@@ -40632,7 +40632,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xcc3c"]
 script = ExtResource("1_5ko5j")
 id = 2302
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wtm73")])
 gdp = 5000
@@ -40650,7 +40650,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cl0uj"]
 script = ExtResource("1_5ko5j")
 id = 2303
-country = "India"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nrqrb")])
 gdp = 5000
@@ -40668,7 +40668,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_j0l2v"]
 script = ExtResource("1_5ko5j")
 id = 2304
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_oafwy")])
 gdp = 20000
@@ -40686,7 +40686,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_u7dbi"]
 script = ExtResource("1_5ko5j")
 id = 2305
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4q66p")])
 gdp = 20000
@@ -40926,7 +40926,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gsls7"]
 script = ExtResource("1_5ko5j")
 id = 2320
-country = "India"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_c5p8b")])
 gdp = 5000
@@ -40944,7 +40944,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mk4qr"]
 script = ExtResource("1_5ko5j")
 id = 2321
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3qum7")])
 gdp = 5000
@@ -40962,7 +40962,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lfq6g"]
 script = ExtResource("1_5ko5j")
 id = 2322
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m75j8")])
 gdp = 20000
@@ -41024,7 +41024,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_p6xeb"]
 script = ExtResource("1_5ko5j")
 id = 2325
-country = "China"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_yy031")])
 gdp = 20000
@@ -41114,7 +41114,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ir6i7"]
 script = ExtResource("1_5ko5j")
 id = 2330
-country = "China"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_q0inr")])
 gdp = 20000
@@ -41132,7 +41132,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_marey"]
 script = ExtResource("1_5ko5j")
 id = 2331
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_rt8xb")])
 gdp = 20000
@@ -41241,7 +41241,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0loas"]
 script = ExtResource("1_5ko5j")
 id = 2337
-country = "India"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jpy24")])
 city = "Kolkata"
@@ -41261,7 +41261,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_r7ewx"]
 script = ExtResource("1_5ko5j")
 id = 2338
-country = "India"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3711q")])
 gdp = 5000
@@ -41279,7 +41279,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6tjta"]
 script = ExtResource("1_5ko5j")
 id = 2339
-country = "India"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2fxsa")])
 gdp = 5000
@@ -41297,7 +41297,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_r46qm"]
 script = ExtResource("1_5ko5j")
 id = 2340
-country = "Myanmar"
+country = "Banglanadu_zone"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xqtwj")])
 gdp = 2500
@@ -41333,7 +41333,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_iwx61"]
 script = ExtResource("1_5ko5j")
 id = 2342
-country = "India"
+country = "Dravidanadu"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qnwqf")])
 gdp = 5000
@@ -41351,7 +41351,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vghim"]
 script = ExtResource("1_5ko5j")
 id = 2343
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hwyrx")])
 gdp = 5000
@@ -41369,7 +41369,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_b8leh"]
 script = ExtResource("1_5ko5j")
 id = 2344
-country = "Myanmar"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ma3be")])
 gdp = 2500
@@ -41387,7 +41387,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4ensq"]
 script = ExtResource("1_5ko5j")
 id = 2345
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ql402")])
 gdp = 20000
@@ -41495,7 +41495,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_on8i6"]
 script = ExtResource("1_5ko5j")
 id = 2351
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_jnd5v")])
 gdp = 5000
@@ -41519,7 +41519,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yf0t2"]
 script = ExtResource("1_5ko5j")
 id = 2352
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_j6b60")])
 city = "Guangzhou"
@@ -41636,7 +41636,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wsyei"]
 script = ExtResource("1_5ko5j")
 id = 2358
-country = "China"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_eomg2")])
 gdp = 20000
@@ -41732,7 +41732,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1113n"]
 script = ExtResource("1_5ko5j")
 id = 2363
-country = "Myanmar"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_bnekp")])
 city = "Mandalay"
@@ -41929,7 +41929,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ndqg4"]
 script = ExtResource("1_5ko5j")
 id = 2373
-country = "India"
+country = "Dravidanadu"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_lnaxa")])
 gdp = 5000
@@ -41947,7 +41947,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ll0sm"]
 script = ExtResource("1_5ko5j")
 id = 2374
-country = "Bangladesh"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e8dhs")])
 gdp = 5000
@@ -41965,7 +41965,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1duh3"]
 script = ExtResource("1_5ko5j")
 id = 2375
-country = "Vietnam"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_x8ypn")])
 gdp = 5000
@@ -41983,7 +41983,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_moptp"]
 script = ExtResource("1_5ko5j")
 id = 2376
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_74t1t")])
 gdp = 20000
@@ -42007,7 +42007,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vocpq"]
 script = ExtResource("1_5ko5j")
 id = 2377
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_bojvm")])
 city = "Hong Kong"
@@ -42170,7 +42170,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_x2oa5"]
 script = ExtResource("1_5ko5j")
 id = 2386
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_yw06x")])
 gdp = 20000
@@ -42260,7 +42260,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mjvpk"]
 script = ExtResource("1_5ko5j")
 id = 2391
-country = "Myanmar"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2sdqc")])
 gdp = 2500
@@ -42278,7 +42278,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4d4fy"]
 script = ExtResource("1_5ko5j")
 id = 2392
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_swnsj")])
 gdp = 20000
@@ -42371,7 +42371,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2suy6"]
 script = ExtResource("1_5ko5j")
 id = 2397
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ms8u6")])
 gdp = 2500
@@ -42389,7 +42389,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_5ol1w"]
 script = ExtResource("1_5ko5j")
 id = 2398
-country = "Vietnam"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ulqvb")])
 gdp = 5000
@@ -42438,7 +42438,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_o0cgv"]
 script = ExtResource("1_5ko5j")
 id = 2401
-country = "India"
+country = "Dravidanadu"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_uagph")])
 gdp = 5000
@@ -42456,7 +42456,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lxadq"]
 script = ExtResource("1_5ko5j")
 id = 2402
-country = "India"
+country = "Dravidanadu"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_o2bjx")])
 gdp = 5000
@@ -42487,7 +42487,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_adigr"]
 script = ExtResource("1_5ko5j")
 id = 2404
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_lui5h")])
 gdp = 20000
@@ -42671,7 +42671,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qfo2i"]
 script = ExtResource("1_5ko5j")
 id = 2414
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ufyht")])
 gdp = 5000
@@ -42841,7 +42841,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mn8ed"]
 script = ExtResource("1_5ko5j")
 id = 2424
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m8hht")])
 gdp = 5000
@@ -42859,7 +42859,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_txke0"]
 script = ExtResource("1_5ko5j")
 id = 2425
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2ejbs")])
 gdp = 5000
@@ -42877,7 +42877,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ktb52"]
 script = ExtResource("1_5ko5j")
 id = 2426
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wldip")])
 gdp = 5000
@@ -42962,7 +42962,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_u7kd2"]
 script = ExtResource("1_5ko5j")
 id = 2431
-country = "Myanmar"
+country = "Banglanadu_zone"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ueaa3")])
 gdp = 2500
@@ -42980,7 +42980,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_verdq"]
 script = ExtResource("1_5ko5j")
 id = 2432
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_klovs")])
 gdp = 2500
@@ -43004,7 +43004,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wotx4"]
 script = ExtResource("1_5ko5j")
 id = 2433
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_212gl")])
 city = "Hanoi"
@@ -43024,7 +43024,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ays4s"]
 script = ExtResource("1_5ko5j")
 id = 2434
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_q1wp5")])
 gdp = 20000
@@ -43113,7 +43113,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7ny58"]
 script = ExtResource("1_5ko5j")
 id = 2439
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_knhj7")])
 gdp = 5000
@@ -43131,7 +43131,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pb0w8"]
 script = ExtResource("1_5ko5j")
 id = 2440
-country = "Myanmar"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ggclj")])
 gdp = 2500
@@ -43167,7 +43167,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pubb4"]
 script = ExtResource("1_5ko5j")
 id = 2442
-country = "Myanmar"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_erlqx")])
 gdp = 2500
@@ -43275,7 +43275,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mvjjo"]
 script = ExtResource("1_5ko5j")
 id = 2448
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_irhbr")])
 gdp = 5000
@@ -43293,7 +43293,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2kp2q"]
 script = ExtResource("1_5ko5j")
 id = 2449
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4f05q")])
 gdp = 5000
@@ -43311,7 +43311,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rhjf8"]
 script = ExtResource("1_5ko5j")
 id = 2450
-country = "India"
+country = "Dravidanadu"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_2p5cu")])
 gdp = 5000
@@ -43329,7 +43329,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_nskp7"]
 script = ExtResource("1_5ko5j")
 id = 2451
-country = "India"
+country = "Dravidanadu"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_43n57")])
 gdp = 5000
@@ -43347,7 +43347,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_g8q4s"]
 script = ExtResource("1_5ko5j")
 id = 2452
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_3kimc")])
 gdp = 2500
@@ -43365,7 +43365,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qtaff"]
 script = ExtResource("1_5ko5j")
 id = 2453
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_syibg")])
 gdp = 5000
@@ -43483,7 +43483,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_loyq5"]
 script = ExtResource("1_5ko5j")
 id = 2460
-country = "Myanmar"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_0bbq0")])
 gdp = 2500
@@ -43576,7 +43576,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3fh0b"]
 script = ExtResource("1_5ko5j")
 id = 2465
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cxi7s")])
 gdp = 5000
@@ -43594,7 +43594,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_46ruc"]
 script = ExtResource("1_5ko5j")
 id = 2466
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_1xmfj")])
 gdp = 2500
@@ -43612,7 +43612,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ore6y"]
 script = ExtResource("1_5ko5j")
 id = 2467
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_r7bc5")])
 gdp = 2500
@@ -43630,7 +43630,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_emppd"]
 script = ExtResource("1_5ko5j")
 id = 2468
-country = "China"
+country = "East_asian_anarchist_federation"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_b2gdk")])
 gdp = 20000
@@ -44008,7 +44008,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0hofi"]
 script = ExtResource("1_5ko5j")
 id = 2496
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pc6uh")])
 city = "Naypyidaw"
@@ -44027,7 +44027,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_2eo84"]
 script = ExtResource("1_5ko5j")
 id = 2497
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_iioe6")])
 gdp = 10000
@@ -44325,7 +44325,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_usa23"]
 script = ExtResource("1_5ko5j")
 id = 2516
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_syy7q")])
 gdp = 5000
@@ -44349,7 +44349,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4qks4"]
 script = ExtResource("1_5ko5j")
 id = 2517
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e5xm5")])
 city = "Vientiane"
@@ -44387,7 +44387,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_divnf"]
 script = ExtResource("1_5ko5j")
 id = 2519
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_egspp")])
 gdp = 2500
@@ -44492,7 +44492,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yx2u7"]
 script = ExtResource("1_5ko5j")
 id = 2524
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8ssfx")])
 gdp = 5000
@@ -44668,7 +44668,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_j7mdq"]
 script = ExtResource("1_5ko5j")
 id = 2533
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qixsd")])
 gdp = 5000
@@ -44774,7 +44774,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_3sydj"]
 script = ExtResource("1_5ko5j")
 id = 2539
-country = "India"
+country = "Dravidanadu"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_oqv7v")])
 gdp = 5000
@@ -44792,7 +44792,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_4ybn6"]
 script = ExtResource("1_5ko5j")
 id = 2540
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tug6p")])
 gdp = 5000
@@ -44881,7 +44881,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_aj6ua"]
 script = ExtResource("1_5ko5j")
 id = 2545
-country = "Thailand"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ayutl")])
 gdp = 10000
@@ -44953,7 +44953,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_upr76"]
 script = ExtResource("1_5ko5j")
 id = 2549
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_y080f")])
 gdp = 2500
@@ -44971,7 +44971,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_cvdib"]
 script = ExtResource("1_5ko5j")
 id = 2550
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_0q5m8")])
 gdp = 10000
@@ -44995,7 +44995,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lhs67"]
 script = ExtResource("1_5ko5j")
 id = 2551
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nd6c3")])
 city = "Chiang Mai"
@@ -45015,7 +45015,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yf0ky"]
 script = ExtResource("1_5ko5j")
 id = 2552
-country = "Thailand"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_x5nm1")])
 gdp = 10000
@@ -45103,7 +45103,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_gv05p"]
 script = ExtResource("1_5ko5j")
 id = 2557
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_n1asv")])
 gdp = 2500
@@ -45139,7 +45139,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_tdyst"]
 script = ExtResource("1_5ko5j")
 id = 2559
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4g20y")])
 gdp = 5000
@@ -45281,7 +45281,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_q1s0x"]
 script = ExtResource("1_5ko5j")
 id = 2567
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_nqp63")])
 gdp = 2500
@@ -45299,7 +45299,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xy5bl"]
 script = ExtResource("1_5ko5j")
 id = 2568
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_mork1")])
 gdp = 2500
@@ -45410,7 +45410,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ulwss"]
 script = ExtResource("1_5ko5j")
 id = 2574
-country = "Laos"
+country = "Funan"
 biome = "89, 129, 89"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ytfml")])
 gdp = 2500
@@ -45542,7 +45542,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_d081a"]
 script = ExtResource("1_5ko5j")
 id = 2582
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_38lip")])
 gdp = 5000
@@ -45560,7 +45560,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_s4e6w"]
 script = ExtResource("1_5ko5j")
 id = 2583
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hhdva")])
 gdp = 2500
@@ -45578,7 +45578,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_bmpii"]
 script = ExtResource("1_5ko5j")
 id = 2584
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7atdr")])
 gdp = 10000
@@ -45596,7 +45596,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_00sbm"]
 script = ExtResource("1_5ko5j")
 id = 2585
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_gh5ah")])
 gdp = 5000
@@ -45649,7 +45649,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1hcnl"]
 script = ExtResource("1_5ko5j")
 id = 2588
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fbf3o")])
 gdp = 10000
@@ -45685,7 +45685,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_lwf8h"]
 script = ExtResource("1_5ko5j")
 id = 2590
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ewld8")])
 gdp = 5000
@@ -45703,7 +45703,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_0hxxw"]
 script = ExtResource("1_5ko5j")
 id = 2591
-country = "India"
+country = "Dravidanadu"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_5qioa")])
 gdp = 5000
@@ -45734,7 +45734,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_oi57x"]
 script = ExtResource("1_5ko5j")
 id = 2593
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_dy2bq")])
 gdp = 10000
@@ -45875,7 +45875,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_hydmp"]
 script = ExtResource("1_5ko5j")
 id = 2601
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_tdkvy")])
 gdp = 5000
@@ -45893,7 +45893,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rdo43"]
 script = ExtResource("1_5ko5j")
 id = 2602
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pu7m2")])
 gdp = 10000
@@ -46148,7 +46148,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6eljq"]
 script = ExtResource("1_5ko5j")
 id = 2616
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4d2hq")])
 gdp = 5000
@@ -46166,7 +46166,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_m2vur"]
 script = ExtResource("1_5ko5j")
 id = 2617
-country = "Laos"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_phdb8")])
 gdp = 2500
@@ -46422,7 +46422,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_f3b50"]
 script = ExtResource("1_5ko5j")
 id = 2630
-country = "Thailand"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_rhmjl")])
 gdp = 10000
@@ -46521,7 +46521,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_yfr2x"]
 script = ExtResource("1_5ko5j")
 id = 2635
-country = "Myanmar"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_l8y8m")])
 gdp = 2500
@@ -46539,7 +46539,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_rceyj"]
 script = ExtResource("1_5ko5j")
 id = 2636
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xx034")])
 gdp = 10000
@@ -46557,7 +46557,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_o8iu0"]
 script = ExtResource("1_5ko5j")
 id = 2637
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_sy105")])
 gdp = 10000
@@ -46825,7 +46825,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_aa03d"]
 script = ExtResource("1_5ko5j")
 id = 2651
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_wju4y")])
 gdp = 5000
@@ -46843,7 +46843,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_1f2yp"]
 script = ExtResource("1_5ko5j")
 id = 2652
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_a8wsm")])
 gdp = 5000
@@ -46879,7 +46879,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_aw3g3"]
 script = ExtResource("1_5ko5j")
 id = 2654
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_8u7i4")])
 gdp = 10000
@@ -46897,7 +46897,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_qrn6c"]
 script = ExtResource("1_5ko5j")
 id = 2655
-country = "Cambodia"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ubkof")])
 gdp = 2500
@@ -46915,7 +46915,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_17p55"]
 script = ExtResource("1_5ko5j")
 id = 2656
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ucc11")])
 gdp = 5000
@@ -47012,7 +47012,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_mqww0"]
 script = ExtResource("1_5ko5j")
 id = 2661
-country = "India"
+country = "Dravidanadu"
 biome = "136, 111, 51"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pgm3w")])
 city = "Bengaluru"
@@ -47032,7 +47032,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_87v12"]
 script = ExtResource("1_5ko5j")
 id = 2662
-country = "Cambodia"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_se827")])
 gdp = 2500
@@ -47491,7 +47491,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ydobk"]
 script = ExtResource("1_5ko5j")
 id = 2695
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fu3t7")])
 city = "Bangkok"
@@ -47776,7 +47776,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_op1ke"]
 script = ExtResource("1_5ko5j")
 id = 2714
-country = "Cambodia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_pjtyv")])
 gdp = 2500
@@ -47891,7 +47891,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_a4pm5"]
 script = ExtResource("1_5ko5j")
 id = 2720
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_t14kk")])
 gdp = 5000
@@ -48037,7 +48037,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_w5ood"]
 script = ExtResource("1_5ko5j")
 id = 2728
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_fah6e")])
 gdp = 10000
@@ -48055,7 +48055,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_6cvtt"]
 script = ExtResource("1_5ko5j")
 id = 2729
-country = "Cambodia"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_x4q0p")])
 gdp = 2500
@@ -48170,7 +48170,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_bqdwh"]
 script = ExtResource("1_5ko5j")
 id = 2735
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_cmvvh")])
 gdp = 5000
@@ -48407,7 +48407,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_d05dt"]
 script = ExtResource("1_5ko5j")
 id = 2748
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_4s0p8")])
 gdp = 5000
@@ -48604,7 +48604,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_monef"]
 script = ExtResource("1_5ko5j")
 id = 2759
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_u4ui4")])
 gdp = 5000
@@ -48646,7 +48646,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_niybr"]
 script = ExtResource("1_5ko5j")
 id = 2761
-country = "Cambodia"
+country = "Funan"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_vprxb")])
 city = "Phnom Penh"
@@ -48784,7 +48784,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_srja3"]
 script = ExtResource("1_5ko5j")
 id = 2769
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_y24so")])
 gdp = 5000
@@ -48802,7 +48802,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_pfavk"]
 script = ExtResource("1_5ko5j")
 id = 2770
-country = "Cambodia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_c1x85")])
 gdp = 2500
@@ -48884,7 +48884,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_s0jca"]
 script = ExtResource("1_5ko5j")
 id = 2774
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_swjwr")])
 gdp = 5000
@@ -49035,7 +49035,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ct8qp"]
 script = ExtResource("1_5ko5j")
 id = 2782
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xdb42")])
 gdp = 5000
@@ -49059,7 +49059,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_xejqd"]
 script = ExtResource("1_5ko5j")
 id = 2783
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_oolf5")])
 city = "Ho Chi Minh"
@@ -49386,7 +49386,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_765ym"]
 script = ExtResource("1_5ko5j")
 id = 2799
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_hfgw4")])
 gdp = 10000
@@ -49404,7 +49404,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_smvtm"]
 script = ExtResource("1_5ko5j")
 id = 2800
-country = "Vietnam"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_30pwb")])
 gdp = 5000
@@ -49727,7 +49727,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_15hyb"]
 script = ExtResource("1_5ko5j")
 id = 2818
-country = "India"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_a0hfx")])
 gdp = 5000
@@ -49872,7 +49872,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_afmnf"]
 script = ExtResource("1_5ko5j")
 id = 2826
-country = "India"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_sowf1")])
 gdp = 5000
@@ -50252,7 +50252,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_8pjmc"]
 script = ExtResource("1_5ko5j")
 id = 2848
-country = "Sri_lanka"
+country = "Dravidanadu"
 biome = "96, 122, 34"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_ohvne")])
 gdp = 5000
@@ -50686,7 +50686,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_dqlot"]
 script = ExtResource("1_5ko5j")
 id = 2871
-country = "Sri_lanka"
+country = "Dravidanadu"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_e7wid")])
 city = "Colombo"
@@ -50706,7 +50706,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vo21g"]
 script = ExtResource("1_5ko5j")
 id = 2872
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_t7qad")])
 gdp = 10000
@@ -51856,7 +51856,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_7g622"]
 script = ExtResource("1_5ko5j")
 id = 2946
-country = "Sri_lanka"
+country = "Dravidanadu"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_m160p")])
 gdp = 5000
@@ -52230,7 +52230,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_x2l86"]
 script = ExtResource("1_5ko5j")
 id = 2966
-country = "Thailand"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_qnbjg")])
 gdp = 10000
@@ -52688,7 +52688,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_bm28v"]
 script = ExtResource("1_5ko5j")
 id = 2991
-country = "Malaysia"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xwoml")])
 gdp = 20000
@@ -52918,7 +52918,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_o7o72"]
 script = ExtResource("1_5ko5j")
 id = 3003
-country = "Malaysia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_xt1gi")])
 gdp = 20000
@@ -52971,7 +52971,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_ivak5"]
 script = ExtResource("1_5ko5j")
 id = 3006
-country = "Malaysia"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_o8mhx")])
 gdp = 20000
@@ -52989,7 +52989,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_i0cjm"]
 script = ExtResource("1_5ko5j")
 id = 3007
-country = "Malaysia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_gx4rk")])
 gdp = 20000
@@ -53352,7 +53352,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_62uau"]
 script = ExtResource("1_5ko5j")
 id = 3027
-country = "Malaysia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_1mumm")])
 gdp = 20000
@@ -53614,7 +53614,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_vks6i"]
 script = ExtResource("1_5ko5j")
 id = 3041
-country = "Malaysia"
+country = "Funan"
 biome = "6, 104, 6"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_7adus")])
 city = "Kuala Lumpur"
@@ -53778,7 +53778,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_v7o2n"]
 script = ExtResource("1_5ko5j")
 id = 3050
-country = "Malaysia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_why7v")])
 gdp = 20000
@@ -54369,7 +54369,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_a76nt"]
 script = ExtResource("1_5ko5j")
 id = 3094
-country = "Malaysia"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_k6a4v")])
 gdp = 20000
@@ -54659,7 +54659,7 @@ quality = 0.5
 [sub_resource type="Resource" id="Resource_wo26w"]
 script = ExtResource("1_5ko5j")
 id = 3110
-country = "Singapore"
+country = "Funan"
 biome = "0, 70, 0"
 resources = Array[ExtResource("4_85gqf")]([SubResource("Resource_g1mlk")])
 city = "Singapore"
@@ -77197,13 +77197,12 @@ country_to_provinces = {
 "Austria": [815, 816, 859, 874, 875, 884, 885, 902, 927, 928, 929],
 "Azerbaijan": [1296, 1366, 1367, 1460, 1480, 1481, 1495, 1496, 1512, 1513, 1529, 1545],
 "Bahrain": [2247],
-"Bangladesh": [2252, 2301, 2302, 2321, 2343, 2351, 2374],
+"Banglanadu_zone": [2035, 2096, 2108, 2109, 2143, 2152, 2153, 2162, 2171, 2180, 2184, 2191, 2192, 2193, 2194, 2197, 2198, 2199, 2200, 2213, 2214, 2215, 2220, 2229, 2230, 2251, 2252, 2253, 2260, 2268, 2272, 2301, 2302, 2303, 2320, 2321, 2337, 2338, 2339, 2340, 2343, 2351, 2374, 2431],
 "Barbados": [2715],
 "Belarus": [461, 466, 472, 488, 492, 501, 510, 511, 534, 547, 548, 576, 601, 602, 624, 625, 630, 631],
 "Belgium": [683, 696, 714, 715, 725, 737],
 "Belize": [2520],
 "Benin": [2755, 2779, 2867, 2951],
-"Bhutan": [2194, 2197, 2198, 2214, 2215],
 "Bolivia": [3403, 3410, 3427, 3452, 3508, 3509, 3528, 3542, 3555, 3605],
 "Bosnia_and_herzegovina": [1077, 1097, 1098, 1112, 1215, 1216],
 "Botswana": [3535, 3588, 3603],
@@ -77213,13 +77212,12 @@ country_to_provinces = {
 "Burkina_faso": [2640, 2648, 2709, 2743, 2763],
 "Burundi": [3214],
 "Cabo_verde": [2560, 2618],
-"Cambodia": [2655, 2662, 2714, 2729, 2761, 2770],
 "Cameroon": [2764, 2835, 2936, 2964, 2986, 2987, 2988, 3001, 3019, 3043],
 "Canada": [53, 63, 106, 116, 118, 120, 172, 181, 199, 204, 280, 294, 331, 336, 337, 338, 339, 340, 449, 473, 474, 514, 540, 552, 588, 627, 634, 635, 636, 654, 667, 680, 703, 735, 748, 749, 781, 788, 811, 812, 856, 871, 882, 896, 897, 914, 978, 992, 993, 1005, 1023, 1043, 1069, 1072, 1089, 1150, 1207],
 "Central_african_republic": [2796, 2836, 2856, 2898, 2925, 2928, 2944, 2953, 2965, 2968, 2977, 2989, 2995, 3009, 3010, 3020, 3030, 3033],
 "Chad": [2369, 2382, 2570, 2598, 2610, 2712, 2734, 2737, 2745, 2773, 2789, 2813, 2824, 2830, 2860, 2897],
 "Chile": [3533, 3601, 3673, 3697, 3761, 3781, 3835, 3852, 3912, 3915, 3916, 3971],
-"China": [565, 581, 693, 724, 759, 804, 829, 855, 866, 951, 952, 971, 989, 1016, 1037, 1067, 1068, 1083, 1084, 1103, 1122, 1146, 1171, 1172, 1186, 1202, 1221, 1233, 1234, 1272, 1285, 1286, 1298, 1299, 1300, 1342, 1371, 1410, 1411, 1455, 1461, 1462, 1463, 1484, 1497, 1498, 1499, 1515, 1516, 1534, 1549, 1550, 1551, 1560, 1561, 1562, 1577, 1587, 1594, 1606, 1620, 1621, 1630, 1644, 1645, 1654, 1655, 1686, 1698, 1716, 1717, 1718, 1727, 1728, 1750, 1782, 1800, 1811, 1843, 1851, 1863, 1864, 1865, 1879, 1880, 1895, 1896, 1920, 1933, 1948, 1966, 1967, 1968, 1975, 1976, 1977, 1996, 1997, 1998, 2007, 2022, 2023, 2036, 2037, 2048, 2049, 2072, 2073, 2097, 2110, 2122, 2123, 2124, 2133, 2144, 2154, 2163, 2172, 2173, 2181, 2185, 2186, 2216, 2221, 2241, 2245, 2254, 2255, 2261, 2275, 2304, 2305, 2322, 2325, 2330, 2331, 2345, 2352, 2358, 2376, 2377, 2386, 2392, 2404, 2434, 2468],
+"China": [1083, 1171, 1202, 1233, 1342, 1484, 1515, 1549, 1560, 1577, 1630, 1644, 1698, 1727, 1782, 1851, 1863, 1864, 1895, 1975, 1976, 1996, 2036],
 "Colombia": [2751, 2785, 2802, 2806, 2864, 2921, 2940, 2948, 2956, 2971, 2979, 2997, 3008, 3012, 3037, 3038, 3091, 3099],
 "Congo": [3046, 3047, 3092, 3119, 3126, 3134, 3139, 3154, 3158, 3160, 3162, 3181, 3186, 3189, 3238, 3247, 3253],
 "Costa_rica": [2784, 2793, 2801, 2815, 2827],
@@ -77232,6 +77230,8 @@ country_to_provinces = {
 "Dominica": [2676],
 "Dominican_republic": [2463, 2511, 2512, 2521, 2535],
 "Dr_congo": [3018, 3021, 3022, 3025, 3044, 3093, 3097, 3108, 3109, 3120, 3127, 3155, 3156, 3163, 3175, 3182, 3213, 3254, 3260, 3264, 3265, 3266, 3271, 3281, 3282, 3288, 3310, 3330, 3357, 3399, 3418],
+"Dravidanadu": [2342, 2373, 2401, 2402, 2414, 2424, 2425, 2426, 2439, 2448, 2449, 2450, 2451, 2465, 2516, 2524, 2539, 2540, 2559, 2582, 2590, 2591, 2601, 2616, 2651, 2661, 2720, 2735, 2748, 2759, 2769, 2774, 2782, 2818, 2826, 2848, 2871, 2946],
+"East_asian_anarchist_federation": [126, 177, 203, 207, 249, 285, 293, 299, 328, 335, 347, 393, 406, 420, 431, 432, 433, 444, 448, 468, 482, 491, 507, 513, 527, 528, 538, 550, 564, 565, 566, 567, 580, 581, 606, 607, 608, 609, 651, 652, 653, 659, 666, 693, 702, 713, 723, 724, 732, 733, 734, 745, 746, 747, 758, 759, 766, 767, 768, 779, 786, 804, 828, 829, 830, 837, 838, 839, 855, 866, 879, 894, 895, 934, 950, 951, 952, 971, 972, 986, 987, 988, 989, 1003, 1016, 1017, 1018, 1019, 1037, 1067, 1068, 1084, 1102, 1103, 1122, 1146, 1172, 1186, 1203, 1221, 1234, 1235, 1272, 1285, 1286, 1287, 1298, 1299, 1300, 1319, 1369, 1371, 1392, 1410, 1411, 1433, 1455, 1461, 1462, 1463, 1465, 1497, 1498, 1499, 1500, 1516, 1534, 1550, 1551, 1561, 1562, 1563, 1587, 1588, 1594, 1595, 1606, 1607, 1620, 1621, 1622, 1645, 1654, 1655, 1656, 1670, 1686, 1687, 1716, 1717, 1718, 1728, 1750, 1753, 1754, 1800, 1811, 1812, 1843, 1865, 1879, 1880, 1896, 1904, 1920, 1933, 1948, 1966, 1967, 1968, 1977, 1997, 1998, 2007, 2022, 2023, 2037, 2048, 2049, 2072, 2073, 2097, 2110, 2122, 2123, 2124, 2133, 2144, 2154, 2163, 2173, 2185, 2186, 2221, 2241, 2245, 2255, 2261, 2275, 2304, 2305, 2322, 2331, 2345, 2352, 2376, 2377, 2386, 2392, 2404, 2434, 2468],
 "East_timor": [3387],
 "Ecuador": [3111, 3123, 3136, 3164],
 "Egypt": [2003, 2013, 2029, 2030, 2044, 2094, 2101, 2102, 2103, 2117, 2130, 2138, 2139, 2140, 2141, 2158, 2177, 2207, 2208, 2209, 2237, 2246, 2249, 2262, 2327, 2411],
@@ -77244,6 +77244,7 @@ country_to_provinces = {
 "Fiji": [3517, 3523],
 "Finland": [175, 187, 188, 194, 202, 205, 210, 246, 247, 255, 265, 270, 279, 305, 310, 324],
 "France": [705, 736, 750, 760, 761, 770, 782, 789, 790, 791, 813, 814, 833, 834, 842, 843, 844, 857, 872, 873, 883, 924, 925, 958, 959, 979, 1006, 1007, 1008, 1044, 1059, 1073, 1093, 1107, 1108, 1109, 1132, 1138, 1139, 1157, 1158, 1195, 1196, 1213, 1262, 1278, 1311, 2639, 3004, 3436, 3444, 3586, 3600, 3969],
+"Funan": [2172, 2181, 2195, 2216, 2231, 2254, 2325, 2330, 2344, 2358, 2363, 2375, 2391, 2397, 2398, 2432, 2433, 2440, 2442, 2452, 2453, 2460, 2466, 2467, 2496, 2497, 2517, 2519, 2533, 2545, 2549, 2550, 2551, 2552, 2557, 2567, 2568, 2574, 2583, 2584, 2585, 2588, 2593, 2602, 2617, 2630, 2635, 2636, 2637, 2652, 2654, 2655, 2656, 2662, 2695, 2714, 2728, 2729, 2761, 2770, 2783, 2799, 2800, 2872, 2966, 2991, 3003, 3006, 3007, 3027, 3041, 3050, 3094, 3110],
 "Gabon": [3103, 3118, 3125, 3129, 3130, 3132, 3133, 3137, 3138, 3143, 3148, 3153, 3185],
 "Gambia": [2708],
 "Georgia": [1230, 1268, 1269, 1282, 1295, 1315, 1316, 1340],
@@ -77259,7 +77260,7 @@ country_to_provinces = {
 "Honduras": [2596, 2605, 2606],
 "Hungary": [848, 886, 887, 930, 964, 965, 966],
 "Iceland": [209, 214, 216, 217, 218, 224, 225, 226, 240, 259, 264],
-"India": [1799, 1850, 1919, 1932, 1974, 1984, 2034, 2035, 2087, 2107, 2108, 2152, 2153, 2161, 2171, 2178, 2179, 2184, 2191, 2192, 2193, 2196, 2199, 2200, 2213, 2220, 2228, 2229, 2230, 2243, 2244, 2251, 2253, 2259, 2260, 2267, 2268, 2271, 2272, 2299, 2300, 2303, 2320, 2323, 2324, 2329, 2336, 2337, 2338, 2339, 2342, 2350, 2362, 2373, 2384, 2385, 2395, 2396, 2401, 2402, 2414, 2424, 2425, 2426, 2439, 2448, 2449, 2450, 2451, 2465, 2516, 2524, 2539, 2540, 2559, 2582, 2590, 2591, 2601, 2616, 2651, 2661, 2720, 2735, 2748, 2759, 2760, 2769, 2774, 2782, 2818, 2826],
+"India": [1799, 1850, 1919, 1932, 1974, 1984, 2034, 2087, 2107, 2161, 2178, 2179, 2196, 2228, 2243, 2244, 2259, 2267, 2271, 2299, 2300, 2323, 2324, 2329, 2336, 2350, 2362, 2384, 2385, 2395, 2396, 2760],
 "Indonesia": [3011, 3031, 3036, 3095, 3106, 3116, 3117, 3122, 3128, 3131, 3135, 3145, 3161, 3168, 3169, 3170, 3176, 3178, 3179, 3184, 3188, 3190, 3228, 3248, 3249, 3250, 3251, 3274, 3285, 3304, 3305, 3307, 3311, 3312, 3317, 3323, 3332, 3334, 3369, 3385, 3386, 3392, 3402],
 "Iran": [1543, 1544, 1558, 1571, 1602, 1603, 1604, 1618, 1638, 1639, 1640, 1667, 1668, 1683, 1684, 1695, 1696, 1726, 1749, 1768, 1780, 1826, 1827, 1841, 1849, 1860, 1861, 1876, 1902, 1903, 1908, 1909, 1945, 1946, 1954, 1993, 1994, 2006, 2018, 2019, 2033, 2085, 2095, 2119, 2142, 2169, 2212, 2227, 2250],
 "Iraq": [1665, 1666, 1694, 1725, 1748, 1779, 1797, 1839, 1840, 1848, 1875, 1916, 1917, 1931, 1943, 1944, 1964, 1965, 1973, 1991, 1992, 2005, 2032, 2046],
@@ -77275,7 +77276,6 @@ country_to_provinces = {
 "Kosovo": [1228, 1242, 1243],
 "Kuwait": [2105],
 "Kyrgyzstan": [1246, 1270, 1271, 1318, 1454, 1483],
-"Laos": [2397, 2432, 2467, 2517, 2519, 2574, 2617],
 "Latvia": [412, 413, 422, 423, 428, 435, 436, 445, 456],
 "Lebanon": [1847, 1889, 1890],
 "Lesotho": [3700],
@@ -77286,7 +77286,7 @@ country_to_provinces = {
 "Luxembourg": [751],
 "Madagascar": [3434, 3493, 3502, 3511, 3537, 3539, 3599, 3621],
 "Malawi": [3400, 3431, 3463],
-"Malaysia": [2978, 2991, 3003, 3006, 3007, 3027, 3028, 3041, 3050, 3094],
+"Malaysia": [2978, 3028],
 "Maldives": [2791],
 "Mali": [2317, 2437, 2455, 2488, 2513, 2536, 2569, 2620, 2625, 2626, 2627, 2742],
 "Malta": [1765],
@@ -77295,21 +77295,17 @@ country_to_provinces = {
 "Mexico": [1949, 1950, 1956, 1978, 1985, 2008, 2009, 2111, 2182, 2203, 2222, 2223, 2233, 2281, 2316, 2326, 2359, 2366, 2378, 2387, 2388, 2389, 2405, 2406, 2407, 2416, 2420, 2421, 2435, 2441, 2443, 2445, 2446, 2454, 2461, 2475, 2508, 2509, 2518, 2525, 2526, 2534, 2543, 2553, 2554, 2558],
 "Moldova": [861, 1013],
 "Monaco": [1197],
-"Mongolia": [666, 723, 732, 733, 745, 746, 747, 758, 766, 767, 779, 786, 828, 837, 838, 839, 879, 894, 895, 950, 972, 986, 987, 988, 1003, 1017, 1018, 1102],
 "Montenegro": [1227, 1265, 1279],
 "Morocco": [1764, 1803, 1819, 1820, 1835, 1836, 1857, 1870, 1871, 1901, 1914, 1915, 1936, 1937, 1952, 2028, 2091, 2146, 2166, 2204, 2256, 2380],
 "Mozambique": [3415, 3425, 3464, 3490, 3513, 3522, 3604, 3606, 3667],
-"Myanmar": [2195, 2231, 2340, 2344, 2363, 2391, 2431, 2440, 2442, 2460, 2466, 2496, 2549, 2557, 2567, 2568, 2583, 2635],
 "Namibia": [3520, 3526, 3531, 3534, 3541, 3619, 3666],
 "Nauru": [2939, 2955],
-"Nepal": [2096, 2109, 2143, 2162, 2180],
 "Netherlands": [554, 600, 620, 640, 662, 670],
 "New_zealand": [3784, 3843, 3847, 3849, 3850, 3853, 3854, 3907, 3910, 3913],
 "Nicaragua": [2646, 2671, 2721, 2731],
 "Niger": [2356, 2537, 2544, 2562, 2608, 2609, 2632, 2633, 2641, 2649, 2717],
 "Nigeria": [2684, 2711, 2718, 2719, 2723, 2724, 2732, 2733, 2744, 2756, 2767, 2780, 2788, 2811, 2812, 2823, 2853, 2854, 2855, 2868, 2869, 2895, 2896, 2924, 2933, 2934, 2935, 2952, 2959, 2963, 2975, 2976, 2984, 2985, 2994, 3000, 3016, 3017],
 "Niue": [3527],
-"North_korea": [1287, 1319, 1392, 1433, 1465, 1500, 1563, 1588, 1595],
 "North_macedonia": [1293, 1294, 1312, 1336, 1364, 1385, 1386],
 "Norway": [62, 165, 166, 169, 227, 290, 295, 308, 341, 342],
 "Oman": [2265, 2328, 2335, 2349, 2357, 2372, 2383, 2413, 2423, 2430, 2464, 2523],
@@ -77325,7 +77321,7 @@ country_to_provinces = {
 "Portugal": [1310, 1422, 1436, 1437, 1469, 1525, 1539, 1580, 1590, 1636, 1649, 1802],
 "Qatar": [2264],
 "Romania": [876, 888, 903, 944, 945, 983, 998, 1012, 1032, 1047, 1048, 1063, 1078, 1141, 1165, 1182],
-"Russia": [55, 56, 57, 59, 60, 61, 111, 113, 115, 122, 123, 125, 126, 164, 170, 176, 177, 180, 183, 190, 191, 196, 197, 203, 206, 207, 211, 212, 215, 223, 229, 230, 248, 249, 256, 257, 266, 271, 272, 273, 276, 277, 282, 283, 284, 285, 292, 293, 298, 299, 301, 302, 303, 306, 307, 311, 312, 316, 317, 318, 321, 326, 327, 328, 333, 334, 335, 343, 345, 346, 347, 350, 351, 355, 356, 376, 377, 378, 379, 389, 390, 391, 393, 398, 399, 400, 404, 405, 406, 414, 415, 418, 419, 420, 424, 425, 426, 429, 430, 431, 432, 433, 437, 438, 440, 441, 442, 443, 444, 446, 447, 448, 462, 463, 467, 468, 475, 476, 477, 478, 479, 480, 481, 482, 487, 489, 491, 493, 502, 503, 504, 506, 507, 512, 513, 524, 525, 527, 528, 535, 536, 537, 538, 549, 550, 551, 559, 560, 561, 562, 563, 564, 566, 567, 577, 578, 579, 580, 582, 603, 604, 606, 607, 608, 609, 626, 632, 633, 647, 648, 651, 652, 653, 659, 677, 679, 690, 702, 713, 721, 734, 743, 768, 769, 824, 825, 830, 840, 841, 853, 863, 864, 880, 890, 891, 934, 968, 973, 974, 984, 985, 1004, 1014, 1015, 1019, 1034, 1052, 1064, 1085, 1100, 1101, 1117, 1118, 1133, 1142, 1143, 1147, 1166, 1167, 1168, 1183, 1184, 1185, 1203, 1219, 1231, 1235],
+"Russia": [55, 56, 57, 59, 60, 61, 111, 113, 115, 122, 123, 125, 164, 170, 176, 180, 183, 190, 191, 196, 197, 206, 211, 212, 215, 223, 229, 230, 248, 256, 257, 266, 271, 272, 273, 276, 277, 282, 283, 284, 292, 298, 301, 302, 303, 306, 307, 311, 312, 316, 317, 318, 321, 326, 327, 333, 334, 343, 345, 346, 350, 351, 355, 356, 376, 377, 378, 379, 389, 390, 391, 398, 399, 400, 404, 405, 414, 415, 418, 419, 424, 425, 426, 429, 430, 437, 438, 440, 441, 442, 443, 446, 447, 462, 463, 467, 475, 476, 477, 478, 479, 480, 481, 487, 489, 493, 502, 503, 504, 506, 512, 524, 525, 535, 536, 537, 549, 551, 559, 560, 561, 562, 563, 577, 578, 579, 582, 603, 604, 626, 632, 633, 647, 648, 677, 679, 690, 721, 743, 769, 824, 825, 840, 841, 853, 863, 864, 880, 890, 891, 968, 973, 974, 984, 985, 1004, 1014, 1015, 1034, 1052, 1064, 1085, 1100, 1101, 1117, 1118, 1133, 1142, 1143, 1147, 1166, 1167, 1168, 1183, 1184, 1185, 1219, 1231],
 "Rwanda": [3166],
 "San_marino": [1178],
 "Sao_tome_and_principe": [3124],
@@ -77335,18 +77331,15 @@ country_to_provinces = {
 "Serbia": [1031, 1061, 1062, 1113, 1114, 1115, 1180, 1198, 1217],
 "Seychelles": [3283],
 "Sierra_leone": [2822, 2850, 2891],
-"Singapore": [3110],
 "Slovakia": [774, 785, 797, 798, 817, 818, 819, 836, 847],
 "Slovenia": [963, 982, 996, 1029, 1076],
 "Solomon_islands": [3336, 3390],
 "Somalia": [2768, 2861, 2945, 2970, 3005, 3026, 3035, 3040, 3048, 3049, 3104, 3121],
 "Somaliland": [2781, 2798, 2814, 2832, 2840],
 "South_africa": [3611, 3617, 3620, 3626, 3627, 3671, 3672, 3675, 3684, 3686, 3687, 3690, 3696, 3699, 3701, 3703, 3754, 3755, 3756, 3762, 3768],
-"South_korea": [1607, 1622, 1656, 1670, 1687, 1753, 1754, 1812, 1904],
 "South_ossetia": [1281],
 "South_sudan": [2765, 2816, 2817, 2831, 2847, 2857, 2929, 2969, 2990, 3002],
 "Spain": [1176, 1194, 1211, 1212, 1224, 1258, 1259, 1260, 1276, 1277, 1291, 1332, 1333, 1396, 1423, 1438, 1470, 1490, 1507, 1508, 1540, 1581, 1591, 1592, 1613, 1624, 1625, 1658, 1689, 2100, 2115, 2145, 2164, 2165, 2175, 2183],
-"Sri_lanka": [2848, 2871, 2946],
 "St_kitts_and_nevis": [2578],
 "St_lucia": [2722],
 "Sudan": [2370, 2409, 2410, 2412, 2458, 2459, 2514, 2531, 2532, 2571, 2572, 2580, 2599, 2611, 2621, 2622, 2628, 2658, 2713, 2725, 2738, 2757],
@@ -77357,7 +77350,6 @@ country_to_provinces = {
 "Taiwan": [2306, 2332, 2341, 2353, 2364],
 "Tajikistan": [1452, 1453, 1547, 1548, 1575, 1576, 1586],
 "Tanzania": [3167, 3171, 3183, 3187, 3215, 3239, 3240, 3255, 3257, 3258, 3261, 3268, 3272, 3273, 3294, 3295, 3299, 3303, 3320, 3321, 3379, 3382, 3401, 3407, 3409],
-"Thailand": [2452, 2497, 2545, 2550, 2551, 2552, 2584, 2588, 2593, 2602, 2630, 2636, 2637, 2654, 2695, 2728, 2799, 2872, 2966],
 "Togo": [2787, 2894, 2967],
 "Tonga": [3598],
 "Transnistria": [877, 931, 946],
@@ -77373,11 +77365,10 @@ country_to_provinces = {
 "United_kingdom": [410, 421, 427, 458, 459, 469, 484, 485, 486, 495, 518, 541, 553, 569, 570, 571, 619, 637, 638, 639, 656, 660, 668, 669, 681, 682, 695, 704, 1708, 2607, 3383, 3972],
 "United_states": [163, 168, 171, 174, 178, 184, 213, 262, 263, 274, 286, 287, 319, 320, 329, 407, 409, 457, 787, 805, 806, 807, 808, 809, 810, 831, 867, 868, 869, 870, 881, 911, 912, 913, 943, 953, 954, 955, 956, 957, 975, 976, 977, 990, 991, 994, 1020, 1024, 1038, 1039, 1041, 1055, 1056, 1057, 1058, 1070, 1071, 1086, 1087, 1088, 1090, 1091, 1092, 1105, 1124, 1125, 1126, 1127, 1128, 1129, 1130, 1131, 1135, 1136, 1137, 1148, 1149, 1152, 1153, 1154, 1155, 1156, 1173, 1174, 1175, 1188, 1189, 1190, 1191, 1192, 1193, 1204, 1205, 1206, 1208, 1209, 1210, 1223, 1237, 1238, 1239, 1240, 1241, 1247, 1248, 1249, 1250, 1251, 1252, 1253, 1254, 1255, 1256, 1257, 1273, 1275, 1288, 1289, 1290, 1301, 1302, 1303, 1304, 1305, 1306, 1307, 1308, 1309, 1321, 1322, 1323, 1324, 1325, 1326, 1327, 1328, 1329, 1330, 1331, 1347, 1348, 1349, 1350, 1381, 1382, 1393, 1394, 1395, 1412, 1413, 1414, 1415, 1416, 1417, 1418, 1419, 1420, 1421, 1434, 1435, 1456, 1457, 1466, 1467, 1468, 1486, 1487, 1488, 1489, 1502, 1503, 1504, 1505, 1506, 1517, 1518, 1519, 1520, 1521, 1522, 1523, 1524, 1535, 1536, 1537, 1538, 1552, 1553, 1554, 1564, 1565, 1566, 1567, 1578, 1579, 1589, 1597, 1598, 1608, 1609, 1610, 1611, 1631, 1632, 1633, 1634, 1635, 1648, 1657, 1671, 1672, 1673, 1674, 1675, 1676, 1677, 1678, 1679, 1680, 1688, 1701, 1702, 1703, 1704, 1705, 1706, 1707, 1720, 1721, 1722, 1733, 1734, 1763, 1771, 1772, 1773, 1774, 1787, 1801, 1815, 1816, 1817, 1818, 1832, 1833, 1834, 1845, 1846, 1852, 1853, 1854, 1855, 1856, 1868, 1869, 1883, 1884, 1885, 1886, 1887, 1898, 1899, 1900, 1905, 1906, 1912, 1913, 1923, 1924, 1925, 1934, 1951, 1957, 1958, 1970, 1979, 1980, 1981, 1986, 2000, 2001, 2002, 2010, 2024, 2025, 2026, 2027, 2038, 2039, 2040, 2041, 2054, 2055, 2056, 2083, 2084, 2088, 2089, 2090, 2112, 2113, 2114, 2126, 2135, 2155, 2156, 2174, 2217, 2242, 2354, 2365, 2393, 2415, 2529],
 "Uruguay": [3706, 3720, 3764, 3767, 3775],
-"Uzbekistan": [1081, 1134, 1145, 1220, 1284, 1297, 1368, 1369, 1370, 1391, 1409, 1533, 1574],
+"Uzbekistan": [1081, 1134, 1145, 1220, 1284, 1297, 1368, 1370, 1391, 1409, 1533, 1574],
 "Vanuatu": [3500, 3507, 3515],
 "Vatican_city": [1362],
 "Venezuela": [2752, 2772, 2786, 2794, 2803, 2820, 2821, 2828, 2865, 2931, 2972, 2980],
-"Vietnam": [2375, 2398, 2433, 2453, 2533, 2585, 2652, 2656, 2783, 2800],
 "Western_sahara": [2205, 2257, 2381],
 "Yemen": [2522, 2556, 2564, 2565, 2566, 2573, 2575, 2581, 2587, 2600, 2613, 2614, 2615, 2624, 2629, 2643, 2644, 2650, 2660, 2686, 2710, 2747],
 "Zambia": [3378, 3381, 3412, 3421, 3432, 3433, 3489, 3497, 3505],

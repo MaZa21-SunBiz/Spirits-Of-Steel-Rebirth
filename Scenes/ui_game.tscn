@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgfixe44dvfny"]
 
 [ext_resource type="Script" uid="uid://dqvjehbri1br0" path="res://Scripts/UI/GameUI.gd" id="1_rp7y5"]
-[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/ModernDay/assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
+[ext_resource type="Texture2D" uid="uid://dpohmal5pe58k" path="res://starts/soilads shitty mod/assets/flags/abkhazia/neutral_flag.png" id="1_xar7q"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="4_uqxsi"]
 [ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="5_0e43j"]
 [ext_resource type="StyleBox" uid="uid://c2nl644chy8ad" path="res://stat_icon_panel_theme.tres" id="5_5phox"]
@@ -590,11 +590,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/HFlowContainer" unique_id=1954831864]
 texture_filter = 2
+custom_minimum_size = Vector2(201, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("15_yp111")
 theme_override_font_sizes/font_size = 24
 text = "Select country"
-horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=731782393]
 use_parent_material = true
@@ -1819,10 +1821,20 @@ use_parent_material = true
 layout_mode = 2
 text = "Factory capable"
 
+[node name="CheckButton2" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1141485894]
+use_parent_material = true
+layout_mode = 2
+text = "Heal"
+
 [node name="CheckButton3" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1629849758]
 use_parent_material = true
 layout_mode = 2
 text = "Gather resources"
+
+[node name="CheckButton4" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1496194263]
+use_parent_material = true
+layout_mode = 2
+text = "Supply"
 
 [node name="CheckButton5" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1888904918]
 use_parent_material = true

@@ -158,6 +158,7 @@ func get_country_gdp(country_name: String) -> int:
 
 func get_factories_amount(country_name: String) -> int:
 	var factoryCount: int = 0
+	if !MapManager.country_to_provinces.has(country_name): return 0
 	for province: int in MapManager.country_to_provinces[country_name]:
 		for building: BuildingData in MapManager.province_objects[province].buildings:
 			#print("Checking %d, it is a %s in the %s state." % [province, building.type, building.state])

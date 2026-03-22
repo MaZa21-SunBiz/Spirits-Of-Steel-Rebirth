@@ -138,6 +138,7 @@ func _score_frontline() -> float:
 
 
 func _execute_factory() -> bool:
+	if !MapManager.country_to_owned_provinces.has(country.country_name): return false
 	var provincesToDo: Array = MapManager.country_to_owned_provinces[country.country_name].filter(func (pid: int): return MapManager.province_objects[pid].buildings.size() < 4 && ! pid in EconomyManager.construction_queue)
 	if provincesToDo.is_empty():
 		return false
