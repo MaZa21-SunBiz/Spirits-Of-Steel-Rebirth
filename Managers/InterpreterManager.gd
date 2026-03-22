@@ -154,9 +154,9 @@ func get_function(block, country: CountryData = null):
 		else:
 			heap.erase(var_name)
 			
-	#match statement
-	if block.has("match"):
-		get_function(block.get(str(get_function(block["match"])), {}))
+	# #match statement
+	# if block.has("match"):
+	# 	get_function(block.get(str(get_function(block["match"])), {}))
 	
 	var args: Array = block.get("args", []).duplicate()
 	var evaled_args: Array = []

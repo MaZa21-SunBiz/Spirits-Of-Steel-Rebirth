@@ -110,10 +110,13 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 		push_warning("CountryManager: Country '%s' already exists!" % tempName)
 		return countries[tempName]
 
+	# NOTE(soi): I DONT CARE WHO THE IRS SENDS IM NOT PAYNG MY TAXES
 	# 2. Check if the flag exists before proceeding
-	if TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(Vector2(a_countryData["ideology"][0], a_countryData["ideology"][0]))) == null:
-		push_error("CountryManager: Cannot add '%s'. No flag found." % tempName)
-		return null
+	# if TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(
+	# 	Vector2(a_countryData.get("ideology", [0, 0])[0], a_countryData.get("ideology", [0, 0])[0])
+	# )) == null:
+	# 	push_error("CountryManager: Cannot add '%s'. No flag found." % tempName)
+	# 	return null
 
 	# 3. If flag exists, create and store the country
 	var new_country: CountryData = CountryData.FromDict(a_countryData)

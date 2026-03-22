@@ -94,6 +94,12 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c8l0"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
 [node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
 script = ExtResource("1_rp7y5")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
@@ -587,7 +593,7 @@ texture_filter = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_yp111")
 theme_override_font_sizes/font_size = 24
-text = "country1"
+text = "Select country"
 horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=731782393]
@@ -685,10 +691,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 5
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+visible = false
 material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
@@ -1653,6 +1660,10 @@ theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
+[node name="Control" type="Control" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=500580373]
+layout_mode = 2
+metadata/_tab_index = 5
+
 [node name="Control" type="Control" parent="Control/HSplitContainer" unique_id=1378811327]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1775,105 +1786,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer" unique_id=1029955428]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Building Designer"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/VBoxContainer" unique_id=425955570]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=746532199]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2067866561]
-use_parent_material = true
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1350628917]
-use_parent_material = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-texture = ExtResource("38_youyo")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextEdit" type="TextEdit" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=529636001]
-use_parent_material = true
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Building Name"
-
-[node name="GridContainer" type="GridContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1452782030]
-use_parent_material = true
-layout_mode = 2
-columns = 2
-
-[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1495251980]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Power"
-
-[node name="HSlider" type="HSlider" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1213016304]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -1.0
-max_value = 1.0
-
-[node name="Label2" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=344417037]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Water"
-
-[node name="HSlider2" type="HSlider" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1271156725]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -1.0
-max_value = 1.0
-
-[node name="Label3" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=903462251]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Electricity"
-
-[node name="HSlider3" type="HSlider" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=620739132]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -1.0
-max_value = 1.0
-
-[node name="Label4" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=1778537423]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Population"
-
-[node name="HSlider4" type="HSlider" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer" unique_id=852663532]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -1.0
-max_value = 1.0
-
-[node name="Label2" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1284686764]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "smthng smthng show stats 
-here im too lazy for
-placeholder"
-
-[node name="Button" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1602404120]
-use_parent_material = true
-layout_mode = 2
-text = "Add building"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=395027308]
 use_parent_material = true
@@ -1900,20 +1819,10 @@ use_parent_material = true
 layout_mode = 2
 text = "Factory capable"
 
-[node name="CheckButton2" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1553871111]
-use_parent_material = true
-layout_mode = 2
-text = "Supply position"
-
 [node name="CheckButton3" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1629849758]
 use_parent_material = true
 layout_mode = 2
 text = "Gather resources"
-
-[node name="CheckButton4" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=572635612]
-use_parent_material = true
-layout_mode = 2
-text = "Heal"
 
 [node name="CheckButton5" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1888904918]
 use_parent_material = true
@@ -1925,13 +1834,54 @@ use_parent_material = true
 layout_mode = 2
 text = "Port"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=746532199]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2067866561]
+use_parent_material = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1350628917]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture = ExtResource("38_youyo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextEdit" type="TextEdit" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=529636001]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Building Name"
+
+[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1284686764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Power:
+Water:
+Population:
+Sewage:"
+
+[node name="Resources" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=447748247]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="Button" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1602404120]
+use_parent_material = true
+layout_mode = 2
+text = "Add building"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=240313952]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1745155919]
 layout_mode = 2
-text = "Existing Designs"
+text = "Existing Designs:"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1804573865]
 layout_mode = 2
@@ -2077,6 +2027,75 @@ size_flags_vertical = 3
 texture = ExtResource("29_anvjc")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Tooltip" type="CanvasLayer" parent="." unique_id=1860872512]
+
+[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=788191395]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c8l0")
+script = ExtResource("40_0c8l0")
+
+[node name="ResourceTemplate" type="HBoxContainer" parent="Tooltip/PanelContainer" unique_id=379944955]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=318878603]
+layout_mode = 2
+texture = ExtResource("41_vbips")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=1288667528]
+layout_mode = 2
+text = "Oil - 2 (125%)"
+
+[node name="Resources" type="VBoxContainer" parent="Tooltip/PanelContainer" unique_id=2069047216]
+visible = false
+layout_mode = 2
+
+[node name="Oil" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=634068362]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Oil" unique_id=2036277746]
+layout_mode = 2
+texture = ExtResource("41_vbips")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Oil" unique_id=1566525322]
+layout_mode = 2
+text = "Oil - 2 (125%)"
+
+[node name="Natural Gas" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=2106811488]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Natural Gas" unique_id=1759571675]
+layout_mode = 2
+texture = ExtResource("42_ekg1n")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Natural Gas" unique_id=1956836896]
+layout_mode = 2
+text = "Natural Gas - 3 (75%)"
+
+[node name="Iron" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=1378547071]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Iron" unique_id=1374365882]
+layout_mode = 2
+texture = ExtResource("43_ol53e")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Iron" unique_id=1071834671]
+layout_mode = 2
+text = "Iron - 1 (100%)"
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer" unique_id=85310679]
+layout_mode = 2
+text = "quagga"
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]

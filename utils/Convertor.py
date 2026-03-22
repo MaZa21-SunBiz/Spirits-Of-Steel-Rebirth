@@ -128,7 +128,7 @@ def main():
         id = (province_color[2] + province_color[1]*256 + province_color[0]*65536)
         if id not in sosr_time["provinces"] and country_color in coloredata:
             sosr_time["provinces"][str(id)] = {
-                "type": "land",
+                "type": 1,
                 "name": "",
                 "polity": coloredata[country_color].capitalize(),
                 "biome": f"{biomes_color[0]}, {biomes_color[1]}, {biomes_color[2]}",
@@ -161,7 +161,7 @@ def main():
             blacklist.add(province_color)
             count +=1
 
-            if not eth_data[f"({eth_color[0]}, {eth_color[1]}, {eth_color[2]})"]:
+            if not eth_data.get(f"({eth_color[0]}, {eth_color[1]}, {eth_color[2]})", False):
                 unknown_cultures.add(f"{rgb_to_hex(*eth_color)} \"({eth_color[0]}, {eth_color[1]}, {eth_color[2]})\"            ")
 
         if country_color not in blacklist and country_color in coloredata:

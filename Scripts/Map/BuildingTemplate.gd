@@ -6,6 +6,7 @@ class_name BuildingTemplate
 @export var water: int
 @export var sewage: int
 @export var population: int
+@export var on_coast: bool
 
 static func FromDict(a_data: Dictionary) -> BuildingTemplate:
 	var building: BuildingTemplate = BuildingTemplate.new()

@@ -64,6 +64,11 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var troop_container: PanelContainer = $Control/TroopContainer
 @onready var troop_list_parent: VBoxContainer = troop_container.get_node("ScrollContainer/VBoxContainer")
 
+
+# --- Custom ToolTip ---
+@onready var custom_tooltip: CanvasLayer = $Tooltip
+@onready var custom_tooltip_text: Label = custom_tooltip.get_node("PanelContainer/Label")
+
 # --- State ---
 var division_type_selected: String = "infantry"
 # ── State Variables ───────────────────────────────────

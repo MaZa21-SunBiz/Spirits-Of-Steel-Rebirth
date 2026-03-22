@@ -370,10 +370,11 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 	if pid != last_hovered_pid:
 		if GameState.selectingCountry:
-			if last_hovered_pid in province_objects && pid in province_objects && province_objects[last_hovered_pid].country == province_objects[pid].country:
+			if (last_hovered_pid in province_objects 
+				&& pid in province_objects 
+				&& province_objects[last_hovered_pid].country == province_objects[pid].country):
 				pass
 			else:
-				
 				last_hovered_pid = -1
 				if pid > 1 and highlight_color != Color.TRANSPARENT:
 					if hoveredCountry != province_objects[pid].country:
@@ -404,7 +405,6 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				if (highlight_color != Color.TRANSPARENT):
 					original_hover_color = state_color_image.get_pixel(pid, 0)
 					update_lookup(pid, highlight_color, highlight_color)
-
 					last_hovered_pid = pid
 					Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 					province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")

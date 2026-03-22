@@ -92,14 +92,23 @@ static func FromDict(a_data: Dictionary) -> Province:
 	
 	return province
 
+
 func GetPopulation() -> int:
 	var totalPopulation: int = 0
 	for subpopulation: PopulationData in self.populations:
 		totalPopulation += subpopulation.amount
 	return totalPopulation
 
+
 func GetFunctionalOwner() -> String:
 	if occupier == "":
 		return country
 	else:
 		return occupier
+
+
+func GetResources() -> String:
+	var list: String = ""
+	for resource in resources:
+		list += "%s\n%s" % [ list, resource.type ]
+	return list
