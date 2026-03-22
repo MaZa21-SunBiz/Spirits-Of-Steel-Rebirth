@@ -332,6 +332,7 @@ func m_OnProvinceGDPChanged(value: float) -> void:
 
 func m_OnColorChanged(color: Color) -> void:
 	if selectedCountry in CountryManager.countries:
+		CountryManager.countries[selectedCountry].country_color = color
 		MapManager.set_country_color(selectedCountry, color)
 
 func m_OnFactionColorChanged(color: Color) -> void:

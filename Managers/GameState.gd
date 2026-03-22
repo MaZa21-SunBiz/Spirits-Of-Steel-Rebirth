@@ -15,8 +15,8 @@ var in_peace_process: bool = false
 var lostTerritory: bool = false
 var selectingCountry: bool = true
 
-var tooltip: PanelContainer
-
+@export var showingTooltip: bool = false
+@export var tooltip: Tooltip
 
 func reset_industry_building():
 	industry_building = IndustryType.DEFAULT

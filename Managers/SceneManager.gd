@@ -102,6 +102,8 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 				await get_tree().process_frame
 
 			bingo.wait_to_finish()
+		elif scene_type == Type.EDITOR:
+			CountryManager.clock
 		_current_type = scene_type
 
 	if _loading_screen:

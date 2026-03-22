@@ -222,6 +222,9 @@ func cleanup_empty_countries() -> void:
 		else:
 			var deleting: CountryData = CountryManager.countries[c_name]
 			#CountryManager.Releasables.append(ReleasableData.FromDict({}))
+			if deleting.owner in countryNames:
+				CountryManager.release_puppet(CountryManager.countries[deleting.owner], deleting)
+				
 			for puppet: String in deleting.puppets:
 				CountryManager.release_puppet(deleting, CountryManager.countries[puppet])
 			MapManager.country_to_provinces.erase(c_name)
