@@ -82,12 +82,7 @@
 				"Quebecs"
 			],
 			"color": "#C35C6D",
-			"hostedGovernments": [
-				"East_asian_anarchist_federation",
-				"Funan",
-				"Banglanadu_zone",
-				"Dravidanadu"
-			],
+			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
@@ -458,23 +453,6 @@
 			],
 			"money": 100000.0,
 			"name": "Ukraine",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Mongols"
-			],
-			"color": "#A38E4B",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Mongolia",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -1033,23 +1011,6 @@
 		},
 		{
 			"accepted_cultures": [
-				"Koreans"
-			],
-			"color": "#F50C37",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "North_korea",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
 				"Albanians"
 			],
 			"color": "#952D66",
@@ -1242,23 +1203,6 @@
 			],
 			"money": 100000.0,
 			"name": "Afghanistan",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Koreans"
-			],
-			"color": "#5E76BE",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "South_korea",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -1617,23 +1561,6 @@
 		},
 		{
 			"accepted_cultures": [
-				"Nepali"
-			],
-			"color": "#003893",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Nepal",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
 				"Arab"
 			],
 			"color": "#5A402A",
@@ -1644,40 +1571,6 @@
 			],
 			"money": 100000.0,
 			"name": "Kuwait",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Bhutanese"
-			],
-			"color": "#79645F",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Bhutan",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Myammar"
-			],
-			"color": "#3B714F",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Myanmar",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -1729,23 +1622,6 @@
 			],
 			"money": 100000.0,
 			"name": "Bahrain",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Bengal"
-			],
-			"color": "#002A30",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Bangladesh",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -1912,61 +1788,6 @@
 			],
 			"money": 100000.0,
 			"name": "Sudan",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Vietnam"
-			],
-			"color": "#C6BE75",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Vietnam",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Lao"
-			],
-			"color": "#594D3F",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Laos",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Myammar",
-				"Thai",
-				"Lao",
-				"Cambodia",
-				"Malaya"
-			],
-			"color": "#142D4C",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Thailand",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -2250,23 +2071,6 @@
 			],
 			"money": 100000.0,
 			"name": "Ethiopia",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Cambodia"
-			],
-			"color": "#E2B490",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Cambodia",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -2721,23 +2525,6 @@
 		},
 		{
 			"accepted_cultures": [
-				"Sri-lankan"
-			],
-			"color": "#564B39",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Sri_lanka",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
 				""
 			],
 			"color": "#513D76",
@@ -3029,23 +2816,6 @@
 			],
 			"money": 100000.0,
 			"name": "Gabon",
-			"political_power": 500.0,
-			"puppets": [],
-			"stability": 1.0,
-			"war_support": 1.0
-		},
-		{
-			"accepted_cultures": [
-				"Han-chinise"
-			],
-			"color": "#4D4986",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 100000.0,
-			"name": "Singapore",
 			"political_power": 500.0,
 			"puppets": [],
 			"stability": 1.0,
@@ -3681,14 +3451,14 @@
 		},
 		{
 			"accepted_cultures": [],
-			"color": "#F61212",
+			"color": "#103517",
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
 			],
 			"money": 0.0,
-			"name": "Funan",
+			"name": "Tibet",
 			"political_power": 0.0,
 			"puppets": [],
 			"stability": 0.0,
@@ -3696,29 +3466,14 @@
 		},
 		{
 			"accepted_cultures": [],
-			"color": "#F61212",
+			"color": "#FFB200",
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
 			],
 			"money": 0.0,
-			"name": "Banglanadu_zone",
-			"political_power": 0.0,
-			"puppets": [],
-			"stability": 0.0,
-			"war_support": 0.0
-		},
-		{
-			"accepted_cultures": [],
-			"color": "#FF6000",
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
-			"money": 0.0,
-			"name": "Dravidanadu",
+			"name": "Bharat",
 			"political_power": 0.0,
 			"puppets": [],
 			"stability": 0.0,
@@ -3811,7 +3566,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -4091,7 +3846,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -4111,7 +3866,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -4131,7 +3886,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -4151,7 +3906,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -4533,7 +4288,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -5181,7 +4936,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -5201,7 +4956,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -5529,7 +5284,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -5549,7 +5304,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -5957,7 +5712,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -5977,7 +5732,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -6415,7 +6170,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -6929,7 +6684,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -7465,7 +7220,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -7485,7 +7240,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -7785,7 +7540,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -8153,7 +7908,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -8173,7 +7928,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -8573,7 +8328,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -8839,7 +8594,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -8859,7 +8614,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -8879,7 +8634,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -9419,7 +9174,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -9705,7 +9460,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -9985,7 +9740,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -10005,7 +9760,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -10025,7 +9780,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -10271,7 +10026,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -10291,7 +10046,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -10339,7 +10094,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -10745,7 +10500,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -11241,7 +10996,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -11719,7 +11474,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -11779,7 +11534,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -12179,7 +11934,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -12611,7 +12366,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -12631,7 +12386,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13117,7 +12872,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13567,7 +13322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13701,7 +13456,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13721,7 +13476,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13741,7 +13496,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -13775,7 +13530,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -14195,7 +13950,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -14469,7 +14224,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -14489,7 +14244,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -14509,7 +14264,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -14563,7 +14318,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -14877,7 +14632,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -14897,7 +14652,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15297,7 +15052,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15623,7 +15378,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -15663,7 +15418,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15683,7 +15438,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15877,7 +15632,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -15897,7 +15652,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15917,7 +15672,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -15937,7 +15692,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16243,7 +15998,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -16457,7 +16212,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16477,7 +16232,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16623,7 +16378,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16643,7 +16398,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16851,7 +16606,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -16871,7 +16626,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -16891,7 +16646,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -16911,7 +16666,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17139,7 +16894,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17193,7 +16948,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17213,7 +16968,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17239,7 +16994,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17419,7 +17174,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -17579,7 +17334,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17599,7 +17354,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17639,7 +17394,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17679,7 +17434,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17699,7 +17454,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17719,7 +17474,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -17739,7 +17494,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17893,7 +17648,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17913,7 +17668,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -17939,7 +17694,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17959,7 +17714,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -17979,7 +17734,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -18251,7 +18006,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18271,7 +18026,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18305,7 +18060,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -18597,7 +18352,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18623,7 +18378,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18643,7 +18398,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18663,7 +18418,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -18683,7 +18438,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -18869,7 +18624,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18889,7 +18644,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18909,7 +18664,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -18929,7 +18684,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -19291,7 +19046,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -19311,7 +19066,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -19331,7 +19086,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -19351,7 +19106,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -19371,7 +19126,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -19557,7 +19312,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -19577,7 +19332,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -19597,7 +19352,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -19995,7 +19750,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -20043,7 +19798,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -20069,7 +19824,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -20327,7 +20082,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -20367,7 +20122,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -20613,7 +20368,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -20633,7 +20388,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -20653,7 +20408,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -20987,7 +20742,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21007,7 +20762,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21061,7 +20816,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -21275,7 +21030,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21295,7 +21050,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -21315,7 +21070,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -21627,7 +21382,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21647,7 +21402,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21667,7 +21422,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21687,7 +21442,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21967,7 +21722,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -21987,7 +21742,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22007,7 +21762,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -22127,7 +21882,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22161,7 +21916,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22181,7 +21936,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -22387,7 +22142,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22407,7 +22162,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22427,7 +22182,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22447,7 +22202,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -22487,7 +22242,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -22739,7 +22494,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22759,7 +22514,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22785,7 +22540,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -22805,7 +22560,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -22845,7 +22600,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -23111,7 +22866,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23131,7 +22886,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23151,7 +22906,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23171,7 +22926,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -23191,7 +22946,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -23345,7 +23100,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23365,7 +23120,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23385,7 +23140,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -23471,7 +23226,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23491,7 +23246,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23703,7 +23458,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23723,7 +23478,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -23763,7 +23518,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24023,7 +23778,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24043,7 +23798,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24309,7 +24064,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24335,7 +24090,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24361,7 +24116,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24381,7 +24136,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24527,7 +24282,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24547,7 +24302,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24787,7 +24542,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24807,7 +24562,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24827,7 +24582,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -24967,7 +24722,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -24993,7 +24748,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -25013,7 +24768,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -25033,7 +24788,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -25167,7 +24922,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25187,7 +24942,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25399,7 +25154,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25419,7 +25174,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25439,7 +25194,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25459,7 +25214,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -25485,7 +25240,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -25505,7 +25260,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -25707,7 +25462,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25727,7 +25482,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -25967,7 +25722,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -25987,7 +25742,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26027,7 +25782,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26047,7 +25802,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26067,7 +25822,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -26087,7 +25842,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -26239,7 +25994,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -26305,7 +26060,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iraq",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26325,7 +26080,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26345,7 +26100,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26365,7 +26120,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26391,7 +26146,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "China",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -26417,7 +26172,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -26637,7 +26392,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Afghanistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -26657,7 +26412,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -26677,7 +26432,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -27041,7 +26796,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -27101,7 +26856,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -27121,7 +26876,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -27327,7 +27082,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27347,7 +27102,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27367,7 +27122,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27553,7 +27308,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27573,7 +27328,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27593,7 +27348,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -27781,7 +27536,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Kuwait",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27815,7 +27570,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27835,7 +27590,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27855,7 +27610,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -27895,7 +27650,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28075,7 +27830,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28115,7 +27870,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28135,7 +27890,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28155,7 +27910,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28175,7 +27930,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28195,7 +27950,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28369,7 +28124,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28389,7 +28144,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28595,7 +28350,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28615,7 +28370,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28635,7 +28390,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28795,7 +28550,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Saudi_arabia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28815,7 +28570,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28835,7 +28590,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -28855,7 +28610,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -28995,7 +28750,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Saudi_arabia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29021,7 +28776,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29047,7 +28802,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29067,7 +28822,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -29167,7 +28922,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Saudi_arabia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29187,7 +28942,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29227,7 +28982,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29247,7 +29002,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29267,7 +29022,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29287,7 +29042,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -29387,7 +29142,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29407,7 +29162,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29447,7 +29202,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29467,7 +29222,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29527,7 +29282,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29547,7 +29302,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -29567,7 +29322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -29675,7 +29430,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29695,7 +29450,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29715,7 +29470,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29735,7 +29490,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29755,7 +29510,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29775,7 +29530,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29795,7 +29550,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29815,7 +29570,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29835,7 +29590,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -29889,7 +29644,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30149,7 +29904,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30169,7 +29924,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30195,7 +29950,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30215,7 +29970,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30235,7 +29990,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30275,7 +30030,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Saudi_arabia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30295,7 +30050,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30329,7 +30084,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30349,7 +30104,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -30469,7 +30224,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30489,7 +30244,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30509,7 +30264,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30549,7 +30304,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30569,7 +30324,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30717,7 +30472,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30757,7 +30512,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30777,7 +30532,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -30823,7 +30578,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30843,7 +30598,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30863,7 +30618,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -30903,7 +30658,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Bahrain",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30923,7 +30678,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -30983,7 +30738,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Iran",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31003,7 +30758,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31023,7 +30778,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31043,7 +30798,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31063,7 +30818,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31083,7 +30838,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -31157,7 +30912,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31197,7 +30952,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31217,7 +30972,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -31257,7 +31012,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Saudi_arabia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31283,7 +31038,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Qatar",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31303,7 +31058,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31329,7 +31084,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31349,7 +31104,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31369,7 +31124,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31389,7 +31144,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31429,7 +31184,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Pakistan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31449,7 +31204,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31469,7 +31224,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31523,7 +31278,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -31911,7 +31666,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31965,7 +31720,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -31991,7 +31746,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32011,7 +31766,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32031,7 +31786,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32051,7 +31806,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -32071,7 +31826,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -32303,7 +32058,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "United_arab_emirates",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32323,7 +32078,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "United_arab_emirates",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32357,7 +32112,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32377,7 +32132,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32397,7 +32152,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -32423,7 +32178,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32443,7 +32198,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32463,7 +32218,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32523,7 +32278,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32543,7 +32298,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32577,7 +32332,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32597,7 +32352,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -32671,7 +32426,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32691,7 +32446,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32717,7 +32472,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32737,7 +32492,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32757,7 +32512,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32791,7 +32546,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32831,7 +32586,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32851,7 +32606,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32871,7 +32626,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32891,7 +32646,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -32951,7 +32706,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "United_arab_emirates",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -32971,7 +32726,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33005,7 +32760,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33025,7 +32780,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33051,7 +32806,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -33157,7 +32912,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33177,7 +32932,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33277,7 +33032,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33303,7 +33058,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33509,7 +33264,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -33529,7 +33284,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33549,7 +33304,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33569,7 +33324,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33589,7 +33344,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -33615,7 +33370,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -33749,7 +33504,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33769,7 +33524,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33789,7 +33544,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33809,7 +33564,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -33923,7 +33678,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -33943,7 +33698,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -33997,7 +33752,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34023,7 +33778,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34043,7 +33798,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34063,7 +33818,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34157,7 +33912,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34177,7 +33932,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34211,7 +33966,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -34411,7 +34166,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34431,7 +34186,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34613,7 +34368,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -34633,7 +34388,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34653,7 +34408,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34673,7 +34428,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34761,7 +34516,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34781,7 +34536,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Banglanadu_zone",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34801,7 +34556,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34827,7 +34582,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34847,7 +34602,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34947,7 +34702,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -34981,7 +34736,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35021,7 +34776,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35141,7 +34896,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35161,7 +34916,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35201,7 +34956,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35221,7 +34976,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35241,7 +34996,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35261,7 +35016,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35421,7 +35176,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35501,7 +35256,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -35521,7 +35276,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35541,7 +35296,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35561,7 +35316,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35581,7 +35336,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -35947,7 +35702,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -36051,7 +35806,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36071,7 +35826,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36439,7 +36194,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36465,7 +36220,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36505,7 +36260,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36585,7 +36340,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -36611,7 +36366,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Oman",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -36631,7 +36386,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36837,7 +36592,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36957,7 +36712,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -36991,7 +36746,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37011,7 +36766,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37031,7 +36786,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37091,7 +36846,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37111,7 +36866,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37171,7 +36926,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37217,7 +36972,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37243,7 +36998,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37263,7 +37018,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37343,7 +37098,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37363,7 +37118,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37403,7 +37158,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37523,7 +37278,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37543,7 +37298,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37563,7 +37318,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37583,7 +37338,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37603,7 +37358,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37729,7 +37484,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37749,7 +37504,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37769,7 +37524,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37891,7 +37646,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -37911,7 +37666,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37931,7 +37686,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37951,7 +37706,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -37971,7 +37726,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38011,7 +37766,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38031,7 +37786,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38091,7 +37846,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38111,7 +37866,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38145,7 +37900,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38165,7 +37920,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38319,7 +38074,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38339,7 +38094,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38359,7 +38114,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38599,7 +38354,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38619,7 +38374,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38639,7 +38394,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38659,7 +38414,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38679,7 +38434,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -38851,7 +38606,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -38963,7 +38718,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -39003,7 +38758,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39109,7 +38864,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39129,7 +38884,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39149,7 +38904,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39175,7 +38930,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39307,7 +39062,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -39327,7 +39082,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -39467,7 +39222,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -39487,7 +39242,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39507,7 +39262,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39547,7 +39302,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39567,7 +39322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39587,7 +39342,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39687,7 +39442,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -39713,7 +39468,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -39733,7 +39488,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40127,7 +39882,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -40279,7 +40034,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40341,7 +40096,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40567,7 +40322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Saudi_arabia",
 			"populations": [],
 			"resources": [
 				{
@@ -40647,7 +40402,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40793,7 +40548,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40953,7 +40708,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -40973,7 +40728,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41013,7 +40768,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41119,7 +40874,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41385,7 +41140,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Yemen",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41405,7 +41160,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41425,7 +41180,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41459,7 +41214,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41639,7 +41394,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41679,7 +41434,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41705,7 +41460,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41859,7 +41614,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41899,7 +41654,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -41985,7 +41740,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42005,7 +41760,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42025,7 +41780,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42165,7 +41920,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42191,7 +41946,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42383,7 +42138,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Maldives",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42409,7 +42164,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42561,7 +42316,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42615,7 +42370,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42715,7 +42470,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -42995,7 +42750,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43175,7 +42930,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43335,7 +43090,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43355,7 +43110,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43529,7 +43284,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43643,7 +43398,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -43689,7 +43444,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -44181,7 +43936,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -44201,7 +43956,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -44915,7 +44670,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -45167,7 +44922,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -45247,7 +45002,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -45413,7 +45168,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -45613,7 +45368,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Dravidanadu",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -45633,7 +45388,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -45805,7 +45560,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Philippines",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -46065,7 +45820,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -46313,7 +46068,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Malaysia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -46579,7 +46334,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -46625,7 +46380,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -46925,7 +46680,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -46985,7 +46740,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47005,7 +46760,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47111,7 +46866,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47391,7 +47146,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Brunei",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47451,7 +47206,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47471,7 +47226,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Malaysia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47551,7 +47306,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47657,7 +47412,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47777,7 +47532,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -47983,7 +47738,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -48703,7 +48458,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -48977,7 +48732,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -49083,7 +48838,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Funan",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -49203,7 +48958,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -49543,7 +49298,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -49623,7 +49378,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -50203,7 +49958,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -50517,7 +50272,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -50691,7 +50446,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -50843,7 +50598,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -51491,7 +51246,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -52469,7 +52224,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Indonesia",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -52583,7 +52338,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -52663,7 +52418,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Seychelles",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -54065,7 +53820,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -54679,7 +54434,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "United_kingdom",
+			"polity": "Bharat",
 			"populations": [],
 			"resources": [
 				{
@@ -56497,7 +56252,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -65079,7 +64834,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -66729,7 +66484,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67031,7 +66786,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67271,7 +67026,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67291,7 +67046,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67311,7 +67066,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67545,7 +67300,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -67625,7 +67380,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -68065,7 +67820,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -68373,7 +68128,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -68567,7 +68322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -68921,7 +68676,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -69055,7 +68810,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -69355,7 +69110,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -69375,7 +69130,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -69601,7 +69356,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -69881,7 +69636,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70181,7 +69936,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70201,7 +69956,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70221,7 +69976,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70241,7 +69996,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70547,7 +70302,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -70567,7 +70322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -71049,7 +70804,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -71069,7 +70824,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -71089,7 +70844,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -71109,7 +70864,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72001,7 +71756,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72021,7 +71776,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72041,7 +71796,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72161,7 +71916,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72309,7 +72064,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -72921,7 +72676,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73129,7 +72884,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73363,7 +73118,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73577,7 +73332,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73597,7 +73352,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73789,7 +73544,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73809,7 +73564,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -73829,7 +73584,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74069,7 +73824,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74089,7 +73844,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74109,7 +73864,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74349,7 +74104,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74369,7 +74124,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74535,7 +74290,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74555,7 +74310,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74575,7 +74330,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74809,7 +74564,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -74957,7 +74712,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -75371,7 +75126,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -75903,7 +75658,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -75923,7 +75678,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -75957,7 +75712,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -76097,7 +75852,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -76117,7 +75872,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -76137,7 +75892,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -76491,7 +76246,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -76731,7 +76486,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -77017,7 +76772,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -77351,7 +77106,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -77371,7 +77126,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -78137,7 +77892,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -78431,7 +78186,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -78451,7 +78206,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -78477,7 +78232,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -78885,7 +78640,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -78905,7 +78660,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -79199,7 +78954,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "Tibet",
 			"populations": [],
 			"resources": [
 				{
@@ -79219,7 +78974,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -79239,7 +78994,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
@@ -79259,7 +79014,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "East_asian_anarchist_federation",
+			"polity": "China",
 			"populations": [],
 			"resources": [
 				{
