@@ -160,15 +160,12 @@ metadata/_tab_index = 1
 layout_mode = 2
 text = "Province"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=1708143880]
-layout_mode = 2
-
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=999883928]
 layout_mode = 2
 text = "City"
 fit_content = true
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=1422208371]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=1422208371]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=1766927748]
@@ -182,9 +179,6 @@ expand_mode = 3
 [node name="Label" type="Label" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData/HBoxContainer" unique_id=808524177]
 layout_mode = 2
 text = "0/5"
-
-[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=2130444678]
-layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/TabContainer/ProvinceData" unique_id=1010209318]
 layout_mode = 2
