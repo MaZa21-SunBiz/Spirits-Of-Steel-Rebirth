@@ -47,11 +47,17 @@ corner_detail = 5
 shadow_color = Color(0, 0, 0, 0.47058824)
 shadow_size = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85er5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
 content_margin_left = 12.0
 content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58jnp"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
@@ -129,7 +135,9 @@ CheckButton/styles/focus = SubResource("StyleBoxEmpty_umafu")
 CheckButton/styles/hover = SubResource("StyleBoxFlat_hr0ed")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_470mv")
 CheckButton/styles/pressed = null
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_85er5")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0omi4")
+PanelContainerSlim/base_type = &"PanelContainer"
+PanelContainerSlim/styles/panel = SubResource("StyleBoxFlat_58jnp")
 TabContainer/constants/icon_max_width = 32
 TabContainer/constants/side_margin = 0
 TabContainer/constants/tab_separation = 48

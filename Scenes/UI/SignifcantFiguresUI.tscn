@@ -1,0 +1,695 @@
+[gd_scene format=3 uid="uid://dow8hr2eexwgr"]
+
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_8sdcd"]
+[ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="2_734iy"]
+[ext_resource type="Texture2D" uid="uid://cho1wupyj02tq" path="res://assets/portraits/BenitoMussolini.png" id="2_av13s"]
+[ext_resource type="Texture2D" uid="uid://byft1gid3fvya" path="res://assets/icons/Espionage/Blindfold.svg" id="3_em7cp"]
+[ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="4_4ygwr"]
+[ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="4_av13s"]
+[ext_resource type="Texture2D" uid="uid://c2tseluls703" path="res://assets/icons/Espionage/BleedingWound.svg" id="5_tp7ur"]
+[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="6_v578k"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_cke4s"]
+[ext_resource type="FontFile" uid="uid://c7d8oibwgja3h" path="res://font/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="8_nt2gs"]
+[ext_resource type="Texture2D" uid="uid://b6lx0p2mbicou" path="res://assets/icons/Science.svg" id="8_v578k"]
+[ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="9_av13s"]
+[ext_resource type="Texture2D" uid="uid://c8dketw2tw83t" path="res://assets/icons/money_icon.svg" id="9_ycp3n"]
+[ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="10_lpekx"]
+[ext_resource type="FontFile" uid="uid://bb21bdovlldd" path="res://font/Google_Sans/static/GoogleSans-Italic.ttf" id="11_av13s"]
+[ext_resource type="Texture2D" uid="uid://dwff60ouc8dmw" path="res://assets/portraits/TrofimLysenko.png" id="14_av13s"]
+[ext_resource type="Texture2D" uid="uid://tn3pki6i5o06" path="res://assets/portraits/JaneAustenCassandra.png" id="16_av13s"]
+[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://assets/portraits/ChevalierDEon.png" id="18_lpekx"]
+[ext_resource type="Texture2D" uid="uid://dw7fd2v4viyso" path="res://assets/icons/Espionage/BodySwapping.svg" id="19_0hsfd"]
+[ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="20_a4b5v"]
+[ext_resource type="Texture2D" uid="uid://bpjcaop54twmg" path="res://assets/portraits/YukawaHideki.png" id="21_a4b5v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em7cp"]
+content_margin_top = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ygwr"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_otta5"]
+font_size = 48
+
+[node name="SignifcantFiguresUi" type="CanvasLayer" unique_id=351622279]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=275634422]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer" unique_id=1893495770]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="SideBar" type="PanelContainer" parent="PanelContainer/HSplitContainer" unique_id=1086730837]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar" unique_id=1023438389]
+layout_mode = 2
+horizontal_scroll_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer" unique_id=1974920713]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=1514922971]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer" unique_id=555421867]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1434942105]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Header" unique_id=2007739993]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Header/ScrollContainer" unique_id=126226716]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Benito Mussolini"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1475375116]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Image" unique_id=519726736]
+clip_contents = true
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("2_av13s")
+expand_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Image/TextureRect" unique_id=894681302]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="Assignment" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=177978865]
+layout_mode = 2
+texture = ExtResource("3_em7cp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Image/TextureRect" unique_id=877456522]
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_av13s")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1920114781]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons" unique_id=591113892]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons/HFlowContainer" unique_id=1706410507]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_4ygwr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons/HFlowContainer" unique_id=1173527437]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_tp7ur")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons/HFlowContainer" unique_id=1671273719]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("6_v578k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons/HFlowContainer" unique_id=453691299]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("2_734iy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1316304820]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Body" unique_id=1669716145]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Endless Fervor
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
+-1 Logistics
+-2 Diplomacy
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=249873134]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2" unique_id=1720589640]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1269623757]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Header" unique_id=1231449009]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Header/ScrollContainer" unique_id=30589451]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Trofim Lysenko"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1394149184]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Image" unique_id=1735407547]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("14_av13s")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Image/TextureRect" unique_id=261187553]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=804453608]
+layout_mode = 2
+texture = ExtResource("8_v578k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=61872563]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Icons" unique_id=401877742]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=100734209]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_4ygwr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=608190710]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_tp7ur")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=2025338465]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("6_v578k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=751916345]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("2_734iy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1229739877]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer2/VBoxContainer/Body" unique_id=1150102884]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Vernalization
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
+-3 Agriculture
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=147352119]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3" unique_id=927874173]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=1034054532]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Header" unique_id=1189492432]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Header/ScrollContainer" unique_id=1605321807]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Jane Austen"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=1517978761]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Image" unique_id=1886042468]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("16_av13s")
+expand_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Image/TextureRect" unique_id=553624592]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=1807363331]
+layout_mode = 2
+texture = ExtResource("9_ycp3n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=1488455934]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons" unique_id=1134783409]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons/HFlowContainer" unique_id=844578201]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_4ygwr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons/HFlowContainer" unique_id=578408724]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_tp7ur")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons/HFlowContainer" unique_id=392019496]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("6_v578k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons/HFlowContainer" unique_id=793015670]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("2_734iy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=1645391806]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Body" unique_id=2142800989]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Pen to Paper
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
++4 Culture
++2 Diplomacy
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=1399513705]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4" unique_id=147153484]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer" unique_id=316600430]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Header" unique_id=849957006]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Header/ScrollContainer" unique_id=1750731336]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Chevalier d'Éon"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer" unique_id=1747759804]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Image" unique_id=18129258]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("18_lpekx")
+expand_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Image/TextureRect" unique_id=872506194]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=414222757]
+layout_mode = 2
+texture = ExtResource("19_0hsfd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer" unique_id=1110014741]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Icons" unique_id=851669401]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Icons/HFlowContainer" unique_id=1438316747]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("4_4ygwr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Icons/HFlowContainer" unique_id=1968861469]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("5_tp7ur")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Icons/HFlowContainer" unique_id=2024248130]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("20_a4b5v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Icons/HFlowContainer" unique_id=673904855]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("2_734iy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer" unique_id=906382520]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer4/VBoxContainer/Body" unique_id=37835836]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Androgynous Spy
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
++3 Infiltration
++2 Diplomacy
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=123275463]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5" unique_id=1969224390]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer" unique_id=1641471599]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Header" unique_id=1477208388]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Header/ScrollContainer" unique_id=413865457]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Yukawa Hideki"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer" unique_id=1678092557]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Image" unique_id=251350533]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("21_a4b5v")
+expand_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Image/TextureRect" unique_id=1030609861]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=1796303418]
+layout_mode = 2
+texture = ExtResource("8_v578k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer" unique_id=1185862020]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Icons" unique_id=107816615]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer" unique_id=1839760133]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer5/VBoxContainer/Body" unique_id=1717305891]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+U-Quantum Theory
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
++3 Research
++2 Nuclear EGR
++1 Nuclear SCI
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="MainContent" type="PanelContainer" parent="PanelContainer/HSplitContainer" unique_id=245253493]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer/HSplitContainer/MainContent" unique_id=1850601872]
+layout_mode = 2
+
+[node name="TopSection" type="PanelContainer" parent="PanelContainer/HSplitContainer/MainContent/VSplitContainer" unique_id=938713938]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HSplitContainer/MainContent/VSplitContainer/TopSection" unique_id=225395172]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Figures"
+label_settings = SubResource("LabelSettings_otta5")
+
+[node name="SidebarBody" type="PanelContainer" parent="PanelContainer/HSplitContainer/MainContent/VSplitContainer" unique_id=1770876824]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/MainContent/VSplitContainer/SidebarBody" unique_id=908592978]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/HSplitContainer/MainContent/VSplitContainer/SidebarBody/VBoxContainer" unique_id=1630838064]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Back"
