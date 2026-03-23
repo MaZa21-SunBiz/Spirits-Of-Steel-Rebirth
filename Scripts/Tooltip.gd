@@ -1,8 +1,6 @@
 extends PanelContainer
 class_name Tooltip
 
-@onready var resources: VBoxContainer = $TabContainer/Resources
-
 func _enter_tree() -> void:
 	GameState.tooltip = self
 	visible = false

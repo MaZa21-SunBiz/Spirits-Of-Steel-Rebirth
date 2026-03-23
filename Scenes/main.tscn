@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="2_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://bh4l3y04f327r" path="res://utils/asdfa/regions.png" id="3_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="4_fevyy"]
+[ext_resource type="Texture2D" uid="uid://b6walpjh0cxni" path="res://maps/blank.png" id="4_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://noat3k35lsya" path="res://maps/regions.png" id="5_hibaj"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="6_pdsj5"]
 [ext_resource type="PackedScene" uid="uid://ef1nlqkm5anw" path="res://Scenes/main_menu.tscn" id="7_6bp64"]
@@ -17,16 +18,17 @@ noise = SubResource("FastNoiseLite_hptm8")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
 shader = ExtResource("2_344ge")
 shader_parameter/region_id_map = ExtResource("3_ynf5e")
+shader_parameter/type_map = ExtResource("4_ynf5e")
 shader_parameter/ocean_noise = SubResource("NoiseTexture2D_d1ilt")
 shader_parameter/tex_size = Vector2(0, 0)
 shader_parameter/lower = 0.50000002375
-shader_parameter/upper = 1.8
+shader_parameter/upper = 0.4830000229425
 shader_parameter/scanlines = 0.05
 shader_parameter/toggle = 1
 shader_parameter/contrast = 0.05
 shader_parameter/smoothness = 0.05
-shader_parameter/water_color_deep = Color(0.1, 0.25, 0.45, 1)
-shader_parameter/water_color_shallow = Color(0.25, 0.45, 0.65, 1)
+shader_parameter/water_color_deep = Color(0, 0, 0, 1)
+shader_parameter/water_color_shallow = Color(0.13810009, 0.2771134, 0.41497466, 1)
 shader_parameter/sun_glint_color = Color(0.9, 0.95, 1, 0.3)
 shader_parameter/country_border_color = Color(0.1, 0.1, 0.1, 1)
 shader_parameter/sea_speed = 0.02

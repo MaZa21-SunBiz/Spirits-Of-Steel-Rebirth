@@ -39,8 +39,14 @@
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="38_youyo"]
 [ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
-[ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="40_qsn4r"]
+[ext_resource type="Script" uid="uid://bse7dpsxk0jqm" path="res://Scripts/Tooltip.gd" id="40_0c8l0"]
 [ext_resource type="Texture2D" uid="uid://djlkcpd4lqkd7" path="res://assets/icons/old icons tht might get reused someday/monarchist_icon.png" id="41_hx7os"]
+[ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="41_vbips"]
+[ext_resource type="Texture2D" uid="uid://yex0td0ay82r" path="res://assets/icons/Resources/Gas.svg" id="42_ekg1n"]
+[ext_resource type="Texture2D" uid="uid://b5nqoffhsukhv" path="res://assets/icons/Resources/Ingot.svg" id="43_ol53e"]
+[ext_resource type="Texture2D" uid="uid://c0wc8td5q47gm" path="res://assets/icons/DeliveryTruck.svg" id="44_ol53e"]
+[ext_resource type="Texture2D" uid="uid://coyevu81btx7t" path="res://assets/icons/Crane.svg" id="45_nprtd"]
+[ext_resource type="Texture2D" uid="uid://bbk814o0rut6j" path="res://assets/icons/AncientRuins.svg" id="46_s38qe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -1842,6 +1848,7 @@ offset_right = 858.0
 offset_bottom = 54.0
 
 [node name="BuildingDesigner" type="PanelContainer" parent="." unique_id=527526215]
+visible = false
 material = ExtResource("16_lpwmk")
 offset_left = 360.0
 offset_top = 150.0
@@ -1975,7 +1982,7 @@ tab_4/icon = ExtResource("24_5hlpc")
 tab_5/tooltip = "Factions"
 tab_5/icon = ExtResource("21_lpwmk")
 tab_6/tooltip = "Resources"
-tab_6/icon = ExtResource("40_qsn4r")
+tab_6/icon = ExtResource("41_vbips")
 tab_7/tooltip = "Biomes"
 tab_7/icon = ExtResource("41_hx7os")
 
@@ -2078,11 +2085,20 @@ stretch_mode = 5
 
 [node name="Tooltip" type="CanvasLayer" parent="." unique_id=1515360472]
 
-[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=854706174]
+[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=854706174 node_paths=PackedStringArray("tabs", "resourceTemplate", "resourcesList", "provinceName", "provinceDescription", "provinceInfrastructure", "provinceConstructionIcon", "provinceOccupiedIcon", "provinceDestroyedIcon")]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("40_0c8l0")
+tabs = NodePath("TabContainer")
+resourceTemplate = NodePath("ResourceTemplate")
+resourcesList = NodePath("TabContainer/Resources")
+provinceName = NodePath("TabContainer/ProvinceData/Label")
+provinceDescription = NodePath("TabContainer/ProvinceData/RichTextLabel")
+provinceInfrastructure = NodePath("TabContainer/ProvinceData/HBoxContainer/Label")
+provinceConstructionIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Construction")
+provinceOccupiedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Occupied")
+provinceDestroyedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Destroyed")
 
 [node name="ResourceTemplate" type="HBoxContainer" parent="Tooltip/PanelContainer" unique_id=1250688864]
 visible = false
@@ -2099,10 +2115,11 @@ text = "Oil - 2 (125%)"
 
 [node name="TabContainer" type="TabContainer" parent="Tooltip/PanelContainer" unique_id=1401214760]
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="Resources" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=949095265]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -2143,7 +2160,6 @@ layout_mode = 2
 text = "Iron - 1 (100%)"
 
 [node name="ProvinceData" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=2820149]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
