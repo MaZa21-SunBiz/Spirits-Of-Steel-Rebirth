@@ -78,11 +78,20 @@ visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1458542396]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=256264364]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=256264364 node_paths=PackedStringArray("tabs", "resourceTemplate", "resourcesList", "provinceName", "provinceDescription", "provinceInfrastructure", "provinceConstructionIcon", "provinceOccupiedIcon", "provinceDestroyedIcon")]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("9_d1ilt")
+tabs = NodePath("TabContainer")
+resourceTemplate = NodePath("ResourceTemplate")
+resourcesList = NodePath("TabContainer/Resources")
+provinceName = NodePath("TabContainer/ProvinceData/Label")
+provinceDescription = NodePath("TabContainer/ProvinceData/RichTextLabel")
+provinceInfrastructure = NodePath("TabContainer/ProvinceData/HBoxContainer/Label")
+provinceConstructionIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Construction")
+provinceOccupiedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Occupied")
+provinceDestroyedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Destroyed")
 
 [node name="ResourceTemplate" type="HBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=1123030413]
 visible = false

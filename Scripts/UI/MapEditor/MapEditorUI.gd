@@ -430,7 +430,7 @@ func AddedFactionMember() -> void:
 	)
 	memberEntry.get_node("HBoxContainer/LineEdit").text = member.polity
 	memberEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(member.status))
-	memberEntry.get_node("HBoxContainer/OptionButton").item_selected.connect(func(a_index: int): FactionManager.factions[selectedFaction].UpdateMemberStatus(member.polity, a_index))
+	memberEntry.get_node("HBoxContainer/OptionButton").item_selected.connect(func(a_index: int): member.status = FactionMember.GetString(a_index))
 	factionMemberList.add_child(memberEntry)
 
 func AddProvincePopulation() -> void:

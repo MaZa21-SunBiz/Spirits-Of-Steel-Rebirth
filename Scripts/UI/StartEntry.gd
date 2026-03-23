@@ -21,6 +21,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 		var load_map_data = func():
 			var start_folder = mapdata_path.get_base_dir() + "/"
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: Array):
+				a_percent = [0]
 				GameState.current_start = a_text
 				a_percent[0] = 0
 				PlansManager.load_plans_from_path(start_folder + "plans.json")

@@ -172,6 +172,8 @@ func DoSetup(a_progress: Array) -> void:
 	clock.day_passed.connect(CountryManager._on_day_passed)
 
 func load_map_data(mapData):
+	MapManager.LoadBiomes(mapData["biomes"] as Array)
+	MapManager.LoadResources(mapData["resources"] as Array)
 	IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
 	MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary)
 	CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])

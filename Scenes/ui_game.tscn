@@ -39,6 +39,8 @@
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="38_youyo"]
 [ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
+[ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="40_qsn4r"]
+[ext_resource type="Texture2D" uid="uid://djlkcpd4lqkd7" path="res://assets/icons/old icons tht might get reused someday/monarchist_icon.png" id="41_hx7os"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -1856,10 +1858,15 @@ text = "Port"
 [node name="MapSwitcher" type="PanelContainer" parent="." unique_id=17159635]
 material = ExtResource("16_lpwmk")
 clip_contents = true
-offset_left = 964.0
-offset_top = 613.0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_stretch_ratio = 0.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_odnp1")
 
@@ -1868,7 +1875,7 @@ clip_contents = true
 layout_mode = 2
 theme_override_constants/icon_max_width = 10
 current_tab = 0
-tab_count = 6
+tab_count = 8
 tab_0/tooltip = "Polities"
 tab_0/icon = ExtResource("39_e0ul0")
 tab_1/tooltip = "Population"
@@ -1881,6 +1888,10 @@ tab_4/tooltip = "Ethnicities"
 tab_4/icon = ExtResource("24_5hlpc")
 tab_5/tooltip = "Factions"
 tab_5/icon = ExtResource("21_lpwmk")
+tab_6/tooltip = "Resources"
+tab_6/icon = ExtResource("40_qsn4r")
+tab_7/tooltip = "Biomes"
+tab_7/icon = ExtResource("41_hx7os")
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]

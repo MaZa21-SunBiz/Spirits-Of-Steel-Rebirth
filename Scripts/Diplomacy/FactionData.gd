@@ -35,3 +35,6 @@ func ToDict() -> Dictionary:
 		data["members"].append(factionMember.ToDict())
 
 	return data
+
+func UpdateMemberStatus(a_member: String, a_index: int) -> void:
+	pass

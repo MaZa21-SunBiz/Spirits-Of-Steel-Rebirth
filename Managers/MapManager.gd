@@ -28,6 +28,9 @@ var country_to_owned_provinces: Dictionary = {}
 var country_to_occupied_provinces: Dictionary = {}
 var province_objects: Dictionary[int, Province] = {}
 
+var biomes: Dictionary[String, BiomeData] = {}
+var resources: Dictionary[String, ResourceData] = {}
+
 var adjacency_list: Dictionary = {} # Stores {ID: [Neighbor_ID_1, Neighbor_ID_2, ...]}
 var current_hovered_pid: int = -1
 var last_hovered_pid: int = -1
@@ -60,6 +63,46 @@ const CACHE_FOLDER = "res://map_data/"
 @export var MAP_WIDTH: int = 0
 @export var MAP_HEIGHT: int = 625
 
+var icon_cache: Dictionary = {}
+
+func LoadBiomes(a_biomeData: Array) -> void:
+	biomes.clear()
+	for biome: Dictionary in a_biomeData:
+		biomes[biome["name"]] = BiomeData.FromDict(biome)
+
+func LoadResources(a_resourceData: Array) -> void:
+	resources.clear()
+	for resource: Dictionary in a_resourceData:
+		resources[resource["name"]] = ResourceData.FromDict(resource)
+
+func GetResourceIcon(a_resourceType: String):
+	# Cache key needs to include ideology if provided
+	var cache_key = a_resourceType
+
+	# If already cached → return it
+	if icon_cache.has(cache_key):
+		return icon_cache[cache_key]
+
+	# 0. Check Redirects
+	var path = ""
+	
+	# Helper to check both custom and default locations
+	var find_resource = func(sub_path: String):
+		var full_default = "res://assets/icons/Resources" + sub_path
+		if ResourceLoader.exists(full_default):
+			return full_default
+		return ""
+	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
+	path = find_resource.call("%s.svg" % a_resourceType)
+	if path == "":
+		path = find_resource.call("Droplet.svg")
+	
+	if path != "":
+		var tex := load(path)
+		icon_cache[cache_key] = tex
+		return tex
+
+	return null
 
 func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
 	MAP_WIDTH = a_map.get_width()
@@ -297,6 +340,7 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or GameState.in_peace_process:
+		GameState.tooltip.SwitchTooltip(-1)
 		_reset_last_hover()
 		return
 
@@ -329,16 +373,26 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		else:
 			_reset_last_hover() # Clean up the old one
 
-			if pid > 1 and highlight_color != Color.TRANSPARENT:
-				original_hover_color = state_color_image.get_pixel(pid, 0)
-				update_lookup(pid, highlight_color, highlight_color)
+			if pid > 1:
+				match KeyboardManager.current_view:
+					KeyboardManager.MapView.COUNTRIES:
+						GameState.tooltip.SwitchTooltip(1)
+					KeyboardManager.MapView.RESOURCES:
+						GameState.tooltip.SwitchTooltip(0)
+					_:
+						GameState.tooltip.SwitchTooltip(-1)
+				
+				if (highlight_color != Color.TRANSPARENT):
+					original_hover_color = state_color_image.get_pixel(pid, 0)
+					update_lookup(pid, highlight_color, highlight_color)
 
-				last_hovered_pid = pid
-				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-				province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
+					last_hovered_pid = pid
+					Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+					province_hovered.emit(pid, CountryManager.player_country.country_name if !GameState.selectingCountry else "")
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 				province_hovered.emit(-1, "")
+				GameState.tooltip.SwitchTooltip(-1)
 
 func _reset_last_hover() -> void:
 	if last_hovered_pid > 1:
@@ -972,6 +1026,36 @@ func show_countries_map() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES
+
+func ShowResourcesMap() -> void:
+	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
+	state_color_image.set_pixel(1, 0, Color.BLACK) # ID 1: Borders/Grid
+
+	for pid in province_objects.keys():
+		if pid <= 1:
+			continue
+
+		state_color_image.set_pixel(pid, 0, GetCountryDisplayColor(province_objects[pid].country))
+		state_color_image.set_pixel(pid, 1, GetCountryDisplayColor(province_objects[pid].GetFunctionalOwner()))
+
+	state_color_texture.update(state_color_image)
+	KeyboardManager.current_view = KeyboardManager.MapView.RESOURCES
+
+func show_biomes_map() -> void:
+	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
+	state_color_image.set_pixel(1, 0, Color.BLACK) # ID 1: Borders/Grid
+
+	for pid in province_objects.keys():
+		if pid <= 1:
+			continue
+		
+		var biomeColor: Color = MapManager.biomes[province_objects[pid].biome] if province_objects[pid].biome in MapManager.biomes else Color.ANTIQUE_WHITE
+
+		state_color_image.set_pixel(pid, 0, biomeColor)
+		state_color_image.set_pixel(pid, 1, biomeColor)
+
+	state_color_texture.update(state_color_image)
+	KeyboardManager.current_view = KeyboardManager.MapView.BIOMES
 
 func province_updated():
 	if GameState.industry_building:
