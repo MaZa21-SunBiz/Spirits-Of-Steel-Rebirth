@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b45cdsa3kv5nc"
-path="res://.godot/imported/Briefcase.svg-977c44c5bb39575bfca2047f57c6ccc9.ctex"
+uid="uid://b6ueuddgjy2nk"
+path="res://.godot/imported/Timber.svg-2869d66d3ad733b04fe18ddfc41949f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Espionage/Briefcase.svg"
-dest_files=["res://.godot/imported/Briefcase.svg-977c44c5bb39575bfca2047f57c6ccc9.ctex"]
+source_file="res://assets/icons/Resources/Timber.svg"
+dest_files=["res://.godot/imported/Timber.svg-2869d66d3ad733b04fe18ddfc41949f2.ctex"]
 
 [params]
 
@@ -38,6 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=8.0
+svg/scale=2.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

@@ -100,6 +100,7 @@ func GetResourceIcon(a_resourceType: String):
 	
 	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
 	path = FindResourceResource("%s.svg" % resources[a_resourceType].icon)
+	
 	if path == "":
 		path = FindResourceResource("Droplet.svg")
 	
