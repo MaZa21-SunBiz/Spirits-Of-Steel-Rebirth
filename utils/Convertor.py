@@ -127,7 +127,7 @@ def main():
             continue
         id = (province_color[2] + province_color[1]*256 + province_color[0]*65536)
         if id not in sosr_time["provinces"] and country_color in coloredata:
-            sosr_time["provinces"][str(id)] = {
+            sosr_time["provinces"][id] = {
                 "type": 1,
                 "name": "",
                 "polity": coloredata[country_color].capitalize(),
@@ -194,7 +194,7 @@ def main():
     # pprint(sosr_time)
     pprint(unknown_cultures)
     with open("output/map_data.json", "w") as f:
-        dump(sosr_time, f, indent=4)
+        dump(sosr_time, f, indent=4, sort_keys=True)
     print(count)
 
 

@@ -60,32 +60,32 @@ def main():
               "time": 0
             }
         }
-    with open("countries.json") as f:
+    with open("input/countries.json") as f:
         uhh = load(f)
         coloredata = {tuple(v["color"]): k for k, v in uhh.items()}
 
-    with open("city_colors.json") as f:
+    with open("input/city_colors.json") as f:
         uhh = load(f)
         city_colors = {eval(k): v for k, v in uhh.items()}
 
-    with open("gdp_data.json") as f:
+    with open("input/gdp_data.json") as f:
         uhh = load(f)
         gdp_data = {eval(k): v for k, v in uhh.items()}
 
-    with open("population_color_map.json") as f:
+    with open("input/population_color_map.json") as f:
         uhh = load(f)
         pop_data = {eval(k): v for k, v in uhh.items()}
 
-    with open("cultures.json") as f:
+    with open("input/cultures.json") as f:
         uhh = load(f)
         cult_data = {tuple(v): k for k, v in uhh.items()}
 
-    cmap = Image.open("polities.png").convert("RGB")
-    pmap = Image.open("regions.png").convert("RGB")
-    city_map = Image.open("city_colors.png").convert("RGB")
-    gdp_map = Image.open("gdp_data.png").convert("RGB")
-    pop_map = Image.open("population_color_map.png").convert("RGB")
-    cult_map = Image.open("cultures.png").convert("RGB")
+    cmap = Image.open("input/polities.png").convert("RGB")
+    pmap = Image.open("input/regions.png").convert("RGB")
+    city_map = Image.open("input/city_colors.png").convert("RGB")
+    gdp_map = Image.open("input/gdp_data.png").convert("RGB")
+    pop_map = Image.open("input/population_color_map.png").convert("RGB")
+    cult_map = Image.open("input/cultures.png").convert("RGB")
 
     cpixels = cmap.load()
     ppixels = pmap.load()
@@ -138,7 +138,7 @@ def main():
 
             id = (province_color[2] + province_color[1]*256 + province_color[0]*65536)
             if id not in sosr_time["provinces"]:
-                sosr_time["provinces"][str(id)] = {
+                sosr_time["provinces"][id] = {
                         "type": "land",
                         "name": "",
                         "polity": country,
@@ -154,7 +154,7 @@ def main():
 
                 blacklist.add(province_color)
                 if city_color not in blacklist:
-                    sosr_time["provinces"][str(id)]["city"] = city_colors[city_color]
+                    sosr_time["provinces"][id]["city"] = city_colors[city_color]
                     blacklist.add(city_color)
 
                 count +=1
@@ -170,7 +170,7 @@ def main():
 
     pprint(sosr_time)
     with open("map_data.json", "w") as f:
-        dump(sosr_time, f, indent=4)
+        dump(sosr_time, f, indent=4, sort_keys=True)
     print(count)
 
 

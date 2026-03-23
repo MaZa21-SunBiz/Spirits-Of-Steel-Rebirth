@@ -272,10 +272,17 @@ func _on_apply_pressed() -> void:
 		MapManager.country_to_provinces[new_country].append(selected_pid)
 
 	MapManager.state_color_texture.update(MapManager.state_color_image)
-	print("MapEditor: Applied changes and updated colors for " , new_country)
+	print("MapEditor: Applied changes and updated colors for ", new_country)
 
 func _on_export_pressed() -> void:
 	# Export Province Data
+	var provinces = MapManager.save_country_data()
+	var sorted_provinces = {}
+	var keys = provinces.keys()
+	keys.sort_custom(func(a, b): return a.to_int() < b.to_int())
+	for k in keys:
+		sorted_provinces[int(k)] = provinces[k]
+
 	var export = {
 		"resources": MapManager.SaveResourcesData(),
 		"biomes": MapManager.SaveBiomeData(),
@@ -289,7 +296,7 @@ func _on_export_pressed() -> void:
 	# print(JSON.stringify(export["polities"], " "))
 	# print(JSON.stringify(export ["factions"], "\t"))
 
-	var file = FileAccess.open("user://exported_map_data.json", FileAccess.WRITE)
+	var file = FileAccess.open("user://map_data.json", FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(export , "\t"))
 		file.close()
@@ -368,7 +375,7 @@ func m_OnPolitySelected(index: int) -> void:
 		var factionEntry: PanelContainer = polityFactionTemplate.duplicate()
 		factionEntry.visible = true
 		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
-		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.polity == polity.country_name)].status))
+		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func(a): return a.polity == polity.country_name)].status))
 		polityFactionList.add_child(factionEntry)
 
 func m_OnBiomeSelected(index: int) -> void:
