@@ -75,27 +75,33 @@ func LoadResources(a_resourceData: Array) -> void:
 	for resource: Dictionary in a_resourceData:
 		resources[resource["name"]] = ResourceData.FromDict(resource)
 
+# Helper to check both custom and default locations
+func FindResourceResource(sub_path: String):
+	var full_default = "res://assets/icons/Resources/" + sub_path
+	if ResourceLoader.exists(full_default):
+		return full_default
+	return ""
+		
 func GetResourceIcon(a_resourceType: String):
-	# Cache key needs to include ideology if provided
-	var cache_key = a_resourceType
+	var cache_key: String = a_resourceType
 
 	# If already cached → return it
 	if icon_cache.has(cache_key):
 		return icon_cache[cache_key]
 
+	# Cache key needs to include ideology if provided
+	if !a_resourceType in resources:
+		var tex := load(FindResourceResource("Droplet.svg"))
+		icon_cache[cache_key] = tex
+		return tex
+	
 	# 0. Check Redirects
 	var path = ""
 	
-	# Helper to check both custom and default locations
-	var find_resource = func(sub_path: String):
-		var full_default = "res://assets/icons/Resources" + sub_path
-		if ResourceLoader.exists(full_default):
-			return full_default
-		return ""
 	# 4. Fallback to old flat structure (just in case): {path}/country_flag.png
-	path = find_resource.call("%s.svg" % a_resourceType)
+	path = FindResourceResource("%s.svg" % resources[a_resourceType].icon)
 	if path == "":
-		path = find_resource.call("Droplet.svg")
+		path = FindResourceResource("Droplet.svg")
 	
 	if path != "":
 		var tex := load(path)
