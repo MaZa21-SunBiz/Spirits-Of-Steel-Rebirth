@@ -14,6 +14,15 @@ static func FromDict(a_data: Dictionary) -> ResourceData:
 	
 	return resource
 
+static func FromValues(a_name: String, a_color: Color, a_icon: String) -> ResourceData:
+	var resource: ResourceData = ResourceData.new()
+	
+	resource.name = a_name
+	resource.color = a_color
+	resource.icon = a_icon
+	
+	return resource
+
 func ToDict() -> Dictionary:
 	return {
 		"name": self.name,

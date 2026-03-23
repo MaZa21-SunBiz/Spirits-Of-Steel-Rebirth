@@ -1,9 +1,11 @@
 extends PopupPanel
 
 enum CreationMode {
-	CREATE_FACTION = 0,
-	CREATE_POLITY  = 1,
-	CREATE_MEMBER  = 2,
+	CREATE_FACTION  = 0,
+	CREATE_POLITY   = 1,
+	CREATE_MEMBER   = 2,
+	CREATE_BIOME    = 3,
+	CREATE_RESOURCE = 4,
 }
 
 @export var mapEditor: CanvasLayer
@@ -28,6 +30,13 @@ enum CreationMode {
 @export var memberPolity: OptionButton
 @export var memberStatus: OptionButton
 
+@export var biomeName: LineEdit
+@export var biomeColor: ColorPickerButton
+
+@export var resourceName: LineEdit
+@export var resourceColor: ColorPickerButton
+@export var resourceIcon: LineEdit
+
 func m_OpenScreen(a_mode: CreationMode) -> void:
 	match a_mode:
 		CreationMode.CREATE_FACTION:
@@ -50,6 +59,10 @@ func m_OpenScreen(a_mode: CreationMode) -> void:
 			for country in CountryManager.countries.keys():
 				if !faction.members.any(func (a_member: FactionMember): return a_member.polity == country):
 					memberPolity.add_item(country)
+		CreationMode.CREATE_BIOME:
+			tabs.current_tab = a_mode as int
+		CreationMode.CREATE_RESOURCE:
+			tabs.current_tab = a_mode as int
 	visible = true
 
 func m_CreateFaction() -> void:
@@ -94,4 +107,19 @@ func m_CreatePolity() -> void:
 func m_CreateMember() -> void:
 	FactionManager.factions[mapEditor.selectedFaction].members.append(FactionMember.FromValues(memberPolity.text, memberStatus.text))
 	mapEditor.AddedFactionMember()
+	visible = false
+
+
+func m_CreateBiome() -> void:
+	if biomeName.text in MapManager.biomes:
+		return
+	MapManager.biomes[biomeName.text] = BiomeData.FromValues(biomeName.text, biomeColor.color)
+	mapEditor.SetupBiomesList()
+	visible = false
+
+func m_CreateResource() -> void:
+	if resourceName.text in MapManager.resources:
+		return
+	MapManager.resources[resourceName.text] = ResourceData.FromValues(resourceName.text, resourceColor.color, resourceIcon.text)
+	mapEditor.SetupResourcesList()
 	visible = false

@@ -178,12 +178,24 @@ func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictiona
 	ResourceSaver.save(map_data, MAP_DATA_PATH)
 
 func save_country_data() -> Dictionary:
-	var provinces = {}
+	var provinces: Dictionary = {}
 	for index in unique_regions:
 		var next_id = unique_regions[index]
 		var province = province_objects[next_id]
 		provinces[index] = province.ToDict()
 	return provinces
+
+func SaveResourcesData() -> Dictionary:
+	var returnResources: Dictionary = {}
+	for resource: ResourceData in resources.values():
+		returnResources[resource.name] = resource.ToDict()
+	return returnResources
+	
+func SaveBiomeData() -> Dictionary:
+	var returnBiomes: Dictionary = {}
+	for biome: BiomeData in biomes.values():
+		returnBiomes[biome.name] = biome.ToDict()
+	return returnBiomes
 
 func _try_load_cached_data() -> bool:
 	if not ResourceLoader.exists(MAP_DATA_PATH):
@@ -1049,7 +1061,7 @@ func show_biomes_map() -> void:
 		if pid <= 1:
 			continue
 		
-		var biomeColor: Color = MapManager.biomes[province_objects[pid].biome] if province_objects[pid].biome in MapManager.biomes else Color.ANTIQUE_WHITE
+		var biomeColor: Color = MapManager.biomes[province_objects[pid].biome].color if province_objects[pid].biome in MapManager.biomes else Color.ANTIQUE_WHITE
 
 		state_color_image.set_pixel(pid, 0, biomeColor)
 		state_color_image.set_pixel(pid, 1, biomeColor)

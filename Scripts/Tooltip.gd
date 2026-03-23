@@ -18,6 +18,7 @@ func _enter_tree() -> void:
 @export var provinceDestroyedIcon: TextureRect
 
 var tooltipLatch: bool = false
+var shouldBeVisible: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,12 +26,15 @@ func _process(delta: float) -> void:
 	position.x = clamp(position.x, 0, get_viewport_rect().size.x - size.x)
 	position.y = clamp(position.y, 0, get_viewport_rect().size.y - size.y)
 
+func _physics_process(delta: float) -> void:
+	visible = shouldBeVisible && Input.is_key_pressed(KEY_ALT)
+
 func SwitchTooltip(a_mode: int) -> void:
 	match a_mode:
 		-1:
-			visible = false
+			shouldBeVisible = false
 		0:
-			visible = true
+			shouldBeVisible = true
 			if !tooltipLatch:
 				DeferredUpdate.call_deferred()
 				tooltipLatch = true
@@ -45,7 +49,7 @@ func SwitchTooltip(a_mode: int) -> void:
 				resourceBop.visible = true
 				resourcesList.add_child(resourceBop)
 		1:
-			visible = true
+			shouldBeVisible = true
 			if !tooltipLatch:
 				DeferredUpdate.call_deferred()
 				tooltipLatch = true

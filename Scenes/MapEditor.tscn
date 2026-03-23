@@ -4,11 +4,13 @@
 [ext_resource type="Theme" uid="uid://cu2peiqhvt7tx" path="res://UI/MapEditor/MapEditorTheme.tres" id="2_5xoin"]
 [ext_resource type="StyleBox" uid="uid://0mslv70mgr34" path="res://UI/CloseButton.tres" id="2_kkefn"]
 [ext_resource type="Texture2D" uid="uid://d12li82tjifxv" path="res://assets/icons/MapEditor/NoneTool.svg" id="4_kdxsy"]
+[ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="4_vsuvg"]
 [ext_resource type="Texture2D" uid="uid://ctol3gcbufcx" path="res://assets/icons/political_power_icon (Copy).svg" id="5_eo7xe"]
 [ext_resource type="Texture2D" uid="uid://bwfmtjlbsxvny" path="res://assets/icons/monarchist_icon.svg" id="6_eo7xe"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="7_kdxsy"]
 [ext_resource type="Script" uid="uid://caw8lqkfir2dh" path="res://Scripts/UI/MapEditor/CreationPopupUI.gd" id="8_eo7xe"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="8_id73f"]
+[ext_resource type="Texture2D" uid="uid://d3x7vlrqep2vc" path="res://assets/icons/tree_icon.svg" id="9_kdxsy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xoin"]
 content_margin_left = 0.0
@@ -48,7 +50,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 5
 
-[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "provincePopulationList", "provincePopulationTemplate", "provinceResourcesList", "provinceResourcesTemplate", "factionsItemList", "factionName", "factionColor", "factionMemberList", "factionMemberTemplate", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate")]
+[node name="MapEditor" type="CanvasLayer" unique_id=189757573 node_paths=PackedStringArray("leftSidebar", "status_label", "provinceName", "input_country", "inputOccupier", "input_city", "input_gdp", "input_claims", "provincePopulationList", "provincePopulationTemplate", "provinceResourcesList", "provinceResourcesTemplate", "factionsItemList", "factionName", "factionColor", "factionMemberList", "factionMemberTemplate", "politiesItemList", "polityPuppet", "polityOwner", "polityInExile", "polityHost", "polityName", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityPuppetList", "polityPuppetTemplate", "polityFactionList", "polityFactionTemplate", "biomesItemList", "biomeName", "biomeColor", "resourcesItemList", "resourceName", "resourceColor", "resourceIcon", "resourceIconTexture")]
 script = ExtResource("1_mcl4l")
 leftSidebar = NodePath("Sidebar/TabContainer")
 status_label = NodePath("PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/StatusLabel")
@@ -82,6 +84,14 @@ polityPuppetList = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/Ma
 polityPuppetTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Puppets/VBoxContainer/Template")
 polityFactionList = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/ScrollContainer/VBoxContainer")
 polityFactionTemplate = NodePath("PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/Factions/VBoxContainer/Template")
+biomesItemList = NodePath("PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/ItemList")
+biomeName = NodePath("PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputName")
+biomeColor = NodePath("PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputColor")
+resourcesItemList = NodePath("PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/ItemList")
+resourceName = NodePath("PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputName")
+resourceColor = NodePath("PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputColor")
+resourceIcon = NodePath("PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer/InputIcon")
+resourceIconTexture = NodePath("PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer/TextureRect")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=403020217]
 anchors_preset = 11
@@ -103,11 +113,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -335,6 +344,7 @@ theme = ExtResource("2_5xoin")
 wrap_mode = 1
 
 [node name="Faction" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=741194933]
+visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 1
@@ -645,6 +655,138 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Join Faction"
 
+[node name="Biome" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=1927080504]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Biome" unique_id=482172821]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer" unique_id=1526961959]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=175179561]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Biome"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=797953220]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=638040788]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="NewBiome" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=87667582]
+layout_mode = 2
+text = "New Biome"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=1163857887]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=949684982]
+layout_mode = 2
+columns = 2
+
+[node name="LabelName" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer" unique_id=1365446882]
+layout_mode = 2
+text = "Name:"
+
+[node name="InputName" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer" unique_id=679489346]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelColor" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer" unique_id=1547182204]
+layout_mode = 2
+text = "Color:"
+
+[node name="InputColor" type="ColorPickerButton" parent="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer" unique_id=1132994884]
+layout_mode = 2
+
+[node name="Resource" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=1865267818]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/Resource" unique_id=1847678605]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer" unique_id=1210249569]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=1731398008]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Resource"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=2093548954]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=1424499898]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="NewResource" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=1904691090]
+layout_mode = 2
+text = "New Resource"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=1692674601]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=1204352980]
+layout_mode = 2
+columns = 2
+
+[node name="LabelName" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=1699223483]
+layout_mode = 2
+text = "Name:"
+
+[node name="InputName" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=104468105]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelColor" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=1965789630]
+layout_mode = 2
+text = "Color:"
+
+[node name="InputColor" type="ColorPickerButton" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=1901843119]
+layout_mode = 2
+
+[node name="LabelIcon" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=1012612849]
+layout_mode = 2
+text = "Icon:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer" unique_id=485135450]
+layout_mode = 2
+
+[node name="InputIcon" type="LineEdit" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1382395177]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=333986906]
+layout_mode = 2
+texture = ExtResource("4_vsuvg")
+expand_mode = 3
+
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1940239406]
 layout_mode = 2
 theme_override_constants/margin_left = 0
@@ -839,7 +981,99 @@ texture_normal = ExtResource("8_id73f")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PopupPanel" type="PopupPanel" parent="." unique_id=957807822 node_paths=PackedStringArray("mapEditor", "tabs", "factionName", "factionColor", "factionFounder", "polityName", "polityOwner", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityType", "polityHost", "polityClaims", "memberPolity", "memberStatus")]
+[node name="Biome" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=830389750]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_5xoin")
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Sidebar/TabContainer/Biome" unique_id=1192359538]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_5xoin")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sidebar/TabContainer/Biome/MarginContainer" unique_id=767659513]
+layout_mode = 2
+theme = ExtResource("2_5xoin")
+
+[node name="PanelContainer" type="PanelContainer" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=1200790803]
+layout_mode = 2
+
+[node name="None" type="TextureButton" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer" unique_id=1799632791]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "None Tool"
+focus_mode = 0
+theme = ExtResource("2_5xoin")
+texture_normal = ExtResource("4_kdxsy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=1370811885]
+layout_mode = 2
+
+[node name="BiomePaint" type="TextureButton" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1676770287]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Paint Owner Tool"
+focus_mode = 0
+theme = ExtResource("2_5xoin")
+texture_normal = ExtResource("9_kdxsy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelContainer4" type="PanelContainer" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer" unique_id=849336844]
+layout_mode = 2
+
+[node name="MultiSelect" type="TextureButton" parent="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer4" unique_id=168744556]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Multi Select Tool"
+focus_mode = 0
+theme = ExtResource("2_5xoin")
+texture_normal = ExtResource("8_id73f")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Resource" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=935797252]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_5xoin")
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Sidebar/TabContainer/Resource" unique_id=123504705]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_5xoin")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sidebar/TabContainer/Resource/MarginContainer" unique_id=1009207695]
+layout_mode = 2
+theme = ExtResource("2_5xoin")
+
+[node name="PanelContainer" type="PanelContainer" parent="Sidebar/TabContainer/Resource/MarginContainer/VBoxContainer" unique_id=269150336]
+layout_mode = 2
+
+[node name="None" type="TextureButton" parent="Sidebar/TabContainer/Resource/MarginContainer/VBoxContainer/PanelContainer" unique_id=778536524]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "None Tool"
+focus_mode = 0
+theme = ExtResource("2_5xoin")
+texture_normal = ExtResource("4_kdxsy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PopupPanel" type="PopupPanel" parent="." unique_id=957807822 node_paths=PackedStringArray("mapEditor", "tabs", "factionName", "factionColor", "factionFounder", "polityName", "polityOwner", "polityColor", "polityMoney", "polityPoliticalPower", "polityWarSupport", "polityStability", "polityType", "polityHost", "polityClaims", "memberPolity", "memberStatus", "biomeName", "biomeColor", "resourceName", "resourceColor", "resourceIcon")]
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(230, 360)
@@ -862,6 +1096,11 @@ polityHost = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContainer/T
 polityClaims = NodePath("TabContainer/CreatePolity/ScrollContainer/VBoxContainer/TabContainer/Manual/TextEdit")
 memberPolity = NodePath("TabContainer/CreateMember/MarginContainer/GridContainer/Polity")
 memberStatus = NodePath("TabContainer/CreateMember/MarginContainer/GridContainer/Status")
+biomeName = NodePath("TabContainer/CreateBiome/MarginContainer/GridContainer/LineEdit")
+biomeColor = NodePath("TabContainer/CreateBiome/MarginContainer/GridContainer/ColorPickerButton")
+resourceName = NodePath("TabContainer/CreateResource/MarginContainer/GridContainer/LineEdit")
+resourceColor = NodePath("TabContainer/CreateResource/MarginContainer/GridContainer/ColorPickerButton")
+resourceIcon = NodePath("TabContainer/CreateResource/MarginContainer/GridContainer/IconEdit")
 
 [node name="TabContainer" type="TabContainer" parent="PopupPanel" unique_id=991231941]
 offset_left = 4.0
@@ -1097,6 +1336,92 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Add Member"
 
+[node name="CreateBiome" type="VBoxContainer" parent="PopupPanel/TabContainer" unique_id=2057333109]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/TabContainer/CreateBiome" unique_id=1803344996]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/TabContainer/CreateBiome/MarginContainer" unique_id=2114805904]
+layout_mode = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="PopupPanel/TabContainer/CreateBiome/MarginContainer/GridContainer" unique_id=1642856357]
+layout_mode = 2
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="PopupPanel/TabContainer/CreateBiome/MarginContainer/GridContainer" unique_id=1602730671]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorLabel" type="Label" parent="PopupPanel/TabContainer/CreateBiome/MarginContainer/GridContainer" unique_id=152737556]
+layout_mode = 2
+text = "Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="PopupPanel/TabContainer/CreateBiome/MarginContainer/GridContainer" unique_id=1472696862]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="PopupPanel/TabContainer/CreateBiome" unique_id=495411846]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="PopupPanel/TabContainer/CreateBiome" unique_id=1616478689]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Create Biome"
+
+[node name="CreateResource" type="VBoxContainer" parent="PopupPanel/TabContainer" unique_id=996775500]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/TabContainer/CreateResource" unique_id=1028127432]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/TabContainer/CreateResource/MarginContainer" unique_id=1442896422]
+layout_mode = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=128119258]
+layout_mode = 2
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=154629907]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorLabel" type="Label" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=2134106852]
+layout_mode = 2
+text = "Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=1844202152]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IconLabel" type="Label" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=6092912]
+layout_mode = 2
+text = "Icon:"
+
+[node name="IconEdit" type="LineEdit" parent="PopupPanel/TabContainer/CreateResource/MarginContainer/GridContainer" unique_id=766221753]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="PopupPanel/TabContainer/CreateResource" unique_id=1097096775]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="PopupPanel/TabContainer/CreateResource" unique_id=1046619161]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Create Resource"
+
 [connection signal="tab_changed" from="PanelContainer/VBoxContainer/TabContainer" to="." method="m_OnTabContainerTabChanged"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnProvinceNameSubmitted"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/GridContainer/InputCountry" to="." method="m_OnProvinceOwnerSubmitted"]
@@ -1117,6 +1442,15 @@ text = "Add Member"
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputPoliticalPower" to="." method="m_OnPolityPoliticalPowerChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputWarSupport" to="." method="m_OnPolityWarSupportChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputStability" to="." method="m_OnPolityStabilityChanged"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnBiomeSelected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/NewBiome" to="PopupPanel" method="m_OpenScreen" binds= [3]]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnBiomeNameSubmitted"]
+[connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnBiomeColorChanged"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnResourceSelected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/NewResource" to="PopupPanel" method="m_OpenScreen" binds= [4]]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnResourceNameSubmitted"]
+[connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnResourceColorChanged"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer/InputIcon" to="." method="m_OnResourceIconSubmitted"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnApply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnExport" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
@@ -1126,6 +1460,12 @@ text = "Add Member"
 [connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer2/OwnerPaint" to="." method="m_PaintOwnerTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer3/OccupationPaint" to="." method="m_PaintOccupationTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer2/BiomePaint" to="." method="m_PaintBiomeTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Resource/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
 [connection signal="pressed" from="PopupPanel/TabContainer/CreateFaction/Button" to="PopupPanel" method="m_CreateFaction"]
 [connection signal="pressed" from="PopupPanel/TabContainer/CreatePolity/Button" to="PopupPanel" method="m_CreatePolity"]
 [connection signal="pressed" from="PopupPanel/TabContainer/CreateMember/Button" to="PopupPanel" method="m_CreateMember"]
+[connection signal="pressed" from="PopupPanel/TabContainer/CreateBiome/Button" to="PopupPanel" method="m_CreateBiome"]
+[connection signal="pressed" from="PopupPanel/TabContainer/CreateResource/Button" to="PopupPanel" method="m_CreateResource"]

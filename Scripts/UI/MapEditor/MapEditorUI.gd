@@ -4,6 +4,8 @@ extends CanvasLayer
 
 var selectedCountry: String = ""
 var selectedFaction: String = ""
+var selectedBiome: String = ""
+var selectedResource: String = ""
 var selected_pid: int = -1
 var hovered_pid: int = -1
 var original_pid_color: Color
@@ -12,9 +14,9 @@ var multiSelectPID: PackedInt32Array = []
 
 enum Tool {
 	NONE = 0,
-	PAINT_OCCUPATION = 1,
-	PAINT_OWNER = 2,
-	PAINT_FACTION = 3,
+	PAINT_PRIMARY = 1,
+	PAINT_SECONDARY = 2,
+	PAINT_TERTIARY = 3,
 	MULTI_SELECT = 4,
 }
 
@@ -22,6 +24,8 @@ enum Mode {
 	PROVINCE = 0,
 	FACTION = 1,
 	POLITY = 2,
+	BIOME = 3,
+	RESOURCE = 4,
 }
 
 var currentTool: Tool = Tool.NONE
@@ -30,6 +34,7 @@ var currentMode: Mode = Mode.PROVINCE
 @export var leftSidebar: TabContainer
 
 # UI References (Ensure these match your .tscn node names)
+@export_category("Province")
 @export var status_label: Label
 @export var provinceName: LineEdit
 @export var input_country: LineEdit
@@ -42,12 +47,14 @@ var currentMode: Mode = Mode.PROVINCE
 @export var provinceResourcesList: VBoxContainer
 @export var provinceResourcesTemplate: PanelContainer
 
+@export_category("Faction")
 @export var factionsItemList: ItemList
 @export var factionName: LineEdit
 @export var factionColor: ColorPickerButton
 @export var factionMemberList: VBoxContainer
 @export var factionMemberTemplate: PanelContainer
 
+@export_category("Polity")
 @export var politiesItemList: ItemList
 @export var polityPuppet: CheckBox
 @export var polityOwner: LineEdit
@@ -64,9 +71,23 @@ var currentMode: Mode = Mode.PROVINCE
 @export var polityFactionList: VBoxContainer
 @export var polityFactionTemplate: PanelContainer
 
+@export_category("Biome")
+@export var biomesItemList: ItemList
+@export var biomeName: LineEdit
+@export var biomeColor: ColorPickerButton
+
+@export_category("Resource")
+@export var resourcesItemList: ItemList
+@export var resourceName: LineEdit
+@export var resourceColor: ColorPickerButton
+@export var resourceIcon: LineEdit
+@export var resourceIconTexture: TextureRect
+
 func _ready() -> void:
 	SetupFactionList()
 	SetupPolitiesList()
+	SetupBiomesList()
+	SetupResourcesList()
 	
 	if map_sprite == null:
 		map_sprite = get_node_or_null("../../MapContainer/CultureSprite")
@@ -119,23 +140,23 @@ func _handle_click(_screenPos: Vector2) -> void:
 				match currentTool:
 					Tool.NONE:
 						select_province(hovered_pid)
-					Tool.PAINT_FACTION:
+					Tool.PAINT_PRIMARY:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedFaction in FactionManager.factions:
 							pass
 			Mode.POLITY:
 				match currentTool:
 					Tool.NONE:
 						select_province(hovered_pid)
-					Tool.PAINT_OWNER:
-						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
-							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
-							MapManager.transfer_ownership(hovered_pid, selectedCountry)
-					Tool.PAINT_OCCUPATION:
+					Tool.PAINT_PRIMARY:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
 							if MapManager.province_objects[hovered_pid].country != selectedCountry:
 								MapManager.OccupyProvince(hovered_pid, selectedCountry)
 							else:
 								MapManager.DeoccupyProvince(hovered_pid)
+					Tool.PAINT_SECONDARY:
+						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
+							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
+							MapManager.transfer_ownership(hovered_pid, selectedCountry)
 					Tool.MULTI_SELECT:
 						if MapManager.province_objects[hovered_pid].country != "Sea":
 							if hovered_pid in multiSelectPID:
@@ -144,6 +165,13 @@ func _handle_click(_screenPos: Vector2) -> void:
 							else:
 								multiSelectPID.push_back(hovered_pid)
 								MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+			Mode.BIOME:
+				match currentTool:
+					Tool.NONE:
+						select_province(hovered_pid)
+					Tool.PAINT_PRIMARY:
+						if selectedBiome in MapManager.biomes:
+							MapManager.province_objects[hovered_pid].biome = selectedBiome
 
 func IndexOfText(a_itemList: ItemList, a_text: String) -> int:
 	for i in range(a_itemList.item_count):
@@ -200,11 +228,17 @@ func select_province(pid: int) -> void:
 		resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value_changed.connect(func(a_quality: float): resource.quality = a_quality)
 		provinceResourcesList.add_child(resourceEntry)
 	
-	if currentMode == Mode.POLITY:
-		if prov.country != "Sea":
-			var itemIndex: int = IndexOfText(politiesItemList, prov.country)
-			politiesItemList.select(itemIndex)
-			politiesItemList.item_selected.emit(itemIndex)
+	match currentMode:
+		Mode.POLITY:
+			if prov.country != "Sea":
+				var itemIndex: int = IndexOfText(politiesItemList, prov.country)
+				politiesItemList.select(itemIndex)
+				politiesItemList.item_selected.emit(itemIndex)
+		Mode.BIOME:
+			if !prov.biome.is_empty():
+				var itemIndex: int = IndexOfText(biomesItemList, prov.biome)
+				biomesItemList.select(itemIndex)
+				biomesItemList.item_selected.emit(itemIndex)
 
 func _on_apply_pressed() -> void:
 	return
@@ -243,6 +277,8 @@ func _on_apply_pressed() -> void:
 func _on_export_pressed() -> void:
 	# Export Province Data
 	var export = {
+		"resources": MapManager.SaveResourcesData(),
+		"biomes": MapManager.SaveBiomeData(),
 		"provinces": MapManager.save_country_data(),
 		"polities": CountryManager.save_countries(),
 		"ideologies": IdeologyManager.ideologies,
@@ -274,6 +310,18 @@ func SetupPolitiesList() -> void:
 	for polity in CountryManager.countryNames:
 		politiesItemList.add_item(polity)
 	politiesItemList.sort_items_by_text()
+
+func SetupBiomesList() -> void:
+	biomesItemList.clear()
+	for biome: String in MapManager.biomes:
+		biomesItemList.add_item(biome)
+	biomesItemList.sort_items_by_text()
+	
+func SetupResourcesList() -> void:
+	resourcesItemList.clear()
+	for resource: String in MapManager.resources:
+		resourcesItemList.add_item(resource)
+	resourcesItemList.sort_items_by_text()
 
 func m_OnFactionSelected(index: int) -> void:
 	selectedFaction = factionsItemList.get_item_text(index)
@@ -322,6 +370,54 @@ func m_OnPolitySelected(index: int) -> void:
 		factionEntry.get_node("HBoxContainer/LineEdit").text = faction
 		factionEntry.get_node("HBoxContainer/OptionButton").select(FactionMember.GetIndex(FactionManager.factions[faction].members[FactionManager.factions[faction].members.find_custom(func (a): return a.polity == polity.country_name)].status))
 		polityFactionList.add_child(factionEntry)
+
+func m_OnBiomeSelected(index: int) -> void:
+	selectedBiome = biomesItemList.get_item_text(index)
+	var biome: BiomeData = MapManager.biomes[selectedBiome]
+	biomeName.text = biome.name
+	biomeColor.color = biome.color
+
+func m_OnBiomeNameSubmitted(new_text: String) -> void:
+	if selectedBiome in MapManager.biomes && !new_text in MapManager.biomes:
+		MapManager.biomes[new_text] = MapManager.biomes[selectedBiome]
+		MapManager.biomes[new_text].name = new_text
+		MapManager.biomes.erase(selectedBiome)
+		for province: Province in MapManager.province_objects.values():
+			if province.biome == selectedBiome:
+				province.biome = new_text
+		selectedBiome = new_text
+
+func m_OnBiomeColorChanged(color: Color) -> void:
+	if selectedBiome in MapManager.biomes:
+		MapManager.biomes[selectedBiome].color = color
+
+func m_OnResourceSelected(index: int) -> void:
+	selectedResource = resourcesItemList.get_item_text(index)
+	var resource: ResourceData = MapManager.resources[selectedResource]
+	resourceName.text = resource.name
+	resourceColor.color = resource.color
+	resourceIcon.text = resource.icon
+	resourceIconTexture.texture = MapManager.GetResourceIcon(selectedResource)
+
+func m_OnResourceNameSubmitted(new_text: String) -> void:
+	if selectedResource in MapManager.resources && !new_text in MapManager.resources:
+		MapManager.resources[new_text] = MapManager.resources[selectedResource]
+		MapManager.resources[new_text].name = new_text
+		MapManager.resources.erase(selectedResource)
+		for province: Province in MapManager.province_objects.values():
+			for resource: ResourceNode in province.resources:
+				if resource.type == selectedResource:
+					resource.type = new_text
+		selectedResource = new_text
+
+func m_OnResourceColorChanged(color: Color) -> void:
+	if selectedResource in MapManager.resources:
+		MapManager.resources[selectedResource].color = color
+
+func m_OnResourceIconSubmitted(new_text: String) -> void:
+	if selectedResource in MapManager.resources:
+		MapManager.resources[selectedResource].icon = new_text
+		resourceIconTexture.texture = MapManager.GetResourceIcon(selectedResource)
 
 func m_OnCitySubmitted(new_text: String) -> void:
 	if selected_pid in MapManager.province_objects:
@@ -399,7 +495,7 @@ func m_PaintOwnerTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
-	currentTool = Tool.PAINT_OWNER
+	currentTool = Tool.PAINT_SECONDARY
 	
 func m_PaintOccupationTool() -> void:
 	match currentTool:
@@ -407,7 +503,7 @@ func m_PaintOccupationTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
-	currentTool = Tool.PAINT_OCCUPATION
+	currentTool = Tool.PAINT_PRIMARY
 	
 func m_PaintFactionTool() -> void:
 	match currentTool:
@@ -415,7 +511,15 @@ func m_PaintFactionTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
-	currentTool = Tool.PAINT_FACTION
+	currentTool = Tool.PAINT_PRIMARY
+
+func m_PaintBiomeTool() -> void:
+	match currentTool:
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				MapManager.ResetProvinceColor(pid)
+			multiSelectPID = []
+	currentTool = Tool.PAINT_PRIMARY
 
 func m_MultiSelectTool() -> void:
 	currentTool = Tool.MULTI_SELECT

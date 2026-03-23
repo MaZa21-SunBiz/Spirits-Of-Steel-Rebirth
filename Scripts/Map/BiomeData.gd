@@ -12,6 +12,14 @@ static func FromDict(a_data: Dictionary) -> BiomeData:
 	
 	return biomeData
 
+static func FromValues(a_name: String, a_color: Color) -> BiomeData:
+	var biomeData: BiomeData = BiomeData.new()
+	
+	biomeData.name = a_name
+	biomeData.color = a_color
+	
+	return biomeData
+
 func ToDict() -> Dictionary:
 	return {
 		"name": self.name,
