@@ -4,6 +4,7 @@ extends Node
 # Format: { province_id: { "type": "factory", "days": 20, "daily_cost": 50, "country": CountryData } }
 var construction_queue: Dictionary = {}
 var building_functions: Dictionary = {}
+var building_designs: Dictionary[String, Array] = {}
 
 func initialize(path: String) -> void:
 	var content := FileAccess.get_file_as_string(path)

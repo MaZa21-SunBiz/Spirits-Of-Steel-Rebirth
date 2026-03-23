@@ -1842,11 +1842,10 @@ offset_right = 858.0
 offset_bottom = 54.0
 
 [node name="BuildingDesigner" type="PanelContainer" parent="." unique_id=527526215]
-visible = false
 material = ExtResource("16_lpwmk")
 offset_left = 360.0
 offset_top = 150.0
-offset_right = 858.0
+offset_right = 960.0
 offset_bottom = 456.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner" unique_id=408050884]
@@ -1919,7 +1918,7 @@ Sewage:"
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
-[node name="Button" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=1602404120]
+[node name="AddBuilding" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=1602404120]
 use_parent_material = true
 layout_mode = 2
 text = "Add building"
@@ -2108,4 +2107,6 @@ stretch_mode = 5
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
 [connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]
+[connection signal="text_changed" from="BuildingDesigner/VBoxContainer/HBoxContainer/Stats/HBoxContainer/TextEdit" to="." method="_on_building_name_changed"]
+[connection signal="pressed" from="BuildingDesigner/VBoxContainer/HBoxContainer/Stats/AddBuilding" to="." method="_on_add_building_pressed"]
 [connection signal="tab_changed" from="MapSwitcher/TabBar" to="." method="_on_map_changed"]

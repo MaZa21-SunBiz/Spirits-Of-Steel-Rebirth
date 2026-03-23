@@ -11,9 +11,13 @@ noise_type = 0
 fractal_gain = 0.905
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lpwmk"]
+width = 1024
+height = 1024
+generate_mipmaps = false
 noise = SubResource("FastNoiseLite_lpwmk")
 color_ramp = SubResource("Gradient_lpwmk")
 as_normal_map = true
+normalize = false
 
 [resource]
 shader = ExtResource("1_5kvwk")

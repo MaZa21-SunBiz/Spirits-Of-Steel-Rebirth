@@ -66,11 +66,8 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 
 
 # --- BuildingDesigner ---
-@onready var building_designer: HBoxContainer = $BuildingDesigner/VBoxContainer/HBoxContainer
-@onready var building_functions: VBoxContainer = building_designer.get_node("Functions/VBoxContainer2/VBoxContainer")
-@onready var building_name: TextEdit = building_designer.get_node("Stats/HBoxContainer/TextEdit")
-
-
+@onready var building_designer: PanelContainer = $BuildingDesigner
+@onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")
 # NOTE(soi): store this somewhere better
 var current_building_template: Dictionary = {}
 
@@ -1118,15 +1115,4 @@ func _on_building_designer_pressed():
 
 
 func _on_add_building_pressed () -> void :
-	if !EconomyManager.building_designs.has(CountryManager.player_country.country_name):
-		EconomyManager.building_designs[CountryManager.player_country.country_name] = []
-
-	print(current_building_template)
-	EconomyManager.building_designs[CountryManager.player_country.country_name].append(
-		BuildingTemplate.FromDict(current_building_template)
-	)
-	print(EconomyManager.building_designs)
-
-
-func _on_building_name_changed() -> void:
-	current_building_template["name"] = building_name.text
+	EconomyManager.building_designs[CountryManager.player_country.country_name] = [ 1 ]
