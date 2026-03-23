@@ -108,12 +108,12 @@ text = "Oil - 2 (125%)"
 
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer/PanelContainer" unique_id=1709698968]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="Resources" type="VBoxContainer" parent="CanvasLayer/PanelContainer/TabContainer" unique_id=1208314579]
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 4
 metadata/_tab_index = 0
 
 [node name="Oil" type="HBoxContainer" parent="CanvasLayer/PanelContainer/TabContainer/Resources" unique_id=1040589596]
@@ -153,6 +153,7 @@ layout_mode = 2
 text = "Iron - 1 (100%)"
 
 [node name="ProvinceData" type="VBoxContainer" parent="CanvasLayer/PanelContainer/TabContainer" unique_id=1175602525]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

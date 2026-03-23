@@ -1065,3 +1065,11 @@ func _on_map_changed(tab: int) -> void:
 		KeyboardManager.MapView.FACTION:
 			MapManager.show_faction_map()
 			print("Map Mode: Factions")
+
+		KeyboardManager.MapView.RESOURCES:
+			MapManager.ShowResourcesMap()
+			print("Map Mode: Resources")
+
+		KeyboardManager.MapView.BIOMES:
+			MapManager.show_biomes_map()
+			print("Map Mode: Biomes")
