@@ -3,6 +3,16 @@ extends Node
 
 # Format: { province_id: { "type": "factory", "days": 20, "daily_cost": 50, "country": CountryData } }
 var construction_queue: Dictionary = {}
+var building_functions: Dictionary = {}
+
+func initialize(path: String) -> void:
+	var content := FileAccess.get_file_as_string(path)
+	var parsed = JSON.parse_string(content)
+	if parsed is Dictionary:
+		building_functions = parsed
+	else:
+		building_functions = {}
+
 
 func process_economy_day():
 	var finished_projects: PackedInt32Array = []
@@ -27,6 +37,7 @@ func process_economy_day():
 	for pid in finished_projects:
 		construction_queue.erase(pid)
 
+
 func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dailyCost: float, a_country: CountryData) -> void:
 	if a_country == CountryManager.player_country:
 		MusicManager.play_sfx(MusicManager.SFX.BUILD)
@@ -34,7 +45,7 @@ func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dail
 	
 	construction_queue[a_provinceID] = {
 		"type": "Infrastructure",
-		"index": -1,
+		"index": - 1,
 		"days": a_totalDays,
 		"daily_cost": a_dailyCost,
 		"country": a_country

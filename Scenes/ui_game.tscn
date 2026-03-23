@@ -94,12 +94,6 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c8l0"]
-bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-shadow_color = Color(0, 0, 0, 0.3137255)
-shadow_size = 7
-anti_aliasing = false
-
 [node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("military_access_label")]
 script = ExtResource("1_rp7y5")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
@@ -579,17 +573,20 @@ size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG" unique_id=1423441942]
+use_parent_material = true
 layout_mode = 2
 
 [node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1938162432]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1411926768]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/HFlowContainer" unique_id=1954831864]
 texture_filter = 2
+use_parent_material = true
 custom_minimum_size = Vector2(201, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -607,10 +604,11 @@ theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qum3k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer" unique_id=439858551]
+use_parent_material = true
 layout_mode = 2
 
 [node name="compass" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1574630328]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("20_lpwmk")
@@ -624,7 +622,7 @@ scale = Vector2(0.038297877, 0.038297873)
 texture = ExtResource("21_lpwmk")
 
 [node name="Leader" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=569434129]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(120, 90)
 layout_mode = 2
 size_flags_vertical = 3
@@ -634,6 +632,7 @@ stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1476466952]
 visible = false
+use_parent_material = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -683,27 +682,26 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=825848418]
+use_parent_material = true
 layout_mode = 2
 text = "Military Access: No"
 horizontal_alignment = 1
 
 [node name="Context" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1596917807]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 5
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -721,17 +719,18 @@ metadata/_tab_index = 0
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=324260209]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel" unique_id=1263280391]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1595718017]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -741,23 +740,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/Panel/HBoxContainer" unique_id=1517342316]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy" unique_id=1525396862]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer" unique_id=409655859]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=939931474]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -765,7 +766,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Manage Country"
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1961953376]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -773,7 +774,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Research"
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1788664696]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -781,7 +782,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Decisions"
 
 [node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=779262759]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -789,24 +790,24 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=319074674]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel" unique_id=1681540258]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=1911035227]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -816,23 +817,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Panel/HBoxContainer" unique_id=2084192849]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy" unique_id=1353097113]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy" unique_id=574716223]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=702877997]
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+text = "Building designer"
+
 [node name="OptionButton" type="OptionButton" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=1597600351]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "peepee poopoo"
 focus_mode = 0
@@ -850,33 +859,36 @@ popup/item_2/text = "Infrastructure"
 popup/item_2/id = 2
 
 [node name="Queue" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList" unique_id=2015001235]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue" unique_id=855509954]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=1501629434]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel" unique_id=1929221443]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=2064020114]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -885,22 +897,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=925378781]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=608373696]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer" unique_id=801649026]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=2143465910]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -908,7 +922,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Choose Deployment Province"
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=1602099174]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -916,45 +930,54 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Deploy All"
 
 [node name="TroopList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=940258689]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Cultures" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1315655306]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 3
 metadata/_tab_name = ""
 
 [node name="AcceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=114737541]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=1207119508]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/normal = ExtResource("25_2a76p")
 text = "Accepted"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures" unique_id=895736875]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer" unique_id=41053949]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VSeparator" type="VSeparator" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=802127427]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_pvldk")
 
 [node name="UnacceptedCultures" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures" unique_id=470564074]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=957078040]
+use_parent_material = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_styles/normal = ExtResource("26_ubr8q")
@@ -962,17 +985,18 @@ text = "Demonized"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures" unique_id=1846953765]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer" unique_id=1864884055]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Enemy" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=305618823]
 visible = false
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
@@ -993,16 +1017,17 @@ metadata/_tab_index = 0
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy" unique_id=1758383006]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel" unique_id=1001701770]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=829313179]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1012,22 +1037,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/Panel/HBoxContainer" unique_id=665498883]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy" unique_id=1221364533]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer" unique_id=570898825]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList" unique_id=848041002]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1042,16 +1069,17 @@ metadata/_tab_index = 1
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=944343034]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel" unique_id=270357454]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1833015955]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1061,16 +1089,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Panel/HBoxContainer" unique_id=1355151102]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=566937834]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy/Diplomacy" unique_id=1528252989]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1082,16 +1112,17 @@ metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military" unique_id=2096196983]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel" unique_id=1167943882]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel/HBoxContainer" unique_id=1376277886]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1101,22 +1132,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/Panel/HBoxContainer" unique_id=1607959720]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military" unique_id=1175496027]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military/ScrollContainer" unique_id=1887234474]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Neutral" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=368931153]
 visible = false
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
@@ -1137,7 +1169,6 @@ metadata/_tab_index = 0
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy" unique_id=1192514552]
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
@@ -1148,6 +1179,7 @@ layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/Panel/HBoxContainer" unique_id=1587197366]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1174,14 +1206,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=287123050]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Improve Relations"
 
 [node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=286592296]
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 focus_mode = 0
@@ -1189,7 +1220,6 @@ theme = ExtResource("13_sdmnd")
 text = "Invite To Faction"
 
 [node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList" unique_id=1421175975]
-material = ExtResource("16_lpwmk")
 use_parent_material = true
 layout_mode = 2
 focus_mode = 0
@@ -1198,21 +1228,23 @@ text = "Force Puppet"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=809065436]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy" unique_id=1573941070]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel" unique_id=306500858]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=303614205]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1222,21 +1254,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Panel/HBoxContainer" unique_id=265570064]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy" unique_id=754704684]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Diplomacy" unique_id=2028102024]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Economy/Diplomacy/ActionsList" unique_id=1343803464]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1245,21 +1279,23 @@ text = "Trade Deal"
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=173220231]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military" unique_id=1153108939]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel" unique_id=1414276886]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=724673175]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1269,21 +1305,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/Panel/HBoxContainer" unique_id=1393378957]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military" unique_id=386300872]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer" unique_id=593076686]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=678799358]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1291,7 +1329,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Declare War"
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=1571239659]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1299,7 +1337,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Request Access"
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Military/ScrollContainer/ActionsList" unique_id=2131250622]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1308,7 +1346,7 @@ text = "Launch Nuke"
 
 [node name="Puppet" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=2040957791]
 visible = false
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
@@ -1321,21 +1359,24 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 3
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=2126563439]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy" unique_id=247556838]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel" unique_id=1107272104]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel/HBoxContainer" unique_id=461911554]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1345,21 +1386,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/Panel/HBoxContainer" unique_id=912336174]
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy" unique_id=318226173]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer" unique_id=962088599]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=1697014369]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1367,7 +1411,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Annex Puppet"
 
 [node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy/ScrollContainer/ActionsList" unique_id=2122222714]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1376,21 +1420,23 @@ text = "Release Puppet"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=243750632]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy" unique_id=1296693455]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel" unique_id=1784002997]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel/HBoxContainer" unique_id=1792790997]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1400,21 +1446,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Panel/HBoxContainer" unique_id=1008130762]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy" unique_id=44064141]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy" unique_id=1408266887]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy/Diplomacy/ActionsList" unique_id=1202195637]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1423,21 +1471,23 @@ text = "Steal Money"
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet" unique_id=1403617755]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military" unique_id=1230631981]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel" unique_id=217346371]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel/HBoxContainer" unique_id=593820633]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1447,21 +1497,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/Panel/HBoxContainer" unique_id=1981376563]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military" unique_id=471897206]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer" unique_id=241753113]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=645040993]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1469,7 +1521,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Steal Manpower"
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military/ScrollContainer/ActionsList" unique_id=2111600738]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1478,7 +1530,7 @@ text = "Call to Arms"
 
 [node name="Ally" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1156143088]
 visible = false
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
@@ -1491,21 +1543,24 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 4
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1671842405]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 metadata/_tab_index = 0
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy" unique_id=1245854610]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel" unique_id=865560069]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel/HBoxContainer" unique_id=113081764]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1515,21 +1570,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/Panel/HBoxContainer" unique_id=1699878909]
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy" unique_id=233231260]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer" unique_id=1086754441]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1031120624]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1537,7 +1595,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Improve Relations"
 
 [node name="Button5" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=1019195712]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1545,7 +1603,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kick From Faction"
 
 [node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList" unique_id=2009539886]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1554,21 +1612,23 @@ text = "Force Puppet"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=147033422]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy" unique_id=1392692773]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel" unique_id=354799227]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel/HBoxContainer" unique_id=412312968]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1578,21 +1638,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Panel/HBoxContainer" unique_id=1644720487]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy" unique_id=1608048880]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy" unique_id=1620336062]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=231033924]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1600,7 +1662,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Trade Deal"
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy/Diplomacy/ActionsList" unique_id=1662116374]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1609,21 +1671,23 @@ text = "Kindly Ask For Money"
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally" unique_id=1928349567]
 visible = false
+use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military" unique_id=1374568835]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel" unique_id=2005732805]
+use_parent_material = true
 layout_mode = 2
 
 [node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel/HBoxContainer" unique_id=2061751209]
 texture_filter = 2
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
@@ -1633,21 +1697,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/Panel/HBoxContainer" unique_id=2063340105]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military" unique_id=394845032]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer" unique_id=1038022110]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=860663546]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1655,7 +1721,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Call To Arms"
 
 [node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList" unique_id=1319266632]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
@@ -1663,6 +1729,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
 [node name="Control" type="Control" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=500580373]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
@@ -1775,12 +1842,11 @@ offset_right = 858.0
 offset_bottom = 54.0
 
 [node name="BuildingDesigner" type="PanelContainer" parent="." unique_id=527526215]
-visible = false
 material = ExtResource("16_lpwmk")
-offset_left = 421.0
-offset_top = 179.0
-offset_right = 935.0
-offset_bottom = 485.0
+offset_left = 360.0
+offset_top = 150.0
+offset_right = 858.0
+offset_bottom = 456.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner" unique_id=408050884]
 use_parent_material = true
@@ -1796,66 +1862,36 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=395027308]
+[node name="Functions" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=395027308]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=1016428227]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Functions" unique_id=1016428227]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=1425627364]
+[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Functions/VBoxContainer2" unique_id=1425627364]
 layout_mode = 2
 text = "Building functionalities:"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=1056062432]
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Functions/VBoxContainer2" unique_id=1056062432]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CheckButton" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1184768885]
-use_parent_material = true
-layout_mode = 2
-text = "Factory capable"
-
-[node name="CheckButton2" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1141485894]
-use_parent_material = true
-layout_mode = 2
-text = "Heal"
-
-[node name="CheckButton3" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1629849758]
-use_parent_material = true
-layout_mode = 2
-text = "Gather resources"
-
-[node name="CheckButton4" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1496194263]
-use_parent_material = true
-layout_mode = 2
-text = "Supply"
-
-[node name="CheckButton5" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1888904918]
-use_parent_material = true
-layout_mode = 2
-text = "Storage"
-
-[node name="CheckButton6" type="CheckButton" parent="BuildingDesigner/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=468091909]
-use_parent_material = true
-layout_mode = 2
-text = "Port"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=746532199]
+[node name="Stats" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=746532199]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2067866561]
+[node name="HBoxContainer" type="HBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=2067866561]
 use_parent_material = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1350628917]
+[node name="TextureRect" type="TextureRect" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats/HBoxContainer" unique_id=1350628917]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -1863,14 +1899,14 @@ texture = ExtResource("38_youyo")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="TextEdit" type="TextEdit" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=529636001]
+[node name="TextEdit" type="TextEdit" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats/HBoxContainer" unique_id=529636001]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Building Name"
 
-[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1284686764]
+[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=1284686764]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Power:
@@ -1878,28 +1914,28 @@ Water:
 Population:
 Sewage:"
 
-[node name="Resources" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=447748247]
+[node name="Resources" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=447748247]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
-[node name="Button" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1602404120]
+[node name="Button" type="Button" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Stats" unique_id=1602404120]
 use_parent_material = true
 layout_mode = 2
 text = "Add building"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=240313952]
+[node name="Designed" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer" unique_id=240313952]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1745155919]
+[node name="Label" type="Label" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Designed" unique_id=1745155919]
 layout_mode = 2
 text = "Existing Designs:"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1804573865]
+[node name="ScrollContainer" type="ScrollContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Designed" unique_id=1804573865]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=1595593216]
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildingDesigner/VBoxContainer/HBoxContainer/Designed/ScrollContainer" unique_id=1595593216]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -2040,74 +2076,127 @@ texture = ExtResource("29_anvjc")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Tooltip" type="CanvasLayer" parent="." unique_id=1860872512]
+[node name="Tooltip" type="CanvasLayer" parent="." unique_id=1515360472]
 
-[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=788191395]
+[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=854706174]
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0c8l0")
 script = ExtResource("40_0c8l0")
 
-[node name="ResourceTemplate" type="HBoxContainer" parent="Tooltip/PanelContainer" unique_id=379944955]
+[node name="ResourceTemplate" type="HBoxContainer" parent="Tooltip/PanelContainer" unique_id=1250688864]
 visible = false
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=318878603]
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=961273287]
 layout_mode = 2
 texture = ExtResource("41_vbips")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=1288667528]
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=596829251]
 layout_mode = 2
 text = "Oil - 2 (125%)"
 
-[node name="Resources" type="VBoxContainer" parent="Tooltip/PanelContainer" unique_id=2069047216]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="Tooltip/PanelContainer" unique_id=1401214760]
+layout_mode = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="Resources" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=949095265]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Oil" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=1368524985]
 layout_mode = 2
 
-[node name="Oil" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=634068362]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Oil" unique_id=2036277746]
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Oil" unique_id=1264478064]
 layout_mode = 2
 texture = ExtResource("41_vbips")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Oil" unique_id=1566525322]
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Oil" unique_id=1067145169]
 layout_mode = 2
 text = "Oil - 2 (125%)"
 
-[node name="Natural Gas" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=2106811488]
-visible = false
+[node name="Natural Gas" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=1782399350]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Natural Gas" unique_id=1759571675]
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Natural Gas" unique_id=2054479698]
 layout_mode = 2
 texture = ExtResource("42_ekg1n")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Natural Gas" unique_id=1956836896]
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Natural Gas" unique_id=1570145834]
 layout_mode = 2
 text = "Natural Gas - 3 (75%)"
 
-[node name="Iron" type="HBoxContainer" parent="Tooltip/PanelContainer/Resources" unique_id=1378547071]
-visible = false
+[node name="Iron" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=883490133]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/Resources/Iron" unique_id=1374365882]
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Iron" unique_id=1652435420]
 layout_mode = 2
 texture = ExtResource("43_ol53e")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/Resources/Iron" unique_id=1071834671]
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Iron" unique_id=1792253415]
 layout_mode = 2
 text = "Iron - 1 (100%)"
 
-[node name="Label" type="Label" parent="Tooltip/PanelContainer" unique_id=85310679]
+[node name="ProvinceData" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=2820149]
+visible = false
 layout_mode = 2
-text = "quagga"
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=2128099631]
+layout_mode = 2
+text = "Province"
+
+[node name="HSeparator" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=484257194]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=474889665]
+layout_mode = 2
+text = "City"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=679427406]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=639562645]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer" unique_id=560937431]
+layout_mode = 2
+texture = ExtResource("44_ol53e")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer" unique_id=493532421]
+layout_mode = 2
+text = "0/5"
+
+[node name="HSeparator3" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=1540364904]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=701895067]
+layout_mode = 2
+
+[node name="Construction" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2074070347]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("45_nprtd")
+expand_mode = 3
+
+[node name="Occupied" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2133239807]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("19_2igyl")
+expand_mode = 3
+
+[node name="Destroyed" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2009961403]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("46_s38qe")
+expand_mode = 3
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
@@ -2119,6 +2208,7 @@ text = "quagga"
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="open_research_tree"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button2" to="." method="open_decisions_tree"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_open_faction"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button" to="." method="_on_building_designer_pressed"]
 [connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton" to="." method="_on_building_selected"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_deploy_all_pressed"]

@@ -45,3 +45,4 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("1_1lxxj")
 text = "Ok"
+clip_text = true

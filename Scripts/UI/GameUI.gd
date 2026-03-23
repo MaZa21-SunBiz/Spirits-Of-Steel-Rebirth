@@ -65,9 +65,14 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var troop_list_parent: VBoxContainer = troop_container.get_node("ScrollContainer/VBoxContainer")
 
 
-# --- Custom ToolTip ---
+# --- CustomToolTip ---
 @onready var custom_tooltip: CanvasLayer = $Tooltip
 @onready var custom_tooltip_text: Label = custom_tooltip.get_node("PanelContainer/Label")
+
+
+# --- BuildingDesigner ---
+@onready var building_designer: PanelContainer = $BuildingDesigner
+@onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")
 
 # --- State ---
 var division_type_selected: String = "infantry"
@@ -223,6 +228,35 @@ func _ready() -> void:
 		printerr("GameUI: Clock not found in current world!")
 
 	# NOTE(soi): its soiladin time
+	for function_name in EconomyManager.building_functions:
+		var function_btn
+		match typeof(EconomyManager.building_functions[function_name]["reqs_effects"]["val"]):
+			TYPE_FLOAT:
+				function_btn = HBoxContainer.new()
+				function_btn.use_parent_material = true
+
+				var text = Label.new()
+				text.text = function_name
+				text.use_parent_material = true
+				text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				function_btn.add_child(text)
+
+				var slider = HSlider.new()
+				slider.max_value = EconomyManager.building_functions[function_name]["reqs_effects"]["val"]
+				slider.use_parent_material = true
+				slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				function_btn.add_child(slider)
+
+				building_functions.add_child(function_btn)
+			TYPE_DICTIONARY:
+				pass
+			TYPE_BOOL:
+				function_btn = CheckButton.new()
+				function_btn.text = function_name
+				function_btn.use_parent_material = true
+
+				building_functions.add_child(function_btn)
+
 	const default_music_path = "res://assets/music/"
 	const custom_music_path = "res://radios/"
 	for radio in MusicManager.music_map[0]:
@@ -850,7 +884,7 @@ func update_division_menu():
 		return # Safety check
 
 	div_type.text = division_type_selected.capitalize()
-	div_stats.text = "%s\n%s\n%s" % [stats.attack , stats.defense , stats.hp]
+	div_stats.text = "%s\n%s\n%s" % [stats.attack, stats.defense, stats.hp]
 
 	var total_manpower = stats.manpower * count
 
@@ -866,7 +900,7 @@ func update_division_menu():
 
 
 func _on_button_train_troops() -> void:
-	if CountryManager.player_country.train_troops(int(input_division.value+1), division_type_selected):
+	if CountryManager.player_country.train_troops(int(input_division.value + 1), division_type_selected):
 		_build_trooplist()
 	update_division_menu()
 
@@ -1045,3 +1079,7 @@ func _on_map_changed(tab: int) -> void:
 		KeyboardManager.MapView.BIOMES:
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
+
+
+func _on_building_designer_pressed():
+	building_designer.visible = !building_designer.visible

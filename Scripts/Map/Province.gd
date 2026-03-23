@@ -108,7 +108,19 @@ func GetFunctionalOwner() -> String:
 
 
 func GetResources() -> String:
-	var list: String = ""
+	var counts: Dictionary = {}
 	for resource in resources:
-		list += "%s\n%s" % [ list, resource.type ]
+		if counts.has(resource.type):
+			counts[resource.type] += resource.amount
+		else:
+			counts[resource.type] = resource.amount
+
+	var list: String = ""
+	for resource_type in counts:
+		if list != "":
+			list += "\n"
+		list += "%s: %d" % [ resource_type, counts[resource_type] ]
 	return list
+
+
+

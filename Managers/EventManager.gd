@@ -138,7 +138,7 @@ func load_super_events(path: String):
 	super_events.clear()
 	var file = FileAccess.get_file_as_string(path)
 	if file:
-		var json = JSON.parse_string(file)
+		var json: Dictionary = JSON.parse_string(file)
 		if json:
 			for event_data in json.get("events", []):
 				if event_data.has("cause") and not event_data["cause"].is_empty():

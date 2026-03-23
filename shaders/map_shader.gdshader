@@ -177,14 +177,18 @@ void fragment() {
 		float vignette = 16.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
 		COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
 		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
+		float daynight = 42.5*ocean_offset.x;
+		float phase = sin(daynight/182.725);
+		vec2 centered_uv = 2.*UV - vec2(1.);
 		COLOR.rgb += vec3(
-			contrast/smoothness*
-			clamp(
-				sin(PI*.5*cos((UV.x + 42.5*ocean_offset.x)*2.*PI))+(1.-2.*UV.y),
-				-smoothness,
-				smoothness
-			)
-		);
-		COLOR.rgb += (.5+.5*asin(sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x))))*clamp(mix(.5-.5*(lower), -upper, vignette), 0., 1.);
+				contrast/smoothness*
+				clamp(
+					tan(PI*.25*centered_uv.y*phase)
+					+ sin(PI*centered_uv.x+daynight),
+					-smoothness,
+					smoothness
+				)
+			);
+		COLOR.rgb += (.5+.5*(sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x))))*clamp(mix(.5-.5*(lower), -upper, vignette), 0., 1.);
 	}
 }
