@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cycle_map_mode"):
 		_cycle_map_mode()
 
-	if GameState.current_world:
+	if GameState.current_world && SceneSwitcher._current_type == SceneSwitcher.Type.WORLD:
 		var clock := GameState.current_world.clock
 		if Input.is_action_just_pressed("pause_game"):
 			clock.toggle_pause()
