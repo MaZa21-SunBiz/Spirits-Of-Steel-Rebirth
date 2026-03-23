@@ -1,4 +1,10 @@
 {
+	"biomes": {
+		"Forest": {
+			"color": "#007300",
+			"name": "Forest"
+		}
+	},
 	"factions": [
 		{
 			"color": "#0028AE",
@@ -89501,6 +89507,28 @@
 				}
 			],
 			"type": 1
+		}
+	},
+	"resources": {
+		"Iron": {
+			"color": "#FFF0AC",
+			"icon": "Ingot",
+			"name": "Iron"
+		},
+		"Lumber": {
+			"color": "#BF935A",
+			"icon": "Lumber",
+			"name": "Lumber"
+		},
+		"Oil": {
+			"color": "#000000",
+			"icon": "Droplet",
+			"name": "Oil"
+		},
+		"Timber": {
+			"color": "#925200",
+			"icon": "Timber",
+			"name": "Timber"
 		}
 	}
 }
