@@ -17,7 +17,7 @@ var _loading_screen: Node = null
 func _ready() -> void:
 	# Instantiate loading screen and add it as a sibling of CurrentScene's parent (Main)
 	# or just add it to the scene tree root to be persistent
-	var ls_scene = load("res://Scenes/LoadingScreen.tscn")
+	var ls_scene = preload("res://Scenes/LoadingScreen.tscn")
 	if ls_scene:
 		_loading_screen = ls_scene.instantiate()
 		add_child(_loading_screen)

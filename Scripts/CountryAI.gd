@@ -272,11 +272,11 @@ func _execute_frontline():
 		return
 
 	var enemies = WarManager.get_enemies_of(country.country_name)
+	var move_payload: Array = []
 	if enemies.is_empty():
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s had no enemies" % country.country_name)
 		var hubs = _get_peace_hubs()
-		var move_payload: Array = []
 		for troop in idle_troops:
 			if !hubs.has(troop.province_id):
 				# Choose closest hub to avoid unnecessary long moves
@@ -340,8 +340,6 @@ func _execute_frontline():
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s had no targets" % country.country_name)
 		return
-
-	var move_payload = []
 
 	for troop in idle_troops:
 		# Sort targets by a mix of Score and Distance

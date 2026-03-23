@@ -279,5 +279,5 @@ func FreeHost(a_host: CountryData, a_hosted: CountryData):
 	a_hosted.host = ""
 	MapManager.show_countries_map()
 
-func RenameCountry(a_old: String, a_new: String) -> void:
+func RenameCountry(_a_old: String, _a_new: String) -> void:
 	pass

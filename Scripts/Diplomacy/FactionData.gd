@@ -36,5 +36,5 @@ func ToDict() -> Dictionary:
 
 	return data
 
-func UpdateMemberStatus(a_member: String, a_index: int) -> void:
+func UpdateMemberStatus(_a_member: String, _a_index: int) -> void:
 	pass
