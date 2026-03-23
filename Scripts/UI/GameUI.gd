@@ -65,11 +65,6 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 @onready var troop_list_parent: VBoxContainer = troop_container.get_node("ScrollContainer/VBoxContainer")
 
 
-# --- CustomToolTip ---
-@onready var custom_tooltip: CanvasLayer = $Tooltip
-@onready var custom_tooltip_text: Label = custom_tooltip.get_node("PanelContainer/Label")
-
-
 # --- BuildingDesigner ---
 @onready var building_designer: PanelContainer = $BuildingDesigner
 @onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")

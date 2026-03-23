@@ -39,14 +39,8 @@
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="38_youyo"]
 [ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
-[ext_resource type="Script" uid="uid://bse7dpsxk0jqm" path="res://Scripts/Tooltip.gd" id="40_0c8l0"]
 [ext_resource type="Texture2D" uid="uid://djlkcpd4lqkd7" path="res://assets/icons/old icons tht might get reused someday/monarchist_icon.png" id="41_hx7os"]
 [ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="41_vbips"]
-[ext_resource type="Texture2D" uid="uid://yex0td0ay82r" path="res://assets/icons/Resources/Gas.svg" id="42_ekg1n"]
-[ext_resource type="Texture2D" uid="uid://b5nqoffhsukhv" path="res://assets/icons/Resources/Ingot.svg" id="43_ol53e"]
-[ext_resource type="Texture2D" uid="uid://c0wc8td5q47gm" path="res://assets/icons/DeliveryTruck.svg" id="44_ol53e"]
-[ext_resource type="Texture2D" uid="uid://coyevu81btx7t" path="res://assets/icons/Crane.svg" id="45_nprtd"]
-[ext_resource type="Texture2D" uid="uid://bbk814o0rut6j" path="res://assets/icons/AncientRuins.svg" id="46_s38qe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -2082,137 +2076,6 @@ size_flags_vertical = 3
 texture = ExtResource("29_anvjc")
 expand_mode = 3
 stretch_mode = 5
-
-[node name="Tooltip" type="CanvasLayer" parent="." unique_id=1515360472]
-
-[node name="PanelContainer" type="PanelContainer" parent="Tooltip" unique_id=854706174 node_paths=PackedStringArray("tabs", "resourceTemplate", "resourcesList", "provinceName", "provinceDescription", "provinceInfrastructure", "provinceConstructionIcon", "provinceOccupiedIcon", "provinceDestroyedIcon")]
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-script = ExtResource("40_0c8l0")
-tabs = NodePath("TabContainer")
-resourceTemplate = NodePath("ResourceTemplate")
-resourcesList = NodePath("TabContainer/Resources")
-provinceName = NodePath("TabContainer/ProvinceData/Label")
-provinceDescription = NodePath("TabContainer/ProvinceData/RichTextLabel")
-provinceInfrastructure = NodePath("TabContainer/ProvinceData/HBoxContainer/Label")
-provinceConstructionIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Construction")
-provinceOccupiedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Occupied")
-provinceDestroyedIcon = NodePath("TabContainer/ProvinceData/HBoxContainer2/Destroyed")
-
-[node name="ResourceTemplate" type="HBoxContainer" parent="Tooltip/PanelContainer" unique_id=1250688864]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=961273287]
-layout_mode = 2
-texture = ExtResource("41_vbips")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/ResourceTemplate" unique_id=596829251]
-layout_mode = 2
-text = "Oil - 2 (125%)"
-
-[node name="TabContainer" type="TabContainer" parent="Tooltip/PanelContainer" unique_id=1401214760]
-layout_mode = 2
-current_tab = 1
-tabs_visible = false
-
-[node name="Resources" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=949095265]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="Oil" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=1368524985]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Oil" unique_id=1264478064]
-layout_mode = 2
-texture = ExtResource("41_vbips")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Oil" unique_id=1067145169]
-layout_mode = 2
-text = "Oil - 2 (125%)"
-
-[node name="Natural Gas" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=1782399350]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Natural Gas" unique_id=2054479698]
-layout_mode = 2
-texture = ExtResource("42_ekg1n")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Natural Gas" unique_id=1570145834]
-layout_mode = 2
-text = "Natural Gas - 3 (75%)"
-
-[node name="Iron" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/Resources" unique_id=883490133]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/Resources/Iron" unique_id=1652435420]
-layout_mode = 2
-texture = ExtResource("43_ol53e")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/Resources/Iron" unique_id=1792253415]
-layout_mode = 2
-text = "Iron - 1 (100%)"
-
-[node name="ProvinceData" type="VBoxContainer" parent="Tooltip/PanelContainer/TabContainer" unique_id=2820149]
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=2128099631]
-layout_mode = 2
-text = "Province"
-
-[node name="HSeparator" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=484257194]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=474889665]
-layout_mode = 2
-text = "City"
-fit_content = true
-
-[node name="HSeparator2" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=679427406]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=639562645]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer" unique_id=560937431]
-layout_mode = 2
-texture = ExtResource("44_ol53e")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer" unique_id=493532421]
-layout_mode = 2
-text = "0/5"
-
-[node name="HSeparator3" type="HSeparator" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=1540364904]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Tooltip/PanelContainer/TabContainer/ProvinceData" unique_id=701895067]
-layout_mode = 2
-
-[node name="Construction" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2074070347]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("45_nprtd")
-expand_mode = 3
-
-[node name="Occupied" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2133239807]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("19_2igyl")
-expand_mode = 3
-
-[node name="Destroyed" type="TextureRect" parent="Tooltip/PanelContainer/TabContainer/ProvinceData/HBoxContainer2" unique_id=2009961403]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("46_s38qe")
-expand_mode = 3
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
