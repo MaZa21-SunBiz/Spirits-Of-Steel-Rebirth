@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://dw7fd2v4viyso" path="res://assets/icons/Espionage/BodySwapping.svg" id="19_0hsfd"]
 [ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="20_a4b5v"]
 [ext_resource type="Texture2D" uid="uid://bpjcaop54twmg" path="res://assets/portraits/YukawaHideki.png" id="21_a4b5v"]
+[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://assets/portraits/UrNammu.png" id="22_58j1v"]
+[ext_resource type="Texture2D" uid="uid://cwuabwgrx1b5k" path="res://assets/icons/cross_element.svg" id="23_ljc8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em7cp"]
 content_margin_top = 8.0
@@ -664,6 +666,98 @@ U-Quantum Theory
 +3 Research
 +2 Nuclear EGR
 +1 Nuclear SCI
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer" unique_id=709480073]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6" unique_id=247517544]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer" unique_id=592992663]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_8sdcd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_em7cp")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Header" unique_id=1343789386]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Header/ScrollContainer" unique_id=1873275423]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Ur-Nammu"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer" unique_id=1398235241]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Image" unique_id=687907612]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("22_58j1v")
+expand_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Image/TextureRect" unique_id=4936454]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ygwr")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=1748453208]
+layout_mode = 2
+texture = ExtResource("23_ljc8x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer" unique_id=819758629]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Icons" unique_id=417963762]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer" unique_id=811092936]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer6/VBoxContainer/Body" unique_id=1079703475]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("8_cke4s")
+theme_override_fonts/bold_font = ExtResource("9_av13s")
+theme_override_fonts/bold_italics_font = ExtResource("10_lpekx")
+theme_override_fonts/italics_font = ExtResource("11_av13s")
+theme_override_fonts/mono_font = ExtResource("8_nt2gs")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Code of Ur-Nammu
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
++0.2 Stability
 [/ul][/code]
 "
 tab_size = 1

@@ -104,6 +104,8 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 			bingo.wait_to_finish()
 		elif scene_type == Type.EDITOR:
 			GameState.current_world.clock.pause()
+		elif _current_type == Type.WORLD:
+			GameState.tooltip.shouldBeVisible = false
 		_current_type = scene_type
 
 	if _loading_screen:

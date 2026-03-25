@@ -1,0 +1,520 @@
+[gd_scene format=3 uid="uid://cmeoh0f6vhsqx"]
+
+[ext_resource type="Texture2D" uid="uid://dwff60ouc8dmw" path="res://assets/portraits/TrofimLysenko.png" id="1_431up"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_ya5dd"]
+[ext_resource type="Texture2D" uid="uid://d3fu8mlb0k686" path="res://assets/flags/fallback_flag.png" id="3_0wesn"]
+[ext_resource type="Texture2D" uid="uid://csf5aq4kgmjw5" path="res://assets/portraits/BenjaminFranklin.png" id="3_wqxvf"]
+[ext_resource type="FontFile" uid="uid://brhh1oue7t6mg" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Regular.ttf" id="4_c3ug3"]
+[ext_resource type="Texture2D" uid="uid://c38l545dqddl4" path="res://starts/soilads shitty mod/assets/flags/csto/neutral_flag.png" id="4_qcgmw"]
+[ext_resource type="FontFile" uid="uid://b8ixegawdqn82" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Bold.ttf" id="5_c3ug3"]
+[ext_resource type="Texture2D" uid="uid://b1urb1rir0k7s" path="res://assets/icons/political_power_icon.svg" id="7_u2wgh"]
+[ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="8_2kayk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyv5k"]
+content_margin_top = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqxvf"]
+content_margin_left = 4.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 2
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_detail = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3ug3"]
+content_margin_right = 4.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_right = 2
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_left = 12
+corner_detail = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2w36"]
+font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2wgh"]
+content_margin_left = 20.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_431up"]
+font_size = 24
+
+[node name="DiplomacyUi" type="CanvasLayer" unique_id=1124602770]
+
+[node name="Relations" type="PanelContainer" parent="." unique_id=1930661966]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_right = 216.0
+offset_bottom = 270.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Relations" unique_id=1803056459]
+layout_mode = 2
+
+[node name="Relations" type="PanelContainer" parent="Relations/VBoxContainer" unique_id=2111224620]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Relations/VBoxContainer/Relations" unique_id=442336995]
+layout_mode = 2
+
+[node name="Self" type="TextureRect" parent="Relations/VBoxContainer/Relations/HBoxContainer" unique_id=1216815017]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_0wesn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Relations" type="RichTextLabel" parent="Relations/VBoxContainer/Relations/HBoxContainer" unique_id=1320624388]
+clip_contents = false
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_c3ug3")
+theme_override_fonts/bold_font = ExtResource("5_c3ug3")
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "200[b]⇹[/b]200"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Other" type="TextureRect" parent="Relations/VBoxContainer/Relations/HBoxContainer" unique_id=1233303136]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("4_qcgmw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Status Changes" type="PanelContainer" parent="Relations/VBoxContainer" unique_id=1033295272]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="Relations/VBoxContainer/Status Changes" unique_id=1993675695]
+layout_mode = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="Enemy" type="VBoxContainer" parent="Relations/VBoxContainer/Status Changes/TabContainer" unique_id=1003126038]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CeasfireContainer" type="HBoxContainer" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy" unique_id=1666853416]
+layout_mode = 2
+
+[node name="Ceasefire" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy/CeasfireContainer" unique_id=745718495]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Ceasefire"
+
+[node name="Duration" type="SpinBox" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy/CeasfireContainer" unique_id=564388138]
+layout_mode = 2
+
+[node name="Armistice" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy" unique_id=1310961763]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Armistice"
+
+[node name="Surrender" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy" unique_id=1203479261]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Surrender"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy" unique_id=643131026]
+layout_mode = 2
+
+[node name="UtiPossidetis" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy/HBoxContainer" unique_id=693365066]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Uti Possidetis"
+
+[node name="WhitePeace" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Enemy/HBoxContainer" unique_id=1321010087]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "White Peace"
+
+[node name="Peace" type="VBoxContainer" parent="Relations/VBoxContainer/Status Changes/TabContainer" unique_id=186199921]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Justify War" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Peace" unique_id=1376187257]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Justify War"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Relations/VBoxContainer/Status Changes/TabContainer/Peace" unique_id=846049944]
+layout_mode = 2
+
+[node name="DeclareWar" type="Button" parent="Relations/VBoxContainer/Status Changes/TabContainer/Peace/HBoxContainer" unique_id=578767582]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Declare War"
+
+[node name="Label" type="Label" parent="Relations/VBoxContainer/Status Changes/TabContainer/Peace/HBoxContainer" unique_id=427884187]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_c3ug3")
+theme_override_font_sizes/font_size = 24
+text = "150"
+
+[node name="TextureRect" type="TextureRect" parent="Relations/VBoxContainer/Status Changes/TabContainer/Peace/HBoxContainer" unique_id=545521502]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_u2wgh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DiplomatSelf" type="PanelContainer" parent="." unique_id=1019692601]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = -280.0
+offset_right = 540.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiplomatSelf" unique_id=1179540504]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="DiplomatSelf/VBoxContainer" unique_id=1060385828]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_ya5dd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_yyv5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DiplomatSelf/VBoxContainer/Header" unique_id=2005751821]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="DiplomatSelf/VBoxContainer/Header/ScrollContainer" unique_id=45872993]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Trofim Lysenko"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Picture" type="PanelContainer" parent="DiplomatSelf/VBoxContainer" unique_id=41753704]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="DiplomatSelf/VBoxContainer/Picture" unique_id=1757586123]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("1_431up")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="DiplomatSelf/VBoxContainer/Picture/TextureRect" unique_id=446305293]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2kayk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer3" type="PanelContainer" parent="DiplomatSelf/VBoxContainer" unique_id=623267008]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="DiplomatSelf/VBoxContainer/PanelContainer3" unique_id=2125438264]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqxvf")
+selected = 1
+item_count = 5
+popup/item_0/text = "Benito Mussolini"
+popup/item_0/id = 0
+popup/item_1/text = "Trofim Lysenko"
+popup/item_1/id = 1
+popup/item_2/text = "Jane Austen"
+popup/item_2/id = 2
+popup/item_3/text = "Chevalier d'Éon"
+popup/item_3/id = 3
+popup/item_4/text = "Yukawa Hideki"
+popup/item_4/id = 4
+
+[node name="DiplomatOther" type="PanelContainer" parent="." unique_id=911097815]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -280.0
+offset_right = -360.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiplomatOther" unique_id=121718684]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="DiplomatOther/VBoxContainer" unique_id=1566912115]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("1_ya5dd")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_yyv5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DiplomatOther/VBoxContainer/Header" unique_id=510568163]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="DiplomatOther/VBoxContainer/Header/ScrollContainer" unique_id=1417964434]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Benjamin Franklin"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Picture" type="PanelContainer" parent="DiplomatOther/VBoxContainer" unique_id=1277645714]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="DiplomatOther/VBoxContainer/Picture" unique_id=474137512]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("3_wqxvf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="DiplomatOther/VBoxContainer/Picture/TextureRect" unique_id=263679480]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2kayk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer3" type="PanelContainer" parent="DiplomatOther/VBoxContainer" unique_id=705238269]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="DiplomatOther/VBoxContainer/PanelContainer3" unique_id=507659629]
+layout_direction = 3
+layout_mode = 2
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_c3ug3")
+selected = 0
+item_count = 1
+popup/item_0/text = "Benjamin Franklin"
+popup/item_0/id = 0
+
+[node name="Self" type="PanelContainer" parent="." unique_id=210355319]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 360.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Self" unique_id=431413389]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="Self/VBoxContainer" unique_id=1284111302]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Self/VBoxContainer/Header" unique_id=388677450]
+layout_mode = 2
+text = "Brazil"
+label_settings = SubResource("LabelSettings_k2w36")
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Options" type="PanelContainer" parent="Self/VBoxContainer" unique_id=642366931]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2wgh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Self/VBoxContainer/Options" unique_id=146328697]
+layout_mode = 2
+vertical_scroll_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Self/VBoxContainer/Options/ScrollContainer" unique_id=1083219224]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer" unique_id=1187523024]
+layout_mode = 2
+columns = 2
+
+[node name="MoneyLabel" type="Label" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/GridContainer" unique_id=2050395928]
+layout_mode = 2
+text = "Money: "
+label_settings = SubResource("LabelSettings_431up")
+
+[node name="MoneyInput" type="SpinBox" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/GridContainer" unique_id=356666702]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusFoldable" type="FoldableContainer" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer" unique_id=362067321]
+layout_mode = 2
+title = "Status"
+
+[node name="MarginContainer" type="MarginContainer" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable" unique_id=1074543581]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer" unique_id=1660937678]
+layout_mode = 2
+
+[node name="Annex" type="Button" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=612112992]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Annex"
+
+[node name="Integrate" type="Button" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=1987291526]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Integrate"
+
+[node name="Puppet" type="Button" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=1944620164]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Puppet
+"
+
+[node name="Free" type="Button" parent="Self/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=212571808]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Free"
+
+[node name="Other" type="PanelContainer" parent="." unique_id=2133875082]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Other" unique_id=1807151345]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="Other/VBoxContainer" unique_id=1037516517]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Other/VBoxContainer/Header" unique_id=1972840580]
+layout_mode = 2
+text = "United States of America"
+label_settings = SubResource("LabelSettings_k2w36")
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Options" type="PanelContainer" parent="Other/VBoxContainer" unique_id=632754159]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_u2wgh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Other/VBoxContainer/Options" unique_id=108469222]
+layout_mode = 2
+vertical_scroll_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Other/VBoxContainer/Options/ScrollContainer" unique_id=1266968739]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer" unique_id=895218236]
+layout_mode = 2
+columns = 2
+
+[node name="MoneyLabel" type="Label" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/GridContainer" unique_id=657130851]
+layout_mode = 2
+text = "Money: "
+label_settings = SubResource("LabelSettings_431up")
+
+[node name="MoneyInput" type="SpinBox" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/GridContainer" unique_id=1634362061]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusFoldable" type="FoldableContainer" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer" unique_id=1190564985]
+layout_mode = 2
+title = "Status"
+
+[node name="MarginContainer" type="MarginContainer" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable" unique_id=888554499]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer" unique_id=97825472]
+layout_mode = 2
+
+[node name="Annex" type="Button" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=997566771]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Annex"
+
+[node name="Integrate" type="Button" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=1317842694]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Integrate"
+
+[node name="Puppet" type="Button" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=1712254412]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Puppet
+"
+
+[node name="Free" type="Button" parent="Other/VBoxContainer/Options/ScrollContainer/VBoxContainer/StatusFoldable/MarginContainer/VBoxContainer" unique_id=1443997109]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Free"

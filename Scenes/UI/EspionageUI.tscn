@@ -1,0 +1,911 @@
+[gd_scene format=3 uid="uid://dulmdcrn3vcfa"]
+
+[ext_resource type="Texture2D" uid="uid://dw7fd2v4viyso" path="res://assets/icons/Espionage/BodySwapping.svg" id="1_nxm7u"]
+[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://assets/portraits/ChevalierDEon.png" id="2_805gj"]
+[ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="3_h3kqk"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="4_jir1k"]
+[ext_resource type="Texture2D" uid="uid://oc1oh5n07y3x" path="res://assets/icons/Espionage/BleedingEye.svg" id="4_w4c1b"]
+[ext_resource type="FontFile" uid="uid://b8ixegawdqn82" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Bold.ttf" id="4_yufhg"]
+[ext_resource type="Texture2D" uid="uid://b7ogp8iuqmc5a" path="res://assets/icons/Espionage/BleedingHeart.svg" id="5_k4t4n"]
+[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://assets/portraits/UrNammu.png" id="5_yufhg"]
+[ext_resource type="Texture2D" uid="uid://c2tseluls703" path="res://assets/icons/Espionage/BleedingWound.svg" id="6_jir1k"]
+[ext_resource type="FontFile" uid="uid://brhh1oue7t6mg" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Regular.ttf" id="7_xdsws"]
+[ext_resource type="Texture2D" uid="uid://byft1gid3fvya" path="res://assets/icons/Espionage/Blindfold.svg" id="7_yufhg"]
+[ext_resource type="Texture2D" uid="uid://b45cdsa3kv5nc" path="res://assets/icons/Espionage/Briefcase.svg" id="8_md4s8"]
+[ext_resource type="Texture2D" uid="uid://csf5aq4kgmjw5" path="res://assets/portraits/BenjaminFranklin.png" id="12_xn0ea"]
+[ext_resource type="Texture2D" uid="uid://qfkxeawpeigd" path="res://assets/icons/man_power_icon.svg" id="13_ein8o"]
+[ext_resource type="Texture2D" uid="uid://cwuabwgrx1b5k" path="res://assets/icons/cross_element.svg" id="13_xdsws"]
+[ext_resource type="Texture2D" uid="uid://coyevu81btx7t" path="res://assets/icons/Crane.svg" id="14_bg50j"]
+[ext_resource type="Texture2D" uid="uid://b6lx0p2mbicou" path="res://assets/icons/Science.svg" id="14_ymoxt"]
+[ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="14_yuq7s"]
+[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="15_bg50j"]
+[ext_resource type="Texture2D" uid="uid://ds5dmwqcbvpdm" path="res://assets/icons/Agreement.svg" id="15_ymoxt"]
+[ext_resource type="Texture2D" uid="uid://omi12cnq6lfo" path="res://assets/icons/stability.svg" id="16_6glsj"]
+[ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="16_ein8o"]
+[ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="17_ymoxt"]
+[ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="18_6glsj"]
+[ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="19_pkh8l"]
+[ext_resource type="FontFile" uid="uid://bb21bdovlldd" path="res://font/Google_Sans/static/GoogleSans-Italic.ttf" id="20_1li1e"]
+[ext_resource type="FontFile" uid="uid://c7d8oibwgja3h" path="res://font/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="21_yjhf1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_805gj"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3kqk"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gy0p"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.05, 0.05, 0.05, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rao00"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxm7u"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4c1b"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkwsf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nxm7u"]
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
+color = Color(0.1, 0.1, 0.1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_044b5"]
+draw_center = false
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_w4c1b"]
+content_margin_left = 4.0
+content_margin_top = 1.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+color = Color(0.1, 0.1, 0.1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4t4n"]
+content_margin_left = 2.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jir1k"]
+bg_color = Color(0.29411766, 0.078431375, 0.09803922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md4s8"]
+content_margin_top = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7ati"]
+content_margin_left = 4.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 2
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_detail = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ein8o"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe2ah"]
+content_margin_top = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nl54"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[node name="EspionageUi" type="CanvasLayer" unique_id=1012777168]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1216588974]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1776081134]
+layout_mode = 2
+
+[node name="MainContent" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=1615623655]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent" unique_id=832885778]
+layout_mode = 2
+
+[node name="Sidebar" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer" unique_id=238105794]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Sidebar" unique_id=1071670961]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Sidebar/VBoxContainer" unique_id=380117703]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Sidebar/VBoxContainer/Header" unique_id=392544890]
+layout_mode = 2
+text = "Actions"
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer" unique_id=2121749735]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/tab_separation = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_805gj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_h3kqk")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_8gy0p")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_rao00")
+current_tab = 1
+
+[node name="Ongoing Operations" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer" unique_id=1045185320]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations" unique_id=1543229919]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer" unique_id=450762263]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer" unique_id=286372089]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nxm7u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header" unique_id=1975680277]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer" unique_id=431893037]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w4c1b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header" unique_id=1206882845]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer" unique_id=421501821]
+layout_mode = 2
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_vkwsf")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer/PanelContainer" unique_id=1798165747]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("1_nxm7u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer" unique_id=1931551279]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_nxm7u")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer" unique_id=529824957]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_044b5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer/PanelContainer2" unique_id=1250866585]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=1752750780]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Russian Palace"
+text_overrun_behavior = 3
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=218635408]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_w4c1b")
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Header/HBoxContainer/PanelContainer2/VBoxContainer" unique_id=486584979]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Chevalier d'Éon"
+vertical_alignment = 2
+text_overrun_behavior = 3
+
+[node name="Picture" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer" unique_id=982507232]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Picture" unique_id=1447791295]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("2_805gj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer/Picture/TextureRect" unique_id=390958149]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h3kqk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Header/VBoxContainer" unique_id=799049691]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_k4t4n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jir1k")
+value = 50.0
+
+[node name="Options" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer" unique_id=2078246411]
+layout_mode = 2
+
+[node name="Abort" type="Button" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Ongoing Operations/PanelContainer/VBoxContainer/Options" unique_id=247951833]
+layout_mode = 2
+text = "Abort"
+
+[node name="Plan Operation" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer" unique_id=13887470]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="DiplomatOther" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation" unique_id=1784400605]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther" unique_id=1594094483]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer" unique_id=665573406]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_yufhg")
+theme_override_font_sizes/font_size = 12
+text = "Infiltration"
+horizontal_alignment = 1
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer" unique_id=917156341]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("4_jir1k")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_md4s8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/Header" unique_id=86295410]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/Header/ScrollContainer" unique_id=1986375229]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Ur-Nammu"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Picture" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer" unique_id=1208788218]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/Picture" unique_id=51657917]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("5_yufhg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/Picture/TextureRect" unique_id=1562457084]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h3kqk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer" unique_id=598108837]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/PanelContainer3" unique_id=1877580326]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7ati")
+selected = 5
+item_count = 6
+popup/item_0/text = "Benito Mussolini"
+popup/item_0/id = 0
+popup/item_1/text = "Trofim Lysenko"
+popup/item_1/id = 1
+popup/item_2/text = "Jane Austen"
+popup/item_2/id = 2
+popup/item_3/text = "Chevalier d'Éon"
+popup/item_3/id = 3
+popup/item_4/text = "Yukawa Hideki"
+popup/item_4/id = 4
+popup/item_5/text = "Ur-Nammu"
+popup/item_5/id = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer" unique_id=531361945]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/PanelContainer" unique_id=356012396]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1269034164]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("7_xdsws")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[table=2]
+[cell]Time:[/cell]
+[cell]20 Days[/cell]
+[cell]Poli:[/cell]
+[cell]20[/cell]
+[cell]Cost:[/cell]
+[cell]2.8k[/cell]
+[/table]"
+fit_content = true
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/DiplomatOther/VBoxContainer/PanelContainer/VBoxContainer" unique_id=241106450]
+layout_mode = 2
+text = "Authorize"
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation" unique_id=1385770812]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/tab_separation = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_805gj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_h3kqk")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_8gy0p")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_rao00")
+current_tab = 1
+tab_0/icon = ExtResource("4_w4c1b")
+tab_1/icon = ExtResource("5_k4t4n")
+tab_2/icon = ExtResource("6_jir1k")
+tab_3/icon = ExtResource("7_yufhg")
+tab_4/icon = ExtResource("1_nxm7u")
+tab_5/icon = ExtResource("8_md4s8")
+
+[node name="Sabotage" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=786149374]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage" unique_id=267028435]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer" unique_id=1894155175]
+layout_mode = 2
+
+[node name="Country" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer" unique_id=496948260]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Country" unique_id=1327464176]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=1628975613]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Polity"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=46802115]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 7
+item_0/text = "Brazil"
+item_1/text = "France"
+item_2/text = "Germany"
+item_3/text = "India"
+item_4/text = "Peru"
+item_5/text = "Russia"
+item_6/text = "United States of America"
+
+[node name="Target" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer" unique_id=1855111910]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ein8o")
+
+[node name="TabContainer2" type="TabContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target" unique_id=283678028]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/tab_separation = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_805gj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_h3kqk")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_8gy0p")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_rao00")
+current_tab = 0
+tab_0/icon = ExtResource("13_ein8o")
+tab_1/icon = ExtResource("14_ymoxt")
+tab_2/icon = ExtResource("15_ymoxt")
+tab_3/icon = ExtResource("16_6glsj")
+tab_4/icon = ExtResource("14_bg50j")
+
+[node name="Figure" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=2051210215]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2/Figure" unique_id=1681081793]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Research" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=1937530665]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2/Research" unique_id=1891188340]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Decision" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=2127667034]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2/Decision" unique_id=4483991]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Provinces" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=877868784]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2/Provinces" unique_id=1798205561]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Construction" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=2031194189]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Sabotage/PanelContainer/VBoxContainer/Target/TabContainer2/Construction" unique_id=915464324]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Influence" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=711619654]
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence" unique_id=1394744715]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer" unique_id=764712785]
+layout_mode = 2
+
+[node name="Country" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer" unique_id=1868121376]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Country" unique_id=1232661906]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Target"
+horizontal_alignment = 1
+
+[node name="Target" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer" unique_id=811425913]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ein8o")
+
+[node name="TabContainer2" type="TabContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target" unique_id=1404961381]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/tab_separation = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_805gj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_h3kqk")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_8gy0p")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_rao00")
+current_tab = 0
+tab_0/icon = ExtResource("13_ein8o")
+tab_1/icon = ExtResource("14_ymoxt")
+tab_2/icon = ExtResource("15_ymoxt")
+tab_3/icon = ExtResource("16_6glsj")
+tab_4/icon = ExtResource("14_bg50j")
+
+[node name="Figure" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=254433928]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2/Figure" unique_id=1338404714]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Research" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=265227186]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2/Research" unique_id=877482692]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Decision" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=1263821021]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2/Decision" unique_id=1841250182]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Provinces" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=175970285]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2/Provinces" unique_id=26359516]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Construction" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2" unique_id=879563991]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+metadata/_tab_name = ""
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Influence/PanelContainer/VBoxContainer/Target/TabContainer2/Construction" unique_id=1275028069]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="Assasination" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=641885825]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination" unique_id=712589190]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer" unique_id=1589019627]
+layout_mode = 2
+
+[node name="Country" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer" unique_id=1032913004]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Country" unique_id=384116990]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=683945796]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Polity"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=2041697705]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 7
+item_0/text = "Brazil"
+item_1/text = "France"
+item_2/text = "Germany"
+item_3/text = "India"
+item_4/text = "Peru"
+item_5/text = "Russia"
+item_6/text = "United States of America"
+
+[node name="Target" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer" unique_id=1544836734]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Target" unique_id=991655600]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Target/VBoxContainer" unique_id=1380254735]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Figure"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer/VBoxContainer/Target/VBoxContainer" unique_id=1432883301]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Benjamin Franklin"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination" unique_id=713454582]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2" unique_id=309610201]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer" unique_id=558356167]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("4_jir1k")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_fe2ah")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Header" unique_id=637916351]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Header/ScrollContainer" unique_id=477927588]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Benjamin Franklin"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer" unique_id=1750834653]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Image" unique_id=2110646432]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("12_xn0ea")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Image/TextureRect" unique_id=1252673196]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 28.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nl54")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Image/TextureRect/PanelContainer" unique_id=1693806653]
+layout_mode = 2
+texture = ExtResource("13_xdsws")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icons" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer" unique_id=1766517363]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Icons" unique_id=156098753]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=397164393]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("14_yuq7s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=580075233]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("6_jir1k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=1950560756]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("15_bg50j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Icons/HFlowContainer" unique_id=48567978]
+visible = false
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("16_ein8o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Body" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer" unique_id=1767227736]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Assasination/PanelContainer2/VBoxContainer/Body" unique_id=310602443]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("17_ymoxt")
+theme_override_fonts/bold_font = ExtResource("18_6glsj")
+theme_override_fonts/bold_italics_font = ExtResource("19_pkh8l")
+theme_override_fonts/italics_font = ExtResource("20_1li1e")
+theme_override_fonts/mono_font = ExtResource("21_yjhf1")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Poor Richard
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
++3 Electric SCI
++3 Electric EGR
++2 Diplomacy
++0.1 Stability
+[/ul][/code]
+"
+tab_size = 1
+
+[node name="CounterIntelligence" type="Control" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=1112272709]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = ""
+
+[node name="Infiltration" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=113831447]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+metadata/_tab_name = ""
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration" unique_id=1373520321]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration/PanelContainer" unique_id=1651033360]
+layout_mode = 2
+
+[node name="Country" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration/PanelContainer/VBoxContainer" unique_id=1925904910]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration/PanelContainer/VBoxContainer/Country" unique_id=484858203]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=1557088921]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Polity"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer/Infiltration/PanelContainer/VBoxContainer/Country/VBoxContainer" unique_id=320384701]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 7
+item_0/text = "Brazil"
+item_1/text = "France"
+item_2/text = "Germany"
+item_3/text = "India"
+item_4/text = "Peru"
+item_5/text = "Russia"
+item_6/text = "United States of America"
+
+[node name="Bribery" type="Control" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/TabContainer/Plan Operation/TabContainer" unique_id=2026349275]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+metadata/_tab_name = ""
+
+[node name="Sidebar" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=774131630]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/Sidebar" unique_id=130182522]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer" unique_id=832599037]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer/PanelContainer" unique_id=195159048]
+layout_mode = 2
+text = "Espionage"
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer" unique_id=982747312]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Baxk"

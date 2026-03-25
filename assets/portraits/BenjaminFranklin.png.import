@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5dmwqcbvpdm"
-path="res://.godot/imported/Agreement.svg-450963be275b09f7144cd7c9cde21c21.ctex"
+uid="uid://csf5aq4kgmjw5"
+path="res://.godot/imported/BenjaminFranklin.png-57efeca1ad89cad334f7774ed2b6b75c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Agreement.svg"
-dest_files=["res://.godot/imported/Agreement.svg-450963be275b09f7144cd7c9cde21c21.ctex"]
+source_file="res://assets/portraits/BenjaminFranklin.png"
+dest_files=["res://.godot/imported/BenjaminFranklin.png-57efeca1ad89cad334f7774ed2b6b75c.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=4.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

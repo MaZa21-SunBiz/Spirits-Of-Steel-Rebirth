@@ -151,7 +151,7 @@ theme = ExtResource("2_5xoin")
 [node name="StatusLabel" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1239453382]
 layout_mode = 2
 theme = ExtResource("2_5xoin")
-text = "Selected PID: None"
+text = "Selected: None"
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1740113436]
 layout_mode = 2
@@ -863,6 +863,19 @@ texture_normal = ExtResource("4_kdxsy")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="PanelContainer4" type="PanelContainer" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=563185697]
+layout_mode = 2
+
+[node name="MultiSelect" type="TextureButton" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer4" unique_id=1055449415]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Multi Select Tool"
+focus_mode = 0
+theme = ExtResource("2_5xoin")
+texture_normal = ExtResource("8_id73f")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Faction" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=222878009]
 visible = false
 layout_mode = 2
@@ -1107,7 +1120,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 226.0
 offset_bottom = 356.0
-current_tab = 2
+current_tab = 1
 tabs_visible = false
 tab_focus_mode = 0
 
@@ -1159,7 +1172,6 @@ size_flags_vertical = 8
 text = "Create Faction"
 
 [node name="CreatePolity" type="VBoxContainer" parent="PopupPanel/TabContainer" unique_id=596977000]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1293,6 +1305,7 @@ size_flags_vertical = 8
 text = "Create Polity"
 
 [node name="CreateMember" type="VBoxContainer" parent="PopupPanel/TabContainer" unique_id=1043578466]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1454,6 +1467,7 @@ text = "Create Resource"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnApply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnExport" to="." method="_on_export_pressed"]
 [connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer2/FactionPaint" to="." method="m_PaintFactionTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]

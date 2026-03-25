@@ -135,7 +135,11 @@ func _handle_click(_screenPos: Vector2) -> void:
 	if hovered_pid > 1:
 		match currentMode:
 			Mode.PROVINCE:
-				select_province(hovered_pid)
+				match currentTool:
+					Tool.NONE:
+						select_province(hovered_pid)
+					Tool.MULTI_SELECT:
+						MultiSelectProvince(hovered_pid)
 			Mode.FACTION:
 				match currentTool:
 					Tool.NONE:
@@ -158,13 +162,12 @@ func _handle_click(_screenPos: Vector2) -> void:
 							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
 					Tool.MULTI_SELECT:
-						if MapManager.province_objects[hovered_pid].country != "Sea":
-							if hovered_pid in multiSelectPID:
-								multiSelectPID.erase(hovered_pid)
-								MapManager.ResetProvinceColor(hovered_pid)
-							else:
-								multiSelectPID.push_back(hovered_pid)
-								MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+						if hovered_pid in multiSelectPID:
+							multiSelectPID.erase(hovered_pid)
+							MapManager.ResetProvinceColor(hovered_pid)
+						else:
+							multiSelectPID.push_back(hovered_pid)
+							MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
 			Mode.BIOME:
 				match currentTool:
 					Tool.NONE:
@@ -189,11 +192,17 @@ func select_province(pid: int) -> void:
 	status_label.text = "Selected PID: %d" % [pid]
 
 	# Set Fields
+	provinceName.editable = true
 	provinceName.text = prov.name
+	input_country.editable = true
 	input_country.text = prov.country
+	inputOccupier.editable = true
 	inputOccupier.text = prov.occupier
+	input_city.editable = true
 	input_city.text = prov.city
+	input_gdp.editable = true
 	input_gdp.value = prov.gdp
+	input_claims.editable = true
 	input_claims.text = ", ".join(prov.claims)
 	
 	for child in provincePopulationList.get_children():
@@ -239,6 +248,122 @@ func select_province(pid: int) -> void:
 				var itemIndex: int = IndexOfText(biomesItemList, prov.biome)
 				biomesItemList.select(itemIndex)
 				biomesItemList.item_selected.emit(itemIndex)
+
+func MultiSelectProvince(pid: int) -> void:
+	if hovered_pid in multiSelectPID:
+		multiSelectPID.erase(hovered_pid)
+		MapManager.ResetProvinceColor(hovered_pid)
+	else:
+		multiSelectPID.push_back(hovered_pid)
+		MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+
+	#var color_str = _color_to_rgb_string(prov.r_color) if prov.r_color else "Unknown"
+	status_label.text = "Selected: %d" % [multiSelectPID.size()]
+
+	for child in provincePopulationList.get_children():
+		child.queue_free()
+	
+	for child in provinceResourcesList.get_children():
+		child.queue_free()
+
+	# Set Fields
+	match multiSelectPID.size():
+		0:
+			provinceName.editable = false
+			provinceName.text = "" 
+			input_country.editable = false
+			input_country.text = ""
+			inputOccupier.editable = false
+			inputOccupier.text = ""
+			input_city.editable = false
+			input_city.text = ""
+			input_gdp.editable = false
+			input_gdp.value = 0
+			input_claims.editable = false
+			input_claims.text = ""
+		1:
+			var prov: Province = MapManager.province_objects.get(multiSelectPID[0])
+			if not prov:
+				return
+			provinceName.editable = true
+			provinceName.text = prov.name
+			input_country.editable = true
+			input_country.text = prov.country
+			inputOccupier.editable = true
+			inputOccupier.text = prov.occupier
+			input_city.editable = true
+			input_city.text = prov.city
+			input_gdp.editable = true
+			input_gdp.value = prov.gdp
+			input_claims.editable = true
+			input_claims.text = ", ".join(prov.claims)
+			
+			for population: PopulationData in prov.populations:
+				var populationEntry: PanelContainer = provincePopulationTemplate.duplicate()
+				populationEntry.visible = true
+				populationEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func():
+					prov.populations.erase(population)
+					populationEntry.queue_free()
+				)
+				populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text = population.ethnicity
+				populationEntry.get_node("MarginContainer/HBoxContainer/InputEthName").text_submitted.connect(func(a_ethnicity: String): population.ethnicity = a_ethnicity)
+				populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value = population.amount
+				populationEntry.get_node("MarginContainer/HBoxContainer/InputPop").value_changed.connect(func(a_amount: float): population.amount = a_amount)
+				provincePopulationList.add_child(populationEntry)
+			for resource: ResourceNode in prov.resources:
+				var resourceEntry: PanelContainer = provinceResourcesTemplate.duplicate()
+				resourceEntry.visible = true
+				resourceEntry.get_node("MarginContainer/HBoxContainer/Button").pressed.connect(func():
+					prov.resources.erase(resource)
+					resourceEntry.queue_free()
+				)
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text = resource.type
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputResource").text_submitted.connect(func(a_type: String): resource.type = a_type)
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value = resource.amount
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputAmount").value_changed.connect(func(a_amount: float): resource.amount = a_amount)
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value = resource.amount
+				resourceEntry.get_node("MarginContainer/HBoxContainer/InputQuality").value_changed.connect(func(a_quality: float): resource.quality = a_quality)
+				provinceResourcesList.add_child(resourceEntry)
+		_:
+			var prov: Province = MapManager.province_objects.get(multiSelectPID[0])
+			if not prov:
+				return
+			provinceName.editable = false
+			provinceName.text = "..." 
+			
+			var holdCountry: bool = true
+			var holdOccupier: bool = true
+			var holdGDP: bool = true
+			
+			for iPID: int in multiSelectPID:
+				holdCountry = holdCountry && prov.country == MapManager.province_objects[iPID].country
+				holdOccupier = holdOccupier && prov.occupier == MapManager.province_objects[iPID].occupier
+				holdGDP = holdGDP && prov.gdp == MapManager.province_objects[iPID].gdp
+				if !holdCountry && !holdOccupier && !holdGDP:
+					break
+			
+			input_country.editable = true
+			input_country.text = prov.country if holdCountry else "..."
+			inputOccupier.editable = true
+			inputOccupier.text = prov.occupier if holdOccupier else "..."
+			input_city.editable = false
+			input_city.text = "..."
+			input_gdp.editable = true
+			input_gdp.value = prov.gdp if holdGDP else 0
+			input_claims.editable = false
+			input_claims.text = "..."
+	
+	#match currentMode:
+	#	Mode.POLITY:
+	#		if prov.country != "Sea":
+	#			var itemIndex: int = IndexOfText(politiesItemList, prov.country)
+	#			politiesItemList.select(itemIndex)
+	#			politiesItemList.item_selected.emit(itemIndex)
+	#	Mode.BIOME:
+	#		if !prov.biome.is_empty():
+	#			var itemIndex: int = IndexOfText(biomesItemList, prov.biome)
+	#			biomesItemList.select(itemIndex)
+	#			biomesItemList.item_selected.emit(itemIndex)
 
 func _on_apply_pressed() -> void:
 	return
@@ -431,8 +556,17 @@ func m_OnCitySubmitted(new_text: String) -> void:
 		MapManager.province_objects[selected_pid].city = new_text
 
 func m_OnProvinceGDPChanged(value: float) -> void:
-	if selected_pid in MapManager.province_objects:
-		MapManager.province_objects[selected_pid].gdp = value
+	print("Value")
+	match currentTool:
+		Tool.NONE:
+			print(selected_pid)
+			if selected_pid in MapManager.province_objects:
+				MapManager.province_objects[selected_pid].gdp = value
+		Tool.MULTI_SELECT:
+			print(multiSelectPID)
+			for pid: int in multiSelectPID:
+				if pid in MapManager.province_objects:
+					MapManager.province_objects[pid].gdp = value
 
 func m_OnColorChanged(color: Color) -> void:
 	if selectedCountry in CountryManager.countries:
@@ -449,16 +583,34 @@ func m_OnProvinceNameSubmitted(new_text: String) -> void:
 		MapManager.province_objects[selected_pid].name = new_text
 
 func m_OnProvinceOwnerSubmitted(new_text: String) -> void:
-	if selected_pid in MapManager.province_objects && CountryManager.countries.has(new_text):
-		#if (new_text == MapManager.province_objects[selected_pid].occupier):
-		MapManager.transfer_ownership(selected_pid, new_text)
+	match currentTool:
+		Tool.NONE:
+			if selected_pid in MapManager.province_objects && CountryManager.countries.has(new_text):
+				#if (new_text == MapManager.province_objects[selected_pid].occupier):
+				MapManager.transfer_ownership(selected_pid, new_text)
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				if pid in MapManager.province_objects && CountryManager.countries.has(new_text):
+					#if (new_text == MapManager.province_objects[selected_pid].occupier):
+					MapManager.transfer_ownership(pid, new_text)
+	
 
 func m_OnProvinceOccupierSubmitted(new_text: String) -> void:
-	if selected_pid in MapManager.province_objects:
-		if new_text.is_empty():
-			MapManager.DeoccupyProvince(selected_pid)
-		else:
-			MapManager.OccupyProvince(selected_pid, new_text)
+	match currentTool:
+		Tool.NONE:
+			if selected_pid in MapManager.province_objects:
+				if new_text.is_empty():
+					MapManager.DeoccupyProvince(selected_pid)
+				else:
+					MapManager.OccupyProvince(selected_pid, new_text)
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				if pid in MapManager.province_objects:
+					if new_text.is_empty():
+						MapManager.DeoccupyProvince(pid)
+					else:
+						MapManager.OccupyProvince(pid, new_text)
+	
 
 func m_OnPolityNameSubmitted(new_text: String) -> void:
 	if selectedCountry in CountryManager.countries:
