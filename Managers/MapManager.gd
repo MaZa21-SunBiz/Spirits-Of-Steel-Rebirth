@@ -1358,7 +1358,7 @@ func annex_country(annexer: String, annexee: String) -> void:
 		print("MapManager: No provinces found for ", annexee)
 		return
 
-	for pid in provinces_to_transfer:
+	for pid in provinces_to_transfer.duplicate():
 		transfer_ownership(pid, annexer)
 
 	#playerobj.reset_manpower()
