@@ -1,9 +1,27 @@
 extends Node
 
-var music_player: AudioStreamPlayer
-var sfx_players: Array[AudioStreamPlayer] = []
-
 var current_track_type: int = -1
+
+var music_player: AudioStreamPlayer:
+	get:
+		var player = get_node_or_null("/root/Main/Music") as AudioStreamPlayer
+		if player and not player.finished.is_connected(_on_music_finished):
+			player.finished.connect(_on_music_finished)
+		return player
+
+var sfx_players: Array[AudioStreamPlayer]:
+	get:
+		var players: Array[AudioStreamPlayer] = []
+		var sfx_node = get_node_or_null("/root/Main/sfx")
+		if not sfx_node:
+			sfx_node = get_node_or_null("/root/Main/SFX")
+		if sfx_node is AudioStreamPlayer:
+			players.append(sfx_node)
+		if sfx_node:
+			for child in sfx_node.get_children():
+				if child is AudioStreamPlayer:
+					players.append(child)
+		return players
 
 # --- Enums ---
 enum SFX {
@@ -20,7 +38,7 @@ enum SFX {
 	CLAPPING
 }
 
-enum MUSIC { MAIN_THEME, BATTLE_THEME }
+enum MUSIC {MAIN_THEME, BATTLE_THEME}
 
 const default_music_path = "res://assets/music/"
 const custom_music_path = "res://radios/"
@@ -72,18 +90,7 @@ func _ready():
 			_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
 			_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
 
-	music_player = AudioStreamPlayer.new()
-	music_player.bus = "Music"
-	music_player.finished.connect(_on_music_finished)
-	add_child(music_player)
-
-	for i in 8:
-		var p = AudioStreamPlayer.new()
-		p.bus = "SFX"
-		add_child(p)
-		sfx_players.append(p)
-
-	play_music(MUSIC.MAIN_THEME)
+	call_deferred("play_music", MUSIC.MAIN_THEME)
 
 func _load_music_folder(path: String, radio: String, track_enum: int):
 	path += radio
@@ -118,7 +125,11 @@ func play_music(track: int):
 	if not music_map.has(track) or music_map[track].is_empty():
 		return
 
-	if current_track_type == track and music_player.playing:
+	var m_player = music_player
+	if not m_player:
+		return
+
+	if current_track_type == track and m_player.playing:
 		return
 
 	# Store as last track if it's a valid standard track
@@ -139,9 +150,9 @@ func play_music(track: int):
 	var song = songs.pick_random()
 	if GameState.game_ui and GameState.game_ui.now_playing:
 		GameState.game_ui.now_playing.text = song.resource_path.get_file()
-	music_player.stream = song
-	music_player.volume_db = linear_to_db(music_volume_map.get(track, 1.0))
-	music_player.play()
+	m_player.stream = song
+	m_player.volume_db = linear_to_db(music_volume_map.get(track, 0.5) * SettingsManager.settings["music_volume"])
+	m_player.play()
 
 
 func play_custom_file(full_path: String):
@@ -154,10 +165,12 @@ func play_custom_file(full_path: String):
 	
 	var stream = load(full_path)
 	if stream:
-		locking_custom_track = true
-		music_player.stream = stream
-		music_player.volume_db = linear_to_db(1.0) # Default volume for events
-		music_player.play()
+		var m_player = music_player
+		if m_player:
+			locking_custom_track = true
+			m_player.stream = stream
+			m_player.volume_db = linear_to_db(1.0) # Default volume for events
+			m_player.play()
 
 
 func resume_last_track():
@@ -179,22 +192,28 @@ func _on_music_finished():
 
 
 func fade_out_music(duration: float = 1.0):
+	var m_player = music_player
+	if not m_player:
+		return
 	var tween = create_tween()
-	tween.tween_property(music_player, "volume_db", -80.0, duration)
+	tween.tween_property(m_player, "volume_db", -80.0, duration)
 	await tween.finished
-	music_player.stop()
+	m_player.stop()
 	current_track_type = -1
 
 
 func play_sfx(sfx: int):
 	if sfx not in sfx_map:
 		return
-	var player = sfx_players.filter(func(p): return not p.playing).front()
+	var players = sfx_players
+	if players.is_empty():
+		return
+	var player = players.filter(func(p): return not p.playing).front()
 	if not player:
-		player = sfx_players[0]
+		player = players[0]
 
 	player.stream = sfx_map[sfx]
-	player.volume_db = linear_to_db(sfx_volume_map.get(sfx, 1.0))
+	player.volume_db = linear_to_db(sfx_volume_map.get(sfx, 1.0) * SettingsManager.settings["sfx_volume"])
 	player.play()
 
 
@@ -204,12 +223,13 @@ func stop_all_sfx():
 
 
 func set_music_volume(volume_linear: float):
-	music_player.volume_db = linear_to_db(volume_linear)
+	if music_player:
+		music_player.volume_db = linear_to_db(music_volume_map.get(current_track_type, 0.5) * volume_linear)
 
 
-func set_sfx_volume(volume_linear: float):
-	for p in sfx_players:
-		p.volume_db = linear_to_db(volume_linear)
+func set_sfx_volume(_volume_linear: float):
+	pass
 		
 func _toggle_pause() -> void:
-	music_player.playing = !music_player.playing
+	if music_player:
+		music_player.playing = !music_player.playing

@@ -3,13 +3,13 @@
   "daynight_smoothness": 0.03,
   "debug_mode": false,
   "map_effects": true,
-  "music_volume": 0.0,
+  "music_volume": 0.39,
   "province_borders": 0.09,
   "radios": [
     "default"
   ],
   "scanlines": 0.04,
-  "sfx_volume": 0.14,
+  "sfx_volume": 0.11,
   "ui_dirt": 0.39,
   "ui_lower": 0.08,
   "ui_upper": 0.64,

@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://coyevu81btx7t" path="res://assets/icons/Crane.svg" id="14_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="15_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://bbk814o0rut6j" path="res://assets/icons/AncientRuins.svg" id="16_k12tt"]
+[ext_resource type="AudioStream" uid="uid://j451tukrjdxb" path="res://assets/music/default/gameMusic/Miyasan_Miyasan.mp3" id="18_b3802"]
+[ext_resource type="AudioStream" uid="uid://b12r5o5kvt1fc" path="res://assets/music/default/gameMusic/Les_Terres_Saintes.mp3" id="18_hibaj"]
+[ext_resource type="AudioStream" uid="uid://wdhwca5pctm2" path="res://assets/music/default/gameMusic/Which_Side_Are_You_On.mp3" id="19_pdsj5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hptm8"]
 
@@ -47,6 +50,45 @@ shader_parameter/sea_pixel_size = 2.0
 shader_parameter/sea_height_steps = 6.0
 shader_parameter/ocean_offset = Vector2(0, 0)
 shader_parameter/internal_border_darkness = 0.82
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ee4r6"]
+stream_count = 1
+stream_0 = ExtResource("18_hibaj")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_gt3je"]
+stream_count = 1
+stream_0 = ExtResource("19_pdsj5")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_h1bgf"]
+shuffle = true
+loop = false
+stream_count = 2
+stream_0 = SubResource("AudioStreamPlaylist_ee4r6")
+stream_1 = SubResource("AudioStreamPlaylist_gt3je")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_b3802"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_b3802"]
+clip_count = 3
+clip_0/name = &"Main"
+clip_0/stream = SubResource("AudioStreamPlaylist_h1bgf")
+clip_0/auto_advance = 0
+clip_1/name = &"War"
+clip_1/stream = SubResource("AudioStreamPlaylist_b3802")
+clip_1/auto_advance = 0
+clip_2/name = &"fish"
+clip_2/stream = ExtResource("18_b3802")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_fevyy"]
 
 [node name="Main" type="Node2D" unique_id=567585559]
 script = ExtResource("1_k12tt")
@@ -208,3 +250,14 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 texture = ExtResource("16_k12tt")
 expand_mode = 3
+
+[node name="Audio" type="Node" parent="." unique_id=456205589]
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=793967847]
+stream = SubResource("AudioStreamInteractive_b3802")
+autoplay = true
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer" parent="Audio" unique_id=231217144]
+stream = SubResource("AudioStreamSynchronized_fevyy")
+bus = &"SFX"

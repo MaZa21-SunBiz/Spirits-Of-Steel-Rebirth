@@ -171,7 +171,6 @@ func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictiona
 	#	if _try_load_cached_data():
 	#		print("MapManager: Loaded cached data with Province Objects.")
 	#		return
-
 	Initialize(region_map, a_provinceData, a_progress)
 
 	var map_data := MapData.new()
@@ -370,8 +369,8 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 
 	if pid != last_hovered_pid:
 		if GameState.selectingCountry:
-			if (last_hovered_pid in province_objects 
-				&& pid in province_objects 
+			if (last_hovered_pid in province_objects
+				&& pid in province_objects
 				&& province_objects[last_hovered_pid].country == province_objects[pid].country):
 				pass
 			else:
@@ -952,7 +951,7 @@ func ShowInfrastructureMap() -> void:
 			elif infra == province_objects[pid].maxInfrastructure:
 				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.BLUE * 0.5)
 			else:
-				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW  * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure))
+				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure))
 
 	state_color_texture.update(state_color_image)
 	print("MapManager: Infrastructure View Updated.")
@@ -1335,17 +1334,18 @@ func get_cities_province_country(country_name) -> Array:
 func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> PackedInt32Array:
 	var specific_borders: PackedInt32Array = []
 	
-	for prov_id: int in country_to_provinces.get(country_name, []):
-		for neighbor_id: int in province_objects.get(prov_id).neighbors:
-			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() == enemy_name:
-				specific_borders.append(prov_id)
-				break
+	for allowed_country in CountryManager.countries[country_name].allowedCountries:
+		for prov_id: int in country_to_provinces.get(allowed_country, []):
+			# NOTE(soi): make this better  in c# or smthn T_T
+			for neighbor_id: int in province_objects.get(prov_id).neighbors:
+				if MapManager.province_objects[neighbor_id].GetFunctionalOwner() == enemy_name:
+					specific_borders.append(prov_id)
+					break
 
 	return specific_borders
 
 func annex_country(annexer: String, annexee: String) -> void:
 	#var playerobj = CountryManager.player_country
-
 	for troop: TroopData in TroopManager.get_troops_for_country(annexee):
 		TroopManager.remove_troop(troop)
 		

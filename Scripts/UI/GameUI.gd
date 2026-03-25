@@ -66,9 +66,9 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 
 
 # --- BuildingDesigner ---
-@onready var building_designer: HBoxContainer = $BuildingDesigner/VBoxContainer/HBoxContainer
-@onready var building_functions: VBoxContainer = building_designer.get_node("Functions/VBoxContainer2/VBoxContainer")
-@onready var building_name: TextEdit = building_designer.get_node("Stats/HBoxContainer/TextEdit")
+@onready var building_designer: PanelContainer = $BuildingDesigner
+@onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")
+@onready var building_name: TextEdit = building_designer.get_node("VBoxContainer/HBoxContainer/Stats/HBoxContainer/TextEdit")
 
 
 # NOTE(soi): store this somewhere better

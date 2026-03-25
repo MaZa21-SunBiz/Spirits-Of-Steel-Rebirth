@@ -6,7 +6,8 @@ const TICK_RATE_WAR := 2  # Think fast during war
 const SATURATION_IDEAL := 1.0  # Target: At least 1 division equivalent per province
 const SATURATION_MAX := 4.0  # Avoid overstacking; redistribute if exceeding
 const DISTANCE_PENALTY := 0.1  # Reduce score per unit distance to discourage far moves
-const MIN_DIVISIONS_PER_SPLIT := 1  # Smallest split size
+# NOTE(soi): why tf was this 1?!?!??
+const MIN_DIVISIONS_PER_SPLIT := 10  # Smallest split size
 const MAX_SPLITS_PER_TROOP := 10  # Limit splits to prevent micro-management overhead
 
 # --- AI DIPLOMACY/WAR LOGIC---
