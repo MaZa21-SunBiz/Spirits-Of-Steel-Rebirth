@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://xcp5bh3ebtnm"]
 
-[ext_resource type="Script" path="res://Scripts/UI/LoadingScreen.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cjc32l8emagnw" path="res://Scripts/UI/LoadingScreen.gd" id="1_script"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_m6rkq"]
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="2_qjj4j"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="2_theme"]
 [ext_resource type="Texture2D" uid="uid://dfsodrjldvwq5" path="res://assets/ui/ariect2.png" id="3_68uam"]
-[ext_resource type="Shader" path="res://Scenes/conveyorpet.gdshader" id="4_68uam"]
+[ext_resource type="Shader" uid="uid://di44vounul5l7" path="res://Scenes/conveyorpet.gdshader" id="4_68uam"]
 [ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="6_suj04"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="7_634pj"]
 [ext_resource type="Texture2D" uid="uid://07witxacco24" path="res://starts/soilads shitty mod/assets/loading/load_1.png" id="7_e27xy"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://do46cph7hyeqe" path="res://starts/soilads shitty mod/assets/loading/load_6.png" id="10_aivxv"]
 [ext_resource type="Texture2D" uid="uid://drfhnwyayncll" path="res://starts/soilads shitty mod/assets/loading/load_5.png" id="10_e27xy"]
 [ext_resource type="Texture2D" uid="uid://bwj3bsf2f8ne" path="res://starts/soilads shitty mod/assets/loading/load_7.png" id="11_cr3uy"]
-[ext_resource type="Texture2D" uid="uid://c0ph447xe7bcy" path="res://starts/ModernDay/assets/loading/load_3.png" id="11_rmj2b"]
+[ext_resource type="Texture2D" uid="uid://c0ph447xe7bcy" path="res://starts/soilads shitty mod/assets/loading/load_3.png" id="11_rmj2b"]
 [ext_resource type="Texture2D" uid="uid://behj8wgd68j2u" path="res://starts/soilads shitty mod/assets/loading/load_9.png" id="12_wqgu2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6p6t7"]
@@ -89,8 +89,10 @@ material = SubResource("ShaderMaterial_jepyk")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 17.0
-offset_bottom = 57.0
+offset_left = -30.0
+offset_top = 11.0
+offset_right = -30.0
+offset_bottom = 51.0
 grow_horizontal = 2
 texture = ExtResource("7_634pj")
 expand_mode = 1

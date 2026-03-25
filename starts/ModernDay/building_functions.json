@@ -34,7 +34,7 @@
 	"Storage": {
 		"reqs_effects": {
 			"type": "storage",
-			"val":  42
+			"val":  {"Iron": 2}
 		},
 		"on_funcional": {},
 		"on_nonfuncional": {}
