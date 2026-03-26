@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bepyrjnhb4vvx"
-path="res://.godot/imported/pinkman.png-5b66f43d7555fc448a4ec608c4c1ccb0.ctex"
+path="res://.godot/imported/pinkman.png-4601384de7efaf825e4c0443d7c77dfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/soilads shitty mod/assets/plans/pinkman.png"
-dest_files=["res://.godot/imported/pinkman.png-5b66f43d7555fc448a4ec608c4c1ccb0.ctex"]
+source_file="res://starts/SoiladShittyMod/assets/plans/pinkman.png"
+dest_files=["res://.godot/imported/pinkman.png-4601384de7efaf825e4c0443d7c77dfa.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do46cph7hyeqe"
-path="res://.godot/imported/load_6.png-711562fde2b72b8bc82e8ef7b6e399a9.ctex"
+path="res://.godot/imported/load_6.png-624ae7f86875abf4d27a757d100b0ba8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay(but with more provinces but i didnt add resources to this so ehhhhh)/assets/loading/load_6.png"
-dest_files=["res://.godot/imported/load_6.png-711562fde2b72b8bc82e8ef7b6e399a9.ctex"]
+source_file="res://starts/ModernDayBig/assets/loading/load_6.png"
+dest_files=["res://.godot/imported/load_6.png-624ae7f86875abf4d27a757d100b0ba8.ctex"]
 
 [params]
 

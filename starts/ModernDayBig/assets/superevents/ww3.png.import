@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blct3yrl4h02y"
-path="res://.godot/imported/ww3.png-4aecca203e3e0c98a0e5d93a7de1cbc5.ctex"
+path="res://.godot/imported/ww3.png-2ef813bc58c7096300ad69baaa57aec9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay(but with more provinces but i didnt add resources to this so ehhhhh)/assets/superevents/ww3.png"
-dest_files=["res://.godot/imported/ww3.png-4aecca203e3e0c98a0e5d93a7de1cbc5.ctex"]
+source_file="res://starts/ModernDayBig/assets/superevents/ww3.png"
+dest_files=["res://.godot/imported/ww3.png-2ef813bc58c7096300ad69baaa57aec9.ctex"]
 
 [params]
 

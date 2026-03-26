@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dok5614ac4gl4"
-path="res://.godot/imported/load_2.png-b2a0ca6f11fe9fd29981948b2c95565c.ctex"
+path="res://.godot/imported/load_2.png-d71f9a62a7ef33554dcf8d8e77f927af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/soilads shitty mod/assets/loading/load_2.png"
-dest_files=["res://.godot/imported/load_2.png-b2a0ca6f11fe9fd29981948b2c95565c.ctex"]
+source_file="res://starts/SoiladShittyMod/assets/loading/load_2.png"
+dest_files=["res://.godot/imported/load_2.png-d71f9a62a7ef33554dcf8d8e77f927af.ctex"]
 
 [params]
 

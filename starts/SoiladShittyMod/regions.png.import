@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccbowl4hj2jbg"
-path="res://.godot/imported/regions.png-c6b842ec7842d0581bc24c3184ac1d8b.ctex"
+path="res://.godot/imported/regions.png-fe0c54aef6f6ba4415074cb6535ecae3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/soilads shitty mod/regions.png"
-dest_files=["res://.godot/imported/regions.png-c6b842ec7842d0581bc24c3184ac1d8b.ctex"]
+source_file="res://starts/SoiladShittyMod/regions.png"
+dest_files=["res://.godot/imported/regions.png-fe0c54aef6f6ba4415074cb6535ecae3.ctex"]
 
 [params]
 

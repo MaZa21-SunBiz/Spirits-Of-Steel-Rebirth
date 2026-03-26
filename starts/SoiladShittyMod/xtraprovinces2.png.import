@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cse8xgmdqh555"
-path="res://.godot/imported/xtraprovinces2.png-555fa25dc46f345410bc98490fd41381.ctex"
+path="res://.godot/imported/xtraprovinces2.png-fa471e5313a7fa162796c19ef72a4ecf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/soilads shitty mod/xtraprovinces2.png"
-dest_files=["res://.godot/imported/xtraprovinces2.png-555fa25dc46f345410bc98490fd41381.ctex"]
+source_file="res://starts/SoiladShittyMod/xtraprovinces2.png"
+dest_files=["res://.godot/imported/xtraprovinces2.png-fa471e5313a7fa162796c19ef72a4ecf.ctex"]
 
 [params]
 

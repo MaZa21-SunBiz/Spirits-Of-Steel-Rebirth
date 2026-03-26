@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu0vdx31kalku"
-path="res://.godot/imported/artilerija.png-2698561dc0ab5bb52c0f3f8b914d7f08.ctex"
+path="res://.godot/imported/artilerija.png-c77047b10ea656caeea6c3ff453e39f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/soilads shitty mod/assets/superevents/artilerija.png"
-dest_files=["res://.godot/imported/artilerija.png-2698561dc0ab5bb52c0f3f8b914d7f08.ctex"]
+source_file="res://starts/SoiladShittyMod/assets/superevents/artilerija.png"
+dest_files=["res://.godot/imported/artilerija.png-c77047b10ea656caeea6c3ff453e39f4.ctex"]
 
 [params]
 
