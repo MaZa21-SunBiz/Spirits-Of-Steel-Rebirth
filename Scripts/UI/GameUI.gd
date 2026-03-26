@@ -66,13 +66,12 @@ enum Category {GENERAL, ECONOMY, MILITARY}
 
 
 # --- BuildingDesigner ---
-@onready var building_designer: HBoxContainer = $BuildingDesigner/VBoxContainer/HBoxContainer
-@onready var building_functions: VBoxContainer = building_designer.get_node("Functions/VBoxContainer2/VBoxContainer")
-@onready var building_name: TextEdit = building_designer.get_node("Stats/HBoxContainer/TextEdit")
+@onready var building_designer: PanelContainer = $BuildingDesigner
+@onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")
+@onready var building_name: TextEdit = building_designer.get_node("VBoxContainer/HBoxContainer/Stats/HBoxContainer/TextEdit")
 
 
 # NOTE(soi): store this somewhere better
-var current_building_template: Dictionary = {}
 
 # --- State ---
 var division_type_selected: String = "infantry"
@@ -228,66 +227,6 @@ func _ready() -> void:
 		printerr("GameUI: Clock not found in current world!")
 
 	# NOTE(soi): its soiladin time
-	for function_name in EconomyManager.building_functions:
-		var function_btn
-		var reqs = EconomyManager.building_functions[function_name]["reqs_effects"]
-		match typeof(reqs["val"]):
-			TYPE_FLOAT:
-				function_btn = HBoxContainer.new()
-				function_btn.use_parent_material = true
-
-				var text = Label.new()
-				text.text = function_name
-				text.use_parent_material = true
-				text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				function_btn.add_child(text)
-
-				var slider = HSlider.new()
-				slider.max_value = reqs["val"]
-				slider.use_parent_material = true
-				slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				slider.value_changed.connect(
-					func(goob: float):
-						current_building_template[reqs["type"]] = goob
-						print(current_building_template)
-				)
-				function_btn.add_child(slider)
-
-			TYPE_DICTIONARY:
-				for key in reqs["val"]:
-					function_btn = HBoxContainer.new()
-					function_btn.use_parent_material = true
-
-					var text = Label.new()
-					text.text = function_name
-					text.use_parent_material = true
-					text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-					function_btn.add_child(text)
-
-					var spinbox = SpinBox.new()
-					spinbox.max_value = reqs["val"][key]
-					spinbox.use_parent_material = true
-					spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-					spinbox.value_changed.connect(
-						func(goob: float):
-							if !current_building_template.has(reqs["type"]):
-								current_building_template[reqs["type"]] = {}
-							current_building_template[reqs["type"]][key] = goob
-							print(current_building_template)
-					)
-					function_btn.add_child(spinbox)
-				pass
-			TYPE_BOOL:
-				function_btn = CheckButton.new()
-				function_btn.text = function_name
-				function_btn.use_parent_material = true
-				function_btn.toggled.connect(
-					func(goob: bool):
-						current_building_template[reqs["type"]] = goob
-						print(current_building_template)
-				)
-
-		building_functions.add_child(function_btn)
 
 	const default_music_path = "res://assets/music/"
 	const custom_music_path = "res://radios/"
@@ -310,6 +249,7 @@ func _ready() -> void:
 				else:
 					MusicManager.radios.append(radio)
 				_update_radio_visuals()
+				MusicManager.update_interactive_playlists()
 				print(MusicManager.radios)
 		)
 		radio_list.add_child(entry)
@@ -1001,7 +941,7 @@ func update_cultures() -> void:
 
 
 func _on_next_song_pressed() -> void:
-	MusicManager._on_music_finished()
+	MusicManager.skip_track()
 	
 
 func _on_pause_pressed() -> void:
@@ -1115,18 +1055,3 @@ func _on_map_changed(tab: int) -> void:
 
 func _on_building_designer_pressed():
 	building_designer.visible = !building_designer.visible
-
-
-func _on_add_building_pressed () -> void :
-	if !EconomyManager.building_designs.has(CountryManager.player_country.country_name):
-		EconomyManager.building_designs[CountryManager.player_country.country_name] = []
-
-	print(current_building_template)
-	EconomyManager.building_designs[CountryManager.player_country.country_name].append(
-		BuildingTemplate.FromDict(current_building_template)
-	)
-	print(EconomyManager.building_designs)
-
-
-func _on_building_name_changed() -> void:
-	current_building_template["name"] = building_name.text

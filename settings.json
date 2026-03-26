@@ -1,18 +1,18 @@
 {
-  "daynight_contrast": 0.01,
-  "daynight_smoothness": 0.03,
+  "daynight_contrast": 0.05,
+  "daynight_smoothness": 0.01,
   "debug_mode": false,
   "map_effects": true,
-  "music_volume": 0.0,
+  "music_volume": 0.39,
   "province_borders": 0.09,
   "radios": [
     "default"
   ],
   "scanlines": 0.04,
-  "sfx_volume": 0.14,
+  "sfx_volume": 0.11,
   "ui_dirt": 0.39,
   "ui_lower": 0.08,
   "ui_upper": 0.64,
-  "vignette_lower": 0.75,
-  "vignette_upper": 0.0
+  "vignette_lower": 0.82,
+  "vignette_upper": 0.21
 }

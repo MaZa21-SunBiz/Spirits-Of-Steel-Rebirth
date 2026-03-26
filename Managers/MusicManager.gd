@@ -1,9 +1,24 @@
 extends Node
 
-var music_player: AudioStreamPlayer
-var sfx_players: Array[AudioStreamPlayer] = []
-
 var current_track_type: int = -1
+
+var music_player: AudioStreamPlayer:
+	get:
+		return get_node_or_null("/root/Main/Audio/Music")
+
+var _interactive_stream: AudioStream = null
+
+var sfx_players: Array[AudioStreamPlayer]:
+	get:
+		var players: Array[AudioStreamPlayer] = []
+		var sfx_node = get_node_or_null("/root/Main/Audio/SFX")
+		if sfx_node is AudioStreamPlayer:
+			players.append(sfx_node)
+		if sfx_node:
+			for child in sfx_node.get_children():
+				if child is AudioStreamPlayer:
+					players.append(child)
+		return players
 
 # --- Enums ---
 enum SFX {
@@ -20,7 +35,7 @@ enum SFX {
 	CLAPPING
 }
 
-enum MUSIC { MAIN_THEME, BATTLE_THEME }
+enum MUSIC {MAIN_THEME, BATTLE_THEME}
 
 const default_music_path = "res://assets/music/"
 const custom_music_path = "res://radios/"
@@ -38,17 +53,7 @@ var sfx_map = {
 	SFX.CLAPPING: preload("res://assets/snd/clappingSound.mp3")
 }
 
-var sfx_volume_map = {
-	SFX.TROOP_MOVE: 0.1,
-	SFX.TROOP_SELECTED: 1.6,
-	SFX.BATTLE_START: 0.8,
-	SFX.OPEN_MENU: 0.5,
-	SFX.CLOSE_MENU: 0.5,
-	SFX.DECLARE_WAR: 0.9,
-	SFX.HOVERED: 0.3,
-	SFX.GAME_OVER: 0.5,
-	SFX.POPUP: 0.5,
-}
+
 
 var music_map = {MUSIC.MAIN_THEME: {}, MUSIC.BATTLE_THEME: {}}
 
@@ -71,19 +76,49 @@ func _ready():
 			music_map[MUSIC.BATTLE_THEME][radio] = []
 			_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
 			_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
+			
+	if music_player:
+		_interactive_stream = music_player.stream
+	update_interactive_playlists()
 
-	music_player = AudioStreamPlayer.new()
-	music_player.bus = "Music"
-	music_player.finished.connect(_on_music_finished)
-	add_child(music_player)
+	call_deferred("play_music", MUSIC.MAIN_THEME)
 
-	for i in 8:
-		var p = AudioStreamPlayer.new()
-		p.bus = "SFX"
-		add_child(p)
-		sfx_players.append(p)
+func update_interactive_playlists():
+	var m_player = music_player
+	if not m_player:
+		return
+		
+	var interactive: AudioStreamInteractive = null
+	if m_player.stream is AudioStreamInteractive:
+		interactive = m_player.stream
+	elif _interactive_stream is AudioStreamInteractive:
+		interactive = _interactive_stream
+		
+	if not interactive:
+		return
+		
+	for clip_idx in range(interactive.clip_count):
+		var clip_name = interactive.get_clip_name(clip_idx)
+		var playlist = interactive.get_clip_stream(clip_idx) as AudioStreamPlaylist
+		if not playlist:
+			continue
+			
+		var target_track = -1
+		if clip_name == &"Main":
+			target_track = MUSIC.MAIN_THEME
+		elif clip_name == &"War":
+			target_track = MUSIC.BATTLE_THEME
+			
+		if target_track != -1:
+			var songs = []
+			for radio in radios:
+				if music_map.has(target_track) and music_map[target_track].has(radio):
+					songs.append_array(music_map[target_track][radio])
+					
+			playlist.stream_count = songs.size()
+			for i in range(songs.size()):
+				playlist.set_list_stream(i, songs[i])
 
-	play_music(MUSIC.MAIN_THEME)
 
 func _load_music_folder(path: String, radio: String, track_enum: int):
 	path += radio
@@ -110,7 +145,6 @@ var locking_custom_track: bool = false
 func play_music(track: int):
 	# If a custom track is playing and locked, ignore normal music requests
 	if locking_custom_track:
-		# Optionally, we could store the requested track as the "next" track to resume to
 		if track in [MUSIC.MAIN_THEME, MUSIC.BATTLE_THEME]:
 			last_track_type = track
 		return
@@ -118,30 +152,34 @@ func play_music(track: int):
 	if not music_map.has(track) or music_map[track].is_empty():
 		return
 
-	if current_track_type == track and music_player.playing:
+	var m_player = music_player
+	if not m_player:
 		return
 
 	# Store as last track if it's a valid standard track
 	if track in [MUSIC.MAIN_THEME, MUSIC.BATTLE_THEME]:
 		last_track_type = track
 
+	if current_track_type == track and m_player.playing:
+		return
+
+
 	current_track_type = track
 
-	var songs = []
-	for radio in radios:
-		songs.append_array(music_map[track][radio])
-	
-	if songs.is_empty():
-		return
-		
-	# print(radios)
-	# print(songs)
-	var song = songs.pick_random()
-	if GameState.game_ui and GameState.game_ui.now_playing:
-		GameState.game_ui.now_playing.text = song.resource_path.get_file()
-	music_player.stream = song
-	music_player.volume_db = linear_to_db(music_volume_map.get(track, 1.0))
-	music_player.play()
+	if not m_player.playing:
+		m_player.play()
+
+	if GameState.game_ui:
+		GameState.game_ui.now_playing.text = m_player.stream.resource_path.get_file()
+
+	var playback = m_player.get_stream_playback() as AudioStreamPlaybackInteractive
+	if playback:
+		if track == MUSIC.MAIN_THEME:
+			playback.switch_to_clip_by_name(&"Main")
+		elif track == MUSIC.BATTLE_THEME:
+			playback.switch_to_clip_by_name(&"War")
+
+	m_player.volume_db = linear_to_db(music_volume_map.get(track, 0.5) * SettingsManager.settings["music_volume"])
 
 
 func play_custom_file(full_path: String):
@@ -154,18 +192,38 @@ func play_custom_file(full_path: String):
 	
 	var stream = load(full_path)
 	if stream:
-		locking_custom_track = true
-		music_player.stream = stream
-		music_player.volume_db = linear_to_db(1.0) # Default volume for events
-		music_player.play()
+		var m_player = music_player
+		if m_player:
+			locking_custom_track = true
+			if not _interactive_stream:
+				_interactive_stream = m_player.stream
+			m_player.stream = stream
+			m_player.volume_db = linear_to_db(1.0) # Default volume for events
+			m_player.play()
 
 
 func resume_last_track():
 	locking_custom_track = false # Ensure lock is released
+	var m_player = music_player
+	if _interactive_stream and m_player:
+		m_player.stream = _interactive_stream
 	if last_track_type != -1:
 		play_music(last_track_type)
 	else:
 		play_music(MUSIC.MAIN_THEME)
+
+
+func skip_track():
+	if locking_custom_track:
+		resume_last_track()
+		return
+	var m_player = music_player
+	if m_player:
+		m_player.stop()
+		if current_track_type != -1:
+			play_music(current_track_type)
+		else:
+			play_music(MUSIC.MAIN_THEME)
 
 
 func _on_music_finished():
@@ -173,28 +231,23 @@ func _on_music_finished():
 		resume_last_track()
 		return
 		
-	var temp_type = current_track_type
-	current_track_type = -1
-	play_music(temp_type)
-
-
-func fade_out_music(duration: float = 1.0):
-	var tween = create_tween()
-	tween.tween_property(music_player, "volume_db", -80.0, duration)
-	await tween.finished
-	music_player.stop()
-	current_track_type = -1
+	# Native AudioStreamPlaylist looping handles auto-advancing,
+	# so we don't need to manually shuffle and restart!
+	# NOTE(soi): yea what he said
 
 
 func play_sfx(sfx: int):
 	if sfx not in sfx_map:
 		return
-	var player = sfx_players.filter(func(p): return not p.playing).front()
+	var players = sfx_players
+	if players.is_empty():
+		return
+	var player = players.filter(func(p): return not p.playing).front()
 	if not player:
-		player = sfx_players[0]
+		player = players[0]
 
 	player.stream = sfx_map[sfx]
-	player.volume_db = linear_to_db(sfx_volume_map.get(sfx, 1.0))
+	player.volume_db = linear_to_db(1.0 * SettingsManager.settings["sfx_volume"])
 	player.play()
 
 
@@ -204,12 +257,14 @@ func stop_all_sfx():
 
 
 func set_music_volume(volume_linear: float):
-	music_player.volume_db = linear_to_db(volume_linear)
+	if music_player:
+		music_player.volume_db = linear_to_db(music_volume_map.get(current_track_type, 0.5) * volume_linear)
 
 
-func set_sfx_volume(volume_linear: float):
-	for p in sfx_players:
-		p.volume_db = linear_to_db(volume_linear)
+func set_sfx_volume(_volume_linear: float):
+	pass
+
 		
 func _toggle_pause() -> void:
-	music_player.playing = !music_player.playing
+	if music_player:
+		music_player.playing = !music_player.playing

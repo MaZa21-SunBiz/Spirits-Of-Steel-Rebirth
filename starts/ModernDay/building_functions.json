@@ -15,18 +15,22 @@
 		"on_funcional": {},
 		"on_nonfuncional": {}
 	},
-	"Gather resources": {
-		"reqs_effects": {
-			"type": "gather_resources",
-			"val": {"Iron": 3}
-		},
-		"on_funcional": {},
-		"on_nonfuncional": {}
-	},
 	"Supply": {
 		"reqs_effects": {
 			"type": "supply_amount",
 			"val": 42
+		},
+		"on_funcional": {},
+		"on_nonfuncional": {}
+	},
+	"Gather resources": {
+		"reqs_effects": {
+			"type": "gather_resources",
+			"val": {
+				"Iron": 3,
+				"Coal": 3,
+				"Copper": 3
+			}
 		},
 		"on_funcional": {},
 		"on_nonfuncional": {}
