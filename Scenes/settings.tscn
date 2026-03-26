@@ -40,7 +40,7 @@ offset_right = 779.0
 offset_bottom = 446.0
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="Settings/TabContainer" unique_id=1381486399]
@@ -78,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Audio" type="PanelContainer" parent="Settings/TabContainer" unique_id=750041884]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -137,7 +138,6 @@ step = 0.01
 value = 0.1
 
 [node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=659766638]
-visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -287,6 +287,34 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
+[node name="Clouds" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1689358524]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Clouds"
+
+[node name="Clouds2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=313512065]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Edgeness" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=264398948]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Clouds Edgeness"
+
+[node name="Edgeness2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=700700604]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 5.0
+step = 0.01
+value = 0.8
+
 [node name="DebugMode" type="CheckButton" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=20261307]
 material = ExtResource("1_lhmql")
 layout_mode = 2
@@ -316,5 +344,7 @@ text = "Save Settings"
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2" to="Settings" method="_on_daynight_contrast_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2" to="Settings" method="_on_daynight_smoothness_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2" to="Settings" method="_on_province_borders_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Clouds2" to="Settings" method="_on_clouds_changed"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Edgeness2" to="Settings" method="_on_edgeness_changed"]
 [connection signal="pressed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode" to="Settings" method="_on_debug_mode_pressed"]
 [connection signal="pressed" from="Settings/Exit" to="Settings" method="save_settings"]

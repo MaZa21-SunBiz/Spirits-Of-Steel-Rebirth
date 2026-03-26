@@ -133,8 +133,9 @@ func DoSetup(a_progress: Array) -> void:
 
 	noise.frequency = 0.005
 
-	noise.fractal_type = FastNoiseLite.FRACTAL_FBM
-	noise.fractal_octaves = 3
+	noise.fractal_type = FastNoiseLite.FRACTAL_RIDGED
+	noise.fractal_octaves = 5
+	noise.fractal_lacunarity = 3.0
 	noise.fractal_gain = 0.5
 
 	var noise_tex = NoiseTexture2D.new()

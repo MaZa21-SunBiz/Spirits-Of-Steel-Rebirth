@@ -22,6 +22,8 @@ var settings = {}
 @onready var ui_dirt_slider = ui_path.get_node("Dirt2")
 @onready var daynight_contrast_slider = graphics_path.get_node("Contrast2")
 @onready var daynight_smoothness_slider = graphics_path.get_node("Smoothness2")
+@onready var clouds = graphics_path.get_node("Clouds2")
+@onready var clouds_edgeness = graphics_path.get_node("Edgeness2")
 @onready var debug_mode_btn = $TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode
 
 func _ready():
@@ -43,6 +45,8 @@ func _initialize_ui_values():
 	ui_dirt_slider.value = s.ui_dirt
 	daynight_contrast_slider.value = s.daynight_contrast
 	daynight_smoothness_slider.value = s.daynight_smoothness
+	clouds.value = s.clouds
+	clouds_edgeness.value = s.clouds_edgeness
 	debug_mode_btn.button_pressed = s.debug_mode
 
 
@@ -168,6 +172,16 @@ func _on_daynight_contrast_changed(value: float) -> void:
 
 func _on_daynight_smoothness_changed(value: float) -> void:
 	SettingsManager.settings.daynight_smoothness = value
+	SettingsManager.apply_settings()
+
+
+func _on_clouds_changed(value: float) -> void:
+	SettingsManager.settings.clouds = value
+	SettingsManager.apply_settings()
+
+
+func _on_edgeness_changed(value: float) -> void:
+	SettingsManager.settings.clouds_edgeness = value
 	SettingsManager.apply_settings()
 
 

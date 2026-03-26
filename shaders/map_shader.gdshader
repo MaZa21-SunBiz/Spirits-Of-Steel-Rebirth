@@ -7,7 +7,7 @@ const vec3 sea_border = vec3(105, 118, 132)/255.0;
 
 const float ratio = 625.0/1275.0;
 const float dist = 0.5/625.0;
-
+uniform float sun_dist;
 
 // --- INPUTS ---
 uniform sampler2D region_id_map : filter_nearest;
@@ -25,6 +25,8 @@ uniform float scanlines : hint_range(0.0, 0.5) = 0.05;
 uniform int toggle = 1;
 uniform float contrast : hint_range(0.0, 0.5) = 0.05;
 uniform float smoothness : hint_range(0.0, 1.0) = 0.05;
+uniform float clouds: hint_range(0.0, 1.0) = 0.05;
+uniform float edgeness: hint_range(0.0, 5.0) = 0.05;
 
 
 
@@ -41,7 +43,7 @@ uniform float wave_scale : hint_range(0.1, 5.0) = 1.5;
 uniform float distortion_strength : hint_range(0.0, 1.0) = 0.15;
 uniform float grid_opacity : hint_range(0.0, 1.0) = 0.3;
 uniform float sea_pixel_size = 2.0;       // 1 = native pixels, 2–4 = chunkier
-uniform float sea_height_steps = 6.0;    // number of discrete wave levels
+uniform float sea_height_steps = 10.0;    // number of discrete wave levels
 uniform vec2 ocean_offset;
 // --- BORDER SETTINGS (From Old Version) ---
 uniform float internal_border_darkness : hint_range(0.0, 1.0) = 0.82;
@@ -111,16 +113,41 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     return false;
 }
 void fragment() {
+		float d = 42.5*ocean_offset.x;
+		float t = .4276*cos(d/182.725);
+		
+		vec3 sphere_point = vec3(
+			cos(UV.x*2.*PI),
+			sin(UV.x*2.*PI),
+			mix(-1., 1, UV.y)
+		);
+		vec3 sun_dir = vec3(
+			sin(d)*cos(t),
+			cos(d)*cos(t),
+			sin(t)
+		);
+		
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
 		float black = UV.x * tex_size.x + UV.y * tex_size.y;
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
-		    vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
+		    vec2 grid_uv = UV;
+			//vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
 		    float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+5.0*ocean_offset.x))/3.0;
 		    h = floor(h * sea_height_steps) / sea_height_steps;
 		    vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
-		    COLOR = vec4(water, 1.0);
+		    COLOR.xyz = water;
+			COLOR.xyz += vec3(
+			pow(
+				clamp(
+					.707-distance(sphere_point, sun_dir),
+					0,
+					1
+				)
+			,3
+			)
+		);
 		} 
 		// 2. If it's Land (type_map 1.0) and a real province
 		else if (id > 1) {
@@ -140,55 +167,29 @@ void fragment() {
 		        COLOR = country_border_color;
 		    }
 		}
-		// 4. its soilading time
-		//for (float dist=0.0; dist <= max_dist; dist++) {
-			//for (float angle = 0.0; angle<6.28; angle+=increment) {
-				//vec4 color1 = texture(TEXTURE, UV + dist/600.0*vec2(ratio*cos(angle), sin(angle)));
-				//if (COLOR.rgb == vec3(0.0) && color1.rgb != vec3(0.0)) {
-					//COLOR.rgb = color1.rgb;
-					//break;
-				//} else if ((COLOR.rgb != sea && COLOR.rgb != sea_border) && (COLOR.rgb != color1.rgb) && color1.rgb != vec3(0.0)) {
-					//COLOR.rgb += 0.3*(0.4 - vec3(dist/10.0));
-					//break;
-				//}
-			//}
-		//}
-
-		//NOTE(soi): this works better but bcuz of smthng not getting updated the range for this is wacc so clamping it causes puppets to go black
-		//vec2 topvec = vec2(0.0, 1.0);
-		//vec2 leftvec = vec2(ratio, 0.0);
-		//vec4 left = texture(TEXTURE, UV-dist*leftvec);
-		//vec4 right = texture(TEXTURE, UV+dist*leftvec);
-		//vec4 top = texture(TEXTURE, UV-dist*topvec);
-		//vec4 bottom = texture(TEXTURE, UV+dist*topvec);
-		//vec4 clamped = ((top+left+bottom+right)
-					   ////+(top2+left2+bottom2+right2)
-					   //)/(4.0);
-		//clamped /= COLOR;
-		//clamped.a = 1.0;
-		////COLOR.rgb = vec3(clamped.g);
-		//
-		//if (clamped.g <= 0.7) {
-			////COLOR.rgb = (COLOR.rgb + vec3(0.0))/2.0;
-			//COLOR.rgb = vec3(0.0);
-		//}
 
 	if (toggle == 1) {
 		float vignette = 16.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
 		COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
 		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
-		float daynight = 42.5*ocean_offset.x;
-		float phase = sin(daynight/182.725);
-		vec2 centered_uv = 2.*UV - vec2(1.);
-		COLOR.rgb += vec3(
-				contrast/smoothness*
-				clamp(
-					tan(PI*.25*centered_uv.y*phase)
-					+ sin(PI*centered_uv.x+daynight),
-					-smoothness,
-					smoothness
-				)
+		
+
+		float daynight = dot(sphere_point, sun_dir);
+		COLOR.xyz += vec3(
+			contrast/smoothness*
+			clamp(
+				daynight
+				,-smoothness
+				,smoothness
+			)
+		);
+		
+		// fog clouds thing
+		COLOR.rgb += 
+			mix(
+				clouds*sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb) + ocean_offset.x),
+				vec3(0.),
+				clamp(vignette*edgeness, 0, 1)
 			);
-		COLOR.rgb += (.5+.5*(sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb + ocean_offset.x))))*clamp(mix(.5-.5*(lower), -upper, vignette), 0., 1.);
 	}
 }

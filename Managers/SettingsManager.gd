@@ -16,6 +16,8 @@ var settings = {
 	"ui_dirt": 0.8,
 	"daynight_contrast": 0.01,
 	"daynight_smoothness": 0.01,
+	"clouds": 0.01,
+	"clouds_edgeness": 0.01,
 	"debug_mode": false
 }
 
@@ -67,6 +69,8 @@ func apply_settings():
 		mat.set_shader_parameter("toggle", settings.map_effects)
 		mat.set_shader_parameter("contrast", settings.daynight_contrast)
 		mat.set_shader_parameter("smoothness", settings.daynight_smoothness)
+		mat.set_shader_parameter("clouds", settings.clouds)
+		mat.set_shader_parameter("edgeness", settings.clouds_edgeness)
 		mat.set_shader_parameter("internal_border_darkness", settings.province_borders)
 	
 	# UI Effects (Wait for idfkanymore if it's in Settings menu, 

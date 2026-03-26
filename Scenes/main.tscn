@@ -23,22 +23,29 @@
 [ext_resource type="AudioStream" uid="uid://wdhwca5pctm2" path="res://assets/music/default/gameMusic/Which_Side_Are_You_On.mp3" id="19_pdsj5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hptm8"]
+frequency = 0.005
+fractal_type = 2
+fractal_lacunarity = 3.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d1ilt"]
 noise = SubResource("FastNoiseLite_hptm8")
+bump_strength = 29.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
 shader = ExtResource("2_344ge")
+shader_parameter/sun_dist = 23544.0
 shader_parameter/region_id_map = ExtResource("3_ynf5e")
 shader_parameter/type_map = ExtResource("4_ynf5e")
 shader_parameter/ocean_noise = SubResource("NoiseTexture2D_d1ilt")
-shader_parameter/tex_size = Vector2(0, 0)
+shader_parameter/tex_size = Vector2(1275, 625)
 shader_parameter/lower = 0.50000002375
 shader_parameter/upper = 0.4830000229425
 shader_parameter/scanlines = 0.05
 shader_parameter/toggle = 1
 shader_parameter/contrast = 0.05
 shader_parameter/smoothness = 0.05
+shader_parameter/clouds = 0.450000021375
+shader_parameter/edgeness = 2.5530001212675
 shader_parameter/water_color_deep = Color(0, 0, 0, 1)
 shader_parameter/water_color_shallow = Color(0.13810009, 0.2771134, 0.41497466, 1)
 shader_parameter/sun_glint_color = Color(0.9, 0.95, 1, 0.3)

@@ -1,4 +1,6 @@
 {
+  "clouds": 0.09,
+  "clouds_edgeness": 3.5,
   "daynight_contrast": 0.05,
   "daynight_smoothness": 0.01,
   "debug_mode": false,
