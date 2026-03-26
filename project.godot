@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://lifcljm83dlp"
 config/icon="uid://claivv7l8p5lc"
 
+[audio]
+
+buses/default_bus_layout="uid://c7rfusvsmxw0h"
+
 [autoload]
 
 MapManager="*res://Managers/MapManager.gd"
