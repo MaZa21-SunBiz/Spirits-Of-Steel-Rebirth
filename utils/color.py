@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 
 def main():
-    image = Image.open("polities.png").convert("RGB")
+    image = Image.open("input/polities.png").convert("RGB")
     pixels = image.load()
     if not pixels:
         return
