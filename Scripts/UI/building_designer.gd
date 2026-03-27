@@ -50,7 +50,6 @@ func _ready() -> void:
 
 					var spinbox = SpinBox.new()
 					spinbox.max_value = reqs["val"][key]
-					spinbox.min_value = -reqs["val"][key]
 					spinbox.use_parent_material = true
 					spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 					spinbox.value_changed.connect(

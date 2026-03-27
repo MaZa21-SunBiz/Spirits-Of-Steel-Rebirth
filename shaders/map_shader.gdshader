@@ -113,7 +113,8 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     return false;
 }
 void fragment() {
-		float d = 42.5*ocean_offset.x;
+		//weird magic offset thing trust me i checked
+		float d = 42.5*ocean_offset.x + PI*43.63;
 		float t = .4276*cos(d/182.725);
 		
 		vec3 sphere_point = vec3(

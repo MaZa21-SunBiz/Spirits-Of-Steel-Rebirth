@@ -56,7 +56,7 @@
 			"type": "produces",
 			"val": 69,
 			"input": [ {"tag": "fuel"} ],
-			"output": [ "power" ]
+			"output": [ {"power": 10} ]
 		},
 		"on_funcional": {},
 		"on_nonfuncional": {}
