@@ -50,5 +50,15 @@
 		},
 		"on_funcional": {},
 		"on_nonfuncional": {}
+	},
+	"Generator": {
+		"reqs_effects": {
+			"type": "produces",
+			"val": 69,
+			"input": [ {"tag": "fuel"} ],
+			"output": [ "power" ]
+		},
+		"on_funcional": {},
+		"on_nonfuncional": {}
 	}
 }

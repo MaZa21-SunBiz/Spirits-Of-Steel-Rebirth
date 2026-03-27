@@ -42,8 +42,8 @@ shader_parameter/lower = 0.50000002375
 shader_parameter/upper = 0.4830000229425
 shader_parameter/scanlines = 0.05
 shader_parameter/toggle = 1
-shader_parameter/contrast = 0.05
-shader_parameter/smoothness = 0.05
+shader_parameter/contrast = 0.5
+shader_parameter/smoothness = 0.0070000003325
 shader_parameter/clouds = 0.450000021375
 shader_parameter/edgeness = 2.5530001212675
 shader_parameter/water_color_deep = Color(0, 0, 0, 1)
@@ -115,6 +115,9 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2107605688]
 anchor_mode = 0
+limit_enabled = false
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="CameraController" type="Node" parent="Camera2D" unique_id=510001396 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_pdsj5")

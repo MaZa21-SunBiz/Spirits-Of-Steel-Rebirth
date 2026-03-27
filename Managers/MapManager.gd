@@ -47,6 +47,8 @@ var all_cities: Array[Array] = []
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
 var gay: Label = Label.new()
+# soiladin time
+var allowed_pids: Dictionary = {}
 
 func increase_world_tension(amount: float) -> void:
 	world_tension = clamp(world_tension + amount, 0.1, 1.0)
@@ -236,20 +238,21 @@ func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> 
 
 func _build_country_to_provinces():
 	var result: Dictionary = {}
-	var result2: Dictionary = {}
+	var owned: Dictionary = {}
 
 	for pid in province_objects.keys():
 		var country: String = province_objects[pid].country
 
 		if !result.has(country):
 			result[country] = []
-			result2[country] = []
+			owned[country] = []
 
 		result[country].append(pid)
-		result2[country].append(pid)
+		owned[country].append(pid)
 
 	country_to_provinces = result
-	country_to_owned_provinces = result2
+	allowed_pids = result.duplicate()
+	country_to_owned_provinces = owned
 	return
 
 func build_lookup_texture() -> void:
@@ -1331,16 +1334,15 @@ func get_cities_province_country(country_name) -> Array:
 	return provinces
 
 ## Returns provinces that specifically border a certain enemy
-func get_provinces_bordering_enemy(country_name: String, enemy_name: String) -> PackedInt32Array:
+func get_provinces_bordering_enemies(country_name: String, enemies: Array[String]) -> PackedInt32Array:
 	var specific_borders: PackedInt32Array = []
-	
-	for allowed_country in CountryManager.countries[country_name].allowedCountries:
-		for prov_id: int in country_to_provinces.get(allowed_country, []):
-			# NOTE(soi): make this better  in c# or smthn T_T
-			for neighbor_id: int in province_objects.get(prov_id).neighbors:
-				if MapManager.province_objects[neighbor_id].GetFunctionalOwner() == enemy_name:
-					specific_borders.append(prov_id)
-					break
+
+	for prov_id: int in allowed_pids.get(country_name, []):
+		# NOTE(soi): make this better  in c# or smthn T_T
+		for neighbor_id: int in province_objects.get(prov_id).neighbors:
+			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() in enemies:
+				specific_borders.append(prov_id)
+				break
 
 	return specific_borders
 
@@ -1371,3 +1373,15 @@ func _build_global_registry():
 			if not global_claims_registry.has(country_name):
 				global_claims_registry[country_name] = []
 			global_claims_registry[country_name].append(obj.id)
+
+
+func allow_pids(accesser: CountryData, accessee: CountryData):
+	if !allowed_pids.has(accesser.country_name):
+		allowed_pids[accesser.country_name] = []
+	for province in country_to_provinces[accessee.country_name]:
+		allowed_pids[accesser.country_name].append(province.province_id)
+
+
+func unallow_pids(unaccesser: CountryData, unaccessee: CountryData):
+	for province in country_to_provinces[unaccessee.country_name]:
+		allowed_pids[unaccesser.country_name].erase(province.province_id)

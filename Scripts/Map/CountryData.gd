@@ -160,7 +160,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	# NOTE(Sockmit2007): Urgh...
 	# NOTE(soi): indeed
 	# NOTE(soi): ok the refresh things cause the map editor to crash when u make a country so...
-	#country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
+	country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
 	
 	return country
 

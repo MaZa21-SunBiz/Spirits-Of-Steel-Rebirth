@@ -8,7 +8,7 @@ const SATURATION_MAX := 4.0  # Avoid overstacking; redistribute if exceeding
 const DISTANCE_PENALTY := 0.1  # Reduce score per unit distance to discourage far moves
 # NOTE(soi): why tf was this 1?!?!??
 const MIN_DIVISIONS_PER_SPLIT := 10  # Smallest split size
-const MAX_SPLITS_PER_TROOP := 10  # Limit splits to prevent micro-management overhead
+const MAX_SPLITS_PER_TROOP := 5  # Limit splits to prevent micro-management overhead
 
 # --- AI DIPLOMACY/WAR LOGIC---
 const DECLARE_WAR_COOLDOWN_FRAMES := 600
@@ -296,48 +296,49 @@ func _execute_frontline():
 	var targets: Array[Dictionary] = []
 	var seen: PackedInt32Array = []
 
-	for enemy_name in enemies:
-		var border_pids = MapManager.get_provinces_bordering_enemy(country.country_name, enemy_name)
+	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
+		for n_id in MapManager.adjacency_list.get(my_pid, []):
+			# Check if it's enemy territory
+			var enemy_name: String = MapManager.province_objects[n_id].GetFunctionalOwner()
+			if MapManager.province_objects[n_id].GetFunctionalOwner() in enemies && !seen.has(n_id):
+				seen.append(n_id)
+				var e_str = TroopManager.get_province_strength(n_id, enemy_name)
+				var score = 10.0
 
-		for my_pid in border_pids:
-			for n_id in MapManager.adjacency_list.get(my_pid, []):
-				# Check if it's enemy territory
-				if MapManager.province_objects[n_id].GetFunctionalOwner() == enemy_name && !seen.has(n_id):
-					seen.append(n_id)
-					var e_str = TroopManager.get_province_strength(n_id, enemy_name)
-					var score = 10.0
+				if MapManager.all_cities.find_custom(func (a: Array): return a[0] == n_id):
+					score += personality["war"]["combat"]["city_bonus"]
 
-					if MapManager.all_cities.find_custom(func (a: Array): return a[0] == n_id):
-						score += personality["war"]["combat"]["city_bonus"]
+				if e_str > 0:
+					score += (e_str * personality["war"]["combat"]["attack_weight"])
+				else:
+					score += 15.0  # High priority to flip "free" land fast
 
-					if e_str > 0:
-						score += (e_str * personality["war"]["combat"]["attack_weight"])
-					else:
-						score += 15.0  # High priority to flip "free" land fast
+				targets.append(
+					{
+						"id": n_id,
+						"virtual_strength": 0.0,
+						"enemy_strength": e_str,
+						"score": score
+					}
+				)
 
-					targets.append(
-						{
-							"id": n_id,
-							"virtual_strength": 0.0,
-							"enemy_strength": e_str,
-							"score": score
-						}
-					)
-
-					# --- BLITZKRIEG LOGIC ---
-					# Look at the neighbor's neighbors (2 tiles deep)
-					# If an enemy city is just behind the front line and empty, go for it!
-					for dn_id in MapManager.adjacency_list.get(n_id, []):
-						if (MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name && !seen.has(dn_id) && MapManager.all_cities.find_custom(func (a: Array): return a[0] == dn_id)):
-							targets.append(
-								{
-									"id": dn_id,
-									"virtual_strength": 0.0,
-									"enemy_strength":
-									TroopManager.get_province_strength(dn_id, enemy_name),
-									"score": personality["war"]["combat"]["city_bonus"] * 0.8
-								}
-							)
+				# --- BLITZKRIEG LOGIC ---
+				# Look at the neighbor's neighbors (2 tiles deep)
+				# If an enemy city is just behind the front line and empty, go for it!
+				for dn_id in MapManager.adjacency_list.get(n_id, []):
+					if (MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name 
+						&& !seen.has(dn_id) 
+						&& MapManager.all_cities.find_custom(func (a: Array): return a[0] == dn_id)
+						):
+						targets.append(
+							{
+								"id": dn_id,
+								"virtual_strength": 0.0,
+								"enemy_strength":
+								TroopManager.get_province_strength(dn_id, enemy_name),
+								"score": personality["war"]["combat"]["city_bonus"] * 0.8
+							}
+						)
 	if targets.is_empty():
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s had no targets" % country.country_name)

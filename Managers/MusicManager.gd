@@ -63,20 +63,28 @@ var music_volume_map = {MUSIC.MAIN_THEME: 0.4, MUSIC.BATTLE_THEME: 0.5}
 
 
 func _ready():
-	for radio in DirAccess.open(default_music_path).get_directories():
-		if radio != "superevents":
-			music_map[MUSIC.MAIN_THEME][radio] = []
-			music_map[MUSIC.BATTLE_THEME][radio] = []
-			_load_music_folder(default_music_path, radio, MUSIC.MAIN_THEME)
-			_load_music_folder(default_music_path, radio, MUSIC.BATTLE_THEME)
+	var default_dir = DirAccess.open(default_music_path)
+	if default_dir:
+		for radio in default_dir.get_directories():
+			if radio != "superevents":
+				music_map[MUSIC.MAIN_THEME][radio] = []
+				music_map[MUSIC.BATTLE_THEME][radio] = []
+				_load_music_folder(default_music_path, radio, MUSIC.MAIN_THEME)
+				_load_music_folder(default_music_path, radio, MUSIC.BATTLE_THEME)
+				if radio not in radios:
+					radios.append(radio)
 
-	for radio in DirAccess.open(custom_music_path).get_directories():
-		if radio != "superevents":
-			music_map[MUSIC.MAIN_THEME][radio] = []
-			music_map[MUSIC.BATTLE_THEME][radio] = []
-			_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
-			_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
-			
+	var custom_dir = DirAccess.open(custom_music_path)
+	if custom_dir:
+		for radio in custom_dir.get_directories():
+			if radio != "superevents":
+				music_map[MUSIC.MAIN_THEME][radio] = []
+				music_map[MUSIC.BATTLE_THEME][radio] = []
+				_load_music_folder(custom_music_path, radio, MUSIC.MAIN_THEME)
+				_load_music_folder(custom_music_path, radio, MUSIC.BATTLE_THEME)
+				if radio not in radios:
+					radios.append(radio)
+		
 	if music_player:
 		_interactive_stream = music_player.stream
 	update_interactive_playlists()

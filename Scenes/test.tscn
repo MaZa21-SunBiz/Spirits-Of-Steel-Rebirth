@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dgom8pm4lyt2t"]
+
+[ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="1_ys1qc"]
+[ext_resource type="Texture2D" uid="uid://bh4l3y04f327r" path="res://utils/asdfa/regions.png" id="2_35xla"]
+[ext_resource type="Texture2D" uid="uid://b6walpjh0cxni" path="res://maps/blank.png" id="3_i3aeo"]
+[ext_resource type="Texture2D" uid="uid://ckbekogdjgxsp" path="res://maps/polities.png" id="4_5wyu1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hptm8"]
+frequency = 0.005
+fractal_type = 2
+fractal_lacunarity = 3.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d1ilt"]
+noise = SubResource("FastNoiseLite_hptm8")
+bump_strength = 29.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ngr"]
+shader = ExtResource("1_ys1qc")
+shader_parameter/sun_dist = 23544.0
+shader_parameter/region_id_map = ExtResource("2_35xla")
+shader_parameter/type_map = ExtResource("3_i3aeo")
+shader_parameter/ocean_noise = SubResource("NoiseTexture2D_d1ilt")
+shader_parameter/tex_size = Vector2(1275, 625)
+shader_parameter/lower = 0.50000002375
+shader_parameter/upper = 0.4830000229425
+shader_parameter/scanlines = 0.05
+shader_parameter/toggle = 1
+shader_parameter/contrast = 0.5
+shader_parameter/smoothness = 0.0070000003325
+shader_parameter/clouds = 0.450000021375
+shader_parameter/edgeness = 2.5530001212675
+shader_parameter/water_color_deep = Color(0, 0, 0, 1)
+shader_parameter/water_color_shallow = Color(0.13810009, 0.2771134, 0.41497466, 1)
+shader_parameter/sun_glint_color = Color(0.9, 0.95, 1, 0.3)
+shader_parameter/country_border_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/sea_speed = 0.02
+shader_parameter/wave_scale = 1.5
+shader_parameter/distortion_strength = 0.15
+shader_parameter/grid_opacity = 0.3
+shader_parameter/sea_pixel_size = 2.0
+shader_parameter/sea_height_steps = 6.0
+shader_parameter/ocean_offset = Vector2(0, 0)
+shader_parameter/internal_border_darkness = 0.82
+
+[node name="Control" type="Control" unique_id=89503906]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CultureSprite" type="Sprite2D" parent="." unique_id=1675505898]
+material = SubResource("ShaderMaterial_e0ngr")
+texture = ExtResource("4_5wyu1")
+centered = false

@@ -250,6 +250,9 @@ func _ready() -> void:
 					MusicManager.radios.append(radio)
 				_update_radio_visuals()
 				MusicManager.update_interactive_playlists()
+				# Restart current track so the player picks up the updated playlist
+				MusicManager.current_track_type = -1
+				MusicManager.play_music(MusicManager.last_track_type)
 				print(MusicManager.radios)
 		)
 		radio_list.add_child(entry)
@@ -700,6 +703,7 @@ func _request_access():
 	CountryManager.player_country.political_power -= cost
 	
 	CountryManager.player_country.allowedCountries.append(selected_country.country_name)
+	MapManager.allow_pids(CountryManager.player_country, selected_country)
 	_update_context_actions_visuals()
 
 func _force_puppet():

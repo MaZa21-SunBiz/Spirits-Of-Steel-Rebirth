@@ -117,9 +117,14 @@ void fragment() {
 		float t = .4276*cos(d/182.725);
 		
 		vec3 sphere_point = vec3(
-			cos(UV.x*2.*PI),
-			sin(UV.x*2.*PI),
-			mix(-1., 1, UV.y)
+			cos(UV.x*2.*PI)
+			*sin(UV.y*PI)
+			,
+			sin(UV.x*2.*PI)
+			*sin(UV.y*PI)
+			,
+			//mix(-1., 1, UV.y)
+			cos(UV.y*PI)
 		);
 		vec3 sun_dir = vec3(
 			sin(d)*cos(t),
@@ -174,7 +179,10 @@ void fragment() {
 		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
 		
 
-		float daynight = dot(sphere_point, sun_dir);
+		float daynight = dot(
+			sphere_point,
+			sun_dir
+		);
 		COLOR.xyz += vec3(
 			contrast/smoothness*
 			clamp(
@@ -192,4 +200,6 @@ void fragment() {
 				clamp(vignette*edgeness, 0, 1)
 			);
 	}
+	//COLOR.b = 0.;
+	//COLOR.xy = UV;
 }

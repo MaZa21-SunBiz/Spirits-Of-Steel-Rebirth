@@ -249,6 +249,8 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	puppeter.puppets.append(puppetee.country_name)
 	puppeter.allowedCountries.append(puppetee.country_name)
 	puppetee.allowedCountries.append(puppeter.country_name)
+	MapManager.allow_pids(puppeter, puppetee)
+	MapManager.allow_pids(puppetee, puppeter)
 	puppetee.is_puppet = true
 	puppetee.owner = puppeter.country_name
 	puppetee.ideology = puppeter.ideology
@@ -259,6 +261,7 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	MapManager.show_countries_map()
 
 func release_puppet(puppeter: CountryData, puppetee: CountryData):
+	MapManager.unallow_pids(puppeter, puppetee)
 	puppeter.puppets.erase(puppetee.country_name)
 	puppeter.allowedCountries.erase(puppetee.country_name)
 	puppetee.allowedCountries.erase(puppeter.country_name)

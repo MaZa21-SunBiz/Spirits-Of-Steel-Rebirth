@@ -36,6 +36,8 @@ func clear_faction(country: CountryData):
 
 
 func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
+	MapManager.allow_pids(inviter, invitee)
+	MapManager.allow_pids(invitee, inviter)
 	# NOTE(soi): we should add an option to choose which faction to invite to
 	inviter.factions = invitee.factions
 	var inviter_factions_copy = inviter.factions.duplicate()
@@ -58,6 +60,7 @@ func in_faction(inviter: CountryData, invitee: CountryData) -> bool:
 
 
 func kick_faction(kicker: CountryData, kickee: CountryData) -> void:
+	MapManager.unallow_pids(kicker, kickee)
 	for faction in kicker.factions:
 		var faction_data: FactionData = factions[faction]
 		var kicker_index = faction_data.members.find_custom(func(m): return m.polity == kicker.country_name)

@@ -147,7 +147,7 @@ def main():
                         "durability": 1.0
                     }
                 ] if industry_color == (255, 255, 0) else [],
-                "population": [
+                "populations": [
                     {
                         "ethnicity": eth_data.get(f"({eth_color[0]}, {eth_color[1]}, {eth_color[2]})", "Unknown"),
                         "amount": pop_data.get(f"({pop_color[0]}, {pop_color[1]}, {pop_color[2]})", 10000)

@@ -140,8 +140,8 @@ func DoSetup(a_progress: Array) -> void:
 
 	var noise_tex = NoiseTexture2D.new()
 	noise_tex.seamless = true
-	noise_tex.width = 1920
-	noise_tex.height = 1080
+	noise_tex.width = 512
+	noise_tex.height = 512
 	noise_tex.noise = noise
 
 	await noise_tex.changed
