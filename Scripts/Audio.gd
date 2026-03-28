@@ -1,4 +1,4 @@
 extends Node
 
 func _ready() -> void:
-	pass
+	MusicManager.setup_audio()

@@ -466,7 +466,7 @@ func m_OnFactionSelected(index: int) -> void:
 		var memberEntry: PanelContainer = factionMemberTemplate.duplicate()
 		memberEntry.visible = true
 		memberEntry.get_node("HBoxContainer/Button").pressed.connect(func():
-			FactionManager.factions[selectedFaction].KickMember(member.polity)
+			FactionManager.factions[selectedFaction].KickMember(member)
 			memberEntry.queue_free()
 		)
 		memberEntry.get_node("HBoxContainer/LineEdit").text = member.polity
@@ -688,7 +688,7 @@ func AddedFactionMember() -> void:
 	var memberEntry: PanelContainer = factionMemberTemplate.duplicate()
 	memberEntry.visible = true
 	memberEntry.get_node("HBoxContainer/Button").pressed.connect(func():
-		FactionManager.factions[selectedFaction].KickMember(member.polity)
+		FactionManager.factions[selectedFaction].KickMember(member)
 		memberEntry.queue_free()
 	)
 	memberEntry.get_node("HBoxContainer/LineEdit").text = member.polity

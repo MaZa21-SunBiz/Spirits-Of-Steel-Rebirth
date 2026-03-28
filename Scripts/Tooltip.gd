@@ -16,6 +16,7 @@ func _enter_tree() -> void:
 @export var provinceConstructionIcon: TextureRect
 @export var provinceOccupiedIcon: TextureRect
 @export var provinceDestroyedIcon: TextureRect
+@export var provinceClaims: Label
 
 var tooltipLatch: bool = false
 var shouldBeVisible: bool = false
@@ -49,6 +50,7 @@ func SwitchTooltip(a_mode: int) -> void:
 				resourceBop.visible = true
 				resourcesList.add_child(resourceBop)
 		1:
+			var fmt_claims: String = ""
 			shouldBeVisible = true
 			if !tooltipLatch:
 				DeferredUpdate.call_deferred()
@@ -61,6 +63,10 @@ func SwitchTooltip(a_mode: int) -> void:
 			provinceConstructionIcon.visible = MapManager.current_hovered_pid in EconomyManager.construction_queue
 			provinceOccupiedIcon.visible = !prov.occupier.is_empty()
 			provinceDestroyedIcon.visible = false
+			for claim in prov.claims:
+				fmt_claims += claim+"\n"
+			provinceClaims.text = fmt_claims
+
 
 func DeferredUpdate() -> void:
 	reset_size()

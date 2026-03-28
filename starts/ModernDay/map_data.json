@@ -2,7 +2,134 @@
 	"biomes": {
 
 	},
-	"factions": [],
+	"factions": [
+		{
+			"color": "#0D95E5",
+			"members": [
+				{
+					"polity": "United_states",
+					"status": "Leader"
+				},
+				{
+					"polity": "Canada",
+					"status": "Member"
+				},
+				{
+					"polity": "Denmark",
+					"status": "Member"
+				},
+				{
+					"polity": "Germany",
+					"status": "Member"
+				},
+				{
+					"polity": "Albania",
+					"status": "Member"
+				},
+				{
+					"polity": "Belgium",
+					"status": "Member"
+				},
+				{
+					"polity": "Bulgaria",
+					"status": "Member"
+				},
+				{
+					"polity": "Croatia",
+					"status": "Member"
+				},
+				{
+					"polity": "Czechia",
+					"status": "Member"
+				},
+				{
+					"polity": "Estonia",
+					"status": "Member"
+				},
+				{
+					"polity": "Finland",
+					"status": "Member"
+				},
+				{
+					"polity": "France",
+					"status": "Member"
+				},
+				{
+					"polity": "Greece",
+					"status": "Member"
+				},
+				{
+					"polity": "Hungary",
+					"status": "Member"
+				},
+				{
+					"polity": "Iceland",
+					"status": "Member"
+				},
+				{
+					"polity": "Italy",
+					"status": "Member"
+				},
+				{
+					"polity": "Latvia",
+					"status": "Member"
+				},
+				{
+					"polity": "Lithuania",
+					"status": "Member"
+				},
+				{
+					"polity": "Luxembourg",
+					"status": "Member"
+				},
+				{
+					"polity": "Montenegro",
+					"status": "Member"
+				},
+				{
+					"polity": "Netherlands",
+					"status": "Member"
+				},
+				{
+					"polity": "North_macedonia",
+					"status": "Member"
+				},
+				{
+					"polity": "Norway",
+					"status": "Member"
+				},
+				{
+					"polity": "Poland",
+					"status": "Member"
+				},
+				{
+					"polity": "Portugal",
+					"status": "Member"
+				},
+				{
+					"polity": "Romania",
+					"status": "Member"
+				},
+				{
+					"polity": "Slovakia",
+					"status": "Member"
+				},
+				{
+					"polity": "Spain",
+					"status": "Member"
+				},
+				{
+					"polity": "Sweden",
+					"status": "Member"
+				},
+				{
+					"polity": "Turkey",
+					"status": "Member"
+				}
+			],
+			"name": "NATO"
+		}
+	],
 	"ideologies": {
 		"communist": {
 			"region": [

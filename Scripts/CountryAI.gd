@@ -366,6 +366,10 @@ func _execute_frontline():
 			# If target has enemies, send enough to beat them (or everything left).
 			var amount_to_send: int = clamp(target.enemy_strength * 1.2 if target.enemy_strength > 0 else SATURATION_IDEAL, 1, divisions_left)
 
+			# Ensure the split-off part is also substantial
+			if amount_to_send < divisions_left:
+				amount_to_send = clampi(max(amount_to_send, MIN_DIVISIONS_PER_SPLIT), 1, divisions_left)
+
 			# Only split if it's worth the micro-overhead
 			if (
 				amount_to_send < divisions_left

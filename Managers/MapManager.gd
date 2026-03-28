@@ -380,7 +380,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				last_hovered_pid = -1
 				if pid > 1 and highlight_color != Color.TRANSPARENT:
 					if hoveredCountry != province_objects[pid].country:
-						if hoveredCountry != "Sea":
+						if hoveredCountry != "Sea" && country_to_provinces.has(hoveredCountry):
 							for province in country_to_provinces[hoveredCountry]:
 								update_lookup(province, original_hover_color, original_hover_color)
 						if pid in province_objects:
@@ -469,8 +469,37 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		return
 
 	if GameState.selectingCountry:
-		CountryManager.set_player_country(MapManager.province_objects[pid].country)
-		GameState.selectingCountry = false
+		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
+
+		var selected_country: CountryData = CountryManager.countries[MapManager.province_objects[pid].country]
+		for stat: String in [
+			"country_name",
+			"is_puppet",
+			"money",
+			"gdp",
+			"income",
+			"political_power",
+			"stability",
+			"ideology_name",
+			"manpower",
+			"puppets",
+			"is_at_war",
+		]:
+			var stat_label: Label = Label.new()
+			stat_label.text = "%s: %s" % [stat.capitalize(), str(selected_country[stat]).capitalize()]
+			GameState.game_ui.select_player_stat.add_child(stat_label)
+		var play_btn: Button = Button.new()
+		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
+		play_btn.pressed.connect(
+			func():
+			CountryManager.set_player_country(MapManager.province_objects[pid].country)
+			GameState.selectingCountry = false
+			GameState.game_ui._on_province_clicked(CountryManager.player_country.country_name)
+		)
+		play_btn.use_parent_material = true
+		GameState.game_ui.select_player_stat.add_child(play_btn)
+
+
 		show_countries_map()
 	else:
 		var player_country_name = CountryManager.player_country.country_name

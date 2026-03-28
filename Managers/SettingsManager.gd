@@ -5,7 +5,7 @@ const SETTINGS_FILE = "res://settings.json"
 var settings = {
 	"radios": MusicManager.radios,
 	"sfx_volume": 0.1,
-	"music_volume": 0.1,
+	"music_volume": 1.0,
 	"scanlines": 0.0,
 	"vignette_lower": 0.0,
 	"vignette_upper": 0.0,

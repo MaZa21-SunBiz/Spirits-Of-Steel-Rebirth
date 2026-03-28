@@ -2,73 +2,79 @@ extends CanvasLayer
 class_name GameUI
 
 # ── Enums ─────────────────────────────────────────────
-enum Context {PLAYER, ENEMY, NEUTRAL, PUPPET, ALLY}
+enum Context {PLAYER, ENEMY, NEUTRAL, PUPPET, ALLY, SELECT}
 enum Category {GENERAL, ECONOMY, MILITARY}
 
 # ── Top Bar Nodes ─────────────────────────────────────
-@onready var topbar: HBoxContainer = $Control/Topbar/HBoxContainer
+@export_group("Top Bar")
+@export var topbar: HBoxContainer
+@export var nation_flag: TextureRect
+@export var label_date: Label
 
-@onready var nation_flag: TextureRect = topbar.get_node("nation_flag")
-@onready var label_date: Label = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar/MarginContainer/label_date")
-@onready var stats_labels := {
-	"pp": topbar.get_node("PoliticalPower/HBoxContainer/label_politicalpower"),
-	"manpower": topbar.get_node("Manpower/HBoxContainer/label_manpower"),
-	"money": topbar.get_node("Money/HBoxContainer/label_money"),
-	"industry": topbar.get_node("Industry/HBoxContainer/label_industry"),
-	"stability": topbar.get_node("Stability/HBoxContainer/label_stability"),
-	"war_support": topbar.get_node("WarSupport/HBoxContainer/label_war_support"),
-	"world_tension": topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/label_tension"),
-}
-@onready var notif_box: HBoxContainer = $Notifications
+@export_subgroup("Stats Labels")
+@export var label_pp: Label
+@export var label_manpower: Label
+@export var label_money: Label
+@export var label_industry: Label
+@export var label_stability: Label
+@export var label_war_support: Label
+@export var label_world_tension: Label
+
+var stats_labels := {}
+@export var notif_box: HBoxContainer
 
 # ── Speed Controls ────────────────────────────────────
-@onready var plus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Plus")
-@onready var minus: Button = topbar.get_node("PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Minus")
-@onready var progress_bar: ProgressBar = topbar.get_node("PanelContainer/HBoxContainer2/ProgressBar")
+@export_group("Speed Controls")
+@export var plus: Button
+@export var minus: Button
+@export var progress_bar: ProgressBar
 
 # ── Side Menu Nodes ───────────────────────────────────
-@onready var sidemenu: Control = $Control/HSplitContainer/SidemenuBG
+@export_group("Side Menu")
+@export var sidemenu: Control
 # NOTE(soi): relations already hv the flag so ehhh
-# @onready var sidemenu_flag: TextureRect = sidemenu.get_node("VBoxContainer2/PanelContainer/HFlowContainer/Flag/HBoxContainer/VBoxContainer/Flag")
-@onready var sidemenu_pointer: Sprite2D = sidemenu.get_node("VBoxContainer2/PanelContainer/HBoxContainer/compass/pointer")
-@onready var sidemenu_country_label: Label = sidemenu.get_node("VBoxContainer2/HFlowContainer/Label")
-@onready var sidemenu_context: TabContainer = sidemenu.get_node("VBoxContainer2/Context")
-@onready var sidemenu_trooplist: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
-@onready var sidemenu_buildings: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
+# @export var sidemenu_flag: TextureRect
+@export var sidemenu_pointer: Sprite2D
+@export var sidemenu_country_label: Label
+@export var sidemenu_context: TabContainer
+@export var sidemenu_trooplist: VBoxContainer
+@export var sidemenu_buildings: VBoxContainer
 
-@onready var relations_hbox: HBoxContainer = sidemenu.get_node("VBoxContainer2/RelationsHbox")
-@onready var faction_prompt: PanelContainer = $CreateFaction
+@export var relations_hbox: HBoxContainer
+@export var faction_prompt: PanelContainer
+@export var military_access_label: Label
 
-@onready var accepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
-@onready var unaccepted_cultures: VBoxContainer = sidemenu.get_node("VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer/VBoxContainer")
+@export var accepted_cultures: VBoxContainer
+@export var unaccepted_cultures: VBoxContainer
+@export var select_player_stat: VBoxContainer
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
-@export var action_scene: PackedScene = preload("res://Scenes/action.tscn")
+@onready var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 
-@onready var radio_list: VBoxContainer = $Radios/RadioList
-@onready var now_playing: Label = $Radios/ScrollContainer/NowPlaying
-@onready var map_tabs: TabBar = $MapSwitcher/TabBar
+@export var radio_list: VBoxContainer
+@export var now_playing: Label
+@export var map_tabs: TabBar
 
 
 # --- MilitaryExtraPanel ---
-@onready var military_extra_panel: Control = $Control/MilitaryExtra
+@export_group("Military Extra")
+@export var military_extra_panel: Control
 
-@onready var input_division: SpinBox = military_extra_panel.get_node("Deploy/HBoxContainer/input_division")
-@onready var button_train: Button = military_extra_panel.get_node("Deploy/HBoxContainer/Button_Train")
+@export var input_division: SpinBox
+@export var button_train: Button
 
-@onready var div_type = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Type/amount")
-@onready var div_stats = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Stats/amount")
-@onready var costs = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Cost/amount")
-@onready var manpower = military_extra_panel.get_node("Stats/VBoxContainer/VBoxContainer/Manpower/amount")
+@export var div_type: Label
+@export var div_stats: Label
+@export var costs: Label
+@export var manpower: Label
 
-@onready var troop_container: PanelContainer = $Control/TroopContainer
-@onready var troop_list_parent: VBoxContainer = troop_container.get_node("ScrollContainer/VBoxContainer")
+@export var troop_container: PanelContainer
+@export var troop_list_parent: VBoxContainer
 
 
 # --- BuildingDesigner ---
-@onready var building_designer: PanelContainer = $BuildingDesigner
-@onready var building_functions: VBoxContainer = building_designer.get_node("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/VBoxContainer")
-@onready var building_name: TextEdit = building_designer.get_node("VBoxContainer/HBoxContainer/Stats/HBoxContainer/TextEdit")
+@export_group("Building Designer")
+@export var building_designer: PanelContainer
 
 
 # NOTE(soi): store this somewhere better
@@ -87,10 +93,9 @@ var pos_closed := Vector2.ZERO
 var economyUpdate: bool = false
 
 # Navigation State
-var current_context: Context = Context.PLAYER
+var current_context: Context = Context.SELECT
 var current_category: Category = Category.GENERAL
 
-@export var military_access_label: Label
 
 # ── Constants ──────────────────────────────────────────
 var action_costs := {
@@ -191,6 +196,16 @@ func _enter_tree() -> void:
 	GameState.game_ui = self
 
 func _ready() -> void:
+	stats_labels = {
+		"pp": label_pp,
+		"manpower": label_manpower,
+		"money": label_money,
+		"industry": label_industry,
+		"stability": label_stability,
+		"war_support": label_war_support,
+		"world_tension": label_world_tension,
+	}
+
 	pos_open = sidemenu.position
 	pos_closed = Vector2(pos_open.x - sidemenu.size.x, pos_open.y)
 	sidemenu.position = pos_closed
@@ -359,8 +374,9 @@ func open_menu(context: Context, category: Category) -> void:
 	current_context = context
 	current_category = category
 
-	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
-	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
+	if selected_country:
+		sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
+		sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
 	
 	_update_relations_visuals()
 	# _build_action_list()
@@ -443,7 +459,7 @@ func DoUpdateContextActionsVisuals() -> void:
 							method = connection.callable.get_method()
 							break
 					
-					if method != "" and action_costs.has(method):
+					if method != "" && action_costs.has(method) && selected_country:
 						# NOTE(soi): look man idk anymore
 						var AAAAAA = action_costs[method].call(CountryManager.player_country, selected_country)
 						var cost = AAAAAA["cost"]
@@ -780,7 +796,7 @@ func open_manage_country(cat: CountryManageUI.Category = CountryManageUI.Categor
 
 # Theme colors for the military look
 
-# 1. Add this variable at the top with your other @onready variables
+# 1. Add this variable at the top with your other @export variables
 # NOTE(soi): he did not infact add this at the top
 var selected_division_objects: Array[DivisionData] = []
 const DIVISION_CARD_SCENE = preload("res://Scenes/DivisionItem.tscn") # Path to your card

@@ -3,7 +3,7 @@ class_name FactionData
 
 @export var name: String
 @export var color: Color
-@export var members: Array
+@export var members: Array[FactionMember]
 
 static func FromValues(a_name: String, a_color: Color, a_members: Array[FactionMember] = []) -> FactionData:
 	var faction: FactionData = FactionData.new()
@@ -14,6 +14,7 @@ static func FromValues(a_name: String, a_color: Color, a_members: Array[FactionM
 	
 	return faction
 
+
 static func FromDict(a_data: Dictionary) -> FactionData:
 	var faction: FactionData = FactionData.new()
 	
@@ -23,6 +24,7 @@ static func FromDict(a_data: Dictionary) -> FactionData:
 		faction.members.append(FactionMember.FromDict(factionMemberData))
 	
 	return faction
+
 
 func ToDict() -> Dictionary:
 	var data: Dictionary = {
@@ -36,5 +38,11 @@ func ToDict() -> Dictionary:
 
 	return data
 
+
 func UpdateMemberStatus(_a_member: String, _a_index: int) -> void:
+	pass
+
+
+func KickMember(member: FactionMember):
+	members.erase(member)
 	pass
