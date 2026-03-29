@@ -159,8 +159,8 @@ func _handle_click(_screenPos: Vector2) -> void:
 								MapManager.DeoccupyProvince(hovered_pid)
 					Tool.PAINT_SECONDARY:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
-							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
+							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
 					Tool.MULTI_SELECT:
 						if hovered_pid in multiSelectPID:
 							multiSelectPID.erase(hovered_pid)

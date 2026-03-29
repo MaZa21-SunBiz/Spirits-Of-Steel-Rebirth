@@ -4,7 +4,7 @@ func m_GatesOfHell() -> void:
 	var sizer: int = CountryManager.countryNames.size()
 	for countryA: int in range(sizer):
 		for countryB: int in range(countryA, sizer):
-			m_StartWarSilent(CountryManager.countries.keys()[countryA], CountryManager.countries.keys()[countryB])
+			m_StartWarSilent(CountryManager.countryNames[countryA], CountryManager.countryNames[countryB])
 
 func m_Editor() -> void:
 	print("Current Scene: %d" % SceneSwitcher._current_type)
