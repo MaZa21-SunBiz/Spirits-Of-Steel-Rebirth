@@ -114,7 +114,7 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 }
 void fragment() {
 		//weird magic offset thing trust me i checked
-		float d = 42.5*ocean_offset.x + PI*43.63;
+		float d = (PI*85.*ocean_offset.x) + (PI*43.63) +.6;
 		float t = .4276*cos(d/182.725);
 		
 		vec3 sphere_point = vec3(
@@ -142,18 +142,14 @@ void fragment() {
 			//vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
 		    float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+5.0*ocean_offset.x))/3.0;
 		    h = floor(h * sea_height_steps) / sea_height_steps;
-		    vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
+		    vec3 water = mix(
+				water_color_deep.rgb
+				+(
+					.5 - .5*sqrt(distance(sphere_point, sun_dir))
+				),
+				water_color_shallow.rgb,
+				h);
 		    COLOR.xyz = water;
-			COLOR.xyz += vec3(
-			pow(
-				clamp(
-					.707-distance(sphere_point, sun_dir),
-					0,
-					1
-				)
-			,3
-			)
-		);
 		} 
 		// 2. If it's Land (type_map 1.0) and a real province
 		else if (id > 1) {

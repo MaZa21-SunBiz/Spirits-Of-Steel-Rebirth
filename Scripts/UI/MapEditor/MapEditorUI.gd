@@ -89,6 +89,9 @@ func _ready() -> void:
 	SetupBiomesList()
 	SetupResourcesList()
 	
+	input_claims.focus_exited.connect(m_OnProvinceClaimsSubmitted)
+
+	
 	if map_sprite == null:
 		map_sprite = get_node_or_null("../../MapContainer/CultureSprite")
 
@@ -335,11 +338,14 @@ func MultiSelectProvince(pid: int) -> void:
 			var holdOccupier: bool = true
 			var holdGDP: bool = true
 			
+			var holdClaims: bool = true
+			
 			for iPID: int in multiSelectPID:
 				holdCountry = holdCountry && prov.country == MapManager.province_objects[iPID].country
 				holdOccupier = holdOccupier && prov.occupier == MapManager.province_objects[iPID].occupier
 				holdGDP = holdGDP && prov.gdp == MapManager.province_objects[iPID].gdp
-				if !holdCountry && !holdOccupier && !holdGDP:
+				holdClaims = holdClaims && prov.claims == MapManager.province_objects[iPID].claims
+				if !holdCountry && !holdOccupier && !holdGDP && !holdClaims:
 					break
 			
 			input_country.editable = true
@@ -350,8 +356,8 @@ func MultiSelectProvince(pid: int) -> void:
 			input_city.text = "..."
 			input_gdp.editable = true
 			input_gdp.value = prov.gdp if holdGDP else 0
-			input_claims.editable = false
-			input_claims.text = "..."
+			input_claims.editable = true
+			input_claims.text = ", ".join(prov.claims) if holdClaims else "..."
 	
 	#match currentMode:
 	#	Mode.POLITY:
@@ -581,6 +587,26 @@ func m_OnProvinceNameSubmitted(new_text: String) -> void:
 	if selected_pid in MapManager.province_objects:
 		#if (new_text == MapManager.province_objects[selected_pid].occupier):
 		MapManager.province_objects[selected_pid].name = new_text
+
+func m_OnProvinceClaimsSubmitted() -> void:
+	if input_claims.text == "...":
+		return
+
+	var raw_claims = input_claims.text.split(",")
+	var final_claims: Array[String] = []
+	for c in raw_claims:
+		var clean = c.strip_edges()
+		if clean in CountryManager.countries:
+			final_claims.append(clean)
+	
+	match currentTool:
+		Tool.NONE:
+			if selected_pid in MapManager.province_objects:
+				MapManager.province_objects[selected_pid].claims = final_claims
+		Tool.MULTI_SELECT:
+			for pid: int in multiSelectPID:
+				if pid in MapManager.province_objects:
+					MapManager.province_objects[pid].claims = final_claims
 
 func m_OnProvinceOwnerSubmitted(new_text: String) -> void:
 	match currentTool:

@@ -8,6 +8,7 @@ const SATURATION_MAX := 4.0  # Avoid overstacking; redistribute if exceeding
 const DISTANCE_PENALTY := 0.1  # Reduce score per unit distance to discourage far moves
 # NOTE(soi): why tf was this 1?!?!??
 const MIN_DIVISIONS_PER_SPLIT := 10  # Smallest split size
+const MIN_TOTAL_POWER_FOR_WAR := 5000 # Minimum power/divisions to even think about war
 const MAX_SPLITS_PER_TROOP := 5  # Limit splits to prevent micro-management overhead
 
 # --- AI DIPLOMACY/WAR LOGIC---
@@ -15,6 +16,7 @@ const DECLARE_WAR_COOLDOWN_FRAMES := 600
 const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
 const MAX_WAR_DECLARATIONS_PER_TICK := 1
+const AI_CHAOS := 0.9
 
 
 var country: CountryData
@@ -82,11 +84,17 @@ func _init(_country: CountryData) -> void:
 				"defense_weight": 5 * randf(),
 				"city_bonus": 100 * randf(),
 			},
-			"min_strength_ratio": 0.9 + randf(),
-			"min_economy": 15000 * randf(),
+			"min_strength_ratio": 1.1 + randf(),
+			"min_economy": 10000 * randf(),
 		},
-		"aggression": 5 * randf(),
 	}
+	
+	var extremism = _get_extremism()
+	personality["aggression"] = (extremism * 2.0) + (AI_CHAOS * randf())
+	
+	# Adjust war probability based on extremism
+	personality["war"]["probability"]["base"] *= (1.0 + extremism)
+	personality["war"]["probability"]["tension_factor"] = (2.0 + extremism * 5.0) * randf()
 
 
 func think_hour() -> void:
@@ -160,12 +168,14 @@ func _execute_train() -> bool:
 
 func _execute_war() -> bool:
 	# 1. THE STOCHASTIC GATE (Randomness + World Tension)
-	# If tension is 0.1, chance is roughly 10%. If tension is 1.0, it's 100%.
+	var extremism = _get_extremism()
+	var tension_threshold = 0.15 - (extremism * 0.1) # Extreme countries care less about tension
+	
+	if MapManager.world_tension < tension_threshold && personality["aggression"] < 2.5:
+		return false
 
 	# Only proceed if we pass the probability check
 	if randf() > (personality["war"]["probability"]["base"] + MapManager.world_tension * personality["war"]["probability"]["tension_factor"]):
-		#if country == GameState.game_ui.selected_country:
-		#	print("%s decided not to go to war" % country.country_name)
 		return false
 
 	# 2. COOLDOWNS & OVEREXTENSION (Existing)
@@ -177,12 +187,18 @@ func _execute_war() -> bool:
 
 	var candidates = _get_neighbor_countries().filter(
 		func(enemy):
+			var enemy_data = CountryManager.get_country(enemy)
 			return (
 				enemy != "Sea" &&
-				!FactionManager.in_faction(CountryManager.countries[enemy], country)
-				#&& !CountryManager.countries[enemy].is_puppet
+				enemy_data &&
+				!FactionManager.in_faction(enemy_data, country) &&
+				(country.get_relation_with(enemy) < 20 || personality["aggression"] > 2.0)
 			)
 	)
+
+	# Safety: Don't declare war if we have very FEW troops
+	if _estimate_country_strength(country.country_name, true) < MIN_TOTAL_POWER_FOR_WAR:
+		return false
 	#print(candidates)
 	if candidates.is_empty():
 		#if country == GameState.game_ui.selected_country:
@@ -228,13 +244,15 @@ func _execute_war() -> bool:
 			best_score = score
 			best_target = target_name
 
-	# 7. EXECUTION
+		# 7. EXECUTION
 	if best_target:
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s is declaring war on %s" % [country.country_name, best_target])
 		WarManager.declare_war(country, CountryManager.countries[best_target])
-		# Increasing tension on every war slows down/speeds up the global state
-		MapManager.increase_world_tension(0.02)
+		
+		# Aggressive/Extreme countries cause more tension
+		var tension_impact = 0.02 + (extremism * 0.03) + (personality["aggression"] * 0.01)
+		MapManager.increase_world_tension(tension_impact)
 
 		_last_declare_frame = frame_now
 	
@@ -408,17 +426,27 @@ func _get_neighbor_countries() -> Array:
 	return neighbors
 
 
-func _estimate_country_strength(country_name: String) -> float:
+func _estimate_country_strength(country_name: String, only_deployed: bool = false) -> float:
 	var total = 0.0
 	var c = CountryManager.get_country(country_name)
-	if c:
-		total += float(c.manpower)
-		total += float(c.money) * 0.1
+	
+	if !only_deployed && c:
+		total += float(c.manpower) * 0.05   # Manpower pool is potential, not active
+		total += float(c.money) * 0.01      # Money is even less direct
+		
 	for t in TroopManager.get_troops_for_country(country_name):
 		for div in t.stored_divisions:
-			total += float(div.max_manpower)
-			total += float(div.hp)
+			# Deployed divisions are the real strength, weighted by their current HP
+			total += float(div.max_manpower) * (div.hp / div.max_hp)
+			
 	return max(0.1, total)
+
+
+func _get_extremism() -> float:
+	# Ideology map is roughly -100 to 100 on both axes.
+	# Higher distance from center (0,0) = more extreme.
+	# Return value 0.0 (neutral) to 1.0 (extreme)
+	return clamp(country.ideology.length() / 141.42, 0.0, 1.0) # 141.42 is approx dist to corner
 
 
 func _same_faction(arr1: PackedStringArray, arr2: Array[String]) -> bool:
