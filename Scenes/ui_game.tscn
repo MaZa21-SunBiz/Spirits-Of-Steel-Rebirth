@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
 [ext_resource type="Texture2D" uid="uid://djlkcpd4lqkd7" path="res://assets/icons/old icons tht might get reused someday/monarchist_icon.png" id="41_hx7os"]
 [ext_resource type="Texture2D" uid="uid://hjiq7qbha5ra" path="res://assets/icons/Resources/Droplet.svg" id="41_vbips"]
+[ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="42_hx7os"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnodh"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -100,7 +101,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -122,6 +123,7 @@ sidemenu_country_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContai
 sidemenu_context = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context")
 sidemenu_trooplist = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 sidemenu_buildings = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
+sidemenu_leader_portrait = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/Leader")
 relations_hbox = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox")
 faction_prompt = NodePath("CreateFaction")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
@@ -141,6 +143,7 @@ manpower = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Man
 troop_container = NodePath("Control/TroopContainer")
 troop_list_parent = NodePath("Control/TroopContainer/ScrollContainer/VBoxContainer")
 building_designer = NodePath("BuildingDesigner")
+logistics = NodePath("Logistics")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
 layout_mode = 3
@@ -1854,12 +1857,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
-visible = false
 material = ExtResource("16_lpwmk")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -290.0
+offset_left = -248.0
 offset_top = 30.0
 offset_right = -4.0
 offset_bottom = 76.0
@@ -1926,10 +1928,10 @@ visible = false
 
 [node name="Notifications" type="HBoxContainer" parent="." unique_id=1074458046]
 material = ExtResource("16_lpwmk")
-offset_left = 356.0
-offset_top = 26.000002
-offset_right = 858.0
-offset_bottom = 54.0
+offset_left = 360.0
+offset_top = 30.000002
+offset_right = 900.0
+offset_bottom = 58.0
 
 [node name="BuildingDesigner" parent="." unique_id=1883852342 instance=ExtResource("38_qsn4r")]
 visible = false
@@ -2093,6 +2095,12 @@ ratio = 1.7778
 layout_mode = 2
 autoplay = true
 expand = true
+
+[node name="Logistics" parent="." unique_id=542448780 instance=ExtResource("42_hx7os")]
+offset_left = 360.0
+offset_top = 61.0
+offset_right = 900.0
+offset_bottom = 456.0
 
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]

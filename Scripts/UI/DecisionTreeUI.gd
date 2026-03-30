@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # --- CONFIGURATION ---
 const MOVE_SPEED = 800.0
-const GRID_SIZE = 60.0
+const GRID_SIZE = 50.0
 const LINE_WIDTH = 4.0
 const NODE_SIZE = Vector2(220, 90)
 const ZOOM_STEP = 0.1
@@ -24,12 +24,17 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 @onready var info_panel: Panel = $StaticUI/InfoPanel
 # @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
 @onready var close_button: Button = $StaticUI/Header/CloseButton
+@onready var edit_button: Button = $StaticUI/Header/EditMode
+@onready var save_button: Button = $StaticUI/Header/SaveDecisions
 
 
 var current_category: String = "Economy"
 var node_buttons: Dictionary = {}
 var connection_lines: Array = []
 var current_zoom: float = 1.0
+var edit_mode: bool = false
+var dragging_node: Button = null
+var drag_offset: Vector2 = Vector2.ZERO
 
 
 func _ready():
@@ -42,6 +47,21 @@ func _process(delta: float) -> void:
 		if input != Vector2.ZERO:
 			tree_canvas.position -= input * MOVE_SPEED * delta / current_zoom
 			tree_canvas.queue_redraw()
+		
+	if edit_mode and dragging_node:
+		var mouse_pos = tree_canvas.get_local_mouse_position()
+		dragging_node.position = mouse_pos - drag_offset
+		# Snap is only visually for the data, but maybe snap it here too? 
+		# Let's keep it smooth while dragging and snap on release for simplicity.
+		
+		var player = CountryManager.player_country
+		var country_cats = DecisionManager.get_country_categories(player.country_name)
+		var nodes = country_cats.get(current_category, [])
+		var idx = dragging_node.get_meta("idx")
+		nodes[idx]["pos"] = [dragging_node.position.x, dragging_node.position.y]
+		
+		_update_connections()
+		tree_canvas.queue_redraw()
 		
 
 func _input(event: InputEvent) -> void:
@@ -80,6 +100,9 @@ func open_menu():
 	_rebuild_tabs()
 	_load_category(current_category)
 	GameState.decision_menu_open = true
+	edit_button.visible = DecisionManager.debug
+	if not DecisionManager.debug:
+		_on_edit_mode_toggled(false)
 	_toggle_pause(true)
 
 
@@ -170,6 +193,45 @@ func _load_category(cat_name: String):
 	tree_canvas.queue_redraw()
 
 
+func _update_connections():
+	connection_lines.clear()
+	var player = CountryManager.player_country
+	var categories = DecisionManager.get_country_categories(player.country_name)
+	var nodes = categories.get(current_category, [])
+
+	for node in nodes:
+		if node.has("prereq"):
+			var start = _get_node_center(nodes, node["prereq"])
+			if start != Vector2.ZERO:
+				connection_lines.append(
+					{
+						"type": "prereq",
+						"from": start,
+						"to": Vector2(node["pos"][0], node["pos"][1]) \
+							+ (NODE_SIZE * 0.5),
+						"active": player.has_meta("finished_" + node["prereq"])
+					}
+				)
+				
+		if node.has("exclusive"):
+			var exclusives = node["exclusive"]
+			if not exclusives is Array:
+				exclusives = [exclusives]
+			for ex_id in exclusives:
+				var start = _get_node_center(nodes, ex_id)
+				if start != Vector2.ZERO:
+					if node["id"] > ex_id:
+						connection_lines.append(
+							{
+								"type": "exclusive",
+								"from": start,
+								"to": Vector2(node["pos"][0], node["pos"][1]) \
+									+ (NODE_SIZE * 0.5),
+								"active": false
+							}
+						)
+
+
 func _create_node(data: Dictionary, idx: int, player: CountryData):
 	var btn = Button.new()
 	btn.position = Vector2(data["pos"][0], data["pos"][1])
@@ -177,10 +239,14 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	btn.mouse_filter = Control.MOUSE_FILTER_STOP # Ensures hover works
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-	# Events
 	btn.mouse_entered.connect(func(): _show_info(data))
 	btn.mouse_exited.connect(func(): _reset_info())
-	btn.pressed.connect(func(): DecisionManager.start_decision(player, current_category, idx))
+	btn.pressed.connect(
+		func():
+			if not edit_mode:
+				DecisionManager.start_decision(player, current_category, idx)
+	)
+	btn.gui_input.connect(func(event): _on_node_gui_input(event, btn, data))
 	
 	var tt = data["title"]
 	if data.has("desc") and data["desc"] != "":
@@ -370,5 +436,38 @@ func refresh_status_only():
 
 
 func _on_reload_decisions_pressed():
-	DecisionManager._load_decisions("res://starts/"+GameState.current_start+"/decisions/")
+	var rel_path = "res://starts/" + GameState.current_start + "/decisions/"
+	DecisionManager.load_decisions_from_path(rel_path)
 	_load_category(current_category)
+
+
+func _on_edit_mode_toggled(toggled_on: bool):
+	edit_mode = toggled_on
+	save_button.visible = toggled_on
+	# Refresh UI to show/hide move handles or change style?
+	# For now, just toggling the state is enough.
+
+
+func _on_save_decisions_pressed():
+	DecisionManager.save_country_decisions(CountryManager.player_country.country_name)
+
+
+func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
+	if not edit_mode:
+		return
+		
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging_node = btn
+				drag_offset = btn.get_local_mouse_position()
+				btn.z_index = 10 # Keep dragged node on top
+			else:
+				if dragging_node == btn:
+					dragging_node = null
+					btn.z_index = 0
+					# Snap to grid
+					btn.position = (btn.position / GRID_SIZE).round() * GRID_SIZE
+					data["pos"] = [btn.position.x, btn.position.y]
+					_update_connections()
+					tree_canvas.queue_redraw()

@@ -1,14 +1,11 @@
-extends CanvasLayer
-class_name CountryManageUI
+extends PanelContainer
 
 #region --- Nodes ---
-var main_container: MarginContainer
-var category_hbox: HBoxContainer
-var laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
+@export var laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
 
 # Header & Stats
-var header_label: Label
-var flag_rect: TextureRect
+@export var header_label: Label
+@export var flag_rect: TextureRect
 
 # Data
 enum Category {MILITARY, ECONOMY, COUNTRY, RELEASABLES}
@@ -18,13 +15,12 @@ var _update_timer: float = 0.0
 
 const LOGISTICS_SCENE = preload("res://Scenes/logistics.tscn")
 
-var economic_status_val: Label
-var army_logistics_val: Label
+@export var economic_status_val: Label
+@export var army_logistics_val: Label
 #endregion
 
 func _ready() -> void:
 	visible = false
-	#_build_ui()
 
 func open_menu(country: CountryData, cat: Category = Category.MILITARY) -> void:
 	if current_country and current_country.ideology_changed.is_connected(_refresh_full_data):
@@ -33,7 +29,6 @@ func open_menu(country: CountryData, cat: Category = Category.MILITARY) -> void:
 	current_country = country
 	current_country.ideology_changed.connect(_refresh_full_data)
 	
-	_build_ui()
 	_switch_category(cat) # Use requested category
 	_refresh_full_data()
 	show()
@@ -49,40 +44,7 @@ func _process(delta: float) -> void:
 		_update_timer = 0.0
 		_refresh_army_counts()
 
-#region --- UI Construction ---
 
-func _build_ui() -> void:
-	# Reference shorthand - main_vbox is relative to 'self' (the CanvasLayer)
-	var main_vbox = get_node("PanelContainer/VBoxContainer")
-	
-	# Mapping Node References
-	flag_rect = main_vbox.get_node("HBoxContainer/nation_flag")
-	header_label = main_vbox.get_node("HBoxContainer/Label")
-	
-	# Data Labels
-	economic_status_val = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer").get_node("Values")
-	
-	army_logistics_val = main_vbox.get_node("HBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2").get_node("Value")
-	
-	# Dismiss Button
-	main_vbox.get_node("HBoxContainer/Button").pressed.connect(close_menu)
-	
-	# Category Tabs
-	var tabs_hbox = main_vbox.get_node("HBoxContainer2/VBoxContainer2/HBoxContainer")
-	laws_grid = main_vbox.get_node("HBoxContainer2/VBoxContainer2/PanelContainer/ScrollContainer/VBoxContainer")
-	
-	# Connect existing category buttons in the scene
-	tabs_hbox.get_node("MilitaryTab").pressed.connect(_switch_category.bind(Category.MILITARY))
-	
-	tabs_hbox.get_node("EconomicTab").pressed.connect(_switch_category.bind(Category.ECONOMY))
-	
-	tabs_hbox.get_node("CountryTab").pressed.connect(_switch_category.bind(Category.COUNTRY))
-	
-	tabs_hbox.get_node("ReleasableTab").pressed.connect(_switch_category.bind(Category.RELEASABLES))
-
-#endregion
-
-#region --- Category Management ---
 
 func _switch_category(cat: Category) -> void:
 	current_category = cat

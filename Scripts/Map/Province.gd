@@ -47,6 +47,7 @@ func ToDict() -> Dictionary:
 		"buildings": building_array,
 		"populations": population_array,
 		"gdp": self.gdp,
+		"claims": self.claims,
 		"infrastructure": self.infrastructure,
 		"max_infrastructure": self.maxInfrastructure,
 	}

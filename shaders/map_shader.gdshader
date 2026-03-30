@@ -69,11 +69,11 @@ vec4 get_country_color(int id, float ev) {
 // --- BORDER SCANNING LOGIC ---
 bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color, out bool is_black) {
     vec2 pixel_size = 1.0 / tex_size;
-    out_color = vec4(0.0);
+    out_color = mix(water_color_shallow.rgba, vec4(.6, .6, .9, 1.), .75+.25*sin(PI*TIME));
     is_black = false;
 
     bool found_color = false;
-    vec4 reference = vec4(0.0);
+    vec4 curr_country = vec4(0.0);
     
     // Check if the ORIGIN pixel itself is touching sea
     // We use the type_map to determine "Sea-ness" now
@@ -86,19 +86,17 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
         // 1. If any neighbor is SEA, this is a COASTLINE
         if (sample_type < 0.5) { 
-            is_black = true; 
             return true; 
         }
-
         // 2. If neighbor is LAND
         if (nid > 1) {
-            vec4 c = get_country_color(nid, 0.0);
+            vec4 adj_country = get_country_color(nid, 0.0);
             if (!found_color) {
-                reference = c;
+                curr_country = adj_country;
                 found_color = true;
             } else {
                 // If touching a DIFFERENT country, it's an international border
-                if (distance(reference.rgb, c.rgb) > 0.005) {
+                if (curr_country.rgb != adj_country.rgb) {
                     is_black = true;
                     return true;
                 }
@@ -107,14 +105,15 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     }
 
     if (found_color) {
-        out_color = mix(reference, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
+        out_color = mix(curr_country, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
         return true;
     }
     return false;
 }
+
 void fragment() {
 		//weird magic offset thing trust me i checked
-		float d = 42.5*ocean_offset.x + PI*43.63;
+		float d = (PI*85.*ocean_offset.x) + (PI*43.63) +.6;
 		float t = .4276*cos(d/182.725);
 		
 		vec3 sphere_point = vec3(
@@ -136,24 +135,24 @@ void fragment() {
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
 		float black = UV.x * tex_size.x + UV.y * tex_size.y;
+		
+
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
 		    vec2 grid_uv = UV;
 			//vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
 		    float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+5.0*ocean_offset.x))/3.0;
 		    h = floor(h * sea_height_steps) / sea_height_steps;
-		    vec3 water = mix(water_color_deep.rgb, water_color_shallow.rgb, h);
+		    vec3 water = mix(
+				water_color_deep.rgb
+				+clamp(
+					.5 -.5*pow(distance(sphere_point, sun_dir), .2),
+					0.,
+					1.
+				),
+				water_color_shallow.rgb,
+				h);
 		    COLOR.xyz = water;
-			COLOR.xyz += vec3(
-			pow(
-				clamp(
-					.707-distance(sphere_point, sun_dir),
-					0,
-					1
-				)
-			,3
-			)
-		);
 		} 
 		// 2. If it's Land (type_map 1.0) and a real province
 		else if (id > 1) {
@@ -173,16 +172,20 @@ void fragment() {
 		        COLOR = country_border_color;
 		    }
 		}
-
+    	//COLOR = final_color;
 	if (toggle == 1) {
 		float vignette = 16.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));
 		COLOR.rgb += (1.0+sin(800.0*SCREEN_UV.y+16.0*TIME))/2.0*scanlines;
 		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
 		
 
-		float daynight = dot(
-			sphere_point,
-			sun_dir
+		float daynight = clamp(
+			dot(
+				sphere_point,
+				sun_dir
+			)
+			,0
+			,1
 		);
 		COLOR.xyz += vec3(
 			contrast/smoothness*
@@ -194,13 +197,22 @@ void fragment() {
 		);
 		
 		// fog clouds thing
-		COLOR.rgb += 
-			mix(
-				clouds*sin(PI*(texture(ocean_noise, SCREEN_UV - ocean_offset).rgb) + ocean_offset.x),
-				vec3(0.),
-				clamp(vignette*edgeness, 0, 1)
-			);
+		//COLOR.gb = vec2(0.);
+		float clouds_tex = mix(
+			0.,
+			1.,
+			(clouds)
+			*(1.5-asin(sin(
+				PI
+				*(texture(ocean_noise, UV - ocean_offset).r
+				+ 10.*ocean_offset.x)
+			)))
+			*(.5-.5*daynight) // nights hv more clouds
+			*(0.8-round(p_type)) // makes the clouds more visible in water (kinda unrealistic but eh)
+			*(1.-.4*sin(PI*UV.y)) // i think its more cloudy at poles???
+			*(1.-vignette*edgeness)
+		);
+		
+		COLOR.rgb += vec3(clouds_tex);
 	}
-	//COLOR.b = 0.;
-	//COLOR.xy = UV;
 }

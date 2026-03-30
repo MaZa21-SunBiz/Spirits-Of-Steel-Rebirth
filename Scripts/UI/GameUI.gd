@@ -33,12 +33,12 @@ var stats_labels := {}
 @export_group("Side Menu")
 @export var sidemenu: Control
 # NOTE(soi): relations already hv the flag so ehhh
-# @export var sidemenu_flag: TextureRect
 @export var sidemenu_pointer: Sprite2D
 @export var sidemenu_country_label: Label
 @export var sidemenu_context: TabContainer
 @export var sidemenu_trooplist: VBoxContainer
 @export var sidemenu_buildings: VBoxContainer
+@export var sidemenu_leader_portrait: TextureRect
 
 @export var relations_hbox: HBoxContainer
 @export var faction_prompt: PanelContainer
@@ -75,6 +75,10 @@ var stats_labels := {}
 # --- BuildingDesigner ---
 @export_group("Building Designer")
 @export var building_designer: PanelContainer
+
+# --- Logistics ---
+@export_group("Logistics")
+@export var logistics: PanelContainer
 
 
 # NOTE(soi): store this somewhere better
@@ -274,6 +278,40 @@ func _ready() -> void:
 		entry.material = $Radios.material
 	
 	_update_radio_visuals()
+	
+	var compass = sidemenu_pointer.get_parent()
+	compass.mouse_filter = Control.MOUSE_FILTER_PASS
+	compass.gui_input.connect(_on_compass_gui_input)
+
+func _on_compass_gui_input(event: InputEvent) -> void:
+	if not SettingsManager.settings.debug_mode or not selected_country:
+		return
+		
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_update_ideology_from_mouse(event.position, false)
+			else:
+				# Export on release
+				_update_ideology_from_mouse(event.position, true)
+	elif event is InputEventMouseMotion:
+		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
+			_update_ideology_from_mouse(event.position, false)
+
+func _update_ideology_from_mouse(local_pos: Vector2, do_save: bool) -> void:
+	# print(selected_country, GameState.current_scenario_path.is_empty())
+	if not selected_country:
+		return
+		
+	var ideology_x = remap(clamp(local_pos.x, 3, 97), 3, 97, -100, 100)
+	var ideology_y = remap(clamp(local_pos.y, 3, 97), 3, 97, -100, 100)
+	
+	selected_country.ideology = Vector2(ideology_x, ideology_y)
+	selected_country.ideology_changed.emit()
+	DoUpdateSidemenuVisuals()
+	
+	if do_save and SettingsManager.settings.debug_mode:
+		MapManager.export_scenario_data(GameState.current_scenario_path)
 
 func _update_radio_visuals() -> void:
 	for child in radio_list.get_children():
@@ -288,14 +326,21 @@ func _update_radio_visuals() -> void:
 
 var sidemenuLatch: bool = false
 
-func _update_sidemenu_visuals(country_name: String) -> void:
+func _update_sidemenu_visuals() -> void:
 	if !sidemenuLatch:
 		sidemenuLatch = true
-		DoUpdateSidemenuVisuals.call_deferred(country_name)
+		DoUpdateSidemenuVisuals()
 
-func DoUpdateSidemenuVisuals(country_name: String) -> void:
-	# sidemenu_flag.texture = TroopManager.get_flag(country_name, selected_country.ideology_name)
-	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + country_name.capitalize()
+func DoUpdateSidemenuVisuals() -> void:
+	if GameState.selectingCountry:
+		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
+	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
+	print(selected_country.figures)
+	for fig_name in selected_country.figures:
+		var fig = MapManager.significantFigures[fig_name]
+		print("res://starts/" + GameState.current_start + "/assets/portraits/" + fig.name +".png")
+		if fig.occupation == "Leader":
+			sidemenu_leader_portrait.texture = load("res://starts/" + GameState.current_start + "/assets/portraits/" + fig.name +".png")
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
@@ -305,7 +350,7 @@ func DoUpdateSidemenuVisuals(country_name: String) -> void:
 
 func _on_selected_country_ideology_changed():
 	if selected_country:
-		_update_sidemenu_visuals(selected_country.country_name)
+		_update_sidemenu_visuals()
 
 func _on_player_change() -> void:
 	if CountryManager.player_country:
@@ -325,7 +370,7 @@ func _on_province_clicked(country_name: String) -> void:
 	selected_country = CountryManager.get_country(country_name)
 	selected_country.ideology_changed.connect(_on_selected_country_ideology_changed)
 
-	_update_sidemenu_visuals(country_name)
+	_update_sidemenu_visuals()
 
 	if (
 		!GameState.choosing_deploy_city
@@ -359,7 +404,7 @@ func toggle_menu(context := Context.PLAYER) -> void:
 	else:
 		selected_country = CountryManager.player_country
 		sidemenu_country_label.text = CountryManager.player_country.country_name
-		# sidemenu_flag.texture = nation_flag.texture
+		nation_flag.texture = nation_flag.texture
 		open_menu(context, Category.GENERAL)
 		_update_context_actions_visuals()
 
@@ -780,10 +825,8 @@ func _open_faction():
 	faction_prompt.visible = !faction_prompt.visible
 
 
-func open_manage_country(cat: CountryManageUI.Category = CountryManageUI.Category.MILITARY):
-	get_tree().root.find_child("CountryManageUI", true, false).open_menu(
-		CountryManager.player_country, cat
-	)
+func open_manage_country():
+	logistics.open_menu(CountryManager.player_country)
 
 	#GameState.current_world.set_process(false)
 	#GameState.current_world.clock.set_process(false)
@@ -982,7 +1025,7 @@ func add_notif(type: String, tooltip: String):
 			"decision":
 				open_decisions_tree()
 			"plan":
-				open_manage_country(CountryManageUI.Category.COUNTRY)
+				open_manage_country()
 	)
 	notif_box.add_child(notif)
 	all_notifs[type] = notif

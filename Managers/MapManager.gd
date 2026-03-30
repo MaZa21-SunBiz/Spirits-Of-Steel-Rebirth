@@ -46,6 +46,8 @@ var all_cities: Array[Array] = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
+@onready var significantFigures: Dictionary[String, ImportantFigure] ={}
+
 var gay: Label = Label.new()
 # soiladin time
 var allowed_pids: Dictionary = {}
@@ -164,7 +166,11 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 	_build_global_registry()
 	a_progress[0] += 0.025
 
-func load_country_data(region_map: CompressedTexture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
+func load_country_data(
+	region_map: CompressedTexture2D,
+	a_provinceData: Dictionary,
+	a_progress: Array = [0]
+) -> void:
 	#var dir = DirAccess.open("res://")
 	#if dir and not dir.dir_exists(CACHE_FOLDER):
 	#	dir.make_dir_recursive(CACHE_FOLDER)
@@ -204,6 +210,24 @@ func SaveBiomeData() -> Dictionary:
 	for biome: BiomeData in biomes.values():
 		returnBiomes[biome.name] = biome.ToDict()
 	return returnBiomes
+
+func export_scenario_data(path: String) -> void:
+	var export = {
+		"resources": SaveResourcesData(),
+		"biomes": SaveBiomeData(),
+		"provinces": save_country_data(),
+		"polities": CountryManager.save_countries(),
+		"ideologies": IdeologyManager.ideologies,
+		"factions": FactionManager.save_factions()
+	}
+
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(export, "\t"))
+		file.close()
+		print("Scenario exported to: ", path)
+	else:
+		push_error("Failed to export scenario to: ", path)
 
 func _try_load_cached_data() -> bool:
 	if not ResourceLoader.exists(MAP_DATA_PATH):
@@ -472,8 +496,8 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
 
 		var selected_country: CountryData = CountryManager.countries[MapManager.province_objects[pid].country]
+		GameState.game_ui.selected_country = selected_country
 		for stat: String in [
-			"country_name",
 			"is_puppet",
 			"money",
 			"gdp",
@@ -488,6 +512,31 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			var stat_label: Label = Label.new()
 			stat_label.text = "%s: %s" % [stat.capitalize(), str(selected_country[stat]).capitalize()]
 			GameState.game_ui.select_player_stat.add_child(stat_label)
+
+		GameState.game_ui.nation_flag.texture = TroopManager.get_flag(
+			selected_country.country_name,
+			selected_country.ideology_name
+		)
+		GameState.game_ui.sidemenu_country_label.text = "%s %s" % [
+			selected_country.ideology_name.capitalize(),
+			selected_country.country_name.capitalize()
+		]
+
+		GameState.game_ui.sidemenu_pointer.position.x = remap(
+			selected_country.ideology[0],
+			-100,
+			100,
+			3,
+			97
+		)
+		GameState.game_ui.sidemenu_pointer.position.y = remap(
+			selected_country.ideology[1],
+			-100,
+			100,
+			3,
+			97
+		)
+
 		var play_btn: Button = Button.new()
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
 		play_btn.pressed.connect(
@@ -1408,9 +1457,9 @@ func allow_pids(accesser: CountryData, accessee: CountryData):
 	if !allowed_pids.has(accesser.country_name):
 		allowed_pids[accesser.country_name] = []
 	for province in country_to_provinces[accessee.country_name]:
-		allowed_pids[accesser.country_name].append(province.province_id)
+		allowed_pids[accesser.country_name].append(province)
 
 
 func unallow_pids(unaccesser: CountryData, unaccessee: CountryData):
 	for province in country_to_provinces[unaccessee.country_name]:
-		allowed_pids[unaccesser.country_name].erase(province.province_id)
+		allowed_pids[unaccesser.country_name].erase(province)

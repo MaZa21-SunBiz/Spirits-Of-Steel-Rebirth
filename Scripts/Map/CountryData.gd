@@ -78,6 +78,7 @@ var dirty := true
 var dirty_manpower := true
 var enemies = []
 
+var figures: PackedStringArray = []
 
 #region --- Inner Classes ---
 class TroopTraining:
@@ -137,6 +138,7 @@ func ToDict() -> Dictionary:
 		"puppets": puppets,
 		"accepted_cultures": accepted_cultures,
 		"hostedGovernments": hostedGovernments,
+		"figures": figures,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -154,6 +156,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.accepted_cultures = a_data.get("accepted_cultures", [])
 	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
+	country.figures = a_data.get("figures", [])
 	# country._refresh_economic_stats()
 	# country.refresh_ideology_name()
 	

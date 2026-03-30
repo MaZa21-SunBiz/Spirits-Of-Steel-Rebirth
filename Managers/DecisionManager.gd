@@ -4,6 +4,7 @@ extends Node
 # var categories: Dictionary = {}  <-- REMOVED
 var default_categories: Dictionary = {}
 var country_decisions_map: Dictionary = {} # { "China": { "Economy": [...] } }
+var country_file_paths: Dictionary = {} # { "Germany": "res://decisions/Germany.json" }
 
 var active_decisions: Dictionary = {} # { "Germany": { "eco_1": 5 } }
 var ui_overlay = null
@@ -31,6 +32,7 @@ func _load_decisions(base_path: String):
 		var default_text = FileAccess.get_file_as_string(default_path)
 		if default_text:
 			default_categories = JSON.parse_string(default_text).get("categories", {})
+			country_file_paths["_default"] = default_path
 	
 	# 2. Load Country Specific
 	var dir = DirAccess.open(base_path)
@@ -38,13 +40,15 @@ func _load_decisions(base_path: String):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".json") and file_name != "default.json":
+			if not dir.current_is_dir() and file_name.ends_with(".json") \
+				and file_name != "default.json":
 				var country_key = file_name.replace(".json", "")
 				
 				var content = FileAccess.get_file_as_string(base_path + file_name)
 				var json = JSON.parse_string(content)
 				if json and json.has("categories"):
 					country_decisions_map[country_key] = json["categories"]
+					country_file_paths[country_key] = base_path + file_name
 				print(country_key)
 			
 			file_name = dir.get_next()
@@ -176,7 +180,7 @@ func get_days_left(country: CountryData, id: String) -> int:
 
 # Check if the country has ANY active timers
 func is_country_busy(country: CountryData) -> bool:
-	return !active_decisions.get(country.country_name, []).is_empty()
+	return !active_decisions.get(country.country_name, {}).is_empty()
 
 func has_available_decisions(country: CountryData) -> bool:
 	var categories: Dictionary = get_country_categories(country.country_name)
@@ -187,8 +191,7 @@ func has_available_decisions(country: CountryData) -> bool:
 			if can_take_decision(country, cat, i):
 				if country.is_player:
 					return true
-				else:
-					choices.append([country, cat, i])
+				choices.append([country, cat, i])
 	if choices.is_empty():
 		print("No available decisions for %s" % country.country_name)
 		return false
@@ -196,3 +199,28 @@ func has_available_decisions(country: CountryData) -> bool:
 	if choice:
 		start_decision(choice[0], choice[1], choice[2])
 	return false
+
+
+func save_country_decisions(country_name: String):
+	var path = country_file_paths.get(country_name)
+	var cats = country_decisions_map.get(country_name)
+	
+	if not cats:
+		# If country doesn't have a specific file, check default
+		path = country_file_paths.get("_default")
+		cats = default_categories
+		
+	if not path or not cats:
+		print("Error: Could not find path or categories for ", country_name)
+		return
+
+	var data = { "categories": cats }
+	var json_string = JSON.stringify(data, "\t")
+	
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+		print("Saved decisions to ", path)
+	else:
+		print("Error: Could not open file for writing at ", path)
