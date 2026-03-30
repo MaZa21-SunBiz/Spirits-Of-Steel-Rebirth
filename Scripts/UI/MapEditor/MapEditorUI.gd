@@ -406,31 +406,7 @@ func _on_apply_pressed() -> void:
 	print("MapEditor: Applied changes and updated colors for ", new_country)
 
 func _on_export_pressed() -> void:
-	# Export Province Data
-	var provinces = MapManager.save_country_data()
-	var sorted_provinces = {}
-	var keys = provinces.keys()
-	keys.sort_custom(func(a, b): return a.to_int() < b.to_int())
-	for k in keys:
-		sorted_provinces[int(k)] = provinces[k]
-
-	var export = {
-		"resources": MapManager.SaveResourcesData(),
-		"biomes": MapManager.SaveBiomeData(),
-		"provinces": MapManager.save_country_data(),
-		"polities": CountryManager.save_countries(),
-		"ideologies": IdeologyManager.ideologies,
-		"factions": FactionManager.save_factions()
-	}
-
-	# print(JSON.stringify(export, " "))
-	# print(JSON.stringify(export["polities"], " "))
-	# print(JSON.stringify(export ["factions"], "\t"))
-
-	var file = FileAccess.open("user://map_data.json", FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(export , "\t"))
-		file.close()
+	MapManager.export_scenario_data("user://map_data.json")
 
 func m_OnTabContainerTabChanged(tab: int) -> void:
 	m_NoneTool()

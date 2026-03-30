@@ -11,6 +11,7 @@ var clock: GameClock
 var water_offset: Vector2 = Vector2.ZERO
 
 
+
 func _process(_delta: float) -> void:
 	if !map_sprite: return
 	var map_width := MapManager.id_map_image.get_width()
@@ -176,7 +177,7 @@ func load_map_data(mapData):
 	MapManager.LoadBiomes(mapData["biomes"] as Array)
 	MapManager.LoadResources(mapData["resources"] as Array)
 	IdeologyManager.Initialize(mapData["ideologies"] as Dictionary)
-	MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary)
+	MapManager.load_country_data(preload("res://maps/regions.png"), mapData["provinces"] as Dictionary, mapData["significant_figures"])
 	CountryManager.initialize_countries(mapData["polities"] as Array[Dictionary])
 	MapManager.build_lookup_texture()
 	FactionManager.Initialize(mapData["factions"])

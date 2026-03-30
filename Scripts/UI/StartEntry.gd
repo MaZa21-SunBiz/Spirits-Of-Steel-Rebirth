@@ -23,9 +23,10 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: Array):
 				a_percent = [0]
 				GameState.current_start = a_text
-				a_percent[0] = 0
+				GameState.current_scenario_path = mapdata_path #dear god lets not 
+				a_percent[0] = 0.01
 				EconomyManager.initialize(start_folder + "building_functions.json")
-				a_percent[0] = 69
+				a_percent[0] = 0.02
 				PlansManager.load_plans_from_path(start_folder + "plans.json")
 				a_percent[0] = 0.06
 				DecisionManager.load_decisions_from_path(start_folder + "decisions/")
@@ -50,6 +51,9 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				a_percent[0] = 0.9
 				Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 				a_percent[0] = 1.0
+				for fig in map_data.get("significant_figures", []):
+					MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
+				print(MapManager.significantFigures)
 			)
 		button.pressed.connect(load_map_data)
 		

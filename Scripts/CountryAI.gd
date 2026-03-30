@@ -316,6 +316,8 @@ func _execute_frontline():
 
 	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
 		for n_id in MapManager.adjacency_list.get(my_pid, []):
+			if !MapManager.province_objects.has(n_id):
+				continue
 			# Check if it's enemy territory
 			var enemy_name: String = MapManager.province_objects[n_id].GetFunctionalOwner()
 			if MapManager.province_objects[n_id].GetFunctionalOwner() in enemies && !seen.has(n_id):
@@ -420,6 +422,8 @@ func _get_neighbor_countries() -> Array:
 	var neighbors: PackedStringArray = []
 	for pid in MapManager.country_to_provinces.get(country.country_name, []):
 		for nid in MapManager.adjacency_list.get(pid, []):
+			if !MapManager.province_objects.has(nid):
+				continue
 			var owner: String = MapManager.province_objects[nid].GetFunctionalOwner()
 			if owner && owner != country.country_name:
 				neighbors.append(owner)
