@@ -121,6 +121,3 @@ func GetResources() -> String:
 			list += "\n"
 		list += "%s: %d" % [ resource_type, counts[resource_type] ]
 	return list
-
-
-

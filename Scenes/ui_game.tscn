@@ -746,7 +746,7 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -756,7 +756,6 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -835,6 +834,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -1085,6 +1085,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy" unique_id=1221364533]
@@ -1137,6 +1138,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Economy" unique_id=566937834]
@@ -1180,6 +1182,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Military" unique_id=1175496027]
@@ -1198,7 +1201,7 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -1207,7 +1210,6 @@ tab_2/icon = ExtResource("8_qum3k")
 metadata/_tab_index = 2
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=481997949]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -1238,6 +1240,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy" unique_id=1126937039]
@@ -1325,6 +1328,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Trade Deal"
 
 [node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral" unique_id=173220231]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
@@ -1436,6 +1440,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Diplomacy" unique_id=318226173]
@@ -1496,6 +1501,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Economy" unique_id=44064141]
@@ -1547,6 +1553,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Puppet/Military" unique_id=471897206]
@@ -1620,6 +1627,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("5_0e43j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy" unique_id=233231260]
@@ -1688,6 +1696,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("7_lpwmk")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Diplomacy" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Economy" unique_id=1608048880]
@@ -1747,6 +1756,7 @@ vertical_alignment = 1
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military" unique_id=394845032]

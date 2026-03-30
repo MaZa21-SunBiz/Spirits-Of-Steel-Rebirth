@@ -71,8 +71,7 @@ func _ready() -> void:
 						current_building_template[reqs["type"]] = goob
 						print(current_building_template)
 				)
-
-		functions_list.add_child(function_btn)
+				functions_list.add_child(function_btn)
 		# functions_list.add_child(HSeparator.new())
 
 func _set_feasible(resource):
