@@ -89,7 +89,7 @@ func _init(_country: CountryData) -> void:
 		},
 	}
 	
-	var extremism = _get_extremism()
+	var extremism: float = _get_extremism()
 	personality["aggression"] = (extremism * 2.0) + (AI_CHAOS * randf())
 	
 	# Adjust war probability based on extremism
@@ -157,8 +157,8 @@ func _execute_factory() -> bool:
 
 func _execute_train() -> bool:
 	# Improved: Recruit based on current needs (e.g., more if at war)
-	var template = DivisionData.TEMPLATES["infantry"]  # Could vary templates based on tech/manpower
-	var max_affordable = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
+	var template: Dictionary = DivisionData.TEMPLATES["infantry"]  # Could vary templates based on tech/manpower
+	var max_affordable: int = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
 	if max_affordable < 1:
 		return false
 	
@@ -168,10 +168,8 @@ func _execute_train() -> bool:
 
 func _execute_war() -> bool:
 	# 1. THE STOCHASTIC GATE (Randomness + World Tension)
-	var extremism = _get_extremism()
-	var tension_threshold = 0.15 - (extremism * 0.1) # Extreme countries care less about tension
-	
-	if MapManager.world_tension < tension_threshold && personality["aggression"] < 2.5:
+	# Extreme countries care less about tension
+	if MapManager.world_tension < (0.15 - _get_extremism() * 0.1) && personality["aggression"] < 2.5:
 		return false
 
 	# Only proceed if we pass the probability check
@@ -179,19 +177,19 @@ func _execute_war() -> bool:
 		return false
 
 	# 2. COOLDOWNS & OVEREXTENSION (Existing)
-	var frame_now = Engine.get_frames_drawn()
+	var frame_now: int = Engine.get_frames_drawn()
 	if frame_now - _last_declare_frame < DECLARE_WAR_COOLDOWN_FRAMES || WarManager.get_enemies_of(country.country_name).size() >= MAX_PARALLEL_WARS || country.money < personality["war"]["min_economy"]:
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s didn't go to war due to cooldown, too many enemies, or a weak economy" % country.country_name)
 		return false
 
-	var candidates = _get_neighbor_countries().filter(
-		func(enemy):
-			var enemy_data = CountryManager.get_country(enemy)
+	var candidates: Array = _get_neighbor_countries().filter(
+		func(enemy: String):
+			var enemyData: CountryData = CountryManager.get_country(enemy)
 			return (
 				enemy != "Sea" &&
-				enemy_data &&
-				!FactionManager.in_faction(enemy_data, country) &&
+				enemyData &&
+				!FactionManager.in_faction(enemyData, country) &&
 				(country.get_relation_with(enemy) < 20 || personality["aggression"] > 2.0)
 			)
 	)
@@ -205,8 +203,8 @@ func _execute_war() -> bool:
 		#	print("%s had no candidates to go to war with" % country.country_name)
 		return false
 
-	var best_score = -INF
-	var best_target = null
+	var best_score: float = -INF
+	var best_target: String = ""
 	
 	var puppeter: PackedStringArray = []
 	puppeter.append_array(country.puppets)
@@ -215,44 +213,40 @@ func _execute_war() -> bool:
 		puppeter.append(country.owner)
 		puppeter.append_array(CountryManager.countries[country.owner].puppets)
 
-	for target_name in candidates:
-		var target_data = CountryManager.countries[target_name]
+	for target_name: String in candidates:
+		var target_data: CountryData = CountryManager.countries[target_name]
 		if _same_faction(country.factions, target_data.factions) || WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
 			continue
 
 		# 4. STRENGTH & DISTANCE ANALYSIS
-		var ratio = _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))
+		var ratio: float = _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))
 
 		if ratio < personality["war"]["min_strength_ratio"]:
 			continue
 
 		# 5. DYNAMIC SCORING
-		var score = (ratio - 1.0) * personality["war"]["score"]["strength"]  # Strength advantage
-
-		# Economic Gain: Is this neighbor rich? (GDP check)
-		# Assuming you have access to target's money or GDP
-		score += target_data.money * personality["war"]["score"]["money_factor"]  # Prefer rich targets
-
-		# Target Cities (Existing)
-		score += min(MapManager.get_cities_province_country(target_name).size(), personality["war"]["score"]["max_cities"]) * personality["war"]["score"]["cities"]  # More cities = more score, capped at 3 for balance
-
+		# Strength advantage
+		# Prefer rich targets
+		# Target Cities (Existing) More cities = more score, capped at 3 for balance
 		# 6. FINAL THRESHOLD
 		# We add a bit of randomness to the score so it's not always the same neighbor
-		score += randf_range(-0.5, 0.5)
+		var score: float = (ratio - 1.0) * personality["war"]["score"]["strength"] \
+			+ target_data.money * personality["war"]["score"]["money_factor"] \
+			+ min(MapManager.get_cities_province_country(target_name).size(), personality["war"]["score"]["max_cities"]) * personality["war"]["score"]["cities"] \
+			+ randf_range(-0.5, 0.5)
 
 		if score > best_score && score > WAR_SCORE_THRESHOLD:
 			best_score = score
 			best_target = target_name
 
-		# 7. EXECUTION
+	# 7. EXECUTION
 	if best_target:
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s is declaring war on %s" % [country.country_name, best_target])
 		WarManager.declare_war(country, CountryManager.countries[best_target])
 		
 		# Aggressive/Extreme countries cause more tension
-		var tension_impact = 0.02 + (extremism * 0.03) + (personality["aggression"] * 0.01)
-		MapManager.increase_world_tension(tension_impact)
+		MapManager.increase_world_tension(0.02 + _get_extremism() * 0.03 + personality["aggression"] * 0.01)
 
 		_last_declare_frame = frame_now
 	
@@ -285,13 +279,13 @@ func _execute_frontline():
 				
 				country.ready_troops.erase(troop_data)
 	
-	var idle_troops = TroopManager.get_troops_for_country(country.country_name).filter(func(t): return not t.is_moving)
+	var idle_troops: Array = TroopManager.get_troops_for_country(country.country_name).filter(func(t): return not t.is_moving)
 	if idle_troops.is_empty():
 		#if country == GameState.game_ui.selected_country:
 		#	print("%s had no idle troops" % country.country_name)
 		return
 
-	var enemies = WarManager.get_enemies_of(country.country_name)
+	var enemies: Array[String] = WarManager.get_enemies_of(country.country_name)
 	var move_payload: Array = []
 	if enemies.is_empty():
 		#if country == GameState.game_ui.selected_country:
@@ -322,8 +316,8 @@ func _execute_frontline():
 			var enemy_name: String = MapManager.province_objects[n_id].GetFunctionalOwner()
 			if MapManager.province_objects[n_id].GetFunctionalOwner() in enemies && !seen.has(n_id):
 				seen.append(n_id)
-				var e_str = TroopManager.get_province_strength(n_id, enemy_name)
-				var score = 10.0
+				var e_str: int = TroopManager.get_province_strength(n_id, enemy_name)
+				var score: float = 10.0
 
 				if MapManager.all_cities.find_custom(func (a: Array): return a[0] == n_id):
 					score += personality["war"]["combat"]["city_bonus"]
@@ -367,7 +361,7 @@ func _execute_frontline():
 	for troop in idle_troops:
 		# Sort targets by a mix of Score and Distance
 		# Math: score / (distance + 1)
-		var troop_pos = MapManager.province_centers[troop.province_id]
+		var troop_pos: Vector2 = MapManager.province_centers[troop.province_id]
 		targets.sort_custom(
 			func(a, b):
 				return (a.score / (troop_pos.distance_to(MapManager.province_centers[a.id]) * 0.01 + 1.0)) > (b.score / (troop_pos.distance_to(MapManager.province_centers[b.id]) * 0.01 + 1.0))
@@ -450,7 +444,7 @@ func _get_extremism() -> float:
 	# Ideology map is roughly -100 to 100 on both axes.
 	# Higher distance from center (0,0) = more extreme.
 	# Return value 0.0 (neutral) to 1.0 (extreme)
-	return clamp(country.ideology.length() / 141.42, 0.0, 1.0) # 141.42 is approx dist to corner
+	return clamp(country.ideology.length() * 0.00707113562, 0.0, 1.0) # 141.42 is approx dist to corner
 
 
 func _same_faction(arr1: PackedStringArray, arr2: Array[String]) -> bool:
