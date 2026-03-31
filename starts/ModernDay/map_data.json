@@ -1,4 +1,14 @@
 {
+	"significant_figures": [
+		{
+			"name": "GavGrub",
+			"skills": { "Economics": 0 },
+			"traits": [ "abbandonment" ],
+			"ideology": [ 100, 100 ],
+			"allegiance": "Zimbabwe",
+			"occupation": "Leader"
+		}
+	],
 	"biomes": {
 
 	},

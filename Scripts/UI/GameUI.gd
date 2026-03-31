@@ -5,11 +5,14 @@ class_name GameUI
 enum Context {PLAYER, ENEMY, NEUTRAL, PUPPET, ALLY, SELECT}
 enum Category {GENERAL, ECONOMY, MILITARY}
 
+@export var settings: PanelContainer
+
 # ── Top Bar Nodes ─────────────────────────────────────
 @export_group("Top Bar")
 @export var topbar: HBoxContainer
 @export var nation_flag: TextureRect
 @export var label_date: Label
+@export var radios_panel: PanelContainer
 
 @export_subgroup("Stats Labels")
 @export var label_pp: Label
@@ -24,7 +27,7 @@ var stats_labels := {}
 @export var notif_box: HBoxContainer
 
 # ── Speed Controls ────────────────────────────────────
-@export_group("Speed Controls")
+@export_subgroup("Speed Controls")
 @export var plus: Button
 @export var minus: Button
 @export var progress_bar: ProgressBar
@@ -275,7 +278,7 @@ func _ready() -> void:
 				print(MusicManager.radios)
 		)
 		radio_list.add_child(entry)
-		entry.material = $Radios.material
+		entry.use_parent_material = true
 	
 	_update_radio_visuals()
 	
@@ -826,7 +829,7 @@ func _open_faction():
 
 
 func open_manage_country():
-	logistics.open_menu(CountryManager.player_country)
+	logistics.close_menu() if logistics.visible else logistics.open_menu(CountryManager.player_country)
 
 	#GameState.current_world.set_process(false)
 	#GameState.current_world.clock.set_process(false)
@@ -946,7 +949,7 @@ func _on_division_type_button(type: String) -> void:
 
 
 func _on_music_pressed():
-	$Radios.visible = !$Radios.visible
+	radios_panel.visible = !radios_panel.visible
 	SettingsManager.save_settings()
 
 

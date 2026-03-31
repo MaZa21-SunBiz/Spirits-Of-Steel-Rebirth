@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 func _enter_tree() -> void:
 	GameState.current_world = self
 	clock = $/root/Main/Clock
-	KeyboardManager.settings = $ui_game/Settings
+	KeyboardManager.settings = $/root/Main/SettingsLayer
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.
 

@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="25_pvldk"]
 [ext_resource type="StyleBox" uid="uid://c2h4lun75k2xf" path="res://UI/DividerRightTheme.tres" id="26_ubr8q"]
 [ext_resource type="Texture2D" uid="uid://bbdjq5vt3uloi" path="res://assets/ui/fish1.png" id="26_w7nfq"]
-[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="27_2a76p"]
 [ext_resource type="Texture2D" uid="uid://c7iqt8unxm2ec" path="res://assets/ui/fish2.png" id="27_bfmcl"]
 [ext_resource type="Texture2D" uid="uid://m0vdhqgoy3y6" path="res://assets/ui/fish3.jpg" id="28_1nbba"]
 [ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
@@ -78,6 +77,8 @@ grow_end = 20.0
 thickness = 4
 vertical = true
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx7os"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0e43j"]
 content_margin_left = 14.0
 content_margin_top = 14.0
@@ -101,11 +102,13 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("settings", "topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
+settings = NodePath("")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
 label_date = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar/MarginContainer/label_date")
+radios_panel = NodePath("Control/Radios")
 label_pp = NodePath("Control/Topbar/HBoxContainer/PoliticalPower/HBoxContainer/label_politicalpower")
 label_manpower = NodePath("Control/Topbar/HBoxContainer/Manpower/HBoxContainer/label_manpower")
 label_money = NodePath("Control/Topbar/HBoxContainer/Money/HBoxContainer/label_money")
@@ -113,7 +116,7 @@ label_industry = NodePath("Control/Topbar/HBoxContainer/Industry/HBoxContainer/l
 label_stability = NodePath("Control/Topbar/HBoxContainer/Stability/HBoxContainer/label_stability")
 label_war_support = NodePath("Control/Topbar/HBoxContainer/WarSupport/HBoxContainer/label_war_support")
 label_world_tension = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/label_tension")
-notif_box = NodePath("Notifications")
+notif_box = NodePath("Control/Notifications")
 plus = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Plus")
 minus = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Minus")
 progress_bar = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar")
@@ -125,14 +128,14 @@ sidemenu_trooplist = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2
 sidemenu_buildings = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 sidemenu_leader_portrait = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/Leader")
 relations_hbox = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox")
-faction_prompt = NodePath("CreateFaction")
+faction_prompt = NodePath("Control/CenterStuff/CreateFaction")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
 accepted_cultures = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
 unaccepted_cultures = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/UnacceptedCultures/ScrollContainer/VBoxContainer")
 select_player_stat = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Select/ScrollContainer/ActionsList")
-radio_list = NodePath("Radios/RadioList")
-now_playing = NodePath("Radios/ScrollContainer/NowPlaying")
-map_tabs = NodePath("MapSwitcher/TabBar")
+radio_list = NodePath("Control/Radios/Radios/RadioList")
+now_playing = NodePath("Control/Radios/Radios/ScrollContainer/NowPlaying")
+map_tabs = NodePath("Control/MapSwitcher/TabBar")
 military_extra_panel = NodePath("Control/MilitaryExtra")
 input_division = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/input_division")
 button_train = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train")
@@ -142,10 +145,11 @@ costs = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost/a
 manpower = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower/amount")
 troop_container = NodePath("Control/TroopContainer")
 troop_list_parent = NodePath("Control/TroopContainer/ScrollContainer/VBoxContainer")
-building_designer = NodePath("BuildingDesigner")
-logistics = NodePath("Logistics")
+building_designer = NodePath("Control/CenterStuff/BuildingDesigner")
+logistics = NodePath("Control/CenterStuff/Logistics")
 
 [node name="Control" type="Control" parent="." unique_id=1022296617]
+material = ExtResource("16_lpwmk")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +159,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Topbar" type="PanelContainer" parent="Control" unique_id=2113396861]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -430,6 +434,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MilitaryExtra" type="Control" parent="Control" unique_id=2018129027]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -440,12 +445,17 @@ offset_right = 738.0
 grow_vertical = 0
 
 [node name="Stats" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1873248397]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -8.0
 offset_top = 3.0
-offset_right = 117.0
-offset_bottom = 131.0
+offset_right = -253.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtra/Stats" unique_id=1745200345]
@@ -550,7 +560,7 @@ layout_mode = 2
 text = "100"
 
 [node name="Deploy" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1009879633]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 0
 offset_left = -8.0
 offset_top = 135.0
@@ -600,6 +610,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
 text = "TRAIN"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Control" unique_id=86601275]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -1832,8 +1843,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="TroopContainer" type="PanelContainer" parent="Control" unique_id=1621412606]
-visible = false
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1848,74 +1858,96 @@ grow_vertical = 0
 theme = ExtResource("13_sdmnd")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TroopContainer" unique_id=208408317]
-material = ExtResource("16_lpwmk")
+use_parent_material = true
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TroopContainer/ScrollContainer" unique_id=1354240878]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Radios" type="VBoxContainer" parent="." unique_id=993433654]
-material = ExtResource("16_lpwmk")
+[node name="Radios" type="PanelContainer" parent="Control" unique_id=1870105236]
+use_parent_material = true
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -248.0
+offset_left = -188.0
 offset_top = 30.0
-offset_right = -4.0
-offset_bottom = 76.0
+offset_right = -1.0
+offset_bottom = 231.0
 grow_horizontal = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Radios" unique_id=786990813]
+[node name="Radios" type="VBoxContainer" parent="Control/Radios" unique_id=993433654]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Radios/Radios" unique_id=786990813]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="NowPlaying" type="Label" parent="Radios/ScrollContainer" unique_id=728218665]
+[node name="NowPlaying" type="Label" parent="Control/Radios/Radios/ScrollContainer" unique_id=728218665]
 layout_mode = 2
 text = "Now playing"
 
-[node name="RadioList" type="VBoxContainer" parent="Radios" unique_id=1652086797]
+[node name="RadioList" type="VBoxContainer" parent="Control/Radios/Radios" unique_id=1652086797]
 use_parent_material = true
 layout_mode = 2
 
-[node name="CreateFaction" type="PanelContainer" parent="." unique_id=1478231919]
-visible = false
-material = ExtResource("16_lpwmk")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -170.0
-offset_top = -230.0
-offset_right = 170.0
-offset_bottom = 230.0
+[node name="Notifications" type="HBoxContainer" parent="Control" unique_id=1074458046]
+use_parent_material = true
+layout_mode = 0
+offset_left = 360.0
+offset_top = 30.000002
+offset_right = 960.0
+offset_bottom = 58.0
+
+[node name="CenterStuff" type="TabContainer" parent="Control" unique_id=340667560]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 30.0
+offset_right = -192.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hx7os")
+tabs_visible = false
+deselect_enabled = true
+
+[node name="CreateFaction" type="PanelContainer" parent="Control/CenterStuff" unique_id=1478231919]
+visible = false
+material = ExtResource("16_lpwmk")
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0e43j")
+metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreateFaction" unique_id=1381981934]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterStuff/CreateFaction" unique_id=1381981934]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CreateFaction/VBoxContainer" unique_id=1065785828]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterStuff/CreateFaction/VBoxContainer" unique_id=1065785828]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=1417137941]
+[node name="TextEdit" type="TextEdit" parent="Control/CenterStuff/CreateFaction/VBoxContainer/HBoxContainer" unique_id=1417137941]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Faction Name"
 
-[node name="Button" type="Button" parent="CreateFaction/VBoxContainer/HBoxContainer" unique_id=119683320]
+[node name="Button" type="Button" parent="Control/CenterStuff/CreateFaction/VBoxContainer/HBoxContainer" unique_id=119683320]
 material = ExtResource("16_lpwmk")
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 text = "Create Faction"
 
-[node name="ColorPicker" type="ColorPicker" parent="CreateFaction/VBoxContainer" unique_id=1452449253]
+[node name="ColorPicker" type="ColorPicker" parent="Control/CenterStuff/CreateFaction/VBoxContainer" unique_id=1452449253]
 layout_mode = 2
 edit_alpha = false
 edit_intensity = false
@@ -1923,35 +1955,33 @@ sampler_visible = false
 color_modes_visible = false
 presets_visible = false
 
-[node name="Settings" parent="." unique_id=20089709 instance=ExtResource("27_2a76p")]
+[node name="BuildingDesigner" parent="Control/CenterStuff" unique_id=1883852342 instance=ExtResource("38_qsn4r")]
 visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="Notifications" type="HBoxContainer" parent="." unique_id=1074458046]
-material = ExtResource("16_lpwmk")
-offset_left = 360.0
-offset_top = 30.000002
-offset_right = 900.0
-offset_bottom = 58.0
-
-[node name="BuildingDesigner" parent="." unique_id=1883852342 instance=ExtResource("38_qsn4r")]
+[node name="Logistics" parent="Control/CenterStuff" unique_id=542448780 instance=ExtResource("42_hx7os")]
 visible = false
+layout_mode = 2
+metadata/_tab_index = 2
 
-[node name="MapSwitcher" type="PanelContainer" parent="." unique_id=17159635]
-material = ExtResource("16_lpwmk")
+[node name="MapSwitcher" type="PanelContainer" parent="Control" unique_id=17159635]
+use_parent_material = true
 clip_contents = true
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -248.0
-offset_top = -35.0
+offset_left = -188.0
+offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_stretch_ratio = 0.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_odnp1")
 
-[node name="TabBar" type="TabBar" parent="MapSwitcher" unique_id=1711270607]
+[node name="TabBar" type="TabBar" parent="Control/MapSwitcher" unique_id=1711270607]
 use_parent_material = true
 clip_contents = true
 layout_mode = 2
@@ -2096,12 +2126,6 @@ layout_mode = 2
 autoplay = true
 expand = true
 
-[node name="Logistics" parent="." unique_id=542448780 instance=ExtResource("42_hx7os")]
-offset_left = 360.0
-offset_top = 61.0
-offset_right = 900.0
-offset_bottom = 456.0
-
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Pause" to="." method="_on_pause_pressed"]
@@ -2132,5 +2156,5 @@ offset_bottom = 456.0
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_force_puppet"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_call_to_arms_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Ally/Military/ScrollContainer/ActionsList/Button3" to="." method="_request_access"]
-[connection signal="pressed" from="CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]
-[connection signal="tab_changed" from="MapSwitcher/TabBar" to="." method="_on_map_changed"]
+[connection signal="pressed" from="Control/CenterStuff/CreateFaction/VBoxContainer/HBoxContainer/Button" to="." method="_on_create_faction_pressed"]
+[connection signal="tab_changed" from="Control/MapSwitcher/TabBar" to="." method="_on_map_changed"]

@@ -18,7 +18,7 @@ func _on_new_game_pressed() -> void:
 	StartsUI.visible = !StartsUI.visible
 
 func _on_settings_pressed() -> void:
-	SettingsUI.visible = !SettingsUI.visible
+	KeyboardManager.settings.visible = !KeyboardManager.settings.visible
 
 func _on_exit_settings_pressed() -> void:
 	SettingsUI.visible = false

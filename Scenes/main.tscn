@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="15_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://bbk814o0rut6j" path="res://assets/icons/AncientRuins.svg" id="16_k12tt"]
 [ext_resource type="Script" uid="uid://bgsdn54mhn6v5" path="res://Scripts/Audio.gd" id="18_pdsj5"]
+[ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="19_fevyy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hptm8"]
 frequency = 0.005
@@ -122,7 +123,6 @@ script = ExtResource("2_h1bgf")
 [node name="CurrentScene" type="Node2D" parent="." unique_id=556924462]
 
 [node name="MainMenu" parent="CurrentScene" unique_id=945632142 instance=ExtResource("7_6bp64")]
-visible = false
 
 [node name="Tooltip" type="CanvasLayer" parent="." unique_id=417695235]
 
@@ -283,3 +283,19 @@ bus = &"Music"
 [node name="SFX" type="AudioStreamPlayer" parent="Audio" unique_id=231217144]
 stream = SubResource("AudioStreamSynchronized_fevyy")
 bus = &"SFX"
+
+[node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=2146497777]
+visible = false
+
+[node name="Settings" parent="SettingsLayer" unique_id=1223466696 instance=ExtResource("19_fevyy")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -139.0
+offset_right = 187.5
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
