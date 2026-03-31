@@ -48,6 +48,7 @@ func _ready() -> void:
 		"cta", _call_to_arms, ["caller", "target"], 2, "Call a country to arms"
 	)
 	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
+	Console.add_command("sink_rise", _sink_rise, ["pid", "type", "country_name"], 3, "sink/rise province")
 	
 
 
@@ -153,3 +154,8 @@ func _invite_country(country_name: String):
 func _drew_durnil_mode():
 	CountryManager.player_country.is_player = false
 	CountryManager.player_country.setup_ai()
+
+
+func _sink_rise(pid, type, country_name: String):
+	print("skibidi")
+	MapManager.change_province_types([int(pid)], int(type), country_name)

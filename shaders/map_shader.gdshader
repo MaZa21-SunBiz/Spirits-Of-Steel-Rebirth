@@ -113,8 +113,9 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
 void fragment() {
 		//weird magic offset thing trust me i checked
-		float d = (PI*85.*ocean_offset.x) + (PI*43.63) +.6;
-		float t = .4276*cos(d/182.725);
+		float d = (PI*82.*ocean_offset.x) + (PI*43.43) +.6;
+		float t = 0.55907372766767*cos(d/182.725);
+		//float t = 1.;
 		
 		vec3 sphere_point = vec3(
 			cos(UV.x*2.*PI)
@@ -149,7 +150,8 @@ void fragment() {
 					.5 -.5*pow(distance(sphere_point, sun_dir), .2),
 					0.,
 					1.
-				),
+				)
+				,
 				water_color_shallow.rgb,
 				h);
 		    COLOR.xyz = water;
@@ -214,5 +216,6 @@ void fragment() {
 		);
 		
 		COLOR.rgb += vec3(clouds_tex);
+		//COLOR.rgb += vec3(round(dot(sun_dir, sphere_point)-.4999));
 	}
 }

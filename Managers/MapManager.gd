@@ -166,6 +166,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 	_build_global_registry()
 	a_progress[0] += 0.025
 
+
 func load_country_data(
 	region_map: CompressedTexture2D,
 	a_provinceData: Dictionary,
@@ -1463,3 +1464,63 @@ func allow_pids(accesser: CountryData, accessee: CountryData):
 func unallow_pids(unaccesser: CountryData, unaccessee: CountryData):
 	for province in country_to_provinces[unaccessee.country_name]:
 		allowed_pids[unaccesser.country_name].erase(province)
+	
+
+func change_province_types(pids: Array[int], type: int, country_name: String = ""):
+	for pid in pids:
+		var province: Province = province_objects[pid]
+		province.type = type
+		province.country = country_name
+		print(province.type)
+		print(province.country)
+	_set_type_map(
+		GameState.current_world.mat,
+		GameState.current_world.type_img,
+		)
+
+
+func _set_type_map(mat: Material, type_img: Image):
+	var uncertain_pixels := []
+
+	# --- PASS 1: Direct Mapping ---
+	for i in range(MAP_HEIGHT * MAP_WIDTH):
+		var x: int = i % MAP_WIDTH
+		var y: int = i / MAP_WIDTH
+		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
+
+		if province:
+			type_img.set_pixel(x , y , Color(province.type , province.type , province.type))
+		else:
+			# It's a border (PID 1 or null). Mark as uncertain for now.
+			uncertain_pixels.append(Vector2i(x, y))
+
+	# --- PASS 2: Intelligent Flood-Check ---
+	for pos in uncertain_pixels:
+		var touches_land: bool = false
+		#var touches_sea = false
+
+		# Check 8-way neighbors (Radius 1 ONLY - very important)
+		for dy in range(-1, 2):
+			for dx in range(-1, 2):
+				if dx == 0 and dy == 0:
+					continue
+
+				var nx = pos.x + dx
+				var ny = pos.y + dy
+
+				if nx >= 0 && nx < MAP_WIDTH && ny >= 0 && ny < MAP_HEIGHT:
+					var nid = MapManager._get_pid_fast(nx, ny)
+					if nid > 1:
+						var n_prov: Province = MapManager.province_objects.get(nid)
+						if n_prov:
+							if n_prov.type != 0:
+								touches_land = true
+							#else:
+							#	touches_sea = true
+
+		if touches_land:
+			type_img.set_pixel(pos.x, pos.y, Color(1, 1, 1))
+		else:
+			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
+			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
+	mat.set_shader_parameter("type_map", ImageTexture.create_from_image(type_img))

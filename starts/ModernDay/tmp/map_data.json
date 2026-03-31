@@ -1,4 +1,14 @@
 {
+	"significant_figures": [
+		{
+			"name": "GavGrub",
+			"skills": { "Economics": 0 },
+			"traits": [ "abbandonment" ],
+			"ideology": [ 100, 100 ],
+			"allegiance": "Zimbabwe",
+			"occupation": "Leader"
+		}
+	],
 	"biomes": {
 
 	},
@@ -142,8 +152,8 @@
 			"color": "#386038",
 			"hostedGovernments": [],
 			"ideology": [
-				-36.8085098266602,
-				31.2766208648682
+				-46.3829765319824,
+				24.6808643341064
 			],
 			"money": 8469711.51993198,
 			"name": "Russia",
@@ -176,8 +186,8 @@
 			"color": "#1485ED",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-46.3829765319824,
+				36.8085174560547
 			],
 			"money": 40790499.3140853,
 			"name": "United_states",
@@ -373,8 +383,8 @@
 			"color": "#49484D",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-15.7446756362915,
+				-2.1276433467865
 			],
 			"money": 2423083.91533294,
 			"name": "Germany",
@@ -432,8 +442,8 @@
 			"color": "#A7575A",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				71.063835144043,
+				54.6808776855469
 			],
 			"money": 24559585.7368081,
 			"name": "China",
@@ -451,8 +461,8 @@
 			"color": "#34588A",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				32.1276741027832,
+				25.9574718475342
 			],
 			"money": 420497.137270874,
 			"name": "Ukraine",
@@ -511,8 +521,8 @@
 			"color": "#3D75E8",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-36.8085098266602,
+				2.97874283790588
 			],
 			"money": 5980020.12281632,
 			"name": "France",
@@ -1124,8 +1134,8 @@
 			"color": "#A63443",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				61.4893646240234,
+				-28.2978630065918
 			],
 			"money": 940372.744868594,
 			"name": "Turkey",
@@ -1215,8 +1225,8 @@
 			"color": "#5A8F7B",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				57.0212821960449,
+				63.6170425415039
 			],
 			"money": 410425.628150757,
 			"name": "Iran",
@@ -1449,8 +1459,8 @@
 			"color": "#D0A36C",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-51.4893569946289,
+				-34.6808395385742
 			],
 			"money": 67158615.6263556,
 			"name": "India",
@@ -1569,8 +1579,8 @@
 			"color": "#ABBE98",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-27.659574508667,
+				46.8085098266602
 			],
 			"money": 281244.713935157,
 			"name": "Saudi_arabia",
@@ -1603,8 +1613,8 @@
 			"color": "#AFA358",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				34.3931465148926,
+				-72.1203231811523
 			],
 			"money": 164640.204782287,
 			"name": "Egypt",
@@ -1811,8 +1821,8 @@
 			"color": "#9E8A57",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				39.1489410400391,
+				26.5957450866699
 			],
 			"money": 115019.834883835,
 			"name": "Mali",
@@ -1848,8 +1858,8 @@
 			"color": "#26584D",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				-55.319149017334,
+				24.6808643341064
 			],
 			"money": 123904.34629783,
 			"name": "Niger",
@@ -1883,8 +1893,8 @@
 			"color": "#BBAA7E",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				55.106388092041,
+				-69.787223815918
 			],
 			"money": 133544.614426069,
 			"name": "Chad",
@@ -1905,8 +1915,8 @@
 			"color": "#0C3827",
 			"hostedGovernments": [],
 			"ideology": [
-				0.0,
-				0.0
+				25.0927543640137,
+				96.283317565918
 			],
 			"money": 140791.751951328,
 			"name": "Sudan",
@@ -3410,7 +3420,8 @@
 			"political_power": 508.600000000004,
 			"puppets": [],
 			"stability": 1.0,
-			"war_support": 1.0
+			"war_support": 1.0,
+			"figures": ["GavGrub"]
 		},
 		{
 			"accepted_cultures": [
@@ -72139,16 +72150,16 @@
 			"type": 1
 		},
 		"3413": {
-			"biome": "0, 70, 0",
+			"biome": "Sea",
 			"buildings": [],
 			"city": "",
 			"claims": [],
 			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 0,
-			"name": "",
+			"name": "Sea",
 			"occupier": "",
-			"polity": "India",
+			"polity": "Sea",
 			"populations": [],
 			"resources": [],
 			"type": 0
