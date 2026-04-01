@@ -16,7 +16,7 @@ const DECLARE_WAR_COOLDOWN_FRAMES := 600
 const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
 const MAX_WAR_DECLARATIONS_PER_TICK := 1
-const AI_CHAOS := 0.9
+const AI_CHAOS := 2.9
 
 
 var country: CountryData
@@ -247,7 +247,7 @@ func _execute_war() -> bool:
 		# 7. EXECUTION
 	if best_target:
 		#if country == GameState.game_ui.selected_country:
-		#	print("%s is declaring war on %s" % [country.country_name, best_target])
+		print("%s is declaring war on %s" % [country.country_name, best_target])
 		WarManager.declare_war(country, CountryManager.countries[best_target])
 		
 		# Aggressive/Extreme countries cause more tension
@@ -300,10 +300,10 @@ func _execute_frontline():
 		for troop in idle_troops:
 			if !hubs.has(troop.province_id):
 				# Choose closest hub to avoid unnecessary long moves
-				var troop_pos: Vector2 = MapManager.province_centers[troop.province_id]
+				var troop_pos: Vector2 = MapManager.province_graph.get_point_position(troop.province_id)
 				hubs.sort_custom(
 					func(a, b):
-						return troop_pos.distance_squared_to(MapManager.province_centers[a]) < troop_pos.distance_squared_to(MapManager.province_centers[b])
+						return troop_pos.distance_squared_to(MapManager.province_graph.get_point_position(a)) < troop_pos.distance_squared_to(MapManager.province_graph.get_point_position(b))
 				)
 				move_payload.append({"troop": troop, "province_id": hubs[0]})
 		if !move_payload.is_empty():
@@ -315,7 +315,7 @@ func _execute_frontline():
 	var seen: PackedInt32Array = []
 
 	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
-		for n_id in MapManager.adjacency_list.get(my_pid, []):
+		for n_id in MapManager.province_graph.get_point_connections(my_pid):
 			if !MapManager.province_objects.has(n_id):
 				continue
 			# Check if it's enemy territory
@@ -345,7 +345,7 @@ func _execute_frontline():
 				# --- BLITZKRIEG LOGIC ---
 				# Look at the neighbor's neighbors (2 tiles deep)
 				# If an enemy city is just behind the front line and empty, go for it!
-				for dn_id in MapManager.adjacency_list.get(n_id, []):
+				for dn_id in MapManager.province_graph.get_point_connections(n_id):
 					if (MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name 
 						&& !seen.has(dn_id) 
 						&& MapManager.all_cities.find_custom(func (a: Array): return a[0] == dn_id)
@@ -421,7 +421,7 @@ func _get_peace_hubs() -> Array:
 func _get_neighbor_countries() -> Array:
 	var neighbors: PackedStringArray = []
 	for pid in MapManager.country_to_provinces.get(country.country_name, []):
-		for nid in MapManager.adjacency_list.get(pid, []):
+		for nid in MapManager.province_graph.get_point_connections(pid):
 			if !MapManager.province_objects.has(nid):
 				continue
 			var owner: String = MapManager.province_objects[nid].GetFunctionalOwner()
