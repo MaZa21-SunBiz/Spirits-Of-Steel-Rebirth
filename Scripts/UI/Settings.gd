@@ -1,30 +1,36 @@
 extends Control
 
-@onready var save_list = $TabContainer/Saves/VBoxContainer/ScrollContainer/savelist
-@onready var line_edit = $TabContainer/Saves/VBoxContainer/HBoxContainer/TextEdit
+@export var save_list: VBoxContainer
+@export var line_edit: TextEdit
 
 enum Section {SAVE, AUDIO, SETTINGS, EXIT}
 var settings = {}
-@onready var tab_container = $TabContainer
-@onready var audio_path = $TabContainer/Audio/HBoxContainer/VBoxContainer
-@onready var graphics_path = $TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions
-@onready var ui_path = $TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions
 
-@onready var sfx_slider = audio_path.get_node("PanelContainer/HBoxContainer/HSlider")
-@onready var music_slider = audio_path.get_node("PanelContainer2/HBoxContainer/HSlider")
-@onready var scanlines_slider = graphics_path.get_node("ScanLines2")
-@onready var vignette_lower_slider = graphics_path.get_node("Lower2")
-@onready var vignette_upper_slider = graphics_path.get_node("Upper2")
-@onready var map_effects_btn = $TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffects
-@onready var province_borders_slider = graphics_path.get_node("Borders2")
-@onready var ui_upper_slider = ui_path.get_node("Highlight2")
-@onready var ui_lower_slider = ui_path.get_node("Shadow2")
-@onready var ui_dirt_slider = ui_path.get_node("Dirt2")
-@onready var daynight_contrast_slider = graphics_path.get_node("Contrast2")
-@onready var daynight_smoothness_slider = graphics_path.get_node("Smoothness2")
-@onready var clouds = graphics_path.get_node("Clouds2")
-@onready var clouds_edgeness = graphics_path.get_node("Edgeness2")
-@onready var debug_mode_btn = $TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode
+@export var tab_container: TabContainer
+@export var graphics_path: GridContainer
+
+@export_group("Audio")
+@export var sfx_slider: HSlider
+@export var music_slider: HSlider
+
+
+@export_group("UI")
+@export var ui_upper_slider: HSlider
+@export var ui_lower_slider: HSlider
+@export var ui_dirt_slider: HSlider
+
+@export_group("Map Effects")
+@export var scanlines_slider: HSlider
+@export var vignette_lower_slider: HSlider
+@export var vignette_upper_slider: HSlider
+@export var province_borders_slider: HSlider
+@export var daynight_contrast_slider: HSlider
+@export var daynight_smoothness_slider: HSlider
+@export var clouds_slider: HSlider
+@export var edgeness_slider: HSlider
+
+@export var map_effects_btn: CheckButton
+@export var debug_mode_btn: CheckButton
 
 func _ready():
 	_refresh_saves()
@@ -45,8 +51,8 @@ func _initialize_ui_values():
 	ui_dirt_slider.value = s.ui_dirt
 	daynight_contrast_slider.value = s.daynight_contrast
 	daynight_smoothness_slider.value = s.daynight_smoothness
-	clouds.value = s.clouds
-	clouds_edgeness.value = s.clouds_edgeness
+	clouds_slider.value = s.clouds
+	edgeness_slider.value = s.clouds_edgeness
 	debug_mode_btn.button_pressed = s.debug_mode
 
 
@@ -181,7 +187,7 @@ func _on_clouds_changed(value: float) -> void:
 
 
 func _on_edgeness_changed(value: float) -> void:
-	SettingsManager.settings.clouds_edgeness = value
+	SettingsManager.settings.edgeness_slider = value
 	SettingsManager.apply_settings()
 
 

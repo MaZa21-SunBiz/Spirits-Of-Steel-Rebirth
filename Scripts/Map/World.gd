@@ -10,7 +10,9 @@ var clock: GameClock
 
 var water_offset: Vector2 = Vector2.ZERO
 
+var type_img: Image
 
+var mat: ShaderMaterial
 
 func _process(_delta: float) -> void:
 	if !map_sprite: return
@@ -28,7 +30,7 @@ func _process(_delta: float) -> void:
 func _enter_tree() -> void:
 	GameState.current_world = self
 	clock = $/root/Main/Clock
-	KeyboardManager.settings = $ui_game/Settings
+	KeyboardManager.settings = $/root/Main/SettingsLayer
 	TroopManager.troop_selection = $TroopSelection as TroopSelection
 	# TODO(pol): Load CountryManager after map instead of an autoload to avoid this.
 
@@ -66,66 +68,16 @@ func DoSetup(a_progress: Array) -> void:
 	var map_width: int = MapManager.MAP_WIDTH
 	var map_height: int = MapManager.MAP_HEIGHT
 
-	var mat := ShaderMaterial.new()
+	mat = ShaderMaterial.new()
 	mat.shader = map_shader
 	mat.set_shader_parameter("region_id_map", ImageTexture.create_from_image(MapManager.id_map_image))
 	mat.set_shader_parameter("state_colors", MapManager.state_color_texture)
 
 	# @warning_ignore("narrowing_conversion")
-	var type_img := Image.create_empty(map_width, map_height, false, Image.FORMAT_L8)
-	var uncertain_pixels := []
-	var x: int
-	var y: int
-	var inc: float = 0.45 / (map_width * map_height) # Adjust this based on how long you want the loading to take
-	# --- PASS 1: Direct Mapping ---
-	for i in range(map_height * map_width):
-		x = i % map_width
-		@warning_ignore("integer_division")
-		y = i / map_width
-		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
+	type_img = Image.create_empty(map_width, map_height, false, Image.FORMAT_L8)
 
-		if province:
-			a_progress[0] += inc
-			if province.type == Province.SEA: # SEA
-				type_img.set_pixel(x, y, Color(0, 0, 0))
-			else: # LAND
-				type_img.set_pixel(x, y, Color(1, 1, 1))
-		else:
-			# It's a border (PID 1 or null). Mark as uncertain for now.
-			uncertain_pixels.append(Vector2i(x, y))
-
-	# --- PASS 2: Intelligent Flood-Check ---
-	for pos in uncertain_pixels:
-		a_progress[0] += inc
-		var touches_land: bool = false
-		#var touches_sea = false
-
-		# Check 8-way neighbors (Radius 1 ONLY - very important)
-		for dy in range(-1, 2):
-			for dx in range(-1, 2):
-				if dx == 0 and dy == 0:
-					continue
-
-				var nx = pos.x + dx
-				var ny = pos.y + dy
-
-				if nx >= 0 && nx < map_width && ny >= 0 && ny < map_height:
-					var nid = MapManager._get_pid_fast(nx, ny)
-					if nid > 1:
-						var n_prov: Province = MapManager.province_objects.get(nid)
-						if n_prov:
-							if n_prov.type != 0:
-								touches_land = true
-							#else:
-							#	touches_sea = true
-
-		if touches_land:
-			type_img.set_pixel(pos.x, pos.y, Color(1, 1, 1))
-		else:
-			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
-			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
-
-	mat.set_shader_parameter("type_map", ImageTexture.create_from_image(type_img))
+	print(map_width, map_height)
+	MapManager._set_type_map(mat, type_img)
 
 	var noise = FastNoiseLite.new()
 	noise.seed = randi()

@@ -113,8 +113,10 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
 void fragment() {
 		//weird magic offset thing trust me i checked
-		float d = (PI*85.*ocean_offset.x) + (PI*43.63) +.6;
-		float t = .4276*cos(d/182.725);
+		float d = (PI*82.*ocean_offset.x) + (PI*43.43) +.6;
+		float t = 0.55907372766767*cos(d/182.725);
+		float anti_t = 0.55907372766767*sin(d/182.725);
+		//float t = 1.;
 		
 		vec3 sphere_point = vec3(
 			cos(UV.x*2.*PI)
@@ -132,6 +134,11 @@ void fragment() {
 			sin(t)
 		);
 		
+		float daynight = .5*(
+			dot(
+				sphere_point,
+				sun_dir
+			)+1.);
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
 		float black = UV.x * tex_size.x + UV.y * tex_size.y;
@@ -139,9 +146,9 @@ void fragment() {
 
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
-		    vec2 grid_uv = UV;
 			//vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
-		    float h = asin(sin(2.0*texture((ocean_noise), grid_uv + ocean_offset).r+5.0*ocean_offset.x))/3.0;
+			float moon_rise = mix(1.5, .7, daynight);
+		    float h = asin(sin(2.0*texture((ocean_noise), UV + 2.*PI*ocean_offset + anti_t * moon_rise * texture((ocean_noise), UV + 2.*PI*ocean_offset + .05*moon_rise).r).r+5.0*ocean_offset.x))/3.0;
 		    h = floor(h * sea_height_steps) / sea_height_steps;
 		    vec3 water = mix(
 				water_color_deep.rgb
@@ -149,7 +156,8 @@ void fragment() {
 					.5 -.5*pow(distance(sphere_point, sun_dir), .2),
 					0.,
 					1.
-				),
+				)
+				,
 				water_color_shallow.rgb,
 				h);
 		    COLOR.xyz = water;
@@ -179,18 +187,11 @@ void fragment() {
 		COLOR.rgb *= vec3(mix(lower, 1.+upper, vignette));
 		
 
-		float daynight = clamp(
-			dot(
-				sphere_point,
-				sun_dir
-			)
-			,0
-			,1
-		);
+
 		COLOR.xyz += vec3(
 			contrast/smoothness*
 			clamp(
-				daynight
+				2.*daynight - 1.
 				,-smoothness
 				,smoothness
 			)
@@ -202,17 +203,18 @@ void fragment() {
 			0.,
 			1.,
 			(clouds)
-			*(1.5-asin(sin(
+			*(1.2-asin(sin(
 				PI
-				*(texture(ocean_noise, UV - ocean_offset).r
+				*(texture(ocean_noise, UV - ocean_offset - anti_t * texture(ocean_noise, UV - ocean_offset).r).r
 				+ 10.*ocean_offset.x)
 			)))
-			*(.5-.5*daynight) // nights hv more clouds
+			*(1.-daynight) // nights hv more clouds
 			*(0.8-round(p_type)) // makes the clouds more visible in water (kinda unrealistic but eh)
-			*(1.-.4*sin(PI*UV.y)) // i think its more cloudy at poles???
+			*(1.-.3*sin(PI*UV.y)) // i think its more cloudy at poles???
 			*(1.-vignette*edgeness)
 		);
 		
 		COLOR.rgb += vec3(clouds_tex);
+		//COLOR.rgb += vec3(round(dot(sun_dir, sphere_point)-.4999));
 	}
 }

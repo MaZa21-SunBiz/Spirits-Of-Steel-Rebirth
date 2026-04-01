@@ -4,19 +4,25 @@ extends Node
 enum MapView {COUNTRIES, POPULATION, INFRASTRUCTURE, GDP, ETHNICITY, FACTION, RESOURCES, BIOMES}
 var current_view = MapView.COUNTRIES
 
-var settings = null
+var settings: CanvasLayer
 
 signal toggle_menu
 
 var _debounce := false
 
-func OnWorldLoad() -> void:
-	settings = get_tree().root.find_child("Settings", true, false)
+func _ready() -> void:
+	settings = $/root/Main/SettingsLayer
+
+# NOTE(soi): What was this even for
+# func OnWorldLoad() -> void:
+# 	settings = get_tree().root.find_child("Settings", true, false)
+# 	print(settings)
 
 func _process(_delta: float) -> void:
 	if Console.is_visible():
 		return
 	if Input.is_action_just_pressed("deselect_troops"):
+		settings.visible = !settings.visible
 		match SceneSwitcher._current_type:
 			SceneSwitcher.Type.WORLD:
 				if !TroopManager.troop_selection.selected_troops.is_empty():
@@ -24,8 +30,9 @@ func _process(_delta: float) -> void:
 				elif GameState.game_ui.is_open:
 					MapManager.close_sidemenu.emit()
 				else:
+					pass
 					# get_tree().root.find_child("Menu", true, false).toggle_menu()
-					settings.visible = !settings.visible
+
 
 	if SceneSwitcher._current_type != SceneSwitcher.Type.EDITOR:
 		if Input.is_action_just_pressed("open_menu"):

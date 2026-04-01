@@ -54,7 +54,7 @@ func _handle_mouse_motion() -> void:
 
 
 func _handle_left_mouse(event: InputEventMouseButton) -> void:
-	if !dragging && MapManager._is_mouse_over_ui():
+	if GameState.selectingCountry || !dragging && MapManager._is_mouse_over_ui():
 		return
 	
 	if event.pressed:

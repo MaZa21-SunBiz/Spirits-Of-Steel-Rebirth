@@ -332,6 +332,9 @@ func get_function(block, country: CountryData = null):
 		"invite":
 			if evaled_args.size() >= 2:
 				FactionManager.invite_faction(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
+		"change_province_types":
+			if evaled_args.size() >= 3:
+				MapManager.change_province_types(evaled_args[0].map(func(a): return int(a)), evaled_args[1], evaled_args[2])
 
 
 	if store_key != "":

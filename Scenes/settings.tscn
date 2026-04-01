@@ -19,31 +19,43 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="Node2D" type="Node2D" unique_id=20089709]
-
-[node name="Settings" type="Control" parent="." unique_id=892394724]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Settings" type="PanelContainer" unique_id=1223466696 node_paths=PackedStringArray("save_list", "line_edit", "tab_container", "graphics_path", "sfx_slider", "music_slider", "ui_upper_slider", "ui_lower_slider", "ui_dirt_slider", "scanlines_slider", "vignette_lower_slider", "vignette_upper_slider", "province_borders_slider", "daynight_contrast_slider", "daynight_smoothness_slider", "clouds_slider", "edgeness_slider", "map_effects_btn", "debug_mode_btn")]
+offset_right = 601.0
+offset_bottom = 570.0
 script = ExtResource("1_aaqfp")
-metadata/_edit_use_anchors_ = true
+save_list = NodePath("VBoxContainer/TabContainer/Saves/VBoxContainer/ScrollContainer/savelist")
+line_edit = NodePath("VBoxContainer/TabContainer/Saves/VBoxContainer/HBoxContainer/TextEdit")
+tab_container = NodePath("VBoxContainer/TabContainer")
+graphics_path = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions")
+sfx_slider = NodePath("VBoxContainer/TabContainer/Audio/GridContainer/SFX")
+music_slider = NodePath("VBoxContainer/TabContainer/Audio/GridContainer/Music")
+ui_upper_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Highlight2")
+ui_lower_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Shadow2")
+ui_dirt_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Dirt2")
+scanlines_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/ScanLines2")
+vignette_lower_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Lower2")
+vignette_upper_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Upper2")
+province_borders_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2")
+daynight_contrast_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2")
+daynight_smoothness_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2")
+clouds_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Clouds2")
+edgeness_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Edgeness2")
+map_effects_btn = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffects")
+debug_mode_btn = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode")
 
-[node name="TabContainer" type="TabContainer" parent="Settings" unique_id=1651165939]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=349122838]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer" unique_id=1651165939]
 material = ExtResource("1_lhmql")
-layout_mode = 0
-offset_left = 428.0
-offset_top = 170.0
-offset_right = 779.0
-offset_bottom = 446.0
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 drag_to_rearrange_enabled = true
 
-[node name="Saves" type="PanelContainer" parent="Settings/TabContainer" unique_id=1381486399]
+[node name="Saves" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=1381486399]
 visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
@@ -51,60 +63,50 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_j2dne")
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Saves" unique_id=38392474]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Saves" unique_id=38392474]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Saves/VBoxContainer" unique_id=136456174]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Saves/VBoxContainer" unique_id=136456174]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=1030447375]
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=1030447375]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 placeholder_text = "Search"
 
-[node name="SaveGame" type="Button" parent="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=530483480]
+[node name="SaveGame" type="Button" parent="VBoxContainer/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=530483480]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme = ExtResource("2_lhmql")
 text = "Save"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Settings/TabContainer/Saves/VBoxContainer" unique_id=1129944237]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Saves/VBoxContainer" unique_id=1129944237]
 layout_mode = 2
 
-[node name="savelist" type="VBoxContainer" parent="Settings/TabContainer/Saves/VBoxContainer/ScrollContainer" unique_id=1708991261]
+[node name="savelist" type="VBoxContainer" parent="VBoxContainer/TabContainer/Saves/VBoxContainer/ScrollContainer" unique_id=1708991261]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Audio" type="PanelContainer" parent="Settings/TabContainer" unique_id=750041884]
-visible = false
+[node name="Audio" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=750041884]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
 metadata/_tab_index = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio" unique_id=751349823]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/TabContainer/Audio" unique_id=1845764675]
 layout_mode = 2
+columns = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer" unique_id=339645836]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1620347858]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1831225387]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=2026330459]
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Audio/GridContainer" unique_id=2026330459]
 clip_contents = true
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "SFX Volume"
 
-[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=160017134]
+[node name="SFX" type="HSlider" parent="VBoxContainer/TabContainer/Audio/GridContainer" unique_id=160017134]
 material = ExtResource("1_lhmql")
 custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
@@ -114,20 +116,14 @@ max_value = 0.5
 step = 0.01
 value = 0.1
 
-[node name="PanelContainer2" type="PanelContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer" unique_id=1221755667]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2" unique_id=1746973344]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1913130775]
+[node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Audio/GridContainer" unique_id=1913130775]
 clip_contents = true
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Music Volume"
 
-[node name="HSlider" type="HSlider" parent="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=369707613]
+[node name="Music" type="HSlider" parent="VBoxContainer/TabContainer/Audio/GridContainer" unique_id=369707613]
 material = ExtResource("1_lhmql")
 custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
@@ -137,29 +133,30 @@ max_value = 0.5
 step = 0.01
 value = 0.1
 
-[node name="Graphics" type="PanelContainer" parent="Settings/TabContainer" unique_id=659766638]
+[node name="Graphics" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=659766638]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Settings/TabContainer/Graphics" unique_id=1165669600]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Graphics" unique_id=1165669600]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Graphics/ScrollContainer" unique_id=1971276128]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer" unique_id=1971276128]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UIEffectOptions" type="GridContainer" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=688490593]
+[node name="UIEffectOptions" type="GridContainer" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=688490593]
 layout_mode = 2
 columns = 2
 
-[node name="Highlight" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=528680104]
+[node name="Highlight" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=528680104]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "UI Highlights"
 
-[node name="Highlight2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=313223729]
+[node name="Highlight2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=313223729]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -169,12 +166,12 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="Shadow" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=1289333577]
+[node name="Shadow" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=1289333577]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "UI Shadow"
 
-[node name="Shadow2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=341002217]
+[node name="Shadow2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=341002217]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -183,12 +180,12 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="Dirt" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=43910900]
+[node name="Dirt" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=43910900]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "UI Dirt"
 
-[node name="Dirt2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=1917439108]
+[node name="Dirt2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions" unique_id=1917439108]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -197,23 +194,23 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="MapEffects" type="CheckButton" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=799613506]
+[node name="MapEffects" type="CheckButton" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=799613506]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme = ExtResource("2_lhmql")
 text = "Map effects"
 
-[node name="MapEffectOptions" type="GridContainer" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=784220099]
+[node name="MapEffectOptions" type="GridContainer" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=784220099]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="ScanLines" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1719360911]
+[node name="ScanLines" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1719360911]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Scan Lines"
 
-[node name="ScanLines2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=719313660]
+[node name="ScanLines2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=719313660]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -221,12 +218,12 @@ size_flags_vertical = 4
 max_value = 0.5
 step = 0.01
 
-[node name="Lower" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=163635902]
+[node name="Lower" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=163635902]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Vignette Lower"
 
-[node name="Lower2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=2004516307]
+[node name="Lower2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=2004516307]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -234,12 +231,12 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
 
-[node name="Upper" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=232210971]
+[node name="Upper" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=232210971]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Vignette Upper"
 
-[node name="Upper2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=915995424]
+[node name="Upper2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=915995424]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -247,12 +244,12 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
 
-[node name="Contrast" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1696087471]
+[node name="Contrast" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1696087471]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "DayNight Contrast"
 
-[node name="Contrast2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1797230289]
+[node name="Contrast2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1797230289]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -260,12 +257,12 @@ size_flags_vertical = 4
 max_value = 0.4
 step = 0.01
 
-[node name="Smoothness" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=471896850]
+[node name="Smoothness" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=471896850]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "DayNight Smooth"
 
-[node name="Smoothness2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=501460201]
+[node name="Smoothness2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=501460201]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -273,12 +270,12 @@ size_flags_vertical = 4
 max_value = 0.5
 step = 0.01
 
-[node name="Borders" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=372239059]
+[node name="Borders" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=372239059]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Province Borders"
 
-[node name="Borders2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=964149096]
+[node name="Borders2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=964149096]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -287,12 +284,12 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="Clouds" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1689358524]
+[node name="Clouds" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1689358524]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Clouds"
 
-[node name="Clouds2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=313512065]
+[node name="Clouds2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=313512065]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -301,12 +298,12 @@ max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="Edgeness" type="Label" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=264398948]
+[node name="Edgeness" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=264398948]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
 text = "Clouds Edgeness"
 
-[node name="Edgeness2" type="HSlider" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=700700604]
+[node name="Edgeness2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=700700604]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -315,36 +312,30 @@ max_value = 5.0
 step = 0.01
 value = 0.8
 
-[node name="DebugMode" type="CheckButton" parent="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=20261307]
+[node name="DebugMode" type="CheckButton" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=20261307]
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme = ExtResource("2_lhmql")
 text = "Debug Mode"
 
-[node name="Exit" type="Button" parent="Settings" unique_id=1103568460]
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=1103568460]
 material = ExtResource("1_lhmql")
-layout_mode = 0
-offset_left = 436.0
-offset_top = 446.0
-offset_right = 771.0
-offset_bottom = 478.0
+layout_mode = 2
 theme = ExtResource("2_lhmql")
 text = "Save Settings"
 
-[connection signal="pressed" from="Settings/TabContainer/Saves/VBoxContainer/HBoxContainer/SaveGame" to="Settings" method="_on_save_game_pressed"]
-[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/HSlider" to="Settings" method="_on_sfx_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Audio/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/HSlider" to="Settings" method="_on_music_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Highlight2" to="Settings" method="_on_ui_upper_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Shadow2" to="Settings" method="_on_ui_lower_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Dirt2" to="Settings" method="_on_ui_dirt_changed"]
-[connection signal="pressed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffects" to="Settings" method="_on_map_effects_pressed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/ScanLines2" to="Settings" method="_on_scanlines_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Lower2" to="Settings" method="_on_vignette_lower_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Upper2" to="Settings" method="_on_vignette_upper_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2" to="Settings" method="_on_daynight_contrast_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2" to="Settings" method="_on_daynight_smoothness_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2" to="Settings" method="_on_province_borders_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Clouds2" to="Settings" method="_on_clouds_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Edgeness2" to="Settings" method="_on_edgeness_changed"]
-[connection signal="pressed" from="Settings/TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode" to="Settings" method="_on_debug_mode_pressed"]
-[connection signal="pressed" from="Settings/Exit" to="Settings" method="save_settings"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Audio/GridContainer/SFX" to="." method="_on_sfx_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Audio/GridContainer/Music" to="." method="_on_music_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Highlight2" to="." method="_on_ui_upper_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Shadow2" to="." method="_on_ui_lower_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Dirt2" to="." method="_on_ui_dirt_changed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffects" to="." method="_on_map_effects_pressed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/ScanLines2" to="." method="_on_scanlines_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Lower2" to="." method="_on_vignette_lower_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Upper2" to="." method="_on_vignette_upper_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2" to="." method="_on_daynight_contrast_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2" to="." method="_on_daynight_smoothness_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2" to="." method="_on_province_borders_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Clouds2" to="." method="_on_clouds_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Edgeness2" to="." method="_on_edgeness_changed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/DebugMode" to="." method="_on_debug_mode_pressed"]

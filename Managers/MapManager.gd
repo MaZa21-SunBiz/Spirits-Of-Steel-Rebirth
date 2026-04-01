@@ -31,12 +31,13 @@ var province_objects: Dictionary[int, Province] = {}
 var biomes: Dictionary[String, BiomeData] = {}
 var resources: Dictionary[String, ResourceData] = {}
 
-var adjacency_list: Dictionary = {} # Stores {ID: [Neighbor_ID_1, Neighbor_ID_2, ...]}
+# var adjacency_list: Dictionary = {} # Stores {ID: [Neighbor_ID_1, Neighbor_ID_2, ...]}
 var current_hovered_pid: int = -1
 var last_hovered_pid: int = -1
 var original_hover_color: Color
 var province_centers: Dictionary = {} # Stores {ID: Vector2(x, y)}
 var unique_regions: Dictionary = {} # NOTE(soi): eh
+var province_graph: SoiStar = SoiStar.new() # NOTE(soi): ehh
 
 # This will look like: {"french_empire": [101, 102, 103], "canada": [1, 2, 5]}
 var global_claims_registry: Dictionary = {}
@@ -166,6 +167,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 	_build_global_registry()
 	a_progress[0] += 0.025
 
+
 func load_country_data(
 	region_map: CompressedTexture2D,
 	a_provinceData: Dictionary,
@@ -183,7 +185,7 @@ func load_country_data(
 
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
-	map_data.adjacency_list = adjacency_list.duplicate(true)
+	# map_data.adjacency_list = adjacency_list.duplicate(true)
 	map_data.country_to_provinces = country_to_provinces.duplicate()
 	map_data.max_province_id = max_province_id
 	map_data.id_map_image = id_map_image.duplicate()
@@ -237,7 +239,7 @@ func _try_load_cached_data() -> bool:
 		return false
 
 	province_centers = loaded.province_centers
-	adjacency_list = loaded.adjacency_list
+	# adjacency_list = loaded.adjacency_list
 	country_to_provinces = loaded.country_to_provinces
 	max_province_id = loaded.max_province_id
 	id_map_image = loaded.id_map_image
@@ -246,6 +248,7 @@ func _try_load_cached_data() -> bool:
 	build_lookup_texture()
 	return true
 
+# NOTE(soi): where was this even used for???
 func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> void:
 	if not image:
 		push_warning("No Image provided for drawing centroids!")
@@ -692,7 +695,8 @@ func _calculate_province_centroids() -> void:
 	print("MapManager: Centroids calculated for %d provinces." % province_centers.size())
 
 func _build_adjacency_list() -> void:
-	adjacency_list.clear()
+	province_graph.neighbor_filter_enabled = true
+	province_graph.clear()
 
 	# Prepare dictionary for unique tracking
 	var unique_neighbors := {}
@@ -705,9 +709,10 @@ func _build_adjacency_list() -> void:
 		if pid <= 1:
 			continue
 
-		if not unique_neighbors.has(pid):
+		if not province_graph.has_point(pid):
 			#print("Unique Neighbor: %d" % pid)
-			unique_neighbors[pid] = {}
+			# unique_neighbors[pid] = {}
+			province_graph.add_point(pid, Vector2i(x, y))
 
 		# 4-directional neighbors
 
@@ -724,7 +729,9 @@ func _build_adjacency_list() -> void:
 			# Normal adjacency (Land-to-Land)
 			if neighbor > 0 && neighbor != pid:
 				#print("Neighborship: %d = %d" % [pid, neighbor])
-				unique_neighbors[pid][neighbor] = true
+				# unique_neighbors[pid][neighbor] = true
+				province_graph.add_point(neighbor, Vector2i(nx, ny))
+				province_graph.connect_points(pid, neighbor)
 				continue
 
 			# Border pixel scan (ID=1)
@@ -733,23 +740,26 @@ func _build_adjacency_list() -> void:
 				var across = _scan_across_border(nx, ny, pid)
 				if across > 0 and across != pid:
 					#print("Across Neighborship: %d = %d" % [pid, across])
-					unique_neighbors[pid][across] = true
+					# unique_neighbors[pid][across] = true
+					province_graph.add_point(across, Vector2i(nx, ny))
+					province_graph.connect_points(pid, across)
 
+	# NOTE(soi): ok this jst sets up the adjacency_list so ion think ill be needing this
 	# --- THE FIX: Convert to Typed Arrays and Populate Objects ---
-	for pid in unique_neighbors:
-		var neighbors_keys = unique_neighbors[pid].keys()
-
-		# Create a typed array for the Province resource
-		var typed_list: Array[int] = []
-		for n_id in neighbors_keys:
-			typed_list.append(int(n_id))
-
-		# Store in the global dictionary (can remain untyped for pathfinding)
-		adjacency_list[pid] = typed_list
-
-		# Sync to the Province object
-		if province_objects.has(pid):
-			province_objects[pid].neighbors = typed_list
+	# for pid in unique_neighbors:
+	# 	var neighbors_keys = unique_neighbors[pid].keys()
+	#
+	# 	# Create a typed array for the Province resource
+	# 	var typed_list: Array[int] = []
+	# 	for n_id in neighbors_keys:
+	# 		typed_list.append(int(n_id))
+	#
+	# 	# Store in the global dictionary (can remain untyped for pathfinding)
+	# 	adjacency_list[pid] = typed_list
+	#
+	# 	# Sync to the Province object
+	# 	if province_objects.has(pid):
+	# 		province_objects[pid].neighbors = typed_list
 
 	print("MapManager: Adjacency list built and synced to Province objects.")
 
@@ -776,12 +786,13 @@ func _get_pid_fast(x: int, y: int) -> int:
 
 # TODO(pol): This lags when moving a lot of troops. Should be made faster with
 # built in AStar2D class.
+# NOTE(soi): ITS BEEN MONTHS
 
 var path_cache: Dictionary = {}
 
 const HEURISTIC_SCALE: float = 1.0 # / 50.0
 
-func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> Array[int]:
+func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> Array:
 	if start_pid == end_pid:
 		return [start_pid]
 
@@ -791,7 +802,8 @@ func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = 
 	if use_cache && path_cache.has(cache_key):
 		return path_cache[cache_key].duplicate()
 
-	var path = _find_path_astar(start_pid, end_pid, allowed_countries)
+	# var path = _find_path_astar(start_pid, end_pid, allowed_countries)
+	var path: Array = Array(province_graph.get_id_path(start_pid, end_pid))
 
 	if use_cache && !path.is_empty():
 		path_cache[cache_key] = path.duplicate()
@@ -853,7 +865,7 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 
 		# --- NEIGHBOR LOOP ---
 		# We assume adjacency_list is kept in sync with province_objects[pid].neighbors
-		var neighbors = adjacency_list.get(current, [])
+		var neighbors = province_graph.get_point_connections(current)
 
 		for neighbor in neighbors:
 			var neighbor_prov: Province = province_objects[neighbor]
@@ -937,11 +949,11 @@ func force_bidirectional_connections() -> void:
 			if not pid_a in prov_b.neighbors:
 				prov_b.neighbors.append(pid_a)
 
-				if adjacency_list.has(pid_b):
-					if not pid_a in adjacency_list[pid_b]:
-						adjacency_list[pid_b].append(pid_a)
-				else:
-					adjacency_list[pid_b] = [pid_a]
+				# if adjacency_list.has(pid_b):
+				# 	if not pid_a in adjacency_list[pid_b]:
+				# 		adjacency_list[pid_b].append(pid_a)
+				# else:
+				# 	adjacency_list[pid_b] = [pid_a]
 
 				fix_count += 1
 
@@ -1297,7 +1309,7 @@ func get_provinces_near_sea(country_name: String) -> PackedInt32Array:
 	var provinces_near_sea: PackedInt32Array = []
 
 	for pid: int in country_to_provinces.get(country_name, []):
-		for neighbor_id: int in adjacency_list.get(pid, []):
+		for neighbor_id: int in province_graph.get_point_connections(pid):
 			var neighbor_province: Province = province_objects.get(neighbor_id)
 
 			if neighbor_province && neighbor_province.type == 0: # Assuming 0 is SEA
@@ -1417,7 +1429,7 @@ func get_provinces_bordering_enemies(country_name: String, enemies: Array[String
 
 	for prov_id: int in allowed_pids.get(country_name, []):
 		# NOTE(soi): make this better  in c# or smthn T_T
-		for neighbor_id: int in province_objects.get(prov_id).neighbors:
+		for neighbor_id: int in province_graph.get_point_connections(prov_id):
 			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() in enemies:
 				specific_borders.append(prov_id)
 				break
@@ -1463,3 +1475,63 @@ func allow_pids(accesser: CountryData, accessee: CountryData):
 func unallow_pids(unaccesser: CountryData, unaccessee: CountryData):
 	for province in country_to_provinces[unaccessee.country_name]:
 		allowed_pids[unaccesser.country_name].erase(province)
+	
+
+func change_province_types(pids: Array[int], type: int, country_name: String = ""):
+	for pid in pids:
+		var province: Province = province_objects[pid]
+		province.type = type
+		province.country = country_name
+		print(province.type)
+		print(province.country)
+	_set_type_map(
+		GameState.current_world.mat,
+		GameState.current_world.type_img,
+		)
+
+
+func _set_type_map(mat: Material, type_img: Image):
+	var uncertain_pixels := []
+
+	# --- PASS 1: Direct Mapping ---
+	for i in range(MAP_HEIGHT * MAP_WIDTH):
+		var x: int = i % MAP_WIDTH
+		var y: int = i / MAP_WIDTH
+		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
+
+		if province:
+			type_img.set_pixel(x , y , Color(province.type , province.type , province.type))
+		else:
+			# It's a border (PID 1 or null). Mark as uncertain for now.
+			uncertain_pixels.append(Vector2i(x, y))
+
+	# --- PASS 2: Intelligent Flood-Check ---
+	for pos in uncertain_pixels:
+		var touches_land: bool = false
+		#var touches_sea = false
+
+		# Check 8-way neighbors (Radius 1 ONLY - very important)
+		for dy in range(-1, 2):
+			for dx in range(-1, 2):
+				if dx == 0 and dy == 0:
+					continue
+
+				var nx = pos.x + dx
+				var ny = pos.y + dy
+
+				if nx >= 0 && nx < MAP_WIDTH && ny >= 0 && ny < MAP_HEIGHT:
+					var nid = MapManager._get_pid_fast(nx, ny)
+					if nid > 1:
+						var n_prov: Province = MapManager.province_objects.get(nid)
+						if n_prov:
+							if n_prov.type != 0:
+								touches_land = true
+							#else:
+							#	touches_sea = true
+
+		if touches_land:
+			type_img.set_pixel(pos.x, pos.y, Color(1, 1, 1))
+		else:
+			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
+			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
+	mat.set_shader_parameter("type_map", ImageTexture.create_from_image(type_img))

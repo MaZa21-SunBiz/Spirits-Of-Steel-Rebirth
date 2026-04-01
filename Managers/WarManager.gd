@@ -179,10 +179,10 @@ class Battle:
 		manager.end_battle(self )
 
 	func _find_retreat_province(from_pid: int, country: String) -> int:
-		if !MapManager.adjacency_list.has(from_pid):
+		if !MapManager.province_graph.has_point(from_pid):
 			return -1
 
-		for n in MapManager.adjacency_list[from_pid]:
+		for n in MapManager.province_graph.get_point_connections(from_pid):
 			# Retreat logic: Must be owned by self and not currently under attack
 			if MapManager.province_objects[n].GetFunctionalOwner() == country:
 				return n
@@ -270,6 +270,7 @@ func apply_casualties(pid: int, country: String, damage_amount: float):
 
 
 func resolve_province_arrival(pid: int, troop: TroopData):
+	if !MapManager.province_objects.has(pid): return
 	var target_country = MapManager.province_objects[pid].GetFunctionalOwner()
 
 	if target_country != troop.country_name && is_at_war_names(troop.country_name, target_country):
