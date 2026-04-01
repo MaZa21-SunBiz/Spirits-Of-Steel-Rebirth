@@ -186,7 +186,7 @@ func _on_clouds_changed(value: float) -> void:
 	SettingsManager.apply_settings()
 
 
-func _on_edgeness_slider_changed(value: float) -> void:
+func _on_edgeness_changed(value: float) -> void:
 	SettingsManager.settings.edgeness_slider = value
 	SettingsManager.apply_settings()
 
