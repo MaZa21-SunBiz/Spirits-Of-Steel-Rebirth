@@ -147,20 +147,20 @@ void fragment() {
 		// 1. If type_map says Sea (0.0), render the animated water
 		if (p_type < 0.5) {
 			//vec2 grid_uv = floor(UV * tex_size / sea_pixel_size) * sea_pixel_size / tex_size;
-			float moon_rise = mix(1.5, .7, daynight);
-		    float h = asin(sin(2.0*texture((ocean_noise), UV + 2.*PI*ocean_offset + anti_t * moon_rise * texture((ocean_noise), UV + 2.*PI*ocean_offset + .05*moon_rise).r).r+5.0*ocean_offset.x))/3.0;
+			float moon_rise = mix(1.4, .7, daynight);
+		    float h = asin(sin(2.0*texture((ocean_noise), UV + 2.*PI*ocean_offset + anti_t * moon_rise * texture((ocean_noise), UV + 2.*PI*ocean_offset + .05*moon_rise).r).r+5.0*ocean_offset.x))/2.;
 		    h = floor(h * sea_height_steps) / sea_height_steps;
 		    vec3 water = mix(
 				water_color_deep.rgb
+				,
+				water_color_shallow.rgb
 				+clamp(
 					.5 -.5*pow(distance(sphere_point, sun_dir), .2),
 					0.,
 					1.
-				)
-				,
-				water_color_shallow.rgb,
+				),
 				h);
-		    COLOR.xyz = water;
+			COLOR.xyz = water;
 		} 
 		// 2. If it's Land (type_map 1.0) and a real province
 		else if (id > 1) {

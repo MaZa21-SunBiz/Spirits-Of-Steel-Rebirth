@@ -314,7 +314,7 @@ func _update_ideology_from_mouse(local_pos: Vector2, do_save: bool) -> void:
 	DoUpdateSidemenuVisuals()
 	
 	if do_save and SettingsManager.settings.debug_mode:
-		MapManager.export_scenario_data(GameState.current_scenario_path)
+		MapManager.export_scenario_data("user://map_data.json")
 
 func _update_radio_visuals() -> void:
 	for child in radio_list.get_children():
@@ -340,10 +340,20 @@ func DoUpdateSidemenuVisuals() -> void:
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
 	print(selected_country.figures)
 	for fig_name in selected_country.figures:
-		var fig = MapManager.significantFigures[fig_name]
-		print("res://starts/" + GameState.current_start + "/assets/portraits/" + fig.name +".png")
+		var fig = MapManager.significantFigures.get(fig_name)
+		if !fig: continue
 		if fig.occupation == "Leader":
-			sidemenu_leader_portrait.texture = load("res://starts/" + GameState.current_start + "/assets/portraits/" + fig.name +".png")
+			if fig.portrait_path != "" and (FileAccess.file_exists(fig.portrait_path) or ResourceLoader.exists(fig.portrait_path)):
+				sidemenu_leader_portrait.texture = load(fig.portrait_path)
+			else:
+				var path = "res://starts/%s/assets/portraits/%s/%s.png" % [GameState.current_start, fig.allegiance, fig.name]
+				if FileAccess.file_exists(path) or ResourceLoader.exists(path):
+					sidemenu_leader_portrait.texture = load(path)
+				else:
+					# Fallback to random folder if it's there but not in portrait_path for some reason
+					var random_path = "res://starts/%s/assets/portraits/random/%s.png" % [GameState.current_start, fig.name]
+					if FileAccess.file_exists(random_path) or ResourceLoader.exists(random_path):
+						sidemenu_leader_portrait.texture = load(random_path)
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)

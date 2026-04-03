@@ -43,3 +43,33 @@ func _adjust_divisions_to_match_count(target_count: int):
 			stored_divisions.append(DivisionData.new())
 	elif target_count < current:
 		stored_divisions.resize(target_count)
+
+
+func ToDict() -> Dictionary:
+	return {
+		"country_name": country_name,
+		"divisions": stored_divisions.map(func(d: DivisionData): return d.ToDict()),
+		"is_moving": is_moving,
+		"path": path,
+		"target_position": [target_position.x, target_position.y],
+		"progress": progress
+	}
+
+
+static func FromDict(data: Dictionary) -> TroopData:
+	# p_country: String, p_province_id: int, p_divisions: int, p_position: Vector2, _p_flag: Texture2D
+	var troop = TroopData.new(data["country_name"], 0, 0, Vector2.ZERO, null)
+	
+	troop.stored_divisions.clear()
+	for div_data in data["divisions"]:
+		troop.stored_divisions.append(DivisionData.new().FromDict(div_data))
+	
+	troop.is_moving = data.get("is_moving", false)
+	troop.path = data.get("path", [])
+	
+	var tp = data.get("target_position", [0, 0])
+	troop.target_position = Vector2(tp[0], tp[1])
+	
+	troop.progress = data.get("progress", 0.0)
+	
+	return troop

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tdl2wmrdsqf1"
-path="res://.godot/imported/GavGrub.png-bf27c9a7dd2a285b41d21a7e068864e1.ctex"
+uid="uid://csf5aq4kgmjw5"
+path="res://.godot/imported/BenjaminFranklin.png-fcb73b58c465ae52418a06c0d487c2c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/GavGrub.png"
-dest_files=["res://.godot/imported/GavGrub.png-bf27c9a7dd2a285b41d21a7e068864e1.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png"
+dest_files=["res://.godot/imported/BenjaminFranklin.png-fcb73b58c465ae52418a06c0d487c2c5.ctex"]
 
 [params]
 

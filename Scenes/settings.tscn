@@ -52,11 +52,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=1381486399]
-visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -84,12 +83,15 @@ text = "Save"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Saves/VBoxContainer" unique_id=1129944237]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="savelist" type="VBoxContainer" parent="VBoxContainer/TabContainer/Saves/VBoxContainer/ScrollContainer" unique_id=1708991261]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Audio" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=750041884]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
@@ -324,6 +326,7 @@ layout_mode = 2
 theme = ExtResource("2_lhmql")
 text = "Save Settings"
 
+[connection signal="pressed" from="VBoxContainer/TabContainer/Saves/VBoxContainer/HBoxContainer/SaveGame" to="." method="_on_save_game_pressed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Audio/GridContainer/SFX" to="." method="_on_sfx_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Audio/GridContainer/Music" to="." method="_on_music_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/UIEffectOptions/Highlight2" to="." method="_on_ui_upper_changed"]

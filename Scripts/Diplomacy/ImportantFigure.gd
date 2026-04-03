@@ -7,6 +7,7 @@ class_name ImportantFigure
 @export var ideology: Vector2i
 @export var allegiance: String
 @export var occupation: String
+@export var portrait_path: String = ""
 
 static func FromValues(
 	a_name: String,
@@ -34,6 +35,7 @@ static func FromDict(a_data: Dictionary) -> ImportantFigure:
 	figure.ideology = Vector2i(a_data["ideology"][0], a_data["ideology"][1])
 	figure.allegiance = a_data["allegiance"]
 	figure.occupation = a_data["occupation"]
+	figure.portrait_path = a_data.get("portrait_path", "")
 	
 	return figure
 
@@ -42,7 +44,8 @@ func ToDict() -> Dictionary:
 		"name": self.name,
 		"skills": self.skills,
 		"traits": self.traits,
-		"ideology": self.ideology,
+		"ideology": [ self.ideology.x, self.ideology.y],
 		"allegiance": self.allegiance,
 		"occupation": self.occupation,
+		"portrait_path": self.portrait_path,
 	}

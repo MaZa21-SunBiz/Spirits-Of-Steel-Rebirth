@@ -5,11 +5,13 @@ extends CanvasLayer
 @export var stats_label: Label
 @export var loser_label: Label
 
-var current_winner: CountryData
+var winners: Array[CountryData] = []
+var current_selected_winner: CountryData
 var current_loser: CountryData
-var provinces_to_take: Array = []
+var provinces_to_take: Dictionary = {} # PID -> CountryData
 var hovered_pid: int = -1
 var puppeting = false
+@export var winner_selector: OptionButton
 
 # Color Palette
 const COLOR_BG = Color(0.1, 0.1, 0.12, 0.98)
@@ -18,8 +20,31 @@ const COLOR_SELECT = Color(0.0, 1.0, 0.8)  # Cyan/Teal for treaty selection
 const COLOR_DANGER = Color(0.7, 0.2, 0.2)
 
 func _ready() -> void:
-	#_setup_ui_elements()
 	self.hide()
+	# If winner_selector is not linked in the inspector, we find/create it
+	if not winner_selector:
+		_setup_missing_ui_elements()
+
+func _setup_missing_ui_elements():
+	# Find the main VBoxContainer in the sidebar
+	var main_vbox = sidebar_panel.get_node("VBoxContainer")
+	if not main_vbox:
+		return
+
+	# Add Beneficiary Selector label and OptionButton to the existing sidebar
+	var beneficiary_label = Label.new()
+	beneficiary_label.text = "SELECT BENEFICIARY:"
+	beneficiary_label.add_theme_font_size_override("font_size", 14)
+	
+	# Insert before the button container (which is usually the last child)
+	var button_container = main_vbox.get_child(main_vbox.get_child_count() - 1)
+	main_vbox.add_child(beneficiary_label)
+	main_vbox.move_child(beneficiary_label, button_container.get_index())
+	
+	winner_selector = OptionButton.new()
+	winner_selector.item_selected.connect(_on_winner_selected)
+	main_vbox.add_child(winner_selector)
+	main_vbox.move_child(winner_selector, button_container.get_index())
 
 func _input(event: InputEvent) -> void:
 	if not self.visible:
@@ -37,11 +62,11 @@ func _input(event: InputEvent) -> void:
 
 	var map_pos = world.get_global_mouse_position()
 
-	# 3. Handle Hover/Click using the world-mapped coordinates
+	# 3. Handle Hover (Motion) and Click (Button) separately
 	if event is InputEventMouseMotion:
 		_process_hover(map_pos)
-
-		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+	elif event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			_process_click(map_pos)
 
 func _process_hover(map_pos: Vector2):
@@ -57,8 +82,9 @@ func _process_hover(map_pos: Vector2):
 
 		# 3. Apply NEW hover visual (if it's a valid land province belonging to the loser)
 		if hovered_pid > 1:
-			if MapManager.province_objects[hovered_pid].GetFunctionalOwner() == current_loser.country_name:
-				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+			var province = MapManager.province_objects.get(hovered_pid)
+			if province and province.country == current_loser.country_name:
+				_update_map_visual(hovered_pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(province.country))
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			else:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -75,138 +101,39 @@ func _process_click(map_pos: Vector2):
 
 	if provinces_to_take.has(pid):
 		provinces_to_take.erase(pid)
-		# On deselect, return to hover state or normal state
-		_update_map_visual(pid, Color(1.5, 1.5, 1.5), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		_reset_province_visual(pid)
 	else:
-		provinces_to_take.append(pid)
-		# On select, make it a distinct color (e.g., Cyan or the Player's color)
-		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		provinces_to_take[pid] = current_selected_winner
+		_update_map_visual(pid, current_selected_winner.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 
 	_update_summary()
 
-func _setup_ui_elements():
-	# Sidebar Setup
-	sidebar_panel = PanelContainer.new()
-	sidebar_panel.set_anchors_and_offsets_preset(Control.PRESET_LEFT_WIDE)
-	sidebar_panel.custom_minimum_size.x = get_viewport().get_visible_rect().size.x * 0.22  # Slightly slimmer
-
-	var style = StyleBoxFlat.new()
-	style.bg_color = COLOR_BG
-	style.border_width_right = 4
-	style.border_color = COLOR_GOLD
-	style.shadow_size = 10
-	sidebar_panel.add_theme_stylebox_override("panel", style)
-	add_child(sidebar_panel)
-
-	var margin = MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 25)
-	margin.add_theme_constant_override("margin_right", 25)
-	margin.add_theme_constant_override("margin_top", 50)
-	margin.add_theme_constant_override("margin_bottom", 50)
-	sidebar_panel.add_child(margin)
-
-	var v_box = VBoxContainer.new()
-	v_box.add_theme_constant_override("separation", 25)
-	margin.add_child(v_box)
-
-	# --- Header ---
-	var title = Label.new()
-	title.text = "PEACE TREATY"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 28)
-	title.add_theme_color_override("font_color", COLOR_GOLD)
-	v_box.add_child(title)
-
-	var h_sep = ColorRect.new()
-	h_sep.custom_minimum_size.y = 2
-	h_sep.color = COLOR_GOLD
-	v_box.add_child(h_sep)
-
-	loser_label = Label.new()
-	loser_label.add_theme_font_size_override("font_size", 18)
-	loser_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	v_box.add_child(loser_label)
-
-	# --- Stats Panel ---
-	var stats_bg = PanelContainer.new()
-	var s_style = StyleBoxFlat.new()
-	s_style.bg_color = Color(0, 0, 0, 0.3)
-	s_style.set_corner_radius_all(5)
-	stats_bg.add_theme_stylebox_override("panel", s_style)
-	v_box.add_child(stats_bg)
-
-	var stats_margin = MarginContainer.new()
-	stats_margin.add_theme_constant_override("margin_all", 15)
-	stats_bg.add_child(stats_margin)
-
-	var stats_vbox = VBoxContainer.new()
-	stats_margin.add_child(stats_vbox)
-
-	summary_label = Label.new()
-	summary_label.text = "Provinces Selected: 0"
-	stats_vbox.add_child(summary_label)
-
-	stats_label = Label.new()
-	stats_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
-	stats_vbox.add_child(stats_label)
-
-	# --- Buttons ---
-	v_box.add_spacer(false)  # Pushes buttons to bottom
-
-	var annex_btn = _create_styled_button("ANNEX ALL", Color(0.3, 0.5, 0.3))
-	annex_btn.pressed.connect(_on_annex_all_pressed)
-	v_box.add_child(annex_btn)
-
-	var puppet_btn = _create_styled_button("PUPPET COUNTRY", Color(0.5, 0.3, 0.3))
-	puppet_btn.pressed.connect(_on_puppet_pressed)
-	v_box.add_child(puppet_btn)
-
-	var clear_btn = _create_styled_button("RESET SELECTION", Color(0.4, 0.4, 0.4))
-	clear_btn.pressed.connect(_on_clear_selection_pressed)
-	v_box.add_child(clear_btn)
-
-	var confirm_btn = _create_styled_button("SIGN TREATY", COLOR_GOLD)
-	confirm_btn.pressed.connect(_on_confirm_pressed)
-	v_box.add_child(confirm_btn)
-
-func _create_styled_button(btn_text: String, accent_color: Color) -> Button:
-	var btn = Button.new()
-	btn.text = btn_text
-	btn.custom_minimum_size.y = 45
-	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-
-	var style_normal = StyleBoxFlat.new()
-	style_normal.bg_color = accent_color * 0.6
-	style_normal.border_width_bottom = 4
-	style_normal.border_color = accent_color * 0.4
-	style_normal.set_corner_radius_all(3)
-
-	var style_hover = style_normal.duplicate()
-	style_hover.bg_color = accent_color * 0.8
-
-	btn.add_theme_stylebox_override("normal", style_normal)
-	btn.add_theme_stylebox_override("hover", style_hover)
-	btn.add_theme_color_override("font_color", Color.WHITE)
-	return btn
 
 func _on_annex_all_pressed():
 	provinces_to_take.clear()
-	# Iterate through MapManager to find all provinces belonging to loser
+	# Assign all provinces to current beneficiary
 	for pid in MapManager.province_objects.keys():
-		if MapManager.province_objects[pid].GetFunctionalOwner() == current_loser.country_name:
-			provinces_to_take.append(pid)
-			_update_map_visual(pid, COLOR_SELECT, CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		var province = MapManager.province_objects[pid]
+		if province.country == current_loser.country_name:
+			provinces_to_take[pid] = current_selected_winner
+			var color = current_selected_winner.country_color.lightened(0.2)
+			var base_color = CountryManager.GetCountryColor(province.country)
+			_update_map_visual(pid, color, base_color)
 	_update_summary()
+
+func _on_winner_selected(index: int):
+	current_selected_winner = winners[index]
 
 func _on_puppet_pressed():
 	puppeting = !puppeting
-	print(current_winner.puppets)
+	print(winners[0].puppets)
 	_update_summary()
 
 func _on_clear_selection_pressed():
-	for pid in provinces_to_take:
-		_reset_province_visual_immediate(pid)
+	var pids = provinces_to_take.keys()
 	provinces_to_take.clear()
+	for pid in pids:
+		_reset_province_visual_immediate(pid)
 	_update_summary()
 
 func _reset_province_visual_immediate(pid: int):
@@ -214,17 +141,46 @@ func _reset_province_visual_immediate(pid: int):
 
 # --- Logic & Integration ---
 
-func open_menu(winner: CountryData, loser: CountryData):
+func open_menu(p_winners: Array[CountryData], p_loser: CountryData):
 	self.show()
-	current_winner = winner
-	current_loser = loser
+	winners = p_winners
+	current_loser = p_loser
 	provinces_to_take.clear()
 	puppeting = false
+	
+	# Setup Winner Selector
+	winner_selector.clear()
+	var player_index = -1
+	for i in range(winners.size()):
+		winner_selector.add_item(winners[i].country_name)
+		if winners[i].is_player:
+			player_index = i
+	
+	if player_index != -1:
+		winner_selector.selected = player_index
+		current_selected_winner = winners[player_index]
+	else:
+		winner_selector.selected = 0
+		current_selected_winner = winners[0]
+
+	# AUTO-ANNEX CLAIMS
+	for pid in MapManager.province_objects.keys():
+		var province = MapManager.province_objects[pid]
+		if province.country == current_loser.country_name:
+			# Check each winner for a claim
+			for w in winners:
+				if province.claims.has(w.country_name):
+					provinces_to_take[pid] = w
+					var color = w.country_color.lightened(0.2)
+					var base_color = CountryManager.GetCountryColor(province.country)
+					_update_map_visual(pid, color, base_color)
+					break # First winner who claims it gets it in auto-assign
+
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
 		game_ui.visible = false
 	GameState.current_world.clock.pause()
-	loser_label.text = "Negotations: %s" % loser.country_name
+	loser_label.text = "Negotations: %s" % p_loser.country_name
 	GameState.in_peace_process = true
 	_update_summary()
 
@@ -242,14 +198,13 @@ func _update_summary():
 
 func _on_confirm_pressed():
 	for pid in provinces_to_take:
-		MapManager.transfer_ownership(pid, current_winner.country_name)
+		var recipient = provinces_to_take[pid]
+		MapManager.transfer_ownership(pid, recipient.country_name)
 	
 	if puppeting:
-		print("a")
-		CountryManager.make_puppet(current_winner, current_loser)
-		print("a")
-	print(current_winner.puppets)
-
+		# Use the first winner (usually the war leader/player) to puppet
+		CountryManager.make_puppet(winners[0], current_loser)
+	
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
 		game_ui.visible = true
@@ -258,21 +213,56 @@ func _on_confirm_pressed():
 
 	self.hide()
 
+
+func force_close():
+	self.set_process(false)
+	self.set_physics_process(false)
+	self.hide()
+	
+	# Clear selections & state
+	provinces_to_take.clear()
+	winners.clear()
+	current_loser = null
+	puppeting = false
+	hovered_pid = -1
+	
+	# Reset global flags
+	GameState.in_peace_process = false
+	
+	# Restore standard UI if possible
+	var game_ui = get_tree().root.find_child("ui_game", true, false)
+	if game_ui:
+		game_ui.visible = true
+	
+	# Essential to resume clock if we were paused by the peace menu
+	if GameState.current_world:
+		GameState.current_world.clock.resume()
+
 # Your existing logic function
 func get_province_with_radius(global_pos: Vector2, map_sprite: Sprite2D, radius: int) -> int:
 	# This uses the code logic you already have in MapManager
 	return MapManager.get_province_with_radius(global_pos, map_sprite, radius)
 
-func _update_map_visual(pid: int, color: Color, secondaryColor: Color):
-# We call MapManager's lookup update to refresh the shader texture
-	MapManager.SetProvinceColors(pid, color, secondaryColor)
+func _update_map_visual(pid: int, color: Color, secondary_color: Color):
+	# We call MapManager's lookup update to refresh the shader texture
+	MapManager.SetProvinceColors(pid, color, secondary_color)
 
 func _reset_province_visual(pid: int):
 	# If it's currently selected, keep the selected color
 	if provinces_to_take.has(pid):
-		_update_map_visual(pid, Color(0.0, 1.0, 1.0), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		var country_data = provinces_to_take[pid]
+		var color = country_data.country_color.lightened(0.2)
+		var base_color = CountryManager.GetCountryColor(MapManager.province_objects[pid].country)
+		_update_map_visual(pid, color, base_color)
 	else:
-		# Otherwise, revert to the original country color
-		var country = MapManager.province_objects[pid].GetFunctionalOwner()
-		if country != "Sea":
-			_update_map_visual(pid, CountryManager.GetCountryColor(country), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		# Otherwise, revert to the original country color (legal owner)
+		var province = MapManager.province_objects.get(pid)
+		if province and province.country != "Sea":
+			var functional_owner = province.GetFunctionalOwner()
+			var color = CountryManager.GetCountryColor(functional_owner)
+			var base_color = CountryManager.GetCountryColor(province.country)
+			_update_map_visual(pid, color, base_color)
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	pass # Replace with function body.

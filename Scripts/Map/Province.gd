@@ -16,13 +16,13 @@ enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACT
 @export var populations: Array[PopulationData]
 @export var gdp: int = 1000
 @export var center: Vector2
-@export var neighbors: PackedInt32Array = []
+# @export var neighbors: PackedInt32Array = []
 @export var claims: PackedStringArray = []
 @export var infrastructure: int = 0
 @export var maxInfrastructure: int = 3
 
 
-func ToDict() -> Dictionary:
+func ToDict(troops_data: Array = []) -> Dictionary:
 	var resource_array = []
 	for resourceData in resources:
 		resource_array.append(resourceData.ToDict())
@@ -50,6 +50,7 @@ func ToDict() -> Dictionary:
 		"claims": self.claims,
 		"infrastructure": self.infrastructure,
 		"max_infrastructure": self.maxInfrastructure,
+		"troops": troops_data
 	}
 	return province_dict
 

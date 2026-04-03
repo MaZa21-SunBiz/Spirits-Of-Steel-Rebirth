@@ -11,6 +11,76 @@ var active_battles := []
 var original_territories := {}
 
 
+func reset_state() -> void:
+	wars.clear()
+	active_battles.clear()
+	original_territories.clear()
+	print("WarManager: State reset.")
+
+
+func save_wars() -> Array:
+	var saved_wars = []
+	var processed_pairs = []
+
+	for country_a in wars:
+		var name_a = country_a.country_name
+		for country_b in wars[country_a]:
+			var name_b = country_b.country_name
+			
+			# Create a sorted pair to avoid saving [A, B] AND [B, A]
+			var pair = [name_a, name_b]
+			pair.sort()
+			var pair_key = str(pair)
+			
+			if not processed_pairs.has(pair_key):
+				saved_wars.append(pair)
+				processed_pairs.append(pair_key)
+	
+	return saved_wars
+
+
+func load_wars(data: Array) -> void:
+	# wars.clear() # Already handled by reset_state() in load_game()
+	for pair in data:
+		if pair.size() == 2:
+			var country_a = CountryManager.get_country(pair[0])
+			var country_b = CountryManager.get_country(pair[1])
+			if country_a and country_b:
+				add_war_silent(country_a, country_b)
+
+
+func save_original_territories() -> Dictionary:
+	return original_territories
+
+
+func load_original_territories(data: Dictionary) -> void:
+	original_territories = data
+
+
+func check_for_new_battles() -> void:
+	if not MapManager or not TroopManager:
+		return
+	
+	print("WarManager: Scanning for overlapping enemies...")
+	
+	for pid in TroopManager.troops_by_province.keys():
+		var province_troops = TroopManager.troops_by_province[pid]
+		if province_troops.size() < 2:
+			continue
+		
+		# We need at least two different countries at war in this province
+		for i in range(province_troops.size()):
+			var troop_a = province_troops[i]
+			for j in range(i + 1, province_troops.size()):
+				var troop_b = province_troops[j]
+				
+				if troop_a.country_name != troop_b.country_name:
+					if is_at_war_names(troop_a.country_name, troop_b.country_name):
+						# We found enemies co-located. Trigger a battle.
+						# Note: start_battle checks for existing duplicates internally.
+						start_battle(pid, pid) # In same province, we can use pid for both
+
+
 class Battle:
 	var attacker_pid: int
 	var defender_pid: int
@@ -445,11 +515,17 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	if player_won:
 		for pid in MapManager.country_to_owned_provinces.get(fallen_name).duplicate():
 			MapManager.DeoccupyProvince(pid)
-			
+
+		var winners_data: Array[CountryData] = []
+		for w_name in winners:
+			var w_data = CountryManager.get_country(w_name)
+			if w_data:
+				winners_data.append(w_data)
+
 		var peace_ui = get_tree().root.find_child("PeaceProcessUI", true, false)
 		if peace_ui:
-			# Pass the player as the default winner/beneficiary, and the full list of winners
-			peace_ui.open_menu(winner, loser)
+			# Pass all winners to the UI
+			peace_ui.open_menu(winners_data, loser)
 			original_territories.erase(fallen_name)
 	else: # --- 5. AI takes everything ---
 		for pid in MapManager.country_to_owned_provinces.get(fallen_name).duplicate():

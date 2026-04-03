@@ -50,9 +50,10 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				FactionManager.Initialize(map_data.get("factions", []))
 				a_percent[0] = 0.9
 				Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
-				a_percent[0] = 1.0
-				for fig in map_data.get("significant_figures", []):
-					MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
+				if map_data.has("significant_figures"):
+					for fig in map_data["significant_figures"]:
+						MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
+				CountryManager.generate_missing_leaders()
 				print(MapManager.significantFigures)
 			)
 		button.pressed.connect(load_map_data)

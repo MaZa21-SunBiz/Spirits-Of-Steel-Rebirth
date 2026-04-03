@@ -52,6 +52,18 @@ func get_datetime_string() -> String:
 	return "%02d:00 %04d-%02d-%02d" % [hour, date_dict.year, date_dict.month, date_dict.day]
 
 
+func ToDict() -> Dictionary:
+	return {
+		"hour": hour,
+		"date": date_dict
+	}
+
+
+func FromDict(data: Dictionary) -> void:
+	hour = data.get("hour", start_hour)
+	date_dict = data.get("date", {"year": start_year, "month": start_month, "day": start_day})
+
+
 func set_speed(scale: float) -> void:
 	time_scale = clamp(scale, MIN_SPEED, MAX_SPEED)
 	GameState.game_ui.updateProgressBar()

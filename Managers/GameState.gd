@@ -24,3 +24,4 @@ func reset_industry_building():
 	MapManager.show_countries_map()
 
 var is_loading_game := false
+var pending_load_save: String = ""

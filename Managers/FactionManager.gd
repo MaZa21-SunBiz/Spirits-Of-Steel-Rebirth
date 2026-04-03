@@ -3,6 +3,7 @@ extends Node
 var factions: Dictionary[String, FactionData] = {}
 
 func Initialize(a_factionData: Array) -> void:
+	factions.clear()
 	for factionData: Dictionary in a_factionData:
 		factions[factionData["name"]] = FactionData.FromDict(factionData)
 		for member: FactionMember in factions[factionData["name"]].members:

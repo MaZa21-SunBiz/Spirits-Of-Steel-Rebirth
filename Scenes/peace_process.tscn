@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scripts/UI/PeaceProcessUI.gd" id="1_52vyn"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_o4gkq"]
 
-[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label")]
+[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label", "winner_selector")]
 script = ExtResource("1_52vyn")
 sidebar_panel = NodePath("PanelContainer")
 summary_label = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Label")
 stats_label = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Label2")
 loser_label = NodePath("PanelContainer/VBoxContainer/Label2")
+winner_selector = NodePath("PanelContainer/VBoxContainer/Winner")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
 material = ExtResource("1_o4gkq")
@@ -53,10 +54,19 @@ size_flags_vertical = 8
 text = "Total Country Loss: 0"
 
 [node name="Label3" type="Label" parent="PanelContainer/VBoxContainer" unique_id=186216995]
+visible = false
 layout_mode = 2
 text = "Beligerents:"
 
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1234706312]
+layout_mode = 2
+text = "Selected Country:"
+
+[node name="Winner" type="OptionButton" parent="PanelContainer/VBoxContainer" unique_id=2035706027]
+layout_mode = 2
+
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer" unique_id=298232394]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -92,6 +102,7 @@ layout_mode = 2
 theme = ExtResource("1_41grw")
 text = "Sign Treaty"
 
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/Winner" to="." method="_on_winner_selected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Annex" to="." method="_on_annex_all_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Puppet" to="." method="_on_puppet_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_clear_selection_pressed"]

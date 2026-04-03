@@ -159,7 +159,7 @@ func _sample_province_under_mouse() -> void:
 
 	var pid = MapManager.get_province_at_pos(get_global_mouse_position(), map_sprite)
 
-	if pid <= 0:
+	if pid <= 0 || MapManager.province_objects[pid].type == Province.SEA:
 		return
 
 	# Check for military access
@@ -170,6 +170,12 @@ func _sample_province_under_mouse() -> void:
 	# Don't add duplicate consecutive provinces
 	if right_path.size() > 0 && right_path[-1]["pid"] == pid:
 		return
+
+	# Force the next province to be a neighbor of the previous one (no "jumping")
+	if right_path.size() > 0:
+		var last_pid = right_path[-1]["pid"]
+		if !MapManager.province_graph.are_points_connected(last_pid, pid):
+			return
 
 	var center_tex = MapManager.province_centers[pid]
 	if !center_tex:

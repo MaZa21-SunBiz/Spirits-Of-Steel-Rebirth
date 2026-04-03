@@ -116,7 +116,28 @@ func GetResourceIcon(a_resourceType: String):
 
 	return null
 
+func _clear_internal_data() -> void:
+	unique_regions.clear()
+	province_objects.clear()
+	province_to_country.clear()
+	country_to_provinces.clear()
+	country_to_owned_provinces.clear()
+	country_to_occupied_provinces.clear()
+	allowed_pids.clear()
+	province_centers.clear()
+	# Clear graph and global registry
+	global_claims_registry.clear()
+	# Re-init significant figures if needed, but for now just clear
+	significantFigures.clear()
+	# Reset state variables
+	max_province_id = 0
+	current_hovered_pid = -1
+	last_hovered_pid = -1
+	hoveredCountry = "Sea"
+
 func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
+	_clear_internal_data()
+	
 	MAP_WIDTH = a_map.get_width()
 	MAP_HEIGHT = a_map.get_height()
 
@@ -147,18 +168,29 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 		if !unique_regions.has(index):
 			unique_regions[index] = next_id
 
-			var province: Province = Province.FromDict(a_provinceData.get(index, {}))
-			# print("(%d, %d, %d) = " % [r_color.r * 255, r_color.g * 255, r_color.b * 255] + index + " -> Assigned ID: %d For Country: %s" % [next_id, province.country])
+			var province_dict = a_provinceData.get(index, {})
+			var province: Province = Province.FromDict(province_dict)
 			province.id = next_id
 
 			province_objects[next_id] = province
+			
 			next_id += 1
 
 		# Write the unique ID to your id_map_image
 		id_map_image.set_pixel(x, y, Color.hex((unique_regions[index] << 8) | 0x000000FF))
 		
 	max_province_id = next_id - 1
+	build_lookup_texture()
 	_calculate_province_centroids()
+	
+	# Pass 2: Load troops now that centroids (positions) are definitely known
+	for index in a_provinceData:
+		if unique_regions.has(index):
+			var pid = unique_regions[index]
+			var p_dict = a_provinceData[index]
+			if p_dict.has("troops"):
+				TroopManager.load_troops_for_province(pid, p_dict["troops"])
+
 	a_progress[0] += 0.025
 	_build_country_to_provinces()
 	a_progress[0] += 0.025
@@ -173,16 +205,10 @@ func load_country_data(
 	a_provinceData: Dictionary,
 	a_progress: Array = [0]
 ) -> void:
-	#var dir = DirAccess.open("res://")
-	#if dir and not dir.dir_exists(CACHE_FOLDER):
-	#	dir.make_dir_recursive(CACHE_FOLDER)
-	#
-	#if !DEBUG_MODE:
-	#	if _try_load_cached_data():
-	#		print("MapManager: Loaded cached data with Province Objects.")
-	#		return
 	Initialize(region_map, a_provinceData, a_progress)
 
+
+func save_map_data():
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()
 	# map_data.adjacency_list = adjacency_list.duplicate(true)
@@ -197,24 +223,27 @@ func save_country_data() -> Dictionary:
 	var provinces: Dictionary = {}
 	for index in unique_regions:
 		var next_id = unique_regions[index]
-		var province = province_objects[next_id]
-		provinces[index] = province.ToDict()
+		var province: Province = province_objects[next_id]
+		var troops = TroopManager.get_serialized_troops_for_province(next_id)
+		provinces[str(index)] = province.ToDict(troops)
 	return provinces
 
-func SaveResourcesData() -> Dictionary:
-	var returnResources: Dictionary = {}
+func SaveResourcesData() -> Array:
+	var returnResources: Array = []
 	for resource: ResourceData in resources.values():
-		returnResources[resource.name] = resource.ToDict()
+		returnResources.append(resource.ToDict())
 	return returnResources
 	
-func SaveBiomeData() -> Dictionary:
-	var returnBiomes: Dictionary = {}
+func SaveBiomeData() -> Array:
+	var returnBiomes: Array = []
 	for biome: BiomeData in biomes.values():
-		returnBiomes[biome.name] = biome.ToDict()
+		returnBiomes.append(biome.ToDict())
 	return returnBiomes
 
 func export_scenario_data(path: String) -> void:
 	var export = {
+		"clock": GameState.current_world.clock.ToDict() if GameState.current_world.clock else {},
+		"scenario_path": GameState.current_scenario_path,
 		"resources": SaveResourcesData(),
 		"biomes": SaveBiomeData(),
 		"provinces": save_country_data(),
@@ -699,7 +728,7 @@ func _build_adjacency_list() -> void:
 	province_graph.clear()
 
 	# Prepare dictionary for unique tracking
-	var unique_neighbors := {}
+	# var unique_neighbors := {}
 
 	for i in range(MAP_WIDTH * MAP_HEIGHT):
 		var x: int = i % MAP_WIDTH
@@ -792,7 +821,7 @@ var path_cache: Dictionary = {}
 
 const HEURISTIC_SCALE: float = 1.0 # / 50.0
 
-func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> Array:
+func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> PackedInt64Array:
 	if start_pid == end_pid:
 		return [start_pid]
 
@@ -802,8 +831,10 @@ func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = 
 	if use_cache && path_cache.has(cache_key):
 		return path_cache[cache_key].duplicate()
 
-	# var path = _find_path_astar(start_pid, end_pid, allowed_countries)
-	var path: Array = Array(province_graph.get_id_path(start_pid, end_pid))
+	# Set context for SoiStar filtering
+	province_graph.context_allowed_countries = allowed_countries
+	var path: PackedInt64Array = province_graph.get_id_path(start_pid, end_pid)
+	province_graph.context_allowed_countries = []
 
 	if use_cache && !path.is_empty():
 		path_cache[cache_key] = path.duplicate()

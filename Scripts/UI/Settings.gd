@@ -32,10 +32,6 @@ var settings = {}
 @export var map_effects_btn: CheckButton
 @export var debug_mode_btn: CheckButton
 
-func _ready():
-	_refresh_saves()
-	_initialize_ui_values()
-
 
 func _initialize_ui_values():
 	var s = SettingsManager.settings
@@ -56,34 +52,49 @@ func _initialize_ui_values():
 	debug_mode_btn.button_pressed = s.debug_mode
 
 
+func _notification(what):
+	if what == NOTIFICATION_VISIBILITY_CHANGED:
+		if is_visible_in_tree():
+			_refresh_saves()
+
+func _ready():
+	_refresh_saves()
+	_initialize_ui_values()
+
+
 func save_settings() -> void:
 	SettingsManager.save_settings()
 
 
 func _refresh_saves():
+	if not save_list: return
 	for n in save_list.get_children(): n.queue_free()
-	# Scan res://saves/ for files
+	
 	var path = "res://saves/"
 	if not DirAccess.dir_exists_absolute(path):
 		DirAccess.make_dir_recursive_absolute(path)
 
-	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		var found_any = false
+	var files = DirAccess.get_files_at(path)
+	var found_any = false
 
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".tres"):
-				found_any = true
-				_add_save_row(save_list, file_name.replace(".tres", ""))
-			file_name = dir.get_next()
-		
-		if not found_any:
-			var lbl = Label.new()
-			lbl.text = "No save files found."
-			lbl.modulate = Color(0.5, 0.5, 0.5)
-			save_list.add_child(lbl)
+	print("Settings UI: Scanning for saves in: ", ProjectSettings.globalize_path(path))
+
+	for file_name in files:
+		if file_name.ends_with(".json"):
+			# Skip empty names or hidden system files
+			if file_name == ".json" or file_name.begins_with("."):
+				continue
+				
+			found_any = true
+			print("Settings UI: Found save: ", file_name)
+			_add_save_row(save_list, file_name.replace(".json", ""), path + file_name)
+	
+	if not found_any:
+		print("Settings UI: No JSON saves found.")
+		var lbl = Label.new()
+		lbl.text = "No save files found."
+		lbl.modulate = Color(0.5, 0.5, 0.5)
+		save_list.add_child(lbl)
 
 
 func _on_sfx_changed(value: float) -> void:
@@ -96,27 +107,55 @@ func _on_music_changed(value: float) -> void:
 	SettingsManager.apply_settings()
 
 
-func _add_save_row(parent: Node, save_name: String) -> void:
+func _add_save_row(parent: Node, save_name: String, file_path: String) -> void:
 	var hbox = HBoxContainer.new()
 	hbox.add_theme_constant_override("separation", 10)
+	
+	# Validate scenario path before allowing load
+	var scenario_exists = true
+	var scenario_path = ""
+	
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file:
+		var json_str = file.get_as_text()
+		var data = JSON.parse_string(json_str)
+		if data is Dictionary:
+			scenario_path = data.get("scenario_path", "")
+			if scenario_path == "":
+				scenario_path = "res://starts/ModernDay/map_data.json" # Fallback
+			
+			if not FileAccess.file_exists(scenario_path):
+				scenario_exists = false
 	
 	var lbl = Label.new()
 	lbl.text = save_name
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	if not scenario_exists:
+		lbl.modulate = Color(0.5, 0.5, 0.5)
 	hbox.add_child(lbl)
 
 	var load_btn = Button.new()
 	load_btn.text = "Load"
 	load_btn.custom_minimum_size.x = 80
+	
+	if not scenario_exists:
+		load_btn.disabled = true
+		load_btn.tooltip_text = "Scenario file missing: " + scenario_path
+	
 	load_btn.pressed.connect(func():
-		GameState.current_world.load_game(save_name)
+		if GameState.current_world:
+			GameState.current_world.load_game(save_name)
+		else:
+			# We are in the Main Menu
+			GameState.pending_load_save = save_name
+			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD)
 	)
 	
 	var del_btn = Button.new()
 	del_btn.text = "X"
 	del_btn.modulate = Color(1, 0.4, 0.4)
 	del_btn.pressed.connect(func():
-		DirAccess.remove_absolute("res://saves/" + save_name + ".tres")
+		DirAccess.remove_absolute("res://saves/" + save_name + ".json")
 		_refresh_saves()
 	)
 

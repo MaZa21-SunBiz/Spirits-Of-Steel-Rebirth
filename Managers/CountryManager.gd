@@ -34,11 +34,13 @@ func _on_day_passed() -> void:
 	
 
 func initialize_countries(a_countriesData: Array) -> void:
-	if GameState.is_loading_game:
-		print("CountryManager: Skipping initialization (loading save)")
-		return
+	# Clear existing data before adding
 	countries.clear()
 	countryNames.clear()
+	player_country = null
+	
+	if GameState.is_loading_game:
+		print("CountryManager: Initializing from save data...")
 	
 	#var timeStart = Time.get_unix_time_from_system()
 	#WorkerThreadPool.wait_for_group_task_completion(
@@ -66,6 +68,47 @@ func initialize_countries(a_countriesData: Array) -> void:
 				InformPuppet(countries[country], countries[puppeted])
 
 	print("CountryManager: Initialized %d countries." % countries.size())
+
+func generate_missing_leaders() -> void:
+	for country in countries.values():
+		_ensure_country_has_leader(country)
+
+func _ensure_country_has_leader(country: CountryData) -> void:
+	var has_leader: bool = false
+	for fig_name in country.figures:
+		if MapManager.significantFigures.has(fig_name) and MapManager.significantFigures[fig_name].occupation == "Leader":
+			has_leader = true
+			break
+	
+	if not has_leader:
+		var start_folder = "res://starts/" + GameState.current_start + "/"
+		var random_portraits_dir = start_folder + "assets/portraits/random/"
+		
+		var dir = DirAccess.open(random_portraits_dir)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			var portraits = []
+			while file_name != "":
+				if !dir.current_is_dir() and file_name.ends_with(".png"):
+					portraits.append(file_name)
+				file_name = dir.get_next()
+			
+			if portraits.size() > 0:
+				var chosen_portrait = portraits.pick_random()
+				var figure_name = chosen_portrait.get_basename()
+				
+				# Check if this figure already exists in global registry
+				var final_fig_name = country.country_name + "_" + figure_name
+				
+				var new_figure = ImportantFigure.new()
+				new_figure.name = figure_name
+				new_figure.occupation = "Leader"
+				new_figure.portrait_path = random_portraits_dir + chosen_portrait
+				
+				MapManager.significantFigures[final_fig_name] = new_figure
+				country.figures.append(final_fig_name)
+				print("CountryManager: Assigned random leader %s to %s" % [figure_name, country.country_name])
 
 func save_countries() -> Array:
 	var polities: Array = []
@@ -129,7 +172,11 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	#mutexer.lock()
 	countries[tempName] = new_country
 	countryNames.append(tempName)
-	#mutexer.unlock()
+	
+	if new_country.is_player:
+		player_country = new_country
+		player_country.ai_controller = null # Ensure player doesn't have an AI brain
+	
 	return new_country
 
 

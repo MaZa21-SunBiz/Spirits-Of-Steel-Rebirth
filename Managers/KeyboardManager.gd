@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 
 	if SceneSwitcher._current_type != SceneSwitcher.Type.EDITOR:
 		if Input.is_action_just_pressed("open_menu"):
-			if not _debounce:
+			if not _debounce && CountryManager.player_country:
 				_debounce = true
 				toggle_menu.emit()
 

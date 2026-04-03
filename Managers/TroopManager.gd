@@ -16,6 +16,16 @@ var flag_cache: Dictionary = {} # { country_name: texture }
 var troop_selection: TroopSelection
 
 
+func clear_all_troops() -> void:
+	troops.clear()
+	moving_troops.clear()
+	troops_by_province.clear()
+	troops_by_country.clear()
+	path_cache.clear()
+	flag_cache.clear()
+	print("TroopManager: All troops and caches cleared.")
+
+
 func _process(delta: float) -> void:
 	for troop in moving_troops:
 		_update_moving_troop(troop, delta)
@@ -211,7 +221,8 @@ func _get_cached_path(start_id: int, target_id: int, allowed_countries: Array[St
 	var path = MapManager.find_path(start_id, target_id, allowed_countries)
 
 	if not path.is_empty() and path[0] == start_id:
-		path.pop_front()
+		path = path.slice(1)
+		# path.pop_front()
 
 	if not path.is_empty():
 		path_cache[key] = path.duplicate()
@@ -490,6 +501,44 @@ func teleport_troop_to_province(troop: TroopData, target_pid: int) -> void:
 		troops_by_province[target_pid] = [troop]
 	else:
 		troops_by_province[target_pid].append(troop)
+
+
+func get_serialized_troops_for_province(pid: int) -> Array:
+	var troop_data: Array = []
+	for troop: TroopData in troops_by_province.get(pid, []):
+		troop_data.append(troop.ToDict())
+	return troop_data
+
+
+func load_troops_for_province(pid: int, troop_data: Array) -> void:
+	# Clear existing troops in this province if any (might not be needed if loading fresh)
+	# But generally we should probably clear first
+	if troops_by_province.has(pid):
+		for t in troops_by_province[pid].duplicate():
+			remove_troop(t)
+	
+	for data in troop_data:
+		var troop = TroopData.FromDict(data)
+		troop.province_id = pid
+		troop.position = MapManager.province_centers.get(pid, Vector2.ZERO)
+		if troop.is_moving:
+			troop.target_position = Vector2(data["target_position"][0], data["target_position"][1])
+		else:
+			troop.target_position = troop.position
+		
+		# Ensure country_obj is assigned
+		var country_ref = CountryManager.get_country(troop.country_name)
+		if not country_ref:
+			push_error("TroopManager: Failed to load troop in province %d - country '%s' not found!" % [pid, troop.country_name])
+			continue
+		troop.country_obj = country_ref
+		
+		# Add to managers
+		troops.append(troop)
+		_add_troop_to_indexes(troop)
+		
+		if troop.is_moving && !moving_troops.has(troop):
+			moving_troops.append(troop)
 
 
 func get_province_division_count(pid: int) -> int:

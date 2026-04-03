@@ -139,6 +139,7 @@ func ToDict() -> Dictionary:
 		"accepted_cultures": accepted_cultures,
 		"hostedGovernments": hostedGovernments,
 		"figures": figures,
+		"is_player": is_player,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -157,6 +158,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country.figures = a_data.get("figures", [])
+	country.is_player = a_data.get("is_player", false)
 	# country._refresh_economic_stats()
 	# country.refresh_ideology_name()
 	
