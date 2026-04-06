@@ -15,6 +15,7 @@ var selected_functionalities: Array[String] = []
 var func_ui_containers: Dictionary = {}
 
 var active_tag_matcher: TagMatcher = TagMatcher.new({})
+var editing_design_index: int = -1
 
 func _ready() -> void:
 	# var funcs_label = Label.new()
@@ -36,6 +37,8 @@ func _ready() -> void:
 			_recalculate()
 		)
 		inputs_list_or_grid().add_child(cb)
+
+	_refresh_existing_designs()
 
 func inputs_list_or_grid() -> Container:
 	if functions_list != null:
@@ -65,7 +68,7 @@ func _spawn_func_ui(func_name: String, func_data: Dictionary):
 				opt.add_item("...")
 				opt.set_meta("match_expr", inp["match"])
 				opt.set_meta("last_selected", "")
-				opt.item_selected.connect(func(idx): _recalculate())
+				opt.item_selected.connect(func(_idx): _recalculate())
 				
 				hbox_opt.add_child(lbl)
 				hbox_opt.add_child(opt)
@@ -394,17 +397,106 @@ func _on_add_building_pressed() -> void:
 		EconomyManager.building_designs[CountryManager.player_country.country_name] = []
 
 	var bt = BuildingTemplate.FromDict(current_building_template)
-	EconomyManager.building_designs[CountryManager.player_country.country_name].append(bt)
+	if editing_design_index >= 0 and editing_design_index < EconomyManager.building_designs[CountryManager.player_country.country_name].size():
+		EconomyManager.building_designs[CountryManager.player_country.country_name][editing_design_index] = bt
+	else:
+		EconomyManager.building_designs[CountryManager.player_country.country_name].append(bt)
+		editing_design_index = EconomyManager.building_designs[CountryManager.player_country.country_name].size() - 1
 
-	print(EconomyManager.building_designs[CountryManager.player_country.country_name])
-	for child in existing_design.get_children():
-		child.free()
-
-	for design: BuildingTemplate in EconomyManager.building_designs[CountryManager.player_country.country_name]:
-		var btn = Button.new()
-		btn.text = design.name
-		existing_design.add_child(btn)
+	_refresh_existing_designs()
+	GameState.game_ui._refresh_industry_building_options()
 
 
 func _on_building_name_changed() -> void:
-		_recalculate()
+	if building_name.text not in EconomyManager.building_designs.get(CountryManager.player_country.country_name, []):
+		editing_design_index = -1
+	_recalculate()
+
+func _refresh_existing_designs() -> void:
+	for child in existing_design.get_children():
+		child.free()
+
+	if not CountryManager.player_country:
+		return
+
+	var designs: Array = EconomyManager.building_designs.get(CountryManager.player_country.country_name, [])
+	for i in range(designs.size()):
+		var design = designs[i]
+		if not (design is BuildingTemplate):
+			continue
+		var btn = Button.new()
+		var marker = " [editing]" if i == editing_design_index else ""
+		btn.text = "%s%s" % [design.name, marker]
+		btn.pressed.connect(func(): _load_design_for_edit(i))
+		existing_design.add_child(btn)
+
+func _load_design_for_edit(index: int) -> void:
+	if index == editing_design_index: return
+	if not CountryManager.player_country:
+		return
+	var designs: Array = EconomyManager.building_designs.get(CountryManager.player_country.country_name, [])
+	if index < 0 or index >= designs.size():
+		return
+	var design = designs[index]
+	if not (design is BuildingTemplate):
+		return
+
+	editing_design_index = index
+	var data = (design as BuildingTemplate).ToDict()
+	building_name.text = str(data.get("name", ""))
+
+	# Clear all selected functionalities/UI first.
+	selected_functionalities.clear()
+	for func_name in func_ui_containers.keys():
+		_destroy_func_ui(func_name)
+	func_ui_containers.clear()
+	active_tag_matcher.slotted_resources.clear()
+
+	# Re-check relevant functionality toggles and rebuild their UI sections.
+	for child in inputs_list_or_grid().get_children():
+		if child is CheckButton:
+			var checked = data.get("functionalities", []).has(child.text)
+			child.button_pressed = checked
+			if checked:
+				selected_functionalities.append(child.text)
+				var func_data = EconomyManager.building_functions.get(child.text, {})
+				_spawn_func_ui(child.text, func_data)
+
+	# Recalculate to populate dropdown options/sliders with valid bounds.
+	_recalculate()
+
+	# Apply saved slot assignments after options are populated.
+	var assigned: Dictionary = data.get("assigned_inputs", {})
+	for func_name in assigned.keys():
+		if not func_ui_containers.has(func_name):
+			continue
+		var slots: Array = assigned[func_name]
+		var vbox = func_ui_containers[func_name]
+		var slot_idx = 0
+		for ui_element in vbox.get_children():
+			if slot_idx >= slots.size():
+				break
+			var slot_data: Dictionary = slots[slot_idx]
+			if ui_element is PanelContainer:
+				var card_vc = ui_element.get_child(0)
+				var hbox_opt = card_vc.get_child(0)
+				var opt = hbox_opt.get_child(1) as OptionButton
+				var selected_res = str(slot_data.get("resource", ""))
+				if not selected_res.is_empty():
+					for item_idx in range(opt.item_count):
+						if opt.get_item_text(item_idx) == selected_res:
+							opt.select(item_idx)
+							opt.set_meta("last_selected", selected_res)
+							break
+				var amt_node = card_vc.get_meta("amount_node")
+				if amt_node:
+					amt_node.value = float(slot_data.get("amount", amt_node.value))
+			elif ui_element is HBoxContainer:
+				var amt_cnt = ui_element.get_child(1)
+				var amt_node = amt_cnt.get_meta("amount_node")
+				if amt_node:
+					amt_node.value = float(slot_data.get("amount", amt_node.value))
+			slot_idx += 1
+
+	_recalculate()
+	_refresh_existing_designs()

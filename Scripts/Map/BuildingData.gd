@@ -8,6 +8,7 @@ enum BuildingState {
 }
 
 @export var type: String
+@export var template_name: String = ""
 @export var state: BuildingState
 @export var durability: float
 
@@ -24,6 +25,7 @@ static func FromDict(a_data: Dictionary) -> BuildingData:
 	var building: BuildingData = BuildingData.new()
 	
 	building.type = a_data["type"]
+	building.template_name = a_data.get("template_name", "")
 	building.state = a_data.get("state", BuildingState.FUNCTIONAL) as BuildingState
 	building.durability = a_data.get("durability", 1.0)
 	
@@ -32,6 +34,7 @@ static func FromDict(a_data: Dictionary) -> BuildingData:
 func ToDict() -> Dictionary:
 	return {
 		"type": self.type,
+		"template_name": self.template_name,
 		"state": self.state as int,
 		"durability": self.durability
 	}

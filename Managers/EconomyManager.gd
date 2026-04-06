@@ -6,6 +6,25 @@ var construction_queue: Dictionary = {}
 var building_functions: Dictionary = {}
 var building_designs: Dictionary[String, Array] = {}
 
+func _get_latest_design_for_type(country: CountryData, building_type: String) -> BuildingTemplate:
+	if country == null:
+		return null
+	var designs: Array = building_designs.get(country.country_name, [])
+	for i in range(designs.size() - 1, -1, -1):
+		var design = designs[i]
+		if design is BuildingTemplate and design.functionalities.has(building_type):
+			return design
+	return null
+
+func _get_design_by_name_for_type(country: CountryData, building_type: String, template_name: String) -> BuildingTemplate:
+	if country == null or template_name.is_empty():
+		return null
+	var designs: Array = building_designs.get(country.country_name, [])
+	for design in designs:
+		if design is BuildingTemplate and design.name == template_name and design.functionalities.has(building_type):
+			return design
+	return null
+
 func initialize(path: String) -> void:
 	var content := FileAccess.get_file_as_string(path)
 	var parsed = JSON.parse_string(content)
@@ -52,9 +71,19 @@ func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dail
 		"country": a_country
 	}
 
-func start_construction(pid: int, type: String, total_days: int, daily_cost: float, country: CountryData):
+func start_construction(pid: int, type: String, total_days: int, daily_cost: float, country: CountryData, selected_template_name: String = ""):
+	var design: BuildingTemplate = _get_design_by_name_for_type(country, type, selected_template_name)
+	if design == null:
+		design = _get_latest_design_for_type(country, type)
+	var display_name = type
+	var template_name = ""
+	if design != null and not design.name.is_empty():
+		display_name = design.name
+		template_name = design.name
+
 	# Set the province enum to BUILDING state immediately
-	MapManager.province_objects[pid].buildings.append(BuildingData.FromValues(type, BuildingData.BuildingState.CONSTRUCTION))
+	MapManager.province_objects[pid].buildings.append(BuildingData.FromValues(type, BuildingData.BuildingState.CONSTRUCTION, 1.0))
+	MapManager.province_objects[pid].buildings[-1].template_name = template_name
 	
 	if country == CountryManager.player_country:
 		MusicManager.play_sfx(MusicManager.SFX.BUILD)
@@ -62,6 +91,7 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 
 	construction_queue[pid] = {
 		"type": type,
+		"name": display_name,
 		"index": MapManager.province_objects[pid].buildings.size() - 1,
 		"days": total_days,
 		"daily_cost": daily_cost,
@@ -89,5 +119,6 @@ func is_province_building(pid: int) -> bool:
 func get_progress_string(pid: int) -> String:
 	if construction_queue.has(pid):
 		var p = construction_queue[pid]
-		return "%s: %d days left (%d/day)" % [p["type"].capitalize(), p["days"], p["daily_cost"]]
+		var label = p.get("name", p["type"].capitalize())
+		return "%s: %d days left (%d/day)" % [label, p["days"], p["daily_cost"]]
 	return ""

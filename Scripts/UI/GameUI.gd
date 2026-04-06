@@ -50,6 +50,8 @@ var stats_labels := {}
 @export var accepted_cultures: VBoxContainer
 @export var unaccepted_cultures: VBoxContainer
 @export var select_player_stat: VBoxContainer
+@export var building_options: OptionButton
+
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @onready var action_scene: PackedScene = preload("res://Scenes/action.tscn")
@@ -99,6 +101,7 @@ var pos_open := Vector2.ZERO
 var pos_closed := Vector2.ZERO
 
 var economyUpdate: bool = false
+var industry_selection_map: Array[Dictionary] = []
 
 # Navigation State
 var current_context: Context = Context.SELECT
@@ -204,11 +207,6 @@ func _enter_tree() -> void:
 	GameState.game_ui = self
 
 func _ready() -> void:
-	for template in DivisionData.TEMPLATES:
-		division_type.add_icon_item(
-			load("res://starts/%s/assets/division_icons/%s.svg" % [GameState.current_start, template]),
-			template.capitalize()
-			)
 	stats_labels = {
 		"pp": label_pp,
 		"manpower": label_manpower,
@@ -242,6 +240,7 @@ func _ready() -> void:
 	
 	_update_flag()
 	updateProgressBar()
+	_refresh_division_type_options()
 	update_division_menu()
 	military_extra_panel.visible = false
 	
@@ -351,15 +350,6 @@ func DoUpdateSidemenuVisuals() -> void:
 		if fig.occupation == "Leader":
 			if fig.portrait_path != "" and (FileAccess.file_exists(fig.portrait_path) or ResourceLoader.exists(fig.portrait_path)):
 				sidemenu_leader_portrait.texture = load(fig.portrait_path)
-			else:
-				var path = "res://starts/%s/assets/portraits/%s/%s.png" % [GameState.current_start, fig.allegiance, fig.name]
-				if FileAccess.file_exists(path) or ResourceLoader.exists(path):
-					sidemenu_leader_portrait.texture = load(path)
-				else:
-					# Fallback to random folder if it's there but not in portrait_path for some reason
-					var random_path = "res://starts/%s/assets/portraits/random/%s.png" % [GameState.current_start, fig.name]
-					if FileAccess.file_exists(random_path) or ResourceLoader.exists(random_path):
-						sidemenu_leader_portrait.texture = load(random_path)
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
@@ -378,6 +368,7 @@ func _on_player_change() -> void:
 		CountryManager.player_country.ideology_changed.connect(_update_flag)
 
 	_update_flag()
+	_refresh_division_type_options()
 	update_topbar_stats()
 	update_cultures()
 
@@ -736,19 +727,14 @@ func improve_stability():
 
 
 func _on_building_selected(index: int):
-	#print()
-	match index:
-		0:
-			GameState.industry_building = GameState.IndustryType.FACTORY
-			#MapManager.show_industry_country(player.country_name)
-		1:
-			GameState.industry_building = GameState.IndustryType.PORT
-			#MapManager.show_industry_country(player.country_name)
-		2:
-			GameState.industry_building = GameState.IndustryType.INFRASTRUCTURE
-			#MapManager.show_industry_country(player.country_name)
-		_:
-			GameState.industry_building = GameState.IndustryType.DEFAULT
+	if index < 0 or index >= industry_selection_map.size():
+		GameState.industry_building = GameState.IndustryType.DEFAULT
+		GameState.selected_building_template_name = ""
+		update_economy_menu()
+		return
+	var selected = industry_selection_map[index]
+	GameState.industry_building = selected.get("type", GameState.IndustryType.DEFAULT)
+	GameState.selected_building_template_name = selected.get("template_name", "")
 	update_economy_menu()
 
 
@@ -759,6 +745,7 @@ func update_economy_menu() -> void:
 
 func DoEconomyMenuUpdate() -> void:
 	if CountryManager.player_country:
+		_refresh_industry_building_options()
 		var playerProvinces: Array = MapManager.country_to_owned_provinces[CountryManager.player_country.country_name]
 		for child in sidemenu_buildings.get_children():
 			child.queue_free()
@@ -769,11 +756,58 @@ func DoEconomyMenuUpdate() -> void:
 				entry.max_value = 10
 				entry.use_parent_material = true
 				var text = Label.new()
-				text.text = EconomyManager.construction_queue[pid]["type"]
+				text.text = EconomyManager.construction_queue[pid].get("display_name", EconomyManager.construction_queue[pid]["type"])
 				text.use_parent_material = true
 				entry.add_child(text)
 				sidemenu_buildings.add_child(entry)
 	economyUpdate = false
+
+func _get_industry_option_button() -> OptionButton:
+	return get_node_or_null("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton")
+
+func _add_industry_option(opt: OptionButton, label: String, type: GameState.IndustryType, template_name: String = "") -> void:
+	opt.add_item(label)
+	industry_selection_map.append({
+		"type": type,
+		"template_name": template_name
+	})
+
+func _refresh_industry_building_options() -> void:
+	var opt = _get_industry_option_button()
+	if opt == null:
+		return
+
+	var prev_type = GameState.industry_building
+	var prev_template = GameState.selected_building_template_name
+	industry_selection_map.clear()
+	opt.clear()
+
+	var country = CountryManager.player_country
+	var designs: Array = EconomyManager.building_designs.get(country.country_name, []) if country else []
+	for design in designs:
+		if not (design is BuildingTemplate):
+			continue
+		var design_name = (design as BuildingTemplate).name
+		if design_name.is_empty():
+			continue
+		if (design as BuildingTemplate).functionalities:
+			_add_industry_option(opt, design_name, GameState.IndustryType.FACTORY, design_name)
+
+	_add_industry_option(opt, "Factory", GameState.IndustryType.FACTORY)
+	_add_industry_option(opt, "Port", GameState.IndustryType.PORT)
+	_add_industry_option(opt, "Infrastructure", GameState.IndustryType.INFRASTRUCTURE)
+
+	var selected_index = 0
+	for i in range(industry_selection_map.size()):
+		var item = industry_selection_map[i]
+		if item["type"] == prev_type and item["template_name"] == prev_template:
+			selected_index = i
+			break
+
+	opt.select(selected_index)
+	var selected = industry_selection_map[selected_index]
+	GameState.industry_building = selected["type"]
+	GameState.selected_building_template_name = selected["template_name"]
 	
 
 func _request_access():
@@ -845,7 +879,10 @@ func _open_faction():
 
 
 func open_manage_country():
-	logistics.close_menu() if logistics.visible else logistics.open_menu(CountryManager.player_country)
+	if logistics.visible:
+		logistics.close_menu()
+	else:
+		logistics.open_menu(CountryManager.player_country)
 
 	#GameState.current_world.set_process(false)
 	#GameState.current_world.clock.set_process(false)
@@ -933,7 +970,10 @@ func close_troop_container() -> void:
 # --- Main Update Logic ---
 func update_division_menu():
 	var count = int(input_division.value)
-	var stats = DivisionData.TEMPLATES.get(division_type_selected)
+	var player = CountryManager.player_country
+	if not player:
+		return
+	var stats = player.templates.get(division_type_selected)
 
 	if not stats:
 		return # Safety check
@@ -947,7 +987,6 @@ func update_division_menu():
 	manpower.text = format_number(total_manpower)
 
 	# 4. Check Affordability
-	var player = CountryManager.player_country
 	var can_afford: bool = player and player.manpower >= total_manpower
 
 	# 5. Update Button State & Visuals
@@ -972,10 +1011,35 @@ func _on_division_type_button(type: String) -> void:
 
 func _on_division_type_selected(index: int) -> void:
 	print(division_type_selected)
-	print(DivisionData.TEMPLATES)
-	division_type_selected = DivisionData.TEMPLATES.keys()[index]
+	
+	division_type_selected = CountryManager.player_country.templates.keys()[index]
 	print(division_type_selected)
 	update_division_menu()
+
+
+func _refresh_division_type_options() -> void:
+	var player = CountryManager.player_country
+	if not player:
+		return
+
+	division_type.clear()
+	var keys: Array = player.templates.keys()
+	for template in keys:
+		var icon_path = "res://starts/%s/assets/division_icons/%s.svg" % [GameState.current_start, template]
+		if ResourceLoader.exists(icon_path):
+			division_type.add_icon_item(load(icon_path), template.capitalize())
+		else:
+			division_type.add_item(template.capitalize())
+
+	if keys.is_empty():
+		division_type_selected = "infantry"
+		return
+
+	var selected_index = keys.find(division_type_selected)
+	if selected_index == -1:
+		selected_index = 0
+		division_type_selected = keys[0]
+	division_type.select(selected_index)
 
 
 func _on_music_pressed():

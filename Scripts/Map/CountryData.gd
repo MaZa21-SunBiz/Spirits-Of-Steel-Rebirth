@@ -44,7 +44,38 @@ var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100)):
 		refresh_ideology_name()
 		ideology_changed.emit()
 var ideology_name: String = "neutral" # Initialized, will be updated by setter
-
+var templates: = {
+	"infantry":
+	{
+		"hp": 100.0,
+		"manpower": 10000,
+		"cost": 500,
+		"days": 9,
+		"attack": 1,
+		"defense": 1,
+		"speed": 1.0
+	},
+	"tank":
+	{
+		"hp": 280.0,
+		"manpower": 20000,
+		"cost": 10000,
+		"days": 30,
+		"attack": 5,
+		"defense": 7,
+		"speed": 2.5
+	},
+	"artillery":
+	{
+		"hp": 50.0,
+		"manpower": 1000,
+		"cost": 10000,
+		"days": 15,
+		"attack": 5,
+		"defense": 0.3,
+		"speed": 0.8
+	}
+}
 
 
 # Population & Manpower
@@ -144,6 +175,7 @@ func ToDict() -> Dictionary:
 		"hostedGovernments": hostedGovernments,
 		"figures": figures,
 		"is_player": is_player,
+		"templates": templates
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -163,6 +195,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country.figures = a_data.get("figures", [])
 	country.is_player = a_data.get("is_player", false)
+	country.templates = a_data.get("templates", country.templates).duplicate(true)
 	# country._refresh_economic_stats()
 	# country.refresh_ideology_name()
 	
@@ -241,7 +274,7 @@ func refresh_ideology_name() -> void:
 
 #region --- Military Management ---
 func train_troops(count: int, type: String = "infantry") -> bool:
-	var template = DivisionData.TEMPLATES.get(type)
+	var template = templates.get(type)
 	if not template:
 		push_error("Unknown division type: %s" % type)
 		return false
@@ -277,8 +310,9 @@ func _process_training() -> void:
 
 func _graduate_troops(training: TroopTraining) -> void:
 	var new_divisions: Array[DivisionData] = []
+	var template = templates.get(training.division_type, templates.get("infantry"))
 	for i: int in range(training.divisions_count):
-		new_divisions.append(DivisionData.create_division(training.division_type))
+		new_divisions.append(DivisionData.create_division(training.division_type, template))
 
 	ready_troops.append(ReadyTroop.new(new_divisions))
 	dirty_manpower = true
@@ -403,7 +437,7 @@ func _setup_starting_army() -> void:
 	var final_count = clampi(int((((gdp* 0.0000228310502) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
 
 	# 3. Manpower Check
-	var template = DivisionData.TEMPLATES.get("infantry")
+	var template = templates.get("infantry")
 
 	if manpower < final_count * template["manpower"]:
 		final_count = int(manpower / max(1, template["manpower"]))
@@ -414,7 +448,7 @@ func _setup_starting_army() -> void:
 	# 4. Create the DivisionData objects
 	var starting_divisions: Array[DivisionData] = []
 	for i in range(final_count):
-		starting_divisions.append(DivisionData.create_division("infantry"))
+		starting_divisions.append(DivisionData.create_division("infantry", template))
 
 	# 5. Safety: Deduct manpower now
 	manpower -= (final_count * template["manpower"])
@@ -455,7 +489,7 @@ func _process_reinforcements():
 
 		for div in troop.stored_divisions:
 			if div.hp < div.max_hp:
-				var template = DivisionData.TEMPLATES[div.type]
+				var template = templates.get(div.type, templates.get("infantry"))
 				var men_needed = int(template["manpower"] * 0.05) # 5% reinforcement
 
 				# REINFORCEMENT SAFETY: Stop if it would drop us below zero

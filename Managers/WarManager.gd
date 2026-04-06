@@ -158,6 +158,7 @@ class Battle:
 		for t in att_troops:
 			for div in t.stored_divisions:
 				var template = div.TEMPLATES.get(div.type, div.TEMPLATES["infantry"])
+				print(template)
 				att_supply_cost += template["cost"] * 0.5
 		attacker_stats.money -= att_supply_cost
 

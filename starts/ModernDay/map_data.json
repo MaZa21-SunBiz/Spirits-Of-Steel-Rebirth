@@ -1981,7 +1981,18 @@
 			"political_power": 500.56,
 			"puppets": [],
 			"stability": 1.0,
-			"war_support": 1.0
+			"war_support": 1.0,
+			"templates": {
+				"Mech": {
+					"hp": 10000.0,
+					"manpower": 1,
+					"cost": 100000,
+					"days": 60,
+					"attack": 200,
+					"defense": 800,
+					"speed": 0.5
+				}
+			}
 		},
 		{
 			"accepted_cultures": [

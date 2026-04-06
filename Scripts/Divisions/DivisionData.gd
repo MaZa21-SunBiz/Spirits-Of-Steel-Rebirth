@@ -3,12 +3,8 @@ class_name DivisionData extends Resource
 # --- CONFIGURATION (Game Balance) ---
 
 # NOTE(soi):ideally the player should make their own division templates ala hoi4 style but for now its enum time
-
-
-
-const TEMPLATES = {
-	"infantry":
-	{
+const TEMPLATES: Dictionary = {
+	"infantry": {
 		"hp": 100.0,
 		"manpower": 10000,
 		"cost": 500,
@@ -16,28 +12,11 @@ const TEMPLATES = {
 		"attack": 1,
 		"defense": 1,
 		"speed": 1.0
-	},
-	"tank":
-	{
-		"hp": 280.0,
-		"manpower": 20000,
-		"cost": 10000,
-		"days": 30,
-		"attack": 5,
-		"defense": 7,
-		"speed": 2.5
-	},
-	"artillery":
-	{
-		"hp": 50.0,
-		"manpower": 1000,
-		"cost": 10000,
-		"days": 15,
-		"attack": 5,
-		"defense": 0.3,
-		"speed": 0.8
 	}
 }
+
+
+
 
 # --- Instance Properties ---
 @export var name: String = "Infantry Division"
@@ -46,6 +25,8 @@ const TEMPLATES = {
 @export var max_hp: float = 100.0  # Max HP (for UI bars)
 @export var experience: float = 0.0
 @export var max_manpower: int = 10000
+@export var attack: float = 1.0
+@export var defense: float = 1.0
 
 # NOTE(sockmit): This isnt sockmit BUT SOILAD
 
@@ -57,6 +38,8 @@ func FromDict(a_dict: Dictionary):
 	division.max_hp = a_dict["max_hp"]
 	division.experience = a_dict["experience"]
 	division.max_manpower = a_dict["max_manpower"]
+	division.attack = a_dict.get("attack", 1.0)
+	division.defense = a_dict.get("defense", 1.0)
 	return division
 
 
@@ -67,29 +50,35 @@ func ToDict():
 		"hp": hp,
 		"max_hp": max_hp,
 		"experience": experience,
-		"max_manpower": max_manpower
+		"max_manpower": max_manpower,
+		"attack": attack,
+		"defense": defense
 	}
 
 
 # --- Helper to get stats safely ---
 func get_attack_power() -> float:
-	return TEMPLATES.get(type, TEMPLATES["infantry"])["attack"] * (1.0 + (experience * 0.5))
+	return attack * (1.0 + (experience * 0.5))
 
 
 func get_defense_power() -> float:
-	return TEMPLATES.get(type, TEMPLATES["infantry"])["defense"] * (1.0 + (experience * 0.5))
+	return defense * (1.0 + (experience * 0.5))
 
 
-static func create_division(p_type: String) -> DivisionData:
+static func create_division(p_type: String, template_stats: Dictionary = {}) -> DivisionData:
 	var div = DivisionData.new()
 	div.type = p_type
 
 	# Load stats from template
-	var stats = TEMPLATES.get(p_type, TEMPLATES["infantry"])
+	var stats = template_stats
+	if stats.is_empty():
+		stats = TEMPLATES.get(p_type, TEMPLATES["infantry"])
 
 	div.hp = stats["hp"]  # Set starting HP
 	div.max_hp = stats["hp"]  # Set Max HP
 	div.max_manpower = stats["manpower"]
+	div.attack = stats.get("attack", 1.0)
+	div.defense = stats.get("defense", 1.0)
 
 	div.name = "%s" % [p_type.capitalize()]
 

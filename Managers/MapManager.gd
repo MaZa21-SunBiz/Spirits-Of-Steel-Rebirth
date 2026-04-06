@@ -567,6 +567,12 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			3,
 			97
 		)
+		for fig_name in selected_country.figures:
+			var fig = significantFigures.get(fig_name)
+			if !fig: continue
+			if fig.occupation == "Leader":
+				GameState.game_ui.sidemenu_leader_portrait.texture = load(fig.portrait_path)
+
 
 		var play_btn: Button = Button.new()
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
@@ -592,17 +598,17 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			else:
 				print("Action Failed: Province not owned by player or not a city.")
 
-		elif GameState.industry_building != GameState.IndustryType.DEFAULT:
+		elif GameState.game_ui.current_category == GameState.game_ui.Category.ECONOMY && GameState.game_ui.current_context == GameState.game_ui.Context.PLAYER:
 			if EconomyManager.is_province_building(pid):
 				print("Action Failed: Already building there.")
 			else:
 				if is_player_owned:
-					if _province_build_industry(pid, player_country_name, GameState.industry_building):
+					if _province_build_industry(pid, player_country_name, GameState.industry_building, GameState.selected_building_template_name):
 						_cleanup_interaction_state()
 						show_industry_country(player_country_name)
 						country_clicked.emit(player_country_name)
 				elif is_puppet_owned:
-					if _province_build_industry(pid, province_objects[pid].GetFunctionalOwner(), GameState.industry_building):
+					if _province_build_industry(pid, province_objects[pid].GetFunctionalOwner(), GameState.industry_building, GameState.selected_building_template_name):
 						_cleanup_interaction_state()
 						show_industry_country(province_objects[pid].GetFunctionalOwner())
 						country_clicked.emit(province_objects[pid].GetFunctionalOwner())
@@ -622,7 +628,7 @@ func _execute_deployment(pid: int, player_name: String) -> void:
 	GameState.choosing_deploy_city = false
 	_cleanup_interaction_state()
 
-func _province_build_industry(pid: int, player_name: String, type: GameState.IndustryType) -> bool:
+func _province_build_industry(pid: int, player_name: String, type: GameState.IndustryType, template_name: String = "") -> bool:
 	var province = province_objects[pid]
 
 	# 1. Safety Check: Is there already something there or currently building?
@@ -632,7 +638,7 @@ func _province_build_industry(pid: int, player_name: String, type: GameState.Ind
 			#print("Cannot build: Factory slot is busy or full.")
 			return false
 			
-		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.get_country(player_name))
+		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.get_country(player_name), template_name)
 	elif type == GameState.IndustryType.PORT:
 		if province.buildings.size() >= 4 && province.buildings.find_custom(func(a_building: BuildingData): return a_building.type != "Port") == -1:
 			#print("Cannot build: Port slot is busy or full.")
@@ -640,7 +646,7 @@ func _province_build_industry(pid: int, player_name: String, type: GameState.Ind
 			
 		# 3. Sea check for Ports
 		if pid in get_provinces_near_sea(player_name):
-			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.get_country(player_name))
+			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.get_country(player_name), template_name)
 		else:
 			print("Action Failed: Port must be on a coast!")
 			return false
