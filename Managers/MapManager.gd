@@ -243,7 +243,6 @@ func SaveBiomeData() -> Array:
 func export_scenario_data(path: String) -> void:
 	var export = {
 		"clock": GameState.current_world.clock.ToDict() if GameState.current_world.clock else {},
-		"scenario_path": GameState.current_scenario_path,
 		"resources": SaveResourcesData(),
 		"biomes": SaveBiomeData(),
 		"provinces": save_country_data(),

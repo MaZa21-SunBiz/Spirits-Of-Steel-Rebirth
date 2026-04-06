@@ -21,9 +21,9 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
 [ext_resource type="Texture2D" uid="uid://blvxrdiioikq5" path="res://assets/ui/compass.svg" id="20_lpwmk"]
-[ext_resource type="Texture2D" uid="uid://f2dvdgocysml" path="res://assets/icons/artillery.svg" id="20_patwf"]
+[ext_resource type="Texture2D" path="res://assets/icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
-[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="21_qnodh"]
+[ext_resource type="Texture2D" path="res://assets/icons/tank.svg" id="21_qnodh"]
 [ext_resource type="Script" uid="uid://cxtx0rygv0x2i" path="res://Scripts/UI/input_division.gd" id="21_w7nfq"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
@@ -101,7 +101,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -137,6 +137,7 @@ map_tabs = NodePath("Control/MapSwitcher/TabBar")
 military_extra_panel = NodePath("Control/MilitaryExtra")
 input_division = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/input_division")
 button_train = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train")
+division_type = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/OptionButton")
 div_type = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type/amount")
 div_stats = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats/amount")
 costs = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost/amount")
@@ -574,18 +575,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 expand_icon = true
-selected = 0
 fit_to_longest_item = false
-item_count = 3
-popup/item_0/text = "Infantry"
-popup/item_0/icon = ExtResource("8_qum3k")
-popup/item_0/id = 0
-popup/item_1/text = "Artillery"
-popup/item_1/icon = ExtResource("20_patwf")
-popup/item_1/id = 1
-popup/item_2/text = "Tank"
-popup/item_2/icon = ExtResource("21_qnodh")
-popup/item_2/id = 2
 
 [node name="input_division" type="SpinBox" parent="Control/MilitaryExtra/Deploy/HBoxContainer" unique_id=2119668414]
 material = ExtResource("16_lpwmk")
@@ -758,7 +748,7 @@ use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -768,6 +758,7 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -846,7 +837,6 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -2127,6 +2117,7 @@ expand = true
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Pause" to="." method="_on_pause_pressed"]
+[connection signal="item_selected" from="Control/MilitaryExtra/Deploy/HBoxContainer/OptionButton" to="." method="_on_division_type_selected"]
 [connection signal="value_changed" from="Control/MilitaryExtra/Deploy/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="pressed" from="Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]

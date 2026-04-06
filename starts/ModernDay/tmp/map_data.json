@@ -2,16 +2,21 @@
 	"significant_figures": [
 		{
 			"name": "GavGrub",
-			"skills": { "Economics": 0 },
-			"traits": [ "abbandonment" ],
-			"ideology": [ 100, 100 ],
+			"skills": {
+				"Economics": 0
+			},
+			"traits": [
+				"abbandonment"
+			],
+			"ideology": [
+				100,
+				100
+			],
 			"allegiance": "Zimbabwe",
 			"occupation": "Leader"
 		}
 	],
-	"biomes": {
-
-	},
+	"biomes": {},
 	"factions": [],
 	"ideologies": {
 		"communist": {
@@ -95,6 +100,7 @@
 				"Quebecs"
 			],
 			"color": "#C35C6D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -113,6 +119,7 @@
 				"Danish"
 			],
 			"color": "#99745D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -150,6 +157,7 @@
 				"Checnyians"
 			],
 			"color": "#386038",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-46.3829765319824,
@@ -167,6 +175,7 @@
 				"Norway"
 			],
 			"color": "#6F4747",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -184,6 +193,7 @@
 				"Anglo-americans"
 			],
 			"color": "#1485ED",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-46.3829765319824,
@@ -201,6 +211,7 @@
 				"Finnish"
 			],
 			"color": "#C2C6D7",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -218,6 +229,7 @@
 				"Sweden"
 			],
 			"color": "#2484F7",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -235,6 +247,7 @@
 				"Icelandish"
 			],
 			"color": "#445171",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -252,6 +265,7 @@
 				"Estonia"
 			],
 			"color": "#3287AF",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -275,6 +289,7 @@
 				"Indian-ocean"
 			],
 			"color": "#C8385D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -293,6 +308,7 @@
 				"Lithuanian"
 			],
 			"color": "#4B4DBA",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -311,6 +327,7 @@
 				"Berlarussians"
 			],
 			"color": "#DBDB77",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -328,6 +345,7 @@
 				"Berlarussians"
 			],
 			"color": "#C7D5E0",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -345,6 +363,7 @@
 				"Ireland"
 			],
 			"color": "#509F5A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -363,6 +382,7 @@
 				"Khazaks"
 			],
 			"color": "#58A1C1",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -381,6 +401,7 @@
 				"Unknown"
 			],
 			"color": "#49484D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-15.7446756362915,
@@ -398,6 +419,7 @@
 				"Poles"
 			],
 			"color": "#C55C6A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -415,6 +437,7 @@
 				"Dutch"
 			],
 			"color": "#C78749",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -440,6 +463,7 @@
 				"Thai"
 			],
 			"color": "#A7575A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				71.063835144043,
@@ -459,6 +483,7 @@
 				"Russians"
 			],
 			"color": "#34588A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				32.1276741027832,
@@ -476,6 +501,7 @@
 				"Mongols"
 			],
 			"color": "#A38E4B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -494,6 +520,7 @@
 				"France"
 			],
 			"color": "#C1AB08",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -519,6 +546,7 @@
 				"French-antartic"
 			],
 			"color": "#3D75E8",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-36.8085098266602,
@@ -536,6 +564,7 @@
 				"Czech"
 			],
 			"color": "#36A79C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -553,6 +582,7 @@
 				"France"
 			],
 			"color": "#55E4E9",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -570,6 +600,7 @@
 				"Slovaks"
 			],
 			"color": "#795C9F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -587,6 +618,7 @@
 				"Germans"
 			],
 			"color": "#A8AEC6",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -604,6 +636,7 @@
 				"Hungarians"
 			],
 			"color": "#4E7D73",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -622,6 +655,7 @@
 				"Gagauz-turks"
 			],
 			"color": "#866E52",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -640,6 +674,7 @@
 				"Hungarians"
 			],
 			"color": "#D7C448",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -658,6 +693,7 @@
 				"Russians"
 			],
 			"color": "#2A1618",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -678,6 +714,7 @@
 				"Italians"
 			],
 			"color": "#E00505",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -695,6 +732,7 @@
 				"Liechtenstein"
 			],
 			"color": "#575A7F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -714,6 +752,7 @@
 				"France"
 			],
 			"color": "#437F3F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -731,6 +770,7 @@
 				"Slovenes"
 			],
 			"color": "#4F6F96",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -748,6 +788,7 @@
 				"Croat"
 			],
 			"color": "#2A2D60",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -766,6 +807,7 @@
 				"Bulgarians"
 			],
 			"color": "#9A6867",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -784,6 +826,7 @@
 				"Bosnia-and-herzegovina"
 			],
 			"color": "#DFC087",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -801,6 +844,7 @@
 				"Uzebeks"
 			],
 			"color": "#CACEFD",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -818,6 +862,7 @@
 				"Japanase"
 			],
 			"color": "#FFC9B2",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -835,6 +880,7 @@
 				"Bulgarians"
 			],
 			"color": "#339B00",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -856,6 +902,7 @@
 				"Canary-islander"
 			],
 			"color": "#F2CD5E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -873,6 +920,7 @@
 				"San-marino"
 			],
 			"color": "#62B0C6",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -890,6 +938,7 @@
 				"Monaco"
 			],
 			"color": "#EDA2BA",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -907,6 +956,7 @@
 				"Russians"
 			],
 			"color": "#3F1F2D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -924,6 +974,7 @@
 				"Serbs"
 			],
 			"color": "#FC7279",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -941,6 +992,7 @@
 				"Albanians"
 			],
 			"color": "#768EBA",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -958,6 +1010,7 @@
 				"Georgia"
 			],
 			"color": "#EFE4E8",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -975,6 +1028,7 @@
 				"Kirghiz"
 			],
 			"color": "#F43D6F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -992,6 +1046,7 @@
 				"Andorra"
 			],
 			"color": "#C90001",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1009,6 +1064,7 @@
 				"Russians"
 			],
 			"color": "#C29657",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1027,6 +1083,7 @@
 				"Uzebeks"
 			],
 			"color": "#BD8C6E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1044,6 +1101,7 @@
 				"Koreans"
 			],
 			"color": "#F50C37",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1061,6 +1119,7 @@
 				"Albanians"
 			],
 			"color": "#952D66",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1079,6 +1138,7 @@
 				"Albanians"
 			],
 			"color": "#CA9576",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1096,6 +1156,7 @@
 				"Azerbis"
 			],
 			"color": "#728CD9",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1113,6 +1174,7 @@
 				"Portugese"
 			],
 			"color": "#277446",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1132,6 +1194,7 @@
 				"Arab"
 			],
 			"color": "#A63443",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				61.4893646240234,
@@ -1149,6 +1212,7 @@
 				"Vatican-city"
 			],
 			"color": "#C4B582",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1166,6 +1230,7 @@
 				"Hellenics"
 			],
 			"color": "#5DB5E3",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1183,6 +1248,7 @@
 				"Armenia"
 			],
 			"color": "#F6A286",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1200,6 +1266,7 @@
 				"Tajiks"
 			],
 			"color": "#6D9482",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1223,6 +1290,7 @@
 				"Balochs"
 			],
 			"color": "#5A8F7B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				57.0212821960449,
@@ -1243,6 +1311,7 @@
 				"Balochs"
 			],
 			"color": "#716B79",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1260,6 +1329,7 @@
 				"Koreans"
 			],
 			"color": "#5E76BE",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1277,6 +1347,7 @@
 				"Arab"
 			],
 			"color": "#B9566A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1296,6 +1367,7 @@
 				"Arab"
 			],
 			"color": "#B27263",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1314,6 +1386,7 @@
 				"Arab"
 			],
 			"color": "#374E5C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1338,6 +1411,7 @@
 				"Saraikis"
 			],
 			"color": "#002917",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1356,6 +1430,7 @@
 				""
 			],
 			"color": "#0A2B24",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1375,6 +1450,7 @@
 				"Western-sahara"
 			],
 			"color": "#9B4A59",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1392,6 +1468,7 @@
 				"Malta"
 			],
 			"color": "#D9D9D9",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1409,6 +1486,7 @@
 				"Turks"
 			],
 			"color": "#5C4D32",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1457,6 +1535,7 @@
 				"India"
 			],
 			"color": "#D0A36C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-51.4893569946289,
@@ -1474,6 +1553,7 @@
 				"Hellenics"
 			],
 			"color": "#DEB51B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1491,6 +1571,7 @@
 				"Lebanon"
 			],
 			"color": "#549C8B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1509,6 +1590,7 @@
 				""
 			],
 			"color": "#2A7054",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1526,6 +1608,7 @@
 				"Israel"
 			],
 			"color": "#4569D9",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1543,6 +1626,7 @@
 				"Arab"
 			],
 			"color": "#E3989C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1560,6 +1644,7 @@
 				"Mexican"
 			],
 			"color": "#689752",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1577,6 +1662,7 @@
 				"Arab"
 			],
 			"color": "#ABBE98",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-27.659574508667,
@@ -1594,6 +1680,7 @@
 				"Arab"
 			],
 			"color": "#564857",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1611,6 +1698,7 @@
 				"Arab"
 			],
 			"color": "#AFA358",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				34.3931465148926,
@@ -1628,6 +1716,7 @@
 				"Nepali"
 			],
 			"color": "#003893",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1645,6 +1734,7 @@
 				"Arab"
 			],
 			"color": "#5A402A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1662,6 +1752,7 @@
 				"Bhutanese"
 			],
 			"color": "#79645F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1679,6 +1770,7 @@
 				"Myammar"
 			],
 			"color": "#3B714F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1696,6 +1788,7 @@
 				"Western-sahara"
 			],
 			"color": "#C5AE78",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1713,6 +1806,7 @@
 				""
 			],
 			"color": "#2A6F53",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1730,6 +1824,7 @@
 				"Arab"
 			],
 			"color": "#3A414B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1747,6 +1842,7 @@
 				"Bengal"
 			],
 			"color": "#002A30",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1764,6 +1860,7 @@
 				"Arab"
 			],
 			"color": "#6F2373",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1781,6 +1878,7 @@
 				"Arab"
 			],
 			"color": "#815458",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1798,6 +1896,7 @@
 				"Han-chinise"
 			],
 			"color": "#5B4D5C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1819,6 +1918,7 @@
 				"Bomu"
 			],
 			"color": "#9E8A57",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				39.1489410400391,
@@ -1836,6 +1936,7 @@
 				"Arab"
 			],
 			"color": "#279678",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1856,6 +1957,7 @@
 				"Nenets"
 			],
 			"color": "#26584D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				-55.319149017334,
@@ -1873,6 +1975,7 @@
 				"Cuba"
 			],
 			"color": "#9744B0",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1891,6 +1994,7 @@
 				"Muslims-cristian-minotiry"
 			],
 			"color": "#BBAA7E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				55.106388092041,
@@ -1913,6 +2017,7 @@
 				"Shilluk"
 			],
 			"color": "#0C3827",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				25.0927543640137,
@@ -1930,6 +2035,7 @@
 				"Vietnam"
 			],
 			"color": "#C6BE75",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1947,6 +2053,7 @@
 				"Lao"
 			],
 			"color": "#594D3F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1968,6 +2075,7 @@
 				"Malaya"
 			],
 			"color": "#142D4C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1985,6 +2093,7 @@
 				"Haiti"
 			],
 			"color": "#A5746F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2002,6 +2111,7 @@
 				"Dominican-republic"
 			],
 			"color": "#728877",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2019,6 +2129,7 @@
 				"Belize"
 			],
 			"color": "#823214",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2036,6 +2147,7 @@
 				"Arab"
 			],
 			"color": "#4E3235",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2053,6 +2165,7 @@
 				"Jamaica"
 			],
 			"color": "#8BDC0A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2070,6 +2183,7 @@
 				"Filipino"
 			],
 			"color": "#7255A6",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2087,6 +2201,7 @@
 				"Guatemala"
 			],
 			"color": "#48306D",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2104,6 +2219,7 @@
 				"Eritrea"
 			],
 			"color": "#CE8CA2",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2121,6 +2237,7 @@
 				"Cabo-verde"
 			],
 			"color": "#CE2027",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2138,6 +2255,7 @@
 				"St-kitts-and-nevis"
 			],
 			"color": "#3B3800",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2158,6 +2276,7 @@
 				"Diola"
 			],
 			"color": "#B8757C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2175,6 +2294,7 @@
 				"Honduras"
 			],
 			"color": "#99B04A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2195,6 +2315,7 @@
 				"Senofu"
 			],
 			"color": "#CA6E7B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2212,6 +2333,7 @@
 				"El-salvadoreans"
 			],
 			"color": "#9F88C6",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2229,6 +2351,7 @@
 				"Nicaragua"
 			],
 			"color": "#91B2BE",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2251,6 +2374,7 @@
 				"Aaris"
 			],
 			"color": "#30477B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2268,6 +2392,7 @@
 				"Cambodia"
 			],
 			"color": "#E2B490",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2285,6 +2410,7 @@
 				"Dominica"
 			],
 			"color": "#7670B2",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2304,6 +2430,7 @@
 				"Igbo"
 			],
 			"color": "#C27A6B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2321,6 +2448,7 @@
 				"Gambia"
 			],
 			"color": "#44355C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2338,6 +2466,7 @@
 				"Barbados"
 			],
 			"color": "#FCD116",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2355,6 +2484,7 @@
 				"St-lucia"
 			],
 			"color": "#5DB7E6",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2372,6 +2502,7 @@
 				"Guinea-bissau"
 			],
 			"color": "#DABD81",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2392,6 +2523,7 @@
 				"Kpelle"
 			],
 			"color": "#205A4E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2410,6 +2542,7 @@
 				"Colombia"
 			],
 			"color": "#DEBB5B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2427,6 +2560,7 @@
 				"Venezuelans"
 			],
 			"color": "#C86496",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2444,6 +2578,7 @@
 				"Grenada"
 			],
 			"color": "#007B5F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2461,6 +2596,7 @@
 				"Benin"
 			],
 			"color": "#DBC478",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2478,6 +2614,7 @@
 				"Djibouti"
 			],
 			"color": "#D7141A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2497,6 +2634,7 @@
 				"Bantu"
 			],
 			"color": "#185E61",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2520,6 +2658,7 @@
 				"Bari"
 			],
 			"color": "#D4BF6E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2537,6 +2676,7 @@
 				"Somalia"
 			],
 			"color": "#6683AB",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2554,6 +2694,7 @@
 				"Somalia"
 			],
 			"color": "#55AB70",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2571,6 +2712,7 @@
 				"Costa-rica"
 			],
 			"color": "#A78C2A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2589,6 +2731,7 @@
 				"Togo"
 			],
 			"color": "#153323",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2606,6 +2749,7 @@
 				"Maldives"
 			],
 			"color": "#929BA2",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2623,6 +2767,7 @@
 				"Ghana"
 			],
 			"color": "#A24A58",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2643,6 +2788,7 @@
 				"Nzakara"
 			],
 			"color": "#A64D63",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2660,6 +2806,7 @@
 				"Trinidad-and-tobago"
 			],
 			"color": "#F05A27",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2680,6 +2827,7 @@
 				"Akan"
 			],
 			"color": "#D1996A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2698,6 +2846,7 @@
 				"Sherbor"
 			],
 			"color": "#729FBE",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2715,6 +2864,7 @@
 				"Panama"
 			],
 			"color": "#3C3558",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2732,6 +2882,7 @@
 				"Sri-lankan"
 			],
 			"color": "#564B39",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2749,6 +2900,7 @@
 				""
 			],
 			"color": "#513D76",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2766,6 +2918,7 @@
 				"Guyanans"
 			],
 			"color": "#B49678",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2783,6 +2936,7 @@
 				"Palau"
 			],
 			"color": "#FFC90E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2801,6 +2955,7 @@
 				"Maldives"
 			],
 			"color": "#292F85",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2818,6 +2973,7 @@
 				"Malaya"
 			],
 			"color": "#C56064",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2835,6 +2991,7 @@
 				"Surinamians"
 			],
 			"color": "#803754",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2870,6 +3027,7 @@
 				"Mollucans"
 			],
 			"color": "#DDBEC4",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2890,6 +3048,7 @@
 				"Uruguay"
 			],
 			"color": "#4C913F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2915,6 +3074,7 @@
 				"Lunda"
 			],
 			"color": "#416893",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2936,6 +3096,7 @@
 				"Kenya-bantu"
 			],
 			"color": "#833640",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2953,6 +3114,7 @@
 				"Brunei"
 			],
 			"color": "#3C6E55",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2972,6 +3134,7 @@
 				"Uganda"
 			],
 			"color": "#92824F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2989,6 +3152,7 @@
 				"Equatorial-guinea"
 			],
 			"color": "#5090AB",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3009,6 +3173,7 @@
 				"Teke"
 			],
 			"color": "#D16C78",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3030,6 +3195,7 @@
 				"Eshira"
 			],
 			"color": "#DCBF7B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3047,6 +3213,7 @@
 				"Han-chinise"
 			],
 			"color": "#4D4986",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3064,6 +3231,7 @@
 				"Trinida-and-tobago-equador"
 			],
 			"color": "#F99262",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3081,6 +3249,7 @@
 				"Sao-tome-and-principe"
 			],
 			"color": "#12AD2B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3098,6 +3267,7 @@
 				"Peru"
 			],
 			"color": "#C4BDCC",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3115,6 +3285,7 @@
 				"Rwanda"
 			],
 			"color": "#1D3841",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3139,6 +3310,7 @@
 				"Makonde"
 			],
 			"color": "#678792",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3156,6 +3328,7 @@
 				"Burundi"
 			],
 			"color": "#9A4BA0",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3175,6 +3348,7 @@
 				"Papuans"
 			],
 			"color": "#2B385A",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3194,6 +3368,7 @@
 				"Angola-kimbudu"
 			],
 			"color": "#2C1823",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3211,6 +3386,7 @@
 				"Seychelles"
 			],
 			"color": "#A11E24",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3228,6 +3404,7 @@
 				"Solomon-islands"
 			],
 			"color": "#E20C0C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3247,6 +3424,7 @@
 				"Tonga"
 			],
 			"color": "#22562F",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3264,6 +3442,7 @@
 				"East-timor"
 			],
 			"color": "#28AA4C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3281,6 +3460,7 @@
 				"Tuvalu"
 			],
 			"color": "#ED1C24",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3299,6 +3479,7 @@
 				"Malawi-chewa"
 			],
 			"color": "#A15468",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3317,6 +3498,7 @@
 				"Bolivia"
 			],
 			"color": "#CCA66C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3338,6 +3520,7 @@
 				"Mozambiue-tsonnga"
 			],
 			"color": "#0E363E",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3355,6 +3538,7 @@
 				"Australia"
 			],
 			"color": "#398F61",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3373,6 +3557,7 @@
 				"Madagascar"
 			],
 			"color": "#2C8C04",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3390,6 +3575,7 @@
 				"Vanuatu"
 			],
 			"color": "#EDA720",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3410,6 +3596,9 @@
 				"Tswa"
 			],
 			"color": "#AD585D",
+			"figures": [
+				"GavGrub"
+			],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3420,14 +3609,14 @@
 			"political_power": 508.600000000004,
 			"puppets": [],
 			"stability": 1.0,
-			"war_support": 1.0,
-			"figures": ["GavGrub"]
+			"war_support": 1.0
 		},
 		{
 			"accepted_cultures": [
 				"Fiji"
 			],
 			"color": "#8F4952",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3448,6 +3637,7 @@
 				"Nama"
 			],
 			"color": "#C1D9A7",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3465,6 +3655,7 @@
 				"Niue"
 			],
 			"color": "#B97A57",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3482,6 +3673,7 @@
 				"Chile"
 			],
 			"color": "#9B656B",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3501,6 +3693,7 @@
 				"Kqalaqai"
 			],
 			"color": "#889DBC",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3518,6 +3711,7 @@
 				"Paraguay"
 			],
 			"color": "#3971E4",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3535,6 +3729,7 @@
 				"Mauritius"
 			],
 			"color": "#B39500",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3552,6 +3747,7 @@
 				"Tonga"
 			],
 			"color": "#FF7578",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3569,6 +3765,7 @@
 				"Argentina"
 			],
 			"color": "#919DEC",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3592,6 +3789,7 @@
 				"Xhosa"
 			],
 			"color": "#D2A56C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3609,6 +3807,7 @@
 				"Eswatini"
 			],
 			"color": "#575F86",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3626,6 +3825,7 @@
 				"Lesotho"
 			],
 			"color": "#00BEF0",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3643,6 +3843,7 @@
 				"Uruguay"
 			],
 			"color": "#AEC09C",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3660,6 +3861,7 @@
 				"New-zealand"
 			],
 			"color": "#DAD1E9",
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -73596,10 +73798,10 @@
 			"max_infrastructure": 0,
 			"name": "Sea",
 			"occupier": "",
-			"polity": "Sea",
+			"polity": "India",
 			"populations": [],
 			"resources": [],
-			"type": 0
+			"type": 1
 		},
 		"3465": {
 			"biome": "89, 129, 89",
@@ -74736,10 +74938,10 @@
 			"max_infrastructure": 0,
 			"name": "Sea",
 			"occupier": "",
-			"polity": "Sea",
+			"polity": "India",
 			"populations": [],
 			"resources": [],
-			"type": 0
+			"type": 1
 		},
 		"3502": {
 			"biome": "Sea",
@@ -74751,10 +74953,10 @@
 			"max_infrastructure": 0,
 			"name": "Sea",
 			"occupier": "",
-			"polity": "Sea",
+			"polity": "India",
 			"populations": [],
 			"resources": [],
-			"type": 0
+			"type": 1
 		},
 		"3503": {
 			"biome": "0, 70, 0",
@@ -123549,7 +123751,81 @@
 			"type": 1
 		}
 	},
-	"resources": {
-
-	}
+	"resources": [
+		{
+			"name": "Steel Ingot",
+			"color": "#71797E",
+			"icon": "Ingot",
+			"tags": {
+				"structural_metal": 2.0,
+				"metal": 1.0
+			}
+		},
+		{
+			"name": "Iron Ore",
+			"color": "#434b4d",
+			"icon": "Ingot",
+			"tags": {
+				"structural_metal": 0.5,
+				"metal": 0.5
+			}
+		},
+		{
+			"name": "Lumber",
+			"color": "#8b5a2b",
+			"icon": "Lumber",
+			"tags": {
+				"wood": 1.0,
+				"fuel": 0.5
+			}
+		},
+		{
+			"name": "Coal",
+			"color": "#111111",
+			"icon": "Ingot",
+			"tags": {
+				"fuel": 2.0
+			}
+		},
+		{
+			"name": "Crude Oil",
+			"color": "#050505",
+			"icon": "Gas",
+			"tags": {
+				"fuel": 5.0
+			}
+		},
+		{
+			"name": "Fresh Water",
+			"color": "#0000ff",
+			"icon": "Droplet",
+			"tags": {
+				"water": 1.0
+			}
+		},
+		{
+			"name": "Basic Circuitry",
+			"color": "#00ff00",
+			"icon": "Ingot",
+			"tags": {
+				"electronic": 1.0
+			}
+		},
+		{
+			"name": "Limestone",
+			"color": "#dddddd",
+			"icon": "Ingot",
+			"tags": {
+				"stone": 1.0
+			}
+		},
+		{
+			"name": "Battery Pack",
+			"color": "#ffff00",
+			"icon": "Gas",
+			"tags": {
+				"power": 1.0
+			}
+		}
+	]
 }

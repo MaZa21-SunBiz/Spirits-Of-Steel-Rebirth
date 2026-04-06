@@ -49,6 +49,10 @@ var ideology_name: String = "neutral" # Initialized, will be updated by setter
 
 # Population & Manpower
 var total_population: int = 0
+var total_power: int = 1000
+var total_water: int = 1000
+var total_sewage: int = 1000
+
 var manpower: int = 0
 
 # Military State

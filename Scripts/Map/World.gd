@@ -36,7 +36,7 @@ func _enter_tree() -> void:
 
 func DoSetup(a_progress: Array) -> void:
 	var mapData: Dictionary = {}
-	var path = GameState.current_scenario_path
+	var path = "res://starts/%s/map_data.json" % GameState.current_start
 
 	if GameState.pending_load_save != "":
 		var save_path = "res://saves/" + GameState.pending_load_save + ".json"
@@ -46,7 +46,7 @@ func DoSetup(a_progress: Array) -> void:
 			if save_json is Dictionary:
 				mapData = save_json
 				path = mapData.get("scenario_path", path)
-				GameState.current_scenario_path = path
+				# GameState.current_scenario_path = path
 				GameState.is_loading_game = true
 				print("World: Pending save found. Loading from: ", GameState.pending_load_save)
 
@@ -156,9 +156,7 @@ func load_map_data(mapData: Dictionary):
 	IdeologyManager.Initialize(i_data if i_data is Dictionary else {})
 	
 	# Determine scenario path and assets
-	var scenario_path: String = mapData.get("scenario_path", GameState.current_scenario_path)
-	if scenario_path == "":
-		scenario_path = "res://starts/ModernDay/map_data.json" # Fallback
+	var scenario_path: String = "res://starts/%s/map_data.json" % mapData.get("current_start", "ModernDay")
 	
 	var start_folder: String = scenario_path.get_base_dir() + "/"
 	var regions_tex: Texture2D = load(start_folder + "regions.png")
@@ -200,7 +198,6 @@ func save_game(slot: String):
 	# Construct a unified save dictionary
 	var save_data = {
 		"clock": clock.ToDict() if clock else {},
-		"scenario_path": GameState.current_scenario_path,
 		"resources": MapManager.SaveResourcesData(),
 		"biomes": MapManager.SaveBiomeData(),
 		"provinces": MapManager.save_country_data(),
@@ -250,7 +247,7 @@ func load_game(save_name: String):
 		troop_renderer.set_process(false)
 
 	# Update current scenario tracking
-	GameState.current_scenario_path = save_data.get("scenario_path", "")
+	# GameState.current_scenario_path = save_data.get("scenario_path", "")
 	# 1. Full State Reset
 	TroopManager.clear_all_troops()
 	WarManager.reset_state()

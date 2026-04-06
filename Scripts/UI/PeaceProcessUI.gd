@@ -16,7 +16,7 @@ var puppeting = false
 # Color Palette
 const COLOR_BG = Color(0.1, 0.1, 0.12, 0.98)
 const COLOR_GOLD = Color(0.85, 0.65, 0.2)
-const COLOR_SELECT = Color(0.0, 1.0, 0.8)  # Cyan/Teal for treaty selection
+const COLOR_SELECT = Color(0.0, 1.0, 0.8) # Cyan/Teal for treaty selection
 const COLOR_DANGER = Color(0.7, 0.2, 0.2)
 
 func _ready() -> void:
@@ -41,10 +41,10 @@ func _setup_missing_ui_elements():
 	main_vbox.add_child(beneficiary_label)
 	main_vbox.move_child(beneficiary_label, button_container.get_index())
 	
-	winner_selector = OptionButton.new()
-	winner_selector.item_selected.connect(_on_winner_selected)
-	main_vbox.add_child(winner_selector)
-	main_vbox.move_child(winner_selector, button_container.get_index())
+	# winner_selector = OptionButton.new()
+	# winner_selector.item_selected.connect(_on_winner_selected)
+	# main_vbox.add_child(winner_selector)
+	# main_vbox.move_child(winner_selector, button_container.get_index())
 
 func _input(event: InputEvent) -> void:
 	if not self.visible:
@@ -262,7 +262,3 @@ func _reset_province_visual(pid: int):
 			var color = CountryManager.GetCountryColor(functional_owner)
 			var base_color = CountryManager.GetCountryColor(province.country)
 			_update_map_visual(pid, color, base_color)
-
-
-func _on_option_button_item_selected(index: int) -> void:
-	pass # Replace with function body.

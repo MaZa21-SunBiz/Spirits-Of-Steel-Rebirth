@@ -65,6 +65,7 @@ var stats_labels := {}
 
 @export var input_division: SpinBox
 @export var button_train: Button
+@export var division_type: OptionButton
 
 @export var div_type: Label
 @export var div_stats: Label
@@ -203,6 +204,11 @@ func _enter_tree() -> void:
 	GameState.game_ui = self
 
 func _ready() -> void:
+	for template in DivisionData.TEMPLATES:
+		division_type.add_icon_item(
+			load("res://starts/%s/assets/division_icons/%s.svg" % [GameState.current_start, template]),
+			template.capitalize()
+			)
 	stats_labels = {
 		"pp": label_pp,
 		"manpower": label_manpower,
@@ -873,6 +879,7 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 				groups[div.type] = []
 			groups[div.type].append(div)
 
+		print(groups)
 		# --- Draw One Card Per Type ---
 		for type in groups.keys():
 			var divisions_of_type: Array = groups[type]
@@ -948,13 +955,26 @@ func update_division_menu():
 
 
 func _on_button_train_troops() -> void:
-	if CountryManager.player_country.train_troops(int(input_division.value + 1), division_type_selected):
+	if CountryManager.player_country.train_troops(
+		max(1, int(input_division.value + 1)),
+		division_type_selected
+	):
 		_build_trooplist()
 	update_division_menu()
 
 
 func _on_division_type_button(type: String) -> void:
+	print(division_type_selected)
 	division_type_selected = type
+	print(division_type_selected)
+	update_division_menu()
+
+
+func _on_division_type_selected(index: int) -> void:
+	print(division_type_selected)
+	print(DivisionData.TEMPLATES)
+	division_type_selected = DivisionData.TEMPLATES.keys()[index]
+	print(division_type_selected)
 	update_division_menu()
 
 

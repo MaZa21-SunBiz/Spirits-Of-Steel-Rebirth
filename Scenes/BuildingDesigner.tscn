@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxtbl3puq8nwe" path="res://assets/icons/old icons tht might get reused someday/industry_icon.png" id="2_2s4hl"]
 [ext_resource type="Script" uid="uid://deq54orcbrhu4" path="res://Scripts/UI/building_designer.gd" id="2_lbb8r"]
 
-[node name="BuildingDesigner" type="PanelContainer" unique_id=1883852342 node_paths=PackedStringArray("functions_list", "functions_grid", "building_name", "feasibility_text", "add_building")]
+[node name="BuildingDesigner" type="PanelContainer" unique_id=1883852342 node_paths=PackedStringArray("functions_list", "functions_grid", "building_name", "feasibility_text", "add_building", "existing_design")]
 material = ExtResource("1_y8fdt")
 offset_left = 360.0
 offset_top = 150.0
@@ -16,6 +16,7 @@ functions_grid = NodePath("VBoxContainer/HBoxContainer/Functions/VBoxContainer2/
 building_name = NodePath("VBoxContainer/HBoxContainer/Stats/HBoxContainer/TextEdit")
 feasibility_text = NodePath("VBoxContainer/HBoxContainer/Stats/Feasibility")
 add_building = NodePath("VBoxContainer/HBoxContainer/Stats/AddBuilding")
+existing_design = NodePath("VBoxContainer/HBoxContainer/Designed/ScrollContainer/VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=104791683]
 use_parent_material = true
@@ -82,19 +83,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Building Name"
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Stats" unique_id=1426956776]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Power:
-Water:
-Population:
-Sewage:"
-
 [node name="Feasibility" type="Label" parent="VBoxContainer/HBoxContainer/Stats" unique_id=1226337498]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
 [node name="Resources" type="Label" parent="VBoxContainer/HBoxContainer/Stats" unique_id=959214321]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
@@ -105,7 +99,6 @@ text = "Add building"
 
 [node name="Designed" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=245188964]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Designed" unique_id=911804152]
 layout_mode = 2

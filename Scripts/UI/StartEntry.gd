@@ -23,7 +23,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: Array):
 				a_percent = [0]
 				GameState.current_start = a_text
-				GameState.current_scenario_path = mapdata_path #dear god lets not 
+				# GameState.current_scenario_path = mapdata_path #dear god lets not 
 				a_percent[0] = 0.01
 				EconomyManager.initialize(start_folder + "building_functions.json")
 				a_percent[0] = 0.02
@@ -37,6 +37,10 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				a_percent[0] = 0.2
 				IdeologyManager.Initialize(map_data.get("ideologies", {}) as Dictionary)
 				a_percent[0] = 0.3
+				var b_data = map_data.get("biomes")
+				MapManager.LoadBiomes(b_data if b_data is Array else [])
+				var r_data = map_data.get("resources")
+				MapManager.LoadResources(r_data if r_data is Array else [])
 				MapManager.load_country_data(
 					load(start_folder + "regions.png"),
 					map_data.get("provinces", {}) as Dictionary,

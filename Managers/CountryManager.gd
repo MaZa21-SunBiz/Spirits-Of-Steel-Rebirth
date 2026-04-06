@@ -108,7 +108,7 @@ func _ensure_country_has_leader(country: CountryData) -> void:
 				
 				MapManager.significantFigures[final_fig_name] = new_figure
 				country.figures.append(final_fig_name)
-				print("CountryManager: Assigned random leader %s to %s" % [figure_name, country.country_name])
+				# print("CountryManager: Assigned random leader %s to %s" % [figure_name, country.country_name])
 
 func save_countries() -> Array:
 	var polities: Array = []

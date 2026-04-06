@@ -12,7 +12,12 @@ static func FromDict(a_data: Dictionary) -> ResourceData:
 	resource.name = a_data["name"]
 	resource.color = Color.html(a_data.get("color", "#FFFFFF"))
 	resource.icon = a_data.get("icon", "")
-	resource.tags = a_data.get("tags", {})
+	
+	var typed_tags: Dictionary[String, float] = {}
+	var raw_tags = a_data.get("tags", {})
+	for k in raw_tags.keys():
+		typed_tags[str(k)] = float(raw_tags[k])
+	resource.tags = typed_tags
 	
 	return resource
 
