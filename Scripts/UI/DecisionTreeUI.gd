@@ -252,11 +252,11 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	if data.has("desc") and data["desc"] != "":
 		tt += "\n" + data["desc"]
 	
-	var reqs_text = InterpreterManager.format_functions(data.get("reqs", []))
+	var reqs_text = str(data.get("reqs", []))
 	if reqs_text != "":
 		tt += "\n\n[ Requirements ]\n" + reqs_text
 
-	var action_text = InterpreterManager.format_functions(data.get("action", []))
+	var action_text = str(data.get("action", []))
 	if action_text != "":
 		tt += "\n\n[ On Finished ]\n" + action_text
 	
