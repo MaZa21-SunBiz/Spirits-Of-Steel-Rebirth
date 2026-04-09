@@ -4,21 +4,7 @@ var debug: bool:
 	get:
 		return SettingsManager.settings.debug_mode
 var heap: Dictionary = {}
-const DUMMY_FUNC = ""
-var country: CountryData
-
-# NOTE(soi): jst copied this straight up frm the dics
-func evaluate(command, variable_names = [], variable_values = []):
-	var expression = Expression.new()
-	var error = expression.parse(command, variable_names)
-	if error != OK:
-		push_error(expression.get_error_text())
-		return
-
-	var result = expression.execute(variable_values, self)
-
-	if not expression.has_execute_failed():
-		return result
+const DUMMY_FUNC = {"func": "return", "args": [true]}
 
 func all(args: Array) -> bool:
 	for arg in args:
@@ -47,7 +33,7 @@ func get_variable(variable):
 		_:
 			return heap.get(variable, variable)
 
-func get_element(element, grid, _country: CountryData = null):
+func get_element(element, grid, country: CountryData = null):
 	var text: String
 	if element.has("text"):
 		if element["text"] is Array:
@@ -100,8 +86,8 @@ func get_element(element, grid, _country: CountryData = null):
 			grid.add_child(entry)
 			entry.material = grid.material
 			entry.tooltip_text = "Condition - %s\nFinished - %s" % [
-				condition,
-				finished
+				format_functions(condition),
+				format_functions(finished)
 			]
 		"image":
 			var entry = TextureRect.new()
@@ -125,90 +111,323 @@ func get_element(element, grid, _country: CountryData = null):
 
 
 
-func get_function(block, _country: CountryData = null):
+func get_function(block, country: CountryData = null):
 	# print(block)
 	if !block: return
 
-	country = CountryManager.player_country if country == null else _country
+	if country == null:
+		country = CountryManager.player_country
 
-	var result
-	for expr in block:
-		print(expr)
-		result = evaluate(expr) 
-		print(result)
-
-	return result
 	
 
-# Country stuff
-func is_at_war(warer: String, waree: String) -> bool:
-		return WarManager.is_at_war_names(warer ,waree)
+	#match statement
+	if block.has("match"):
+		var match_val = str(get_function(block["match"]))
+		if match_val != "match": # Prevent collision with 'match' key itself
+			get_function(block.get(match_val, {}))
 
-func set_country_attr(attr: String, val):
-	country[attr] = val
-	return country[attr]
 
-func add_country_attr(attr: String, val):
-	country[attr] += val
-	return country[attr]
+	# Handle multiple functions (Recusive Array Support)
+	if block is Array:
+		var last_result = null
+		for item in block:
+			last_result = get_function(item, country)
+		return last_result
 
-func army_level_up():
-	country.army_level += 1
-	return country.army_level
 
-func build_factory(count: int):
-	country.factories_amount += count
-	return country.factories_amount
+	if !block is Dictionary:
+		push_error("Interpreter: block must be a Dictionary or Array.")
+		return null
 
-func declare_war(warer: String, waree: String):
-	var attacker: CountryData = CountryManager.countries[warer]
-	var defender: CountryData = CountryManager.countries[waree]
-	WarManager.declare_war(attacker, defender)
+	#for loop
+	if block.has("for"):
+		var var_name = block["for"]
+		var had_prev = heap.has(var_name)
+		var prev_val = heap.get(var_name)
+		for item in block["in"]:
+			heap[var_name] = item
+			var substituted = _substitute(block["do"].duplicate(true), heap)
+			get_function(substituted)
+		
+		if had_prev:
+			heap[var_name] = prev_val
+		else:
+			heap.erase(var_name)
+			
+	# #match statement
+	# if block.has("match"):
+	# 	get_function(block.get(str(get_function(block["match"])), {}))
+	
+	var args: Array = block.get("args", []).duplicate()
+	var evaled_args: Array = []
+	for arg in args:
+		arg = get_variable(arg)
+		if (arg is Dictionary && arg.has("func")) || arg is Array:
+			arg = get_function(arg, country)
+		evaled_args.push_back(arg)
+	var store_key: String = block.get("store", "")
+	var result = null
 
-func release(_country: String):
-	MapManager.ReleaseCountry(_country)
+	match block.get("func", ""):
+		# idk stuff
+		"return":
+			if evaled_args.size() == 1:
+				result = evaled_args[0]
+		# Comparison stuff
+		"and":
+			result = true
+			for val in evaled_args:
+				if not val:
+					result = false
+					break
+		"not":
+			if evaled_args.size() >= 1:
+				result = !evaled_args[0]
+		"or":
+			result = false
+			for val in evaled_args:
+				if val:
+					result = true
+					break
+		"xor":
+			if evaled_args.size() >= 2:
+				result = bool(evaled_args[0]) != bool(evaled_args[1])
+		"eq":
+			if evaled_args.size() >= 2:
+				result = evaled_args[0] == evaled_args[1]
+		"gt":
+			if evaled_args.size() >= 2:
+				result = evaled_args[0] > evaled_args[1]
+		"lt":
+			if evaled_args.size() >= 2:
+				result = evaled_args[0] < evaled_args[1]
+		"all":
+			result = all(evaled_args)
+		"any":
+			result = any(evaled_args)
+		"probability":
+			result = bool(randi() % int(evaled_args[0]))
+		"get":
+			if evaled_args.size() >= 2:
+				var country_obj = CountryManager.countries.get(evaled_args[0])
+				if country_obj:
+					result = country_obj.get(evaled_args[1])
+				else:
+					result = null
 
-func play_as(_country: String):
-	if CountryManager.countries.has(_country):
-		print("player country now " + _country)
-		CountryManager.set_player_country(_country)
+		# Math stuff**
+		"add":
+			if evaled_args.size() >= 2:
+				result = evaled_args[0] + evaled_args[1]
+		# Country stuff
+		"is_at_war":
+			if evaled_args.size() >= 2:
+				result = WarManager.is_at_war_names(
+					evaled_args[0],
+					evaled_args[1]
+				)
 
-func annex(annexer: String, annexee: String):
-	MapManager.annex_country(annexer, annexee)
+		"set_country_attr":
+			country[evaled_args[0]] = evaled_args[1]
+			result = country[evaled_args[0]]
+		"add_country_attr":
+			country[evaled_args[0]] += evaled_args[1]
+			result = country[evaled_args[0]]
+		# "change_hourly_money":
+		# 	country.hourly_money_income += evaled_args[0]
+		# 	result = country.hourly_money_income
+		# "loose_money":
+		# 	country.money -= evaled_args[0]
+		# 	result = country.money >= evaled_args[0]
+		# "has_money":
+		# 	result = country.money >= evaled_args[0]
+		# "loose_manpower":
+		# 	country.manpower -= evaled_args[0]
+		# 	result = country.manpower
+		# "change_manpower":
+		# 	country.manpower += evaled_args[0]
+		# 	result = country.manpower
+		# "has_manpower":
+		# 	result = country.manpower >= evaled_args[0]
+		# "loose_pp":
+		# 	country.daily_pp_gain += evaled_args[0]
+		# 	result = country.daily_pp_gain
+		# "change_daily_pp":
+		# 	country.daily_pp_gain += evaled_args[0]
+		# 	result = country.daily_pp_gain
+		# "has_pp":
+		# 	result = country.political_power >= evaled_args[0]
+		# "loose_stability":
+		# 	country.stability -= evaled_args[0]
+		# 	result = country.stability
+		# "change_stability":
+		# 	country.stability = min(1.0, country.stability + evaled_args[0])
+		# 	result = country.stability
+		# "has_stability":
+		# 	result = country.stability >= evaled_args[0]
+		"army_level_up":
+			country.army_level += 1
+			result = country.army_level
+		"build_factory":
+			country.factories_amount += evaled_args[0] if evaled_args.size() > 0 else 1
+			result = country.factories_amount
+		"declare_war":
+			if evaled_args.size() >= 2:
+				var attacker: CountryData = CountryManager.countries[evaled_args[0]]
+				var defender: CountryData = CountryManager.countries[evaled_args[1]]
+				if attacker and defender:
+					WarManager.declare_war(attacker, defender)
+					result = true
+				else:
+					result = false
+		"release":
+			if evaled_args.size() >= 1:
+				MapManager.ReleaseCountry(evaled_args[0])
+				result = true
+		"play_as":
+			if evaled_args.size() >= 1:
+				if CountryManager.countries.has(args[0]):
+					print("player country now " + (args[0]))
+					CountryManager.set_player_country((args[0]))
 
-func add_ideology_drift(id: String, _country: String, direction):
-	var country_obj: CountryData = CountryManager.countries[_country]
-	country_obj.driftTargets[id] = IdeologyDriftTarget.FromDict(direction)
-	return country_obj.driftTargets
+				print("Unknown country: " + (args[0]))
+				result = true
+		"annex":
+			if evaled_args.size() >= 2:
+				MapManager.annex_country(evaled_args[0], evaled_args[1])
+				result = true
+		"add_ideology_drift":
+			var country_obj: CountryData = CountryManager.countries[evaled_args[0]]
+			country_obj.driftTargets[args[1]] = IdeologyDriftTarget.FromDict(args[2])
+			result = country_obj.driftTargets
+		"make_puppet":
+			if evaled_args.size() >= 2:
+				CountryManager.make_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
+				result = true
+		"has_pids":
+			if evaled_args.size() >= 2:
+				var i: int = 1
+				var province_owner = evaled_args[0]
+				var all_owned = true
+				while i < evaled_args.size():
+					if province_owner != MapManager.province_objects[int(evaled_args[i])].GetFunctionalOwner():
+						all_owned = false
+						break
+					i += 1
+				result = all_owned
+		"add_plans":
+			if !PlansManager.plans.has(country.country_name):
+				PlansManager.plans[country.country_name] = []
+			PlansManager.plans[country.country_name].append(evaled_args[0])
+		"remove_plan":
+			PlansManager.plans[country.country_name].remove_at(
+				PlansManager.plans[country.country_name].find_custom(
+					func(element): return element == args[0]
+				)
+			)
+		"event":
+			if evaled_args.size() > 0 && evaled_args[0] is Dictionary:
+				EventManager.show_alert(evaled_args[0])
+				result = true
+		"invite":
+			if evaled_args.size() >= 2:
+				FactionManager.invite_faction(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
+		"change_province_types":
+			if evaled_args.size() >= 3:
+				MapManager.change_province_types(evaled_args[0].map(func(a): return int(a)), evaled_args[1], evaled_args[2])
 
-func make_puppet(puppeter: String, puppetee: String):
-	CountryManager.make_puppet(CountryManager.countries[puppeter], CountryManager.countries[puppetee])
 
-func has_pids(_country: String, ...pids):
-	var all_owned = true
-	for pid in pids:
-		if _country != MapManager.province_objects[pid].GetFunctionalOwner():
-			all_owned = false
-			break
-	return all_owned
+	if store_key != "":
+		heap[store_key] = result
 
-func add_plans(_country: String, plan: Dictionary):
-	if !PlansManager.plans.has(country):
-		PlansManager.plans[country] = []
-	PlansManager.plans[country].append(plan)
+	return result
 
-func remove_plan(_country: String, plan: Dictionary):
-	PlansManager.plans[country].remove_at(
-		PlansManager.plans[country].find_custom(
-			func(element): return element == plan
-		)
-	)
+func format_functions(expression, indent: String = "", no_bullet: bool = false) -> String:
+	# return ""
+	var functions = []
+	if expression is Array:
+		functions = expression
+	elif expression is Dictionary:
+		functions = [expression]
+	else:
+		return ""
 
-func event(_event: Dictionary):
-	EventManager.show_alert(_event)
+	var formatted: String = ""
+	for function in functions:
+		if not function is Dictionary: continue
+		
+		# Handle 'for' loop
+		if function.has("for"):
+			formatted += indent + ("• " if not no_bullet else "") + "For each " + str(function["for"]).capitalize()
+			formatted += " in " + str(function.get("in", "[]")) + ":\n"
+			formatted += format_functions(function.get("do", {}), indent + "  ") + "\n"
+			continue
+			
+		# Handle 'match' statement
+		if function.has("match"):
+			var match_header = format_functions(function["match"], "", true).strip_edges()
+			formatted += indent + ("• " if not no_bullet else "") + "Match " + match_header + ":\n"
+			for key in function.keys():
+				if key in ["match", "func", "args", "store"]: continue
+				formatted += indent + "  - " + str(key).capitalize() + ":\n"
+				formatted += format_functions(function[key], indent + "    ") + "\n"
+			continue
 
-func invite(inviter, invtee):
-	FactionManager.invite_faction(CountryManager.countries[inviter], CountryManager.countries[invtee])
+		if function.has("func"):
+			var func_name = function["func"]
+			var args = function.get("args", [])
+			if not args is Array:
+				args = [args]
+			
+			formatted += indent + ("• " if not no_bullet else "") + func_name.capitalize()
+			
+			# Check if args contain nested functions (like in 'and', 'or', 'all', 'any')
+			var nested_found = false
+			for arg in args:
+				if (arg is Dictionary and arg.has("func")) or arg is Array:
+					nested_found = true
+					break
+			
+			if nested_found:
+				formatted += ":\n"
+				formatted += format_functions(args, indent + "  ") + "\n"
+			else:
+				var formatted_args: Array = []
+				for arg in args:
+					var is_number = typeof(arg) == TYPE_INT or typeof(arg) == TYPE_FLOAT
+					# Only lookup province names for specific functions to avoid constant collisions
+					var should_lookup_prov = func_name in ["has_pids", "annex", "release"]
+					if should_lookup_prov and is_number and MapManager.province_objects.has(int(arg)):
+						var prov = MapManager.province_objects[int(arg)]
+						formatted_args.append(prov.city if prov.city != "" else prov.name)
+					else:
+						formatted_args.append(str(arg))
+				
+				if not formatted_args.is_empty():
+					formatted += ": " + ", ".join(formatted_args)
+				formatted += "\n"
+				
+	return formatted.strip_edges() if indent == "" else formatted
 
-func change_province_types(_country: String, type: int,...pids):
-	MapManager.change_province_types(pids.map(func(a): return int(a)), type, _country)
+# NOTE(soi): recursive string substitution with cycle detection
+func _substitute(expression, _heap: Dictionary, visited: Array = []):
+	if expression is Dictionary:
+		for key in expression.keys():
+			expression[key] = _substitute(expression[key], _heap, visited)
+		return expression
+	elif expression is Array:
+		for i in range(expression.size()):
+			expression[i] = _substitute(expression[i], _heap, visited)
+		return expression
+	elif expression is String:
+		if _heap.has(expression):
+			if expression in visited:
+				push_error("Interpreter: Circular reference detected for variable '%s'" % expression)
+				return expression
+			var new_visited = visited.duplicate()
+			new_visited.append(expression)
+			return _substitute(_heap[expression], _heap, new_visited)
+		else:
+			return expression
+	else:
+		return expression
