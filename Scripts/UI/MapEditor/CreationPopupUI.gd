@@ -93,6 +93,7 @@ func m_CreatePolity() -> void:
 			if mapEditor.currentTool != 4 || mapEditor.multiSelectPID.size() <= 0:
 				return
 			MapManager.InstantiateCountryFromProvinces(countryData, mapEditor.multiSelectPID)
+			mapEditor.multiSelectPID.clear()
 		2:
 			var tempClaims: PackedInt32Array = []
 			for entry: String in polityClaims.text.split(",", false):
