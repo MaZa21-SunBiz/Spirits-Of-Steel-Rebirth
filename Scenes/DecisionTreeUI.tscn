@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="1_x8y2v"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_qq7pm"]
 
-[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269]
+[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("close_button", "edit_button", "save_button", "add_button")]
 layer = 100
 script = ExtResource("1_x8y2v")
+close_button = NodePath("StaticUI/Header/HBoxContainer/CloseButton")
+edit_button = NodePath("StaticUI/Header/HBoxContainer/EditMode")
+save_button = NodePath("StaticUI/Header/HBoxContainer/SaveDecisions")
+add_button = NodePath("StaticUI/Header/HBoxContainer/AddDecision")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1064194189]
 anchors_preset = 15
@@ -50,81 +54,59 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 20.0
+offset_top = -20.0
+offset_right = 255.0
+offset_bottom = 20.0
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="CloseButton" type="Button" parent="StaticUI/Header" unique_id=1140388651]
+[node name="HBoxContainer" type="HBoxContainer" parent="StaticUI/Header" unique_id=769223892]
 use_parent_material = true
-custom_minimum_size = Vector2(150, 40)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -170.0
+offset_left = -214.0
 offset_top = -20.0
-offset_right = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-text = "  CLOSE MENU [X]  "
 
-[node name="ReloadDecisions" type="Button" parent="StaticUI/Header" unique_id=1987805188]
+[node name="ReloadDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805188]
 use_parent_material = true
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -233.0
-offset_top = -20.0
-offset_right = -189.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "🗘"
 expand_icon = true
 
-[node name="EditMode" type="Button" parent="StaticUI/Header" unique_id=1987805189]
+[node name="AddDecision" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=956861038]
+visible = false
 use_parent_material = true
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -333.0
-offset_top = -20.0
-offset_right = -240.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
+text = "Add Decision"
+
+[node name="EditMode" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805189]
+use_parent_material = true
+layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 text = " EDIT "
 
-[node name="SaveDecisions" type="Button" parent="StaticUI/Header" unique_id=1987805190]
+[node name="SaveDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805190]
 visible = false
 use_parent_material = true
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -440.0
-offset_top = -20.0
-offset_right = -340.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
 mouse_default_cursor_shape = 2
 text = " SAVE "
+
+[node name="CloseButton" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1140388651]
+use_parent_material = true
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "  CLOSE MENU [X]  "
 
 [node name="InfoPanel" type="Panel" parent="StaticUI" unique_id=1980925476]
 use_parent_material = true
@@ -178,7 +160,8 @@ bbcode_enabled = true
 fit_content = true
 
 [connection signal="draw" from="CanvasAnchor/TreeCanvas" to="." method="_on_draw_canvas"]
-[connection signal="pressed" from="StaticUI/Header/CloseButton" to="." method="close_menu"]
-[connection signal="pressed" from="StaticUI/Header/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
-[connection signal="toggled" from="StaticUI/Header/EditMode" to="." method="_on_edit_mode_toggled"]
-[connection signal="pressed" from="StaticUI/Header/SaveDecisions" to="." method="_on_save_decisions_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddDecision" to="." method="_on_add_decision_pressed"]
+[connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditMode" to="." method="_on_edit_mode_toggled"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/SaveDecisions" to="." method="_on_save_decisions_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/CloseButton" to="." method="close_menu"]

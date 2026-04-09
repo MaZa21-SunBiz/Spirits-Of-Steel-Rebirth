@@ -23,9 +23,10 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 @onready var info_text: RichTextLabel = $StaticUI/InfoPanel/InfoText
 @onready var info_panel: Panel = $StaticUI/InfoPanel
 # @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
-@onready var close_button: Button = $StaticUI/Header/CloseButton
-@onready var edit_button: Button = $StaticUI/Header/EditMode
-@onready var save_button: Button = $StaticUI/Header/SaveDecisions
+@export var close_button: Button
+@export var edit_button: Button
+@export var save_button: Button
+@export var add_button: Button
 
 
 var current_category: String = "Economy"
@@ -34,6 +35,7 @@ var connection_lines: Array = []
 var current_zoom: float = 1.0
 var edit_mode: bool = false
 var dragging_node: Button = null
+var connecting_id: String = ""
 var drag_offset: Vector2 = Vector2.ZERO
 
 
@@ -47,7 +49,9 @@ func _process(delta: float) -> void:
 		if input != Vector2.ZERO:
 			tree_canvas.position -= input * MOVE_SPEED * delta / current_zoom
 			tree_canvas.queue_redraw()
-		
+
+	# print(edit_mode)
+	# print(dragging_node)	
 	if edit_mode and dragging_node:
 		var mouse_pos = tree_canvas.get_local_mouse_position()
 		dragging_node.position = mouse_pos - drag_offset
@@ -444,6 +448,7 @@ func _on_reload_decisions_pressed():
 func _on_edit_mode_toggled(toggled_on: bool):
 	edit_mode = toggled_on
 	save_button.visible = toggled_on
+	add_button.visible = toggled_on
 	# Refresh UI to show/hide move handles or change style?
 	# For now, just toggling the state is enough.
 
@@ -456,18 +461,89 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 	if not edit_mode:
 		return
 		
+	# print(data)
+	print(connecting_id)
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				dragging_node = btn
-				drag_offset = btn.get_local_mouse_position()
-				btn.z_index = 10 # Keep dragged node on top
-			else:
-				if dragging_node == btn:
-					dragging_node = null
-					btn.z_index = 0
-					# Snap to grid
-					btn.position = (btn.position / GRID_SIZE).round() * GRID_SIZE
-					data["pos"] = [btn.position.x, btn.position.y]
-					_update_connections()
-					tree_canvas.queue_redraw()
+		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					dragging_node = btn
+					drag_offset = btn.get_local_mouse_position()
+					btn.z_index = 10 # Keep dragged node on top
+				else:
+					if dragging_node == btn:
+						dragging_node = null
+						btn.z_index = 0
+						# Snap to grid
+						btn.position = (btn.position / GRID_SIZE).round() * GRID_SIZE
+						data["pos"] = [btn.position.x, btn.position.y]
+			MOUSE_BUTTON_RIGHT:
+				if event.pressed:
+					if connecting_id != "":
+						if connecting_id != data.get("prereq", ""):
+							if connecting_id != data.get("id", ""):
+								data["prereq"] = connecting_id
+						else:
+								data.erase("prereq")
+
+						connecting_id = ""
+						add_button.text = "Add Button"
+					else:
+						connecting_id = data["id"]
+						add_button.text = "[connecting]: %s" % connecting_id
+			MOUSE_BUTTON_MIDDLE:
+				var player = CountryManager.player_country
+				var country_cats = DecisionManager.get_country_categories(player.country_name)
+				var nodes: Array = country_cats.get(current_category, [])
+				var idx: int = nodes.find(data)
+				print(data)
+				nodes.remove_at(idx)
+				data.clear()
+				print(data)
+				btn.queue_free()
+
+		_update_connections()
+		tree_canvas.queue_redraw()
+
+func _on_add_decision_pressed() -> void:
+	var player = CountryManager.player_country
+	var country_cats = DecisionManager.get_country_categories(player.country_name)
+	var nodes = country_cats.get(current_category, [])
+	var id: String = str(randi() % 100)
+	nodes.append(
+		{
+			"id": id,
+			"title": id,
+			"pos": [
+				100.0,
+				150.0
+			],
+			"days": 20.0,
+			"cost_pp": 25.0,
+			"reqs": [],
+			"action": [],
+			"desc": ""
+		}
+	)
+	_create_node(
+		{
+			"id": id,
+			"title": id,
+			"pos": [
+				100.0,
+				150.0
+			],
+			"days": 20.0,
+			"cost_pp": 25.0,
+			"reqs": [],
+			"action": [],
+			"desc": ""
+		},
+		nodes.size()-1,
+		player
+	)
+
+	print(nodes)
+	
+	_update_connections()
+	tree_canvas.queue_redraw()

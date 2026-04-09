@@ -16,7 +16,7 @@ const DECLARE_WAR_COOLDOWN_FRAMES := 600
 const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
 const MAX_WAR_DECLARATIONS_PER_TICK := 1
-const AI_CHAOS := 2.9
+const AI_CHAOS := 0.9
 
 
 var country: CountryData
