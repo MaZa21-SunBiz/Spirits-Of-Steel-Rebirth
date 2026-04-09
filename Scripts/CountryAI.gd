@@ -157,8 +157,8 @@ func _execute_factory() -> bool:
 
 func _execute_train() -> bool:
 	# Improved: Recruit based on current needs (e.g., more if at war)
-	var template = country.templates.get("infantry", {"cost": 500, "manpower": 10000})
-	var max_affordable = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
+	var template: Dictionary = DivisionData.TEMPLATES["infantry"]  # Could vary templates based on tech/manpower
+	var max_affordable: int = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
 	if max_affordable < 1:
 		return false
 	
