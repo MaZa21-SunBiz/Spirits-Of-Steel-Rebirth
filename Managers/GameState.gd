@@ -1,6 +1,5 @@
 extends Node
 
-# NOTE(soi): we are no longer in kansas anymore dorothy
 enum IndustryType { DEFAULT = 0, FACTORY = 1, PORT = 2, INFRASTRUCTURE = 3 }
 
 var current_world: World
@@ -9,7 +8,6 @@ var current_start: String
 
 var choosing_deploy_city := false
 var industry_building := IndustryType.DEFAULT
-var selected_building_template_name: String = ""
 
 var game_ui: GameUI
 
@@ -23,7 +21,6 @@ var selectingCountry: bool = true
 
 func reset_industry_building():
 	industry_building = IndustryType.DEFAULT
-	selected_building_template_name = ""
 	MapManager.show_countries_map()
 
 var is_loading_game := false
