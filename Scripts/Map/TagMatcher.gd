@@ -5,13 +5,13 @@ var expression := Expression.new()
 
 var local_pool: Dictionary = {}
 
-var slotted_resources: Array[Dictionary] = []
+var slotted_resources: Array = []
 var evaluated_resource: ResourceData = null # Used for evaluating a single resource's validity
 
 func _init(local: Dictionary):
 	self.local_pool = local
 
-func set_context(resources: Array[Dictionary]):
+func set_context(resources: Array):
 	self.slotted_resources = resources
 
 func set_eval_resource(res: ResourceData):

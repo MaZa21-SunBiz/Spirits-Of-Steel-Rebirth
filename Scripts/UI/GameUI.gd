@@ -42,6 +42,7 @@ var stats_labels := {}
 @export var sidemenu_trooplist: VBoxContainer
 @export var sidemenu_buildings: VBoxContainer
 @export var sidemenu_leader_portrait: TextureRect
+@export var building_dropdown: OptionButton
 
 @export var relations_hbox: HBoxContainer
 @export var faction_prompt: PanelContainer
