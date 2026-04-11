@@ -21,7 +21,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 		var load_map_data = func():
 			var start_folder = mapdata_path.get_base_dir() + "/"
 			SceneSwitcher.switch_to(SceneSwitcher.Type.WORLD, func(a_percent: Array):
-				a_percent = [0]
+				#a_percent = [0.0]
 				GameState.current_start = a_text
 				# GameState.current_scenario_path = mapdata_path #dear god lets not 
 				a_percent[0] = 0.01

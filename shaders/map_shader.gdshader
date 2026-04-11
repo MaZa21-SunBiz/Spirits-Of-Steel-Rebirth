@@ -67,40 +67,40 @@ vec4 get_country_color(int id, float ev) {
     return texture(state_colors, vec2((float(id) + 0.5) / float(textureSize(state_colors, 0).x), 0.25 + 0.5 * ev)); // This will return alpha 0 for sea provinces now
 }
 // --- BORDER SCANNING LOGIC ---
-bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color, out bool is_black) {
+bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color) {
     vec2 pixel_size = 1.0 / tex_size;
     out_color = mix(water_color_shallow.rgba, vec4(.6, .6, .9, 1.), .75+.25*sin(PI*TIME));
-    is_black = false;
 
     bool found_color = false;
-    vec4 curr_country = vec4(0.0);
+	bool other_color = false;
     
     // Check if the ORIGIN pixel itself is touching sea
     // We use the type_map to determine "Sea-ness" now
     float origin_type = texture(type_map, origin_uv).r;
+    int oid = get_id(origin_uv);
+    vec4 curr_country = get_country_color(oid, 0.0);
 
     for (int i = 0; i < 8; i++) {
         vec2 sample_uv = clamp(origin_uv + DIRS[i] * pixel_size * dist_px, vec2(0.0), vec2(1.0));
         float sample_type = texture(type_map, sample_uv).r;
         int nid = get_id(sample_uv);
+		if (nid == oid) {
+			continue;
+		}
 
         // 1. If any neighbor is SEA, this is a COASTLINE
         if (sample_type < 0.5) { 
             return true; 
         }
         // 2. If neighbor is LAND
-        if (nid > 1) {
+        if (nid > 1 && !other_color) {
             vec4 adj_country = get_country_color(nid, 0.0);
-            if (!found_color) {
-                curr_country = adj_country;
-                found_color = true;
+			if (curr_country.rgb != adj_country.rgb) {
+                other_color = true;
             } else {
-                // If touching a DIFFERENT country, it's an international border
-                if (curr_country.rgb != adj_country.rgb) {
-                    is_black = true;
-                    return true;
-                }
-            }
+				curr_country = adj_country;
+                found_color = true;
+			}
         }
     }
 
@@ -108,6 +108,12 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
         out_color = mix(curr_country, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
         return true;
     }
+	
+	if (other_color) {
+		out_color = country_border_color;
+		return true;
+	}
+	
     return false;
 }
 
@@ -142,6 +148,7 @@ void fragment() {
 		float p_type = texture(type_map, UV).r;
 		int id = get_id(UV);
 		float black = UV.x * tex_size.x + UV.y * tex_size.y;
+		vec2 blud = vec2(UV.x * tex_size.x + 1.0, UV.y * tex_size.y + 1.0);
 		
 
 		// 1. If type_map says Sea (0.0), render the animated water
@@ -160,26 +167,28 @@ void fragment() {
 					1.
 				),
 				h);
-			COLOR.xyz = water;
-		} 
-		// 2. If it's Land (type_map 1.0) and a real province
-		else if (id > 1) {
-		    COLOR = vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
+			COLOR.rgb = water;
+		} else { // 2. If it's Land (type_map 1.0) and a real province
+			vec4 c_detect = vec4(0.0);
+		    
+		    //if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
+	        COLOR = detect_border_at_distance(UV, 0.5, c_detect) ? c_detect : vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
+			COLOR.a = 1.0;
 		} 
 		// 3. If it's Land (type_map 1.0) and ID 1 (Border)
-		else {
-		    vec4 c_detect = vec4(0.0);
-		    bool must_be_black = false;
-		    bool decided = detect_border_at_distance(UV, 1.0, c_detect, must_be_black);
-		    
-		    if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
-
-		    if (decided) {
-		        COLOR = must_be_black ? country_border_color : c_detect;
-		    } else {
-		        COLOR = country_border_color;
-		    }
-		}
+		//else {
+		//    vec4 c_detect = vec4(0.0);
+		//    bool must_be_black = false;
+		//    bool decided = detect_border_at_distance(UV, 1.0, c_detect, must_be_black);
+		//    
+		//    if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
+//
+		//    if (decided) {
+		//        COLOR = must_be_black ? country_border_color : c_detect;
+		//    } else {
+		//        COLOR = country_border_color;
+		//    }
+		//}
     	//COLOR = final_color;
 	if (toggle == 1) {
 		float vignette = 16.0*(SCREEN_UV.x-(SCREEN_UV.x*SCREEN_UV.x)) * (SCREEN_UV.y-(SCREEN_UV.y*SCREEN_UV.y));

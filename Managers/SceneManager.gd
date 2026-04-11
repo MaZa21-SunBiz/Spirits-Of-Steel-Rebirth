@@ -79,13 +79,19 @@ func switch_to(scene_type: Type, init_callback: Callable = Callable()) -> void:
 
 	# 2.5 Execute initialization callback if provided
 	if init_callback.is_valid():
-		progress = [0]
+		progress = [0.0]
 		var bongo: Thread = Thread.new()
 		bongo.start(init_callback.bind(progress))
 
+		#print("Buz")
 		while bongo.is_alive():
-			_loading_screen.set_progress(progress[0])
+			#print("Prae")
+			if progress[0]:
+				_loading_screen.set_progress(progress[0])
+			#print("Schlung: %d" % progress[0])
 			await get_tree().process_frame
+			#print("Post")
+		#print("Biz")
 
 		bongo.wait_to_finish()
 

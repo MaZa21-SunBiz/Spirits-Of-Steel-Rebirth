@@ -135,7 +135,7 @@ func _clear_internal_data() -> void:
 	last_hovered_pid = -1
 	hoveredCountry = "Sea"
 
-func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array = [0]) -> void:
+func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array) -> void:
 	_clear_internal_data()
 	
 	MAP_WIDTH = a_map.get_width()
@@ -147,9 +147,10 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 	var mapImage = a_map.get_image()
 	($"../Main/MapContainer/CultureSprite" as Sprite2D).texture = a_map
 
-	var inc: float = 0.2 / (MAP_WIDTH * MAP_HEIGHT)
+	var inc: float = 0.1 / (MAP_WIDTH * MAP_HEIGHT)
 
 	for i in range(MAP_WIDTH * MAP_HEIGHT):
+		#print("%d/%d -> %f" % [i, blink, a_progress[0]])
 		a_progress[0] += inc
 		var x: int = i % MAP_WIDTH
 		@warning_ignore("integer_division")
@@ -181,21 +182,21 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 		
 	max_province_id = next_id - 1
 	build_lookup_texture()
+	a_progress[0] += 0.015
 	_calculate_province_centroids()
+	a_progress[0] += 0.01
 	
 	# Pass 2: Load troops now that centroids (positions) are definitely known
 	for index in a_provinceData:
 		if unique_regions.has(index):
-			var pid = unique_regions[index]
 			var p_dict = a_provinceData[index]
 			if p_dict.has("troops"):
-				TroopManager.load_troops_for_province(pid, p_dict["troops"])
+				TroopManager.load_troops_for_province(unique_regions[index], p_dict["troops"])
 
 	a_progress[0] += 0.025
 	_build_country_to_provinces()
 	a_progress[0] += 0.025
-	_build_adjacency_list()
-	a_progress[0] += 0.025
+	_build_adjacency_list(a_progress)
 	_build_global_registry()
 	a_progress[0] += 0.025
 
@@ -203,7 +204,7 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array 
 func load_country_data(
 	region_map: CompressedTexture2D,
 	a_provinceData: Dictionary,
-	a_progress: Array = [0]
+	a_progress: Array
 ) -> void:
 	Initialize(region_map, a_provinceData, a_progress)
 
@@ -421,7 +422,15 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or GameState.in_peace_process:
 		GameState.tooltip.SwitchTooltip(-1)
-		_reset_last_hover()
+		if GameState.selectingCountry:
+			
+			if last_hovered_pid > 1 && hoveredCountry != "Sea" && country_to_provinces.has(hoveredCountry):
+				original_hover_color = CountryManager.countries[hoveredCountry].country_color
+				for province in country_to_provinces[hoveredCountry]:
+					update_lookup(province, original_hover_color, CountryManager.countries[province_objects[province].GetFunctionalOwner()].country_color)
+			last_hovered_pid = -1
+		else:
+			_reset_last_hover()
 		return
 
 	var pid = get_province_at_pos(global_pos, map_sprite)
@@ -440,8 +449,9 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 				if pid > 1 and highlight_color != Color.TRANSPARENT:
 					if hoveredCountry != province_objects[pid].country:
 						if hoveredCountry != "Sea" && country_to_provinces.has(hoveredCountry):
+							original_hover_color = CountryManager.countries[hoveredCountry].country_color
 							for province in country_to_provinces[hoveredCountry]:
-								update_lookup(province, original_hover_color, original_hover_color)
+								update_lookup(province, original_hover_color, CountryManager.countries[province_objects[province].GetFunctionalOwner()].country_color)
 						if pid in province_objects:
 							if province_objects[pid].country != "Sea" && highlight_color != Color.TRANSPARENT:
 								original_hover_color = state_color_image.get_pixel(pid, 0)
@@ -726,14 +736,18 @@ func _calculate_province_centroids() -> void:
 
 	print("MapManager: Centroids calculated for %d provinces." % province_centers.size())
 
-func _build_adjacency_list() -> void:
+func _build_adjacency_list(a_progress: Array) -> void:
 	province_graph.neighbor_filter_enabled = true
 	province_graph.clear()
 
 	# Prepare dictionary for unique tracking
 	# var unique_neighbors := {}
+	
+	var inc: float = 0.1 / (MAP_WIDTH * MAP_HEIGHT)
+
 
 	for i in range(MAP_WIDTH * MAP_HEIGHT):
+		a_progress[0] += inc
 		var x: int = i % MAP_WIDTH
 		@warning_ignore("integer_division")
 		var y: int = i / MAP_WIDTH

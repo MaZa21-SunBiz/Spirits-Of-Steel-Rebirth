@@ -178,6 +178,13 @@ func _handle_paint_selection(pid: int) -> void:
 							multiSelectPID.push_back(pid)
 							MapManager.SetProvinceColor(pid, Color.CORNSILK)
 							update_multi_select_ui()
+		Tool.PAINT_PRIMARY:
+			match currentMode:
+				Mode.BIOME:
+					match dragging:
+						Drag.LEFT:
+							if selectedBiome in MapManager.biomes:
+								MapManager.province_objects[hovered_pid].biome = selectedBiome
 
 func _handle_click(_screenPos: Vector2) -> void:
 	get_viewport().gui_release_focus()

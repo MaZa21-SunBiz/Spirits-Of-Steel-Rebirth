@@ -962,7 +962,7 @@ func close_troop_container() -> void:
 
 # --- Main Update Logic ---
 func update_division_menu():
-	var count = int(input_division.value)
+	var count = ceili(input_division.value)
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
 
 	if not stats:
@@ -986,7 +986,7 @@ func update_division_menu():
 
 func _on_button_train_troops() -> void:
 	if CountryManager.player_country.train_troops(
-		max(1, int(input_division.value + 1)),
+		max(1, ceili(input_division.value)),
 		division_type_selected
 	):
 		_build_trooplist()

@@ -1954,7 +1954,6 @@ offset_right = 960.0
 offset_bottom = 58.0
 
 [node name="CenterStuff" type="TabContainer" parent="Control" unique_id=340667560]
-visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15

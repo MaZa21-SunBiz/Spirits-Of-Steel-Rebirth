@@ -170,7 +170,7 @@ func load_map_data(mapData: Dictionary):
 	TroopManager.set_custom_flag_path(start_folder + "flags/")
 	
 	CountryManager.initialize_countries(mapData.get("polities", []) as Array)
-	MapManager.load_country_data(regions_tex, mapData.get("provinces", {}) as Dictionary)
+	MapManager.load_country_data(regions_tex, mapData.get("provinces", {}) as Dictionary, [0])
 	
 	# Restore Clock
 	if mapData.has("clock") and clock:
