@@ -57,8 +57,8 @@ func _perform_zoom(direction: int) -> void:
 	var mouse_pos_before := camera.get_global_mouse_position()
 
 	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(
-		Vector2.ONE,
-		Vector2.ONE * 12
+		Vector2.ONE * 1080 / MapManager.MAP_HEIGHT,
+		Vector2.ONE * 12 
 	)
 
 	camera.position += mouse_pos_before - camera.get_global_mouse_position()

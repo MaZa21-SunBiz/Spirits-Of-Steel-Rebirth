@@ -1,6 +1,12 @@
 extends Resource
 class_name ImportantFigure
 
+enum Status{
+	ALIVE,
+	WOUNDED,
+	DEAD
+	}
+
 @export var name: String
 @export var skills: Dictionary
 @export var traits: Array
@@ -8,13 +14,16 @@ class_name ImportantFigure
 @export var allegiance: String
 @export var occupation: String
 @export var portrait_path: String = ""
+@export var status: Status = Status.ALIVE
 
 static func FromValues(
 	a_name: String,
 	a_skills: Dictionary,
 	a_traits: Array,
 	a_allegiance: String,
-	a_occupation: String
+	a_occupation: String,
+	a_portrait_path: String,
+	a_status: Status
 ) -> ImportantFigure:
 	var figure: ImportantFigure = ImportantFigure.new()
 	
@@ -23,6 +32,8 @@ static func FromValues(
 	figure.traits = a_traits
 	figure.allegiance = a_allegiance
 	figure.occupation = a_occupation
+	figure.portrait_path = a_portrait_path
+	figure.status = a_status
 	
 	return figure
 
@@ -36,6 +47,7 @@ static func FromDict(a_data: Dictionary) -> ImportantFigure:
 	figure.allegiance = a_data["allegiance"]
 	figure.occupation = a_data["occupation"]
 	figure.portrait_path = a_data.get("portrait_path", "")
+	figure.status = a_data.get("status", Status.ALIVE)
 	
 	return figure
 
@@ -48,4 +60,5 @@ func ToDict() -> Dictionary:
 		"allegiance": self.allegiance,
 		"occupation": self.occupation,
 		"portrait_path": self.portrait_path,
+		"status": self.status,
 	}

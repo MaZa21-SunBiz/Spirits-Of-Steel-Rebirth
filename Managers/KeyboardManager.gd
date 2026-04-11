@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 
 	# --- 2. MAP MODE CYCLING (Independent of Menu) ---
 	if Input.is_action_just_pressed("cycle_map_mode"):
-		_cycle_map_mode()
+		_cycle_map_mode(Input.is_action_pressed("Shift"))
 
 	if GameState.current_world && SceneSwitcher._current_type == SceneSwitcher.Type.WORLD:
 		var clock := GameState.current_world.clock
@@ -59,45 +59,47 @@ func _process(_delta: float) -> void:
 			clock.decrease_speed()
 
 
-func _cycle_map_mode() -> void:
-	match current_view:
+func _cycle_map_mode(shift: bool) -> void:
+	print((current_view + (1 if shift else -1) + MapView.size()) % MapView.size())
+	match (current_view + (1 if shift else -1) + MapView.size()) % MapView.size():
 		MapView.COUNTRIES:
+			current_view = MapView.COUNTRIES
+			MapManager.show_countries_map()
+			print("Map Mode: Countries")
+
+		MapView.POPULATION:
 			current_view = MapView.POPULATION
 			MapManager.show_population_map()
 			print("Map Mode: Population")
 
-		MapView.POPULATION:
+		MapView.INFRASTRUCTURE:
 			current_view = MapView.INFRASTRUCTURE
 			MapManager.ShowInfrastructureMap()
 			print("Map Mode: Infrastructure")
-
-		MapView.INFRASTRUCTURE:
+			
+		MapView.GDP:
 			current_view = MapView.GDP
 			MapManager.show_gdp_map()
 			print("Map Mode: GDP")
-			
-		MapView.GDP:
+
+		MapView.ETHNICITY:
 			current_view = MapView.ETHNICITY
 			MapManager.show_ethnic_map()
 			print("Map Mode: Ethnicity")
 
-		MapView.ETHNICITY:
+		MapView.FACTION:
 			current_view = MapView.FACTION
 			MapManager.show_faction_map()
 			print("Map Mode: Factions")
 
-		MapView.FACTION:
+		MapView.RESOURCES:
 			current_view = MapView.RESOURCES
 			MapManager.ShowResourcesMap()
 			print("Map Mode: Resources")
-
-		MapView.RESOURCES:
+			
+		MapView.BIOMES:
 			current_view = MapView.BIOMES
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
-			
-		MapView.BIOMES:
-			current_view = MapView.COUNTRIES
-			MapManager.show_countries_map()
-			print("Map Mode: Countries")
+
 	GameState.game_ui.map_tabs.current_tab = current_view
