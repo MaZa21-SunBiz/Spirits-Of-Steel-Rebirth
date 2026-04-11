@@ -70,7 +70,7 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 
 func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state
-	if project["index"] != -1 && MapManager.province_objects[pid].buildings.has(project["index"]):
+	if project["index"] != -1 && MapManager.province_objects[pid].buildings.size() > project["index"]:
 		MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
 	else:
 		match project["type"]:

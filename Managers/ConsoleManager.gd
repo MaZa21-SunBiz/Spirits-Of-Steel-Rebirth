@@ -19,6 +19,7 @@ func _ready() -> void:
 	# Console.add_command_autocomplete_list("play_as", CountryManager.)
 	# Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
+	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 	Console.add_command("drew_durnil_mode", _drew_durnil_mode, [], 0, "Lets u spectate the map")
 	Console.add_command("puppet", _puppet_country, ["country_name"], 1, "Change player country")
 	Console.add_command("invite", _invite_country, ["country_name"], 1, "Change player country")

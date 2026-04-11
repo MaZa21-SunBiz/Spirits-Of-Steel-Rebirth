@@ -95,13 +95,36 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsn4r"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.24840015, 0.24840018, 0.24840012, 1)
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c8l0"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.47058824)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbips"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.47058824)
+shadow_size = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx7os"]
 bg_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -125,6 +148,7 @@ sidemenu_context = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/C
 sidemenu_trooplist = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
 sidemenu_buildings = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 sidemenu_leader_portrait = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/Leader")
+building_dropdown = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton")
 relations_hbox = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox")
 faction_prompt = NodePath("Control/CenterStuff/CreateFaction")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
@@ -450,15 +474,16 @@ grow_vertical = 0
 [node name="Stats" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1873248397]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = 3.0
-offset_right = -253.0
-offset_bottom = -60.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = -0.022000002
+anchor_top = 0.016
+anchor_right = 0.316
+anchor_bottom = 0.68600005
+offset_left = 0.14000034
+offset_top = -0.056000233
+offset_right = 0.0799942
+offset_bottom = -0.026016235
+grow_vertical = 0
 theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtra/Stats" unique_id=1745200345]
@@ -743,15 +768,16 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 5
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -761,7 +787,6 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -872,6 +897,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -1823,7 +1849,6 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
 [node name="Select" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1473921671]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -1929,6 +1954,7 @@ offset_right = 960.0
 offset_bottom = 58.0
 
 [node name="CenterStuff" type="TabContainer" parent="Control" unique_id=340667560]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
@@ -2010,6 +2036,9 @@ use_parent_material = true
 clip_contents = true
 layout_mode = 2
 theme_override_constants/icon_max_width = 10
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_qsn4r")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_0c8l0")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_vbips")
 current_tab = 0
 drag_to_rearrange_enabled = true
 tab_count = 8

@@ -205,6 +205,7 @@ var all_notifs: Dictionary = {}
 # Then we can have immigrants.
 # Hexagons Before Immigrants???
 # NOTE(soi): huh?
+# NOTE(Soi-Mc Raj of the British but Indian Instead Mc Laddy-Lad): Hexagons are the Deporticons!
 
 func _enter_tree() -> void:
 	GameState.game_ui = self
@@ -387,7 +388,6 @@ func _on_player_change() -> void:
 	update_topbar_stats()
 	update_cultures()
 
-
 func _on_province_clicked(country_name: String) -> void:
 	if selected_country && selected_country.ideology_changed.is_connected(_on_selected_country_ideology_changed):
 		selected_country.ideology_changed.disconnect(_on_selected_country_ideology_changed)
@@ -421,7 +421,6 @@ func _on_province_clicked(country_name: String) -> void:
 		sidemenu_context.current_tab = new_context
 		open_menu(new_context, Category.GENERAL)
 		_update_context_actions_visuals()
-
 
 func toggle_menu(context := Context.PLAYER) -> void:
 	if is_open:
@@ -541,6 +540,7 @@ func DoUpdateContextActionsVisuals() -> void:
 						# Visual feedback for disabled buttons
 						child.modulate = Color(1, 0.5, 0.5, 0.7) if child.disabled else Color.WHITE
 	contextLatch = false
+
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
 	var l = Label.new()
 	l.text = text_content
@@ -584,6 +584,12 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 	if current_context == Context.PLAYER:
 		if _menu_index == Category.ECONOMY:
 			MapManager.show_industry_country(CountryManager.player_country.country_name)
+			print(EconomyManager.building_designs)
+			print(EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}))
+			building_dropdown.clear()
+			building_dropdown.add_item("Infrastructure")
+			for buildingTemplateName: String in EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}):
+				building_dropdown.add_item(buildingTemplateName)
 		else:
 			MapManager.set_country_color(CountryManager.player_country.country_name, Color.TRANSPARENT)
 			GameState.industry_building = GameState.IndustryType.DEFAULT
@@ -592,8 +598,7 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 		military_extra_panel.visible = _menu_index == Category.MILITARY
 	# _build_action_list()
 
-
-# Note Z21 Some of the things here are outdated and not used and overall bad way to do things ngl
+# NOTE(Z21): Some of the things here are outdated and not used and overall bad way to do things ngl
 func _build_trooplist() -> void:
 	for child in sidemenu_trooplist.get_children():
 		child.queue_free()
@@ -614,6 +619,8 @@ func _build_trooplist() -> void:
 		sidemenu_trooplist.add_child(btn)
 		# Callable points to deploy_troop, passing the specific troop object
 		btn.setup_ready(troop, Callable(self , "deploy_troop").bind(troop))
+
+#NOTE(Sockmit2007): Soilad is literally Hitler for this one.
 
 func update_topbar_stats() -> void:
 	if !CountryManager.player_country:
@@ -639,14 +646,13 @@ func update_topbar_stats() -> void:
 		water_graph.points[i] = water_graph.points[i+1]
 		water_graph.points[i].x -= 79
 
-	population_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_population/100000000)
+	population_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_population * 0.00001)
 	sewage_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_sewage)
 	power_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_power)
 	water_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_water)
 
-	print(population_graph.points)
+	#print(population_graph.points)
 	_update_notifications()
-
 
 func _on_hour_passed() -> void:
 	update_topbar_stats()
@@ -654,7 +660,6 @@ func _on_hour_passed() -> void:
 	if is_open:
 		_update_context_actions_visuals()
 		update_economy_menu()
-
 
 func format_number(value: float) -> String:
 	var abs_val = abs(value)

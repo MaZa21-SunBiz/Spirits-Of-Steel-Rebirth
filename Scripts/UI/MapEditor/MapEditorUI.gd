@@ -119,6 +119,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					if currentTool == Tool.MULTI_SELECT:
 						dragging = Drag.LEFT
 						_handle_paint_selection(hovered_pid)
+						_handle_click(event.position)
 					else:
 						_handle_click(event.position)
 				else:
@@ -128,6 +129,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					if currentTool == Tool.MULTI_SELECT:
 						dragging = Drag.RIGHT
 						_handle_paint_selection(hovered_pid)
+						_handle_click(event.position)
 					else:
 						_handle_click(event.position)
 				else:
@@ -210,12 +212,17 @@ func _handle_click(_screenPos: Vector2) -> void:
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
 							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
 					Tool.MULTI_SELECT:
-						if hovered_pid in multiSelectPID:
-							multiSelectPID.erase(hovered_pid)
-							MapManager.ResetProvinceColor(hovered_pid)
-						else:
-							multiSelectPID.push_back(hovered_pid)
-							MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+						match dragging:
+							Drag.RIGHT:
+								if hovered_pid in multiSelectPID:
+									multiSelectPID.erase(hovered_pid)
+									MapManager.ResetProvinceColor(hovered_pid)
+									update_multi_select_ui()
+							Drag.LEFT:
+								if !hovered_pid in multiSelectPID:
+									multiSelectPID.push_back(hovered_pid)
+									MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+									update_multi_select_ui()
 			Mode.BIOME:
 				match currentTool:
 					Tool.NONE:

@@ -243,7 +243,7 @@ func SaveBiomeData() -> Array:
 func export_scenario_data(path: String) -> void:
 	var fig_dicts: Array[Dictionary] = []
 	for x in significantFigures.values():
-		fig_dicts.append(x.ToDict)
+		fig_dicts.append(x.ToDict())
 	var export = {
 		"clock": GameState.current_world.clock.ToDict() if GameState.current_world.clock else {},
 		"resources": SaveResourcesData(),
