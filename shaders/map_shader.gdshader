@@ -103,16 +103,16 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 			}
         }
     }
-
-    if (found_color) {
-        out_color = mix(curr_country, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
-        return true;
-    }
 	
 	if (other_color) {
 		out_color = country_border_color;
 		return true;
 	}
+	
+    if (found_color) {
+        out_color = mix(curr_country, vec4(0.0, 0.0, 0.0, 1.0), internal_border_darkness);
+        return true;
+    }
 	
     return false;
 }

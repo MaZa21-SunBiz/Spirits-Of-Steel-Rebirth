@@ -42,7 +42,22 @@ func ToDict() -> Dictionary:
 func UpdateMemberStatus(_a_member: String, _a_index: int) -> void:
 	pass
 
+func SetMemberStatus(a_member: String, a_status: String) -> void:
+	for factionMember: FactionMember in self.members:
+		if factionMember.polity == a_member:
+			factionMember.status = a_status
+	members.append(FactionMember.FromValues(a_member, a_status))
+	
+func GetMemberStatus(a_member: String) -> String:
+	for factionMember: FactionMember in self.members:
+		if factionMember.polity == a_member:
+			return factionMember.status
+	return ""
+
 
 func KickMember(member: FactionMember):
 	members.erase(member)
 	pass
+
+func KickMemberByName(a_member: String) -> void:
+	members.erase(members.find_custom(func(member: FactionMember): return member.polity == a_member))

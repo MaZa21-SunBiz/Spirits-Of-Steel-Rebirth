@@ -116,22 +116,24 @@ func _unhandled_input(event: InputEvent) -> void:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
 				if event.pressed:
-					if currentTool == Tool.MULTI_SELECT:
+					if (
+						(currentTool == Tool.MULTI_SELECT) ||
+						(currentMode == Mode.BIOME && currentTool == Tool.PAINT_PRIMARY)
+					):
 						dragging = Drag.LEFT
 						_handle_paint_selection(hovered_pid)
-						_handle_click(event.position)
-					else:
-						_handle_click(event.position)
+					_handle_click(event.position, Drag.LEFT)
 				else:
 					dragging = Drag.NONE
 			MOUSE_BUTTON_RIGHT:
 				if event.pressed:
-					if currentTool == Tool.MULTI_SELECT:
+					if (
+						(currentTool == Tool.MULTI_SELECT) ||
+						(currentMode == Mode.BIOME && currentTool == Tool.PAINT_PRIMARY)
+					):
 						dragging = Drag.RIGHT
 						_handle_paint_selection(hovered_pid)
-						_handle_click(event.position)
-					else:
-						_handle_click(event.position)
+					_handle_click(event.position, Drag.RIGHT)
 				else:
 					dragging = Drag.NONE
 
@@ -168,25 +170,44 @@ func _handle_paint_selection(pid: int) -> void:
 		Tool.MULTI_SELECT:
 			if Input.is_key_pressed(KEY_CTRL):
 				match dragging:
-					Drag.RIGHT:
-						if pid in multiSelectPID:
-							multiSelectPID.erase(pid)
-							MapManager.ResetProvinceColor(pid)
-							update_multi_select_ui()
 					Drag.LEFT:
 						if !pid in multiSelectPID:
 							multiSelectPID.push_back(pid)
 							MapManager.SetProvinceColor(pid, Color.CORNSILK)
 							update_multi_select_ui()
+					Drag.RIGHT:
+						if pid in multiSelectPID:
+							multiSelectPID.erase(pid)
+							MapManager.ResetProvinceColor(pid)
+							update_multi_select_ui()
 		Tool.PAINT_PRIMARY:
 			match currentMode:
 				Mode.BIOME:
-					match dragging:
-						Drag.LEFT:
-							if selectedBiome in MapManager.biomes:
-								MapManager.province_objects[hovered_pid].biome = selectedBiome
+					if !Input.is_key_pressed(KEY_CTRL):
+						match dragging:
+							Drag.LEFT:
+								if selectedBiome in MapManager.biomes:
+									MapManager.province_objects[hovered_pid].biome = selectedBiome
+									MapManager.SetProvinceColors(hovered_pid, MapManager.biomes[selectedBiome].color, MapManager.biomes[selectedBiome].color)
+								original_pid_color = MapManager.biomes[selectedBiome].color
+							Drag.RIGHT:
+								MapManager.province_objects[hovered_pid].biome = ""
+								MapManager.SetProvinceColors(hovered_pid, Color.ANTIQUE_WHITE, Color.ANTIQUE_WHITE)
+								original_pid_color = Color.ANTIQUE_WHITE
+				Mode.POLITY:
+					if !Input.is_key_pressed(KEY_CTRL):
+						match dragging:
+							Drag.LEFT:
+								if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
+									if MapManager.province_objects[hovered_pid].country != selectedCountry:
+										MapManager.OccupyProvince(hovered_pid, selectedCountry)
+									else:
+										MapManager.DeoccupyProvince(hovered_pid)
+							Drag.RIGHT:
+								if MapManager.province_objects[hovered_pid].occupier != "":
+									MapManager.DeoccupyProvince(hovered_pid)
 
-func _handle_click(_screenPos: Vector2) -> void:
+func _handle_click(_screenPos: Vector2, a_button: Drag) -> void:
 	get_viewport().gui_release_focus()
 	
 	if hovered_pid > 1:
@@ -202,24 +223,44 @@ func _handle_click(_screenPos: Vector2) -> void:
 					Tool.NONE:
 						select_province(hovered_pid)
 					Tool.PAINT_PRIMARY:
-						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedFaction in FactionManager.factions:
-							pass
+						match a_button:
+							Drag.LEFT:
+								if MapManager.province_objects[hovered_pid].country != "Sea" && selectedFaction in FactionManager.factions:
+									match FactionManager.factions[selectedFaction].GetMemberStatus(MapManager.province_objects[hovered_pid].country):
+										"Member":
+											FactionManager.factions[selectedFaction].SetMemberStatus(MapManager.province_objects[hovered_pid].country, "Leader")
+										"":
+											FactionManager.factions[selectedFaction].SetMemberStatus(MapManager.province_objects[hovered_pid].country, "Member")
+											original_pid_color = FactionManager.factions[selectedFaction].color
+							Drag.LEFT:
+								if MapManager.province_objects[hovered_pid].country != "Sea" && selectedFaction in FactionManager.factions:
+									match FactionManager.factions[selectedFaction].GetMemberStatus(MapManager.province_objects[hovered_pid].country):
+										"Leader":
+											FactionManager.factions[selectedFaction].SetMemberStatus(MapManager.province_objects[hovered_pid].country, "Member")
+										"Member":
+											FactionManager.factions[selectedFaction].KickMemberByName(MapManager.province_objects[hovered_pid].country)
+											original_pid_color = Color.GRAY
 			Mode.POLITY:
 				match currentTool:
 					Tool.NONE:
 						select_province(hovered_pid)
 					Tool.PAINT_PRIMARY:
-						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
-							if MapManager.province_objects[hovered_pid].country != selectedCountry:
-								MapManager.OccupyProvince(hovered_pid, selectedCountry)
-							else:
-								MapManager.DeoccupyProvince(hovered_pid)
+						match a_button:
+							Drag.LEFT:
+								if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
+									if MapManager.province_objects[hovered_pid].country != selectedCountry:
+										MapManager.OccupyProvince(hovered_pid, selectedCountry)
+									else:
+										MapManager.DeoccupyProvince(hovered_pid)
+							Drag.RIGHT:
+								if MapManager.province_objects[hovered_pid].occupier != "":
+									MapManager.DeoccupyProvince(hovered_pid)
 					Tool.PAINT_SECONDARY:
 						if MapManager.province_objects[hovered_pid].country != "Sea" && selectedCountry in CountryManager.countries:
 							MapManager.transfer_ownership(hovered_pid, selectedCountry)
-							MapManager.original_hover_color = CountryManager.countries[selectedCountry].country_color
+							original_pid_color = CountryManager.countries[selectedCountry].country_color
 					Tool.MULTI_SELECT:
-						match dragging:
+						match a_button:
 							Drag.RIGHT:
 								if hovered_pid in multiSelectPID:
 									multiSelectPID.erase(hovered_pid)
@@ -235,8 +276,16 @@ func _handle_click(_screenPos: Vector2) -> void:
 					Tool.NONE:
 						select_province(hovered_pid)
 					Tool.PAINT_PRIMARY:
-						if selectedBiome in MapManager.biomes:
-							MapManager.province_objects[hovered_pid].biome = selectedBiome
+						match a_button:
+							Drag.LEFT:
+								if selectedBiome in MapManager.biomes:
+									MapManager.province_objects[hovered_pid].biome = selectedBiome
+									MapManager.SetProvinceColors(hovered_pid, MapManager.biomes[selectedBiome].color, MapManager.biomes[selectedBiome].color)
+								original_pid_color = MapManager.biomes[selectedBiome].color
+							Drag.RIGHT:
+								MapManager.province_objects[hovered_pid].biome = ""
+								MapManager.SetProvinceColors(hovered_pid, Color.ANTIQUE_WHITE, Color.ANTIQUE_WHITE)
+								original_pid_color = Color.ANTIQUE_WHITE
 
 func IndexOfText(a_itemList: ItemList, a_text: String) -> int:
 	for i in range(a_itemList.item_count):
@@ -721,6 +770,7 @@ func m_PaintOwnerTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
+	MapManager.show_countries_map()
 	currentTool = Tool.PAINT_SECONDARY
 	
 func m_PaintOccupationTool() -> void:
@@ -729,6 +779,7 @@ func m_PaintOccupationTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
+	MapManager.show_countries_map()
 	currentTool = Tool.PAINT_PRIMARY
 	
 func m_PaintFactionTool() -> void:
@@ -737,6 +788,7 @@ func m_PaintFactionTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
+	MapManager.show_faction_map()
 	currentTool = Tool.PAINT_PRIMARY
 
 func m_PaintBiomeTool() -> void:
@@ -745,6 +797,7 @@ func m_PaintBiomeTool() -> void:
 			for pid: int in multiSelectPID:
 				MapManager.ResetProvinceColor(pid)
 			multiSelectPID = []
+	MapManager.show_biomes_map()
 	currentTool = Tool.PAINT_PRIMARY
 
 func m_MultiSelectTool() -> void:
