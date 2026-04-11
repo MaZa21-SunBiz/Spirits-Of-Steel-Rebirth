@@ -88,7 +88,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
 [node name="Resources" type="Label" parent="VBoxContainer/HBoxContainer/Stats" unique_id=959214321]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 
