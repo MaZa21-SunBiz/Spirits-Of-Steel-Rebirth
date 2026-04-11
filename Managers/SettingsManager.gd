@@ -10,6 +10,7 @@ var settings = {
 	"vignette_lower": 0.0,
 	"vignette_upper": 0.0,
 	"map_effects": 1.0,
+	"provinceBorderThickness": 0.5,
 	"province_borders": 0.8,
 	"ui_upper": 0.8,
 	"ui_lower": 0.8,
@@ -71,6 +72,7 @@ func apply_settings():
 		mat.set_shader_parameter("smoothness", settings.daynight_smoothness)
 		mat.set_shader_parameter("clouds", settings.clouds)
 		mat.set_shader_parameter("edgeness", settings.clouds_edgeness)
+		mat.set_shader_parameter("BorderThickness", settings.provinceBorderThickness)
 		mat.set_shader_parameter("internal_border_darkness", settings.province_borders)
 	
 	# UI Effects (Wait for idfkanymore if it's in Settings menu, 

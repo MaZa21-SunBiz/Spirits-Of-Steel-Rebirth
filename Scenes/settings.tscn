@@ -19,7 +19,7 @@ content_margin_right = 14.0
 content_margin_bottom = 14.0
 bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
 
-[node name="Settings" type="PanelContainer" unique_id=1223466696 node_paths=PackedStringArray("save_list", "line_edit", "tab_container", "graphics_path", "sfx_slider", "music_slider", "ui_upper_slider", "ui_lower_slider", "ui_dirt_slider", "scanlines_slider", "vignette_lower_slider", "vignette_upper_slider", "province_borders_slider", "daynight_contrast_slider", "daynight_smoothness_slider", "clouds_slider", "edgeness_slider", "map_effects_btn", "debug_mode_btn")]
+[node name="Settings" type="PanelContainer" unique_id=1223466696 node_paths=PackedStringArray("save_list", "line_edit", "tab_container", "graphics_path", "sfx_slider", "music_slider", "ui_upper_slider", "ui_lower_slider", "ui_dirt_slider", "scanlines_slider", "vignette_lower_slider", "vignette_upper_slider", "provinceBorderThicknessSlider", "province_borders_slider", "daynight_contrast_slider", "daynight_smoothness_slider", "clouds_slider", "edgeness_slider", "map_effects_btn", "debug_mode_btn")]
 offset_right = 601.0
 offset_bottom = 570.0
 script = ExtResource("1_aaqfp")
@@ -35,6 +35,7 @@ ui_dirt_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/V
 scanlines_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/ScanLines2")
 vignette_lower_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Lower2")
 vignette_upper_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Upper2")
+provinceBorderThicknessSlider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/BorderThickness2")
 province_borders_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2")
 daynight_contrast_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2")
 daynight_smoothness_slider = NodePath("VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2")
@@ -272,6 +273,20 @@ size_flags_vertical = 4
 max_value = 0.5
 step = 0.01
 
+[node name="BorderThickness" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=718461685]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i44u3")
+text = "Border Thickness"
+
+[node name="BorderThickness2" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=1812600281]
+material = ExtResource("1_lhmql")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 9.99999999999968
+step = 0.01
+value = 0.5
+
 [node name="Borders" type="Label" parent="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions" unique_id=372239059]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i44u3")
@@ -338,6 +353,7 @@ text = "Save Settings"
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Upper2" to="." method="_on_vignette_upper_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Contrast2" to="." method="_on_daynight_contrast_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Smoothness2" to="." method="_on_daynight_smoothness_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/BorderThickness2" to="." method="m_OnProvinceBorderThicknessChanged"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Borders2" to="." method="_on_province_borders_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Clouds2" to="." method="_on_clouds_changed"]
 [connection signal="value_changed" from="VBoxContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/MapEffectOptions/Edgeness2" to="." method="_on_edgeness_changed"]

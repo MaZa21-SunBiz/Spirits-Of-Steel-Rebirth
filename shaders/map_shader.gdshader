@@ -46,6 +46,7 @@ uniform float sea_pixel_size = 2.0;       // 1 = native pixels, 2–4 = chunkier
 uniform float sea_height_steps = 10.0;    // number of discrete wave levels
 uniform vec2 ocean_offset;
 // --- BORDER SETTINGS (From Old Version) ---
+uniform float BorderThickness : hint_range(0.0, 100.0) = 0.5;
 uniform float internal_border_darkness : hint_range(0.0, 1.0) = 0.82;
 
 // 8 constant directions for scanning neighbors
@@ -172,7 +173,7 @@ void fragment() {
 			vec4 c_detect = vec4(0.0);
 		    
 		    //if (!decided) decided = detect_border_at_distance(UV, 2.0, c_detect, must_be_black);
-	        COLOR = detect_border_at_distance(UV, 0.5, c_detect) ? c_detect : vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
+	        COLOR = detect_border_at_distance(UV, BorderThickness, c_detect) ? c_detect : vec4(get_country_color(id, mod(floor(black), 2.0)).rgb, 1.0);
 			COLOR.a = 1.0;
 		} 
 		// 3. If it's Land (type_map 1.0) and ID 1 (Border)

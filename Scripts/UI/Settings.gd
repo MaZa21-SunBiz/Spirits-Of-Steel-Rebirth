@@ -23,6 +23,7 @@ var settings = {}
 @export var scanlines_slider: HSlider
 @export var vignette_lower_slider: HSlider
 @export var vignette_upper_slider: HSlider
+@export var provinceBorderThicknessSlider: HSlider
 @export var province_borders_slider: HSlider
 @export var daynight_contrast_slider: HSlider
 @export var daynight_smoothness_slider: HSlider
@@ -41,6 +42,7 @@ func _initialize_ui_values():
 	vignette_lower_slider.value = s.vignette_lower
 	vignette_upper_slider.value = s.vignette_upper
 	map_effects_btn.button_pressed = s.map_effects
+	provinceBorderThicknessSlider = s.provinceBorderThickness
 	province_borders_slider.value = s.province_borders
 	ui_upper_slider.value = s.ui_upper
 	ui_lower_slider.value = s.ui_lower
@@ -190,6 +192,10 @@ func _on_map_effects_pressed() -> void:
 	SettingsManager.apply_settings()
 
 
+func m_OnProvinceBorderThicknessChanged(value: float) -> void:
+	SettingsManager.settings.provinceBorderThickness = value
+	SettingsManager.apply_settings()
+	
 func _on_province_borders_changed(value: float) -> void:
 	SettingsManager.settings.province_borders = value
 	SettingsManager.apply_settings()
