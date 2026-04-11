@@ -11,6 +11,7 @@ var hovered_pid: int = -1
 var original_pid_color: Color
 
 var multiSelectPID: PackedInt32Array = []
+var is_painting_selection: bool = false
 
 enum Tool {
 	NONE = 0,
@@ -102,9 +103,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		_handle_hover(event.position)
+		if is_painting_selection:
+			_handle_paint_selection(hovered_pid)
 
-	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-		_handle_click(event.position)
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			if currentTool == Tool.MULTI_SELECT:
+				is_painting_selection = true
+				_handle_paint_selection(hovered_pid)
+			else:
+				_handle_click(event.position)
+		else:
+			is_painting_selection = false
 
 func _handle_hover(screen_pos: Vector2) -> void:
 	if map_sprite == null:
@@ -128,9 +138,27 @@ func _clear_hover() -> void:
 	if hovered_pid > 1:
 		if hovered_pid not in multiSelectPID:
 			MapManager.state_color_image.set_pixel(hovered_pid, 0, original_pid_color)
-			MapManager.state_color_texture.update(MapManager.state_color_image)
+		MapManager.state_color_texture.update(MapManager.state_color_image)
 		hovered_pid = -1
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _handle_paint_selection(pid: int) -> void:
+	if pid <= 1:
+		return
+	
+	var is_alt_pressed = Input.is_key_pressed(KEY_ALT)
+	var is_already_selected = pid in multiSelectPID
+	
+	if is_alt_pressed:
+		if is_already_selected:
+			multiSelectPID.erase(pid)
+			MapManager.ResetProvinceColor(pid)
+			update_multi_select_ui()
+	else:
+		if !is_already_selected:
+			multiSelectPID.push_back(pid)
+			MapManager.SetProvinceColor(pid, Color.CORNSILK)
+			update_multi_select_ui()
 
 func _handle_click(_screenPos: Vector2) -> void:
 	get_viewport().gui_release_focus()
@@ -253,13 +281,19 @@ func select_province(pid: int) -> void:
 				biomesItemList.item_selected.emit(itemIndex)
 
 func MultiSelectProvince(pid: int) -> void:
-	if hovered_pid in multiSelectPID:
-		multiSelectPID.erase(hovered_pid)
-		MapManager.ResetProvinceColor(hovered_pid)
+	if pid <= 1:
+		return
+		
+	if pid in multiSelectPID:
+		multiSelectPID.erase(pid)
+		MapManager.ResetProvinceColor(pid)
 	else:
-		multiSelectPID.push_back(hovered_pid)
-		MapManager.SetProvinceColor(hovered_pid, Color.CORNSILK)
+		multiSelectPID.push_back(pid)
+		MapManager.SetProvinceColor(pid, Color.CORNSILK)
 
+	update_multi_select_ui()
+
+func update_multi_select_ui() -> void:
 	#var color_str = _color_to_rgb_string(prov.r_color) if prov.r_color else "Unknown"
 	status_label.text = "Selected: %d" % [multiSelectPID.size()]
 

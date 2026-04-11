@@ -101,7 +101,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -134,6 +134,10 @@ select_player_stat = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2
 radio_list = NodePath("Control/Radios/Radios/RadioList")
 now_playing = NodePath("Control/Radios/Radios/ScrollContainer/NowPlaying")
 map_tabs = NodePath("Control/MapSwitcher/TabBar")
+sewage_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Sewage")
+population_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Population")
+water_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Water")
+power_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Power")
 military_extra_panel = NodePath("Control/MilitaryExtra")
 input_division = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/input_division")
 button_train = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train")
@@ -739,16 +743,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 5
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -758,7 +761,6 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -836,7 +838,40 @@ theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
+[node name="PanelContainer" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=403757393]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sewage" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=112696949]
+points = PackedVector2Array(275, 179, 179, 114, 56, 29, 8, 103, 0, 0, 0, 0, 0, 0)
+default_color = Color(0.52496976, 0.24902457, 1.4439226e-07, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Population" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=1161091349]
+points = PackedVector2Array(296, 104, 139, 53, 71, 175, -3, 121, 0, 0, 0, 0, 0, 0)
+default_color = Color(1, 0, 1, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Water" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=352536297]
+points = PackedVector2Array(294, 164, 122, 117, 30, 151, 0, 192, 0, 0, 0, 0, 0, 0)
+default_color = Color(0, 1, 1, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Power" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=1299821553]
+points = PackedVector2Array(297, 55, 143, 89, 39, 173, 0, 0, 0, 0, 0, 0, 0, 0)
+default_color = Color(1, 1, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="Economy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1287649525]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -1788,6 +1823,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
 [node name="Select" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1473921671]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4

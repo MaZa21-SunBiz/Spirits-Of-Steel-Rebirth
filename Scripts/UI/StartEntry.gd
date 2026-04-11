@@ -58,7 +58,6 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 					for fig in map_data["significant_figures"]:
 						MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
 				CountryManager.generate_missing_leaders()
-				print(MapManager.significantFigures)
 			)
 		button.pressed.connect(load_map_data)
 		

@@ -58,6 +58,11 @@ var stats_labels := {}
 @export var now_playing: Label
 @export var map_tabs: TabBar
 
+@export var sewage_graph: Line2D
+@export var population_graph: Line2D
+@export var water_graph: Line2D
+@export var power_graph: Line2D
+
 
 # --- MilitaryExtraPanel ---
 @export_group("Military Extra")
@@ -620,6 +625,25 @@ func update_topbar_stats() -> void:
 	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
 	stats_labels.world_tension.text = str(round(MapManager.world_tension * 100)) + "%"
 	
+	for i in range(population_graph.points.size()-1):
+		population_graph.points[i] = population_graph.points[i+1]
+		population_graph.points[i].x -= 79
+
+		sewage_graph.points[i] = sewage_graph.points[i+1]
+		sewage_graph.points[i].x -= 79
+
+		power_graph.points[i] = power_graph.points[i+1]
+		power_graph.points[i].x -= 79
+
+		water_graph.points[i] = water_graph.points[i+1]
+		water_graph.points[i].x -= 79
+
+	population_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_population/100000000)
+	sewage_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_sewage)
+	power_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_power)
+	water_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_water)
+
+	print(population_graph.points)
 	_update_notifications()
 
 

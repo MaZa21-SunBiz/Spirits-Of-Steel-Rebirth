@@ -827,11 +827,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dhjfk")
 
 [node name="TabContainer" type="TabContainer" parent="Sidebar" unique_id=1933241066]
 layout_mode = 2
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 switch_on_drag_hover = false
 
 [node name="Province" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1407875551]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 0
@@ -850,31 +851,19 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 
-[node name="PanelContainer" type="PanelContainer" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=438613035]
-layout_mode = 2
-
-[node name="None" type="TextureButton" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer" unique_id=1452232604]
-custom_minimum_size = Vector2(48, 48)
+[node name="None" type="Button" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=1845800756]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "None Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_kdxsy")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_kdxsy")
+expand_icon = true
 
-[node name="PanelContainer4" type="PanelContainer" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=563185697]
-layout_mode = 2
-
-[node name="MultiSelect" type="TextureButton" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer4" unique_id=1055449415]
-custom_minimum_size = Vector2(48, 48)
+[node name="MultiSelect" type="Button" parent="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer" unique_id=507446417]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "Multi Select Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("8_id73f")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("8_id73f")
+expand_icon = true
 
 [node name="Faction" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=222878009]
 visible = false
@@ -896,34 +885,21 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 
-[node name="PanelContainer" type="PanelContainer" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=976208556]
-layout_mode = 2
-
-[node name="None" type="TextureButton" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer" unique_id=1179999718]
-custom_minimum_size = Vector2(48, 48)
+[node name="None" type="Button" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=1651911957]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "None Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_kdxsy")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_kdxsy")
+expand_icon = true
 
-[node name="PanelContainer2" type="PanelContainer" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=543562454]
-layout_mode = 2
-
-[node name="FactionPaint" type="TextureButton" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1971015809]
-custom_minimum_size = Vector2(48, 48)
+[node name="FactionPaint" type="Button" parent="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer" unique_id=337840832]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "Paint Faction Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("5_eo7xe")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("5_eo7xe")
+expand_icon = true
 
 [node name="Polity" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1910358666]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 2
@@ -942,57 +918,33 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 
-[node name="PanelContainer" type="PanelContainer" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=910965204]
-layout_mode = 2
-
-[node name="None" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer" unique_id=938564763]
-custom_minimum_size = Vector2(48, 48)
+[node name="None" type="Button" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=988393178]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "None Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("4_kdxsy")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_kdxsy")
+expand_icon = true
 
-[node name="PanelContainer2" type="PanelContainer" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=1949859440]
-layout_mode = 2
-
-[node name="OwnerPaint" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1771027249]
-custom_minimum_size = Vector2(48, 48)
+[node name="OwnerPaint" type="Button" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=2097119418]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "Paint Owner Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("6_eo7xe")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("6_eo7xe")
+expand_icon = true
 
-[node name="PanelContainer3" type="PanelContainer" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=2123922236]
-layout_mode = 2
-
-[node name="OccupationPaint" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer3" unique_id=940849632]
-custom_minimum_size = Vector2(48, 48)
+[node name="OccupationPaint" type="Button" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=870420289]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "Paint Occupier Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("7_kdxsy")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("7_kdxsy")
+expand_icon = true
 
-[node name="PanelContainer4" type="PanelContainer" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=1279768783]
-layout_mode = 2
-
-[node name="MultiSelect" type="TextureButton" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer4" unique_id=632020462]
-custom_minimum_size = Vector2(48, 48)
+[node name="MultiSelect" type="Button" parent="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer" unique_id=859575616]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 tooltip_text = "Multi Select Tool"
-focus_mode = 0
-theme = ExtResource("2_5xoin")
-texture_normal = ExtResource("8_id73f")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("8_id73f")
+expand_icon = true
 
 [node name="Biome" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=830389750]
 visible = false
@@ -1466,14 +1418,14 @@ text = "Create Resource"
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer/InputIcon" to="." method="m_OnResourceIconSubmitted"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnApply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnExport" to="." method="_on_export_pressed"]
-[connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/PanelContainer2/FactionPaint" to="." method="m_PaintFactionTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer2/OwnerPaint" to="." method="m_PaintOwnerTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer3/OccupationPaint" to="." method="m_PaintOccupationTool"]
-[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/None" to="." method="m_NoneTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Province/MarginContainer/VBoxContainer/MultiSelect" to="." method="m_MultiSelectTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/None" to="." method="m_NoneTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Faction/MarginContainer/VBoxContainer/FactionPaint" to="." method="m_PaintFactionTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/None" to="." method="m_NoneTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/OwnerPaint" to="." method="m_PaintOwnerTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/OccupationPaint" to="." method="m_PaintOccupationTool"]
+[connection signal="pressed" from="Sidebar/TabContainer/Polity/MarginContainer/VBoxContainer/MultiSelect" to="." method="m_MultiSelectTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer/None" to="." method="m_NoneTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer2/BiomePaint" to="." method="m_PaintBiomeTool"]
 [connection signal="pressed" from="Sidebar/TabContainer/Biome/MarginContainer/VBoxContainer/PanelContainer4/MultiSelect" to="." method="m_MultiSelectTool"]

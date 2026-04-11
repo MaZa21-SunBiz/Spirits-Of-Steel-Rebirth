@@ -241,6 +241,9 @@ func SaveBiomeData() -> Array:
 	return returnBiomes
 
 func export_scenario_data(path: String) -> void:
+	var fig_dicts: Array[Dictionary] = []
+	for x in significantFigures.values():
+		fig_dicts.append(x.ToDict)
 	var export = {
 		"clock": GameState.current_world.clock.ToDict() if GameState.current_world.clock else {},
 		"resources": SaveResourcesData(),
@@ -248,7 +251,8 @@ func export_scenario_data(path: String) -> void:
 		"provinces": save_country_data(),
 		"polities": CountryManager.save_countries(),
 		"ideologies": IdeologyManager.ideologies,
-		"factions": FactionManager.save_factions()
+		"factions": FactionManager.save_factions(),
+		"significant_figures": fig_dicts
 	}
 
 	var file = FileAccess.open(path, FileAccess.WRITE)

@@ -1,7 +1,7 @@
 extends Control
 var starts_folder
 const START_ENTRY_SCENE = preload("res://Scenes/Start.tscn")
-@onready var start_entry = $PanelContainer2/ScrollContainer/GridContainer
+@export var start_entry: HFlowContainer
 
 func _ready() -> void:
 	if OS.has_feature("standalone"):
