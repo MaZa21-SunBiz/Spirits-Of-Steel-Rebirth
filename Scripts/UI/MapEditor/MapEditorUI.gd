@@ -11,22 +11,28 @@ var hovered_pid: int = -1
 var original_pid_color: Color
 
 var multiSelectPID: PackedInt32Array = []
-var is_painting_selection: bool = false
+var dragging: Drag = Drag.NONE
 
 enum Tool {
-	NONE = 0,
-	PAINT_PRIMARY = 1,
+	NONE            = 0,
+	PAINT_PRIMARY   = 1,
 	PAINT_SECONDARY = 2,
-	PAINT_TERTIARY = 3,
-	MULTI_SELECT = 4,
+	PAINT_TERTIARY  = 3,
+	MULTI_SELECT    = 4,
 }
 
 enum Mode {
 	PROVINCE = 0,
-	FACTION = 1,
-	POLITY = 2,
-	BIOME = 3,
+	FACTION  = 1,
+	POLITY   = 2,
+	BIOME    = 3,
 	RESOURCE = 4,
+}
+
+enum Drag {
+	NONE  = 0,
+	LEFT  = 1,
+	RIGHT = 2,
 }
 
 var currentTool: Tool = Tool.NONE
@@ -103,18 +109,29 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		_handle_hover(event.position)
-		if is_painting_selection:
+		if dragging != Drag.NONE:
 			_handle_paint_selection(hovered_pid)
 
-	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			if currentTool == Tool.MULTI_SELECT:
-				is_painting_selection = true
-				_handle_paint_selection(hovered_pid)
-			else:
-				_handle_click(event.position)
-		else:
-			is_painting_selection = false
+	if event is InputEventMouseButton:
+		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					if currentTool == Tool.MULTI_SELECT:
+						dragging = Drag.LEFT
+						_handle_paint_selection(hovered_pid)
+					else:
+						_handle_click(event.position)
+				else:
+					dragging = Drag.NONE
+			MOUSE_BUTTON_RIGHT:
+				if event.pressed:
+					if currentTool == Tool.MULTI_SELECT:
+						dragging = Drag.RIGHT
+						_handle_paint_selection(hovered_pid)
+					else:
+						_handle_click(event.position)
+				else:
+					dragging = Drag.NONE
 
 func _handle_hover(screen_pos: Vector2) -> void:
 	if map_sprite == null:
@@ -145,20 +162,20 @@ func _clear_hover() -> void:
 func _handle_paint_selection(pid: int) -> void:
 	if pid <= 1:
 		return
-	
-	var is_alt_pressed = Input.is_key_pressed(KEY_ALT)
-	var is_already_selected = pid in multiSelectPID
-	
-	if is_alt_pressed:
-		if is_already_selected:
-			multiSelectPID.erase(pid)
-			MapManager.ResetProvinceColor(pid)
-			update_multi_select_ui()
-	else:
-		if !is_already_selected:
-			multiSelectPID.push_back(pid)
-			MapManager.SetProvinceColor(pid, Color.CORNSILK)
-			update_multi_select_ui()
+	match currentTool:
+		Tool.MULTI_SELECT:
+			if Input.is_key_pressed(KEY_CTRL):
+				match dragging:
+					Drag.RIGHT:
+						if pid in multiSelectPID:
+							multiSelectPID.erase(pid)
+							MapManager.ResetProvinceColor(pid)
+							update_multi_select_ui()
+					Drag.LEFT:
+						if !pid in multiSelectPID:
+							multiSelectPID.push_back(pid)
+							MapManager.SetProvinceColor(pid, Color.CORNSILK)
+							update_multi_select_ui()
 
 func _handle_click(_screenPos: Vector2) -> void:
 	get_viewport().gui_release_focus()
