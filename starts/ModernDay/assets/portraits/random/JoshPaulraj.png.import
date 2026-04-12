@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwff60ouc8dmw"
-path.s3tc="res://.godot/imported/TrofimLysenko.png-4c111faac8da713ef179e079720fbb9d.s3tc.ctex"
+uid="uid://bob7xeelb3cen"
+path.s3tc="res://.godot/imported/JoshPaulraj.png-e2bd162f651c20f0343174e439161a4c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png"
-dest_files=["res://.godot/imported/TrofimLysenko.png-4c111faac8da713ef179e079720fbb9d.s3tc.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png"
+dest_files=["res://.godot/imported/JoshPaulraj.png-e2bd162f651c20f0343174e439161a4c.s3tc.ctex"]
 
 [params]
 

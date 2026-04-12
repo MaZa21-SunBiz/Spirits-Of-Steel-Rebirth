@@ -3,15 +3,17 @@
 [ext_resource type="Script" uid="uid://bmffrhl6hb5bl" path="res://Scripts/division_item.gd" id="1_bl13n"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_h235r"]
 [ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="3_1h1m1"]
+[ext_resource type="FontFile" uid="uid://b8ixegawdqn82" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Bold.ttf" id="3_bl13n"]
 [ext_resource type="Texture2D" uid="uid://dnw0n3ysnfn3e" path="res://assets/icons/shield.svg" id="4_bl13n"]
 [ext_resource type="Texture2D" uid="uid://e205c3hhc4jm" path="res://assets/icons/sword.svg" id="5_h235r"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="6_hwt8t"]
 
-[node name="PanelContainer" type="PanelContainer" unique_id=686024187]
+[node name="PanelContainer" type="PanelContainer" unique_id=686024187 node_paths=PackedStringArray("disband")]
 material = ExtResource("1_h235r")
 offset_right = 201.0
 offset_bottom = 64.0
 script = ExtResource("1_bl13n")
+disband = NodePath("VBoxContainer/HBoxContainer2/Button")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=369652812]
 use_parent_material = true
@@ -21,6 +23,11 @@ layout_mode = 2
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 6
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=845625109]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bl13n")
+text = "X"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=239336309]
 use_parent_material = true

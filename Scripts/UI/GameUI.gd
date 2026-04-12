@@ -577,7 +577,6 @@ func _on_tab_changed(new_category_index: int) -> void:
 	# _build_action_list()
 	MusicManager.play_sfx(MusicManager.SFX.HOVERED)
 
-
 func _on_menu_button_button_up(_menu_index: int) -> void:
 	current_category = _menu_index as Category
 	if !CountryManager.player_country: return
@@ -672,10 +671,8 @@ func format_number(value: float) -> String:
 		return sign_str + "%.1fK" % (abs_val * 0.001)
 	return sign_str + str(floori(abs_val))
 
-
 func _on_time_passed() -> void:
 	label_date.text = GameState.current_world.clock.get_datetime_string()
-
 
 func updateProgressBar():
 	var clock = GameState.current_world.clock
@@ -688,13 +685,11 @@ func updateProgressBar():
 		bg_style.border_color = Color.DARK_CYAN
 		label_date.add_theme_color_override("font_color", Color.WHITE)
 
-
 func _update_flag() -> void:
 	if !CountryManager.player_country:
 		return
 	nation_flag.texture = TroopManager.get_flag(CountryManager.player_country.country_name, CountryManager.player_country.ideology_name)
 	#_update_relations_visuals.call_deferred()
-
 
 func close_menu() -> void:
 	if is_open:
@@ -703,13 +698,11 @@ func close_menu() -> void:
 	military_extra_panel.visible = false # just to be sure
 	slide_out()
 
-
 func slide_in() -> void:
 	if is_open:
 		return
 	is_open = true
 	create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).tween_property(sidemenu, "position", pos_open, slide_duration)
-
 
 func slide_out() -> void:
 	if not is_open:
@@ -717,10 +710,8 @@ func slide_out() -> void:
 	is_open = false
 	create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN).tween_property(sidemenu, "position", pos_closed, slide_duration)
 
-
 func _choose_deploy_city():
 	GameState.choosing_deploy_city = true
-
 
 func _declare_war():
 	var cost = action_costs["_declare_war"].call(CountryManager.player_country, selected_country)["cost"]
@@ -739,20 +730,17 @@ func _declare_war():
 
 	open_menu(Context.ENEMY, Category.GENERAL)
 
-
 func _conscript(_data: Dictionary):
 	#var manpower = data.manpower * 0.0001
 	CountryManager.player_country.train_troops(1, "infantry")
 	update_topbar_stats()
 	# _build_action_list()
 
-
 func deploy_troop(troop):
 	CountryManager.player_country.deploy_ready_troop(
 		troop, CountryManager.player_country.deploy_pid
 	)
 	_build_trooplist()
-
 
 func improve_stability():
 	var cost = action_costs["improve_stability"].call(CountryManager.player_country, selected_country)["cost"]
@@ -763,7 +751,6 @@ func improve_stability():
 	CountryManager.player_country.stability += 0.02
 	update_topbar_stats()
 	_update_context_actions_visuals()
-
 
 func _on_building_selected(index: int):
 	#print()
@@ -780,7 +767,6 @@ func _on_building_selected(index: int):
 		_:
 			GameState.industry_building = GameState.IndustryType.DEFAULT
 	update_economy_menu()
-
 
 func update_economy_menu() -> void:
 	if !economyUpdate:
@@ -804,7 +790,6 @@ func DoEconomyMenuUpdate() -> void:
 				entry.add_child(text)
 				sidemenu_buildings.add_child(entry)
 	economyUpdate = false
-	
 
 func _request_access():
 	var cost = action_costs["_request_access"].call(CountryManager.player_country, selected_country)["cost"]
@@ -836,7 +821,6 @@ func _on_release_puppet_pressed():
 	_update_context_actions_visuals()
 	close_menu()
 
-
 func _improve_relations():
 	var cost = action_costs["_improve_relations"].call(CountryManager.player_country, selected_country)["cost"]
 	if CountryManager.player_country.political_power < cost:
@@ -846,10 +830,8 @@ func _improve_relations():
 	print("Improving relations")
 	_update_context_actions_visuals()
 
-
 func _propose_peace():
 	print("Proposing peace")
-
 
 func _launch_nuke():
 	print("NUKE!")
@@ -857,22 +839,17 @@ func _launch_nuke():
 func _demand_tribute():
 	print("Pay up!")
 
-
 func _trade_deal():
 	print("Trading...")
-
 
 func open_research_tree():
 	print("Opening Research")
 
-
 func open_decisions_tree():
 	get_tree().root.find_child("DecisionTreeUI", true, false).open_menu()
 
-
 func _open_faction():
 	faction_prompt.visible = !faction_prompt.visible
-
 
 func open_manage_country():
 	logistics.close_menu() if logistics.visible else logistics.open_menu(CountryManager.player_country)
@@ -899,7 +876,7 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 	for child in troop_list_parent.get_children():
 		child.queue_free()
 
-	for troop in selected_troops:
+	for troop: TroopData in selected_troops:
 		# --- Group Divisions by Type ---
 		# Resulting dict will look like: {"infantry": [div1, div2], "tank": [div3]}
 		var groups: Dictionary = {}
@@ -919,13 +896,12 @@ func make_troop_container(selected_troops: Array[TroopData]) -> void:
 
 			# FIX: Pass 'divisions_of_type' (the Array) as the second argument
 			# We no longer pass 'count' here because the card calculates it from the array
-			card.setup_grouped(troop.province_id, type, divisions_of_type, divisions_of_type[0] in selected_division_objects)
+			card.setup_grouped(troop, type, divisions_of_type, divisions_of_type[0] in selected_division_objects)
 
 			# Update the signal connection
 			if not card.is_connected("clicked", _on_group_clicked):
 				# We pass the card node (self) and the array to the handler
 				card.clicked.connect(_on_group_clicked)
-
 
 func _on_group_clicked(card_node: Control, divs_in_group: Array):
 	# Check the first div to see if we are selecting or deselecting the group
@@ -943,7 +919,6 @@ func _on_group_clicked(card_node: Control, divs_in_group: Array):
 	card_node.is_selected = !is_already_selected
 	card_node.update_visuals()
 
-
 func _on_card_clicked(div: DivisionData, card_node: Control):
 	if div in selected_division_objects:
 		selected_division_objects.erase(div)
@@ -955,10 +930,8 @@ func _on_card_clicked(div: DivisionData, card_node: Control):
 	card_node.update_visuals()
 	print("Selected divisions count: ", selected_division_objects.size())
 
-
 func close_troop_container() -> void:
 	troop_container.visible = false
-
 
 # --- Main Update Logic ---
 func update_division_menu():
@@ -983,7 +956,6 @@ func update_division_menu():
 	# 5. Update Button State & Visuals
 	button_train.disabled = not can_afford
 
-
 func _on_button_train_troops() -> void:
 	if CountryManager.player_country.train_troops(
 		max(1, ceili(input_division.value)),
@@ -992,13 +964,11 @@ func _on_button_train_troops() -> void:
 		_build_trooplist()
 	update_division_menu()
 
-
 func _on_division_type_button(type: String) -> void:
 	print(division_type_selected)
 	division_type_selected = type
 	print(division_type_selected)
 	update_division_menu()
-
 
 func _on_division_type_selected(index: int) -> void:
 	print(division_type_selected)
@@ -1007,11 +977,9 @@ func _on_division_type_selected(index: int) -> void:
 	print(division_type_selected)
 	update_division_menu()
 
-
 func _on_music_pressed():
 	radios_panel.visible = !radios_panel.visible
 	SettingsManager.save_settings()
-
 
 func _on_create_faction_pressed() -> void:
 	FactionManager.create_faction(
@@ -1023,15 +991,12 @@ func _on_create_faction_pressed() -> void:
 	faction_prompt.get_node("VBoxContainer/ColorPicker").color = Color.WHITE
 	faction_prompt.visible = !faction_prompt.visible
 
-
 func _on_invite_faction_pressed() -> void:
 	FactionManager.invite_faction(CountryManager.player_country, selected_country)
 	# MapManager.show_faction_map()
 
-
 func _on_kick_faction_pressed() -> void:
 	FactionManager.kick_faction(CountryManager.player_country, selected_country)
-
 
 func _on_steal_manpower_pressed() -> void:
 	if selected_country.total_population > 0:
@@ -1040,20 +1005,16 @@ func _on_steal_manpower_pressed() -> void:
 		CountryManager.player_country.update_manpower_pool()
 		selected_country.update_manpower_pool()
 
-
 func _on_steal_money_pressed() -> void:
 	if selected_country.money > 0:
 		CountryManager.player_country.money += 1_000
 		selected_country.money -= 1_000
 
-
 func _on_annex_country_pressed() -> void:
 	MapManager.annex_country(CountryManager.player_country.country_name, selected_country.country_name)
 
-
 func _on_call_to_arms_pressed() -> void:
 	WarManager.call_to_arms(CountryManager.player_country, selected_country)
-
 
 func update_cultures() -> void:
 	for child in accepted_cultures.get_children():
@@ -1065,14 +1026,12 @@ func update_cultures() -> void:
 		entry.use_parent_material = true
 		accepted_cultures.add_child(entry)
 
-
 func _on_next_song_pressed() -> void:
 	MusicManager.skip_track()
 	
 
 func _on_pause_pressed() -> void:
 	MusicManager._toggle_pause()
-
 
 func add_notif(type: String, tooltip: String):
 	if all_notifs.has(type):
@@ -1093,14 +1052,12 @@ func add_notif(type: String, tooltip: String):
 	notif_box.add_child(notif)
 	all_notifs[type] = notif
 
-
 func remove_notif(type: String):
 	if all_notifs.has(type):
 		var notif = all_notifs[type]
 		if is_instance_valid(notif):
 			notif.queue_free()
 		all_notifs.erase(type)
-
 
 func _update_notifications():
 	#print(all_notifs)
@@ -1138,11 +1095,9 @@ func _update_notifications():
 	else:
 		remove_notif("plan")
 
-
 func _on_deploy_all_pressed():
 	for troop in sidemenu_trooplist.get_children():
 		troop.pressed.emit()
-
 
 func _on_map_changed(tab: int) -> void:
 	match tab:
@@ -1177,7 +1132,6 @@ func _on_map_changed(tab: int) -> void:
 		KeyboardManager.MapView.BIOMES:
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
-
 
 func _on_building_designer_pressed():
 	building_designer.visible = !building_designer.visible

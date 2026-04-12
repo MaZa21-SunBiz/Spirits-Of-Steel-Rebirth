@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwff60ouc8dmw"
-path.s3tc="res://.godot/imported/TrofimLysenko.png-4c111faac8da713ef179e079720fbb9d.s3tc.ctex"
+uid="uid://cws5v7raiu83y"
+path="res://.godot/imported/JoshPaulraj.png-2ece7cd732b421647d2d5da165a14dae.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png"
-dest_files=["res://.godot/imported/TrofimLysenko.png-4c111faac8da713ef179e079720fbb9d.s3tc.ctex"]
+source_file="res://starts/ModernEmpires/assets/portraits/random/JoshPaulraj.png"
+dest_files=["res://.godot/imported/JoshPaulraj.png-2ece7cd732b421647d2d5da165a14dae.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -8,6 +8,7 @@ signal clicked(card_node, associated_data)
 @onready var label_defense: Label = $VBoxContainer/HBoxContainer/label_defense
 @onready var label_experience: Label = $VBoxContainer/HBoxContainer/label_experience
 @onready var progress_bar: ProgressBar = $VBoxContainer/HBoxContainer/ProgressBar
+@export var disband: Button
 
 var data_payload # Can be DivisionData OR Array[DivisionData]
 var is_selected: bool = false
@@ -26,9 +27,15 @@ func _ready():
 
 
 ## Setup for the new Grouped View
-func setup_grouped(pid: int, type: String, divisions: Array, currently_selected: bool) -> void:
+func setup_grouped(a_troop: TroopData, type: String, divisions: Array, currently_selected: bool) -> void:
 	data_payload = divisions
 	is_selected = currently_selected
+	
+	disband.pressed.connect(
+		func():
+			TroopManager.remove_troop(a_troop)
+			queue_free()
+	)
 
 	var count = divisions.size()
 	# label_division.text = "%dx %s at Province %d" % [count, type.capitalize(), pid]

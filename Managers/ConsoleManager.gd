@@ -21,6 +21,7 @@ func _ready() -> void:
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 	Console.add_command("drew_durnil_mode", _drew_durnil_mode, [], 0, "Lets u spectate the map")
+	Console.add_command("access", m_AddAccess, ["accesser", "accessee"], 1, "Add military access to a country")
 	Console.add_command("puppet", _puppet_country, ["country_name"], 1, "Change player country")
 	Console.add_command("invite", _invite_country, ["country_name"], 1, "Change player country")
 	Console.add_command("debug_decisions", _debug_decisions, [], 0, "Lets u do any focus and does it instantly")
@@ -109,6 +110,18 @@ func _start_war(country_name1: String, country_name2: String) -> void:
 	if not country1:
 		Console.print_line("Unknown country: " + country_name1)
 	if not country2:
+		Console.print_line("Unknown country: " + country_name2)
+
+func m_AddAccess(country_name1: String, country_name2: String) -> void:
+	var country1 := CountryManager.get_country(country_name1)
+
+	if country1 && !country_name2 in country1.allowedCountries:
+		country1.allowedCountries.append(country_name2)
+		return
+
+	if !country1:
+		Console.print_line("Unknown country: " + country_name1)
+	if !CountryManager.get_country(country_name2):
 		Console.print_line("Unknown country: " + country_name2)
 
 func m_StartWarSilent(country_name1: String, country_name2: String) -> void:
