@@ -1,4 +1,30 @@
 {
+	"Oil Rig": {
+		"build_cost": {
+			"money": "500.0",
+			"required_tags": "has_tag('structural_metal')"
+		},
+		"requirements": "true",
+		"input": [
+			{
+				"match": "has_tag('fossil_fuel')",
+				"amount": {
+					"min": "5.0",
+					"max": "20.0"
+				}
+			},
+			{
+				"amount": "10.0",
+				"resource_tag": "power"
+			}
+		],
+		"output": [
+			{
+				"match": "has_tag('fuel')",
+				"amount": "input_tag_val(0, 'fossil_fuel') * input_amount(0) * 2.0"
+			}
+		]
+	},
 	"Factory": {
 		"build_cost": {
 			"money": "500.0",
@@ -22,25 +48,6 @@
 			{
 				"match": "has_tag('electronic')",
 				"amount": "input_tag_val(0, 'structural_metal') * input_amount(0) * 2.0"
-			}
-		]
-	},
-	"Civilian Center": {
-		"build_cost": {
-			"money": "150.0",
-			"required_tags": "has_tag('wood') or has_tag('stone')"
-		},
-		"requirements": "true",
-		"input": [
-			{
-				"amount": "5.0",
-				"resource_tag": "water"
-			}
-		],
-		"output": [
-			{
-				"tag": "population",
-				"amount": "10.0"
 			}
 		]
 	},

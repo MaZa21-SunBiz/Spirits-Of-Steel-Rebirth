@@ -24,7 +24,7 @@ func _on_exit_settings_pressed() -> void:
 	SettingsUI.visible = false
 
 func _on_credits_pressed() -> void:
-	CreditsUI.visible = true
+	CreditsUI.visible = !CreditsUI.visible
 
 func _on_exit_credits_pressed() -> void:
 	CreditsUI.visible = false

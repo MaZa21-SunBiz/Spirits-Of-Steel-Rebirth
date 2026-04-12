@@ -164,7 +164,7 @@ func _sample_province_under_mouse() -> void:
 
 	# Check for military access
 	var prov = MapManager.province_objects[pid]
-	if !prov || !CountryManager.player_country.allowedCountries.has(prov.GetFunctionalOwner()):
+	if !prov || !CountryManager.player_country.get_all_allowed_countries().has(prov.GetFunctionalOwner()):
 		return
 
 	# Don't add duplicate consecutive provinces

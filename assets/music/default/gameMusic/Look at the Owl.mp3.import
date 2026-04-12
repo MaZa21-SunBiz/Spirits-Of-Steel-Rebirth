@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d10acgl7h8j7o"
+path="res://.godot/imported/Look at the Owl.mp3-66f54fd1b1a13dc49cf5113f16f840b8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/Look at the Owl.mp3"
+dest_files=["res://.godot/imported/Look at the Owl.mp3-66f54fd1b1a13dc49cf5113f16f840b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

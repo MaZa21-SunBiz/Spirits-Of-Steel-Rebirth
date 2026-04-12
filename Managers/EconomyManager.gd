@@ -52,6 +52,10 @@ func StartInfrastructureConstruction(a_provinceID: int, a_totalDays: int, a_dail
 		"country": a_country
 	}
 
+	if GameState.instabuild:
+		_complete_construction(a_provinceID, construction_queue[a_provinceID])
+		construction_queue.erase(a_provinceID)
+
 func start_construction(pid: int, type: String, total_days: int, daily_cost: float, country: CountryData):
 	# Set the province enum to BUILDING state immediately
 	MapManager.province_objects[pid].buildings.append(BuildingData.FromValues(type, BuildingData.BuildingState.CONSTRUCTION))
@@ -67,6 +71,10 @@ func start_construction(pid: int, type: String, total_days: int, daily_cost: flo
 		"daily_cost": daily_cost,
 		"country": country
 	}
+
+	if GameState.instabuild:
+		_complete_construction(pid, construction_queue[pid])
+		construction_queue.erase(pid)
 
 func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bteplwprq76l6"
+path="res://.godot/imported/Rammstein:Engel[Remix](Slowed & Reverb).mp3-491fb842e4aa48790696fb90cf4188b5.mp3str"
+
+[deps]
+
+source_file="res://assets/music/default/gameMusic/Rammstein:Engel[Remix](Slowed & Reverb).mp3"
+dest_files=["res://.godot/imported/Rammstein:Engel[Remix](Slowed & Reverb).mp3-491fb842e4aa48790696fb90cf4188b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

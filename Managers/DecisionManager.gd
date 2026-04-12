@@ -102,19 +102,16 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 
 	# 1. NEW: Check if busy with ANY decision
 	if is_country_busy(country):
-		print("busy")
 		return false
 
 	# 2. Check if already done or currently this specific one (redundant but safe)
 	if country.has_meta("finished_" + id) or is_in_progress(country, id):
-		print("already finished")
 		return false
 
 	# 3. Check Prerequisite
 	if data.has("prereq"):
 		var parent_id = data["prereq"]
 		if not country.has_meta("finished_" + parent_id):
-			print("prereq not met")
 			return false
 
 	# 3.5 Check Mutually Exclusive
@@ -124,7 +121,6 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 			exclusives = [exclusives]
 		for ex_id in exclusives:
 			if country.has_meta("finished_" + ex_id) or is_in_progress(country, ex_id):
-				print("exclusive")
 				return false
 
 	# 4. Check Cost
@@ -135,7 +131,6 @@ func can_take_decision(country: CountryData, cat: String, index: int) -> bool:
 	var reqs = data.get("reqs", "")
 	if reqs:
 		for req in reqs:
-			print(InterpreterManager.get_function(req))
 			if !InterpreterManager.get_function(reqs):
 				return false
 	return true
@@ -161,6 +156,7 @@ func start_decision(country: CountryData, cat: String, index: int):
 
 
 func _finalize_decision(country: CountryData, id: String):
+	country.finished_decisions.append(id)
 	country.set_meta("finished_" + id, true)
 
 	# Find the data to get the action (Slow search, but happens rarely)

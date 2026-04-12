@@ -20,21 +20,21 @@ func _filter_neighbor(from_id: int, to_id: int) -> bool:
 	var to_owner: String = to_prov.GetFunctionalOwner()
 
 	# --- 1. Naval Restrictions (Hard requirement) ---
-	if from_prov.type == Province.LAND and to_prov.type == Province.SEA:
-		var has_port = false
-		for b in from_prov.buildings:
-			if b.type == "Port":
-				has_port = true
-				break
-		if !has_port: return true
-		
-	if from_prov.type == Province.SEA and to_prov.type == Province.LAND:
-		var has_port = false
-		for b in to_prov.buildings:
-			if b.type == "Port":
-				has_port = true
-				break
-		if !has_port: return true
+	# if from_prov.type == Province.LAND and to_prov.type == Province.SEA:
+	# 	var has_port = false
+	# 	for b in from_prov.buildings:
+	# 		if b.type == "Port":
+	# 			has_port = true
+	# 			break
+	# 	if !has_port: return true
+	#
+	# if from_prov.type == Province.SEA and to_prov.type == Province.LAND:
+	# 	var has_port = false
+	# 	for b in to_prov.buildings:
+	# 		if b.type == "Port":
+	# 			has_port = true
+	# 			break
+	# 	if !has_port: return true
 
 	# --- 2. Political Access (Context-aware) ---
 	if !context_allowed_countries.is_empty():

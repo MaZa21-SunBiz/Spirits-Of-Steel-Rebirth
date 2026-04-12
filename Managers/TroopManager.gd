@@ -196,7 +196,7 @@ func _apply_movement_path(troop: TroopData, target_pid: int) -> void:
 		return
 
 	var country_ref = CountryManager.get_country(troop.country_name)
-	var allowed = country_ref.allowedCountries if country_ref else []
+	var allowed = country_ref.get_all_allowed_countries() if country_ref else []
 	var path = _get_cached_path(troop.province_id, target_pid, allowed)
 
 	if not path.is_empty():
@@ -214,7 +214,12 @@ func _get_cached_path(start_id: int, target_id: int, allowed_countries: Array[St
 	if start_id == target_id:
 		return []
 
-	var key = Vector2i(start_id, target_id)
+	# Sort and hash allowed_countries to ensure the cache key is unique per set of permissions.
+	var sorted_allowed = allowed_countries.duplicate()
+	sorted_allowed.sort()
+	var allowed_hash = str(sorted_allowed).hash()
+	var key = "%d_%d_%d" % [start_id, target_id, allowed_hash]
+
 	if path_cache.has(key):
 		return path_cache[key].duplicate()
 

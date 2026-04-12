@@ -365,7 +365,7 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 
 
 func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void:
-	if a == b || is_at_war(a, b):
+	if a == b || is_at_war(a, b) || FactionManager.in_faction(a, b):
 		return
 	#print("%s declared war on %s" % [a.country_name, b.country_name])
 	#_snapshot_country_territory(a.country_name)
