@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpjcaop54twmg"
-path="res://.godot/imported/YukawaHideki.png-a5bbdffec79a57c7bc392d4f88e26cd7.ctex"
+uid="uid://blct3yrl4h02y"
+path="res://.godot/imported/ww3.png-dc421ccd75fca145622a48494fbf5cf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/YukawaHideki.png"
-dest_files=["res://.godot/imported/YukawaHideki.png-a5bbdffec79a57c7bc392d4f88e26cd7.ctex"]
+source_file="res://starts/ModernEmpires/assets/superevents/ww3.png"
+dest_files=["res://.godot/imported/ww3.png-dc421ccd75fca145622a48494fbf5cf0.ctex"]
 
 [params]
 

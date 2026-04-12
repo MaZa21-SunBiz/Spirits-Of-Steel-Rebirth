@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwff60ouc8dmw"
-path="res://.godot/imported/TrofimLysenko.png-99573e803d58602f989ea466a7bd5754.ctex"
+uid="uid://bs0h3xk4410m"
+path="res://.godot/imported/tank.svg-750ba16c7a9cb32265944ca02e4c50a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/TrofimLysenko.png"
-dest_files=["res://.godot/imported/TrofimLysenko.png-99573e803d58602f989ea466a7bd5754.ctex"]
+source_file="res://starts/ModernEmpires/assets/division_icons/tank.svg"
+dest_files=["res://.godot/imported/tank.svg-750ba16c7a9cb32265944ca02e4c50a0.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

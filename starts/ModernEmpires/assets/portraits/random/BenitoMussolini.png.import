@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi65efqx7g1ie"
-path="res://.godot/imported/ChevalierDEon.png-1210d1e5e4fe0f9667ece00a97738385.ctex"
+uid="uid://cho1wupyj02tq"
+path="res://.godot/imported/BenitoMussolini.png-11c92cbffc3347691346bd128c22ec39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/ChevalierDEon.png"
-dest_files=["res://.godot/imported/ChevalierDEon.png-1210d1e5e4fe0f9667ece00a97738385.ctex"]
+source_file="res://starts/ModernEmpires/assets/portraits/random/BenitoMussolini.png"
+dest_files=["res://.godot/imported/BenitoMussolini.png-11c92cbffc3347691346bd128c22ec39.ctex"]
 
 [params]
 

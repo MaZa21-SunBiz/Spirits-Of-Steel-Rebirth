@@ -105,6 +105,8 @@ func _ensure_country_has_leader(country: CountryData) -> void:
 				new_figure.name = figure_name
 				new_figure.occupation = "Leader"
 				new_figure.portrait_path = random_portraits_dir + chosen_portrait
+				new_figure.allegiance = country.country_name
+				new_figure.status = ImportantFigure.Status.ALIVE
 				
 				MapManager.significantFigures[final_fig_name] = new_figure
 				country.figures.append(final_fig_name)

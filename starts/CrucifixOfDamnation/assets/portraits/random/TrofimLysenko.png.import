@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csf5aq4kgmjw5"
-path="res://.godot/imported/BenjaminFranklin.png-cb5edc78793ab69da35d443d8bf1e82b.ctex"
+uid="uid://dwff60ouc8dmw"
+path="res://.godot/imported/TrofimLysenko.png-427e6245b21f8b887ca21e29eea3d7a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/BenjaminFranklin.png"
-dest_files=["res://.godot/imported/BenjaminFranklin.png-cb5edc78793ab69da35d443d8bf1e82b.ctex"]
+source_file="res://starts/CrucifixOfDamnation/assets/portraits/random/TrofimLysenko.png"
+dest_files=["res://.godot/imported/TrofimLysenko.png-427e6245b21f8b887ca21e29eea3d7a7.ctex"]
 
 [params]
 

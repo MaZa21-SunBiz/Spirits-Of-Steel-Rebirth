@@ -1,21 +1,22 @@
 {
-  "clouds": 0.43,
-  "clouds_edgeness": 0.69,
-  "daynight_contrast": 0.05,
-  "daynight_smoothness": 0.01,
-  "debug_mode": true,
-  "edgeness_slider": 0.69,
-  "map_effects": true,
-  "music_volume": 0.24,
-  "province_borders": 0.11,
-  "radios": [
-    "Terraria"
-  ],
-  "scanlines": 0.04,
-  "sfx_volume": 0.26,
-  "ui_dirt": 0.39,
-  "ui_lower": 0.08,
-  "ui_upper": 0.64,
-  "vignette_lower": 0.63,
-  "vignette_upper": 0.19
+	"clouds": 0.43,
+	"clouds_edgeness": 0.69,
+	"daynight_contrast": 0.05,
+	"daynight_smoothness": 0.01,
+	"debug_mode": true,
+	"edgeness_slider": 0.69,
+	"map_effects": true,
+	"music_volume": 0.24,
+	"provinceBorderThickness": 0.5,
+	"province_borders": 0.11,
+	"radios": [
+		"Terraria"
+	],
+	"scanlines": 0.04,
+	"sfx_volume": 0.26,
+	"ui_dirt": 0.39,
+	"ui_lower": 0.08,
+	"ui_upper": 0.64,
+	"vignette_lower": 0.63,
+	"vignette_upper": 0.19
 }

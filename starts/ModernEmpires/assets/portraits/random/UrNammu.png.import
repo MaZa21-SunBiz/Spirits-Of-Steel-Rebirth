@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhl2sli4unxrd"
-path="res://.godot/imported/UrNammu.png-b6ad2a3b6d5f84beffcd53a7194cda96.ctex"
+path="res://.godot/imported/UrNammu.png-46c6ee23bf12dfcb18ff0d007af5140d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/UrNammu.png"
-dest_files=["res://.godot/imported/UrNammu.png-b6ad2a3b6d5f84beffcd53a7194cda96.ctex"]
+source_file="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png"
+dest_files=["res://.godot/imported/UrNammu.png-46c6ee23bf12dfcb18ff0d007af5140d.ctex"]
 
 [params]
 

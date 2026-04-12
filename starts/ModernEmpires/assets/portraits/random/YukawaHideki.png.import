@@ -2,22 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tn3pki6i5o06"
-path.bptc="res://.godot/imported/JaneAustenCassandra.png-70f9f8be1991dcfea170e2785f8276d7.bptc.ctex"
+uid="uid://bpjcaop54twmg"
+path="res://.godot/imported/YukawaHideki.png-7ab5482ba5bdb1e52725625929ed8280.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/CrucifixOfDamnation/assets/portraits/JaneAustenCassandra.png"
-dest_files=["res://.godot/imported/JaneAustenCassandra.png-70f9f8be1991dcfea170e2785f8276d7.bptc.ctex"]
+source_file="res://starts/ModernEmpires/assets/portraits/random/YukawaHideki.png"
+dest_files=["res://.godot/imported/YukawaHideki.png-7ab5482ba5bdb1e52725625929ed8280.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
