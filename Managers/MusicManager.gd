@@ -44,10 +44,11 @@ const custom_music_path = "res://radios/"
 var sfx_map = {
 	SFX.TROOP_MOVE: preload("res://assets/snd/moveDivSound.mp3"),
 	SFX.TROOP_SELECTED: preload("res://assets/snd/selectDivSound.mp3"),
+	SFX.BATTLE_START: preload("res://assets/snd/startSound.mp3"),
 	SFX.OPEN_MENU: preload("res://assets/snd/openMenuSound.mp3"),
-	SFX.CLOSE_MENU: preload("res://assets/snd/closeMenuSound.mp3"),
 	SFX.DECLARE_WAR: preload("res://assets/snd/declareWarSound.mp3"),
 	SFX.HOVERED: preload("res://assets/snd/hoveredSound.mp3"),
+	SFX.CLOSE_MENU: preload("res://assets/snd/closeMenuSound.mp3"),
 	SFX.GAME_OVER: preload("res://assets/snd/endGameSound.mp3"),
 	SFX.POPUP: preload("res://assets/snd/popupSound.mp3"),
 	SFX.BUILD: preload("res://assets/snd/buildSound.mp3"),

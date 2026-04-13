@@ -4,7 +4,7 @@ extends Node
 @export var base_speed: float = 600.0
 
 var is_dragging := false
-var top_bar_height = 32
+var top_bar_height = 26
 
 
 func _process(delta: float) -> void:
@@ -57,7 +57,7 @@ func _perform_zoom(direction: int) -> void:
 	var mouse_pos_before := camera.get_global_mouse_position()
 
 	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(
-		Vector2.ONE * 1080 / MapManager.MAP_HEIGHT,
+		Vector2.ONE * (648 + top_bar_height) / MapManager.MAP_HEIGHT,
 		Vector2.ONE * 12 
 	)
 

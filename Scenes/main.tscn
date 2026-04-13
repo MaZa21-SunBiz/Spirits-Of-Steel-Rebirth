@@ -55,6 +55,7 @@ shader_parameter/grid_opacity = 0.3
 shader_parameter/sea_pixel_size = 2.0
 shader_parameter/sea_height_steps = 6.0
 shader_parameter/ocean_offset = Vector2(0, 0)
+shader_parameter/BorderThickness = 0.5
 shader_parameter/internal_border_darkness = 0.82000003895
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3802"]

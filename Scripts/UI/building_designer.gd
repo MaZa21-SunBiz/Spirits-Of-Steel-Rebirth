@@ -84,7 +84,7 @@ func _build_match_ui(vbox: Container, block: Dictionary, prefix: String, index: 
 	opt.add_item("...")
 	opt.set_meta("match_expr", block["match"])
 	opt.set_meta("last_selected", "")
-	opt.item_selected.connect(func(idx): _recalculate())
+	opt.item_selected.connect(func(_idx): _recalculate())
 	
 	hbox_opt.add_child(lbl)
 	hbox_opt.add_child(opt)
@@ -100,7 +100,7 @@ func _build_match_ui(vbox: Container, block: Dictionary, prefix: String, index: 
 	card.add_child(card_vbox)
 	vbox.add_child(card)
 
-func _build_tag_ui(vbox: Container, block: Dictionary, prefix: String, index: int):
+func _build_tag_ui(vbox: Container, block: Dictionary, prefix: String, _index: int):
 	var r_tag = str(block["resource_tag"])
 	var hbox = HBoxContainer.new()
 	hbox.set_meta("io_type", prefix)
@@ -231,7 +231,7 @@ func _recalculate():
 	
 	# Pass 1: Setup Input Sliders, Dropdowns
 	for func_name in selected_functionalities:
-		var func_data = EconomyManager.building_functions[func_name]
+		#var func_data = EconomyManager.building_functions[func_name]
 		var slotted_inputs = func_io[func_name]["inputs"]
 		var slotted_outputs = func_io[func_name]["outputs"]
 		
@@ -289,7 +289,7 @@ func _recalculate():
 						match_idx_out += 1
 				
 				elif ui_element is HBoxContainer:
-					var prefix = ui_element.get_meta("io_type")
+					#var prefix = ui_element.get_meta("io_type")
 					var amt_cnt = ui_element.get_child(1)
 					var amt_node = amt_cnt.get_meta("amount_node")
 					if amt_node is HSlider:

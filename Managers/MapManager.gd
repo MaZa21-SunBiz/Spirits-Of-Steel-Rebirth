@@ -1555,6 +1555,7 @@ func _set_type_map(mat: Material, type_img: Image):
 	# --- PASS 1: Direct Mapping ---
 	for i in range(MAP_HEIGHT * MAP_WIDTH):
 		var x: int = i % MAP_WIDTH
+		@warning_ignore("integer_division")
 		var y: int = i / MAP_WIDTH
 		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
 

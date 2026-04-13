@@ -215,7 +215,7 @@ func _ready() -> void:
 		division_type.add_icon_item(
 			load("res://starts/%s/assets/division_icons/%s.svg" % [GameState.current_start, template]),
 			template.capitalize()
-			)
+		)
 	stats_labels = {
 		"pp": label_pp,
 		"manpower": label_manpower,
@@ -852,7 +852,10 @@ func _open_faction():
 	faction_prompt.visible = !faction_prompt.visible
 
 func open_manage_country():
-	logistics.close_menu() if logistics.visible else logistics.open_menu(CountryManager.player_country)
+	if logistics.visible:
+		logistics.close_menu()
+	else:
+		logistics.open_menu(CountryManager.player_country)
 
 	#GameState.current_world.set_process(false)
 	#GameState.current_world.clock.set_process(false)
@@ -869,7 +872,6 @@ func open_manage_country():
 # NOTE(soi): he did not infact add this at the top
 var selected_division_objects: Array[DivisionData] = []
 const DIVISION_CARD_SCENE = preload("res://Scenes/DivisionItem.tscn") # Path to your card
-
 
 func make_troop_container(selected_troops: Array[TroopData]) -> void:
 	troop_container.visible = true
@@ -1028,7 +1030,6 @@ func update_cultures() -> void:
 
 func _on_next_song_pressed() -> void:
 	MusicManager.skip_track()
-	
 
 func _on_pause_pressed() -> void:
 	MusicManager._toggle_pause()
