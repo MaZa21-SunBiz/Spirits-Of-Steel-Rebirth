@@ -111,7 +111,7 @@ func _update_multimesh_buffer():
 	if mm.instance_count != needed:
 		mm.instance_count = needed
 
-	var player_country = CountryManager.player_country.country_name if !GameState.selectingCountry else ""
+	var player_country = CountryManager.player_country.country_name if CountryManager.player_country else ""
 	var selected_troops = TroopManager.troop_selection.selected_troops
 	var groups = _group_troops_by_visual_position(TroopManager.troops)
 	var idx = 0

@@ -1255,6 +1255,9 @@ func show_industry_country(country_name: String) -> void:
 func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	var old_owner_name = MapManager.province_objects[pid].country
 	var oldControllerName = MapManager.province_objects[pid].GetFunctionalOwner()
+	
+	if pid in EconomyManager.construction_queue:
+		EconomyManager.construction_queue[pid].country = CountryManager.countries[new_owner_name]
 
 	if province_objects.has(pid):
 		province_objects[pid].country = new_owner_name
