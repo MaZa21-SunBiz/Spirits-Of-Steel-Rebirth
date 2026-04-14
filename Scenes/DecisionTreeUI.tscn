@@ -3,9 +3,15 @@
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="1_x8y2v"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_qq7pm"]
 
-[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("close_button", "edit_button", "save_button", "add_button")]
+[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("info_text", "info_tab", "edit_label", "edit_desc", "edit_days", "edit_ppcost", "close_button", "edit_button", "save_button", "add_button")]
 layer = 100
 script = ExtResource("1_x8y2v")
+info_text = NodePath("StaticUI/InfoPanel/TabContainer/InfoText")
+info_tab = NodePath("StaticUI/InfoPanel/TabContainer")
+edit_label = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer/EditLabel")
+edit_desc = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer/EditDesc")
+edit_days = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/EditDays")
+edit_ppcost = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/PPCost")
 close_button = NodePath("StaticUI/Header/HBoxContainer/CloseButton")
 edit_button = NodePath("StaticUI/Header/HBoxContainer/EditMode")
 save_button = NodePath("StaticUI/Header/HBoxContainer/SaveDecisions")
@@ -108,31 +114,67 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "  CLOSE MENU [X]  "
 
-[node name="InfoPanel" type="Panel" parent="StaticUI" unique_id=1980925476]
+[node name="InfoPanel" type="PanelContainer" parent="StaticUI" unique_id=54472730]
 use_parent_material = true
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 0
+offset_top = 488.0
+offset_right = 1152.0
+offset_bottom = 646.0
 
-[node name="InfoText" type="RichTextLabel" parent="StaticUI/InfoPanel" unique_id=1403528079]
+[node name="TabContainer" type="TabContainer" parent="StaticUI/InfoPanel" unique_id=393909199]
+layout_mode = 2
+current_tab = 1
+tabs_visible = false
+
+[node name="InfoText" type="RichTextLabel" parent="StaticUI/InfoPanel/TabContainer" unique_id=1403528079]
+visible = false
 use_parent_material = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = 20.0
-offset_right = -30.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 bbcode_enabled = true
 text = "[center][color=gray]Hover over a node to see info[/color][/center]"
+metadata/_tab_index = 0
+
+[node name="EditDecisions" type="VBoxContainer" parent="StaticUI/InfoPanel/TabContainer" unique_id=494517236]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StaticUI/InfoPanel/TabContainer/EditDecisions" unique_id=50824126]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1230923970]
+layout_mode = 2
+text = "Edit Label:"
+
+[node name="Label2" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1030639422]
+layout_mode = 2
+text = "Days:"
+
+[node name="EditDays" type="SpinBox" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1336521956]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1314679045]
+layout_mode = 2
+text = "PP Cost:"
+
+[node name="PPCost" type="SpinBox" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=644066874]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=591121843]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Edit Desc:"
+
+[node name="HBoxcontainer" type="HBoxContainer" parent="StaticUI/InfoPanel/TabContainer/EditDecisions" unique_id=1300503408]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EditLabel" type="TextEdit" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer" unique_id=1714090887]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditDesc" type="TextEdit" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer" unique_id=37782591]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TooltipPanel" type="Panel" parent="StaticUI" unique_id=320893541]
 visible = false
@@ -165,3 +207,7 @@ fit_content = true
 [connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditMode" to="." method="_on_edit_mode_toggled"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/SaveDecisions" to="." method="_on_save_decisions_pressed"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/CloseButton" to="." method="close_menu"]
+[connection signal="text_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer/EditLabel" to="." method="_on_edit_label_text_changed"]
+[connection signal="text_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer/EditDesc" to="." method="_on_edit_desc_text_changed"]
+[connection signal="value_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/EditDays" to="." method="_on_edit_days_value_changed"]
+[connection signal="value_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/PPCost" to="." method="_on_edit_ppcost_value_changed"]

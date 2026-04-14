@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy1baglnef07i"
-path="res://.godot/imported/KimJongUn.png-ef3327c4ca59fee408c2b9f0a87d8e5d.ctex"
+uid="uid://c6v6644j0r002"
+path="res://.godot/imported/EmmanuelMacron.png-85a302e8e73f3c61cfb38f08d3f941f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/KimJongUn.png"
-dest_files=["res://.godot/imported/KimJongUn.png-ef3327c4ca59fee408c2b9f0a87d8e5d.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/France/EmmanuelMacron.png"
+dest_files=["res://.godot/imported/EmmanuelMacron.png-85a302e8e73f3c61cfb38f08d3f941f4.ctex"]
 
 [params]
 

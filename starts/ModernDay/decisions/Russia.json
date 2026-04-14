@@ -828,6 +828,46 @@
 				],
 				"prereq": "pol_1_m",
 				"title": "Arrest the Opposition"
+			},
+			{
+				"action": [],
+				"cost_pp": 25.0,
+				"days": 20.0,
+				"desc": "",
+				"id": "67",
+				"pos": [
+					350.0,
+					-150.0
+				],
+				"reqs": [],
+				"title": "fish"
+			},
+			{
+				"action": [],
+				"cost_pp": 25.0,
+				"days": 20.0,
+				"desc": "",
+				"id": "23",
+				"pos": [
+					600.605590820312,
+					0.60565185546875
+				],
+				"prereq": "67",
+				"reqs": [],
+				"title": "23"
+			},
+			{
+				"action": [],
+				"cost_pp": 25.0,
+				"days": 20.0,
+				"desc": "",
+				"id": "21",
+				"pos": [
+					869.777709960938,
+					-238.825668334961
+				],
+				"reqs": [],
+				"title": "21"
 			}
 		]
 	}

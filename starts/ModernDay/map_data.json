@@ -81,7 +81,7 @@
 		"date": {
 			"day": 1,
 			"month": 1,
-			"year": 2026
+			"year": 2010
 		},
 		"hour": 0
 	},
@@ -806,6 +806,7 @@
 			"figures": [
 				"VladimirPutin"
 			],
+			"finished_decisions": [],
 			"government_positions": {
 				"Leader": "VladimirPutin"
 			},
@@ -834,6 +835,7 @@
 			],
 			"color": "#6F4747",
 			"figures": [],
+			"finished_decisions": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -960,7 +962,13 @@
 				"Indian-ocean"
 			],
 			"color": "#C8385D",
-			"figures": [],
+			"figures": [
+				"Keir_Starmer"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "Keir_Starmer"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1245,7 +1253,13 @@
 				"French-antartic"
 			],
 			"color": "#3D75E8",
-			"figures": [],
+			"figures": [
+				"EmmanuelMacron"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EmmanuelMacron"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1578,7 +1592,13 @@
 				"Japanase"
 			],
 			"color": "#FFC9B2",
-			"figures": [],
+			"figures": [
+				"SanaeTakaichi"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "SanaeTakaichi"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1830,7 +1850,13 @@
 				"Koreans"
 			],
 			"color": "#F50C37",
-			"figures": [],
+			"figures": [
+				"KimJongUn"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "KimJongUn"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2070,7 +2096,13 @@
 				"Koreans"
 			],
 			"color": "#5E76BE",
-			"figures": [],
+			"figures": [
+				"LeeJaeMyung"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "LeeJaeMyung"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2285,13 +2317,19 @@
 				"India"
 			],
 			"color": "#D0A36C",
-			"figures": [],
+			"figures": [
+				"NarendraModi"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "NarendraModi"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
 			],
-			"is_player": true,
+			"is_player": false,
 			"money": 100000.0,
 			"name": "India",
 			"political_power": 500.56,
@@ -3112,7 +3150,13 @@
 				"Senofu"
 			],
 			"color": "#CA6E7B",
-			"figures": [],
+			"figures": [
+				"IbrahimTraore"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "IbrahimTraore"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4359,10 +4403,6 @@
 			"figures": [
 				"ExodiaTheForbiddenOne"
 			],
-			"government_positions": {
-				"Leader": "ExodiaTheForbiddenOne"
-			},
-			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
@@ -4464,7 +4504,13 @@
 				"Tswa"
 			],
 			"color": "#AD585D",
-			"figures": [],
+			"figures": [
+				"GavGrub"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "GavGrub"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4759,7 +4805,6 @@
 			"accepted_cultures": [],
 			"color": "#FDFDFD",
 			"figures": [],
-			"hostedGovernments": [],
 			"ideology": [
 				0.0,
 				0.0
@@ -4776,11 +4821,6 @@
 			"accepted_cultures": [],
 			"color": "#22617E",
 			"figures": [],
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
 			"is_player": false,
 			"money": 0.0,
 			"name": "Donetsk",
@@ -4793,11 +4833,6 @@
 			"accepted_cultures": [],
 			"color": "#2D6458",
 			"figures": [],
-			"hostedGovernments": [],
-			"ideology": [
-				0.0,
-				0.0
-			],
 			"is_player": false,
 			"money": 0.0,
 			"name": "Luhansk",
@@ -119333,16 +119368,76 @@
 			"traits": []
 		},
 		{
-			"skills": {
-			},
 			"allegiance": "Russia",
 			"ideology": [
 				0,
 				0
 			],
+			"legitimacy": 100,
 			"name": "VladimirPutin",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/VladimirPutin.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Russia/VladimirPutin.png",
+			"skills": {
+				"attackerAttackMitigation": 0.95,
+				"dailyPPGain": 0.1,
+				"defenderAttackMitigation": 0.95,
+				"divCostMod": 0.95,
+				"stability": 0.2,
+				"troopAttackAdd": 0.25,
+				"troopAttackMod": 1.01,
+				"troopDefendAdd": 0.15,
+				"troopDefendMod": 1.02,
+				"troopSpeed": 0.05,
+				"warSupport": 0.3
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Argentina",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "UrNammu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Antartica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "BenitoMussolini",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Eswatini",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "DaleyJohnOttersbach",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -119353,9 +119448,74 @@
 				0
 			],
 			"name": "DonaldJohnTrump",
+			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/DonaldJohnTrump.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/United_states/Donald_John_Trump.png",
 			"skills": {},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Lesotho",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "JaneAustenCassandra",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Donetsk",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "YukawaHideki",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tonga",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "ChevalierDEon",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tuvalu",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "TrofimLysenko",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -119366,8 +119526,25 @@
 				0
 			],
 			"name": "AlexanderLukashenko",
+			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/AlexanderLukashenko.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Belarus/Alexander_Lukashenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Uruguay",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "JoshPaulraj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
 			"skills": {
 
 			},
@@ -119381,6 +119558,7 @@
 				0
 			],
 			"name": "XiJinping",
+			"legitimacy": 100,
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/XiJinping.png",
 			"skills": {
@@ -119398,8 +119576,1256 @@
 			"name": "VolodymyrZelenskyy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/VolodymyrZelenskyy.png",
+			"legitimacy": 100,
 			"skills": {
 
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Luhansk",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "BenjaminFranklin",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Israel",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 100,
+			"name": "Netanyahu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Israel/Netanyahu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Canada",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaulpassingEuthoildyxuilm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Denmark",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AistreanuoschausiuswOesplaytwouEatragreippeerpoo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Russia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EoldialiolpEethroisplauss",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Norway",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OiqoodierluaphaemAepiobbuefoengeuldaith",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Finland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UolkybRmeeneasloSirlio",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sweden",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IuffypteociudrauphauspaiqQuuylayAezzuouboygraps",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Iceland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EurmaewhiagaskoystaynkucuoSlioughoistreummaextiuIrpou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Estonia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OastiouleazearluossuyskiJuolpaeddaurpRguounkeesheudwoesprustai",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "United_kingdom",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "Keir_Starmer",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/United_kingdom/Keir_Starmer.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Latvia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IouyiSmuiphiold",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Lithuania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UokkailgSpaydweo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Belarus",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IastriekoikaischasheackIoukooshuirkaispruybioflioOangiastaugguoskei",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ireland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "HafrosmayckauckeeshaoflyflRduexteessoosk",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kazakhstan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "BbauyaestriaghtuophaulmeormLduoulkiawoedwiurleyrduygoomm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Germany",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OuskeeswaisaswueOykiuwuouquuonnausplaoqueermIochuyntiustrioj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Poland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ThruirgeibiEingoacAerpeecceaunesouptientoe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Netherlands",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UybruikounoylpAuscoiduantuizzaowaygoeOynuythruyguefoigliaskoe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "China",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "DdiangoofuakroysnudwIastrouggunteikkaebraukkNtospoortoeschucciu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ukraine",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TchaengyrdaoshuaboaptRpuouddaocceyccuoccaushAygruj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mongolia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GeevUykkyschuflierpoowriStruedrountyrgay",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Belgium",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OedheattaoldiaflompiowhUavi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "France",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EmmanuelMacron",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/France/EmmanuelMacron.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Czechia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "StroesweauDdoynniolkeawhaisk",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Luxembourg",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EyttualmoimpyffRkuihioulmaestriupeorkeaupiouCeazzuofuadwoo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Slovakia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AwhuyEultoyxteiRlourmeaulgui",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Austria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UitaixteikkeesproerruyzEozzaoppoorkeetcheepreyrdea",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Hungary",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EmmuiskiaghoystroommyttaoldSluouyeygayhooghtiaghaytheauTweaxefluybiu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Moldova",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KkeulymoyntaopuapeygleyBlioulmoocc",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Romania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NylgiouHeespleaurroiplympoantiuxteiEodwau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Transnistria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AutruzzuesplynnuabyluikkIulaorraudheoffaymmNneibriou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Switzerland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EvuouwreyluodwuyUorkeihoelmUaquayciuxiormeiceimmio",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Liechtenstein",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EbbylaorkoeghtourlEikkeytruyglaipoislylm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Italy",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaustaulmioufeasoampuittaiUequoschoytwulkuallaeUougreekea",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Slovenia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YdueckouvadruytrOulpuowoippiampymEauspaoli",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Croatia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LpaozzeynkeuwOeyoltuouvirguascoyzzais",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Serbia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UoutchoybluardoangielmioswuweoXteobroikreoscee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bosnia_and_herzegovina",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AnnoyzUeflilpaollaip",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Uzbekistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GhtoyrkoogroantooggeessouxuoIelpoetruofloirpoytrShaossuilaytaidwuy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Japan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SanaeTakaichi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Japan/SanaeTakaichi.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bulgaria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EytwuaquayseiRliggiruarpyqueujempauStreuxteildappeistroustaybreausc",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Spain",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ElveefuyknaixtilkiowewrBrepseampalouPhiedhomoyrmiahuothiespr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "San_marino",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IughtaeyoutriawuOeptuosmuykioUajue",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Monaco",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TcholeequaozugreaucciadwEartoiLdiouvokuyjiongeyxtoinkuy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Abkhazia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EolpauptogreestruistOugeijotrUagguazistiexaurteullupr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Montenegro",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AsweaustriuPheyppeequeascuaxtimmuscutr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kosovo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ScioupriabeonnoeggLkultuelteaskeorg",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Georgia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TruehoxaetwaiswouknoyffNkouwrOaspreulkuefeaseauthroascayck",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kyrgyzstan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LpiaroafyYnnoudeoswiaz",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Andorra",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AydaunuoggOazzadhuadheelpeyrgoyPyghaywhaelkyffuatoup",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "South_ossetia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OotchongealdaidwuounteypluiRuoureeUelgeulv",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Turkmenistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UoffefaoZuowiasprablupreau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "North_korea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KimJongUn",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/North_korea/KimJongUn.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Albania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GloelluobloympeydraiCkiephoybroingJaummao",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "North_macedonia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AequorliuhuoustriodwSceippeybloeAfrefrioulm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Azerbaijan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ArgouprKiashouLmoykkurrempiujayj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Portugal",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaumpoildairguouchannIsciudhRdiotraeviolteeprou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Turkey",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TtoospEautchaikoafoplualizou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Vatican_city",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OglanetcheuxteasoesyplioEewreoploiphyblaerdioSmifleaustroadw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Greece",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EeppoulmeeHiowharluwhoykkeyrdeaup",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Armenia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RmiusplayZziaspleyscaggyfl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tajikistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OangeaulpaischiarkeauwhusheegRkeuggaiziggaospioulgKnioussuyppietchaesnui",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Iran",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OesmauDhooddeinaspregluifeot",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Afghanistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OirlaibriourraeblThaeghiYydwoybraptuadrou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "South_korea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LeeJaeMyung",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/South_korea/LeeJaeMyung.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tunisia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OogloarpaurmayploeplokniBbaottuoultauspreemuoujoeph",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Iraq",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AstoyrduipsaorduonnuedhiuSeukroakkoeghtoufleyschoiqu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Syria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OobuiwroiOermoethreostruoLgiuggoatch",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Pakistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "MmoynteychiesteyruykkIacusploelgidr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Algeria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PpiaxtiuSceauruycuabroosneyrleontoabIuyiedruiddeo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Morocco",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "StreylaismooNnuerduistroocEefletw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Malta",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AezzalvoyssasteaSchiourm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Turkish_cyprus",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OuthroinkarmuoubrProodraoluikniulkEempakn",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "India",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NarendraModi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/India/NarendraModi.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cyprus",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SchoengQouthrasmuSlaefrikkodouthreubroahuy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Lebanon",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LveoscaompoikkedreespraoAixoymeeckeuspreafrioudoujee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Libya",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PhuoupUispreiseaulkouppiouduyskottSkeisseausluoulkuyghuefee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
 			},
 			"status": 0,
 			"traits": []
@@ -119413,6 +120839,1927 @@
 			"name": "BenjaminNetanyahu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/BenjaminNetanyahu.png",
+			"legitimacy": 0,
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mexico",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AuyoafaydduapsurpiurmPlaeccualtiegleubraegOknuokeaurdeowhaycoink",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Saudi_arabia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SkaeldolpoonnuiyuRpeheorpauneaummilloustuenTwarmeipreynnythrert",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Palestine",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EostoyrdeuffeubrayrgakaiWralpoipsayjerpiuj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Egypt",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RgaoghootraypsRuackadwioukioudaurreyTwyrguigiuwoychaemeosceo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nepal",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AoroeplybeisloeAilveejioyeySiakeau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kuwait",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RmoazeaufrutwioupleylvoelgaexRleiforpualoasyflulmuemmTreyhiu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bhutan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UepeedriukoeryOunkuisloystreisuefiffou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Myanmar",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IastruarguarrDouvoy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Western_sahara",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OytyldPpaiswegg",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mauritania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OusproolkaugeolduagheirkAsmuiltuysployreirmei",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bahrain",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LtiurperUdhouboyflionneucc",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bangladesh",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EipruyslippuoutrieckeakeauOrdeylmialveampyppaipabrau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Qatar",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "CceolmoaghiejoIuruemmeuspluorEywruypsoodhioutchuecuourrie",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Oman",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AippemmuountuoulkoigryviouUibroyptuckeaudwuplualdieIoddugrerdeasuoffoegrouy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Taiwan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AspluobonurryflazTrioltoslieproppisleelpoispr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mali",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TchoungonnIuhuespreinealpoirkOofleilmueskaunkeuffuytuy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "United_arab_emirates",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IokkairluiphuyzziphoubbAeldeiffaiwCheufoiwhouphiuthygeasci",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Niger",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YrloelmaidweoqEaskiadwauckiouldou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cuba",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UoxtuouOothreulpiourriaffaupseuz",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Chad",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TufrustuodrioyaulmuolpeeflEtelkioddeaurkLpeauteypteyd",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sudan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "FaerruoultoldyrySliurtuylvixeyrrioccou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Vietnam",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IourdaeghtuybbNkealuppiergoastiekk",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Laos",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OrkialgeaurrooschoadhTchuelpagitriesmeenteRkaevayraegrouspaokkuaknobb",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Thailand",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TroepRdeaheaulpeotweortuycOspaongaofruasnee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Haiti",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NgienkuygrelgRmaixtiwoskeuxeuckOmieschoetheyplyknaobbiathuo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dominican_republic",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EukraufuycoaOaffuoubriacEeschoebinoeffuoudhayrpeau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Belize",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GreapruwoyrreughEzziofoypOusto",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Yemen",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PhayxuespruaglosaebruinnUebrueskeelduitaizzussientAutaoroexoergukniarpee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Jamaica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "QoedaethreipleelkialgoyGhtiarruympilmuigaipheu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Philippines",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GgesmoashieffuouEermoi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Guatemala",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OasplealpeaudwaytchAigruytcheispreariakoYsuystust",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Eritrea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EobrayquuazzoirlorgAospiothruirkuywuoufriorka",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cabo_verde",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KkeelpoiflixiouAojynkeysouFadhuik",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "St_kitts_and_nevis",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RgaesmiesliosliespluoucheyqXiofruydruibbausloeryCcunkiouknaosm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Senegal",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EdroampoibloentiettualdobbeUerlieskiaschaeshufeasch",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Honduras",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IouppiuWoukruoudaeheauxtiakneldiou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Burkina_faso",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IbrahimTraore",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Burkina_faso/IbrahimTraore.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "El_salvador",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ZeuccooquyfoelpieLtoackae",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nicaragua",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KruygloaskeadweadhAystygroylgelkoepieqay",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ethiopia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SweorruppaghiertoalliTweawassuasniolkoyguakriaSchoozziuziu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cambodia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RraigeedassailtiffTreuzzuiffiouhiouldeauppoe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dominica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EekoytwiothuatuepoaOapleostaidraeckuyflBezzioldeyphynteekiogipr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nigeria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UourleyduegholdoozzuountMmuigreyIushiugoa",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Gambia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaproasprouldolkDeeh",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Barbados",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TraoweoghyblEaskeequoUestuywruybbiawrue",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "St_lucia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UouspreyeskaiviolpiouNuiggaontuoutteintaughuidr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Guinea_bissau",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OipseexaypleauzexAlliungeyrraonaormFiemmau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Guinea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UoucheauskikkoukkarmippoyrlYauvuef",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Colombia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KreapoeshialviextueScuisneephoybre",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Venezuela",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "TteaspruypheyTchoottaydd",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Grenada",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ScoistaextiapaebuoumyEofriuxoustreyssuepuifruiy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Benin",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AossoirgXeidhoalvippaeghteiriorkieltMuockiubbeyffioussayxitr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Djibouti",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AybieEocinkuout",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cameroon",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IablaequiophaythouciolvoiqAocheesseaukeiquuedai",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "South_sudan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "XtuextuolmQiejoypezzodduoudwoy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Somalia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "VeadruoustoyfoiyiurgoeRguydraquaesw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Somaliland",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PluapruolmKnoyldiurpadduyLteausplauvastrao",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Costa_rica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NtiogguerpauprioxuingeaIefreaumpihiacciarmittoanneyPriespr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Togo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AotchuiyetchykkuompoaccScioultiebliezee",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Maldives",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OuroordoukkuoSkipsoafrairdeeSeoplapreubleyskiarde",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ghana",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UotwaknoiApseolteuccoipl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Central_african_republic",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PreentIennuayeauwievoe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Trinidad_and_tobago",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UouffueSceylmuzaiYrmae",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ivory_coast",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AnosniormuohuyBbiawhooffeantuascheeld",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sierra_leone",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PysmioussNkaerm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Panama",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "FfaoxtuydwReecua",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sri_lanka",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ZzuschiokniuccuyPsoerkeutrioumpiarluofr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Liberia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RoirgauwhiafruildoawhaAoneilluyleylgounn",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Guyana",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LviethreirpeecyngooschoithreiOegguadhiouckiouphyrroi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Palau",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AopteauckaurkaermelveadwaedruaVaorpiuscousleontaifoi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nauru",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AifleinkeelmoirdeuddiouEighiousceebuourleiddu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Malaysia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OilpuocizeaupliutheuphoyglCciouppeauph",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Suriname",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IouyoyEedhipeolv",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Indonesia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IrmouptiaPsayspleaummeauntooccoe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Brazil",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UyleesnuiknoummuiltuoughtarmieBeopelmuyscheuspiezzoequoeNgompouttaptialvonkeaskio",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dr_congo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IusythofEathraetruynneammebbay",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kenya",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AifrieriourRtuouwuoptoaptioSplaytuounnuyshafroirtoo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Brunei",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UywhybraokkoosEoxysnaulloeffauRdiohaemmeiyiappinuablao",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Uganda",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PriupeeIouptyhaeskeadLmousmeimpoirdau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Equatorial_guinea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KkiuwayngoeffeEpluidweermoeslilpockaij",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Congo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "WibraezeudwuiknElvuoustroomp",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Gabon",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OinkeybluyrrougroatwOigrairmaemmoaffoejaennaetteuOiwriustioroy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Singapore",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KroyskayfuoLpioffaogaumm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ecuador",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IourruydruahaurmoephaeIafluongiephiazzermuouhiu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sao_tome_and_principe",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaulpeathiuwhouswoangoutriEystuaRpuopleurgoysmyslio",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Peru",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EuntiouAothruidhaepoestruahuouFleaurmuardoull",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Rwanda",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LlueltoadweiptLairtoyccayyeu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tanzania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IarmeIoknuequosme",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Burundi",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NkaulmeorgormethrathackEauflioumetruykkaerIowearliuvoafr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Papua_new_guinea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IghiopruerkeespluippayGiepl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Angola",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RmeaswybbeEilaeraytraubboasprieddioqGlauptodheipreilp",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Seychelles",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IesloiduffirkeyzuevuysooThoiltiachestight",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Solomon_islands",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AetchuyluihOefretruarreupteappioutwaeOikaurdoutteaprusleaulvicc",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Zambia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EaubriompaybloazzeaurmoickUlvailpMaelvooquifeegucialtiou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "East_timor",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AobbuawhaikraoEaudwoiblZauppuaspoobbuikkoaspraytr",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tuvalu",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "XuaccoefloaccQuuouddyrruyldableovuabruouph",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Malawi",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AughoestryrpeoEdwykrioudeauldeyponiurrou",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bolivia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LkaungaommiumpaycoknIabethyjuashayryruiSmailmasploaltyslaowrionuo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mozambique",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RruobouqeithriutuylpeuscheauReexteeccautroeshaoknayswOepaeccoiboeffauscheiv",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Australia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AzzaepsiouccoykraezzuetweighoTrayo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Madagascar",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EegloeschiaZzuesluybbyrluousw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Vanuatu",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NgeentiurgiattykriUouyuy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Zimbabwe",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GavGrub",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Zimbabwe/GavGrub.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Fiji",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LdiouxyknaorkyOalpaibboibuinkuepluadweent",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Namibia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EurmueskischyflioshStriudreopsilmophOwoirmostreu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Niue",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AirkoaproutwuiveaAurtacathimauschoosseimmuyNuogloeslooxtoilgoeggeaull",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Chile",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LgoidwiompiostraoEycheiseerpul",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Botswana",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OutrauzooYaoccoewulvAchiourgouspl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Paraguay",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AuscuougialkiorrairgeilgiouquXtierduyrguordioubbea",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mauritius",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OeltaedwiogruyyounEeckaird",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tonga",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OarkueghaikuouTwiuwrayglioulootroascSpliouspl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Argentina",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RgierdairtaywrokkuischiOaphuouswuophotwaextuoMmuermynkuogayghtypl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "South_africa",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NgoirgoyrtouckiougleiknaEyptaynnuep",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Eswatini",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RmuoubeauchaethyppeiplAveylkio",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Lesotho",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "XtaysteaupreaxuabeylUoultoipoyswaylm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Uruguay",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EatchoedweoppiupeypsorraythStuopreermuaghteauTaeck",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "New_zealand",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AyghaidhieveiAurgierdyjaolveoghturdathuaGluamuit",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Antartica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OelpuyEafrutriesmoaghtorruextoefSleiscuyrpeaustei",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Donetsk",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OyspreythreimpOaglieMpempeauspang",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"skills": {
+
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Luhansk",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PokaessiettiouryAugleauxteerkoyAygrioulteoffoelmuis",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
 			"skills": {
 
 			},

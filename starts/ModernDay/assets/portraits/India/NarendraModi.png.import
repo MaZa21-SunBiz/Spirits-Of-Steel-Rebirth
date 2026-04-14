@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cleoq7ickstbk"
-path="res://.godot/imported/SanaeTakaichi.png-e57d64c05fbba1779a10c2edf723f751.ctex"
+uid="uid://cti15pgt2bmfd"
+path="res://.godot/imported/NarendraModi.png-096c0f554d048727416399c7b62abb37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/SanaeTakaichi.png"
-dest_files=["res://.godot/imported/SanaeTakaichi.png-e57d64c05fbba1779a10c2edf723f751.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/India/NarendraModi.png"
+dest_files=["res://.godot/imported/NarendraModi.png-096c0f554d048727416399c7b62abb37.ctex"]
 
 [params]
 

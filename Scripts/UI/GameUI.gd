@@ -960,13 +960,14 @@ func update_division_menu():
 	div_stats.text = "%s\n%s\n%s" % [stats.attack, stats.defense, stats.hp]
 
 	var total_manpower: int = stats.manpower * count
-
-	var player: CountryData = CountryManager.player_country
-	costs.text = format_number(stats.cost * count * player.divCostMod)
 	manpower.text = format_number(total_manpower)
 
-	# 4. Check Affordability & Update Button State & Visuals
-	button_train.disabled = !player || player.manpower < total_manpower
+	var player: CountryData = CountryManager.player_country
+	if player:
+		costs.text = format_number(stats.cost * count * player.divCostMod)
+
+		# 4. Check Affordability & Update Button State & Visuals
+		button_train.disabled = !player || player.manpower < total_manpower
 
 func _on_button_train_troops() -> void:
 	if CountryManager.player_country.train_troops(

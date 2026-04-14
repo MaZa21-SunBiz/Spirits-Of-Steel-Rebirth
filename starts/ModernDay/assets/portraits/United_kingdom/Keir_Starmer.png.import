@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbevnuosjm4uk"
-path="res://.godot/imported/XiJinping.png-3cf30a83ab0c7c525f1f9e0e8dec1a8c.ctex"
+uid="uid://d25nial4l48w"
+path="res://.godot/imported/Keir_Starmer.png-726f6bd61a0a8044ac3e13564ab5b924.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/XiJinping.png"
-dest_files=["res://.godot/imported/XiJinping.png-3cf30a83ab0c7c525f1f9e0e8dec1a8c.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/United_kingdom/Keir_Starmer.png"
+dest_files=["res://.godot/imported/Keir_Starmer.png-726f6bd61a0a8044ac3e13564ab5b924.ctex"]
 
 [params]
 

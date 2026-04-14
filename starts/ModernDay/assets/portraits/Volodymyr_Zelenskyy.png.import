@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgiratgfoet2s"
-path="res://.godot/imported/IbrahimTraore.png-6b9baed6339bf562c9b5fabcf1d178b2.ctex"
+uid="uid://ckwthisht51gc"
+path="res://.godot/imported/Volodymyr_Zelenskyy.png-cc1f9cf77f263e3e48d21dad34e2a02b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/IbrahimTraore.png"
-dest_files=["res://.godot/imported/IbrahimTraore.png-6b9baed6339bf562c9b5fabcf1d178b2.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/Ukraine/Volodymyr_Zelenskyy.png"
+dest_files=["res://.godot/imported/Volodymyr_Zelenskyy.png-cc1f9cf77f263e3e48d21dad34e2a02b.ctex"]
 
 [params]
 

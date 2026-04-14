@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crjot1nwl86us"
-path="res://.godot/imported/EmmanuelMacron.png-f80df7281b20d473c7dad8f713ac54b4.ctex"
+uid="uid://bo0vw1c8stg17"
+path="res://.godot/imported/IbrahimTraore.png-ac454e534dcae9d9c01a8806726520d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/EmmanuelMacron.png"
-dest_files=["res://.godot/imported/EmmanuelMacron.png-f80df7281b20d473c7dad8f713ac54b4.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/Burkina_faso/IbrahimTraore.png"
+dest_files=["res://.godot/imported/IbrahimTraore.png-ac454e534dcae9d9c01a8806726520d7.ctex"]
 
 [params]
 

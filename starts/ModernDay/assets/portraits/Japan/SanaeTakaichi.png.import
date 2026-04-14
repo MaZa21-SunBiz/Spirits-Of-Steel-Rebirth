@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuecstse2xm2r"
-path="res://.godot/imported/VolodymyrZelenskyy.png-3bf430b51424397a7ede681bfe3b462c.ctex"
+uid="uid://b2a6758128moh"
+path="res://.godot/imported/SanaeTakaichi.png-c445fab870c6b8c94c4bf91f263eba5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/VolodymyrZelenskyy.png"
-dest_files=["res://.godot/imported/VolodymyrZelenskyy.png-3bf430b51424397a7ede681bfe3b462c.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/Japan/SanaeTakaichi.png"
+dest_files=["res://.godot/imported/SanaeTakaichi.png-c445fab870c6b8c94c4bf91f263eba5f.ctex"]
 
 [params]
 

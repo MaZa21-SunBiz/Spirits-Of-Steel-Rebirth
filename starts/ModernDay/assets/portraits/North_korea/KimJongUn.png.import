@@ -2,7 +2,6 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD:starts/ModernDay/assets/portraits/VladimirPutin.png.import
 <<<<<<<< HEAD:starts/ModernDay/assets/portraits/VladimirPutin.png.import
 uid="uid://cqfgfjq77fvi1"
 path="res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24b8b98.ctex"
@@ -10,17 +9,12 @@ path="res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24b8b98.c
 uid="uid://d10v6qceku4p3"
 path="res://.godot/imported/KimJongUn.png-cea25b5f2e1e5ab2d95e270c6f655593.ctex"
 >>>>>>>> 091e5628 (slightly improved focus editor):starts/ModernDay/assets/portraits/North_korea/KimJongUn.png.import
-=======
-uid="uid://bkxoxt2xerw7k"
-path="res://.godot/imported/VladimirPutin.png-d065f00b062471d187082a78ae3de4dc.ctex"
->>>>>>> 091e5628 (slightly improved focus editor):starts/ModernDay/assets/portraits/Russia/VladimirPutin.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:starts/ModernDay/assets/portraits/VladimirPutin.png.import
 <<<<<<<< HEAD:starts/ModernDay/assets/portraits/VladimirPutin.png.import
 source_file="res://starts/ModernDay/assets/portraits/VladimirPutin.png"
 dest_files=["res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24b8b98.ctex"]
@@ -28,10 +22,6 @@ dest_files=["res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24
 source_file="res://starts/ModernDay/assets/portraits/North_korea/KimJongUn.png"
 dest_files=["res://.godot/imported/KimJongUn.png-cea25b5f2e1e5ab2d95e270c6f655593.ctex"]
 >>>>>>>> 091e5628 (slightly improved focus editor):starts/ModernDay/assets/portraits/North_korea/KimJongUn.png.import
-=======
-source_file="res://starts/ModernDay/assets/portraits/Russia/VladimirPutin.png"
-dest_files=["res://.godot/imported/VladimirPutin.png-d065f00b062471d187082a78ae3de4dc.ctex"]
->>>>>>> 091e5628 (slightly improved focus editor):starts/ModernDay/assets/portraits/Russia/VladimirPutin.png.import
 
 [params]
 

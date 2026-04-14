@@ -20,8 +20,12 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 # --- NODES ---
 @onready var tree_canvas: Node2D = $CanvasAnchor/TreeCanvas
 @onready var tabs_container: HBoxContainer = $StaticUI/Header/TabsContainer
-@onready var info_text: RichTextLabel = $StaticUI/InfoPanel/InfoText
-@onready var info_panel: Panel = $StaticUI/InfoPanel
+@export var info_text: RichTextLabel
+@export var info_tab: TabContainer
+@export var edit_label: TextEdit
+@export var edit_desc: TextEdit
+@export var edit_days: SpinBox
+@export var edit_ppcost: SpinBox
 # @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
 @export var close_button: Button
 @export var edit_button: Button
@@ -37,6 +41,8 @@ var edit_mode: bool = false
 var dragging_node: Button = null
 var connecting_id: String = ""
 var drag_offset: Vector2 = Vector2.ZERO
+var selected_decision: Dictionary = {}
+var selected_node_btn: Button = null
 
 
 func _ready():
@@ -449,8 +455,17 @@ func _on_edit_mode_toggled(toggled_on: bool):
 	edit_mode = toggled_on
 	save_button.visible = toggled_on
 	add_button.visible = toggled_on
-	# Refresh UI to show/hide move handles or change style?
-	# For now, just toggling the state is enough.
+	
+	if info_tab:
+		info_tab.current_tab = 1 if toggled_on else 0
+
+	if not toggled_on:
+		selected_decision = {}
+		selected_node_btn = null
+		edit_label.text = ""
+		edit_desc.text = ""
+		edit_days.value = 0
+		edit_ppcost.value = 0
 
 
 func _on_save_decisions_pressed():
@@ -470,6 +485,14 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 					dragging_node = btn
 					drag_offset = btn.get_local_mouse_position()
 					btn.z_index = 10 # Keep dragged node on top
+					
+					# Select for editing
+					selected_decision = data
+					selected_node_btn = btn
+					edit_label.text = data.get("title", "")
+					edit_desc.text = data.get("desc", "")
+					edit_days.value = data.get("days", 0)
+					edit_ppcost.value = data.get("cost_pp", 0)
 				else:
 					if dragging_node == btn:
 						dragging_node = null
@@ -547,3 +570,56 @@ func _on_add_decision_pressed() -> void:
 	
 	_update_connections()
 	tree_canvas.queue_redraw()
+
+
+func _on_edit_label_text_changed() -> void:
+	if selected_decision.is_empty() or not selected_node_btn:
+		return
+	
+	selected_decision["title"] = edit_label.text
+	_update_node_visuals(selected_node_btn, selected_decision)
+
+
+func _on_edit_desc_text_changed() -> void:
+	if selected_decision.is_empty() or not selected_node_btn:
+		return
+	
+	selected_decision["desc"] = edit_desc.text
+	_update_node_visuals(selected_node_btn, selected_decision)
+
+
+func _on_edit_days_value_changed(value: float) -> void:
+	if selected_decision.is_empty() or not selected_node_btn:
+		return
+	
+	selected_decision["days"] = int(value)
+	_update_node_visuals(selected_node_btn, selected_decision)
+
+
+func _on_edit_ppcost_value_changed(value: float) -> void:
+	if selected_decision.is_empty() or not selected_node_btn:
+		return
+	
+	selected_decision["cost_pp"] = int(value)
+	_update_node_visuals(selected_node_btn, selected_decision)
+
+
+func _update_node_visuals(btn: Button, data: Dictionary):
+	var player = CountryManager.player_country
+	_apply_node_style(btn, data, player)
+	
+	# Update tooltip
+	var tt = data["title"]
+	if data.get("desc", "") != "":
+		tt += "\n" + data["desc"]
+	
+	var reqs_text = str(data.get("reqs", []))
+	if reqs_text != "" and reqs_text != "[]":
+		tt += "\n\n[ Requirements ]\n" + reqs_text
+
+	var action_text = str(data.get("action", []))
+	if action_text != "" and action_text != "[]":
+		tt += "\n\n[ On Finished ]\n" + action_text
+	
+	btn.tooltip_text = tt
+

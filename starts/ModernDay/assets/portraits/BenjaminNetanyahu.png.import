@@ -2,8 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD:starts/ModernDay/assets/portraits/BenjaminNetanyahu.png.import
 uid="uid://csjyf1rsp5msn"
 path="res://.godot/imported/BenjaminNetanyahu.png-13cd630ca469ce48eb603c0ff1bfdce4.ctex"
+=======
+uid="uid://c3ellpm37kxms"
+path="res://.godot/imported/Xi_jinping.png-6b58cd99cb7d6e472b1b01a068b4217e.ctex"
+>>>>>>> 091e5628 (slightly improved focus editor):starts/ModernDay/assets/portraits/China/Xi_jinping.png.import
 metadata={
 "vram_texture": false
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dydd1t67bbso1"
-path="res://.godot/imported/VladimirPutin.png-92b0e5b50812ea7f744cfbaca2b9328e.ctex"
+uid="uid://uxlck8x4o2i4"
+path="res://.godot/imported/VictorOrban.png-2a0d8809a2727ffc97ba71600748f47d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/VladimirPutin.png"
-dest_files=["res://.godot/imported/VladimirPutin.png-92b0e5b50812ea7f744cfbaca2b9328e.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/Hungary/VictorOrban.png"
+dest_files=["res://.godot/imported/VictorOrban.png-2a0d8809a2727ffc97ba71600748f47d.ctex"]
 
 [params]
 

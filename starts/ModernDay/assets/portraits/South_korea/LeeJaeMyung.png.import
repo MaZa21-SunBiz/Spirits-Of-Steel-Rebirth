@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmlx575tcbbmh"
-path="res://.godot/imported/DonaldJohnTrump.png-20d77f7f9205399fe8467fa4cf624b6e.ctex"
+uid="uid://bnasi3tfp4d0m"
+path="res://.godot/imported/LeeJaeMyung.png-0bb28796b9e68139f43cd81b36afc974.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/DonaldJohnTrump.png"
-dest_files=["res://.godot/imported/DonaldJohnTrump.png-20d77f7f9205399fe8467fa4cf624b6e.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/South_korea/LeeJaeMyung.png"
+dest_files=["res://.godot/imported/LeeJaeMyung.png-0bb28796b9e68139f43cd81b36afc974.ctex"]
 
 [params]
 
