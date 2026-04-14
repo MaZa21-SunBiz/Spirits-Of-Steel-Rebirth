@@ -353,6 +353,7 @@ func DoUpdateSidemenuVisuals() -> void:
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
 	#print(selected_country.figures)
 	sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(MapManager.significantFigures.get(selected_country.governmentPositions["Leader"]))
+	sidemenu_leader_portrait.tooltip_text = selected_country.governmentPositions["Leader"].capitalize()
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
