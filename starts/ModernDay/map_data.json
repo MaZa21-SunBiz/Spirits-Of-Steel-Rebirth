@@ -368,6 +368,10 @@
 				{
 					"polity": "Donetsk",
 					"status": "Member"
+				},
+				{
+					"polity": "Luhansk",
+					"status": "Member"
 				}
 			],
 			"name": "CSTO"
@@ -837,6 +841,7 @@
 				"Abkhazia",
 				"South_ossetia",
 				"Transnistria",
+				"Luhansk",
 				"Donetsk"
 			],
 			"stability": 1.0,
