@@ -767,15 +767,16 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 5
+current_tab = 0
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -832,25 +833,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=939931474]
+[node name="HBoxContainer" type="GridContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=396002070]
 use_parent_material = true
 layout_mode = 2
+columns = 2
+
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer" unique_id=939931474]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Manage Country"
 
-[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1961953376]
+[node name="Button4" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer" unique_id=1118971662]
 use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("13_sdmnd")
+theme_override_styles/normal = ExtResource("33_oouja")
+text = "Government"
+
+[node name="Button3" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer" unique_id=1961953376]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Research"
 
-[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList" unique_id=1788664696]
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer" unique_id=1788664696]
 use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
@@ -1108,6 +1126,7 @@ visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -1263,6 +1282,7 @@ visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -1463,6 +1483,7 @@ visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -1650,6 +1671,7 @@ visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
+theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -1849,6 +1871,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
 [node name="Select" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1473921671]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -2185,9 +2208,10 @@ expand = true
 [connection signal="value_changed" from="Control/MilitaryExtra/Deploy/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
 [connection signal="pressed" from="Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="open_manage_country"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="open_research_tree"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button2" to="." method="open_decisions_tree"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button" to="." method="open_manage_country"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button4" to="." method="m_OnGovernmentPressed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button3" to="." method="open_research_tree"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button2" to="." method="open_decisions_tree"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_open_faction"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button" to="." method="_on_building_designer_pressed"]
 [connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton" to="." method="_on_building_selected"]

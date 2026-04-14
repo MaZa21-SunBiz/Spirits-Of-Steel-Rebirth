@@ -43,6 +43,41 @@ corner_detail = 5
 shadow_color = Color(0, 0, 0, 0.47058824)
 shadow_size = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_466ly"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.47058824)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52mx2"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.47058824)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_py0i1"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.24840015, 0.24840018, 0.24840012, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.28235295)
+shadow_size = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
 content_margin_left = 12.0
 content_margin_top = 12.0
@@ -123,6 +158,12 @@ CheckButton/styles/focus = SubResource("StyleBoxEmpty_umafu")
 CheckButton/styles/hover = SubResource("StyleBoxFlat_hr0ed")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_470mv")
 CheckButton/styles/pressed = null
+InfoTabContainer/base_type = &"TabContainer"
+InfoTabContainer/constants/icon_max_width = 16
+InfoTabContainer/constants/tab_separation = 8
+InfoTabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_466ly")
+InfoTabContainer/styles/tab_selected = SubResource("StyleBoxFlat_52mx2")
+InfoTabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_py0i1")
 Label/font_sizes/font_size = 14
 OptionButton/constants/icon_max_width = 32
 OptionButton/font_sizes/font_size = 14

@@ -51,7 +51,13 @@ func _ready() -> void:
 	)
 	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 	Console.add_command("sink_rise", _sink_rise, ["pid", "type", "country_name"], 3, "sink/rise province")
-	
+	Console.add_command("random_figure", 
+		func(a_country: String, a_budget: int = 0):
+			var figure: ImportantFigure = ImportantFigure.FromRandom(a_country, a_budget)
+			MapManager.significantFigures[figure.name] = figure 
+			CountryManager.countries[a_country].figures.append(figure.name), 
+		["country", "budget"], 1, "Add a randomly generated significant figure to a country."
+	)
 
 
 func _show_releasables_country(country):

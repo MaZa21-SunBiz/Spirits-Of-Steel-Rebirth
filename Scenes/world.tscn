@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bko55up7cjg3g" path="res://Scripts/custom_renderer.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dx8iwvng5oypc" path="res://Scripts/troop_selection.gd" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://4g3o4rng4gk1" path="res://Scenes/peace_process.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://dth3mjxs6j41r" path="res://Scenes/UI/GovernmentUI.tscn" id="10_ikia7"]
 [ext_resource type="PackedScene" uid="uid://ct6nbkh50os7e" path="res://Scenes/logistics.tscn" id="11_7yui6"]
 [ext_resource type="PackedScene" uid="uid://i3xg4d4cpxol" path="res://Scenes/settings.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://ci2ut4j82a2sx" path="res://Scenes/LostTerritoryUI.tscn" id="13_c5t2i"]
@@ -30,7 +31,8 @@ multimesh = SubResource("MultiMesh_k7acu")
 [node name="TroopSelection" type="Node2D" parent="." unique_id=905291779]
 script = ExtResource("6_5ukr8")
 
-[node name="ui_game" parent="." unique_id=4700273 instance=ExtResource("2_fo5ed")]
+[node name="ui_game" parent="." unique_id=4700273 node_paths=PackedStringArray("governmentUI") instance=ExtResource("2_fo5ed")]
+governmentUI = NodePath("../GovernmentUI")
 
 [node name="DecisionTreeUI" parent="." unique_id=739202993 instance=ExtResource("14_x8y2v")]
 visible = false
@@ -42,6 +44,9 @@ visible = false
 visible = false
 
 [node name="LostTerritoryUI" parent="." unique_id=746887622 instance=ExtResource("13_c5t2i")]
+visible = false
+
+[node name="GovernmentUI" parent="." unique_id=1012777168 instance=ExtResource("10_ikia7")]
 visible = false
 
 [node name="Settings" parent="." unique_id=20089709 instance=ExtResource("11_ikia7")]

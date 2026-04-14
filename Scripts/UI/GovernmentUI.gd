@@ -8,6 +8,7 @@ class GovernmentPosition:
 	var sigPortrait: TextureRect
 	var sigBlood: TextureRect
 	var sigOpt: OptionButton
+	var sigDesc: RichTextLabel
 	
 @export var country: CountryData
 @export var template: PanelContainer
@@ -50,17 +51,24 @@ func OpenMenu(a_country: CountryData):
 		govPos.sigOpt = leader.get_node("VBoxContainer/PanelContainer3/OptionButton2")
 		for sigFig: String in a_country.figures:
 			govPos.sigOpt.add_item(sigFig)
+		govPos.sigDesc = leader.get_node("VBoxContainer/Display/RichTextLabel")
 		if a_country.governmentPositions[position]:
 			var figure: ImportantFigure = MapManager.significantFigures[a_country.governmentPositions[position]]
 			govPos.sigName.text = figure.name
 			govPos.sigPortrait.texture = ImportantFigure.GetPortrait(figure)
 			govPos.sigBlood.visible = figure.status == ImportantFigure.Status.WOUNDED
+			govPos.sigDesc.text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]\n[/ul][/code][hr]\n[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]%s\n[/ul][/code]" % figure.GetDisplaySkills()
 			for i in range(govPos.sigOpt.item_count):
 				if govPos.sigOpt.get_item_text(i) == figure.name:
 					govPos.sigOpt.select(i)
 		govPos.sigOpt.item_selected.connect(func (a_index: int):
 			var figureName: String = govPos.sigOpt.get_item_text(a_index)
 			var figure: ImportantFigure = MapManager.significantFigures[figureName]
+			govPos.sigName.text = figure.name
+			govPos.sigPortrait.texture = ImportantFigure.GetPortrait(figure)
+			govPos.sigBlood.visible = figure.status == ImportantFigure.Status.WOUNDED
+			govPos.sigDesc.text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]\n[/ul][/code][hr]\n[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]%s\n[/ul][/code]" % figure.GetDisplaySkills()
+			country.SetGovernmentPosition(govPos.position, figure)
 		)
 		listOfPositions.add_child(leader)
 		positions[position] = govPos

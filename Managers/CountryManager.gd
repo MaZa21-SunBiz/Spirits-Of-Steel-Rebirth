@@ -144,7 +144,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 
 	_ensure_country_has_leader(new_country)
 
-	new_country.UpdateCabinet()
+	new_country.InitializeCabinet()
 	
 	return new_country
 

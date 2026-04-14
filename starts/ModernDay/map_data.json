@@ -708,17 +708,7 @@
 				"Quebecs"
 			],
 			"color": "#C35C6D",
-			"figures": [
-				"Canada_BenitoMussolini",
-				"Canada_YukawaHideki",
-				"Canada_TrofimLysenko",
-				"Canada_JaneAustenCassandra",
-				"Canada_UrNammu",
-				"Canada_BenitoMussolini",
-				"Canada_TrofimLysenko",
-				"Canada_TrofimLysenko",
-				"Canada_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -738,17 +728,7 @@
 				"Danish"
 			],
 			"color": "#99745D",
-			"figures": [
-				"Denmark_TrofimLysenko",
-				"Denmark_TrofimLysenko",
-				"Denmark_BenjaminFranklin",
-				"Denmark_YukawaHideki",
-				"Denmark_TrofimLysenko",
-				"Denmark_UrNammu",
-				"Denmark_JaneAustenCassandra",
-				"Denmark_YukawaHideki",
-				"Denmark_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -787,17 +767,7 @@
 				"Checnyians"
 			],
 			"color": "#386038",
-			"figures": [
-				"Russia_YukawaHideki",
-				"Russia_BenitoMussolini",
-				"Russia_JaneAustenCassandra",
-				"Russia_YukawaHideki",
-				"Russia_ChevalierDEon",
-				"Russia_TrofimLysenko",
-				"Russia_TrofimLysenko",
-				"Russia_ChevalierDEon",
-				"Russia_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -821,17 +791,7 @@
 				"Norway"
 			],
 			"color": "#6F4747",
-			"figures": [
-				"Norway_BenjaminFranklin",
-				"Norway_BenitoMussolini",
-				"Norway_YukawaHideki",
-				"Norway_YukawaHideki",
-				"Norway_BenjaminFranklin",
-				"Norway_UrNammu",
-				"Norway_UrNammu",
-				"Norway_TrofimLysenko",
-				"Norway_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -850,17 +810,7 @@
 				"Anglo-americans"
 			],
 			"color": "#1485ED",
-			"figures": [
-				"United_states_ChevalierDEon",
-				"United_states_YukawaHideki",
-				"United_states_UrNammu",
-				"United_states_TrofimLysenko",
-				"United_states_YukawaHideki",
-				"United_states_TrofimLysenko",
-				"United_states_JaneAustenCassandra",
-				"United_states_JaneAustenCassandra",
-				"United_states_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -881,17 +831,7 @@
 				"Finnish"
 			],
 			"color": "#C2C6D7",
-			"figures": [
-				"Finland_BenjaminFranklin",
-				"Finland_TrofimLysenko",
-				"Finland_BenitoMussolini",
-				"Finland_TrofimLysenko",
-				"Finland_BenjaminFranklin",
-				"Finland_JaneAustenCassandra",
-				"Finland_ChevalierDEon",
-				"Finland_TrofimLysenko",
-				"Finland_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -910,17 +850,7 @@
 				"Sweden"
 			],
 			"color": "#2484F7",
-			"figures": [
-				"Sweden_ChevalierDEon",
-				"Sweden_JaneAustenCassandra",
-				"Sweden_TrofimLysenko",
-				"Sweden_UrNammu",
-				"Sweden_UrNammu",
-				"Sweden_TrofimLysenko",
-				"Sweden_ChevalierDEon",
-				"Sweden_UrNammu",
-				"Sweden_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -939,17 +869,7 @@
 				"Icelandish"
 			],
 			"color": "#445171",
-			"figures": [
-				"Iceland_ChevalierDEon",
-				"Iceland_JaneAustenCassandra",
-				"Iceland_JaneAustenCassandra",
-				"Iceland_TrofimLysenko",
-				"Iceland_BenitoMussolini",
-				"Iceland_YukawaHideki",
-				"Iceland_UrNammu",
-				"Iceland_JaneAustenCassandra",
-				"Iceland_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -968,17 +888,7 @@
 				"Estonia"
 			],
 			"color": "#3287AF",
-			"figures": [
-				"Estonia_UrNammu",
-				"Estonia_BenjaminFranklin",
-				"Estonia_ChevalierDEon",
-				"Estonia_UrNammu",
-				"Estonia_YukawaHideki",
-				"Estonia_JaneAustenCassandra",
-				"Estonia_YukawaHideki",
-				"Estonia_YukawaHideki",
-				"Estonia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1003,17 +913,7 @@
 				"Indian-ocean"
 			],
 			"color": "#C8385D",
-			"figures": [
-				"United_kingdom_UrNammu",
-				"United_kingdom_TrofimLysenko",
-				"United_kingdom_ChevalierDEon",
-				"United_kingdom_JaneAustenCassandra",
-				"United_kingdom_JaneAustenCassandra",
-				"United_kingdom_YukawaHideki",
-				"United_kingdom_BenjaminFranklin",
-				"United_kingdom_UrNammu",
-				"United_kingdom_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1033,17 +933,7 @@
 				"Lithuanian"
 			],
 			"color": "#4B4DBA",
-			"figures": [
-				"Latvia_BenjaminFranklin",
-				"Latvia_UrNammu",
-				"Latvia_YukawaHideki",
-				"Latvia_TrofimLysenko",
-				"Latvia_YukawaHideki",
-				"Latvia_ChevalierDEon",
-				"Latvia_ChevalierDEon",
-				"Latvia_JaneAustenCassandra",
-				"Latvia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1063,17 +953,7 @@
 				"Berlarussians"
 			],
 			"color": "#DBDB77",
-			"figures": [
-				"Lithuania_ChevalierDEon",
-				"Lithuania_ChevalierDEon",
-				"Lithuania_UrNammu",
-				"Lithuania_UrNammu",
-				"Lithuania_ChevalierDEon",
-				"Lithuania_UrNammu",
-				"Lithuania_TrofimLysenko",
-				"Lithuania_BenjaminFranklin",
-				"Lithuania_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1092,17 +972,7 @@
 				"Berlarussians"
 			],
 			"color": "#C7D5E0",
-			"figures": [
-				"Belarus_BenitoMussolini",
-				"Belarus_BenjaminFranklin",
-				"Belarus_BenjaminFranklin",
-				"Belarus_BenjaminFranklin",
-				"Belarus_JaneAustenCassandra",
-				"Belarus_TrofimLysenko",
-				"Belarus_JaneAustenCassandra",
-				"Belarus_BenitoMussolini",
-				"Belarus_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1121,17 +991,7 @@
 				"Ireland"
 			],
 			"color": "#509F5A",
-			"figures": [
-				"Ireland_ChevalierDEon",
-				"Ireland_YukawaHideki",
-				"Ireland_YukawaHideki",
-				"Ireland_ChevalierDEon",
-				"Ireland_BenjaminFranklin",
-				"Ireland_BenitoMussolini",
-				"Ireland_BenjaminFranklin",
-				"Ireland_YukawaHideki",
-				"Ireland_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1151,17 +1011,7 @@
 				"Khazaks"
 			],
 			"color": "#58A1C1",
-			"figures": [
-				"Kazakhstan_BenitoMussolini",
-				"Kazakhstan_YukawaHideki",
-				"Kazakhstan_TrofimLysenko",
-				"Kazakhstan_BenjaminFranklin",
-				"Kazakhstan_UrNammu",
-				"Kazakhstan_JaneAustenCassandra",
-				"Kazakhstan_YukawaHideki",
-				"Kazakhstan_BenitoMussolini",
-				"Kazakhstan_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1181,17 +1031,7 @@
 				"Unknown"
 			],
 			"color": "#49484D",
-			"figures": [
-				"Germany_BenjaminFranklin",
-				"Germany_YukawaHideki",
-				"Germany_UrNammu",
-				"Germany_TrofimLysenko",
-				"Germany_BenitoMussolini",
-				"Germany_YukawaHideki",
-				"Germany_BenjaminFranklin",
-				"Germany_BenjaminFranklin",
-				"Germany_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1210,17 +1050,7 @@
 				"Poles"
 			],
 			"color": "#C55C6A",
-			"figures": [
-				"Poland_JaneAustenCassandra",
-				"Poland_ChevalierDEon",
-				"Poland_BenjaminFranklin",
-				"Poland_JaneAustenCassandra",
-				"Poland_BenjaminFranklin",
-				"Poland_JaneAustenCassandra",
-				"Poland_UrNammu",
-				"Poland_BenjaminFranklin",
-				"Poland_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1239,17 +1069,7 @@
 				"Dutch"
 			],
 			"color": "#C78749",
-			"figures": [
-				"Netherlands_ChevalierDEon",
-				"Netherlands_JaneAustenCassandra",
-				"Netherlands_YukawaHideki",
-				"Netherlands_YukawaHideki",
-				"Netherlands_ChevalierDEon",
-				"Netherlands_UrNammu",
-				"Netherlands_BenitoMussolini",
-				"Netherlands_UrNammu",
-				"Netherlands_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1276,17 +1096,7 @@
 				"Thai"
 			],
 			"color": "#A7575A",
-			"figures": [
-				"China_BenjaminFranklin",
-				"China_UrNammu",
-				"China_YukawaHideki",
-				"China_UrNammu",
-				"China_BenitoMussolini",
-				"China_BenitoMussolini",
-				"China_JaneAustenCassandra",
-				"China_BenjaminFranklin",
-				"China_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1307,17 +1117,7 @@
 				"Russians"
 			],
 			"color": "#34588A",
-			"figures": [
-				"Ukraine_BenitoMussolini",
-				"Ukraine_YukawaHideki",
-				"Ukraine_BenjaminFranklin",
-				"Ukraine_JaneAustenCassandra",
-				"Ukraine_YukawaHideki",
-				"Ukraine_BenitoMussolini",
-				"Ukraine_BenjaminFranklin",
-				"Ukraine_BenitoMussolini",
-				"Ukraine_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1336,17 +1136,7 @@
 				"Mongols"
 			],
 			"color": "#A38E4B",
-			"figures": [
-				"Mongolia_BenitoMussolini",
-				"Mongolia_BenjaminFranklin",
-				"Mongolia_BenjaminFranklin",
-				"Mongolia_BenjaminFranklin",
-				"Mongolia_JaneAustenCassandra",
-				"Mongolia_ChevalierDEon",
-				"Mongolia_ChevalierDEon",
-				"Mongolia_JaneAustenCassandra",
-				"Mongolia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1366,17 +1156,7 @@
 				"France"
 			],
 			"color": "#C1AB08",
-			"figures": [
-				"Belgium_TrofimLysenko",
-				"Belgium_YukawaHideki",
-				"Belgium_JaneAustenCassandra",
-				"Belgium_BenjaminFranklin",
-				"Belgium_ChevalierDEon",
-				"Belgium_ChevalierDEon",
-				"Belgium_UrNammu",
-				"Belgium_BenjaminFranklin",
-				"Belgium_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1403,17 +1183,7 @@
 				"French-antartic"
 			],
 			"color": "#3D75E8",
-			"figures": [
-				"France_ChevalierDEon",
-				"France_TrofimLysenko",
-				"France_BenjaminFranklin",
-				"France_JaneAustenCassandra",
-				"France_UrNammu",
-				"France_UrNammu",
-				"France_JaneAustenCassandra",
-				"France_UrNammu",
-				"France_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1432,17 +1202,7 @@
 				"Czech"
 			],
 			"color": "#36A79C",
-			"figures": [
-				"Czechia_BenitoMussolini",
-				"Czechia_TrofimLysenko",
-				"Czechia_YukawaHideki",
-				"Czechia_YukawaHideki",
-				"Czechia_YukawaHideki",
-				"Czechia_YukawaHideki",
-				"Czechia_ChevalierDEon",
-				"Czechia_BenitoMussolini",
-				"Czechia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1461,17 +1221,7 @@
 				"France"
 			],
 			"color": "#55E4E9",
-			"figures": [
-				"Luxembourg_YukawaHideki",
-				"Luxembourg_TrofimLysenko",
-				"Luxembourg_BenitoMussolini",
-				"Luxembourg_UrNammu",
-				"Luxembourg_BenitoMussolini",
-				"Luxembourg_YukawaHideki",
-				"Luxembourg_JaneAustenCassandra",
-				"Luxembourg_UrNammu",
-				"Luxembourg_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1490,17 +1240,7 @@
 				"Slovaks"
 			],
 			"color": "#795C9F",
-			"figures": [
-				"Slovakia_ChevalierDEon",
-				"Slovakia_BenitoMussolini",
-				"Slovakia_YukawaHideki",
-				"Slovakia_BenitoMussolini",
-				"Slovakia_UrNammu",
-				"Slovakia_BenjaminFranklin",
-				"Slovakia_JaneAustenCassandra",
-				"Slovakia_UrNammu",
-				"Slovakia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1519,17 +1259,7 @@
 				"Germans"
 			],
 			"color": "#A8AEC6",
-			"figures": [
-				"Austria_YukawaHideki",
-				"Austria_JaneAustenCassandra",
-				"Austria_UrNammu",
-				"Austria_BenitoMussolini",
-				"Austria_BenjaminFranklin",
-				"Austria_YukawaHideki",
-				"Austria_BenjaminFranklin",
-				"Austria_BenjaminFranklin",
-				"Austria_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1548,17 +1278,7 @@
 				"Hungarians"
 			],
 			"color": "#4E7D73",
-			"figures": [
-				"Hungary_UrNammu",
-				"Hungary_TrofimLysenko",
-				"Hungary_JaneAustenCassandra",
-				"Hungary_BenitoMussolini",
-				"Hungary_BenitoMussolini",
-				"Hungary_BenitoMussolini",
-				"Hungary_JaneAustenCassandra",
-				"Hungary_TrofimLysenko",
-				"Hungary_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1578,17 +1298,7 @@
 				"Gagauz-turks"
 			],
 			"color": "#866E52",
-			"figures": [
-				"Moldova_YukawaHideki",
-				"Moldova_BenitoMussolini",
-				"Moldova_JaneAustenCassandra",
-				"Moldova_YukawaHideki",
-				"Moldova_YukawaHideki",
-				"Moldova_TrofimLysenko",
-				"Moldova_UrNammu",
-				"Moldova_TrofimLysenko",
-				"Moldova_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1608,17 +1318,7 @@
 				"Hungarians"
 			],
 			"color": "#D7C448",
-			"figures": [
-				"Romania_UrNammu",
-				"Romania_UrNammu",
-				"Romania_BenitoMussolini",
-				"Romania_TrofimLysenko",
-				"Romania_BenitoMussolini",
-				"Romania_UrNammu",
-				"Romania_YukawaHideki",
-				"Romania_BenjaminFranklin",
-				"Romania_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1638,17 +1338,7 @@
 				"Russians"
 			],
 			"color": "#2A1618",
-			"figures": [
-				"Transnistria_BenjaminFranklin",
-				"Transnistria_BenjaminFranklin",
-				"Transnistria_BenjaminFranklin",
-				"Transnistria_ChevalierDEon",
-				"Transnistria_YukawaHideki",
-				"Transnistria_JaneAustenCassandra",
-				"Transnistria_ChevalierDEon",
-				"Transnistria_BenjaminFranklin",
-				"Transnistria_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1670,17 +1360,7 @@
 				"Italians"
 			],
 			"color": "#E00505",
-			"figures": [
-				"Switzerland_JaneAustenCassandra",
-				"Switzerland_BenjaminFranklin",
-				"Switzerland_UrNammu",
-				"Switzerland_TrofimLysenko",
-				"Switzerland_BenitoMussolini",
-				"Switzerland_UrNammu",
-				"Switzerland_ChevalierDEon",
-				"Switzerland_ChevalierDEon",
-				"Switzerland_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1699,17 +1379,7 @@
 				"Liechtenstein"
 			],
 			"color": "#575A7F",
-			"figures": [
-				"Liechtenstein_UrNammu",
-				"Liechtenstein_TrofimLysenko",
-				"Liechtenstein_ChevalierDEon",
-				"Liechtenstein_ChevalierDEon",
-				"Liechtenstein_JaneAustenCassandra",
-				"Liechtenstein_BenjaminFranklin",
-				"Liechtenstein_UrNammu",
-				"Liechtenstein_ChevalierDEon",
-				"Liechtenstein_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1730,17 +1400,7 @@
 				"France"
 			],
 			"color": "#437F3F",
-			"figures": [
-				"Italy_TrofimLysenko",
-				"Italy_BenitoMussolini",
-				"Italy_JaneAustenCassandra",
-				"Italy_YukawaHideki",
-				"Italy_YukawaHideki",
-				"Italy_BenitoMussolini",
-				"Italy_ChevalierDEon",
-				"Italy_BenjaminFranklin",
-				"Italy_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1759,17 +1419,7 @@
 				"Slovenes"
 			],
 			"color": "#4F6F96",
-			"figures": [
-				"Slovenia_ChevalierDEon",
-				"Slovenia_UrNammu",
-				"Slovenia_TrofimLysenko",
-				"Slovenia_YukawaHideki",
-				"Slovenia_JaneAustenCassandra",
-				"Slovenia_YukawaHideki",
-				"Slovenia_JaneAustenCassandra",
-				"Slovenia_UrNammu",
-				"Slovenia_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1788,17 +1438,7 @@
 				"Croat"
 			],
 			"color": "#2A2D60",
-			"figures": [
-				"Croatia_UrNammu",
-				"Croatia_JaneAustenCassandra",
-				"Croatia_BenjaminFranklin",
-				"Croatia_JaneAustenCassandra",
-				"Croatia_BenjaminFranklin",
-				"Croatia_YukawaHideki",
-				"Croatia_BenitoMussolini",
-				"Croatia_BenitoMussolini",
-				"Croatia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1818,17 +1458,7 @@
 				"Bulgarians"
 			],
 			"color": "#9A6867",
-			"figures": [
-				"Serbia_BenitoMussolini",
-				"Serbia_UrNammu",
-				"Serbia_YukawaHideki",
-				"Serbia_JaneAustenCassandra",
-				"Serbia_BenjaminFranklin",
-				"Serbia_TrofimLysenko",
-				"Serbia_BenitoMussolini",
-				"Serbia_UrNammu",
-				"Serbia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1848,17 +1478,7 @@
 				"Bosnia-and-herzegovina"
 			],
 			"color": "#DFC087",
-			"figures": [
-				"Bosnia_and_herzegovina_BenjaminFranklin",
-				"Bosnia_and_herzegovina_UrNammu",
-				"Bosnia_and_herzegovina_YukawaHideki",
-				"Bosnia_and_herzegovina_YukawaHideki",
-				"Bosnia_and_herzegovina_TrofimLysenko",
-				"Bosnia_and_herzegovina_YukawaHideki",
-				"Bosnia_and_herzegovina_YukawaHideki",
-				"Bosnia_and_herzegovina_YukawaHideki",
-				"Bosnia_and_herzegovina_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1877,17 +1497,7 @@
 				"Uzebeks"
 			],
 			"color": "#CACEFD",
-			"figures": [
-				"Uzbekistan_BenjaminFranklin",
-				"Uzbekistan_TrofimLysenko",
-				"Uzbekistan_JaneAustenCassandra",
-				"Uzbekistan_BenjaminFranklin",
-				"Uzbekistan_YukawaHideki",
-				"Uzbekistan_BenitoMussolini",
-				"Uzbekistan_BenjaminFranklin",
-				"Uzbekistan_YukawaHideki",
-				"Uzbekistan_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1906,17 +1516,7 @@
 				"Japanase"
 			],
 			"color": "#FFC9B2",
-			"figures": [
-				"Japan_BenjaminFranklin",
-				"Japan_ChevalierDEon",
-				"Japan_TrofimLysenko",
-				"Japan_ChevalierDEon",
-				"Japan_ChevalierDEon",
-				"Japan_BenjaminFranklin",
-				"Japan_UrNammu",
-				"Japan_BenitoMussolini",
-				"Japan_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1935,17 +1535,7 @@
 				"Bulgarians"
 			],
 			"color": "#339B00",
-			"figures": [
-				"Bulgaria_BenjaminFranklin",
-				"Bulgaria_TrofimLysenko",
-				"Bulgaria_JaneAustenCassandra",
-				"Bulgaria_BenitoMussolini",
-				"Bulgaria_JaneAustenCassandra",
-				"Bulgaria_UrNammu",
-				"Bulgaria_BenjaminFranklin",
-				"Bulgaria_ChevalierDEon",
-				"Bulgaria_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1968,17 +1558,7 @@
 				"Canary-islander"
 			],
 			"color": "#F2CD5E",
-			"figures": [
-				"Spain_BenitoMussolini",
-				"Spain_YukawaHideki",
-				"Spain_BenjaminFranklin",
-				"Spain_BenitoMussolini",
-				"Spain_ChevalierDEon",
-				"Spain_ChevalierDEon",
-				"Spain_JaneAustenCassandra",
-				"Spain_BenitoMussolini",
-				"Spain_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1997,17 +1577,7 @@
 				"San-marino"
 			],
 			"color": "#62B0C6",
-			"figures": [
-				"San_marino_BenitoMussolini",
-				"San_marino_BenjaminFranklin",
-				"San_marino_YukawaHideki",
-				"San_marino_BenitoMussolini",
-				"San_marino_UrNammu",
-				"San_marino_BenitoMussolini",
-				"San_marino_ChevalierDEon",
-				"San_marino_UrNammu",
-				"San_marino_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2026,17 +1596,7 @@
 				"Monaco"
 			],
 			"color": "#EDA2BA",
-			"figures": [
-				"Monaco_BenjaminFranklin",
-				"Monaco_BenitoMussolini",
-				"Monaco_JaneAustenCassandra",
-				"Monaco_ChevalierDEon",
-				"Monaco_BenitoMussolini",
-				"Monaco_JaneAustenCassandra",
-				"Monaco_TrofimLysenko",
-				"Monaco_BenitoMussolini",
-				"Monaco_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2055,17 +1615,7 @@
 				"Russians"
 			],
 			"color": "#3F1F2D",
-			"figures": [
-				"Abkhazia_UrNammu",
-				"Abkhazia_BenitoMussolini",
-				"Abkhazia_BenjaminFranklin",
-				"Abkhazia_TrofimLysenko",
-				"Abkhazia_YukawaHideki",
-				"Abkhazia_BenjaminFranklin",
-				"Abkhazia_BenjaminFranklin",
-				"Abkhazia_UrNammu",
-				"Abkhazia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2084,17 +1634,7 @@
 				"Serbs"
 			],
 			"color": "#FC7279",
-			"figures": [
-				"Montenegro_BenitoMussolini",
-				"Montenegro_TrofimLysenko",
-				"Montenegro_YukawaHideki",
-				"Montenegro_ChevalierDEon",
-				"Montenegro_YukawaHideki",
-				"Montenegro_YukawaHideki",
-				"Montenegro_JaneAustenCassandra",
-				"Montenegro_YukawaHideki",
-				"Montenegro_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2113,17 +1653,7 @@
 				"Albanians"
 			],
 			"color": "#768EBA",
-			"figures": [
-				"Kosovo_BenjaminFranklin",
-				"Kosovo_UrNammu",
-				"Kosovo_YukawaHideki",
-				"Kosovo_BenitoMussolini",
-				"Kosovo_ChevalierDEon",
-				"Kosovo_JaneAustenCassandra",
-				"Kosovo_TrofimLysenko",
-				"Kosovo_BenitoMussolini",
-				"Kosovo_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2142,17 +1672,7 @@
 				"Georgia"
 			],
 			"color": "#EFE4E8",
-			"figures": [
-				"Georgia_TrofimLysenko",
-				"Georgia_YukawaHideki",
-				"Georgia_JaneAustenCassandra",
-				"Georgia_JaneAustenCassandra",
-				"Georgia_UrNammu",
-				"Georgia_ChevalierDEon",
-				"Georgia_BenjaminFranklin",
-				"Georgia_YukawaHideki",
-				"Georgia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2171,17 +1691,7 @@
 				"Kirghiz"
 			],
 			"color": "#F43D6F",
-			"figures": [
-				"Kyrgyzstan_YukawaHideki",
-				"Kyrgyzstan_BenjaminFranklin",
-				"Kyrgyzstan_UrNammu",
-				"Kyrgyzstan_TrofimLysenko",
-				"Kyrgyzstan_TrofimLysenko",
-				"Kyrgyzstan_JaneAustenCassandra",
-				"Kyrgyzstan_TrofimLysenko",
-				"Kyrgyzstan_YukawaHideki",
-				"Kyrgyzstan_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2200,17 +1710,7 @@
 				"Andorra"
 			],
 			"color": "#C90001",
-			"figures": [
-				"Andorra_ChevalierDEon",
-				"Andorra_BenitoMussolini",
-				"Andorra_UrNammu",
-				"Andorra_TrofimLysenko",
-				"Andorra_TrofimLysenko",
-				"Andorra_JaneAustenCassandra",
-				"Andorra_BenitoMussolini",
-				"Andorra_BenitoMussolini",
-				"Andorra_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2229,17 +1729,7 @@
 				"Russians"
 			],
 			"color": "#C29657",
-			"figures": [
-				"South_ossetia_ChevalierDEon",
-				"South_ossetia_ChevalierDEon",
-				"South_ossetia_JaneAustenCassandra",
-				"South_ossetia_TrofimLysenko",
-				"South_ossetia_UrNammu",
-				"South_ossetia_TrofimLysenko",
-				"South_ossetia_BenitoMussolini",
-				"South_ossetia_ChevalierDEon",
-				"South_ossetia_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2259,17 +1749,7 @@
 				"Uzebeks"
 			],
 			"color": "#BD8C6E",
-			"figures": [
-				"Turkmenistan_TrofimLysenko",
-				"Turkmenistan_ChevalierDEon",
-				"Turkmenistan_BenitoMussolini",
-				"Turkmenistan_ChevalierDEon",
-				"Turkmenistan_JaneAustenCassandra",
-				"Turkmenistan_UrNammu",
-				"Turkmenistan_ChevalierDEon",
-				"Turkmenistan_TrofimLysenko",
-				"Turkmenistan_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2288,17 +1768,7 @@
 				"Koreans"
 			],
 			"color": "#F50C37",
-			"figures": [
-				"North_korea_UrNammu",
-				"North_korea_YukawaHideki",
-				"North_korea_BenjaminFranklin",
-				"North_korea_YukawaHideki",
-				"North_korea_JaneAustenCassandra",
-				"North_korea_TrofimLysenko",
-				"North_korea_BenjaminFranklin",
-				"North_korea_ChevalierDEon",
-				"North_korea_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2317,17 +1787,7 @@
 				"Albanians"
 			],
 			"color": "#952D66",
-			"figures": [
-				"Albania_TrofimLysenko",
-				"Albania_JaneAustenCassandra",
-				"Albania_BenjaminFranklin",
-				"Albania_YukawaHideki",
-				"Albania_BenjaminFranklin",
-				"Albania_BenitoMussolini",
-				"Albania_BenitoMussolini",
-				"Albania_BenitoMussolini",
-				"Albania_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2347,17 +1807,7 @@
 				"Albanians"
 			],
 			"color": "#CA9576",
-			"figures": [
-				"North_macedonia_YukawaHideki",
-				"North_macedonia_JaneAustenCassandra",
-				"North_macedonia_YukawaHideki",
-				"North_macedonia_BenjaminFranklin",
-				"North_macedonia_ChevalierDEon",
-				"North_macedonia_BenjaminFranklin",
-				"North_macedonia_BenitoMussolini",
-				"North_macedonia_BenjaminFranklin",
-				"North_macedonia_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2376,17 +1826,7 @@
 				"Azerbis"
 			],
 			"color": "#728CD9",
-			"figures": [
-				"Azerbaijan_UrNammu",
-				"Azerbaijan_BenitoMussolini",
-				"Azerbaijan_ChevalierDEon",
-				"Azerbaijan_BenitoMussolini",
-				"Azerbaijan_BenitoMussolini",
-				"Azerbaijan_YukawaHideki",
-				"Azerbaijan_BenjaminFranklin",
-				"Azerbaijan_ChevalierDEon",
-				"Azerbaijan_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2405,17 +1845,7 @@
 				"Portugese"
 			],
 			"color": "#277446",
-			"figures": [
-				"Portugal_TrofimLysenko",
-				"Portugal_UrNammu",
-				"Portugal_UrNammu",
-				"Portugal_YukawaHideki",
-				"Portugal_BenjaminFranklin",
-				"Portugal_ChevalierDEon",
-				"Portugal_BenjaminFranklin",
-				"Portugal_BenitoMussolini",
-				"Portugal_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2436,17 +1866,7 @@
 				"Arab"
 			],
 			"color": "#A63443",
-			"figures": [
-				"Turkey_JaneAustenCassandra",
-				"Turkey_BenjaminFranklin",
-				"Turkey_BenitoMussolini",
-				"Turkey_TrofimLysenko",
-				"Turkey_BenjaminFranklin",
-				"Turkey_YukawaHideki",
-				"Turkey_UrNammu",
-				"Turkey_TrofimLysenko",
-				"Turkey_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2465,17 +1885,7 @@
 				"Vatican-city"
 			],
 			"color": "#C4B582",
-			"figures": [
-				"Vatican_city_ChevalierDEon",
-				"Vatican_city_YukawaHideki",
-				"Vatican_city_YukawaHideki",
-				"Vatican_city_YukawaHideki",
-				"Vatican_city_BenjaminFranklin",
-				"Vatican_city_BenjaminFranklin",
-				"Vatican_city_YukawaHideki",
-				"Vatican_city_BenjaminFranklin",
-				"Vatican_city_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2494,17 +1904,7 @@
 				"Hellenics"
 			],
 			"color": "#5DB5E3",
-			"figures": [
-				"Greece_JaneAustenCassandra",
-				"Greece_JaneAustenCassandra",
-				"Greece_UrNammu",
-				"Greece_YukawaHideki",
-				"Greece_JaneAustenCassandra",
-				"Greece_YukawaHideki",
-				"Greece_BenjaminFranklin",
-				"Greece_ChevalierDEon",
-				"Greece_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2523,17 +1923,7 @@
 				"Armenia"
 			],
 			"color": "#F6A286",
-			"figures": [
-				"Armenia_ChevalierDEon",
-				"Armenia_YukawaHideki",
-				"Armenia_ChevalierDEon",
-				"Armenia_ChevalierDEon",
-				"Armenia_UrNammu",
-				"Armenia_JaneAustenCassandra",
-				"Armenia_UrNammu",
-				"Armenia_UrNammu",
-				"Armenia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2552,17 +1942,7 @@
 				"Tajiks"
 			],
 			"color": "#6D9482",
-			"figures": [
-				"Tajikistan_BenjaminFranklin",
-				"Tajikistan_YukawaHideki",
-				"Tajikistan_UrNammu",
-				"Tajikistan_ChevalierDEon",
-				"Tajikistan_TrofimLysenko",
-				"Tajikistan_BenitoMussolini",
-				"Tajikistan_TrofimLysenko",
-				"Tajikistan_BenitoMussolini",
-				"Tajikistan_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2587,17 +1967,7 @@
 				"Balochs"
 			],
 			"color": "#5A8F7B",
-			"figures": [
-				"Iran_YukawaHideki",
-				"Iran_BenjaminFranklin",
-				"Iran_TrofimLysenko",
-				"Iran_JaneAustenCassandra",
-				"Iran_UrNammu",
-				"Iran_BenjaminFranklin",
-				"Iran_BenitoMussolini",
-				"Iran_YukawaHideki",
-				"Iran_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2619,17 +1989,7 @@
 				"Balochs"
 			],
 			"color": "#716B79",
-			"figures": [
-				"Afghanistan_BenitoMussolini",
-				"Afghanistan_YukawaHideki",
-				"Afghanistan_UrNammu",
-				"Afghanistan_TrofimLysenko",
-				"Afghanistan_BenitoMussolini",
-				"Afghanistan_YukawaHideki",
-				"Afghanistan_UrNammu",
-				"Afghanistan_YukawaHideki",
-				"Afghanistan_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2648,17 +2008,7 @@
 				"Koreans"
 			],
 			"color": "#5E76BE",
-			"figures": [
-				"South_korea_BenjaminFranklin",
-				"South_korea_JaneAustenCassandra",
-				"South_korea_UrNammu",
-				"South_korea_BenjaminFranklin",
-				"South_korea_BenjaminFranklin",
-				"South_korea_BenitoMussolini",
-				"South_korea_BenitoMussolini",
-				"South_korea_ChevalierDEon",
-				"South_korea_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2677,17 +2027,7 @@
 				"Arab"
 			],
 			"color": "#B9566A",
-			"figures": [
-				"Tunisia_BenitoMussolini",
-				"Tunisia_UrNammu",
-				"Tunisia_JaneAustenCassandra",
-				"Tunisia_YukawaHideki",
-				"Tunisia_BenjaminFranklin",
-				"Tunisia_TrofimLysenko",
-				"Tunisia_UrNammu",
-				"Tunisia_TrofimLysenko",
-				"Tunisia_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2708,17 +2048,7 @@
 				"Arab"
 			],
 			"color": "#B27263",
-			"figures": [
-				"Iraq_UrNammu",
-				"Iraq_BenjaminFranklin",
-				"Iraq_TrofimLysenko",
-				"Iraq_ChevalierDEon",
-				"Iraq_UrNammu",
-				"Iraq_BenitoMussolini",
-				"Iraq_UrNammu",
-				"Iraq_BenitoMussolini",
-				"Iraq_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2738,17 +2068,7 @@
 				"Arab"
 			],
 			"color": "#374E5C",
-			"figures": [
-				"Syria_YukawaHideki",
-				"Syria_UrNammu",
-				"Syria_JaneAustenCassandra",
-				"Syria_ChevalierDEon",
-				"Syria_TrofimLysenko",
-				"Syria_ChevalierDEon",
-				"Syria_YukawaHideki",
-				"Syria_JaneAustenCassandra",
-				"Syria_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2774,17 +2094,7 @@
 				"Saraikis"
 			],
 			"color": "#002917",
-			"figures": [
-				"Pakistan_TrofimLysenko",
-				"Pakistan_UrNammu",
-				"Pakistan_JaneAustenCassandra",
-				"Pakistan_BenjaminFranklin",
-				"Pakistan_BenjaminFranklin",
-				"Pakistan_YukawaHideki",
-				"Pakistan_JaneAustenCassandra",
-				"Pakistan_UrNammu",
-				"Pakistan_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2804,17 +2114,7 @@
 				""
 			],
 			"color": "#0A2B24",
-			"figures": [
-				"Algeria_UrNammu",
-				"Algeria_ChevalierDEon",
-				"Algeria_YukawaHideki",
-				"Algeria_JaneAustenCassandra",
-				"Algeria_BenjaminFranklin",
-				"Algeria_TrofimLysenko",
-				"Algeria_BenjaminFranklin",
-				"Algeria_BenitoMussolini",
-				"Algeria_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2835,17 +2135,7 @@
 				"Western-sahara"
 			],
 			"color": "#9B4A59",
-			"figures": [
-				"Morocco_YukawaHideki",
-				"Morocco_TrofimLysenko",
-				"Morocco_YukawaHideki",
-				"Morocco_BenitoMussolini",
-				"Morocco_UrNammu",
-				"Morocco_YukawaHideki",
-				"Morocco_YukawaHideki",
-				"Morocco_TrofimLysenko",
-				"Morocco_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2864,17 +2154,7 @@
 				"Malta"
 			],
 			"color": "#D9D9D9",
-			"figures": [
-				"Malta_ChevalierDEon",
-				"Malta_TrofimLysenko",
-				"Malta_BenjaminFranklin",
-				"Malta_UrNammu",
-				"Malta_TrofimLysenko",
-				"Malta_JaneAustenCassandra",
-				"Malta_TrofimLysenko",
-				"Malta_BenjaminFranklin",
-				"Malta_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2893,17 +2173,7 @@
 				"Turks"
 			],
 			"color": "#5C4D32",
-			"figures": [
-				"Turkish_cyprus_TrofimLysenko",
-				"Turkish_cyprus_UrNammu",
-				"Turkish_cyprus_UrNammu",
-				"Turkish_cyprus_BenjaminFranklin",
-				"Turkish_cyprus_BenjaminFranklin",
-				"Turkish_cyprus_UrNammu",
-				"Turkish_cyprus_TrofimLysenko",
-				"Turkish_cyprus_TrofimLysenko",
-				"Turkish_cyprus_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2953,17 +2223,7 @@
 				"India"
 			],
 			"color": "#D0A36C",
-			"figures": [
-				"India_JaneAustenCassandra",
-				"India_BenjaminFranklin",
-				"India_TrofimLysenko",
-				"India_UrNammu",
-				"India_BenitoMussolini",
-				"India_JaneAustenCassandra",
-				"India_BenitoMussolini",
-				"India_JaneAustenCassandra",
-				"India_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2982,17 +2242,7 @@
 				"Hellenics"
 			],
 			"color": "#DEB51B",
-			"figures": [
-				"Cyprus_JaneAustenCassandra",
-				"Cyprus_ChevalierDEon",
-				"Cyprus_JaneAustenCassandra",
-				"Cyprus_BenitoMussolini",
-				"Cyprus_BenitoMussolini",
-				"Cyprus_ChevalierDEon",
-				"Cyprus_BenitoMussolini",
-				"Cyprus_YukawaHideki",
-				"Cyprus_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3011,17 +2261,7 @@
 				"Lebanon"
 			],
 			"color": "#549C8B",
-			"figures": [
-				"Lebanon_UrNammu",
-				"Lebanon_JaneAustenCassandra",
-				"Lebanon_ChevalierDEon",
-				"Lebanon_BenitoMussolini",
-				"Lebanon_JaneAustenCassandra",
-				"Lebanon_BenjaminFranklin",
-				"Lebanon_JaneAustenCassandra",
-				"Lebanon_BenjaminFranklin",
-				"Lebanon_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3041,17 +2281,7 @@
 				""
 			],
 			"color": "#2A7054",
-			"figures": [
-				"Libya_TrofimLysenko",
-				"Libya_BenitoMussolini",
-				"Libya_JaneAustenCassandra",
-				"Libya_ChevalierDEon",
-				"Libya_BenitoMussolini",
-				"Libya_UrNammu",
-				"Libya_UrNammu",
-				"Libya_YukawaHideki",
-				"Libya_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3070,17 +2300,7 @@
 				"Israel"
 			],
 			"color": "#4569D9",
-			"figures": [
-				"Israel_UrNammu",
-				"Israel_TrofimLysenko",
-				"Israel_ChevalierDEon",
-				"Israel_BenitoMussolini",
-				"Israel_TrofimLysenko",
-				"Israel_YukawaHideki",
-				"Israel_BenitoMussolini",
-				"Israel_UrNammu",
-				"Israel_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3099,17 +2319,7 @@
 				"Arab"
 			],
 			"color": "#E3989C",
-			"figures": [
-				"Jordan_BenitoMussolini",
-				"Jordan_TrofimLysenko",
-				"Jordan_YukawaHideki",
-				"Jordan_ChevalierDEon",
-				"Jordan_TrofimLysenko",
-				"Jordan_BenjaminFranklin",
-				"Jordan_TrofimLysenko",
-				"Jordan_TrofimLysenko",
-				"Jordan_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3128,17 +2338,7 @@
 				"Mexican"
 			],
 			"color": "#689752",
-			"figures": [
-				"Mexico_UrNammu",
-				"Mexico_BenitoMussolini",
-				"Mexico_BenitoMussolini",
-				"Mexico_TrofimLysenko",
-				"Mexico_BenjaminFranklin",
-				"Mexico_JaneAustenCassandra",
-				"Mexico_BenitoMussolini",
-				"Mexico_BenitoMussolini",
-				"Mexico_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3157,17 +2357,7 @@
 				"Arab"
 			],
 			"color": "#ABBE98",
-			"figures": [
-				"Saudi_arabia_BenjaminFranklin",
-				"Saudi_arabia_UrNammu",
-				"Saudi_arabia_JaneAustenCassandra",
-				"Saudi_arabia_TrofimLysenko",
-				"Saudi_arabia_JaneAustenCassandra",
-				"Saudi_arabia_TrofimLysenko",
-				"Saudi_arabia_JaneAustenCassandra",
-				"Saudi_arabia_JaneAustenCassandra",
-				"Saudi_arabia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3186,17 +2376,7 @@
 				"Arab"
 			],
 			"color": "#564857",
-			"figures": [
-				"Palestine_JaneAustenCassandra",
-				"Palestine_BenitoMussolini",
-				"Palestine_YukawaHideki",
-				"Palestine_BenjaminFranklin",
-				"Palestine_UrNammu",
-				"Palestine_UrNammu",
-				"Palestine_TrofimLysenko",
-				"Palestine_BenjaminFranklin",
-				"Palestine_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3215,17 +2395,7 @@
 				"Arab"
 			],
 			"color": "#AFA358",
-			"figures": [
-				"Egypt_UrNammu",
-				"Egypt_TrofimLysenko",
-				"Egypt_BenjaminFranklin",
-				"Egypt_TrofimLysenko",
-				"Egypt_JaneAustenCassandra",
-				"Egypt_TrofimLysenko",
-				"Egypt_ChevalierDEon",
-				"Egypt_TrofimLysenko",
-				"Egypt_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3244,17 +2414,7 @@
 				"Nepali"
 			],
 			"color": "#003893",
-			"figures": [
-				"Nepal_BenjaminFranklin",
-				"Nepal_JaneAustenCassandra",
-				"Nepal_YukawaHideki",
-				"Nepal_BenjaminFranklin",
-				"Nepal_UrNammu",
-				"Nepal_BenjaminFranklin",
-				"Nepal_YukawaHideki",
-				"Nepal_TrofimLysenko",
-				"Nepal_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3273,17 +2433,7 @@
 				"Arab"
 			],
 			"color": "#5A402A",
-			"figures": [
-				"Kuwait_ChevalierDEon",
-				"Kuwait_UrNammu",
-				"Kuwait_ChevalierDEon",
-				"Kuwait_JaneAustenCassandra",
-				"Kuwait_ChevalierDEon",
-				"Kuwait_BenjaminFranklin",
-				"Kuwait_JaneAustenCassandra",
-				"Kuwait_UrNammu",
-				"Kuwait_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3302,17 +2452,7 @@
 				"Bhutanese"
 			],
 			"color": "#79645F",
-			"figures": [
-				"Bhutan_TrofimLysenko",
-				"Bhutan_BenitoMussolini",
-				"Bhutan_BenjaminFranklin",
-				"Bhutan_UrNammu",
-				"Bhutan_UrNammu",
-				"Bhutan_BenjaminFranklin",
-				"Bhutan_UrNammu",
-				"Bhutan_JaneAustenCassandra",
-				"Bhutan_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3331,17 +2471,7 @@
 				"Myammar"
 			],
 			"color": "#3B714F",
-			"figures": [
-				"Myanmar_BenjaminFranklin",
-				"Myanmar_BenitoMussolini",
-				"Myanmar_BenitoMussolini",
-				"Myanmar_BenjaminFranklin",
-				"Myanmar_UrNammu",
-				"Myanmar_YukawaHideki",
-				"Myanmar_JaneAustenCassandra",
-				"Myanmar_JaneAustenCassandra",
-				"Myanmar_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3360,17 +2490,7 @@
 				"Western-sahara"
 			],
 			"color": "#C5AE78",
-			"figures": [
-				"Western_sahara_TrofimLysenko",
-				"Western_sahara_BenitoMussolini",
-				"Western_sahara_JaneAustenCassandra",
-				"Western_sahara_UrNammu",
-				"Western_sahara_TrofimLysenko",
-				"Western_sahara_ChevalierDEon",
-				"Western_sahara_UrNammu",
-				"Western_sahara_BenitoMussolini",
-				"Western_sahara_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3389,17 +2509,7 @@
 				""
 			],
 			"color": "#2A6F53",
-			"figures": [
-				"Mauritania_UrNammu",
-				"Mauritania_BenjaminFranklin",
-				"Mauritania_BenjaminFranklin",
-				"Mauritania_YukawaHideki",
-				"Mauritania_UrNammu",
-				"Mauritania_TrofimLysenko",
-				"Mauritania_TrofimLysenko",
-				"Mauritania_BenjaminFranklin",
-				"Mauritania_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3418,17 +2528,7 @@
 				"Arab"
 			],
 			"color": "#3A414B",
-			"figures": [
-				"Bahrain_UrNammu",
-				"Bahrain_ChevalierDEon",
-				"Bahrain_ChevalierDEon",
-				"Bahrain_BenjaminFranklin",
-				"Bahrain_ChevalierDEon",
-				"Bahrain_BenjaminFranklin",
-				"Bahrain_UrNammu",
-				"Bahrain_YukawaHideki",
-				"Bahrain_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3447,17 +2547,7 @@
 				"Bengal"
 			],
 			"color": "#002A30",
-			"figures": [
-				"Bangladesh_YukawaHideki",
-				"Bangladesh_JaneAustenCassandra",
-				"Bangladesh_ChevalierDEon",
-				"Bangladesh_JaneAustenCassandra",
-				"Bangladesh_YukawaHideki",
-				"Bangladesh_YukawaHideki",
-				"Bangladesh_TrofimLysenko",
-				"Bangladesh_TrofimLysenko",
-				"Bangladesh_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3476,17 +2566,7 @@
 				"Arab"
 			],
 			"color": "#6F2373",
-			"figures": [
-				"Qatar_ChevalierDEon",
-				"Qatar_TrofimLysenko",
-				"Qatar_ChevalierDEon",
-				"Qatar_BenjaminFranklin",
-				"Qatar_UrNammu",
-				"Qatar_BenitoMussolini",
-				"Qatar_UrNammu",
-				"Qatar_BenitoMussolini",
-				"Qatar_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3505,17 +2585,7 @@
 				"Arab"
 			],
 			"color": "#815458",
-			"figures": [
-				"Oman_YukawaHideki",
-				"Oman_UrNammu",
-				"Oman_UrNammu",
-				"Oman_BenitoMussolini",
-				"Oman_BenitoMussolini",
-				"Oman_ChevalierDEon",
-				"Oman_TrofimLysenko",
-				"Oman_BenitoMussolini",
-				"Oman_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3534,17 +2604,7 @@
 				"Han-chinise"
 			],
 			"color": "#5B4D5C",
-			"figures": [
-				"Taiwan_ChevalierDEon",
-				"Taiwan_TrofimLysenko",
-				"Taiwan_BenjaminFranklin",
-				"Taiwan_BenjaminFranklin",
-				"Taiwan_ChevalierDEon",
-				"Taiwan_YukawaHideki",
-				"Taiwan_ChevalierDEon",
-				"Taiwan_YukawaHideki",
-				"Taiwan_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3567,17 +2627,7 @@
 				"Bomu"
 			],
 			"color": "#9E8A57",
-			"figures": [
-				"Mali_TrofimLysenko",
-				"Mali_TrofimLysenko",
-				"Mali_BenjaminFranklin",
-				"Mali_ChevalierDEon",
-				"Mali_UrNammu",
-				"Mali_JaneAustenCassandra",
-				"Mali_TrofimLysenko",
-				"Mali_JaneAustenCassandra",
-				"Mali_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3596,17 +2646,7 @@
 				"Arab"
 			],
 			"color": "#279678",
-			"figures": [
-				"United_arab_emirates_UrNammu",
-				"United_arab_emirates_JaneAustenCassandra",
-				"United_arab_emirates_BenitoMussolini",
-				"United_arab_emirates_JaneAustenCassandra",
-				"United_arab_emirates_TrofimLysenko",
-				"United_arab_emirates_BenjaminFranklin",
-				"United_arab_emirates_BenitoMussolini",
-				"United_arab_emirates_TrofimLysenko",
-				"United_arab_emirates_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3628,17 +2668,7 @@
 				"Nenets"
 			],
 			"color": "#26584D",
-			"figures": [
-				"Niger_UrNammu",
-				"Niger_JaneAustenCassandra",
-				"Niger_BenitoMussolini",
-				"Niger_BenjaminFranklin",
-				"Niger_YukawaHideki",
-				"Niger_BenitoMussolini",
-				"Niger_ChevalierDEon",
-				"Niger_YukawaHideki",
-				"Niger_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3657,17 +2687,7 @@
 				"Cuba"
 			],
 			"color": "#9744B0",
-			"figures": [
-				"Cuba_UrNammu",
-				"Cuba_TrofimLysenko",
-				"Cuba_UrNammu",
-				"Cuba_UrNammu",
-				"Cuba_BenitoMussolini",
-				"Cuba_JaneAustenCassandra",
-				"Cuba_YukawaHideki",
-				"Cuba_UrNammu",
-				"Cuba_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3687,17 +2707,7 @@
 				"Muslims-cristian-minotiry"
 			],
 			"color": "#BBAA7E",
-			"figures": [
-				"Chad_BenitoMussolini",
-				"Chad_ChevalierDEon",
-				"Chad_JaneAustenCassandra",
-				"Chad_BenitoMussolini",
-				"Chad_UrNammu",
-				"Chad_JaneAustenCassandra",
-				"Chad_JaneAustenCassandra",
-				"Chad_TrofimLysenko",
-				"Chad_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3721,17 +2731,7 @@
 				"Shilluk"
 			],
 			"color": "#0C3827",
-			"figures": [
-				"Sudan_TrofimLysenko",
-				"Sudan_YukawaHideki",
-				"Sudan_UrNammu",
-				"Sudan_BenjaminFranklin",
-				"Sudan_UrNammu",
-				"Sudan_BenitoMussolini",
-				"Sudan_TrofimLysenko",
-				"Sudan_BenjaminFranklin",
-				"Sudan_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3750,17 +2750,7 @@
 				"Vietnam"
 			],
 			"color": "#C6BE75",
-			"figures": [
-				"Vietnam_TrofimLysenko",
-				"Vietnam_TrofimLysenko",
-				"Vietnam_BenitoMussolini",
-				"Vietnam_TrofimLysenko",
-				"Vietnam_UrNammu",
-				"Vietnam_JaneAustenCassandra",
-				"Vietnam_BenjaminFranklin",
-				"Vietnam_ChevalierDEon",
-				"Vietnam_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3779,17 +2769,7 @@
 				"Lao"
 			],
 			"color": "#594D3F",
-			"figures": [
-				"Laos_TrofimLysenko",
-				"Laos_UrNammu",
-				"Laos_BenitoMussolini",
-				"Laos_BenitoMussolini",
-				"Laos_TrofimLysenko",
-				"Laos_BenjaminFranklin",
-				"Laos_BenitoMussolini",
-				"Laos_ChevalierDEon",
-				"Laos_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3812,17 +2792,7 @@
 				"Malaya"
 			],
 			"color": "#142D4C",
-			"figures": [
-				"Thailand_TrofimLysenko",
-				"Thailand_ChevalierDEon",
-				"Thailand_ChevalierDEon",
-				"Thailand_YukawaHideki",
-				"Thailand_JaneAustenCassandra",
-				"Thailand_ChevalierDEon",
-				"Thailand_ChevalierDEon",
-				"Thailand_BenjaminFranklin",
-				"Thailand_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3841,17 +2811,7 @@
 				"Haiti"
 			],
 			"color": "#A5746F",
-			"figures": [
-				"Haiti_BenitoMussolini",
-				"Haiti_BenjaminFranklin",
-				"Haiti_ChevalierDEon",
-				"Haiti_BenjaminFranklin",
-				"Haiti_TrofimLysenko",
-				"Haiti_JaneAustenCassandra",
-				"Haiti_BenitoMussolini",
-				"Haiti_BenjaminFranklin",
-				"Haiti_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3870,17 +2830,7 @@
 				"Dominican-republic"
 			],
 			"color": "#728877",
-			"figures": [
-				"Dominican_republic_BenjaminFranklin",
-				"Dominican_republic_YukawaHideki",
-				"Dominican_republic_UrNammu",
-				"Dominican_republic_TrofimLysenko",
-				"Dominican_republic_BenjaminFranklin",
-				"Dominican_republic_BenitoMussolini",
-				"Dominican_republic_ChevalierDEon",
-				"Dominican_republic_YukawaHideki",
-				"Dominican_republic_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3899,17 +2849,7 @@
 				"Belize"
 			],
 			"color": "#823214",
-			"figures": [
-				"Belize_UrNammu",
-				"Belize_JaneAustenCassandra",
-				"Belize_YukawaHideki",
-				"Belize_UrNammu",
-				"Belize_YukawaHideki",
-				"Belize_UrNammu",
-				"Belize_UrNammu",
-				"Belize_BenitoMussolini",
-				"Belize_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3928,17 +2868,7 @@
 				"Arab"
 			],
 			"color": "#4E3235",
-			"figures": [
-				"Yemen_YukawaHideki",
-				"Yemen_YukawaHideki",
-				"Yemen_BenjaminFranklin",
-				"Yemen_UrNammu",
-				"Yemen_BenitoMussolini",
-				"Yemen_BenitoMussolini",
-				"Yemen_ChevalierDEon",
-				"Yemen_ChevalierDEon",
-				"Yemen_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3957,17 +2887,7 @@
 				"Jamaica"
 			],
 			"color": "#8BDC0A",
-			"figures": [
-				"Jamaica_ChevalierDEon",
-				"Jamaica_BenitoMussolini",
-				"Jamaica_ChevalierDEon",
-				"Jamaica_JaneAustenCassandra",
-				"Jamaica_BenjaminFranklin",
-				"Jamaica_BenitoMussolini",
-				"Jamaica_BenitoMussolini",
-				"Jamaica_BenjaminFranklin",
-				"Jamaica_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3986,17 +2906,7 @@
 				"Filipino"
 			],
 			"color": "#7255A6",
-			"figures": [
-				"Philippines_YukawaHideki",
-				"Philippines_JaneAustenCassandra",
-				"Philippines_JaneAustenCassandra",
-				"Philippines_BenjaminFranklin",
-				"Philippines_UrNammu",
-				"Philippines_YukawaHideki",
-				"Philippines_BenitoMussolini",
-				"Philippines_UrNammu",
-				"Philippines_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4015,17 +2925,7 @@
 				"Guatemala"
 			],
 			"color": "#48306D",
-			"figures": [
-				"Guatemala_YukawaHideki",
-				"Guatemala_JaneAustenCassandra",
-				"Guatemala_TrofimLysenko",
-				"Guatemala_ChevalierDEon",
-				"Guatemala_YukawaHideki",
-				"Guatemala_BenjaminFranklin",
-				"Guatemala_TrofimLysenko",
-				"Guatemala_YukawaHideki",
-				"Guatemala_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4044,17 +2944,7 @@
 				"Eritrea"
 			],
 			"color": "#CE8CA2",
-			"figures": [
-				"Eritrea_JaneAustenCassandra",
-				"Eritrea_UrNammu",
-				"Eritrea_UrNammu",
-				"Eritrea_JaneAustenCassandra",
-				"Eritrea_JaneAustenCassandra",
-				"Eritrea_UrNammu",
-				"Eritrea_UrNammu",
-				"Eritrea_YukawaHideki",
-				"Eritrea_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4073,17 +2963,7 @@
 				"Cabo-verde"
 			],
 			"color": "#CE2027",
-			"figures": [
-				"Cabo_verde_ChevalierDEon",
-				"Cabo_verde_ChevalierDEon",
-				"Cabo_verde_UrNammu",
-				"Cabo_verde_UrNammu",
-				"Cabo_verde_ChevalierDEon",
-				"Cabo_verde_YukawaHideki",
-				"Cabo_verde_ChevalierDEon",
-				"Cabo_verde_BenitoMussolini",
-				"Cabo_verde_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4102,17 +2982,7 @@
 				"St-kitts-and-nevis"
 			],
 			"color": "#3B3800",
-			"figures": [
-				"St_kitts_and_nevis_TrofimLysenko",
-				"St_kitts_and_nevis_YukawaHideki",
-				"St_kitts_and_nevis_UrNammu",
-				"St_kitts_and_nevis_BenitoMussolini",
-				"St_kitts_and_nevis_YukawaHideki",
-				"St_kitts_and_nevis_BenjaminFranklin",
-				"St_kitts_and_nevis_JaneAustenCassandra",
-				"St_kitts_and_nevis_TrofimLysenko",
-				"St_kitts_and_nevis_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4134,17 +3004,7 @@
 				"Diola"
 			],
 			"color": "#B8757C",
-			"figures": [
-				"Senegal_ChevalierDEon",
-				"Senegal_JaneAustenCassandra",
-				"Senegal_ChevalierDEon",
-				"Senegal_UrNammu",
-				"Senegal_UrNammu",
-				"Senegal_TrofimLysenko",
-				"Senegal_UrNammu",
-				"Senegal_ChevalierDEon",
-				"Senegal_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4163,17 +3023,7 @@
 				"Honduras"
 			],
 			"color": "#99B04A",
-			"figures": [
-				"Honduras_ChevalierDEon",
-				"Honduras_UrNammu",
-				"Honduras_JaneAustenCassandra",
-				"Honduras_JaneAustenCassandra",
-				"Honduras_JaneAustenCassandra",
-				"Honduras_ChevalierDEon",
-				"Honduras_BenjaminFranklin",
-				"Honduras_YukawaHideki",
-				"Honduras_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4195,17 +3045,7 @@
 				"Senofu"
 			],
 			"color": "#CA6E7B",
-			"figures": [
-				"Burkina_faso_ChevalierDEon",
-				"Burkina_faso_ChevalierDEon",
-				"Burkina_faso_JaneAustenCassandra",
-				"Burkina_faso_JaneAustenCassandra",
-				"Burkina_faso_YukawaHideki",
-				"Burkina_faso_YukawaHideki",
-				"Burkina_faso_ChevalierDEon",
-				"Burkina_faso_TrofimLysenko",
-				"Burkina_faso_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4224,17 +3064,7 @@
 				"El-salvadoreans"
 			],
 			"color": "#9F88C6",
-			"figures": [
-				"El_salvador_BenjaminFranklin",
-				"El_salvador_UrNammu",
-				"El_salvador_JaneAustenCassandra",
-				"El_salvador_JaneAustenCassandra",
-				"El_salvador_ChevalierDEon",
-				"El_salvador_BenitoMussolini",
-				"El_salvador_UrNammu",
-				"El_salvador_JaneAustenCassandra",
-				"El_salvador_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4253,17 +3083,7 @@
 				"Nicaragua"
 			],
 			"color": "#91B2BE",
-			"figures": [
-				"Nicaragua_ChevalierDEon",
-				"Nicaragua_ChevalierDEon",
-				"Nicaragua_BenjaminFranklin",
-				"Nicaragua_BenjaminFranklin",
-				"Nicaragua_TrofimLysenko",
-				"Nicaragua_ChevalierDEon",
-				"Nicaragua_UrNammu",
-				"Nicaragua_BenitoMussolini",
-				"Nicaragua_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4287,17 +3107,7 @@
 				"Aaris"
 			],
 			"color": "#30477B",
-			"figures": [
-				"Ethiopia_JaneAustenCassandra",
-				"Ethiopia_YukawaHideki",
-				"Ethiopia_ChevalierDEon",
-				"Ethiopia_YukawaHideki",
-				"Ethiopia_BenjaminFranklin",
-				"Ethiopia_YukawaHideki",
-				"Ethiopia_ChevalierDEon",
-				"Ethiopia_BenitoMussolini",
-				"Ethiopia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4316,17 +3126,7 @@
 				"Cambodia"
 			],
 			"color": "#E2B490",
-			"figures": [
-				"Cambodia_TrofimLysenko",
-				"Cambodia_BenitoMussolini",
-				"Cambodia_JaneAustenCassandra",
-				"Cambodia_BenjaminFranklin",
-				"Cambodia_UrNammu",
-				"Cambodia_BenitoMussolini",
-				"Cambodia_JaneAustenCassandra",
-				"Cambodia_YukawaHideki",
-				"Cambodia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4345,17 +3145,7 @@
 				"Dominica"
 			],
 			"color": "#7670B2",
-			"figures": [
-				"Dominica_UrNammu",
-				"Dominica_BenjaminFranklin",
-				"Dominica_BenjaminFranklin",
-				"Dominica_YukawaHideki",
-				"Dominica_TrofimLysenko",
-				"Dominica_UrNammu",
-				"Dominica_BenitoMussolini",
-				"Dominica_YukawaHideki",
-				"Dominica_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4376,17 +3166,7 @@
 				"Igbo"
 			],
 			"color": "#C27A6B",
-			"figures": [
-				"Nigeria_UrNammu",
-				"Nigeria_UrNammu",
-				"Nigeria_BenjaminFranklin",
-				"Nigeria_BenjaminFranklin",
-				"Nigeria_YukawaHideki",
-				"Nigeria_BenjaminFranklin",
-				"Nigeria_BenjaminFranklin",
-				"Nigeria_JaneAustenCassandra",
-				"Nigeria_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4405,17 +3185,7 @@
 				"Gambia"
 			],
 			"color": "#44355C",
-			"figures": [
-				"Gambia_YukawaHideki",
-				"Gambia_BenitoMussolini",
-				"Gambia_ChevalierDEon",
-				"Gambia_YukawaHideki",
-				"Gambia_UrNammu",
-				"Gambia_TrofimLysenko",
-				"Gambia_BenjaminFranklin",
-				"Gambia_ChevalierDEon",
-				"Gambia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4434,17 +3204,7 @@
 				"Barbados"
 			],
 			"color": "#FCD116",
-			"figures": [
-				"Barbados_BenjaminFranklin",
-				"Barbados_TrofimLysenko",
-				"Barbados_UrNammu",
-				"Barbados_BenitoMussolini",
-				"Barbados_BenitoMussolini",
-				"Barbados_TrofimLysenko",
-				"Barbados_BenitoMussolini",
-				"Barbados_UrNammu",
-				"Barbados_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4463,17 +3223,7 @@
 				"St-lucia"
 			],
 			"color": "#5DB7E6",
-			"figures": [
-				"St_lucia_BenjaminFranklin",
-				"St_lucia_UrNammu",
-				"St_lucia_BenjaminFranklin",
-				"St_lucia_UrNammu",
-				"St_lucia_UrNammu",
-				"St_lucia_JaneAustenCassandra",
-				"St_lucia_ChevalierDEon",
-				"St_lucia_BenjaminFranklin",
-				"St_lucia_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4492,17 +3242,7 @@
 				"Guinea-bissau"
 			],
 			"color": "#DABD81",
-			"figures": [
-				"Guinea_bissau_ChevalierDEon",
-				"Guinea_bissau_ChevalierDEon",
-				"Guinea_bissau_TrofimLysenko",
-				"Guinea_bissau_JaneAustenCassandra",
-				"Guinea_bissau_JaneAustenCassandra",
-				"Guinea_bissau_ChevalierDEon",
-				"Guinea_bissau_BenjaminFranklin",
-				"Guinea_bissau_ChevalierDEon",
-				"Guinea_bissau_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4524,17 +3264,7 @@
 				"Kpelle"
 			],
 			"color": "#205A4E",
-			"figures": [
-				"Guinea_BenjaminFranklin",
-				"Guinea_UrNammu",
-				"Guinea_ChevalierDEon",
-				"Guinea_UrNammu",
-				"Guinea_TrofimLysenko",
-				"Guinea_JaneAustenCassandra",
-				"Guinea_UrNammu",
-				"Guinea_JaneAustenCassandra",
-				"Guinea_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4554,17 +3284,7 @@
 				"Colombia"
 			],
 			"color": "#DEBB5B",
-			"figures": [
-				"Colombia_ChevalierDEon",
-				"Colombia_ChevalierDEon",
-				"Colombia_JaneAustenCassandra",
-				"Colombia_TrofimLysenko",
-				"Colombia_ChevalierDEon",
-				"Colombia_TrofimLysenko",
-				"Colombia_BenjaminFranklin",
-				"Colombia_TrofimLysenko",
-				"Colombia_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4583,17 +3303,7 @@
 				"Venezuelans"
 			],
 			"color": "#C86496",
-			"figures": [
-				"Venezuela_YukawaHideki",
-				"Venezuela_YukawaHideki",
-				"Venezuela_JaneAustenCassandra",
-				"Venezuela_BenitoMussolini",
-				"Venezuela_ChevalierDEon",
-				"Venezuela_BenitoMussolini",
-				"Venezuela_BenjaminFranklin",
-				"Venezuela_BenitoMussolini",
-				"Venezuela_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4612,17 +3322,7 @@
 				"Grenada"
 			],
 			"color": "#007B5F",
-			"figures": [
-				"Grenada_BenjaminFranklin",
-				"Grenada_BenjaminFranklin",
-				"Grenada_YukawaHideki",
-				"Grenada_BenjaminFranklin",
-				"Grenada_BenjaminFranklin",
-				"Grenada_ChevalierDEon",
-				"Grenada_ChevalierDEon",
-				"Grenada_JaneAustenCassandra",
-				"Grenada_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4641,17 +3341,7 @@
 				"Benin"
 			],
 			"color": "#DBC478",
-			"figures": [
-				"Benin_BenitoMussolini",
-				"Benin_TrofimLysenko",
-				"Benin_YukawaHideki",
-				"Benin_BenjaminFranklin",
-				"Benin_JaneAustenCassandra",
-				"Benin_BenjaminFranklin",
-				"Benin_UrNammu",
-				"Benin_UrNammu",
-				"Benin_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4670,17 +3360,7 @@
 				"Djibouti"
 			],
 			"color": "#D7141A",
-			"figures": [
-				"Djibouti_ChevalierDEon",
-				"Djibouti_YukawaHideki",
-				"Djibouti_YukawaHideki",
-				"Djibouti_BenitoMussolini",
-				"Djibouti_JaneAustenCassandra",
-				"Djibouti_JaneAustenCassandra",
-				"Djibouti_JaneAustenCassandra",
-				"Djibouti_UrNammu",
-				"Djibouti_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4701,17 +3381,7 @@
 				"Bantu"
 			],
 			"color": "#185E61",
-			"figures": [
-				"Cameroon_UrNammu",
-				"Cameroon_UrNammu",
-				"Cameroon_BenitoMussolini",
-				"Cameroon_JaneAustenCassandra",
-				"Cameroon_BenjaminFranklin",
-				"Cameroon_BenitoMussolini",
-				"Cameroon_BenjaminFranklin",
-				"Cameroon_JaneAustenCassandra",
-				"Cameroon_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4736,17 +3406,7 @@
 				"Bari"
 			],
 			"color": "#D4BF6E",
-			"figures": [
-				"South_sudan_UrNammu",
-				"South_sudan_BenitoMussolini",
-				"South_sudan_BenjaminFranklin",
-				"South_sudan_JaneAustenCassandra",
-				"South_sudan_YukawaHideki",
-				"South_sudan_BenjaminFranklin",
-				"South_sudan_YukawaHideki",
-				"South_sudan_UrNammu",
-				"South_sudan_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4765,17 +3425,7 @@
 				"Somalia"
 			],
 			"color": "#6683AB",
-			"figures": [
-				"Somalia_TrofimLysenko",
-				"Somalia_UrNammu",
-				"Somalia_BenitoMussolini",
-				"Somalia_TrofimLysenko",
-				"Somalia_TrofimLysenko",
-				"Somalia_JaneAustenCassandra",
-				"Somalia_JaneAustenCassandra",
-				"Somalia_TrofimLysenko",
-				"Somalia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4794,17 +3444,7 @@
 				"Somalia"
 			],
 			"color": "#55AB70",
-			"figures": [
-				"Somaliland_UrNammu",
-				"Somaliland_BenitoMussolini",
-				"Somaliland_JaneAustenCassandra",
-				"Somaliland_JaneAustenCassandra",
-				"Somaliland_BenjaminFranklin",
-				"Somaliland_YukawaHideki",
-				"Somaliland_JaneAustenCassandra",
-				"Somaliland_ChevalierDEon",
-				"Somaliland_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4823,17 +3463,7 @@
 				"Costa-rica"
 			],
 			"color": "#A78C2A",
-			"figures": [
-				"Costa_rica_UrNammu",
-				"Costa_rica_ChevalierDEon",
-				"Costa_rica_TrofimLysenko",
-				"Costa_rica_BenjaminFranklin",
-				"Costa_rica_TrofimLysenko",
-				"Costa_rica_BenitoMussolini",
-				"Costa_rica_ChevalierDEon",
-				"Costa_rica_TrofimLysenko",
-				"Costa_rica_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4853,17 +3483,7 @@
 				"Togo"
 			],
 			"color": "#153323",
-			"figures": [
-				"Togo_UrNammu",
-				"Togo_ChevalierDEon",
-				"Togo_YukawaHideki",
-				"Togo_TrofimLysenko",
-				"Togo_ChevalierDEon",
-				"Togo_ChevalierDEon",
-				"Togo_JaneAustenCassandra",
-				"Togo_UrNammu",
-				"Togo_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4882,17 +3502,7 @@
 				"Maldives"
 			],
 			"color": "#929BA2",
-			"figures": [
-				"Maldives_TrofimLysenko",
-				"Maldives_UrNammu",
-				"Maldives_BenjaminFranklin",
-				"Maldives_JaneAustenCassandra",
-				"Maldives_TrofimLysenko",
-				"Maldives_UrNammu",
-				"Maldives_YukawaHideki",
-				"Maldives_TrofimLysenko",
-				"Maldives_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4911,17 +3521,7 @@
 				"Ghana"
 			],
 			"color": "#A24A58",
-			"figures": [
-				"Ghana_BenjaminFranklin",
-				"Ghana_BenitoMussolini",
-				"Ghana_YukawaHideki",
-				"Ghana_JaneAustenCassandra",
-				"Ghana_UrNammu",
-				"Ghana_BenitoMussolini",
-				"Ghana_YukawaHideki",
-				"Ghana_BenjaminFranklin",
-				"Ghana_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4943,17 +3543,7 @@
 				"Nzakara"
 			],
 			"color": "#A64D63",
-			"figures": [
-				"Central_african_republic_YukawaHideki",
-				"Central_african_republic_YukawaHideki",
-				"Central_african_republic_YukawaHideki",
-				"Central_african_republic_TrofimLysenko",
-				"Central_african_republic_TrofimLysenko",
-				"Central_african_republic_UrNammu",
-				"Central_african_republic_BenjaminFranklin",
-				"Central_african_republic_TrofimLysenko",
-				"Central_african_republic_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -4972,17 +3562,7 @@
 				"Trinidad-and-tobago"
 			],
 			"color": "#F05A27",
-			"figures": [
-				"Trinidad_and_tobago_TrofimLysenko",
-				"Trinidad_and_tobago_BenjaminFranklin",
-				"Trinidad_and_tobago_BenitoMussolini",
-				"Trinidad_and_tobago_ChevalierDEon",
-				"Trinidad_and_tobago_ChevalierDEon",
-				"Trinidad_and_tobago_UrNammu",
-				"Trinidad_and_tobago_TrofimLysenko",
-				"Trinidad_and_tobago_TrofimLysenko",
-				"Trinidad_and_tobago_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5004,17 +3584,7 @@
 				"Akan"
 			],
 			"color": "#D1996A",
-			"figures": [
-				"Ivory_coast_YukawaHideki",
-				"Ivory_coast_BenjaminFranklin",
-				"Ivory_coast_BenjaminFranklin",
-				"Ivory_coast_BenjaminFranklin",
-				"Ivory_coast_JaneAustenCassandra",
-				"Ivory_coast_BenjaminFranklin",
-				"Ivory_coast_BenjaminFranklin",
-				"Ivory_coast_UrNammu",
-				"Ivory_coast_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5034,17 +3604,7 @@
 				"Sherbor"
 			],
 			"color": "#729FBE",
-			"figures": [
-				"Sierra_leone_UrNammu",
-				"Sierra_leone_BenitoMussolini",
-				"Sierra_leone_BenitoMussolini",
-				"Sierra_leone_BenjaminFranklin",
-				"Sierra_leone_YukawaHideki",
-				"Sierra_leone_BenitoMussolini",
-				"Sierra_leone_ChevalierDEon",
-				"Sierra_leone_BenjaminFranklin",
-				"Sierra_leone_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5063,17 +3623,7 @@
 				"Panama"
 			],
 			"color": "#3C3558",
-			"figures": [
-				"Panama_TrofimLysenko",
-				"Panama_JaneAustenCassandra",
-				"Panama_TrofimLysenko",
-				"Panama_BenjaminFranklin",
-				"Panama_TrofimLysenko",
-				"Panama_UrNammu",
-				"Panama_TrofimLysenko",
-				"Panama_JaneAustenCassandra",
-				"Panama_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5092,17 +3642,7 @@
 				"Sri-lankan"
 			],
 			"color": "#564B39",
-			"figures": [
-				"Sri_lanka_UrNammu",
-				"Sri_lanka_TrofimLysenko",
-				"Sri_lanka_ChevalierDEon",
-				"Sri_lanka_TrofimLysenko",
-				"Sri_lanka_UrNammu",
-				"Sri_lanka_BenjaminFranklin",
-				"Sri_lanka_BenitoMussolini",
-				"Sri_lanka_BenitoMussolini",
-				"Sri_lanka_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5121,17 +3661,7 @@
 				""
 			],
 			"color": "#513D76",
-			"figures": [
-				"Liberia_JaneAustenCassandra",
-				"Liberia_ChevalierDEon",
-				"Liberia_YukawaHideki",
-				"Liberia_BenjaminFranklin",
-				"Liberia_BenitoMussolini",
-				"Liberia_BenitoMussolini",
-				"Liberia_ChevalierDEon",
-				"Liberia_UrNammu",
-				"Liberia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5150,17 +3680,7 @@
 				"Guyanans"
 			],
 			"color": "#B49678",
-			"figures": [
-				"Guyana_TrofimLysenko",
-				"Guyana_TrofimLysenko",
-				"Guyana_BenitoMussolini",
-				"Guyana_YukawaHideki",
-				"Guyana_TrofimLysenko",
-				"Guyana_YukawaHideki",
-				"Guyana_JaneAustenCassandra",
-				"Guyana_YukawaHideki",
-				"Guyana_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5179,17 +3699,7 @@
 				"Palau"
 			],
 			"color": "#FFC90E",
-			"figures": [
-				"Palau_TrofimLysenko",
-				"Palau_ChevalierDEon",
-				"Palau_UrNammu",
-				"Palau_YukawaHideki",
-				"Palau_UrNammu",
-				"Palau_BenjaminFranklin",
-				"Palau_ChevalierDEon",
-				"Palau_UrNammu",
-				"Palau_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5209,17 +3719,7 @@
 				"Maldives"
 			],
 			"color": "#292F85",
-			"figures": [
-				"Nauru_BenjaminFranklin",
-				"Nauru_JaneAustenCassandra",
-				"Nauru_UrNammu",
-				"Nauru_TrofimLysenko",
-				"Nauru_BenjaminFranklin",
-				"Nauru_YukawaHideki",
-				"Nauru_BenitoMussolini",
-				"Nauru_UrNammu",
-				"Nauru_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5238,17 +3738,7 @@
 				"Malaya"
 			],
 			"color": "#C56064",
-			"figures": [
-				"Malaysia_YukawaHideki",
-				"Malaysia_TrofimLysenko",
-				"Malaysia_BenjaminFranklin",
-				"Malaysia_TrofimLysenko",
-				"Malaysia_TrofimLysenko",
-				"Malaysia_YukawaHideki",
-				"Malaysia_TrofimLysenko",
-				"Malaysia_BenjaminFranklin",
-				"Malaysia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5267,17 +3757,7 @@
 				"Surinamians"
 			],
 			"color": "#803754",
-			"figures": [
-				"Suriname_JaneAustenCassandra",
-				"Suriname_ChevalierDEon",
-				"Suriname_BenjaminFranklin",
-				"Suriname_YukawaHideki",
-				"Suriname_TrofimLysenko",
-				"Suriname_BenjaminFranklin",
-				"Suriname_JaneAustenCassandra",
-				"Suriname_JaneAustenCassandra",
-				"Suriname_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5314,17 +3794,7 @@
 				"Mollucans"
 			],
 			"color": "#DDBEC4",
-			"figures": [
-				"Indonesia_TrofimLysenko",
-				"Indonesia_UrNammu",
-				"Indonesia_BenjaminFranklin",
-				"Indonesia_ChevalierDEon",
-				"Indonesia_ChevalierDEon",
-				"Indonesia_ChevalierDEon",
-				"Indonesia_BenjaminFranklin",
-				"Indonesia_BenitoMussolini",
-				"Indonesia_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5346,17 +3816,7 @@
 				"Uruguay"
 			],
 			"color": "#4C913F",
-			"figures": [
-				"Brazil_ChevalierDEon",
-				"Brazil_JaneAustenCassandra",
-				"Brazil_JaneAustenCassandra",
-				"Brazil_TrofimLysenko",
-				"Brazil_BenjaminFranklin",
-				"Brazil_ChevalierDEon",
-				"Brazil_ChevalierDEon",
-				"Brazil_YukawaHideki",
-				"Brazil_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5383,17 +3843,7 @@
 				"Lunda"
 			],
 			"color": "#416893",
-			"figures": [
-				"Dr_congo_ChevalierDEon",
-				"Dr_congo_UrNammu",
-				"Dr_congo_UrNammu",
-				"Dr_congo_TrofimLysenko",
-				"Dr_congo_ChevalierDEon",
-				"Dr_congo_BenjaminFranklin",
-				"Dr_congo_BenitoMussolini",
-				"Dr_congo_BenitoMussolini",
-				"Dr_congo_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5416,17 +3866,7 @@
 				"Kenya-bantu"
 			],
 			"color": "#833640",
-			"figures": [
-				"Kenya_ChevalierDEon",
-				"Kenya_BenjaminFranklin",
-				"Kenya_ChevalierDEon",
-				"Kenya_BenjaminFranklin",
-				"Kenya_TrofimLysenko",
-				"Kenya_BenjaminFranklin",
-				"Kenya_UrNammu",
-				"Kenya_YukawaHideki",
-				"Kenya_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5445,17 +3885,7 @@
 				"Brunei"
 			],
 			"color": "#3C6E55",
-			"figures": [
-				"Brunei_YukawaHideki",
-				"Brunei_ChevalierDEon",
-				"Brunei_YukawaHideki",
-				"Brunei_BenitoMussolini",
-				"Brunei_YukawaHideki",
-				"Brunei_JaneAustenCassandra",
-				"Brunei_TrofimLysenko",
-				"Brunei_JaneAustenCassandra",
-				"Brunei_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5476,17 +3906,7 @@
 				"Uganda"
 			],
 			"color": "#92824F",
-			"figures": [
-				"Uganda_BenitoMussolini",
-				"Uganda_BenjaminFranklin",
-				"Uganda_UrNammu",
-				"Uganda_ChevalierDEon",
-				"Uganda_UrNammu",
-				"Uganda_YukawaHideki",
-				"Uganda_UrNammu",
-				"Uganda_BenitoMussolini",
-				"Uganda_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5505,17 +3925,7 @@
 				"Equatorial-guinea"
 			],
 			"color": "#5090AB",
-			"figures": [
-				"Equatorial_guinea_JaneAustenCassandra",
-				"Equatorial_guinea_YukawaHideki",
-				"Equatorial_guinea_ChevalierDEon",
-				"Equatorial_guinea_UrNammu",
-				"Equatorial_guinea_BenitoMussolini",
-				"Equatorial_guinea_BenjaminFranklin",
-				"Equatorial_guinea_TrofimLysenko",
-				"Equatorial_guinea_TrofimLysenko",
-				"Equatorial_guinea_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5537,17 +3947,7 @@
 				"Teke"
 			],
 			"color": "#D16C78",
-			"figures": [
-				"Congo_TrofimLysenko",
-				"Congo_JaneAustenCassandra",
-				"Congo_YukawaHideki",
-				"Congo_YukawaHideki",
-				"Congo_UrNammu",
-				"Congo_ChevalierDEon",
-				"Congo_TrofimLysenko",
-				"Congo_TrofimLysenko",
-				"Congo_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5570,17 +3970,7 @@
 				"Eshira"
 			],
 			"color": "#DCBF7B",
-			"figures": [
-				"Gabon_BenitoMussolini",
-				"Gabon_JaneAustenCassandra",
-				"Gabon_ChevalierDEon",
-				"Gabon_YukawaHideki",
-				"Gabon_YukawaHideki",
-				"Gabon_BenjaminFranklin",
-				"Gabon_ChevalierDEon",
-				"Gabon_BenjaminFranklin",
-				"Gabon_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5599,17 +3989,7 @@
 				"Han-chinise"
 			],
 			"color": "#4D4986",
-			"figures": [
-				"Singapore_BenjaminFranklin",
-				"Singapore_YukawaHideki",
-				"Singapore_ChevalierDEon",
-				"Singapore_BenjaminFranklin",
-				"Singapore_TrofimLysenko",
-				"Singapore_BenjaminFranklin",
-				"Singapore_UrNammu",
-				"Singapore_TrofimLysenko",
-				"Singapore_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5628,17 +4008,7 @@
 				"Trinida-and-tobago-equador"
 			],
 			"color": "#F99262",
-			"figures": [
-				"Ecuador_TrofimLysenko",
-				"Ecuador_ChevalierDEon",
-				"Ecuador_UrNammu",
-				"Ecuador_BenjaminFranklin",
-				"Ecuador_BenitoMussolini",
-				"Ecuador_BenjaminFranklin",
-				"Ecuador_ChevalierDEon",
-				"Ecuador_UrNammu",
-				"Ecuador_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5657,17 +4027,7 @@
 				"Sao-tome-and-principe"
 			],
 			"color": "#12AD2B",
-			"figures": [
-				"Sao_tome_and_principe_BenitoMussolini",
-				"Sao_tome_and_principe_UrNammu",
-				"Sao_tome_and_principe_TrofimLysenko",
-				"Sao_tome_and_principe_BenitoMussolini",
-				"Sao_tome_and_principe_UrNammu",
-				"Sao_tome_and_principe_YukawaHideki",
-				"Sao_tome_and_principe_ChevalierDEon",
-				"Sao_tome_and_principe_ChevalierDEon",
-				"Sao_tome_and_principe_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5686,17 +4046,7 @@
 				"Peru"
 			],
 			"color": "#C4BDCC",
-			"figures": [
-				"Peru_JaneAustenCassandra",
-				"Peru_BenitoMussolini",
-				"Peru_TrofimLysenko",
-				"Peru_JaneAustenCassandra",
-				"Peru_YukawaHideki",
-				"Peru_BenjaminFranklin",
-				"Peru_UrNammu",
-				"Peru_BenjaminFranklin",
-				"Peru_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5715,17 +4065,7 @@
 				"Rwanda"
 			],
 			"color": "#1D3841",
-			"figures": [
-				"Rwanda_UrNammu",
-				"Rwanda_JaneAustenCassandra",
-				"Rwanda_ChevalierDEon",
-				"Rwanda_BenitoMussolini",
-				"Rwanda_YukawaHideki",
-				"Rwanda_ChevalierDEon",
-				"Rwanda_BenjaminFranklin",
-				"Rwanda_TrofimLysenko",
-				"Rwanda_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5751,17 +4091,7 @@
 				"Makonde"
 			],
 			"color": "#678792",
-			"figures": [
-				"Tanzania_UrNammu",
-				"Tanzania_JaneAustenCassandra",
-				"Tanzania_JaneAustenCassandra",
-				"Tanzania_JaneAustenCassandra",
-				"Tanzania_BenjaminFranklin",
-				"Tanzania_TrofimLysenko",
-				"Tanzania_UrNammu",
-				"Tanzania_ChevalierDEon",
-				"Tanzania_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5780,17 +4110,7 @@
 				"Burundi"
 			],
 			"color": "#9A4BA0",
-			"figures": [
-				"Burundi_TrofimLysenko",
-				"Burundi_TrofimLysenko",
-				"Burundi_ChevalierDEon",
-				"Burundi_ChevalierDEon",
-				"Burundi_BenitoMussolini",
-				"Burundi_TrofimLysenko",
-				"Burundi_JaneAustenCassandra",
-				"Burundi_JaneAustenCassandra",
-				"Burundi_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5811,17 +4131,7 @@
 				"Papuans"
 			],
 			"color": "#2B385A",
-			"figures": [
-				"Papua_new_guinea_UrNammu",
-				"Papua_new_guinea_UrNammu",
-				"Papua_new_guinea_TrofimLysenko",
-				"Papua_new_guinea_BenitoMussolini",
-				"Papua_new_guinea_BenjaminFranklin",
-				"Papua_new_guinea_ChevalierDEon",
-				"Papua_new_guinea_JaneAustenCassandra",
-				"Papua_new_guinea_YukawaHideki",
-				"Papua_new_guinea_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5842,17 +4152,7 @@
 				"Angola-kimbudu"
 			],
 			"color": "#2C1823",
-			"figures": [
-				"Angola_YukawaHideki",
-				"Angola_UrNammu",
-				"Angola_ChevalierDEon",
-				"Angola_BenitoMussolini",
-				"Angola_YukawaHideki",
-				"Angola_TrofimLysenko",
-				"Angola_JaneAustenCassandra",
-				"Angola_UrNammu",
-				"Angola_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5871,17 +4171,7 @@
 				"Seychelles"
 			],
 			"color": "#A11E24",
-			"figures": [
-				"Seychelles_YukawaHideki",
-				"Seychelles_UrNammu",
-				"Seychelles_ChevalierDEon",
-				"Seychelles_ChevalierDEon",
-				"Seychelles_UrNammu",
-				"Seychelles_UrNammu",
-				"Seychelles_TrofimLysenko",
-				"Seychelles_YukawaHideki",
-				"Seychelles_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5900,17 +4190,7 @@
 				"Solomon-islands"
 			],
 			"color": "#E20C0C",
-			"figures": [
-				"Solomon_islands_BenitoMussolini",
-				"Solomon_islands_TrofimLysenko",
-				"Solomon_islands_UrNammu",
-				"Solomon_islands_ChevalierDEon",
-				"Solomon_islands_JaneAustenCassandra",
-				"Solomon_islands_ChevalierDEon",
-				"Solomon_islands_JaneAustenCassandra",
-				"Solomon_islands_TrofimLysenko",
-				"Solomon_islands_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5931,17 +4211,7 @@
 				"Tonga"
 			],
 			"color": "#22562F",
-			"figures": [
-				"Zambia_BenitoMussolini",
-				"Zambia_YukawaHideki",
-				"Zambia_BenitoMussolini",
-				"Zambia_ChevalierDEon",
-				"Zambia_BenjaminFranklin",
-				"Zambia_BenitoMussolini",
-				"Zambia_TrofimLysenko",
-				"Zambia_BenjaminFranklin",
-				"Zambia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5960,17 +4230,7 @@
 				"East-timor"
 			],
 			"color": "#28AA4C",
-			"figures": [
-				"East_timor_TrofimLysenko",
-				"East_timor_ChevalierDEon",
-				"East_timor_UrNammu",
-				"East_timor_UrNammu",
-				"East_timor_JaneAustenCassandra",
-				"East_timor_BenitoMussolini",
-				"East_timor_YukawaHideki",
-				"East_timor_YukawaHideki",
-				"East_timor_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -5989,17 +4249,7 @@
 				"Tuvalu"
 			],
 			"color": "#ED1C24",
-			"figures": [
-				"Tuvalu_TrofimLysenko",
-				"Tuvalu_ChevalierDEon",
-				"Tuvalu_BenitoMussolini",
-				"Tuvalu_UrNammu",
-				"Tuvalu_ChevalierDEon",
-				"Tuvalu_BenjaminFranklin",
-				"Tuvalu_BenitoMussolini",
-				"Tuvalu_UrNammu",
-				"Tuvalu_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6019,17 +4269,7 @@
 				"Malawi-chewa"
 			],
 			"color": "#A15468",
-			"figures": [
-				"Malawi_TrofimLysenko",
-				"Malawi_TrofimLysenko",
-				"Malawi_BenjaminFranklin",
-				"Malawi_TrofimLysenko",
-				"Malawi_UrNammu",
-				"Malawi_YukawaHideki",
-				"Malawi_JaneAustenCassandra",
-				"Malawi_BenitoMussolini",
-				"Malawi_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6077,17 +4317,7 @@
 				"Mozambiue-tsonnga"
 			],
 			"color": "#0E363E",
-			"figures": [
-				"Mozambique_TrofimLysenko",
-				"Mozambique_TrofimLysenko",
-				"Mozambique_BenitoMussolini",
-				"Mozambique_UrNammu",
-				"Mozambique_UrNammu",
-				"Mozambique_BenitoMussolini",
-				"Mozambique_TrofimLysenko",
-				"Mozambique_JaneAustenCassandra",
-				"Mozambique_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6106,17 +4336,7 @@
 				"Australia"
 			],
 			"color": "#398F61",
-			"figures": [
-				"Australia_JaneAustenCassandra",
-				"Australia_UrNammu",
-				"Australia_BenitoMussolini",
-				"Australia_YukawaHideki",
-				"Australia_BenitoMussolini",
-				"Australia_YukawaHideki",
-				"Australia_YukawaHideki",
-				"Australia_TrofimLysenko",
-				"Australia_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6136,17 +4356,7 @@
 				"Madagascar"
 			],
 			"color": "#2C8C04",
-			"figures": [
-				"Madagascar_JaneAustenCassandra",
-				"Madagascar_YukawaHideki",
-				"Madagascar_BenitoMussolini",
-				"Madagascar_ChevalierDEon",
-				"Madagascar_TrofimLysenko",
-				"Madagascar_YukawaHideki",
-				"Madagascar_BenitoMussolini",
-				"Madagascar_UrNammu",
-				"Madagascar_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6165,17 +4375,7 @@
 				"Vanuatu"
 			],
 			"color": "#EDA720",
-			"figures": [
-				"Vanuatu_JaneAustenCassandra",
-				"Vanuatu_TrofimLysenko",
-				"Vanuatu_ChevalierDEon",
-				"Vanuatu_TrofimLysenko",
-				"Vanuatu_ChevalierDEon",
-				"Vanuatu_BenitoMussolini",
-				"Vanuatu_BenjaminFranklin",
-				"Vanuatu_YukawaHideki",
-				"Vanuatu_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6197,17 +4397,7 @@
 				"Tswa"
 			],
 			"color": "#AD585D",
-			"figures": [
-				"Zimbabwe_ChevalierDEon",
-				"Zimbabwe_ChevalierDEon",
-				"Zimbabwe_TrofimLysenko",
-				"Zimbabwe_TrofimLysenko",
-				"Zimbabwe_TrofimLysenko",
-				"Zimbabwe_YukawaHideki",
-				"Zimbabwe_TrofimLysenko",
-				"Zimbabwe_YukawaHideki",
-				"Zimbabwe_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6226,17 +4416,7 @@
 				"Fiji"
 			],
 			"color": "#8F4952",
-			"figures": [
-				"Fiji_ChevalierDEon",
-				"Fiji_TrofimLysenko",
-				"Fiji_YukawaHideki",
-				"Fiji_BenitoMussolini",
-				"Fiji_BenitoMussolini",
-				"Fiji_JaneAustenCassandra",
-				"Fiji_JaneAustenCassandra",
-				"Fiji_BenjaminFranklin",
-				"Fiji_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6258,17 +4438,7 @@
 				"Nama"
 			],
 			"color": "#C1D9A7",
-			"figures": [
-				"Namibia_ChevalierDEon",
-				"Namibia_TrofimLysenko",
-				"Namibia_UrNammu",
-				"Namibia_YukawaHideki",
-				"Namibia_BenjaminFranklin",
-				"Namibia_YukawaHideki",
-				"Namibia_JaneAustenCassandra",
-				"Namibia_JaneAustenCassandra",
-				"Namibia_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6287,17 +4457,7 @@
 				"Niue"
 			],
 			"color": "#B97A57",
-			"figures": [
-				"Niue_UrNammu",
-				"Niue_ChevalierDEon",
-				"Niue_TrofimLysenko",
-				"Niue_ChevalierDEon",
-				"Niue_TrofimLysenko",
-				"Niue_UrNammu",
-				"Niue_JaneAustenCassandra",
-				"Niue_BenjaminFranklin",
-				"Niue_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6316,17 +4476,7 @@
 				"Chile"
 			],
 			"color": "#9B656B",
-			"figures": [
-				"Chile_UrNammu",
-				"Chile_BenitoMussolini",
-				"Chile_BenjaminFranklin",
-				"Chile_UrNammu",
-				"Chile_TrofimLysenko",
-				"Chile_UrNammu",
-				"Chile_ChevalierDEon",
-				"Chile_ChevalierDEon",
-				"Chile_TrofimLysenko"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6347,17 +4497,7 @@
 				"Kqalaqai"
 			],
 			"color": "#889DBC",
-			"figures": [
-				"Botswana_BenitoMussolini",
-				"Botswana_BenitoMussolini",
-				"Botswana_JaneAustenCassandra",
-				"Botswana_BenitoMussolini",
-				"Botswana_ChevalierDEon",
-				"Botswana_UrNammu",
-				"Botswana_YukawaHideki",
-				"Botswana_YukawaHideki",
-				"Botswana_BenjaminFranklin"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6376,17 +4516,7 @@
 				"Paraguay"
 			],
 			"color": "#3971E4",
-			"figures": [
-				"Paraguay_BenitoMussolini",
-				"Paraguay_UrNammu",
-				"Paraguay_UrNammu",
-				"Paraguay_UrNammu",
-				"Paraguay_UrNammu",
-				"Paraguay_UrNammu",
-				"Paraguay_JaneAustenCassandra",
-				"Paraguay_TrofimLysenko",
-				"Paraguay_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6405,17 +4535,7 @@
 				"Mauritius"
 			],
 			"color": "#B39500",
-			"figures": [
-				"Mauritius_ChevalierDEon",
-				"Mauritius_ChevalierDEon",
-				"Mauritius_ChevalierDEon",
-				"Mauritius_BenjaminFranklin",
-				"Mauritius_BenitoMussolini",
-				"Mauritius_TrofimLysenko",
-				"Mauritius_ChevalierDEon",
-				"Mauritius_UrNammu",
-				"Mauritius_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6434,17 +4554,7 @@
 				"Tonga"
 			],
 			"color": "#FF7578",
-			"figures": [
-				"Tonga_YukawaHideki",
-				"Tonga_TrofimLysenko",
-				"Tonga_JaneAustenCassandra",
-				"Tonga_UrNammu",
-				"Tonga_YukawaHideki",
-				"Tonga_ChevalierDEon",
-				"Tonga_ChevalierDEon",
-				"Tonga_ChevalierDEon",
-				"Tonga_ChevalierDEon"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6463,17 +4573,7 @@
 				"Argentina"
 			],
 			"color": "#919DEC",
-			"figures": [
-				"Argentina_BenjaminFranklin",
-				"Argentina_BenjaminFranklin",
-				"Argentina_JaneAustenCassandra",
-				"Argentina_UrNammu",
-				"Argentina_JaneAustenCassandra",
-				"Argentina_BenitoMussolini",
-				"Argentina_YukawaHideki",
-				"Argentina_YukawaHideki",
-				"Argentina_UrNammu"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6498,17 +4598,7 @@
 				"Xhosa"
 			],
 			"color": "#D2A56C",
-			"figures": [
-				"South_africa_BenitoMussolini",
-				"South_africa_UrNammu",
-				"South_africa_UrNammu",
-				"South_africa_TrofimLysenko",
-				"South_africa_JaneAustenCassandra",
-				"South_africa_UrNammu",
-				"South_africa_BenitoMussolini",
-				"South_africa_TrofimLysenko",
-				"South_africa_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6527,17 +4617,7 @@
 				"Eswatini"
 			],
 			"color": "#575F86",
-			"figures": [
-				"Eswatini_UrNammu",
-				"Eswatini_ChevalierDEon",
-				"Eswatini_JaneAustenCassandra",
-				"Eswatini_BenjaminFranklin",
-				"Eswatini_YukawaHideki",
-				"Eswatini_YukawaHideki",
-				"Eswatini_JaneAustenCassandra",
-				"Eswatini_ChevalierDEon",
-				"Eswatini_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6556,17 +4636,7 @@
 				"Lesotho"
 			],
 			"color": "#00BEF0",
-			"figures": [
-				"Lesotho_JaneAustenCassandra",
-				"Lesotho_ChevalierDEon",
-				"Lesotho_TrofimLysenko",
-				"Lesotho_BenjaminFranklin",
-				"Lesotho_BenitoMussolini",
-				"Lesotho_BenjaminFranklin",
-				"Lesotho_ChevalierDEon",
-				"Lesotho_ChevalierDEon",
-				"Lesotho_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6585,17 +4655,7 @@
 				"Uruguay"
 			],
 			"color": "#AEC09C",
-			"figures": [
-				"Uruguay_TrofimLysenko",
-				"Uruguay_BenjaminFranklin",
-				"Uruguay_BenitoMussolini",
-				"Uruguay_BenjaminFranklin",
-				"Uruguay_BenitoMussolini",
-				"Uruguay_BenitoMussolini",
-				"Uruguay_JaneAustenCassandra",
-				"Uruguay_JaneAustenCassandra",
-				"Uruguay_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6614,17 +4674,7 @@
 				"New-zealand"
 			],
 			"color": "#DAD1E9",
-			"figures": [
-				"New_zealand_YukawaHideki",
-				"New_zealand_YukawaHideki",
-				"New_zealand_BenjaminFranklin",
-				"New_zealand_YukawaHideki",
-				"New_zealand_UrNammu",
-				"New_zealand_UrNammu",
-				"New_zealand_UrNammu",
-				"New_zealand_UrNammu",
-				"New_zealand_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6641,16 +4691,7 @@
 		{
 			"accepted_cultures": [],
 			"color": "#FDFDFD",
-			"figures": [
-				"Antartica_ChevalierDEon",
-				"Antartica_JaneAustenCassandra",
-				"Antartica_ChevalierDEon",
-				"Antartica_JaneAustenCassandra",
-				"Antartica_BenjaminFranklin",
-				"Antartica_TrofimLysenko",
-				"Antartica_BenjaminFranklin",
-				"Antartica_BenitoMussolini"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6667,12 +4708,7 @@
 		{
 			"accepted_cultures": [],
 			"color": "#22617E",
-			"figures": [
-				"Donetsk_ChevalierDEon",
-				"Donetsk_BenitoMussolini",
-				"Donetsk_JaneAustenCassandra",
-				"Donetsk_JaneAustenCassandra"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -6689,12 +4725,7 @@
 		{
 			"accepted_cultures": [],
 			"color": "#2D6458",
-			"figures": [
-				"Luhansk_UrNammu",
-				"Luhansk_ChevalierDEon",
-				"Luhansk_TrofimLysenko",
-				"Luhansk_YukawaHideki"
-			],
+			"figures": [],
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,

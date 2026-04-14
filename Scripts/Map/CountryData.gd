@@ -196,7 +196,7 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	
 	return country
 
-func UpdateCabinet() -> void:
+func InitializeCabinet() -> void:
 	for position: String in governmentPositions:
 		var figure: ImportantFigure = MapManager.significantFigures.get(governmentPositions[position])
 		if figure:
@@ -252,7 +252,6 @@ func process_hour() -> void:
 	if !is_player:
 		ai_controller.think_hour()
 
-
 func process_day() -> void:
 	if _is_loading:
 		return
@@ -271,7 +270,6 @@ func process_day() -> void:
 	if !is_player:
 		ai_controller.think_day()
 
-
 func _refresh_economic_stats() -> void:
 	if not dirty:
 		return  # Already up to date
@@ -283,13 +281,10 @@ func _refresh_economic_stats() -> void:
 	update_manpower_pool()
 	self.dirty = false
 
-
 #endregion
-
 
 func refresh_ideology_name() -> void:
 	ideology_name = IdeologyManager.get_ideology_name(ideology)
-
 
 #region --- Military Management ---
 func train_troops(count: int, type: String = "infantry") -> bool:
@@ -381,6 +376,64 @@ func get_defense_efficiency() -> float:
 
 #endregion
 
+func RemoveGovernmentPosition(a_position: String) -> void:
+	var currentFigure: ImportantFigure = MapManager.significantFigures.get(governmentPositions[a_position], null)
+	if currentFigure:
+		for skill: String in currentFigure.skills:
+			match skill:
+				"stability":
+					stability -= currentFigure.skills[skill]
+				"warSupport":
+					war_support -= currentFigure.skills[skill]
+				"dailyPPGain":
+					daily_pp_gain -= currentFigure.skills[skill]
+				"divCostMod":
+					divCostMod /= currentFigure.skills[skill]
+				"troopSpeed":
+					troopSpeedExtra -= currentFigure.skills[skill]
+				"troopAttackAdd":
+					troopAttackAdd -= currentFigure.skills[skill]
+				"troopAttackMod":
+					troopAttackMod /= currentFigure.skills[skill]
+				"troopDefendAdd":
+					troopDefendAdd -= currentFigure.skills[skill]
+				"troopDefendMod":
+					troopDefendMod /= currentFigure.skills[skill]
+				"attackerAttackMitigation":
+					attacker_attack_mitigation /= currentFigure.skills[skill]
+				"defenderAttackMitigation":
+					defender_attack_mitigation /= currentFigure.skills[skill]
+		currentFigure.occupation = ""
+	governmentPositions[a_position] = ""
+
+func SetGovernmentPosition(a_position: String, a_figure: ImportantFigure) -> void:
+	RemoveGovernmentPosition(a_position)
+	governmentPositions[a_position] = a_figure.name
+	for skill: String in a_figure.skills:
+		match skill:
+			"stability":
+				stability += a_figure.skills[skill]
+			"warSupport":
+				war_support += a_figure.skills[skill]
+			"dailyPPGain":
+				daily_pp_gain += a_figure.skills[skill]
+			"divCostMod":
+				divCostMod *= a_figure.skills[skill]
+			"troopSpeed":
+				troopSpeedExtra += a_figure.skills[skill]
+			"troopAttackAdd":
+				troopAttackAdd += a_figure.skills[skill]
+			"troopAttackMod":
+				troopAttackMod *= a_figure.skills[skill]
+			"troopDefendAdd":
+				troopDefendAdd += a_figure.skills[skill]
+			"troopDefendMod":
+				troopDefendMod *= a_figure.skills[skill]
+			"attackerAttackMitigation":
+				attacker_attack_mitigation *= a_figure.skills[skill]
+			"defenderAttackMitigation":
+				defender_attack_mitigation *= a_figure.skills[skill]
+	a_figure.occupation = a_position
 
 #region --- Deployment Helper ---
 func deploy_ready_troop(troop: ReadyTroop, specific_pid: int = -1) -> bool:
