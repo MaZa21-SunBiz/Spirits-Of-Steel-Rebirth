@@ -2,12 +2,12 @@
 
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_8sdcd"]
 [ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="2_734iy"]
-[ext_resource type="Texture2D" uid="uid://cho1wupyj02tq" path="res://assets/portraits/BenitoMussolini.png" id="2_av13s"]
+[ext_resource type="Texture2D" uid="uid://cho1wupyj02tq" path="res://starts/ModernEmpires/assets/portraits/random/BenitoMussolini.png" id="2_av13s"]
 [ext_resource type="Texture2D" uid="uid://byft1gid3fvya" path="res://assets/icons/Espionage/Blindfold.svg" id="3_em7cp"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="4_4ygwr"]
 [ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="4_av13s"]
 [ext_resource type="Texture2D" uid="uid://c2tseluls703" path="res://assets/icons/Espionage/BleedingWound.svg" id="5_tp7ur"]
-[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="6_v578k"]
+[ext_resource type="Texture2D" uid="uid://bs0h3xk4410m" path="res://assets/division_icons/tank.svg" id="7_58j1v"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_cke4s"]
 [ext_resource type="FontFile" uid="uid://c7d8oibwgja3h" path="res://font/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="8_nt2gs"]
 [ext_resource type="Texture2D" uid="uid://b6lx0p2mbicou" path="res://assets/icons/Science.svg" id="8_v578k"]
@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://c8dketw2tw83t" path="res://assets/icons/money_icon.svg" id="9_ycp3n"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="10_lpekx"]
 [ext_resource type="FontFile" uid="uid://bb21bdovlldd" path="res://font/Google_Sans/static/GoogleSans-Italic.ttf" id="11_av13s"]
-[ext_resource type="Texture2D" uid="uid://dwff60ouc8dmw" path="res://assets/portraits/TrofimLysenko.png" id="14_av13s"]
-[ext_resource type="Texture2D" uid="uid://tn3pki6i5o06" path="res://assets/portraits/JaneAustenCassandra.png" id="16_av13s"]
-[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://assets/portraits/ChevalierDEon.png" id="18_lpekx"]
+[ext_resource type="Texture2D" uid="uid://dwff60ouc8dmw" path="res://starts/ModernEmpires/assets/portraits/random/TrofimLysenko.png" id="14_av13s"]
+[ext_resource type="Texture2D" uid="uid://tn3pki6i5o06" path="res://starts/ModernEmpires/assets/portraits/random/JaneAustenCassandra.png" id="16_av13s"]
+[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://starts/ModernEmpires/assets/portraits/random/ChevalierDEon.png" id="18_lpekx"]
 [ext_resource type="Texture2D" uid="uid://dw7fd2v4viyso" path="res://assets/icons/Espionage/BodySwapping.svg" id="19_0hsfd"]
 [ext_resource type="Texture2D" uid="uid://bnfvdn84fuo3s" path="res://assets/icons/fire_icon.svg" id="20_a4b5v"]
-[ext_resource type="Texture2D" uid="uid://bpjcaop54twmg" path="res://assets/portraits/YukawaHideki.png" id="21_a4b5v"]
-[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://assets/portraits/UrNammu.png" id="22_58j1v"]
+[ext_resource type="Texture2D" uid="uid://bpjcaop54twmg" path="res://starts/ModernEmpires/assets/portraits/random/YukawaHideki.png" id="21_a4b5v"]
+[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png" id="22_58j1v"]
 [ext_resource type="Texture2D" uid="uid://cwuabwgrx1b5k" path="res://assets/icons/cross_element.svg" id="23_ljc8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em7cp"]
@@ -170,7 +170,7 @@ stretch_mode = 5
 [node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer/VBoxContainer/Icons/HFlowContainer" unique_id=1671273719]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("6_v578k")
+texture = ExtResource("7_58j1v")
 expand_mode = 1
 stretch_mode = 5
 
@@ -295,7 +295,6 @@ stretch_mode = 5
 visible = false
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("6_v578k")
 expand_mode = 1
 stretch_mode = 5
 
@@ -417,7 +416,7 @@ stretch_mode = 5
 [node name="TextureRect4" type="TextureRect" parent="PanelContainer/HSplitContainer/SideBar/ScrollContainer/HBoxContainer/PanelContainer3/VBoxContainer/Icons/HFlowContainer" unique_id=392019496]
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("6_v578k")
+texture = ExtResource("7_58j1v")
 expand_mode = 1
 stretch_mode = 5
 

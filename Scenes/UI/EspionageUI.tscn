@@ -1,24 +1,23 @@
 [gd_scene format=3 uid="uid://dulmdcrn3vcfa"]
 
 [ext_resource type="Texture2D" uid="uid://dw7fd2v4viyso" path="res://assets/icons/Espionage/BodySwapping.svg" id="1_nxm7u"]
-[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://assets/portraits/ChevalierDEon.png" id="2_805gj"]
+[ext_resource type="Texture2D" uid="uid://bi65efqx7g1ie" path="res://starts/ModernEmpires/assets/portraits/random/ChevalierDEon.png" id="2_805gj"]
 [ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="3_h3kqk"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="4_jir1k"]
 [ext_resource type="Texture2D" uid="uid://oc1oh5n07y3x" path="res://assets/icons/Espionage/BleedingEye.svg" id="4_w4c1b"]
 [ext_resource type="FontFile" uid="uid://b8ixegawdqn82" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Bold.ttf" id="4_yufhg"]
 [ext_resource type="Texture2D" uid="uid://b7ogp8iuqmc5a" path="res://assets/icons/Espionage/BleedingHeart.svg" id="5_k4t4n"]
-[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://assets/portraits/UrNammu.png" id="5_yufhg"]
+[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png" id="5_yufhg"]
 [ext_resource type="Texture2D" uid="uid://c2tseluls703" path="res://assets/icons/Espionage/BleedingWound.svg" id="6_jir1k"]
 [ext_resource type="FontFile" uid="uid://brhh1oue7t6mg" path="res://font/Noto_Sans_Mono/static/NotoSansMono-Regular.ttf" id="7_xdsws"]
 [ext_resource type="Texture2D" uid="uid://byft1gid3fvya" path="res://assets/icons/Espionage/Blindfold.svg" id="7_yufhg"]
 [ext_resource type="Texture2D" uid="uid://b45cdsa3kv5nc" path="res://assets/icons/Espionage/Briefcase.svg" id="8_md4s8"]
-[ext_resource type="Texture2D" uid="uid://csf5aq4kgmjw5" path="res://assets/portraits/BenjaminFranklin.png" id="12_xn0ea"]
+[ext_resource type="Texture2D" uid="uid://csf5aq4kgmjw5" path="res://starts/ModernEmpires/assets/portraits/random/BenjaminFranklin.png" id="12_xn0ea"]
 [ext_resource type="Texture2D" uid="uid://qfkxeawpeigd" path="res://assets/icons/man_power_icon.svg" id="13_ein8o"]
 [ext_resource type="Texture2D" uid="uid://cwuabwgrx1b5k" path="res://assets/icons/cross_element.svg" id="13_xdsws"]
 [ext_resource type="Texture2D" uid="uid://coyevu81btx7t" path="res://assets/icons/Crane.svg" id="14_bg50j"]
 [ext_resource type="Texture2D" uid="uid://b6lx0p2mbicou" path="res://assets/icons/Science.svg" id="14_ymoxt"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="14_yuq7s"]
-[ext_resource type="Texture2D" uid="uid://bicgddjh7fcjb" path="res://assets/icons/tank.svg" id="15_bg50j"]
 [ext_resource type="Texture2D" uid="uid://ds5dmwqcbvpdm" path="res://assets/icons/Agreement.svg" id="15_ymoxt"]
 [ext_resource type="Texture2D" uid="uid://omi12cnq6lfo" path="res://assets/icons/stability.svg" id="16_6glsj"]
 [ext_resource type="Texture2D" uid="uid://c5ieq2jc4me1k" path="res://assets/icons/war_support.svg" id="16_ein8o"]
@@ -126,8 +125,6 @@ content_margin_left = 4.0
 bg_color = Color(0.25, 0.25, 0.25, 1)
 border_width_left = 2
 border_color = Color(0.1, 0.1, 0.1, 1)
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
 corner_detail = 6
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 2
@@ -427,6 +424,7 @@ text = "Authorize"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/tab_separation = 0
+theme_override_constants/icon_separation = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_805gj")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_h3kqk")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_8gy0p")
@@ -805,7 +803,6 @@ stretch_mode = 5
 visible = false
 custom_minimum_size = Vector2(28, 28)
 layout_mode = 2
-texture = ExtResource("15_bg50j")
 expand_mode = 1
 stretch_mode = 5
 

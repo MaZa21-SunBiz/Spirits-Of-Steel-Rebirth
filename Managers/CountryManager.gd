@@ -31,7 +31,6 @@ func _on_day_passed() -> void:
 		countries[c_name].process_day()
 	#print("Day passing took %f" % (Time.get_unix_time_from_system() - timeStart))
 	EventManager.check_super_events()
-	
 
 func initialize_countries(a_countriesData: Array) -> void:
 	# Clear existing data before adding
@@ -69,55 +68,20 @@ func initialize_countries(a_countriesData: Array) -> void:
 
 	print("CountryManager: Initialized %d countries." % countries.size())
 
-func generate_missing_leaders() -> void:
-	for country in countries.values():
-		_ensure_country_has_leader(country)
-
 func _ensure_country_has_leader(country: CountryData) -> void:
-	var has_leader: bool = false
-	for fig_name in country.figures:
-		if MapManager.significantFigures.has(fig_name) and MapManager.significantFigures[fig_name].occupation == "Leader":
-			has_leader = true
-			break
-	
-	if not has_leader:
-		var start_folder = "res://starts/" + GameState.current_start + "/"
-		var random_portraits_dir = start_folder + "assets/portraits/random/"
-		
-		var dir = DirAccess.open(random_portraits_dir)
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			var portraits = []
-			while file_name != "":
-				if !dir.current_is_dir() and file_name.ends_with(".png"):
-					portraits.append(file_name)
-				file_name = dir.get_next()
-			
-			if portraits.size() > 0:
-				var chosen_portrait = portraits.pick_random()
-				var figure_name = chosen_portrait.get_basename()
-				
-				# Check if this figure already exists in global registry
-				var final_fig_name = country.country_name + "_" + figure_name
-				
-				var new_figure = ImportantFigure.new()
-				new_figure.name = figure_name
-				new_figure.occupation = "Leader"
-				new_figure.portrait_path = random_portraits_dir + chosen_portrait
-				new_figure.allegiance = country.country_name
-				new_figure.status = ImportantFigure.Status.ALIVE
-				
-				MapManager.significantFigures[final_fig_name] = new_figure
-				country.figures.append(final_fig_name)
-				# print("CountryManager: Assigned random leader %s to %s" % [figure_name, country.country_name])
+	if !MapManager.significantFigures.get(country.governmentPositions["Leader"]):
+		var new_figure = ImportantFigure.FromRandom(country.country_name)
+		new_figure.occupation = "Leader"
+		MapManager.significantFigures[new_figure.name] = new_figure
+		country.figures.append(new_figure.name)
+		country.governmentPositions["Leader"] = new_figure.name
+		print("CountryManager: Assigned random leader %s to %s" % [new_figure.name, country.country_name])
 
 func save_countries() -> Array:
 	var polities: Array = []
 	for country: CountryData in countries.values():
 		polities.append(country.ToDict())
 	return polities
-
 
 func get_country(c_name: String) -> CountryData:
 	#if c_name == "Sea":
@@ -144,7 +108,6 @@ func set_player_country(country_name: String) -> void:
 
 	print("Player is now playing as: ", country_name)
 	player_country_changed.emit()
-
 
 func add_country(a_countryData: Dictionary) -> CountryData:
 	if a_countryData["name"] == "Sea": return
@@ -178,12 +141,14 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	if new_country.is_player:
 		player_country = new_country
 		player_country.ai_controller = null # Ensure player doesn't have an AI brain
+
+	_ensure_country_has_leader(new_country)
+
+	new_country.UpdateCabinet()
 	
 	return new_country
 
-
 # HELPER FUNCTIONS ==========================================
-
 
 func get_country_population(country_name: String) -> int:
 	if !MapManager.country_to_provinces.has(country_name):
@@ -194,7 +159,6 @@ func get_country_population(country_name: String) -> int:
 			total_pop += MapManager.province_objects[pid].GetPopulation()
 	return total_pop
 
-
 func get_country_gdp(country_name: String) -> int:
 	if !MapManager.country_to_provinces.has(country_name):
 		return 0
@@ -203,7 +167,6 @@ func get_country_gdp(country_name: String) -> int:
 		if MapManager.province_objects.has(pid):
 			total_gdp += MapManager.province_objects[pid].gdp
 	return total_gdp
-
 
 func get_factories_amount(country_name: String) -> int:
 	var factoryCount: int = 0
@@ -246,7 +209,6 @@ static func get_country_used_manpower(country_obj: CountryData) -> int:
 			total_used += _get_manpower_from_template(div.type)
 
 	return total_used
-
 
 # Helper to keep the code DRY (Don't Repeat Yourself)
 static func _get_manpower_from_template(type: String) -> int:

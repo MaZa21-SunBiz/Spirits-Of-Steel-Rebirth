@@ -351,22 +351,8 @@ func DoUpdateSidemenuVisuals() -> void:
 	if GameState.selectingCountry:
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
-	print(selected_country.figures)
-	for fig_name in selected_country.figures:
-		var fig = MapManager.significantFigures.get(fig_name)
-		if !fig: continue
-		if fig.occupation == "Leader":
-			if fig.portrait_path != "" and (FileAccess.file_exists(fig.portrait_path) or ResourceLoader.exists(fig.portrait_path)):
-				sidemenu_leader_portrait.texture = load(fig.portrait_path)
-			else:
-				var path = "res://starts/%s/assets/portraits/%s/%s.png" % [GameState.current_start, fig.allegiance, fig.name]
-				if FileAccess.file_exists(path) or ResourceLoader.exists(path):
-					sidemenu_leader_portrait.texture = load(path)
-				else:
-					# Fallback to random folder if it's there but not in portrait_path for some reason
-					var random_path = "res://starts/%s/assets/portraits/random/%s.png" % [GameState.current_start, fig.name]
-					if FileAccess.file_exists(random_path) or ResourceLoader.exists(random_path):
-						sidemenu_leader_portrait.texture = load(random_path)
+	#print(selected_country.figures)
+	sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(MapManager.significantFigures.get(selected_country.governmentPositions["Leader"]))
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
@@ -937,26 +923,23 @@ func close_troop_container() -> void:
 
 # --- Main Update Logic ---
 func update_division_menu():
-	var count = ceili(input_division.value)
+	var count: int = ceili(input_division.value)
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
 
-	if not stats:
+	if !stats:
 		return # Safety check
 
 	div_type.text = division_type_selected.capitalize()
 	div_stats.text = "%s\n%s\n%s" % [stats.attack, stats.defense, stats.hp]
 
-	var total_manpower = stats.manpower * count
+	var total_manpower: int = stats.manpower * count
 
-	costs.text = format_number(stats.cost * count)
+	var player: CountryData = CountryManager.player_country
+	costs.text = format_number(stats.cost * count * player.divCostMod)
 	manpower.text = format_number(total_manpower)
 
-	# 4. Check Affordability
-	var player = CountryManager.player_country
-	var can_afford: bool = player and player.manpower >= total_manpower
-
-	# 5. Update Button State & Visuals
-	button_train.disabled = not can_afford
+	# 4. Check Affordability & Update Button State & Visuals
+	button_train.disabled = !player || player.manpower < total_manpower
 
 func _on_button_train_troops() -> void:
 	if CountryManager.player_country.train_troops(

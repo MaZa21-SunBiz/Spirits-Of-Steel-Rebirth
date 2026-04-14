@@ -1,5 +1,4 @@
-extends Resource
-class_name CountryData
+class_name CountryData extends Resource
 
 var economy_law_penalty: float = 0.0 # 0.10 means 10% income loss
 var army_composition_cache: Dictionary = {"infantry": 0, "tank": 0, "artillery": 0}
@@ -30,13 +29,18 @@ var factories_amount: int = 0
 var factory_income = 100
 var hourly_money_income: float = 0.0 # Calculated value
 
+var divCostMod: float = 1.0
+
 signal ideology_changed
 
 # Politics
 var driftTargets: Dictionary[String, IdeologyDriftTarget]
 var political_power: float = 5000.0
+var base_daily_pp_gain: float = 0.04
 var daily_pp_gain: float = 0.04
+var base_stability: float = 0.5
 var stability: float = 0.5
+var base_war_support: float = 0.5
 var war_support: float = 0.5
 var ideology: Vector2 = Vector2(randi_range(-100, 100), randi_range(-100, 100)):
 	set(value):
@@ -60,6 +64,16 @@ var army_level: int = 1
 var army_cost: float = 0.0
 var troop_speed_modifier: float = 1.0
 
+var troopSpeedExtra: float = 1.0
+
+var troopAttackAdd: float = 0.0
+var troopAttackMod: float = 1.0
+var troopDefendAdd: float = 0.0
+var troopDefendMod: float = 1.0
+
+var attacker_attack_mitigation: float = 1.0
+var defender_attack_mitigation: float = 1.0
+
 # Deployment & Training State
 var allowedCountries: Array[String] = []
 var accepted_cultures: Array = []
@@ -75,14 +89,17 @@ var pre_war_provinces: Array = [] # Snapshotted provinces before a war
 #endregion
 
 # for optimization
-var is_at_war = false
-var war_dirty = true
-var _is_loading := false
-var dirty := true
-var dirty_manpower := true
-var enemies = []
+var is_at_war: bool = false
+var war_dirty: bool = true
+var _is_loading: bool = false
+var dirty: bool = true
+var dirty_manpower: bool = true
+var enemies: Array = []
 
 var figures: PackedStringArray = []
+var governmentPositions: Dictionary[String, String] = {
+	"Leader": ""
+}
 
 #region --- Inner Classes ---
 class TroopTraining:
@@ -115,6 +132,7 @@ func setup_ai():
 
 func _init() -> void:
 # NOTE(soi): why was this commented out?
+# NOTE(Sockmit2007): I don't remember.
 #	if p_country_name != "":
 #		country_name = p_country_name
 #	if _is_loading:
@@ -137,12 +155,13 @@ func ToDict() -> Dictionary:
 		"money": money,
 		"ideology": [ideology.x, ideology.y],
 		"political_power": political_power,
-		"stability": stability,
-		"war_support": war_support,
+		"stability": base_stability,
+		"war_support": base_war_support,
 		"puppets": puppets,
 		"accepted_cultures": accepted_cultures,
 		"hostedGovernments": hostedGovernments,
 		"figures": figures,
+		"government_positions": governmentPositions,
 		"is_player": is_player,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
@@ -155,23 +174,56 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.money = a_data.get("money", 0)
 	country.ideology = Vector2(a_data.get("ideology", [0, 0])[0], a_data.get("ideology", [0, 0])[1])
 	country.political_power = a_data.get("political_power", 5000)
-	country.stability = a_data.get("stability", 0.5)
-	country.war_support = a_data.get("war_support", 0.5)
+	country.base_stability = a_data.get("stability", 0.5)
+	country.base_war_support = a_data.get("war_support", 0.5)
 	country.puppets = a_data.get("puppets", [])
 	country.accepted_cultures = a_data.get("accepted_cultures", [])
 	country.hostedGovernments = a_data.get("hosted_governments", [])
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country.figures = a_data.get("figures", [])
+	country.governmentPositions.merge(a_data.get("government_positions", {}), true)
 	country.is_player = a_data.get("is_player", false)
 	# country._refresh_economic_stats()
 	# country.refresh_ideology_name()
 	
+	country.stability = country.base_stability
+	country.war_support = country.base_war_support
+
 	# NOTE(Sockmit2007): Urgh...
 	# NOTE(soi): indeed
 	# NOTE(soi): ok the refresh things cause the map editor to crash when u make a country so...
 	country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
 	
 	return country
+
+func UpdateCabinet() -> void:
+	for position: String in governmentPositions:
+		var figure: ImportantFigure = MapManager.significantFigures.get(governmentPositions[position])
+		if figure:
+			for skill: String in figure.skills:
+				match skill:
+					"stability":
+						stability += figure.skills[skill]
+					"warSupport":
+						war_support += figure.skills[skill]
+					"dailyPPGain":
+						daily_pp_gain += figure.skills[skill]
+					"divCostMod":
+						divCostMod *= figure.skills[skill]
+					"troopSpeed":
+						troopSpeedExtra += figure.skills[skill]
+					"troopAttackAdd":
+						troopAttackAdd += figure.skills[skill]
+					"troopAttackMod":
+						troopAttackMod *= figure.skills[skill]
+					"troopDefendAdd":
+						troopDefendAdd += figure.skills[skill]
+					"troopDefendMod":
+						troopDefendMod *= figure.skills[skill]
+					"attackerAttackMitigation":
+						attacker_attack_mitigation *= figure.skills[skill]
+					"defenderAttackMitigation":
+						defender_attack_mitigation *= figure.skills[skill]
 
 func process_hour() -> void:
 	if _is_loading:
@@ -186,7 +238,7 @@ func process_hour() -> void:
 	income = hourly_money_income - army_cost
 	money += income
 
-	troop_speed_modifier = 1.0 + (army_level * 0.1)
+	troop_speed_modifier = 1.0 + (army_level * 0.1) + troopSpeedExtra
 
 	update_manpower_pool()
 	_process_reinforcements()
@@ -321,11 +373,11 @@ func get_max_morale() -> float:
 
 
 func get_attack_efficiency() -> float:
-	return (0.9 + (war_support * 0.3) + (army_level * 0.05)) * (0.7 if money < 0 else 1.0)
+	return (troopAttackAdd + 0.9 + (war_support * 0.3) + (army_level * 0.05)) * (0.7 if money < 0 else 1.0) * troopAttackMod
 
 
 func get_defense_efficiency() -> float:
-	return (1.0 + (stability * 0.15) + (army_level * 0.05)) * (0.8 if money < 0 else 1.0)
+	return (troopDefendAdd + 1.0 + (stability * 0.15) + (army_level * 0.05)) * (0.8 if money < 0 else 1.0) * troopDefendMod
 
 #endregion
 
@@ -389,8 +441,8 @@ func calculate_army_upkeep() -> float:
 	for rt in ready_troops:
 		reserve_divisions += rt.stored_divisions.size()
 
-	var active_cost = active_divisions * (army_level * BASE_ARMY_COST)
-	var reserve_cost = reserve_divisions * (army_level * BASE_ARMY_COST * 0.25)
+	var active_cost = active_divisions * (army_level * BASE_ARMY_COST) * divCostMod
+	var reserve_cost = reserve_divisions * (army_level * BASE_ARMY_COST * 0.25) * divCostMod
 
 	return active_cost + reserve_cost
 

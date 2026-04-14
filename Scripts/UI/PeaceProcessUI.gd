@@ -1,17 +1,36 @@
 extends CanvasLayer
 
+enum MouseMode {
+	ANNEX,
+	PUPPET,
+	ANNEX_NEW,
+}
+
 @export var sidebar_panel: PanelContainer
 @export var summary_label: Label
 @export var stats_label: Label
 @export var loser_label: Label
 
+@export var newDropdown: OptionButton
+@export var newName: LineEdit
+@export var newOwner: OptionButton
+@export var newColor: ColorPickerButton
+
+var mouseMode: MouseMode = MouseMode.ANNEX
+
+var creating: Array[Dictionary] = []
 var winners: Array[CountryData] = []
-var current_selected_winner: CountryData
+var creating_selected: int = 0
+var current_selected: CountryData
 var current_loser: CountryData
 var provinces_to_take: Dictionary = {} # PID -> CountryData
+var provincesCreating: Dictionary = {} # PID -> String (For the newly created)
+var creatingProvinces: Dictionary[String, PackedInt32Array] = {} 
+var ownersCreating: Dictionary[String, CountryData] = {} 
 var hovered_pid: int = -1
-var puppeting = false
-@export var winner_selector: OptionButton
+var puppeting: Dictionary[CountryData, CountryData] = {}
+@export var participant_selector: OptionButton
+var provinces_discussing: Array = []
 
 # Color Palette
 const COLOR_BG = Color(0.1, 0.1, 0.12, 0.98)
@@ -21,9 +40,6 @@ const COLOR_DANGER = Color(0.7, 0.2, 0.2)
 
 func _ready() -> void:
 	self.hide()
-	# If winner_selector is not linked in the inspector, we find/create it
-	if not winner_selector:
-		_setup_missing_ui_elements()
 
 func _setup_missing_ui_elements():
 	# Find the main VBoxContainer in the sidebar
@@ -46,7 +62,7 @@ func _setup_missing_ui_elements():
 	# main_vbox.add_child(winner_selector)
 	# main_vbox.move_child(winner_selector, button_container.get_index())
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not self.visible:
 		return
 
@@ -96,38 +112,129 @@ func _process_click(map_pos: Vector2):
 	if pid <= 1:
 		return
 		
-	if MapManager.province_objects[pid].country != current_loser.country_name:
-		return
+	
 
-	if provinces_to_take.has(pid):
-		provinces_to_take.erase(pid)
-		_reset_province_visual(pid)
-	else:
-		provinces_to_take[pid] = current_selected_winner
-		_update_map_visual(pid, current_selected_winner.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+	match mouseMode:
+		MouseMode.ANNEX:
+			if pid not in provinces_discussing:
+				return
+			
+			if provincesCreating.has(pid):
+				creatingProvinces[provincesCreating[pid]].erase(pid)
+				provincesCreating.erase(pid)
+				
+				
+			if provinces_to_take.has(pid) && provinces_to_take[pid] == current_selected:
+				provinces_to_take.erase(pid)
+				_reset_province_visual(pid)
+			else:
+				provinces_to_take[pid] = current_selected
+				_update_map_visual(pid, current_selected.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+		MouseMode.PUPPET:
+			if pid not in provinces_discussing:
+				return
+		MouseMode.ANNEX_NEW:
+			if pid not in provinces_discussing:
+				return
+			
+			if provinces_to_take.has(pid):
+				provinces_to_take.erase(pid)
+				
+			if provincesCreating.has(pid) && provincesCreating[pid] == creating[creating_selected].name:
+				provincesCreating.erase(pid)
+				creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
+				_reset_province_visual(pid)
+			else:
+				if provincesCreating.has(pid):
+					creatingProvinces[provincesCreating[pid]].erase(pid)
+				provincesCreating[pid] = creating[creating_selected].name
+				creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
+				print(Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2).to_html())
+				_update_map_visual(pid, Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+
 
 	_update_summary()
 
+func m_OnDropdownSelected(a_selected: int) -> void:
+	if a_selected == 0:
+		creating_selected = newDropdown.item_count - 1
+		newDropdown.add_item("...")
+		newName.text = "..."
+		newOwner.select(0)
+		newColor.color = Color(randf(), randf(), randf())
+		creating.append(
+			{
+				"name": "...",
+				"color": "#"+newColor.color.to_html(false).to_upper(),
+				"money": 0,
+				"ideology": [0, 0],
+				"political_power": 100,
+				"stability": 0.5,
+				"war_support": 0.5,
+				"puppets": [],
+				"accepted_cultures": [],
+				"hostedGovernments": [],
+				"figures": [],
+			}
+		)
+	else:
+		creating_selected = a_selected - 1
+		newName.text = creating[creating_selected].name
+		if creating[creating_selected].name not in ownersCreating:
+			newOwner.select(0)
+		else:
+			for i in range(newOwner.item_count):
+				if newOwner.get_item_text(i) == ownersCreating[creating[creating_selected].name].country_name:
+					newOwner.select(i)
+					break
+		newColor.color = Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE)
+
+func m_OnNameNewSubmitted(a_value: String) -> void:
+	if creating[creating_selected].name in creatingProvinces:
+		creatingProvinces[a_value] = creatingProvinces[creating[creating_selected].name].duplicate()
+	for pid: int in creatingProvinces.get(creating[creating_selected].name, []):
+		provincesCreating[pid] = a_value
+	creatingProvinces.erase(creating[creating_selected].name)
+	print("%d - %d" % [creating_selected, creating_selected + 1])
+	newDropdown.set_item_text(creating_selected + 1, a_value)
+	if creating[creating_selected].name in ownersCreating:
+		ownersCreating[a_value] = ownersCreating[creating[creating_selected].name]
+		ownersCreating.erase(creating[creating_selected].name)
+	creating[creating_selected].name = a_value
+
+func m_OnColorNewSubmitted(a_value: Color) -> void:
+	creating[creating_selected].color = "#"+a_value.to_html(false).to_upper()
+	for pid: int in creatingProvinces.get(creating[creating_selected].name, []):
+		_update_map_visual(pid, a_value.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+
+func m_OnOwnerNewSelected(a_index: int) -> void:
+	if a_index == 0:
+		ownersCreating.erase(creating[creating_selected].name)
+	else:
+		ownersCreating[creating[creating_selected].name] = current_loser if a_index == newOwner.item_count else winners[a_index - 1]
+
+func m_OnAnnexNewPressed() -> void:
+	mouseMode = MouseMode.ANNEX_NEW
+	
+func m_OnDeleteNewPressed() -> void:
+	for pid: int in creatingProvinces.get(creating[creating_selected].name, []):
+		provincesCreating.erase(pid)
+	creatingProvinces.erase(creating[creating_selected].name)
+	newDropdown.remove_item(creating_selected + 1)
+	
+	creating.remove_at(creating_selected)
+	creating_selected = -1
 
 func _on_annex_all_pressed():
-	provinces_to_take.clear()
-	# Assign all provinces to current beneficiary
-	for pid in MapManager.province_objects.keys():
-		var province = MapManager.province_objects[pid]
-		if province.country == current_loser.country_name:
-			provinces_to_take[pid] = current_selected_winner
-			var color = current_selected_winner.country_color.lightened(0.2)
-			var base_color = CountryManager.GetCountryColor(province.country)
-			_update_map_visual(pid, color, base_color)
-	_update_summary()
+	mouseMode = MouseMode.ANNEX
 
 func _on_winner_selected(index: int):
-	current_selected_winner = winners[index]
+	current_selected = winners[index] if index < winners.size() else current_loser
+	mouseMode = MouseMode.ANNEX
 
 func _on_puppet_pressed():
-	puppeting = !puppeting
-	print(winners[0].puppets)
-	_update_summary()
+	mouseMode = MouseMode.PUPPET
+	#_update_summary()
 
 func _on_clear_selection_pressed():
 	var pids = provinces_to_take.keys()
@@ -146,35 +253,51 @@ func open_menu(p_winners: Array[CountryData], p_loser: CountryData):
 	winners = p_winners
 	current_loser = p_loser
 	provinces_to_take.clear()
-	puppeting = false
+	provinces_discussing = MapManager.country_to_owned_provinces[p_loser.country_name].duplicate()
+	puppeting = {}
+	creating.clear()
+	creatingProvinces.clear()
+	provincesCreating.clear()
+	creating_selected = -1
+	ownersCreating.clear()
+	
+	newName.text = ""
 	
 	# Setup Winner Selector
-	winner_selector.clear()
+	newDropdown.clear()
+	newDropdown.add_item("New")
+	newOwner.clear()
+	newOwner.add_item("None")
+	participant_selector.clear()
 	var player_index = -1
 	for i in range(winners.size()):
-		winner_selector.add_item(winners[i].country_name)
+		newOwner.add_item(winners[i].country_name)
+		participant_selector.add_item(winners[i].country_name)
 		if winners[i].is_player:
 			player_index = i
+	newOwner.add_item(p_loser.country_name)
+	participant_selector.add_item(p_loser.country_name)
 	
 	if player_index != -1:
-		winner_selector.selected = player_index
-		current_selected_winner = winners[player_index]
+		participant_selector.selected = player_index
+		current_selected = winners[player_index]
 	else:
-		winner_selector.selected = 0
-		current_selected_winner = winners[0]
+		participant_selector.selected = 0
+		current_selected = winners[0]
 
+	# NOTE(Sockmit2007): What is this?
 	# AUTO-ANNEX CLAIMS
-	for pid in MapManager.province_objects.keys():
-		var province = MapManager.province_objects[pid]
-		if province.country == current_loser.country_name:
-			# Check each winner for a claim
-			for w in winners:
-				if province.claims.has(w.country_name):
-					provinces_to_take[pid] = w
-					var color = w.country_color.lightened(0.2)
-					var base_color = CountryManager.GetCountryColor(province.country)
-					_update_map_visual(pid, color, base_color)
-					break # First winner who claims it gets it in auto-assign
+	#for pid in MapManager.province_objects.keys():
+	#	var province = MapManager.province_objects[pid]
+	#	if province.country == current_loser.country_name:
+	#		# Check each winner for a claim
+	#		for w in winners:
+	#			if province.claims.has(w.country_name):
+	#				provinces_to_take[pid] = w
+	#				var color = w.country_color.lightened(0.2)
+	#				var base_color = CountryManager.GetCountryColor(province.country)
+	#				_update_map_visual(pid, color, base_color)
+	#				break # First winner who claims it gets it in auto-assign
 
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
@@ -201,9 +324,17 @@ func _on_confirm_pressed():
 		var recipient = provinces_to_take[pid]
 		MapManager.transfer_ownership(pid, recipient.country_name)
 	
-	if puppeting:
+	for puppet in puppeting:
 		# Use the first winner (usually the war leader/player) to puppet
-		CountryManager.make_puppet(winners[0], current_loser)
+		CountryManager.make_puppet(puppeting[puppet], puppet)
+	
+	for country: Dictionary in creating:
+		if country.name in creatingProvinces:
+			MapManager.InstantiateCountryFromProvinces(country, creatingProvinces[country.name])
+	
+	for puppet: String in ownersCreating:
+		if puppet in CountryManager.countries:
+			CountryManager.make_puppet(ownersCreating[puppet], CountryManager.countries[puppet])
 	
 	var game_ui = get_tree().root.find_child("ui_game", true, false)
 	if game_ui:
@@ -212,7 +343,6 @@ func _on_confirm_pressed():
 	GameState.current_world.clock.resume()
 
 	self.hide()
-
 
 func force_close():
 	self.set_process(false)
@@ -223,7 +353,7 @@ func force_close():
 	provinces_to_take.clear()
 	winners.clear()
 	current_loser = null
-	puppeting = false
+	puppeting = {}
 	hovered_pid = -1
 	
 	# Reset global flags
@@ -250,15 +380,11 @@ func _update_map_visual(pid: int, color: Color, secondary_color: Color):
 func _reset_province_visual(pid: int):
 	# If it's currently selected, keep the selected color
 	if provinces_to_take.has(pid):
-		var country_data = provinces_to_take[pid]
-		var color = country_data.country_color.lightened(0.2)
-		var base_color = CountryManager.GetCountryColor(MapManager.province_objects[pid].country)
-		_update_map_visual(pid, color, base_color)
+		_update_map_visual(pid, provinces_to_take[pid].country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+	elif provincesCreating.has(pid):
+		_update_map_visual(pid, Color.from_string(creating[creating.find_custom(func (pr): return pr.name == provincesCreating[pid])].color, Color.DEEP_SKY_BLUE).lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 	else:
 		# Otherwise, revert to the original country color (legal owner)
 		var province = MapManager.province_objects.get(pid)
 		if province and province.country != "Sea":
-			var functional_owner = province.GetFunctionalOwner()
-			var color = CountryManager.GetCountryColor(functional_owner)
-			var base_color = CountryManager.GetCountryColor(province.country)
-			_update_map_visual(pid, color, base_color)
+			_update_map_visual(pid, CountryManager.GetCountryColor(province.GetFunctionalOwner()), CountryManager.GetCountryColor(province.country))

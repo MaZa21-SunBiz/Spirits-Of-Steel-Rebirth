@@ -6050,16 +6050,11 @@
 			],
 			"color": "#CCA66C",
 			"figures": [
-				"Bolivia_YukawaHideki",
-				"Bolivia_ChevalierDEon",
-				"Bolivia_ChevalierDEon",
-				"Bolivia_JaneAustenCassandra",
-				"Bolivia_TrofimLysenko",
-				"Bolivia_TrofimLysenko",
-				"Bolivia_YukawaHideki",
-				"Bolivia_UrNammu",
-				"Bolivia_JaneAustenCassandra"
+				"ExodiaTheForbiddenOne"
 			],
+			"government_positions": {
+				"Leader": "ExodiaTheForbiddenOne"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -121364,5 +121359,28 @@
 			}
 		}
 	],
-	"significant_figures": []
+	"significant_figures": [
+		{
+			"name": "ExodiaTheForbiddenOne",
+			"skills": {
+				"warSupport": 0.3,
+				"stability": 0.2,
+				"dailyPPGain": 0.1,
+				"divCostMod": 0.95,
+				"troopSpeed": 0.05,
+				"troopAttackAdd": 0.25,
+				"troopAttackMod": 1.01,
+				"troopDefendAdd": 0.15,
+				"troopDefendMod": 1.02,
+				"attackerAttackMitigation": 0.95,
+				"defenderAttackMitigation": 0.95
+			},
+			"traits": [],
+			"ideology": [0, 0],
+			"allegiance": "Bolivia",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Secret/Exodia.png",
+			"status": 0
+		}
+	]
 }

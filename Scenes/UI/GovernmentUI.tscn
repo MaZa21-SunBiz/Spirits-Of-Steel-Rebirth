@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://dth3mjxs6j41r"]
+
+[ext_resource type="Script" uid="uid://cr3ux1513g23n" path="res://Scripts/UI/GovernmentUI.gd" id="1_vxamq"]
+[ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="3_2gqru"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="5_6awr5"]
+[ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png" id="6_eryvx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md4s8"]
+content_margin_top = 8.0
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_color = Color(0, 0, 0, 0.3137255)
+shadow_size = 7
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7ati"]
+content_margin_left = 4.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 2
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_detail = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="GovernmentUI" type="CanvasLayer" unique_id=1012777168 node_paths=PackedStringArray("template", "listOfPositions")]
+script = ExtResource("1_vxamq")
+template = NodePath("PanelContainer/HBoxContainer/MainContent/Template")
+listOfPositions = NodePath("PanelContainer/HBoxContainer/MainContent/HBoxContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1216588974]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1776081134]
+layout_mode = 2
+
+[node name="MainContent" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=1615623655]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/MainContent" unique_id=832885778]
+layout_mode = 2
+
+[node name="Leader" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer" unique_id=1784400605]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader" unique_id=1594094483]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=1549783546]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Leader"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=917156341]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("5_6awr5")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_md4s8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/Header" unique_id=86295410]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/Header/ScrollContainer" unique_id=1986375229]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Ur-Nammu"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Picture" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=1208788218]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/Picture" unique_id=51657917]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("6_eryvx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/Picture/TextureRect" unique_id=1562457084]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2gqru")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=598108837]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/PanelContainer3" unique_id=1877580326]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7ati")
+selected = 5
+item_count = 6
+popup/item_0/text = "Benito Mussolini"
+popup/item_0/id = 0
+popup/item_1/text = "Trofim Lysenko"
+popup/item_1/id = 1
+popup/item_2/text = "Jane Austen"
+popup/item_2/id = 2
+popup/item_3/text = "Chevalier d'Éon"
+popup/item_3/id = 3
+popup/item_4/text = "Yukawa Hideki"
+popup/item_4/id = 4
+popup/item_5/text = "Ur-Nammu"
+popup/item_5/id = 5
+
+[node name="Template" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent" unique_id=531917697]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/Template" unique_id=204657508]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer" unique_id=255990036]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Leader"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Header" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer" unique_id=1535387618]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme = ExtResource("5_6awr5")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_md4s8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/Header" unique_id=81338857]
+layout_mode = 2
+horizontal_scroll_mode = 4
+vertical_scroll_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/Header/ScrollContainer" unique_id=199316967]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+text = "Ur-Nammu"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Picture" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer" unique_id=1152616803]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/Picture" unique_id=489914144]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+texture = ExtResource("6_eryvx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Blood" type="TextureRect" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/Picture/TextureRect" unique_id=910512591]
+visible = false
+modulate = Color(0.19607843, 0, 0, 0.74509805)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2gqru")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer" unique_id=1726517389]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/PanelContainer3" unique_id=1937806189]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7ati")
+selected = 5
+item_count = 6
+popup/item_0/text = "Benito Mussolini"
+popup/item_0/id = 0
+popup/item_1/text = "Trofim Lysenko"
+popup/item_1/id = 1
+popup/item_2/text = "Jane Austen"
+popup/item_2/id = 2
+popup/item_3/text = "Chevalier d'Éon"
+popup/item_3/id = 3
+popup/item_4/text = "Yukawa Hideki"
+popup/item_4/id = 4
+popup/item_5/text = "Ur-Nammu"
+popup/item_5/id = 5
+
+[node name="Sidebar" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=774131630]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/Sidebar" unique_id=130182522]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer" unique_id=832599037]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer/PanelContainer" unique_id=195159048]
+layout_mode = 2
+text = "Government"
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer" unique_id=982747312]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Baxk"

@@ -827,12 +827,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dhjfk")
 
 [node name="TabContainer" type="TabContainer" parent="Sidebar" unique_id=1933241066]
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 switch_on_drag_hover = false
 
 [node name="Province" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1407875551]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 0
@@ -900,6 +899,7 @@ icon = ExtResource("5_eo7xe")
 expand_icon = true
 
 [node name="Polity" type="ScrollContainer" parent="Sidebar/TabContainer" unique_id=1910358666]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 metadata/_tab_index = 2

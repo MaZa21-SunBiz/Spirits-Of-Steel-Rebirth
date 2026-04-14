@@ -4,13 +4,17 @@
 [ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scripts/UI/PeaceProcessUI.gd" id="1_52vyn"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_o4gkq"]
 
-[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label", "winner_selector")]
+[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label", "newDropdown", "newName", "newOwner", "newColor", "participant_selector")]
 script = ExtResource("1_52vyn")
 sidebar_panel = NodePath("PanelContainer")
 summary_label = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Label")
 stats_label = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Label2")
 loser_label = NodePath("PanelContainer/VBoxContainer/Label2")
-winner_selector = NodePath("PanelContainer/VBoxContainer/Winner")
+newDropdown = NodePath("PanelContainer2/CreatePolity/Form")
+newName = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/LineEdit")
+newOwner = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/OptionButton")
+newColor = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/ColorPickerButton")
+participant_selector = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Winner")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
 material = ExtResource("1_o4gkq")
@@ -58,12 +62,40 @@ visible = false
 layout_mode = 2
 text = "Beligerents:"
 
-[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1234706312]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1102234746]
 layout_mode = 2
-text = "Selected Country:"
 
-[node name="Winner" type="OptionButton" parent="PanelContainer/VBoxContainer" unique_id=2035706027]
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1234706312]
 layout_mode = 2
+text = "Selected Country"
+
+[node name="Winner" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=2035706027]
+layout_mode = 2
+size_flags_horizontal = 3
+allow_reselect = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=1879299126]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+theme = ExtResource("1_41grw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer2" unique_id=22970544]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=1682876906]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"HeaderLarge"
+text = "Releasables"
+
+[node name="ItemList" type="ItemList" parent="PanelContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=295700772]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+item_count = 4
+item_0/text = "A"
+item_1/text = "B"
+item_2/text = "C"
+item_3/text = "D"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer" unique_id=298232394]
 visible = false
@@ -78,17 +110,25 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="Annex" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1726934931]
-material = ExtResource("1_o4gkq")
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=855479507]
 layout_mode = 2
-theme = ExtResource("1_41grw")
-text = "Annex All"
 
-[node name="Puppet" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=38295834]
+[node name="Annex" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1726934931]
 material = ExtResource("1_o4gkq")
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_41grw")
-text = "Puppet Country"
+text = "Annex"
+
+[node name="Puppet" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=38295834]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_41grw")
+text = "Puppet"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=1459560255]
+layout_mode = 2
 
 [node name="Reset" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer" unique_id=557110290]
 material = ExtResource("1_o4gkq")
@@ -102,8 +142,90 @@ layout_mode = 2
 theme = ExtResource("1_41grw")
 text = "Sign Treaty"
 
-[connection signal="item_selected" from="PanelContainer/VBoxContainer/Winner" to="." method="_on_winner_selected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Annex" to="." method="_on_annex_all_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Puppet" to="." method="_on_puppet_pressed"]
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1446409322]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CreatePolity" type="VBoxContainer" parent="PanelContainer2" unique_id=932590359]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Form" type="OptionButton" parent="PanelContainer2/CreatePolity" unique_id=3315115]
+layout_mode = 2
+allow_reselect = true
+item_count = 1
+popup/item_0/text = "New"
+popup/item_0/id = 0
+
+[node name="VSeparator4" type="HSeparator" parent="PanelContainer2/CreatePolity" unique_id=2072784448]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2/CreatePolity" unique_id=156336017]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer2/CreatePolity/MarginContainer" unique_id=756129707]
+layout_mode = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=284287484]
+layout_mode = 2
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=650991695]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name"
+
+[node name="OwnerLabel" type="Label" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=950852156]
+layout_mode = 2
+text = "Owner:"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=28902293]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorLabel" type="Label" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=1402819633]
+layout_mode = 2
+text = "Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="PanelContainer2/CreatePolity/MarginContainer/GridContainer" unique_id=1114677249]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator3" type="HSeparator" parent="PanelContainer2/CreatePolity" unique_id=1416770529]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Paint" type="Button" parent="PanelContainer2/CreatePolity" unique_id=1700303269]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Paint Provinces"
+
+[node name="VSeparator2" type="HSeparator" parent="PanelContainer2/CreatePolity" unique_id=341468704]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Delete" type="Button" parent="PanelContainer2/CreatePolity" unique_id=1279565776]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Delete"
+
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer/Winner" to="." method="_on_winner_selected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Annex" to="." method="_on_annex_all_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Puppet" to="." method="_on_puppet_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_clear_selection_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Sign" to="." method="_on_confirm_pressed"]
+[connection signal="item_selected" from="PanelContainer2/CreatePolity/Form" to="." method="m_OnDropdownSelected"]
+[connection signal="text_submitted" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/LineEdit" to="." method="m_OnNameNewSubmitted"]
+[connection signal="item_selected" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/OptionButton" to="." method="m_OnOwnerNewSelected"]
+[connection signal="color_changed" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/ColorPickerButton" to="." method="m_OnColorNewSubmitted"]
+[connection signal="pressed" from="PanelContainer2/CreatePolity/Paint" to="." method="m_OnAnnexNewPressed"]
+[connection signal="pressed" from="PanelContainer2/CreatePolity/Delete" to="." method="m_OnDeleteNewPressed"]

@@ -60,4 +60,3 @@ func ToDict() -> Dictionary:
 		"functionalities": functionalities,
 		"assigned_inputs": assigned_inputs
 	}
-

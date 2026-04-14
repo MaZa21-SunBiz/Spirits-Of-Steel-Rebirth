@@ -354,10 +354,8 @@ func play_sfx(sfx: int):
 	var players = sfx_players
 	if players.is_empty():
 		return
-	var player = players.filter(func(p): return not p.playing).front()
-	if not player:
-		player = players[0]
-
+	var filtered = players.filter(func(p): return not p.playing)
+	var player = filtered.front() if filtered else players[0]
 	player.stream = sfx_map[sfx]
 	player.volume_db = linear_to_db(1.0 * SettingsManager.settings["sfx_volume"])
 	player.play()

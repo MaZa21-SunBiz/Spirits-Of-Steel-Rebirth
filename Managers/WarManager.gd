@@ -187,23 +187,25 @@ class Battle:
 				def_morale -= 2.0
 
 		# --- 1. Calculate Power (Now including Supply Penalty) ---
-		var total_atk_power = 0.0
+		var total_atk_power: float = 0.0
 		for t in att_troops:
 			for div in t.stored_divisions:
-				total_atk_power += div.get_attack_power() * (div.hp / div.max_hp) * att_supply_mult
+				total_atk_power += div.get_attack_power() * (div.hp / div.max_hp)
+		total_atk_power *= att_supply_mult
 
-		var total_def_power = 0.0
+		var total_def_power: float = 0.0
 		for t in def_troops:
 			for div in t.stored_divisions:
-				total_def_power += div.get_defense_power() * (div.hp / div.max_hp) * def_supply_mult
+				total_def_power += div.get_defense_power() * (div.hp / div.max_hp)
+		total_def_power *= def_supply_mult
 
 		# --- 2. Modifiers (Morale and Efficiency) ---
-		var final_attack = total_atk_power * (att_morale * 0.01) * (attacker_stats.get_attack_efficiency() if attacker_stats else 1.0)
-		var final_defense = total_def_power * (def_morale * 0.01) * (defender_stats.get_defense_efficiency() if defender_stats else 1.0)
+		var final_attack: float = total_atk_power * (att_morale * 0.01) * (attacker_stats.get_attack_efficiency() if attacker_stats else 1.0)
+		var final_defense: float = total_def_power * (def_morale * 0.01) * (defender_stats.get_defense_efficiency() if defender_stats else 1.0)
 
 		# --- 3. Apply Damage ---
-		manager.apply_casualties(defender_pid, defender_country, final_attack)
-		manager.apply_casualties(attacker_pid, attacker_country, final_defense * 0.5)
+		manager.apply_casualties(defender_pid, defender_country, final_attack * defender_stats.attacker_attack_mitigation)
+		manager.apply_casualties(attacker_pid, attacker_country, final_defense * attacker_stats.defender_attack_mitigation * 0.5)
 
 		# --- 4. Update Morale Decay ---
 		att_morale -= (final_defense * manager.MORALE_DECAY_RATE)

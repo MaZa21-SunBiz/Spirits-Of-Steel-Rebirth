@@ -208,7 +208,6 @@ func load_country_data(
 ) -> void:
 	Initialize(region_map, a_provinceData, a_progress)
 
-
 func save_map_data():
 	var map_data := MapData.new()
 	map_data.province_centers = province_centers.duplicate()

@@ -47,6 +47,10 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 					a_percent
 				)
 				a_percent[0] = 0.6
+				if map_data.has("significant_figures"):
+					for fig in map_data["significant_figures"]:
+						MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
+				a_percent[0] = 0.65
 				CountryManager.initialize_countries(map_data.get("polities", []) as Array)
 				a_percent[0] = 0.75
 				MapManager.build_lookup_texture()
@@ -54,10 +58,8 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				FactionManager.Initialize(map_data.get("factions", []))
 				a_percent[0] = 0.9
 				Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
-				if map_data.has("significant_figures"):
-					for fig in map_data["significant_figures"]:
-						MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
-				CountryManager.generate_missing_leaders()
+				a_percent[0] = 1.0
+				#CountryManager.generate_missing_leaders()
 			)
 		button.pressed.connect(load_map_data)
 		
