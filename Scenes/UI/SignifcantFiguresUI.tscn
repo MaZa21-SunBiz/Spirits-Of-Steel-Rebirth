@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="4_4ygwr"]
 [ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="4_av13s"]
 [ext_resource type="Texture2D" uid="uid://c2tseluls703" path="res://assets/icons/Espionage/BleedingWound.svg" id="5_tp7ur"]
-[ext_resource type="Texture2D" uid="uid://bs0h3xk4410m" path="res://assets/division_icons/tank.svg" id="7_58j1v"]
+[ext_resource type="Texture2D" uid="uid://bs0h3xk4410m" path="res://starts/ModernEmpires/assets/division_icons/tank.svg" id="7_58j1v"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_cke4s"]
 [ext_resource type="FontFile" uid="uid://c7d8oibwgja3h" path="res://font/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="8_nt2gs"]
 [ext_resource type="Texture2D" uid="uid://b6lx0p2mbicou" path="res://assets/icons/Science.svg" id="8_v578k"]
