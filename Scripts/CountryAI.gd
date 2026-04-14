@@ -55,6 +55,8 @@ var personality: Dictionary[String, Variant]= {
 	"aggression": 1.0,
 }
 var _last_declare_frame: int = -999999
+var _neighbor_cache: Array = []
+var _neighbors_dirty: bool = true
 
 
 func _init(_country: CountryData) -> void:
@@ -97,6 +99,12 @@ func _init(_country: CountryData) -> void:
 	# Adjust war probability based on extremism
 	personality["war"]["probability"]["base"] *= (1.0 + extremism)
 	personality["war"]["probability"]["tension_factor"] = (2.0 + extremism * 5.0) * randf()
+	
+	if MapManager.is_inside_tree():
+		MapManager.province_ownership_changed.connect(_on_province_ownership_changed)
+
+func _on_province_ownership_changed(_pid: int, _old_owner: String, _new_owner: String) -> void:
+	_neighbors_dirty = true
 
 
 func think_hour() -> void:
@@ -192,19 +200,24 @@ func _execute_war() -> bool:
 		#	print("%s didn't go to war due to cooldown, too many enemies, or a weak economy" % country.country_name)
 		return false
 
+	# Pre-calculate our faction set for O(1) intersection checks in filter
+	var our_factions := {}
+	for f in country.factions:
+		our_factions[f] = true
+
 	var candidates: Array = _get_neighbor_countries().filter(
 		func(enemy: String):
 			var enemy_data: CountryData = CountryManager.get_country(enemy)
-			# Unlikely but safe check
 			if not enemy_data: return false
 			
-			# Relation/Aggression check first (fastest)
+			# Cheapest check first: Relation/Aggression
 			if not (country.get_relation_with(enemy) < 20 or personality["aggression"] > 2.0):
 				return false
 				
-			# Faction check last (potentially slow)
-			if FactionManager.in_faction(enemy_data, country):
-				return false
+			# Faction check: Use pre-calculated set for speed
+			for f in enemy_data.factions:
+				if our_factions.has(f):
+					return false
 				
 			return true
 	)
@@ -490,6 +503,9 @@ func _get_peace_hubs() -> Array:
 
 
 func _get_neighbor_countries() -> Array:
+	if not _neighbors_dirty:
+		return _neighbor_cache
+
 	var neighbors: Dictionary = {}
 	for pid in MapManager.country_to_provinces.get(country.country_name, []):
 		for nid in MapManager.province_graph.get_point_connections(pid):
@@ -497,11 +513,13 @@ func _get_neighbor_countries() -> Array:
 			if not province: 
 				continue
 			
-			# Direct access instead of GetFunctionalOwner() to save call overhead
 			var owner: String = province.occupier if province.occupier != "" else province.country
 			if owner != "" and owner != "Sea" and owner != country.country_name:
 				neighbors[owner] = true
-	return neighbors.keys()
+
+	_neighbor_cache = neighbors.keys()
+	_neighbors_dirty = false
+	return _neighbor_cache
 
 
 func _estimate_country_strength(country_name: String, only_deployed: bool = false) -> float:

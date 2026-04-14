@@ -822,16 +822,7 @@
 			],
 			"color": "#386038",
 			"figures": [
-				"Russia_YukawaHideki",
-				"Russia_BenitoMussolini",
-				"Russia_JaneAustenCassandra",
-				"Russia_YukawaHideki",
-				"Russia_ChevalierDEon",
-				"Russia_TrofimLysenko",
-				"Russia_TrofimLysenko",
-				"Russia_ChevalierDEon",
-				"Russia_TrofimLysenko",
-				"Russia_DaleyJohnOttersbach"
+				"Putin"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -887,16 +878,7 @@
 			],
 			"color": "#1485ED",
 			"figures": [
-				"United_states_ChevalierDEon",
-				"United_states_YukawaHideki",
-				"United_states_UrNammu",
-				"United_states_TrofimLysenko",
-				"United_states_YukawaHideki",
-				"United_states_TrofimLysenko",
-				"United_states_JaneAustenCassandra",
-				"United_states_JaneAustenCassandra",
-				"United_states_JaneAustenCassandra",
-				"United_states_JoshPaulraj"
+				"Trump"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -1137,16 +1119,7 @@
 			],
 			"color": "#C7D5E0",
 			"figures": [
-				"Belarus_BenitoMussolini",
-				"Belarus_BenjaminFranklin",
-				"Belarus_BenjaminFranklin",
-				"Belarus_BenjaminFranklin",
-				"Belarus_JaneAustenCassandra",
-				"Belarus_TrofimLysenko",
-				"Belarus_JaneAustenCassandra",
-				"Belarus_BenitoMussolini",
-				"Belarus_BenitoMussolini",
-				"Belarus_JaneAustenCassandra"
+				"Lukashenko"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -1327,16 +1300,7 @@
 			],
 			"color": "#A7575A",
 			"figures": [
-				"China_BenjaminFranklin",
-				"China_UrNammu",
-				"China_YukawaHideki",
-				"China_UrNammu",
-				"China_BenitoMussolini",
-				"China_BenitoMussolini",
-				"China_JaneAustenCassandra",
-				"China_BenjaminFranklin",
-				"China_ChevalierDEon",
-				"China_UrNammu"
+				"Xi_jinping"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -1359,16 +1323,7 @@
 			],
 			"color": "#34588A",
 			"figures": [
-				"Ukraine_BenitoMussolini",
-				"Ukraine_YukawaHideki",
-				"Ukraine_BenjaminFranklin",
-				"Ukraine_JaneAustenCassandra",
-				"Ukraine_YukawaHideki",
-				"Ukraine_BenitoMussolini",
-				"Ukraine_BenjaminFranklin",
-				"Ukraine_BenitoMussolini",
-				"Ukraine_UrNammu",
-				"Ukraine_TrofimLysenko"
+				"Zelensky"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -1390,15 +1345,15 @@
 			"color": "#A38E4B",
 			"figures": [
 				"Mongolia_BenitoMussolini",
-				"Mongolia_BenjaminFranklin",
-				"Mongolia_BenjaminFranklin",
+				"Mongolia_YukawaHideki",
 				"Mongolia_BenjaminFranklin",
 				"Mongolia_JaneAustenCassandra",
-				"Mongolia_ChevalierDEon",
-				"Mongolia_ChevalierDEon",
-				"Mongolia_JaneAustenCassandra",
-				"Mongolia_ChevalierDEon",
-				"Mongolia_BenjaminFranklin"
+				"Mongolia_YukawaHideki",
+				"Mongolia_BenitoMussolini",
+				"Mongolia_BenjaminFranklin",
+				"Mongolia_BenitoMussolini",
+				"Mongolia_UrNammu",
+				"Mongolia_TrofimLysenko"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -3180,16 +3135,7 @@
 			],
 			"color": "#4569D9",
 			"figures": [
-				"Israel_UrNammu",
-				"Israel_TrofimLysenko",
-				"Israel_ChevalierDEon",
-				"Israel_BenitoMussolini",
-				"Israel_TrofimLysenko",
-				"Israel_YukawaHideki",
-				"Israel_BenitoMussolini",
-				"Israel_UrNammu",
-				"Israel_UrNammu",
-				"Israel_TrofimLysenko"
+				"Netanyahu"
 			],
 			"hostedGovernments": [],
 			"ideology": [
@@ -121449,7 +121395,6 @@
 	],
 	"significant_figures": [
 		{
-			"name": "ExodiaTheForbiddenOne",
 			"skills": {
 				"warSupport": 0.3,
 				"stability": 0.2,
@@ -121463,12 +121408,16 @@
 				"attackerAttackMitigation": 0.95,
 				"defenderAttackMitigation": 0.95
 			},
-			"traits": [],
-			"ideology": [0, 0],
-			"allegiance": "Bolivia",
+			"allegiance": "Russia",
+			"ideology": [
+				0,
+				0
+			],
+			"name": "Putin",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/Secret/Exodia.png",
-			"status": 0
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Russia/Putin.png",
+			"status": 0,
+			"traits": []
 		},
 		{
 			"allegiance": "Canada",
@@ -121501,21 +121450,6 @@
 			"traits": []
 		},
 		{
-			"allegiance": "Russia",
-			"ideology": [
-				0,
-				0
-			],
-			"name": "DaleyJohnOttersbach",
-			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {
-
-			},
-			"status": 0,
-			"traits": []
-		},
-		{
 			"allegiance": "Norway",
 			"ideology": [
 				0,
@@ -121536,9 +121470,9 @@
 				0,
 				0
 			],
-			"name": "JoshPaulraj",
+			"name": "Trump",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/United_states/Trump.png",
 			"skills": {
 
 			},
@@ -121656,9 +121590,9 @@
 				0,
 				0
 			],
-			"name": "JaneAustenCassandra",
+			"name": "Lukashenko",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Belarus/Lukashenko.png",
 			"skills": {
 
 			},
@@ -121746,9 +121680,9 @@
 				0,
 				0
 			],
-			"name": "UrNammu",
+			"name": "Xi_jinping",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/China/Xi_jinping.png",
 			"skills": {
 
 			},
@@ -121761,9 +121695,9 @@
 				0,
 				0
 			],
-			"name": "TrofimLysenko",
+			"name": "Zelensky",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Ukraine/Zelensky.png",
 			"skills": {
 
 			},
@@ -122631,9 +122565,9 @@
 				0,
 				0
 			],
-			"name": "TrofimLysenko",
+			"name": "Netanyahu",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Israel/Netanyahu.png",
 			"skills": {
 
 			},

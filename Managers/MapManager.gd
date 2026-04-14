@@ -3,6 +3,7 @@ var DEBUG_MODE: bool = false
 
 signal province_hovered(province_id: int, country_name: String)
 signal country_clicked(country_name: String)
+signal province_ownership_changed(pid: int, old_owner: String, new_owner: String)
 
 # Emitted when a click couldn't be processed (so likely sea or border)
 signal close_sidemenu
@@ -1290,6 +1291,7 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY), CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
+	province_ownership_changed.emit(pid, old_owner_name, new_owner_name)
 
 func OccupyProvince(pid: int, new_owner_name: String) -> void:
 	var old_owner_name = MapManager.province_objects[pid].country
@@ -1330,8 +1332,10 @@ func OccupyProvince(pid: int, new_owner_name: String) -> void:
 	#	occupied_provinces[new_owner_name].append(pid)
 
 	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+	province_ownership_changed.emit(pid, oldControllerName, new_owner_name)
 
 func DeoccupyProvince(pid: int) -> void:
+	var old_controller = province_objects[pid].GetFunctionalOwner()
 	if province_objects[pid].occupier != "":
 		CountryManager.countries[province_objects[pid].country].total_population += province_objects[pid].GetPopulation()
 		
@@ -1350,6 +1354,7 @@ func DeoccupyProvince(pid: int) -> void:
 	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+	province_ownership_changed.emit(pid, old_controller, province_objects[pid].country)
 
 func _parse_color_string(s: String) -> Vector3:
 	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")

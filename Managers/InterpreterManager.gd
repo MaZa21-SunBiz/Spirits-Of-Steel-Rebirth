@@ -335,7 +335,9 @@ func get_function(block, country: CountryData = null):
 		"change_province_types":
 			if evaled_args.size() >= 3:
 				MapManager.change_province_types(evaled_args[0].map(func(a): return int(a)), evaled_args[1], evaled_args[2])
-
+		"set_fig_attr":
+			if evaled_args.size() >= 3:
+				MapManager.significantFigures[evaled_args[0]][evaled_args[1]] = evaled_args[2]
 
 	if store_key != "":
 		heap[store_key] = result
