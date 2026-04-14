@@ -119376,7 +119376,7 @@
 			"legitimacy": 100,
 			"name": "VladimirPutin",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/Russia/VladimirPutin.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/VladimirPutin.png",
 			"skills": {
 				"attackerAttackMitigation": 0.95,
 				"dailyPPGain": 0.1,
@@ -119450,7 +119450,7 @@
 			"name": "DonaldJohnTrump",
 			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/United_states/Donald_John_Trump.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/DonaldJohnTrump.png",
 			"skills": {},
 			"status": 0,
 			"traits": []
@@ -119528,7 +119528,7 @@
 			"name": "AlexanderLukashenko",
 			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/Belarus/Alexander_Lukashenko.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/AlexanderLukashenko.png",
 			"skills": {
 
 			},

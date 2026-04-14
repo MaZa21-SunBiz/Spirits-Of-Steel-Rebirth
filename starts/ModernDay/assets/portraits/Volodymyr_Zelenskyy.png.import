@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckwthisht51gc"
-path="res://.godot/imported/Volodymyr_Zelenskyy.png-cc1f9cf77f263e3e48d21dad34e2a02b.ctex"
+path="res://.godot/imported/Volodymyr_Zelenskyy.png-709224f44a783a2e1881de4d149d0570.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/Ukraine/Volodymyr_Zelenskyy.png"
-dest_files=["res://.godot/imported/Volodymyr_Zelenskyy.png-cc1f9cf77f263e3e48d21dad34e2a02b.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/Volodymyr_Zelenskyy.png"
+dest_files=["res://.godot/imported/Volodymyr_Zelenskyy.png-709224f44a783a2e1881de4d149d0570.ctex"]
 
 [params]
 

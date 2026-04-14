@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqfgfjq77fvi1"
-path="res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24b8b98.ctex"
+uid="uid://rs6ulflj4s5q"
+path="res://.godot/imported/Xi_jinping.png-6b58cd99cb7d6e472b1b01a068b4217e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/VladimirPutin.png"
-dest_files=["res://.godot/imported/VladimirPutin.png-8ebf4e037d8f9c8f036d69fcc24b8b98.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/China/Xi_jinping.png"
+dest_files=["res://.godot/imported/Xi_jinping.png-6b58cd99cb7d6e472b1b01a068b4217e.ctex"]
 
 [params]
 
