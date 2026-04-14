@@ -174,18 +174,17 @@ text = "Spirits Of Steel"
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662 node_paths=PackedStringArray("StartsUI", "CreditsUI")]
 material = ExtResource("5_yhxw7")
 offset_left = 59.49994
-offset_top = 254.0
+offset_top = 192.0
 offset_right = 287.49994
-offset_bottom = 394.0
+offset_bottom = 582.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 script = ExtResource("5_trj04")
-StartsUI = NodePath("../Starts")
-CreditsUI = NodePath("../Credits")
+StartsUI = NodePath("../TabContainer/Starts")
+CreditsUI = NodePath("../TabContainer/Credits")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=503985164]
 layout_mode = 2
 theme_override_constants/separation = 8
-alignment = 1
 
 [node name="New" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1326153105]
 texture_filter = 2
@@ -209,6 +208,10 @@ layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Credits"
 
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer" unique_id=55547179]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=85919368]
 texture_filter = 2
 material = ExtResource("5_yhxw7")
@@ -217,53 +220,57 @@ theme = ExtResource("1_28flt")
 text = "Quit
 "
 
-[node name="Credits" type="Control" parent="." unique_id=1558337124]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1116322658]
 material = ExtResource("5_yhxw7")
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="Credits" unique_id=1395319438]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5019608)
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelContainer" type="PanelContainer" parent="Credits" unique_id=585752186]
-use_parent_material = true
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -100.5
-offset_right = 164.0
-offset_bottom = 100.5
+offset_left = -293.0
+offset_top = -140.0
+offset_right = 293.0
+offset_bottom = 266.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+tabs_visible = false
+deselect_enabled = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/PanelContainer" unique_id=289431072]
+[node name="Starts" type="PanelContainer" parent="TabContainer" unique_id=1804048672 node_paths=PackedStringArray("start_entry")]
+visible = false
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+script = ExtResource("14_8dnnj")
+start_entry = NodePath("ScrollContainer/HFlowContainer")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Starts" unique_id=356775520]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="TabContainer/Starts/ScrollContainer" unique_id=1376363996]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Credits" type="PanelContainer" parent="TabContainer" unique_id=585752186]
+visible = false
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Credits" unique_id=289431072]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 24
-alignment = 1
 
-[node name="Label" type="Label" parent="Credits/PanelContainer/VBoxContainer" unique_id=771123924]
+[node name="Label" type="Label" parent="TabContainer/Credits/VBoxContainer" unique_id=771123924]
 texture_filter = 2
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("8_trj04")
 text = "Z21
 CallMePol
@@ -272,57 +279,20 @@ Sockmit
 EsatBoucaud icon-sets
 Rosseau
 Ariect Von don Koppan Finchendenstein II
-The spirit of GavGrub"
+AirplaneEnjoyer
+FilipYo
+The Spirit of Gavin \"Grubhub\" Grubert"
 
-[node name="Exit" type="Button" parent="Credits/PanelContainer/VBoxContainer" unique_id=1733367604]
+[node name="Exit" type="Button" parent="TabContainer/Credits/VBoxContainer" unique_id=1733367604]
 texture_filter = 2
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
-[node name="Starts" type="Control" parent="." unique_id=65741064 node_paths=PackedStringArray("start_entry")]
-visible = false
-material = ExtResource("5_yhxw7")
-layout_mode = 3
-anchor_left = 0.33950615
-anchor_top = 0.33950618
-anchor_right = 0.66049385
-anchor_bottom = 0.66049385
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_8dnnj")
-start_entry = NodePath("PanelContainer2/ScrollContainer/HFlowContainer")
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelContainer2" type="PanelContainer" parent="Starts" unique_id=1804048672]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -285.0
-offset_top = -70.0
-offset_right = 269.0
-offset_bottom = 320.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Starts/PanelContainer2" unique_id=356775520]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="HFlowContainer" type="HFlowContainer" parent="Starts/PanelContainer2/ScrollContainer" unique_id=1376363996]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer" method="_on_quit_pressed"]
-[connection signal="pressed" from="Credits/PanelContainer/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]
+[connection signal="pressed" from="TabContainer/Credits/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]

@@ -120,20 +120,17 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
 
 void fragment() {
 		//weird magic offset thing trust me i checked
-		float d = (PI*82.*ocean_offset.x) + (PI*43.43) +.6;
+		float d = (PI*82.*-ocean_offset.x) + (PI*43.43) +.6;
 		float t = 0.55907372766767*cos(d/182.725);
 		float anti_t = 0.55907372766767*sin(d/182.725);
 		//float t = 1.;
+		float lat = PI*(2.*UV.x-1.);
+		float lot = 2.*atan((2.*UV.y)-1.);
 		
 		vec3 sphere_point = vec3(
-			cos(UV.x*2.*PI)
-			*sin(UV.y*PI)
-			,
-			sin(UV.x*2.*PI)
-			*sin(UV.y*PI)
-			,
-			//mix(-1., 1, UV.y)
-			cos(UV.y*PI)
+			sin(lat)*cos(lot),
+			cos(lat)*cos(lot),
+			sin(lot)
 		);
 		vec3 sun_dir = vec3(
 			sin(d)*cos(t),

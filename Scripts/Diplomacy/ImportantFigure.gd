@@ -12,6 +12,7 @@ enum Status {
 @export var ideology: Vector2i
 @export var allegiance: String
 @export var occupation: String
+@export var legitimacy: int
 @export var portrait_path: String = ""
 @export var status: Status = Status.ALIVE
 
@@ -101,6 +102,7 @@ static func FromValues(
 	a_traits: Array,
 	a_allegiance: String,
 	a_occupation: String,
+	a_legitimacy: int,
 	a_portrait_path: String,
 	a_status: Status
 ) -> ImportantFigure:
@@ -111,6 +113,7 @@ static func FromValues(
 	figure.traits = a_traits
 	figure.allegiance = a_allegiance
 	figure.occupation = a_occupation
+	figure.legitimacy = a_legitimacy
 	figure.portrait_path = a_portrait_path
 	figure.status = a_status
 	
@@ -125,6 +128,7 @@ static func FromDict(a_data: Dictionary) -> ImportantFigure:
 	figure.ideology = Vector2i(a_data["ideology"][0], a_data["ideology"][1])
 	figure.allegiance = a_data["allegiance"]
 	figure.occupation = a_data["occupation"]
+	figure.legitimacy = a_data.get("legitimacy", 100)
 	figure.portrait_path = a_data.get("portrait_path", "")
 	figure.status = a_data.get("status", Status.ALIVE)
 	
@@ -138,6 +142,7 @@ func ToDict() -> Dictionary:
 		"ideology": [ self.ideology.x, self.ideology.y],
 		"allegiance": self.allegiance,
 		"occupation": self.occupation,
+		"legitimacy": self.legitimacy,
 		"portrait_path": self.portrait_path,
 		"status": self.status,
 	}

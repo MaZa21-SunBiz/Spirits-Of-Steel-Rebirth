@@ -21,6 +21,8 @@ func _gui_input(event):
 				manually_positioned = true
 			else:
 				dragging = false
+		elif event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
+			_on_button_pressed()
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position = get_global_mouse_position() - drag_offset

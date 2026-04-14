@@ -125,7 +125,7 @@ var action_costs := {
 	},
 	"_force_puppet": func(player: CountryData, selected: CountryData): return {
 		"cost": 150,
-		"can_afford": CountryManager.get_country_gdp(player.country_name) > 1000 * CountryManager.get_country_gdp(selected.country_name)
+		"can_afford": player.gdp > 1000 * selected.gdp
 	},
 	"_release_puppet": func(_player: CountryData, _selected: CountryData): return {
 		"cost": 50,
@@ -183,18 +183,23 @@ var action_costs := {
 		"cost": 0,
 		"can_afford": true
 	},
-	"_on_invite_faction_pressed": func(_player: CountryData, _selected: CountryData): return {
-		"cost": 0,
-		"can_afford": (
-			_player.get_relation_with(_selected.country_name) > 120)
-			&& FactionManager.get_faction_member(_player.country_name)
-			&& (FactionManager.get_faction_member(_player.country_name).status == "Leader")
-	},
+	"_on_invite_faction_pressed": _get_invite_faction_cost,
 	"m_BuildInfrastructure": func(_a_player: CountryData, _a_selected: CountryData): return {
 		"cost": 0,
 		"can_afford": true
 	}
 }
+
+func _get_invite_faction_cost(player: CountryData, selected: CountryData) -> Dictionary:
+	var member = FactionManager.get_faction_member(player.country_name)
+	return {
+		"cost": 0,
+		"can_afford": (
+			player.get_relation_with(selected.country_name) > 120
+			and member != null
+			and member.status == "Leader"
+		)
+	}
 
 var all_notifs: Dictionary = {}
 
@@ -403,8 +408,9 @@ func _on_province_clicked(country_name: String) -> void:
 		# elif selected_country.country_name in CountryManager.player_country.puppets:
 		# 	new_context = Context.PUPPET
 
+		var allowed = CountryManager.player_country.get_all_allowed_countries()
 		relations_hbox.tooltip_text = (
-			"Military Access: " + String("Yes" if selected_country.country_name in CountryManager.player_country.allowedCountries else "No")
+			"Military Access: " + String("Yes" if selected_country.country_name in allowed else "No")
 		)
 
 		sidemenu_context.current_tab = new_context
@@ -496,6 +502,8 @@ func _update_relations_visuals() -> void:
 		relations_hbox.visible = false
 
 var contextLatch: bool = false
+var _actions_list_cache: Array[Dictionary] = []
+var _actions_list_cached: bool = false
 
 func _update_context_actions_visuals() -> void:
 	if !contextLatch:
@@ -503,31 +511,47 @@ func _update_context_actions_visuals() -> void:
 		DoUpdateContextActionsVisuals.call_deferred()
 
 func DoUpdateContextActionsVisuals() -> void:
-	# Iterate through all context tabs to find action buttons
-	for context_node in sidemenu_context.get_children():
-		# Try to find ScrollContainer/ActionsList/ in each tab
-		var actions_list = context_node.find_child("ActionsList", true, false)
-		if actions_list:
-			for child in actions_list.get_children():
-				if child is Button:
-					var method = ""
-					# Find which method this button calls by looking at connections
-					for connection in child.pressed.get_connections():
-						if connection.callable.get_object() == self:
-							method = connection.callable.get_method()
-							break
-					
-					if method != "" && action_costs.has(method) && selected_country:
-						# NOTE(soi): look man idk anymore
-						var AAAAAA = action_costs[method].call(CountryManager.player_country, selected_country)
-						var cost = AAAAAA["cost"]
-						child.disabled = !AAAAAA["can_afford"]
-						
-						# Update text to show cost if > 0
-						child.text = child.text.split(" (")[0] + (" (%d PP)" % cost if cost > 0 else "")
-						
-						# Visual feedback for disabled buttons
-						child.modulate = Color(1, 0.5, 0.5, 0.7) if child.disabled else Color.WHITE
+	if not _actions_list_cached:
+		_actions_list_cache.clear()
+		for context_node in sidemenu_context.get_children():
+			var actions_list = context_node.find_child("ActionsList", true, false)
+			if actions_list:
+				for child in actions_list.get_children():
+					if child is Button:
+						var method = ""
+						for connection in child.pressed.get_connections():
+							if connection.callable.get_object() == self:
+								method = connection.callable.get_method()
+								break
+						if method != "" && action_costs.has(method):
+							_actions_list_cache.append({
+								"btn": child,
+								"method": method,
+								"base_text": child.text.split(" (")[0]
+							})
+		_actions_list_cached = true
+
+	if not selected_country:
+		contextLatch = false
+		return
+
+	# Fast-path rendering
+	for data in _actions_list_cache:
+		var child: Button = data["btn"]
+		var method: String = data["method"]
+		if not is_instance_valid(child):
+			continue
+			
+		var cost_data = action_costs[method].call(CountryManager.player_country, selected_country)
+		var cost: int = cost_data["cost"]
+		child.disabled = not cost_data["can_afford"]
+		
+		# Update text avoiding split() allocations
+		child.text = data["base_text"] + (" (%d PP)" % cost if cost > 0 else "")
+		
+		# Visual feedback for disabled buttons
+		child.modulate = Color(1.0, 0.5, 0.5, 0.7) if child.disabled else Color.WHITE
+
 	contextLatch = false
 
 func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:

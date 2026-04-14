@@ -27,6 +27,7 @@ func _ready() -> void:
 	Console.add_command("debug_decisions", _debug_decisions, [], 0, "Lets u do any focus and does it instantly")
 	Console.add_command("set_ideology", _set_ideology, ["x", "y"], 2, "Change player ideology")
 	Console.add_command("reload_decisions", _reload_decisions, [], 0, "Reloads all the decision trees")
+	Console.add_command("instabuild", _instabuild, [], 0, "Toggles instant construction")
 
 	Console.add_command("gates_of_hell", m_GatesOfHell, [], 0, "Start armageddon")
 	Console.add_command("start_war", _start_war, ["a", "b"], 2, "Start a war between 2 countries")
@@ -174,6 +175,11 @@ func _invite_country(country_name: String):
 func _drew_durnil_mode():
 	CountryManager.player_country.is_player = false
 	CountryManager.player_country.setup_ai()
+
+
+func _instabuild():
+	GameState.instabuild = !GameState.instabuild
+	Console.print_line("Instabuild: " + str(GameState.instabuild))
 
 
 func _sink_rise(pid, type, country_name: String):

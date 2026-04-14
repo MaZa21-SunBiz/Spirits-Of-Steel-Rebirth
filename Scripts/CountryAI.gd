@@ -17,6 +17,8 @@ const MAX_PARALLEL_WARS := 2
 const WAR_SCORE_THRESHOLD := 0.6
 const MAX_WAR_DECLARATIONS_PER_TICK := 1
 const AI_CHAOS := 0.9
+const MAX_COMBINED_WAR_MEMBERS := 8 # Prevent world-war scale escalations
+const EMERGENCY_DEPLOYMENT_THRESHOLD := 5 # If at war and fewer than this, panic deploy
 
 
 var country: CountryData
@@ -53,6 +55,8 @@ var personality: Dictionary[String, Variant]= {
 	"aggression": 1.0,
 }
 var _last_declare_frame: int = -999999
+var _neighbor_cache: Array = []
+var _neighbors_dirty: bool = true
 
 
 func _init(_country: CountryData) -> void:
@@ -95,6 +99,12 @@ func _init(_country: CountryData) -> void:
 	# Adjust war probability based on extremism
 	personality["war"]["probability"]["base"] *= (1.0 + extremism)
 	personality["war"]["probability"]["tension_factor"] = (2.0 + extremism * 5.0) * randf()
+	
+	if MapManager.is_inside_tree():
+		MapManager.province_ownership_changed.connect(_on_province_ownership_changed)
+
+func _on_province_ownership_changed(_pid: int, _old_owner: String, _new_owner: String) -> void:
+	_neighbors_dirty = true
 
 
 func think_hour() -> void:
@@ -110,7 +120,8 @@ func think_day() -> void:
 	_execute_best([
 		{"score": _score_factory(), "action": _execute_factory},
 		{"score": _score_train(), "action": _execute_train},
-		{"score": _score_war(), "action": _execute_war}
+		{"score": _score_war(), "action": _execute_war},
+		{"score": _score_call_to_arms(), "action": _execute_call_to_arms}
 	])
 
 
@@ -143,6 +154,12 @@ func _score_war() -> float:
 
 
 func _score_frontline() -> float:
+	if not WarManager.get_enemies_of(country.country_name).is_empty():
+		var deployed_count = 0
+		for troop in TroopManager.get_troops_for_country(country.country_name):
+			deployed_count += troop.divisions_count
+		if deployed_count < EMERGENCY_DEPLOYMENT_THRESHOLD:
+			return 10.0
 	return 1.0 # Always high priority to manage frontline
 
 
@@ -183,15 +200,26 @@ func _execute_war() -> bool:
 		#	print("%s didn't go to war due to cooldown, too many enemies, or a weak economy" % country.country_name)
 		return false
 
+	# Pre-calculate our faction set for O(1) intersection checks in filter
+	var our_factions := {}
+	for f in country.factions:
+		our_factions[f] = true
+
 	var candidates: Array = _get_neighbor_countries().filter(
 		func(enemy: String):
-			var enemyData: CountryData = CountryManager.get_country(enemy)
-			return (
-				enemy != "Sea" &&
-				enemyData &&
-				!FactionManager.in_faction(enemyData, country) &&
-				(country.get_relation_with(enemy) < 20 || personality["aggression"] > 2.0)
-			)
+			var enemy_data: CountryData = CountryManager.get_country(enemy)
+			if not enemy_data: return false
+			
+			# Cheapest check first: Relation/Aggression
+			if not (country.get_relation_with(enemy) < 20 or personality["aggression"] > 2.0):
+				return false
+				
+			# Faction check: Use pre-calculated set for speed
+			for f in enemy_data.factions:
+				if our_factions.has(f):
+					return false
+				
+			return true
 	)
 
 	# Safety: Don't declare war if we have very FEW troops
@@ -215,11 +243,23 @@ func _execute_war() -> bool:
 
 	for target_name: String in candidates:
 		var target_data: CountryData = CountryManager.countries[target_name]
-		if _same_faction(country.factions, target_data.factions) || WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
+		if FactionManager.in_faction(country, target_data) || WarManager.is_at_war_names(country.country_name, target_name) || puppeter.has(target_name):
+			continue
+
+		# 3. SCALE ANALYSIS (Prevent massive world wars)
+		var own_members = _get_side_members(country.country_name)
+		var target_members = _get_side_members(target_name)
+		
+		# If the conflict would involve too many countries, skip (unless aggressive)
+		if own_members.size() + target_members.size() > MAX_COMBINED_WAR_MEMBERS && personality["aggression"] < 2.5:
 			continue
 
 		# 4. STRENGTH & DISTANCE ANALYSIS
-		var ratio: float = _estimate_country_strength(country.country_name) / max(1.0, _estimate_country_strength(target_name))
+		# Collective Security: Calculate strength of the entire "side" (factions + puppets)
+		var own_side_strength = _estimate_side_strength(country.country_name)
+		var target_side_strength = _estimate_side_strength(target_name)
+		
+		var ratio: float = own_side_strength / max(1.0, target_side_strength)
 
 		if ratio < personality["war"]["min_strength_ratio"]:
 			continue
@@ -306,7 +346,15 @@ func _execute_frontline():
 
 	# Get weighted targets (Cities, Troops, and Empty Gaps)
 	var targets: Array[Dictionary] = []
-	var seen: PackedInt32Array = []
+	var seen: Dictionary = {}
+	
+	var enemy_dict: Dictionary = {}
+	for e in enemies:
+		enemy_dict[e] = true
+		
+	var city_dict: Dictionary = {}
+	for city in MapManager.all_cities:
+		city_dict[city[0]] = true
 
 	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
 		for n_id in MapManager.province_graph.get_point_connections(my_pid):
@@ -314,12 +362,12 @@ func _execute_frontline():
 				continue
 			# Check if it's enemy territory
 			var enemy_name: String = MapManager.province_objects[n_id].GetFunctionalOwner()
-			if MapManager.province_objects[n_id].GetFunctionalOwner() in enemies && !seen.has(n_id):
-				seen.append(n_id)
+			if enemy_dict.has(enemy_name) && !seen.has(n_id):
+				seen[n_id] = true
 				var e_str: int = TroopManager.get_province_strength(n_id, enemy_name)
 				var score: float = 10.0
 
-				if MapManager.all_cities.find_custom(func (a: Array): return a[0] == n_id):
+				if city_dict.has(n_id):
 					score += personality["war"]["combat"]["city_bonus"]
 
 				if e_str > 0:
@@ -340,9 +388,10 @@ func _execute_frontline():
 				# Look at the neighbor's neighbors (2 tiles deep)
 				# If an enemy city is just behind the front line and empty, go for it!
 				for dn_id in MapManager.province_graph.get_point_connections(n_id):
-					if (MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name 
+					if (MapManager.province_objects.has(dn_id)
+						&& MapManager.province_objects[dn_id].GetFunctionalOwner() == enemy_name 
 						&& !seen.has(dn_id) 
-						&& MapManager.all_cities.find_custom(func (a: Array): return a[0] == dn_id)
+						&& city_dict.has(dn_id)
 						):
 						targets.append(
 							{
@@ -403,6 +452,47 @@ func _execute_frontline():
 	#if country == GameState.game_ui.selected_country:
 	#	print("%s executed their frontline" % country.country_name)
 
+
+func _score_call_to_arms() -> float:
+	if WarManager.get_enemies_of(country.country_name).is_empty():
+		return 0.0
+	if country.factions.is_empty():
+		return 0.0
+	
+	return 1.5
+
+
+func _execute_call_to_arms() -> bool:
+	var called_any = false
+	var enemies = WarManager.get_enemies_of(country.country_name)
+
+	for faction_name in country.factions:
+		var faction_data = FactionManager.factions.get(faction_name)
+		if not faction_data:
+			continue
+		
+		# CIVIL WAR CHECK: Don't call allies if the enemy is in the same faction
+		var is_internal_conflict = false
+		for member in faction_data.members:
+			if member.polity in enemies:
+				is_internal_conflict = true
+				break
+		
+		if is_internal_conflict:
+			continue
+		
+		for member in faction_data.members:
+			if member.polity == country.country_name:
+				continue
+			
+			var member_country = CountryManager.get_country(member.polity)
+			if member_country:
+				WarManager.call_to_arms(country, member_country)
+				called_any = true
+	
+	return called_any
+
+
 # --- UTILITIES ---
 
 func _get_peace_hubs() -> Array:
@@ -413,15 +503,23 @@ func _get_peace_hubs() -> Array:
 
 
 func _get_neighbor_countries() -> Array:
-	var neighbors: PackedStringArray = []
+	if not _neighbors_dirty:
+		return _neighbor_cache
+
+	var neighbors: Dictionary = {}
 	for pid in MapManager.country_to_provinces.get(country.country_name, []):
 		for nid in MapManager.province_graph.get_point_connections(pid):
-			if !MapManager.province_objects.has(nid):
+			var province = MapManager.province_objects.get(nid)
+			if not province: 
 				continue
-			var owner: String = MapManager.province_objects[nid].GetFunctionalOwner()
-			if owner && owner != country.country_name:
-				neighbors.append(owner)
-	return neighbors
+			
+			var owner: String = province.occupier if province.occupier != "" else province.country
+			if owner != "" and owner != "Sea" and owner != country.country_name:
+				neighbors[owner] = true
+
+	_neighbor_cache = neighbors.keys()
+	_neighbors_dirty = false
+	return _neighbor_cache
 
 
 func _estimate_country_strength(country_name: String, only_deployed: bool = false) -> float:
@@ -440,12 +538,48 @@ func _estimate_country_strength(country_name: String, only_deployed: bool = fals
 	return max(0.1, total)
 
 
+func _estimate_side_strength(country_name: String) -> float:
+	var total_strength = 0.0
+	var all_potential = _get_side_members(country_name)
+	
+	# Sum Strengths
+	for p_name in all_potential:
+		total_strength += _estimate_country_strength(p_name)
+	
+	return total_strength
+
+
+func _get_side_members(country_name: String) -> Array[String]:
+	var side_members: Array[String] = [country_name]
+	
+	var c_data = CountryManager.get_country(country_name)
+	if not c_data:
+		return side_members
+	
+	# 1. Add Faction Members
+	for faction_name in c_data.factions:
+		var faction_data = FactionManager.factions.get(faction_name)
+		if faction_data:
+			for member in faction_data.members:
+				if not member.polity in side_members:
+					side_members.append(member.polity)
+	
+	# 2. Add Puppets for all side members
+	var all_potential: Array[String] = []
+	all_potential.append_array(side_members)
+	
+	for member in side_members:
+		var m_data = CountryManager.get_country(member)
+		if m_data:
+			for puppet in m_data.puppets:
+				if not puppet in all_potential:
+					all_potential.append(puppet)
+					
+	return all_potential
+
+
 func _get_extremism() -> float:
 	# Ideology map is roughly -100 to 100 on both axes.
 	# Higher distance from center (0,0) = more extreme.
 	# Return value 0.0 (neutral) to 1.0 (extreme)
 	return clamp(country.ideology.length() * 0.00707113562, 0.0, 1.0) # 141.42 is approx dist to corner
-
-
-func _same_faction(arr1: PackedStringArray, arr2: Array[String]) -> bool:
-	return arr2.any(func(element): return arr1.has(element))

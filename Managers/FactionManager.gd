@@ -40,17 +40,18 @@ func invite_faction(inviter: CountryData, invitee: CountryData) -> void:
 	MapManager.allow_pids(inviter, invitee)
 	MapManager.allow_pids(invitee, inviter)
 	# NOTE(soi): we should add an option to choose which faction to invite to
-	inviter.factions = invitee.factions
 	var inviter_factions_copy = inviter.factions.duplicate()
 	for faction in inviter_factions_copy:
-		#print(faction)
-		if factions[faction].members[factions[faction].members.find_custom(
-			func(a_faction): return a_faction.polity == inviter.country_name
-			)].status == "Leader":
-			factions[faction].members.append(FactionMember.FromValues(invitee.country_name, "Member"))
-			if not faction in invitee.factions:
-				invitee.factions.append(faction)
-		print(factions[faction].members)
+		if faction in factions:
+			var faction_data = factions[faction]
+			var leader_index = faction_data.members.find_custom(
+				func(m): return m.polity == inviter.country_name
+			)
+			if leader_index != -1 and faction_data.members[leader_index].status == "Leader":
+				faction_data.members.append(FactionMember.FromValues(invitee.country_name, "Member"))
+				if not faction in invitee.factions:
+					invitee.factions.append(faction)
+				print("Invited %s to %s" % [invitee.country_name, faction])
 
 
 func in_faction(inviter: CountryData, invitee: CountryData) -> bool:
@@ -97,11 +98,16 @@ func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
 
 
 func get_faction_member(country_name: String) -> FactionMember:
-	for faction_name in factions:
-		var faction_data = factions[faction_name]
-		var index = faction_data.members.find_custom(func(m): return m.polity == country_name)
-		if index != -1:
-			return faction_data.members[index]
+	var country = CountryManager.get_country(country_name)
+	if not country or country.factions.is_empty():
+		return null
+		
+	for faction_name in country.factions:
+		if faction_name in factions:
+			var faction_data = factions[faction_name]
+			var index = faction_data.members.find_custom(func(m): return m.polity == country_name)
+			if index != -1:
+				return faction_data.members[index]
 	return null
 
 

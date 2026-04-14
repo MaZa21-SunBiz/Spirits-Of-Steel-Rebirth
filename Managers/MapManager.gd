@@ -3,6 +3,7 @@ var DEBUG_MODE: bool = false
 
 signal province_hovered(province_id: int, country_name: String)
 signal country_clicked(country_name: String)
+signal province_ownership_changed(pid: int, old_owner: String, new_owner: String)
 
 # Emitted when a click couldn't be processed (so likely sea or border)
 signal close_sidemenu
@@ -1082,7 +1083,7 @@ func ShowInfrastructureMap() -> void:
 	for pid in province_objects.keys():
 		if pid <= 1 || province_objects[pid].country == "Sea":
 			continue
-		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.allowedCountries.has(province_objects[pid].country):
+		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.get_all_allowed_countries().has(province_objects[pid].country):
 			state_color_image.set_pixel(pid, 0, CountryManager.GetCountryColor(province_objects[pid].country))
 		else:
 			var infra = province_objects[pid].infrastructure
@@ -1290,6 +1291,7 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(new_owner_name, Color.GRAY), CountryManager.GetCountryColor(new_owner_name, Color.GRAY))
+	province_ownership_changed.emit(pid, old_owner_name, new_owner_name)
 
 func OccupyProvince(pid: int, new_owner_name: String) -> void:
 	var old_owner_name = MapManager.province_objects[pid].country
@@ -1330,8 +1332,10 @@ func OccupyProvince(pid: int, new_owner_name: String) -> void:
 	#	occupied_provinces[new_owner_name].append(pid)
 
 	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+	province_ownership_changed.emit(pid, oldControllerName, new_owner_name)
 
 func DeoccupyProvince(pid: int) -> void:
+	var old_controller = province_objects[pid].GetFunctionalOwner()
 	if province_objects[pid].occupier != "":
 		CountryManager.countries[province_objects[pid].country].total_population += province_objects[pid].GetPopulation()
 		
@@ -1350,6 +1354,7 @@ func DeoccupyProvince(pid: int) -> void:
 	province_objects[pid].occupier = ""
 
 	update_lookup(pid, CountryManager.GetCountryColor(province_objects[pid].country, Color.GRAY), CountryManager.GetCountryColor(province_objects[pid].GetFunctionalOwner(), Color.GRAY))
+	province_ownership_changed.emit(pid, old_controller, province_objects[pid].country)
 
 func _parse_color_string(s: String) -> Vector3:
 	var parts = s.replace("(", "").replace(")", "").replace(" ", "").split(",")
@@ -1484,11 +1489,16 @@ func get_cities_province_country(country_name) -> Array:
 ## Returns provinces that specifically border a certain enemy
 func get_provinces_bordering_enemies(country_name: String, enemies: Array[String]) -> PackedInt32Array:
 	var specific_borders: PackedInt32Array = []
+	
+	var enemy_dict: Dictionary = {}
+	for enemy in enemies:
+		enemy_dict[enemy] = true
 
 	for prov_id: int in allowed_pids.get(country_name, []):
-		# NOTE(soi): make this better  in c# or smthn T_T
 		for neighbor_id: int in province_graph.get_point_connections(prov_id):
-			if MapManager.province_objects[neighbor_id].GetFunctionalOwner() in enemies:
+			var neighbor_prov: Province = province_objects[neighbor_id]
+			var prov_owner: String = neighbor_prov.occupier if neighbor_prov.occupier != "" else neighbor_prov.country
+			if enemy_dict.has(prov_owner):
 				specific_borders.append(prov_id)
 				break
 

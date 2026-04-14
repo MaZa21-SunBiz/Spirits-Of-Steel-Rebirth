@@ -82,11 +82,21 @@ var hostedGovernments: Array = []
 var owner: String
 var host: String
 var factions: Array[String] = []
+var finished_decisions: Array[String] = []
 var ongoing_training: Array[TroopTraining] = []
 var ready_troops: Array[ReadyTroop] = []
 var deploy_pid: int = -1 # ID of province to deploy to
 var pre_war_provinces: Array = [] # Snapshotted provinces before a war
 #endregion
+
+func get_all_allowed_countries() -> Array[String]:
+	var combined: Array[String] = allowedCountries.duplicate()
+	for faction_name in factions:
+		if faction_name in FactionManager.factions:
+			for member in FactionManager.factions[faction_name].members:
+				if not member.polity in combined:
+					combined.append(member.polity)
+	return combined
 
 # for optimization
 var is_at_war: bool = false
@@ -163,6 +173,7 @@ func ToDict() -> Dictionary:
 		"figures": figures,
 		"government_positions": governmentPositions,
 		"is_player": is_player,
+		"finished_decisions": finished_decisions,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -183,6 +194,10 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.figures = a_data.get("figures", [])
 	country.governmentPositions.merge(a_data.get("government_positions", {}), true)
 	country.is_player = a_data.get("is_player", false)
+	country.finished_decisions = Array(a_data.get("finished_decisions", []), TYPE_STRING, &"", null)
+	
+	for id in country.finished_decisions:
+		country.set_meta("finished_" + id, true)
 	# country._refresh_economic_stats()
 	# country.refresh_ideology_name()
 	

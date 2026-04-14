@@ -8,6 +8,7 @@ var current_start: String
 
 var choosing_deploy_city := false
 var industry_building := IndustryType.DEFAULT
+var instabuild: bool = false
 
 var game_ui: GameUI
 
