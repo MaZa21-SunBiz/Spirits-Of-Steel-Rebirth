@@ -50,7 +50,7 @@ static func FromRandom(a_allegiance: String, a_budget: float = 0.0) -> Important
 				result += skillData.step * level
 			"less":
 				result -= skillData.step * level
-		print("%s getting positive skill (%d/%d) for %3.1f at %d with %+6.3f: %s" % [figure.name, i + 1, skillsToPick, cost, level, result, skill])
+		#print("%s getting positive skill (%d/%d) for %3.1f at %d with %+6.3f: %s" % [figure.name, i + 1, skillsToPick, cost, level, result, skill])
 		a_budget -= cost
 		pickableSkills.erase(skill)
 		figure.skills[skill] = result
@@ -66,7 +66,7 @@ static func FromRandom(a_allegiance: String, a_budget: float = 0.0) -> Important
 				result -= skillData.step * level
 			"less":
 				result += skillData.step * level
-		print("%s getting negative skill (---) for %3.1f at %d with %+6.3f: %s" % [figure.name, cost, level, result, skill])
+		#print("%s getting negative skill (---) for %3.1f at %d with %+6.3f: %s" % [figure.name, cost, level, result, skill])
 		a_budget += cost
 		pickableSkills.erase(skill)
 		figure.skills[skill] = result
@@ -89,9 +89,9 @@ static func FromRandom(a_allegiance: String, a_budget: float = 0.0) -> Important
 		
 		if portraits.size() > 0:
 			figure.portrait_path = random_portraits_dir + portraits.pick_random()
-	print(GameState.current_start)
-	print(random_portraits_dir)
-	print(figure.portrait_path)
+	#print(GameState.current_start)
+	#print(random_portraits_dir)
+	#print(figure.portrait_path)
 	figure.status = Status.ALIVE
 	
 	return figure
