@@ -31,6 +31,7 @@ static var NOBLE_SKILLS: Dictionary[String, Dictionary] = {
 }
 
 static func FromRandom(a_allegiance: String, a_budget: float = 0.0) -> ImportantFigure:
+	print("Hello?")
 	var figure: ImportantFigure = ImportantFigure.new()
 	
 	figure.name = ""

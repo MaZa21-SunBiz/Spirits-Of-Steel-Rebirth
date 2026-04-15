@@ -963,11 +963,11 @@
 			],
 			"color": "#C8385D",
 			"figures": [
-				"Keir_Starmer"
+				"KeirStarmer"
 			],
 			"finished_decisions": [],
 			"government_positions": {
-				"Leader": "Keir_Starmer"
+				"Leader": "KeirStarmer"
 			},
 			"hostedGovernments": [],
 			"ideology": [
@@ -4403,6 +4403,9 @@
 			"figures": [
 				"ExodiaTheForbiddenOne"
 			],
+			"government_positions": {
+				"Leader": "ExodiaTheForbiddenOne"
+			},
 			"ideology": [
 				0.0,
 				0.0
@@ -119376,19 +119379,8 @@
 			"legitimacy": 100,
 			"name": "VladimirPutin",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/VladimirPutin.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Russia/VladimirPutin.png",
 			"skills": {
-				"attackerAttackMitigation": 0.95,
-				"dailyPPGain": 0.1,
-				"defenderAttackMitigation": 0.95,
-				"divCostMod": 0.95,
-				"stability": 0.2,
-				"troopAttackAdd": 0.25,
-				"troopAttackMod": 1.01,
-				"troopDefendAdd": 0.15,
-				"troopDefendMod": 1.02,
-				"troopSpeed": 0.05,
-				"warSupport": 0.3
 			},
 			"status": 0,
 			"traits": []
@@ -119450,7 +119442,7 @@
 			"name": "DonaldJohnTrump",
 			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/DonaldJohnTrump.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/UnitedStates/DonaldJohnTrump.png",
 			"skills": {},
 			"status": 0,
 			"traits": []
@@ -119528,7 +119520,7 @@
 			"name": "AlexanderLukashenko",
 			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/AlexanderLukashenko.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Belarus/AlexanderLukashenko.png",
 			"skills": {
 
 			},
@@ -119560,7 +119552,7 @@
 			"name": "XiJinping",
 			"legitimacy": 100,
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/XiJinping.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/China/XiJinping.png",
 			"skills": {
 
 			},
@@ -119575,7 +119567,7 @@
 			],
 			"name": "VolodymyrZelenskyy",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/VolodymyrZelenskyy.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Ukraine/VolodymyrZelenskyy.png",
 			"legitimacy": 100,
 			"skills": {
 

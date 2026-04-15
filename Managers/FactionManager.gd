@@ -7,7 +7,7 @@ func Initialize(a_factionData: Array) -> void:
 	for factionData: Dictionary in a_factionData:
 		factions[factionData["name"]] = FactionData.FromDict(factionData)
 		for member: FactionMember in factions[factionData["name"]].members:
-			var country = CountryManager.get_country(member.polity)
+			var country = CountryManager.countries.get(member.polity)
 			if country:
 				country.factions.append(factionData["name"])
 
@@ -21,7 +21,7 @@ func save_factions() -> Array:
 
 func create_faction(a_leader: String, a_name: String, a_color: Color) -> void:
 	factions[a_name] = FactionData.FromValues(a_name, a_color, [FactionMember.FromValues(a_leader, "Leader")])
-	CountryManager.get_country(a_leader).factions.append(a_name)
+	CountryManager.countries[a_leader].factions.append(a_name)
 	#print(factions)
 
 
@@ -90,7 +90,7 @@ func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
 	
 	if dissolver_index != -1 and faction_data.members[dissolver_index].status == "Leader":
 		for member in faction_data.members:
-			var member_country = CountryManager.get_country(member.polity)
+			var member_country = CountryManager.countries.get(member.polity)
 			if member_country:
 				member_country.factions.erase(faction_name)
 		factions.erase(faction_name)
@@ -98,8 +98,8 @@ func dissolve_faction(dissolver: CountryData, faction_name: String) -> void:
 
 
 func get_faction_member(country_name: String) -> FactionMember:
-	var country = CountryManager.get_country(country_name)
-	if not country or country.factions.is_empty():
+	var country = CountryManager.countries.get(country_name)
+	if !country || country.factions.is_empty():
 		return null
 		
 	for faction_name in country.factions:

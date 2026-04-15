@@ -114,7 +114,7 @@ var current_category: Category = Category.GENERAL
 
 
 # ── Constants ──────────────────────────────────────────
-var action_costs := {
+var action_costs: Dictionary[String, Callable] = {
 	"_declare_war": func(player: CountryData, _selected: CountryData): return {
 		"cost": 150,
 		"can_afford": player.war_support > 0.5
@@ -323,14 +323,13 @@ func _on_compass_gui_input(event: InputEvent) -> void:
 
 func _update_ideology_from_mouse(local_pos: Vector2, do_save: bool) -> void:
 	# print(selected_country, GameState.current_scenario_path.is_empty())
-	if not selected_country:
+	if !selected_country:
 		return
 		
 	var ideology_x = remap(clamp(local_pos.x, 3, 97), 3, 97, -100, 100)
 	var ideology_y = remap(clamp(local_pos.y, 3, 97), 3, 97, -100, 100)
 	
 	selected_country.ideology = Vector2(ideology_x, ideology_y)
-	selected_country.ideology_changed.emit()
 	DoUpdateSidemenuVisuals()
 	
 	if do_save and SettingsManager.settings.debug_mode:
@@ -338,8 +337,8 @@ func _update_ideology_from_mouse(local_pos: Vector2, do_save: bool) -> void:
 
 func _update_radio_visuals() -> void:
 	for child in radio_list.get_children():
-		var radio_name = child.get_meta("radio_name", "")
-		if radio_name == "":
+		var radio_name: String = child.get_meta("radio_name", "")
+		if !radio_name:
 			continue
 			
 		if radio_name in MusicManager.radios:
@@ -386,7 +385,7 @@ func _on_province_clicked(country_name: String) -> void:
 	if selected_country && selected_country.ideology_changed.is_connected(_on_selected_country_ideology_changed):
 		selected_country.ideology_changed.disconnect(_on_selected_country_ideology_changed)
 
-	selected_country = CountryManager.get_country(country_name)
+	selected_country = CountryManager.countries[country_name]
 	selected_country.ideology_changed.connect(_on_selected_country_ideology_changed)
 
 	_update_sidemenu_visuals()

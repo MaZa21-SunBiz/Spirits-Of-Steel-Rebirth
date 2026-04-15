@@ -46,11 +46,11 @@ func setup_training(training_obj) -> void:
 
 
 # 3. Ready Setup
-func setup_ready(ready_troop_obj, on_click: Callable) -> void:
+func setup_ready(ready_troop_obj: CountryData.ReadyTroop, on_click: Callable) -> void:
 	data = {"is_deploy": true}
 	_callback = on_click
 
-	base_text = "Deploy %d Divisions" % ready_troop_obj.stored_divisions.size()
+	base_text = "Deploy %d Divisions" % ready_troop_obj.count
 
 	if not is_node_ready():
 		await ready

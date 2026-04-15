@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnasi3tfp4d0m"
-path="res://.godot/imported/LeeJaeMyung.png-0bb28796b9e68139f43cd81b36afc974.ctex"
+path="res://.godot/imported/LeeJaeMyung.png-8548727dbb176eecfbab6c428284c891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/South_korea/LeeJaeMyung.png"
-dest_files=["res://.godot/imported/LeeJaeMyung.png-0bb28796b9e68139f43cd81b36afc974.ctex"]
+source_file="res://assets/portraits/LeeJaeMyung.png"
+dest_files=["res://.godot/imported/LeeJaeMyung.png-8548727dbb176eecfbab6c428284c891.ctex"]
 
 [params]
 

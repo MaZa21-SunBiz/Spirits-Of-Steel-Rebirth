@@ -46,17 +46,22 @@ const TEMPLATES = {
 @export var max_hp: float = 100.0  # Max HP (for UI bars)
 @export var experience: float = 0.0
 @export var max_manpower: int = 10000
+@export var manpowerPerHP: int = int(max_manpower / max_hp)
 
 # NOTE(sockmit): This isnt sockmit BUT SOILAD
-
-func FromDict(a_dict: Dictionary):
-	var division = DivisionData.new()
+# NOTE(Sockmit2007): Soilad's errors: 
+#  - Didn't make FromDict static
+#  - Had no defaults for missing arguments
+#  - Forgot to add return type
+static func FromDict(a_dict: Dictionary) -> DivisionData:
+	var division: DivisionData = DivisionData.new()
 	division.name = a_dict["name"]
-	division.type = a_dict["type"]
-	division.hp = a_dict["hp"]
-	division.max_hp = a_dict["max_hp"]
-	division.experience = a_dict["experience"]
-	division.max_manpower = a_dict["max_manpower"]
+	division.type = a_dict.get("type", "infantry")
+	division.hp = a_dict.get("hp", 100)
+	division.max_hp = a_dict.get("max_hp", 100)
+	division.experience = a_dict.get("experience", 0.0)
+	division.max_manpower = a_dict.get("max_manpower", 10000)
+	division.manpowerPerHP = int(division.max_manpower / division.max_hp)
 	return division
 
 
@@ -90,6 +95,7 @@ static func create_division(p_type: String) -> DivisionData:
 	div.hp = stats["hp"]  # Set starting HP
 	div.max_hp = stats["hp"]  # Set Max HP
 	div.max_manpower = stats["manpower"]
+	div.manpowerPerHP = div.max_manpower / div.max_hp
 
 	div.name = "%s" % [p_type.capitalize()]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvh5jx1x4cmjw"
-path="res://.godot/imported/BenjaminNetanyahu.png-7e170a1529f19e9f20a3970570894964.ctex"
+uid="uid://bo0vw1c8stg17"
+path="res://.godot/imported/IbrahimTraore.png-6b9baed6339bf562c9b5fabcf1d178b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/BenjaminNetanyahu.png"
-dest_files=["res://.godot/imported/BenjaminNetanyahu.png-7e170a1529f19e9f20a3970570894964.ctex"]
+source_file="res://assets/portraits/IbrahimTraore.png"
+dest_files=["res://.godot/imported/IbrahimTraore.png-6b9baed6339bf562c9b5fabcf1d178b2.ctex"]
 
 [params]
 

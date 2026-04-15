@@ -285,7 +285,7 @@ func _cleanup_empty_troops():
 	# If a troop gave away all its divisions, delete it from the world
 	for t in selected_troops:
 		if t.stored_divisions.is_empty():
-			TroopManager.remove_troop(t)
+			TroopManager.RemoveTroop(t)
 
 
 # --- Helpers to keep logic clean ---
@@ -325,7 +325,7 @@ func _handle_selective_ui_move(div_objects: Array[DivisionData], path: Array) ->
 
 		# If the original troop is now empty, delete it from the map
 		if original_troop.stored_divisions.is_empty():
-			TroopManager.remove_troop(original_troop)
+			TroopManager.RemoveTroop(original_troop)
 
 
 # --- MODE B: Spread the whole selected army across the path ---
@@ -360,7 +360,7 @@ func _handle_frontline_spread(path: Array) -> void:
 	# Clean up the now-empty original troops
 	for t in selected_troops:
 		if t.stored_divisions.is_empty():
-			TroopManager.remove_troop(t)
+			TroopManager.RemoveTroop(t)
 
 
 func _print_troop_details(troop: TroopData) -> void:

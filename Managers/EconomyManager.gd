@@ -24,6 +24,8 @@ func process_economy_day():
 
 		# 1. Deduct daily cost if affordable
 		if country.money >= cost:
+			#if country.is_player:
+			#	print("Spending %d on %s in %d" % [cost, project.get("type", "UNKNOWN"), pid])
 			country.money -= cost
 			project["days"] -= 1
 			

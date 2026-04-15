@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btecpteeiwnqa"
-path="res://.godot/imported/KimJongUn.png-cea25b5f2e1e5ab2d95e270c6f655593.ctex"
+uid="uid://dsqnuws4kfv11"
+path="res://.godot/imported/VolodymyrZelenskyy.png-3bf430b51424397a7ede681bfe3b462c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/North_korea/KimJongUn.png"
-dest_files=["res://.godot/imported/KimJongUn.png-cea25b5f2e1e5ab2d95e270c6f655593.ctex"]
+source_file="res://assets/portraits/VolodymyrZelenskyy.png"
+dest_files=["res://.godot/imported/VolodymyrZelenskyy.png-3bf430b51424397a7ede681bfe3b462c.ctex"]
 
 [params]
 

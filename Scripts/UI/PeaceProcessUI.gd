@@ -388,3 +388,7 @@ func _reset_province_visual(pid: int):
 		var province = MapManager.province_objects.get(pid)
 		if province and province.country != "Sea":
 			_update_map_visual(pid, CountryManager.GetCountryColor(province.GetFunctionalOwner()), CountryManager.GetCountryColor(province.country))
+
+
+func m_OnLineEditFocusExited() -> void:
+	m_OnNameNewSubmitted(newName.text)

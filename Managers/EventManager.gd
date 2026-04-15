@@ -37,9 +37,9 @@ func show_alert(
 		
 		# Handle string to CountryData conversion
 		if c1 is String:
-			c1 = CountryManager.get_country(c1)
+			c1 = CountryManager.countries.get(c1)
 		if c2 is String:
-			c2 = CountryManager.get_country(c2)
+			c2 = CountryManager.countries.get(c2)
 	else:
 		type = str(type_or_data)
 		data = extra_params
@@ -93,19 +93,24 @@ func _trigger_custom_event(data: Dictionary):
 	popup.setup(data)
 
 
+var restackLatch: bool = false
+
 func _add_popup_to_ui(popup: Control):
 	ui_layer.add_child(popup)
 	active_popups.append(popup)
 
-	if popup.has_method("reset_size"):
-		popup.call_deferred("reset_size")
-		
-	call_deferred("_restack_popups")
+	popup.reset_size()
+	
+	if !restackLatch:
+		restackLatch = true
+		_restack_popups.call_deferred()
 
 	popup.tree_exited.connect(
 		func():
 			active_popups.erase(popup)
-			_restack_popups()
+			if !restackLatch:
+				restackLatch = true
+				_restack_popups.call_deferred()
 	)
 
 
@@ -119,7 +124,7 @@ func _restack_popups():
 		return
 		
 	var viewport_size = viewport.get_visible_rect().size
-	var center_y = viewport_size.y * 0.5
+	var center_y = viewport_size.y * 0.2
 	var center_x = viewport_size.x * 0.5
 	var spacing = 25
 
@@ -129,9 +134,9 @@ func _restack_popups():
 			continue
 			
 		var pos_x = center_x - (popup.size.x * 0.5)
-		var pos_y = center_y + (i * (popup.size.y + spacing)) - (popup.size.y * 0.5)
+		var pos_y = center_y + ((active_popups.size() - 1 - i) * (popup.size.y + spacing)) - (popup.size.y * 0.5)
 		popup.position = Vector2(pos_x, pos_y)
-
+	restackLatch = false
 
 # SUPER EVENT MIGRATED LOGIC
 func load_super_events(path: String):

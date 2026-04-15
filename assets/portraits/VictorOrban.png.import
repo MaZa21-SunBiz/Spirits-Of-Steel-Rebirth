@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d25nial4l48w"
-path="res://.godot/imported/Keir_Starmer.png-726f6bd61a0a8044ac3e13564ab5b924.ctex"
+uid="uid://uxlck8x4o2i4"
+path="res://.godot/imported/VictorOrban.png-0d6fcf4862720d8cc06494d98c1c2c3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/United_kingdom/Keir_Starmer.png"
-dest_files=["res://.godot/imported/Keir_Starmer.png-726f6bd61a0a8044ac3e13564ab5b924.ctex"]
+source_file="res://assets/portraits/VictorOrban.png"
+dest_files=["res://.godot/imported/VictorOrban.png-0d6fcf4862720d8cc06494d98c1c2c3d.ctex"]
 
 [params]
 

@@ -33,7 +33,7 @@ func setup_grouped(a_troop: TroopData, type: String, divisions: Array, currently
 	
 	disband.pressed.connect(
 		func():
-			TroopManager.remove_troop(a_troop)
+			TroopManager.RemoveTroop(a_troop)
 			queue_free()
 	)
 

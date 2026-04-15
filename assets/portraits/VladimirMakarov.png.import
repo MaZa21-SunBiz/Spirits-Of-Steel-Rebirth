@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvh5jx1x4cmjw"
-path="res://.godot/imported/BenjaminNetanyahu.png-7e170a1529f19e9f20a3970570894964.ctex"
+uid="uid://b7qgcf5npdhec"
+path="res://.godot/imported/VladimirMakarov.png-59983c08c3d1f0f6b1f6d2aef12668fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portraits/BenjaminNetanyahu.png"
-dest_files=["res://.godot/imported/BenjaminNetanyahu.png-7e170a1529f19e9f20a3970570894964.ctex"]
+source_file="res://assets/portraits/VladimirMakarov.png"
+dest_files=["res://.godot/imported/VladimirMakarov.png-59983c08c3d1f0f6b1f6d2aef12668fc.ctex"]
 
 [params]
 

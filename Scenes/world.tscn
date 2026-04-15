@@ -33,6 +33,7 @@ script = ExtResource("6_5ukr8")
 
 [node name="ui_game" parent="." unique_id=4700273 node_paths=PackedStringArray("governmentUI") instance=ExtResource("2_fo5ed")]
 governmentUI = NodePath("../GovernmentUI")
+slide_duration = null
 
 [node name="DecisionTreeUI" parent="." unique_id=739202993 instance=ExtResource("14_x8y2v")]
 visible = false

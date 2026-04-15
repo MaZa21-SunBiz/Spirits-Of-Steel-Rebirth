@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1gob0ucw6f0a"
-path="res://.godot/imported/XiJinping.png-1656667086a79d521ce963051badbc3b.ctex"
+uid="uid://c6v6644j0r002"
+path="res://.godot/imported/EmmanuelMacron.png-f80df7281b20d473c7dad8f713ac54b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/XiJinping.png"
-dest_files=["res://.godot/imported/XiJinping.png-1656667086a79d521ce963051badbc3b.ctex"]
+source_file="res://assets/portraits/EmmanuelMacron.png"
+dest_files=["res://.godot/imported/EmmanuelMacron.png-f80df7281b20d473c7dad8f713ac54b4.ctex"]
 
 [params]
 

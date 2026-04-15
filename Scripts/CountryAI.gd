@@ -207,7 +207,7 @@ func _execute_war() -> bool:
 
 	var candidates: Array = _get_neighbor_countries().filter(
 		func(enemy: String):
-			var enemy_data: CountryData = CountryManager.get_country(enemy)
+			var enemy_data: CountryData = CountryManager.countries.get(enemy)
 			if not enemy_data: return false
 			
 			# Cheapest check first: Relation/Aggression
@@ -309,11 +309,11 @@ func _execute_frontline():
 		var cities = _get_peace_hubs()
 		if !cities.is_empty():
 			# We duplicate to safely erase during iteration
-			for troop_data in country.ready_troops.duplicate():
+			for troop_data: CountryData.ReadyTroop in country.ready_troops.duplicate():
 				# Pick a random city from the full list to ensure spreading
-				TroopManager.deploy_specific_divisions(
+				TroopManager.DeployReady(
 					country.country_name, 
-					troop_data.stored_divisions, 
+					troop_data, 
 					cities.pick_random()
 				)
 				
@@ -485,7 +485,7 @@ func _execute_call_to_arms() -> bool:
 			if member.polity == country.country_name:
 				continue
 			
-			var member_country = CountryManager.get_country(member.polity)
+			var member_country = CountryManager.countries.get(member.polity)
 			if member_country:
 				WarManager.call_to_arms(country, member_country)
 				called_any = true
@@ -523,17 +523,18 @@ func _get_neighbor_countries() -> Array:
 
 
 func _estimate_country_strength(country_name: String, only_deployed: bool = false) -> float:
-	var total = 0.0
-	var c = CountryManager.get_country(country_name)
+	var total: float = 0.0
+	var c: CountryData = CountryManager.countries.get(country_name)
 	
-	if !only_deployed && c:
+	if !c:
+		print("Country %s doesn't exist." % country_name)
+		return 0.1
+	
+	if !only_deployed:
 		total += float(c.manpower) * 0.05   # Manpower pool is potential, not active
 		total += float(c.money) * 0.01      # Money is even less direct
 		
-	for t in TroopManager.get_troops_for_country(country_name):
-		for div in t.stored_divisions:
-			# Deployed divisions are the real strength, weighted by their current HP
-			total += float(div.max_manpower) * (div.hp / div.max_hp)
+	total += c.mobilized
 			
 	return max(0.1, total)
 
@@ -552,7 +553,7 @@ func _estimate_side_strength(country_name: String) -> float:
 func _get_side_members(country_name: String) -> Array[String]:
 	var side_members: Array[String] = [country_name]
 	
-	var c_data = CountryManager.get_country(country_name)
+	var c_data = CountryManager.countries.get(country_name)
 	if not c_data:
 		return side_members
 	
@@ -569,7 +570,7 @@ func _get_side_members(country_name: String) -> Array[String]:
 	all_potential.append_array(side_members)
 	
 	for member in side_members:
-		var m_data = CountryManager.get_country(member)
+		var m_data = CountryManager.countries.get(member)
 		if m_data:
 			for puppet in m_data.puppets:
 				if not puppet in all_potential:

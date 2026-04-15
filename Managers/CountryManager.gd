@@ -83,13 +83,6 @@ func save_countries() -> Array:
 		polities.append(country.ToDict())
 	return polities
 
-func get_country(c_name: String) -> CountryData:
-	#if c_name == "Sea":
-	#	return null
-	return countries.get(c_name)
-	#push_warning("CountryManager: Requested non-existent country '%s'" % c_name)
-	#return null
-
 func GetCountryColor(a_country: String, a_defaultColor: Color = Color.BLACK) -> Color:
 	return countries[a_country].country_color if countries.has(a_country) else a_defaultColor
 
@@ -101,10 +94,10 @@ func set_player_country(country_name: String) -> void:
 
 	if player_country:
 		player_country.is_player = false
-		player_country.setup_ai()
+		#player_country.ai_controller = CountryAI.new(player_country)
 	player_country = country
 	player_country.is_player = true
-	player_country.ai_controller = null
+	#player_country.ai_controller = null
 
 	print("Player is now playing as: ", country_name)
 	player_country_changed.emit()
@@ -140,7 +133,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	
 	if new_country.is_player:
 		player_country = new_country
-		player_country.ai_controller = null # Ensure player doesn't have an AI brain
+		#player_country.ai_controller = null # Ensure player doesn't have an AI brain
 
 	_ensure_country_has_leader(new_country)
 
@@ -191,23 +184,25 @@ func get_factories_amount(country_name: String) -> int:
 # In CountryManager.gd (or wherever this static function lives)
 static func get_country_used_manpower(country_obj: CountryData) -> int:
 	var total_used: int = 0
+	var toUse: Dictionary[String, float] = {}
 
-	# 1. Active Troops on the field
-	for troop in TroopManager.get_troops_for_country(country_obj.country_name):
-		for div in troop.stored_divisions:
-			total_used += _get_manpower_from_template(div.type)
 
 	# 2. Ongoing Training (Already using templates, but cleaned up)
-	for training in country_obj.ongoing_training:
-		total_used += (
-			training.divisions_count * _get_manpower_from_template(training.division_type)
-		)
+	for training: CountryData.TroopTraining in country_obj.ongoing_training:
+		toUse[training.division_type] = toUse.get(training.division_type, 0) + training.divisions_count
 
 	# 3. Troops in the "Ready" queue (deployment pool)
-	for batch in country_obj.ready_troops:
-		for div in batch.stored_divisions:
-			total_used += _get_manpower_from_template(div.type)
+	for batch: CountryData.ReadyTroop in country_obj.ready_troops:
+		toUse[batch.division.type] = toUse.get(batch.division.type, 0) + batch.count
+	
+	for entry: String in toUse:
+		total_used += int(toUse[entry] * _get_manpower_from_template(entry))
 
+	# 1. Active Troops on the field
+	for troop: TroopData in TroopManager.get_troops_for_country(country_obj.country_name):
+		for div in troop.stored_divisions:
+			total_used += int(div.hp * div.manpowerPerHP)
+	
 	return total_used
 
 # Helper to keep the code DRY (Don't Repeat Yourself)

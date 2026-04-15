@@ -143,7 +143,7 @@ theme = ExtResource("1_41grw")
 text = "Sign Treaty"
 
 [node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1446409322]
-anchors_preset = -1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -224,6 +224,7 @@ text = "Delete"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_clear_selection_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Sign" to="." method="_on_confirm_pressed"]
 [connection signal="item_selected" from="PanelContainer2/CreatePolity/Form" to="." method="m_OnDropdownSelected"]
+[connection signal="focus_exited" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/LineEdit" to="." method="m_OnLineEditFocusExited"]
 [connection signal="text_submitted" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/LineEdit" to="." method="m_OnNameNewSubmitted"]
 [connection signal="item_selected" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/OptionButton" to="." method="m_OnOwnerNewSelected"]
 [connection signal="color_changed" from="PanelContainer2/CreatePolity/MarginContainer/GridContainer/ColorPickerButton" to="." method="m_OnColorNewSubmitted"]

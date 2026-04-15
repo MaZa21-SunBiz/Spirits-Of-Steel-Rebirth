@@ -12,8 +12,6 @@ var stored_divisions: Array[DivisionData] = []
 var divisions_count: int:
 	get:
 		return stored_divisions.size()
-	set(value):
-		_adjust_divisions_to_match_count(value)
 
 var is_moving: bool = false
 var path: Array = []
@@ -28,22 +26,12 @@ func _init(
 	country_name = p_country
 	province_id = p_province_id
 	position = p_position
-	country_obj = CountryManager.get_country(p_country)
+	country_obj = CountryManager.countries[p_country]
 
 	for i in range(p_divisions):
 		var div = DivisionData.new()
 		div.name = "Division %d" % (i + 1)
 		stored_divisions.append(div)
-
-
-func _adjust_divisions_to_match_count(target_count: int):
-	var current = stored_divisions.size()
-	if target_count > current:
-		for i in range(target_count - current):
-			stored_divisions.append(DivisionData.new())
-	elif target_count < current:
-		stored_divisions.resize(target_count)
-
 
 func ToDict() -> Dictionary:
 	return {
@@ -62,7 +50,7 @@ static func FromDict(data: Dictionary) -> TroopData:
 	
 	troop.stored_divisions.clear()
 	for div_data in data["divisions"]:
-		troop.stored_divisions.append(DivisionData.new().FromDict(div_data))
+		troop.stored_divisions.append(DivisionData.FromDict(div_data))
 	
 	troop.is_moving = data.get("is_moving", false)
 	troop.path = data.get("path", [])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gwxsipohfw47"
-path="res://.godot/imported/Alexander_Lukashenko.png-cf70255acf718fcec46a7102a6666a91.ctex"
+uid="uid://cti15pgt2bmfd"
+path="res://.godot/imported/NarendraModi.png-697f8f1c84484b18b4ddd8d85aa33916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/Alexander_Lukashenko.png"
-dest_files=["res://.godot/imported/Alexander_Lukashenko.png-cf70255acf718fcec46a7102a6666a91.ctex"]
+source_file="res://assets/portraits/NarendraModi.png"
+dest_files=["res://.godot/imported/NarendraModi.png-697f8f1c84484b18b4ddd8d85aa33916.ctex"]
 
 [params]
 

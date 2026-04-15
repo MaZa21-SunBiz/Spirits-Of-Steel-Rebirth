@@ -43,9 +43,9 @@ func load_wars(data: Array) -> void:
 	# wars.clear() # Already handled by reset_state() in load_game()
 	for pair in data:
 		if pair.size() == 2:
-			var country_a = CountryManager.get_country(pair[0])
-			var country_b = CountryManager.get_country(pair[1])
-			if country_a and country_b:
+			var country_a = CountryManager.countries.get(pair[0])
+			var country_b = CountryManager.countries.get(pair[1])
+			if country_a && country_b:
 				add_war_silent(country_a, country_b)
 
 
@@ -111,8 +111,8 @@ class Battle:
 		position = pos
 		manager = m
 
-		attacker_stats = CountryManager.get_country(attacker_country)
-		defender_stats = CountryManager.get_country(defender_country)
+		attacker_stats = CountryManager.countries.get(attacker_country)
+		defender_stats = CountryManager.countries.get(defender_country)
 
 		# Sync morale
 		att_morale = attacker_stats.get_max_morale() if attacker_stats else 80.0
@@ -228,21 +228,23 @@ class Battle:
 	func _defender_loses():
 		var retreat_pid = _find_retreat_province(defender_pid, defender_country)
 
-		for t in TroopManager.get_troops_in_province(defender_pid).duplicate(): # Duplicate to avoid modification errors during loop
+		for t: TroopData in TroopManager.get_troops_in_province(defender_pid).duplicate(): # Duplicate to avoid modification errors during loop
 			if t.country_name != defender_country:
 				continue
 
 			# If no where to run or bad luck, unit is destroyed
 			if retreat_pid == -1 or randf() < 0.2:
-				TroopManager.remove_troop(t)
+				TroopManager.RemoveTroop(t)
 			else:
 				# RETREAT: Lose 20% of strength then move
-				for i in range(ceil(t.stored_divisions.size() * 0.2)):
+				for i: int in range(ceil(t.stored_divisions.size() * 0.2)):
 					if !t.stored_divisions.is_empty():
-						t.stored_divisions.remove_at(randi() % t.stored_divisions.size())
+						var removing: int = randi() % t.stored_divisions.size()
+						t.country_obj.mobilized -= t.stored_divisions[i].hp * t.stored_divisions[i].manpowerPerHP
+						t.stored_divisions.remove_at(removing)
 
 				if t.stored_divisions.is_empty():
-					TroopManager.remove_troop(t)
+					TroopManager.RemoveTroop(t)
 				else:
 					TroopManager.teleport_troop_to_province(t, retreat_pid)
 
@@ -311,26 +313,29 @@ func apply_casualties(pid: int, country: String, damage_amount: float):
 
 	if troops_list.is_empty() || damage_amount <= 0:
 		return
+	
+	var countryTime: CountryData = CountryManager.countries[country]
 
 	# Distribute total damage among all army stacks in the province
-	var damage_per_troop = damage_amount / troops_list.size()
+	var damage_per_troop: float = damage_amount / troops_list.size()
 
 	for t: TroopData in troops_list:
 		if t.stored_divisions.is_empty():
 			continue
 
 		# Distribute troop damage among all divisions in that stack
-		var damage_per_div = damage_per_troop / t.stored_divisions.size()
+		var damage_per_div: float = damage_per_troop / t.stored_divisions.size()
 
 		for i in range(t.stored_divisions.size() - 1, -1, -1):
-			var div = t.stored_divisions[i]
+			var div: DivisionData = t.stored_divisions[i]
 
 			# Deduct HP
+			countryTime.mobilized -= int(min(div.hp, damage_per_div) * div.manpowerPerHP)
 			div.hp -= damage_per_div
 
 			# Gain Experience based on how much damage they took/dealt
 			# More fighting = faster elite status
-			div.experience = min(1.0, div.experience + 0.005)
+			div.experience += 0.005
 
 			# Remove division if it hits 0 HP
 			if div.hp <= 0:
@@ -338,7 +343,7 @@ func apply_casualties(pid: int, country: String, damage_amount: float):
 
 		# If the entire stack is gone, remove the troop icon from the map
 		if t.stored_divisions.is_empty():
-			TroopManager.remove_troop(t)
+			TroopManager.RemoveTroop(t)
 
 
 func resolve_province_arrival(pid: int, troop: TroopData):
@@ -359,7 +364,7 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 		return
 	
 	for enemy_name in get_enemies_of(caller.country_name):
-		var enemy_data = CountryManager.get_country(enemy_name)
+		var enemy_data = CountryManager.countries.get(enemy_name)
 		if enemy_data:
 			declare_war(target, enemy_data)
 
@@ -385,7 +390,7 @@ func _snapshot_country_territory(c_name: String) -> void:
 		original_territories[c_name] = pids
 		
 		# Also store in CountryData if it exists
-		var country_data = CountryManager.get_country(c_name)
+		var country_data = CountryManager.countries.get(c_name)
 		if country_data and country_data.pre_war_provinces.is_empty():
 			country_data.pre_war_provinces = pids.duplicate()
 
@@ -465,8 +470,8 @@ func check_country_collapse(country_name: String, victor_name: String):
 
 func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 	#print("Total Collapse of " + fallen_name + " to " + victor_name)
-	var loser := CountryManager.get_country(fallen_name)
-	var winner := CountryManager.get_country(victor_name)
+	var loser: CountryData = CountryManager.countries.get(fallen_name)
+	var winner: CountryData = CountryManager.countries.get(victor_name)
 	
 	# NOTE Z21: Fixes some bug that makes this function run multiple times. Idk how to fix it
 	if !wars.has(loser):
@@ -480,7 +485,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 
 	# --- 0. Remove all remaining troops ---
 	for t in TroopManager.get_troops_for_country(fallen_name).duplicate():
-		TroopManager.remove_troop(t)
+		TroopManager.RemoveTroop(t)
 
 	# --- 1. Clean up wars and permissions ---
 	if wars.has(loser):
@@ -520,7 +525,7 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 
 		var winners_data: Array[CountryData] = []
 		for w_name in winners:
-			var w_data = CountryManager.get_country(w_name)
+			var w_data = CountryManager.countries.get(w_name)
 			if w_data:
 				winners_data.append(w_data)
 

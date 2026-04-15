@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cufl8edr4clv6"
-path="res://.godot/imported/AlexanderLukashenko.png-d4aa768972826a11b80ea23d4601e57d.ctex"
+uid="uid://c1gob0ucw6f0a"
+path="res://.godot/imported/XiJinping.png-3cf30a83ab0c7c525f1f9e0e8dec1a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/AlexanderLukashenko.png"
-dest_files=["res://.godot/imported/AlexanderLukashenko.png-d4aa768972826a11b80ea23d4601e57d.ctex"]
+source_file="res://assets/portraits/XiJinping.png"
+dest_files=["res://.godot/imported/XiJinping.png-3cf30a83ab0c7c525f1f9e0e8dec1a8c.ctex"]
 
 [params]
 

@@ -71,6 +71,7 @@ func OpenMenu(a_country: CountryData):
 			country.SetGovernmentPosition(govPos.position, figure)
 		)
 		listOfPositions.add_child(leader)
+		leader.visible = true
 		positions[position] = govPos
 	
 	var game_ui = get_tree().root.find_child("ui_game", true, false)

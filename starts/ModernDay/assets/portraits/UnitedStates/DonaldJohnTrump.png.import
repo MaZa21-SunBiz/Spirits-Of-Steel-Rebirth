@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rs6ulflj4s5q"
-path="res://.godot/imported/Xi_jinping.png-6b58cd99cb7d6e472b1b01a068b4217e.ctex"
+uid="uid://llqlh76d7or6"
+path="res://.godot/imported/DonaldJohnTrump.png-c09ee29d2879f23331be1894d8eb7c11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/China/Xi_jinping.png"
-dest_files=["res://.godot/imported/Xi_jinping.png-6b58cd99cb7d6e472b1b01a068b4217e.ctex"]
+source_file="res://starts/ModernDay/assets/portraits/UnitedStates/DonaldJohnTrump.png"
+dest_files=["res://.godot/imported/DonaldJohnTrump.png-c09ee29d2879f23331be1894d8eb7c11.ctex"]
 
 [params]
 

@@ -19,7 +19,6 @@ func _ready() -> void:
 	# Console.add_command_autocomplete_list("play_as", CountryManager.)
 	# Console.add_command("play", _play_country, ["country_name"], 1, "Change player country")
 	Console.add_command("tag", _play_country, ["country_name"], 1, "Change player country")
-	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 	Console.add_command("drew_durnil_mode", _drew_durnil_mode, [], 0, "Lets u spectate the map")
 	Console.add_command("access", m_AddAccess, ["accesser", "accessee"], 1, "Add military access to a country")
 	Console.add_command("puppet", _puppet_country, ["country_name"], 1, "Change player country")
@@ -52,14 +51,15 @@ func _ready() -> void:
 	)
 	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 	Console.add_command("sink_rise", _sink_rise, ["pid", "type", "country_name"], 3, "sink/rise province")
-	Console.add_command("random_figure", 
-		func(a_country: String, a_budget: int = 0):
-			var figure: ImportantFigure = ImportantFigure.FromRandom(a_country, a_budget)
-			MapManager.significantFigures[figure.name] = figure 
-			CountryManager.countries[a_country].figures.append(figure.name), 
-		["country", "budget"], 1, "Add a randomly generated significant figure to a country."
-	)
+	Console.add_command("random_figure", m_RandomFigure, ["country", "budget"], 2, "Add a randomly generated significant figure to a country.")
+	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 
+func m_RandomFigure(country, budget) -> void:
+	var figure: ImportantFigure = ImportantFigure.FromRandom(country, int(budget))
+	Console.print_info("%s %s" % [country, figure.name])
+	print("%s %s" % [country, figure.name])
+	MapManager.significantFigures[figure.name] = figure 
+	CountryManager.countries[country].figures.append(figure.name)
 
 func _show_releasables_country(country):
 	var releasables = MapManager.get_all_releasables(country)
@@ -107,8 +107,8 @@ func _play_country(country_name: String) -> void:
 
 
 func _start_war(country_name1: String, country_name2: String) -> void:
-	var country1 := CountryManager.get_country(country_name1)
-	var country2 := CountryManager.get_country(country_name2)
+	var country1: CountryData = CountryManager.countries.get(country_name1)
+	var country2: CountryData = CountryManager.countries.get(country_name2)
 
 	if country1 and country2:
 		WarManager.declare_war(country1, country2)
@@ -120,7 +120,7 @@ func _start_war(country_name1: String, country_name2: String) -> void:
 		Console.print_line("Unknown country: " + country_name2)
 
 func m_AddAccess(country_name1: String, country_name2: String) -> void:
-	var country1 := CountryManager.get_country(country_name1)
+	var country1: CountryData = CountryManager.countries.get(country_name1)
 
 	if country1 && !country_name2 in country1.allowedCountries:
 		country1.allowedCountries.append(country_name2)
@@ -128,12 +128,12 @@ func m_AddAccess(country_name1: String, country_name2: String) -> void:
 
 	if !country1:
 		Console.print_line("Unknown country: " + country_name1)
-	if !CountryManager.get_country(country_name2):
+	if !country_name2 in CountryManager.countries:
 		Console.print_line("Unknown country: " + country_name2)
 
 func m_StartWarSilent(country_name1: String, country_name2: String) -> void:
-	var country1 := CountryManager.get_country(country_name1)
-	var country2 := CountryManager.get_country(country_name2)
+	var country1: CountryData = CountryManager.countries.get(country_name1)
+	var country2: CountryData = CountryManager.countries.get(country_name2)
 
 	if country1 and country2:
 		WarManager.declare_war(country1, country2, true)
@@ -145,8 +145,8 @@ func m_StartWarSilent(country_name1: String, country_name2: String) -> void:
 		Console.print_line("Unknown country: " + country_name2)
 
 func _call_to_arms(caller_name: String, target_name: String) -> void:
-	var caller := CountryManager.get_country(caller_name)
-	var target := CountryManager.get_country(target_name)
+	var caller: CountryData = CountryManager.countries.get(caller_name)
+	var target: CountryData = CountryManager.countries.get(target_name)
 
 	if caller and target:
 		WarManager.call_to_arms(caller, target)
@@ -174,7 +174,7 @@ func _invite_country(country_name: String):
 
 func _drew_durnil_mode():
 	CountryManager.player_country.is_player = false
-	CountryManager.player_country.setup_ai()
+	#CountryManager.player_country.ai_controller = CountryAI.new(CountryManager.player_country)
 
 
 func _instabuild():

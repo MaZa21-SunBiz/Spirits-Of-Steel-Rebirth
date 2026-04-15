@@ -36,7 +36,7 @@ func _update_moving_troop(troop: TroopData, delta: float) -> void:
 		return
 
 	if troop.country_obj == null:
-		troop.country_obj = CountryManager.get_country(troop.country_name)
+		troop.country_obj = CountryManager.countries.get(troop.country_name)
 	
 	var targetPID = troop.path.front()
 	var enemies = troops_by_province.get(targetPID, []).filter(
@@ -195,8 +195,7 @@ func _apply_movement_path(troop: TroopData, target_pid: int) -> void:
 		_stop_troop(troop)
 		return
 
-	var country_ref = CountryManager.get_country(troop.country_name)
-	var allowed = country_ref.get_all_allowed_countries() if country_ref else []
+	var allowed = troop.country_obj.get_all_allowed_countries()
 	var path = _get_cached_path(troop.province_id, target_pid, allowed)
 
 	if not path.is_empty():
@@ -340,7 +339,7 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 	if divs <= 0:
 		return null
 
-	var country_data: CountryData = CountryManager.get_country(country)
+	var country_data: CountryData = CountryManager.countries.get(country)
 	var pos: Vector2 = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	var troop: TroopData = TroopData.new(
@@ -348,7 +347,7 @@ func create_troop(country: String, divs: int, prov_id: int) -> TroopData:
 	)
 
 	# FIX: Assign the country object reference
-	troop.country_obj = CountryManager.get_country(country)
+	troop.country_obj = country_data
 
 	# Initialize runtime metadata
 	troop.set_meta("start_pos", pos)
@@ -412,7 +411,7 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 		# Clear 't' divisions so they don't get messy during deletion
 		t.stored_divisions.clear()
 
-		remove_troop(t)
+		RemoveTroop(t)
 
 		# Update selection if we just merged the selected unit into another
 		if current_selection && current_selection == t:
@@ -421,20 +420,25 @@ func _auto_merge_in_province(province_id: int, country: String) -> void:
 			elif "selected_troop" in troop_selection:
 				troop_selection.selected_troop = primary
 
-func remove_troop(troop: TroopData) -> void:
+func RemoveTroop(troop: TroopData) -> void:
 	troops.erase(troop)
 	moving_troops.erase(troop)
 
 	var pid: int = troop.province_id
-	var country: String = troop.country_name
+	var countryName: String = troop.country_name
+	var country: CountryData = CountryManager.countries.get(countryName)
 
 	if troops_by_province.has(pid):
 		troops_by_province[pid].erase(troop)
 		if troops_by_province[pid].is_empty():
 			troops_by_province.erase(pid)
 
-	if troops_by_country.has(country):
-		troops_by_country[country].erase(troop)
+	if troops_by_country.has(countryName):
+		troops_by_country[countryName].erase(troop)
+	
+	if country:
+		for div: DivisionData in troop.stored_divisions:
+			country.mobilized -= int(div.hp * div.manpowerPerHP)
 
 ## Public hook for the WarManager to force a troop to its home province center.
 func move_to_garrison(troop: TroopData) -> void:
@@ -520,7 +524,7 @@ func load_troops_for_province(pid: int, troop_data: Array) -> void:
 	# But generally we should probably clear first
 	if troops_by_province.has(pid):
 		for t in troops_by_province[pid].duplicate():
-			remove_troop(t)
+			RemoveTroop(t)
 	
 	for data in troop_data:
 		var troop = TroopData.FromDict(data)
@@ -532,8 +536,8 @@ func load_troops_for_province(pid: int, troop_data: Array) -> void:
 			troop.target_position = troop.position
 		
 		# Ensure country_obj is assigned
-		var country_ref = CountryManager.get_country(troop.country_name)
-		if not country_ref:
+		var country_ref = CountryManager.countries.get(troop.country_name)
+		if !country_ref:
 			push_error("TroopManager: Failed to load troop in province %d - country '%s' not found!" % [pid, troop.country_name])
 			continue
 		troop.country_obj = country_ref
@@ -590,6 +594,37 @@ func get_province_strength(pid: int, country: String) -> int:
 			total += t.divisions_count
 	return total
 
+func DeployReady(
+	country: String, a_readyTroops: CountryData.ReadyTroop, prov_id: int
+) -> TroopData:
+	var country_data = CountryManager.countries.get(country)
+	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
+
+	# 1. Create the container (TroopData) with 0 divisions initially
+	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
+		country, prov_id, 0, pos, get_flag(country, country_data.ideology_name if country_data else "")
+	)
+
+	# 2. Inject the specific divisions we trained
+	for i: int in range(a_readyTroops.count):
+		troop.stored_divisions.append(a_readyTroops.division.duplicate())
+
+	# 3. Setup Runtime Metadata
+	troop.set_meta("start_pos", pos)
+	troop.set_meta("time_left", 0.0)
+	troop.set_meta("progress", 0.0)
+	troop.is_moving = false
+	troop.path = []
+	troop.province_id = prov_id
+
+	# 4. Register
+	troops.append(troop)
+	_add_troop_to_indexes(troop)
+
+	if AUTO_MERGE:
+		_auto_merge_in_province(prov_id, country)
+
+	return troop
 
 func deploy_specific_divisions(
 	country: String, divisions_to_deploy: Array, prov_id: int
@@ -597,7 +632,7 @@ func deploy_specific_divisions(
 	if divisions_to_deploy.is_empty():
 		return null
 
-	var country_data = CountryManager.get_country(country)
+	var country_data = CountryManager.countries.get(country)
 
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 

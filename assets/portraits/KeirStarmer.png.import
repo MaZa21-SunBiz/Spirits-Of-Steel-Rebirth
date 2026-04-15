@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsqnuws4kfv11"
-path="res://.godot/imported/VolodymyrZelenskyy.png-8cd3f893ecc75301f96bdf68464a712a.ctex"
+uid="uid://d25nial4l48w"
+path="res://.godot/imported/KeirStarmer.png-d320382b7f999de9d2f0034f6736878e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/portraits/VolodymyrZelenskyy.png"
-dest_files=["res://.godot/imported/VolodymyrZelenskyy.png-8cd3f893ecc75301f96bdf68464a712a.ctex"]
+source_file="res://assets/portraits/KeirStarmer.png"
+dest_files=["res://.godot/imported/KeirStarmer.png-d320382b7f999de9d2f0034f6736878e.ctex"]
 
 [params]
 

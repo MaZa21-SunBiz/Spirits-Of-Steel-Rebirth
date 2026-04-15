@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="3_2gqru"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="5_6awr5"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="5_5053o"]
+[ext_resource type="Script" uid="uid://dk4jr4fcfs7dl" path="res://Managers/FactionManager.gd" id="5_q2bhw"]
 [ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png" id="6_eryvx"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="6_q2bhw"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="7_hlybp"]
@@ -49,6 +50,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Leader" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer" unique_id=1784400605]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader" unique_id=1594094483]
@@ -111,6 +113,7 @@ grow_vertical = 2
 texture = ExtResource("3_2gqru")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("5_q2bhw")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=598108837]
 layout_mode = 2
@@ -118,7 +121,7 @@ layout_mode = 2
 [node name="OptionButton2" type="OptionButton" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer/PanelContainer3" unique_id=1877580326]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7ati")
-selected = 5
+selected = 2
 item_count = 6
 popup/item_0/text = "Benito Mussolini"
 popup/item_0/id = 0
@@ -231,20 +234,33 @@ layout_mode = 2
 [node name="OptionButton2" type="OptionButton" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/PanelContainer3" unique_id=1937806189]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7ati")
-selected = 5
-item_count = 6
-popup/item_0/text = "Benito Mussolini"
-popup/item_0/id = 0
-popup/item_1/text = "Trofim Lysenko"
-popup/item_1/id = 1
-popup/item_2/text = "Jane Austen"
-popup/item_2/id = 2
-popup/item_3/text = "Chevalier d'Éon"
-popup/item_3/id = 3
-popup/item_4/text = "Yukawa Hideki"
-popup/item_4/id = 4
-popup/item_5/text = "Ur-Nammu"
-popup/item_5/id = 5
+
+[node name="Display" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer" unique_id=307400733]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_6awr5")
+theme_type_variation = &"PanelContainerSlim"
+theme_override_styles/panel = SubResource("StyleBoxFlat_md4s8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/MainContent/Template/VBoxContainer/Display" unique_id=293702216]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_5053o")
+theme_override_fonts/bold_font = ExtResource("6_q2bhw")
+theme_override_fonts/bold_italics_font = ExtResource("7_hlybp")
+theme_override_fonts/italics_font = ExtResource("8_dpips")
+theme_override_fonts/mono_font = ExtResource("9_nltwc")
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=24]Traits[/font_size][/center][code][ul bullet=]
+Endless Fervor
+[/ul][/code][hr]
+[center][font_size=24]Skills[/font_size][/center][code][ul bullet=]
+-1 Logistics
+-2 Diplomacy
+[/ul][/code]
+"
+tab_size = 1
 
 [node name="Sidebar" type="PanelContainer" parent="PanelContainer/HBoxContainer" unique_id=774131630]
 layout_mode = 2
@@ -262,6 +278,6 @@ text = "Government"
 [node name="Button" type="Button" parent="PanelContainer/HBoxContainer/Sidebar/VBoxContainer" unique_id=982747312]
 layout_mode = 2
 size_flags_vertical = 10
-text = "Baxk"
+text = "Back"
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/Sidebar/VBoxContainer/Button" to="." method="m_OnBackPressed"]
