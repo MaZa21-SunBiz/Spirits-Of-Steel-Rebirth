@@ -60,46 +60,36 @@ func _process(_delta: float) -> void:
 
 
 func _cycle_map_mode(shift: bool) -> void:
-	print((current_view + (1 if shift else -1) + MapView.size()) % MapView.size())
 	match (current_view + (1 if shift else -1) + MapView.size()) % MapView.size():
 		MapView.COUNTRIES:
-			current_view = MapView.COUNTRIES
 			MapManager.show_countries_map()
 			print("Map Mode: Countries")
 
 		MapView.POPULATION:
-			current_view = MapView.POPULATION
 			MapManager.show_population_map()
 			print("Map Mode: Population")
 
 		MapView.INFRASTRUCTURE:
-			current_view = MapView.INFRASTRUCTURE
 			MapManager.ShowInfrastructureMap()
 			print("Map Mode: Infrastructure")
 			
 		MapView.GDP:
-			current_view = MapView.GDP
 			MapManager.show_gdp_map()
 			print("Map Mode: GDP")
 
 		MapView.ETHNICITY:
-			current_view = MapView.ETHNICITY
 			MapManager.show_ethnic_map()
 			print("Map Mode: Ethnicity")
 
 		MapView.FACTION:
-			current_view = MapView.FACTION
 			MapManager.show_faction_map()
 			print("Map Mode: Factions")
 
 		MapView.RESOURCES:
-			current_view = MapView.RESOURCES
 			MapManager.ShowResourcesMap()
 			print("Map Mode: Resources")
 			
 		MapView.BIOMES:
-			current_view = MapView.BIOMES
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
 
-	GameState.game_ui.map_tabs.current_tab = current_view
