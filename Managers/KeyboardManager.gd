@@ -92,4 +92,3 @@ func _cycle_map_mode(shift: bool) -> void:
 		MapView.BIOMES:
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
-

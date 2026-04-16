@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d006xqeec0us3"]
+
+[ext_resource type="Script" uid="uid://rxa4cq3bioc" path="res://Scripts/case.gd" id="1_7a2we"]
+
+[node name="FoldableContainer" type="FoldableContainer" unique_id=1544959321 node_paths=PackedStringArray("block", "case_edit")]
+offset_left = -2.0
+offset_right = 413.0
+offset_bottom = 117.0
+script = ExtResource("1_7a2we")
+block = NodePath("Case/Block")
+case_edit = NodePath("Case/AddCaseFunction/CaseEntry")
+
+[node name="Case" type="HBoxContainer" parent="." unique_id=1197072148]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddCaseFunction" type="VBoxContainer" parent="Case" unique_id=1614640765]
+use_parent_material = true
+layout_mode = 2
+
+[node name="CaseEntry" type="TextEdit" parent="Case/AddCaseFunction" unique_id=2094116290]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Case/AddCaseFunction" unique_id=2133058280]
+layout_mode = 2
+
+[node name="AddFunction" type="Button" parent="Case/AddCaseFunction/HBoxContainer" unique_id=496426190]
+use_parent_material = true
+layout_mode = 2
+text = "Add Function"
+
+[node name="Close" type="Button" parent="Case/AddCaseFunction/HBoxContainer" unique_id=841386229]
+layout_mode = 2
+text = "X"
+
+[node name="Block" type="VBoxContainer" parent="Case" unique_id=1313832274]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="text_changed" from="Case/AddCaseFunction/CaseEntry" to="." method="_on_case_entry_text_changed"]
+[connection signal="pressed" from="Case/AddCaseFunction/HBoxContainer/AddFunction" to="." method="_on_add_function_pressed"]
+[connection signal="pressed" from="Case/AddCaseFunction/HBoxContainer/Close" to="." method="_on_close_pressed"]

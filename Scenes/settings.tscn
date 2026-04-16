@@ -53,10 +53,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=1381486399]
+visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -137,7 +138,6 @@ step = 0.01
 value = 0.1
 
 [node name="Graphics" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=659766638]
-visible = false
 material = ExtResource("1_lhmql")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aaqfp")
