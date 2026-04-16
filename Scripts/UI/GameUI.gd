@@ -37,6 +37,7 @@ var stats_labels := {}
 @export var sidemenu: Control
 # NOTE(soi): relations already hv the flag so ehhh
 @export var sidemenu_pointer: Sprite2D
+@export var play_btn: Button
 @export var sidemenu_country_label: Label
 @export var sidemenu_context: TabContainer
 @export var sidemenu_trooplist: VBoxContainer
@@ -355,7 +356,33 @@ func _update_sidemenu_visuals() -> void:
 
 func DoUpdateSidemenuVisuals() -> void:
 	if GameState.selectingCountry:
+		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
+		for stat: String in [
+			"is_puppet",
+			"money",
+			"gdp",
+			"income",
+			"political_power",
+			"stability",
+			"ideology_name",
+			"manpower",
+			"puppets",
+			"is_at_war",
+		]:
+			var stat_label: Label = Label.new()
+			stat_label.text = "%s: %s" % [stat.capitalize(), str(selected_country[stat]).capitalize()]
+			select_player_stat.add_child(stat_label)
+
+		sidemenu_country_label.text = "%s %s" % [
+			selected_country.ideology_name.capitalize(),
+			selected_country.country_name.capitalize()
+		]
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
+		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
+		print("fish")
+
+		MapManager.show_countries_map()
+
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
 	#print(selected_country.figures)
 	sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(MapManager.significantFigures.get(selected_country.governmentPositions["Leader"]))
@@ -366,7 +393,6 @@ func DoUpdateSidemenuVisuals() -> void:
 	
 	_update_relations_visuals()
 	sidemenuLatch = false
-
 func _on_selected_country_ideology_changed():
 	if selected_country:
 		_update_sidemenu_visuals()
@@ -1144,8 +1170,17 @@ func _on_map_changed(tab: int) -> void:
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
 
+
 func _on_building_designer_pressed():
 	building_designer.visible = !building_designer.visible
 
+
 func m_OnGovernmentPressed() -> void:
 	governmentUI.OpenMenu(CountryManager.player_country)
+
+
+func _on_play_as_pressed() -> void:
+	CountryManager.set_player_country(selected_country.country_name)
+	GameState.selectingCountry = false
+	_on_province_clicked(CountryManager.player_country.country_name)
+

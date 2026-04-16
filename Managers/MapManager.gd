@@ -538,62 +538,8 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		return
 
 	if GameState.selectingCountry:
-		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
-
-		var selected_country: CountryData = CountryManager.countries[MapManager.province_objects[pid].country]
-		GameState.game_ui.selected_country = selected_country
-		for stat: String in [
-			"is_puppet",
-			"money",
-			"gdp",
-			"income",
-			"political_power",
-			"stability",
-			"ideology_name",
-			"manpower",
-			"puppets",
-			"is_at_war",
-		]:
-			var stat_label: Label = Label.new()
-			stat_label.text = "%s: %s" % [stat.capitalize(), str(selected_country[stat]).capitalize()]
-			GameState.game_ui.select_player_stat.add_child(stat_label)
-
-		GameState.game_ui.nation_flag.texture = TroopManager.get_flag(
-			selected_country.country_name,
-			selected_country.ideology_name
-		)
-		GameState.game_ui.sidemenu_country_label.text = "%s %s" % [
-			selected_country.ideology_name.capitalize(),
-			selected_country.country_name.capitalize()
-		]
-
-		GameState.game_ui.sidemenu_pointer.position.x = remap(
-			selected_country.ideology[0],
-			-100,
-			100,
-			3,
-			97
-		)
-		GameState.game_ui.sidemenu_pointer.position.y = remap(
-			selected_country.ideology[1],
-			-100,
-			100,
-			3,
-			97
-		)
-
-		var play_btn: Button = Button.new()
-		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
-		play_btn.pressed.connect(
-			func():
-			CountryManager.set_player_country(MapManager.province_objects[pid].country)
-			GameState.selectingCountry = false
-			GameState.game_ui._on_province_clicked(CountryManager.player_country.country_name)
-		)
-		play_btn.use_parent_material = true
-		GameState.game_ui.select_player_stat.add_child(play_btn)
-
-
+		GameState.game_ui.selected_country = CountryManager.countries[MapManager.province_objects[pid].country]
+		GameState.game_ui.DoUpdateSidemenuVisuals()
 		show_countries_map()
 	else:
 		var player_country_name = CountryManager.player_country.country_name
@@ -1057,6 +1003,7 @@ func show_faction_map() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.FACTION
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	print("MapManager: Faction View Updated")
 
 func show_population_map() -> void:
@@ -1074,6 +1021,8 @@ func show_population_map() -> void:
 		state_color_image.set_pixel(pid, 0, color)
 		state_color_image.set_pixel(pid, 1, color)
 
+	KeyboardManager.current_view = KeyboardManager.MapView.POPULATION
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	state_color_texture.update(state_color_image)
 	print("MapManager: Population View Updated. Max Pop found: ", current_max_pop)
 
@@ -1122,6 +1071,8 @@ func show_ethnic_map() -> void:
 		state_color_image.set_pixel(pid, 0, display_color)
 		state_color_image.set_pixel(pid, 1, display_color)
 
+	KeyboardManager.current_view = KeyboardManager.MapView.ETHNICITY
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	state_color_texture.update(state_color_image)
 	print("MapManager: Ethnic View Updated.")
 
@@ -1162,6 +1113,7 @@ func show_gdp_map() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.GDP
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	print("MapManager: GDP View Updated. Max GDP: ", current_max_gdp)
 
 func GetCountryDisplayColor(a_countryName: String) -> Color:
@@ -1186,6 +1138,7 @@ func show_countries_map() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.COUNTRIES
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 
 func ShowResourcesMap() -> void:
 	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
@@ -1200,6 +1153,7 @@ func ShowResourcesMap() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.RESOURCES
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 
 func show_biomes_map() -> void:
 	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
@@ -1216,6 +1170,7 @@ func show_biomes_map() -> void:
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.BIOMES
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 
 func province_updated():
 	if GameState.industry_building:
@@ -1251,6 +1206,9 @@ func show_industry_country(country_name: String) -> void:
 		state_color_image.set_pixel(pid, 0, color)
 		state_color_image.set_pixel(pid, 1, color)
 
+
+	KeyboardManager.current_view = KeyboardManager.MapView.INFRASTRUCTURE
+	GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	state_color_texture.update(state_color_image)
 
 func transfer_ownership(pid: int, new_owner_name: String) -> void:

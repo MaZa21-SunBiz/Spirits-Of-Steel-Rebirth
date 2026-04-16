@@ -477,7 +477,7 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 		return
 		
 	# print(data)
-	print(connecting_id)
+
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
@@ -503,10 +503,16 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 			MOUSE_BUTTON_RIGHT:
 				if event.pressed:
 					if connecting_id != "":
-						if connecting_id != data.get("prereq", ""):
+						if connecting_id != data.get("prereq", "") && connecting_id != data.get("exclusive", ""):
 							if connecting_id != data.get("id", ""):
-								data["prereq"] = connecting_id
+								if Input.is_key_pressed(KEY_SHIFT):
+									data["exclusive"] = connecting_id
+								else:
+									data["prereq"] = connecting_id
 						else:
+							if Input.is_key_pressed(KEY_SHIFT):
+								data.erase("exclusive")
+							else:
 								data.erase("prereq")
 
 						connecting_id = ""

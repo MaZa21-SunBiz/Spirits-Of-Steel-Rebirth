@@ -116,10 +116,14 @@ text = "  CLOSE MENU [X]  "
 
 [node name="InfoPanel" type="PanelContainer" parent="StaticUI" unique_id=54472730]
 use_parent_material = true
-layout_mode = 0
-offset_top = 488.0
-offset_right = 1152.0
-offset_bottom = 646.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -173.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="TabContainer" type="TabContainer" parent="StaticUI/InfoPanel" unique_id=393909199]
 layout_mode = 2
