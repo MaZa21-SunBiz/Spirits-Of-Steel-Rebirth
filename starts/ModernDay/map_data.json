@@ -834,7 +834,12 @@
 				"Norway"
 			],
 			"color": "#6F4747",
-			"figures": [],
+			"figures": [
+				"JonasGahrStore"
+			],
+			"government_positions": {
+				"Leader": "JonasGahrStore"
+			},
 			"finished_decisions": [],
 			"hostedGovernments": [],
 			"ideology": [
@@ -1640,7 +1645,12 @@
 				"Canary-islander"
 			],
 			"color": "#F2CD5E",
-			"figures": [],
+			"figures": [
+				"PedroSanchez"
+			],
+			"government_positions": {
+				"Leader": "PedroSanchez"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2229,7 +2239,12 @@
 				"Western-sahara"
 			],
 			"color": "#9B4A59",
-			"figures": [],
+			"figures": [
+				"MohammedBenElHassan"
+			],
+			"government_positions": {
+				"Leader": "MohammedBenElHassan"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -3927,7 +3942,12 @@
 				"Uruguay"
 			],
 			"color": "#4C913F",
-			"figures": [],
+			"figures": [
+				"LuizInacioLulaDaSilva"
+			],
+			"government_positions": {
+				"Leader": "LuizInacioLulaDaSilva"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -119662,9 +119682,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "OiqoodierluaphaemAepiobbuefoengeuldaith",
+			"name": "JonasGahrStore",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Norway/JonasGahrStore.png",
 			"skills": {
 
 			},
@@ -119744,7 +119764,7 @@
 			"legitimacy": 0,
 			"name": "Keir_Starmer",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/United_kingdom/Keir_Starmer.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/UnitedKingdom/Keir_Starmer.png",
 			"skills": {
 
 			},
@@ -120254,9 +120274,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "ElveefuyknaixtilkiowewrBrepseampalouPhiedhomoyrmiahuothiespr",
+			"name": "PedroSanchez",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Spain/PedroSanchez.png",
 			"skills": {
 
 			},
@@ -120432,7 +120452,7 @@
 			"legitimacy": 0,
 			"name": "KimJongUn",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/North_korea/KimJongUn.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/NorthKorea/KimJongUn.png",
 			"skills": {
 
 			},
@@ -120624,7 +120644,7 @@
 			"legitimacy": 0,
 			"name": "LeeJaeMyung",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/South_korea/LeeJaeMyung.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/SouthKorea/LeeJaeMyung.png",
 			"skills": {
 
 			},
@@ -120718,9 +120738,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "StreylaismooNnuerduistroocEefletw",
+			"name": "MohammedBenElHassan",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Morocco/MohammedBenElHassan.png",
 			"skills": {
 
 			},
@@ -121423,7 +121443,7 @@
 			"legitimacy": 0,
 			"name": "IbrahimTraore",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/Burkina_faso/IbrahimTraore.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/BurkinaFaso/IbrahimTraore.png",
 			"skills": {
 
 			},
@@ -122029,9 +122049,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "UyleesnuiknoummuiltuoughtarmieBeopelmuyscheuspiezzoequoeNgompouttaptialvonkeaskio",
+			"name": "LuizInacioLulaDaSilva",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Brazil/LuizInacioLulaDaSilva.png",
 			"skills": {
 
 			},

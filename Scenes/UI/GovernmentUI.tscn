@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://crc1t7tm2wego" path="res://assets/ui/FluidDrip.svg" id="3_2gqru"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="5_6awr5"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="5_5053o"]
-[ext_resource type="Script" uid="uid://dk4jr4fcfs7dl" path="res://Managers/FactionManager.gd" id="5_q2bhw"]
 [ext_resource type="Texture2D" uid="uid://dhl2sli4unxrd" path="res://starts/ModernEmpires/assets/portraits/random/UrNammu.png" id="6_eryvx"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="6_q2bhw"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="7_hlybp"]
@@ -113,7 +112,6 @@ grow_vertical = 2
 texture = ExtResource("3_2gqru")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("5_q2bhw")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/HBoxContainer/MainContent/HBoxContainer/Leader/VBoxContainer" unique_id=598108837]
 layout_mode = 2
