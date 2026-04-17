@@ -1,18 +1,18 @@
 {
   "clouds": 0.43,
-  "clouds_edgeness": 0.69,
+  "clouds_edgeness": 0.7,
   "daynight_contrast": 0.05,
   "daynight_smoothness": 0.01,
   "debug_mode": true,
   "edgeness_slider": 0.69,
   "map_effects": true,
-  "music_volume": 0.09,
-  "provinceBorderThickness": 0.5,
+  "music_volume": 0.06,
+  "provinceBorderThickness": 0.51,
   "province_borders": 0.11,
   "radios": [
     "Terraria"
   ],
-  "scanlines": 0.04,
+  "scanlines": 0.06,
   "sfx_volume": 0.26,
   "ui_dirt": 0.39,
   "ui_lower": 0.08,
