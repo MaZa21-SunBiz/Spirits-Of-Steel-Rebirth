@@ -94,21 +94,25 @@ text = "🗘"
 expand_icon = true
 
 [node name="EditFunc" type="CheckBox" parent="StaticUI/Header/HBoxContainer" unique_id=1269039078]
+visible = false
 use_parent_material = true
 layout_mode = 2
 text = "Edit Decision Function"
 
 [node name="AddRequirement" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=113244181]
+visible = false
 use_parent_material = true
 layout_mode = 2
 text = "Add Requirement"
 
 [node name="AddFinished" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=825370584]
+visible = false
 use_parent_material = true
 layout_mode = 2
 text = "Add Finished"
 
 [node name="AddDecision" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=956861038]
+visible = false
 use_parent_material = true
 layout_mode = 2
 text = "Add Decision"
@@ -121,6 +125,7 @@ toggle_mode = true
 text = " EDIT "
 
 [node name="SaveDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805190]
+visible = false
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -193,12 +198,17 @@ layout_mode = 2
 placeholder_text = "Edit Desc"
 
 [node name="TabContainer" type="TabContainer" parent="StaticUI" unique_id=903793033]
+visible = false
 use_parent_material = true
-layout_mode = 0
-offset_left = 512.0
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -690.0
 offset_top = 80.0
-offset_right = 1153.0
-offset_bottom = 648.0
+grow_horizontal = 0
+grow_vertical = 2
 current_tab = 0
 
 [node name="Requirements" type="ScrollContainer" parent="StaticUI/TabContainer" unique_id=89978896]

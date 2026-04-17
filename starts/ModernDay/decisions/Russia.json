@@ -667,8 +667,8 @@
 						]
 					}
 				],
-				"cost_pp": 50.0,
-				"days": 20.0,
+				"cost_pp": 50,
+				"days": 20,
 				"desc": "get the homies all up in here",
 				"id": "pol_6_c",
 				"pos": [

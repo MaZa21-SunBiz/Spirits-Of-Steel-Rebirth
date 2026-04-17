@@ -9,15 +9,16 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="PanelContainer" type="PanelContainer" unique_id=1168209129 node_paths=PackedStringArray("expression_tabs", "value_edit", "items_box", "func_options", "args_box", "for_edit", "iter_element_box", "do_box", "match_expression", "cases", "element_tabs", "paragraph_text", "button_text", "button_condition", "button_finished", "image_path", "country1_name", "country2_name")]
+[node name="PanelContainer" type="PanelContainer" unique_id=1168209129 node_paths=PackedStringArray("expression_tabs", "value_edit", "items_box", "pairs", "func_options", "args_box", "for_edit", "iter_element_box", "do_box", "match_expression", "cases", "element_tabs", "paragraph_text", "button_text", "button_condition", "button_finished", "image_path", "country1_name", "country2_name", "drift_amount", "final_x", "final_y")]
 material = ExtResource("1_jleyo")
-offset_right = 555.0
-offset_bottom = 536.0
+offset_right = 512.0
+offset_bottom = 598.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lrnd6")
 script = ExtResource("1_lrnd6")
 expression_tabs = NodePath("ExpressionType")
 value_edit = NodePath("ExpressionType/Value/TextEdit")
 items_box = NodePath("ExpressionType/Array/FoldableContainer/Items")
+pairs = NodePath("ExpressionType/Event/Pairs")
 func_options = NodePath("ExpressionType/Function/FuncOptions")
 args_box = NodePath("ExpressionType/Function/Args")
 for_edit = NodePath("ExpressionType/Loop/TextEdit")
@@ -33,11 +34,14 @@ button_finished = NodePath("ExpressionType/Element/Button/Finished")
 image_path = NodePath("ExpressionType/Element/Image/Path")
 country1_name = NodePath("ExpressionType/Element/Header/Country1")
 country2_name = NodePath("ExpressionType/Element/Header/Country2")
+drift_amount = NodePath("ExpressionType/IdeologyDrift/DriftAmount")
+final_x = NodePath("ExpressionType/IdeologyDrift/FinalX")
+final_y = NodePath("ExpressionType/IdeologyDrift/FinalY")
 
 [node name="ExpressionType" type="TabContainer" parent="." unique_id=547955810]
 use_parent_material = true
 layout_mode = 2
-current_tab = 3
+current_tab = 2
 
 [node name="Value" type="VBoxContainer" parent="ExpressionType" unique_id=1105832426]
 visible = false
@@ -82,12 +86,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Event" type="VBoxContainer" parent="ExpressionType" unique_id=1453034520]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 2
+
+[node name="Pairs" type="VBoxContainer" parent="ExpressionType/Event" unique_id=374346681]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddPairs" type="Button" parent="ExpressionType/Event" unique_id=478490500]
+use_parent_material = true
+layout_mode = 2
+text = "Add Case"
+
 [node name="Function" type="GridContainer" parent="ExpressionType" unique_id=1719722842]
 visible = false
 use_parent_material = true
 layout_mode = 2
 columns = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="Label" type="Label" parent="ExpressionType/Function" unique_id=1984066012]
 use_parent_material = true
@@ -121,10 +143,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Loop" type="GridContainer" parent="ExpressionType" unique_id=1285511490]
+visible = false
 use_parent_material = true
 layout_mode = 2
 columns = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="Label" type="Label" parent="ExpressionType/Loop" unique_id=1505287346]
 use_parent_material = true
@@ -165,7 +188,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-metadata/_tab_index = 4
+metadata/_tab_index = 5
 
 [node name="Expression" type="FoldableContainer" parent="ExpressionType/Match" unique_id=1199548425]
 layout_mode = 2
@@ -188,7 +211,7 @@ visible = false
 use_parent_material = true
 layout_mode = 2
 current_tab = 3
-metadata/_tab_index = 5
+metadata/_tab_index = 6
 
 [node name="Paragraph" type="VBoxContainer" parent="ExpressionType/Element" unique_id=889165005]
 visible = false
@@ -239,7 +262,47 @@ title = "Country1"
 layout_mode = 2
 title = "Country2"
 
+[node name="IdeologyDrift" type="GridContainer" parent="ExpressionType" unique_id=1596039843]
+visible = false
+use_parent_material = true
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 7
+
+[node name="Label" type="Label" parent="ExpressionType/IdeologyDrift" unique_id=1371179561]
+layout_mode = 2
+text = "Drift  Amount"
+
+[node name="DriftAmount" type="SpinBox" parent="ExpressionType/IdeologyDrift" unique_id=1507222500]
+layout_mode = 2
+step = 0.01
+custom_arrow_step = 0.01
+
+[node name="Label2" type="Label" parent="ExpressionType/IdeologyDrift" unique_id=1317733528]
+layout_mode = 2
+text = "Final x"
+
+[node name="FinalX" type="SpinBox" parent="ExpressionType/IdeologyDrift" unique_id=861749211]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+
+[node name="Label3" type="Label" parent="ExpressionType/IdeologyDrift" unique_id=1104460212]
+layout_mode = 2
+text = "Final y"
+
+[node name="FinalY" type="SpinBox" parent="ExpressionType/IdeologyDrift" unique_id=931623909]
+layout_mode = 2
+min_value = -100.0
+step = 0.01
+
+[node name="X" type="Control" parent="ExpressionType" unique_id=418288731]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 8
+
 [connection signal="tab_selected" from="ExpressionType" to="." method="_on_expression_type_tab_selected"]
 [connection signal="pressed" from="ExpressionType/Array/AddItem/AddItemButton" to="." method="_on_add_item_button_pressed"]
+[connection signal="pressed" from="ExpressionType/Event/AddPairs" to="." method="_on_add_pairs_pressed"]
 [connection signal="pressed" from="ExpressionType/Function/AddArgs/AddArgsButton" to="." method="_on_add_args_button_pressed"]
 [connection signal="pressed" from="ExpressionType/Match/AddCase" to="." method="_on_add_case_pressed"]

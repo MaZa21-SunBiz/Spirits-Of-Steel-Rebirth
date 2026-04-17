@@ -7,7 +7,8 @@ signal changed
 func FromDict(data: Dictionary) -> void:
 	var key = data.keys()[0]
 	if case_edit: case_edit.text = str(key)
-	for expr_data in data[key]:
+	var arr = data[key] if typeof(data[key]) == TYPE_ARRAY else [data[key]]
+	for expr_data in arr:
 		var expr = _on_add_function_pressed()
 		expr.FromDict(expr_data)
 	

@@ -10,7 +10,9 @@
   "provinceBorderThickness": 0.51,
   "province_borders": 0.11,
   "radios": [
-    "Terraria"
+    "Terraria",
+    "default",
+    "Lead poisoning"
   ],
   "scanlines": 0.06,
   "sfx_volume": 0.26,
