@@ -1096,7 +1096,12 @@
 				"Unknown"
 			],
 			"color": "#49484D",
-			"figures": [],
+			"figures": [
+				"FriedrichMerz"
+			],
+			"government_positions": {
+				"Leader": "FriedrichMerz"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2458,7 +2463,12 @@
 				"Mexican"
 			],
 			"color": "#689752",
-			"figures": [],
+			"figures": [
+				"ClaudiaSheinbaumPardo"
+			],
+			"government_positions": {
+				"Leader": "ClaudiaSheinbaumPardo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2477,7 +2487,12 @@
 				"Arab"
 			],
 			"color": "#ABBE98",
-			"figures": [],
+			"figures": [
+				"MohammedBinSalman"
+			],
+			"government_positions": {
+				"Leader": "MohammedBinSalman"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -119858,9 +119873,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "OuskeeswaisaswueOykiuwuouquuonnausplaoqueermIochuyntiustrioj",
+			"name": "FriedrichMerz",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Germany/FriedrichMerz.png",
 			"skills": {
 
 			},
@@ -120865,9 +120880,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "AuyoafaydduapsurpiurmPlaeccualtiegleubraegOknuokeaurdeowhaycoink",
+			"name": "ClaudiaSheinbaumPardo",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/Mexico/ClaudiaSheinbaumPardo.png",
 			"skills": {
 
 			},
@@ -120881,9 +120896,9 @@
 				0
 			],
 			"legitimacy": 0,
-			"name": "SkaeldolpoonnuiyuRpeheorpauneaummilloustuenTwarmeipreynnythrert",
+			"name": "MohammedBinSalman",
 			"occupation": "Leader",
-			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
+			"portrait_path": "res://starts/ModernDay/assets/portraits/SaudiArabia/MohammedBinSalman.png",
 			"skills": {
 
 			},
