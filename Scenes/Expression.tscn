@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ds2kpp3eexf1e"]
 
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_jleyo"]
-[ext_resource type="Script" uid="uid://b5d3cvioc35k5" path="res://Scripts/expression.gd" id="1_lrnd6"]
+[ext_resource type="Script" uid="uid://b5d3cvioc35k5" path="res://Scripts/UI/Elements/ExpressionBox.gd" id="1_lrnd6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrnd6"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)

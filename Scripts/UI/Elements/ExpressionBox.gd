@@ -1,12 +1,11 @@
-extends PanelContainer
-class_name ExpressionBox
+class_name ExpressionBox extends PanelContainer
 
 enum ExpressionTypes {Variable, List, Function, Loop, Match, Element, Close}
 enum ElementTypes {Paragraph, Button, Image, Header}
 signal changed
 
-var expression_instance: PackedScene = load("res://Scenes/Expression.tscn")
-var case_instance: PackedScene = load("res://Scenes/Case.tscn")
+var expression_instance: PackedScene = preload("res://Scenes/Expression.tscn")
+var case_instance: PackedScene = preload("res://Scenes/Case.tscn")
 var expression_type: ExpressionTypes
 @export var expression_tabs: TabContainer
 var is_child: bool = false

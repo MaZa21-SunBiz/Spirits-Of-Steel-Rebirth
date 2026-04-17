@@ -54,8 +54,6 @@ var selected_node_btn: Button = null
 
 func _ready():
 	DecisionManager.ui_overlay = self
-	add_req.pressed.connect(_on_add_req_pressed)
-	add_finished.pressed.connect(_on_add_finished_pressed)
 	_on_edit_mode_toggled(false)
 
 

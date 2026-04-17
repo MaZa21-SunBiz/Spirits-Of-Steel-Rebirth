@@ -1,5 +1,4 @@
-extends PanelContainer
-class_name Tooltip
+class_name Tooltip extends PanelContainer
 
 func _enter_tree() -> void:
 	GameState.tooltip = self

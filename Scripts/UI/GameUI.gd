@@ -452,7 +452,7 @@ func toggle_menu(context := Context.PLAYER) -> void:
 		open_menu(context, Category.GENERAL)
 		_update_context_actions_visuals()
 
-var custom_font = load("res://font/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf")
+var custom_font = preload("res://font/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf")
 
 func open_menu(context: Context, category: Category) -> void:
 	if (

@@ -250,7 +250,7 @@ fit_content = true
 [connection signal="draw" from="CanvasAnchor/TreeCanvas" to="." method="_on_draw_canvas"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
 [connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditFunc" to="." method="_on_edit_func_toggled"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddRequirement" to="." method="_on_add_requirement_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddRequirement" to="." method="_on_add_req_pressed"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddFinished" to="." method="_on_add_finished_pressed"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddDecision" to="." method="_on_add_decision_pressed"]
 [connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditMode" to="." method="_on_edit_mode_toggled"]

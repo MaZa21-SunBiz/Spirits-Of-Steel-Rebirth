@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d006xqeec0us3"]
 
-[ext_resource type="Script" uid="uid://rxa4cq3bioc" path="res://Scripts/case.gd" id="1_7a2we"]
+[ext_resource type="Script" uid="uid://rxa4cq3bioc" path="res://Scripts/UI/Elements/case.gd" id="1_7a2we"]
 
 [node name="FoldableContainer" type="FoldableContainer" unique_id=1544959321 node_paths=PackedStringArray("block", "case_edit")]
 offset_left = -2.0

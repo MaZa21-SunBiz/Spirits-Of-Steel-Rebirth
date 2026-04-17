@@ -1,5 +1,4 @@
-extends HBoxContainer
-class_name ActionRow
+class_name ActionRow extends HBoxContainer
 
 @onready var button: Button = $Button
 

@@ -23,7 +23,7 @@ func ToDict():
 		}
 
 func _on_add_function_pressed() -> ExpressionBox:
-	var expr: ExpressionBox = load("res://Scenes/Expression.tscn").instantiate()
+	var expr: ExpressionBox = preload("res://Scenes/Expression.tscn").instantiate()
 	expr.is_child = true
 	block.add_child(expr)
 	expr.changed.connect(func(): changed.emit())
@@ -37,4 +37,3 @@ func _on_close_pressed() -> void:
 
 func _on_case_entry_text_changed() -> void:
 	self.title = case_edit.text
-

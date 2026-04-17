@@ -346,16 +346,16 @@ func get_function(block, country: CountryData = null):
 
 func format_functions(expression, indent: String = "", no_bullet: bool = false) -> String:
 	# return ""
-	var functions = []
+	var funcs = []
 	if expression is Array:
-		functions = expression
+		funcs = expression
 	elif expression is Dictionary:
-		functions = [expression]
+		funcs = [expression]
 	else:
 		return ""
 
 	var formatted: String = ""
-	for function in functions:
+	for function in funcs:
 		if not function is Dictionary: continue
 		
 		# Handle 'for' loop

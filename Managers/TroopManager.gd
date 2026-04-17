@@ -601,7 +601,7 @@ func DeployReady(
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	# 1. Create the container (TroopData) with 0 divisions initially
-	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
+	var troop = TroopData.new(
 		country, prov_id, 0, pos, get_flag(country, country_data.ideology_name if country_data else "")
 	)
 
@@ -637,7 +637,7 @@ func deploy_specific_divisions(
 	var pos = MapManager.province_centers.get(prov_id, Vector2.ZERO)
 
 	# 1. Create the container (TroopData) with 0 divisions initially
-	var troop = load("res://Scripts/Divisions/TroopData.gd").new(
+	var troop = TroopData.new(
 		country, prov_id, 0, pos, get_flag(country, country_data.ideology_name if country_data else "")
 	)
 
