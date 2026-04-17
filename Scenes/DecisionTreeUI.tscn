@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="1_x8y2v"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_qq7pm"]
 
-[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("info_text", "info_tab", "edit_label", "edit_desc", "edit_days", "edit_ppcost", "close_button", "edit_button", "save_button", "add_button")]
+[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("info_text", "info_tab", "edit_label", "edit_desc", "edit_days", "edit_ppcost", "close_button", "edit_button", "edit_function", "save_button", "add_decision", "add_req", "add_finished", "editor_tab", "reqs_block", "finished_block")]
 layer = 100
 script = ExtResource("1_x8y2v")
 info_text = NodePath("StaticUI/InfoPanel/TabContainer/InfoText")
@@ -14,8 +14,14 @@ edit_days = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContaine
 edit_ppcost = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/PPCost")
 close_button = NodePath("StaticUI/Header/HBoxContainer/CloseButton")
 edit_button = NodePath("StaticUI/Header/HBoxContainer/EditMode")
+edit_function = NodePath("StaticUI/Header/HBoxContainer/EditFunc")
 save_button = NodePath("StaticUI/Header/HBoxContainer/SaveDecisions")
-add_button = NodePath("StaticUI/Header/HBoxContainer/AddDecision")
+add_decision = NodePath("StaticUI/Header/HBoxContainer/AddDecision")
+add_req = NodePath("StaticUI/Header/HBoxContainer/AddRequirement")
+add_finished = NodePath("StaticUI/Header/HBoxContainer/AddFinished")
+editor_tab = NodePath("StaticUI/TabContainer")
+reqs_block = NodePath("StaticUI/TabContainer/Requirements/ReqsBlock")
+finished_block = NodePath("StaticUI/TabContainer/Finished/FinishedBlock")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1064194189]
 anchors_preset = 15
@@ -87,8 +93,22 @@ mouse_default_cursor_shape = 2
 text = "🗘"
 expand_icon = true
 
+[node name="EditFunc" type="CheckBox" parent="StaticUI/Header/HBoxContainer" unique_id=1269039078]
+use_parent_material = true
+layout_mode = 2
+text = "Edit Decision Function"
+
+[node name="AddRequirement" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=113244181]
+use_parent_material = true
+layout_mode = 2
+text = "Add Requirement"
+
+[node name="AddFinished" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=825370584]
+use_parent_material = true
+layout_mode = 2
+text = "Add Finished"
+
 [node name="AddDecision" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=956861038]
-visible = false
 use_parent_material = true
 layout_mode = 2
 text = "Add Decision"
@@ -101,7 +121,6 @@ toggle_mode = true
 text = " EDIT "
 
 [node name="SaveDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805190]
-visible = false
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -145,10 +164,6 @@ metadata/_tab_index = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="StaticUI/InfoPanel/TabContainer/EditDecisions" unique_id=50824126]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1230923970]
-layout_mode = 2
-text = "Edit Label:"
-
 [node name="Label2" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=1030639422]
 layout_mode = 2
 text = "Days:"
@@ -163,22 +178,49 @@ text = "PP Cost:"
 [node name="PPCost" type="SpinBox" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=644066874]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer" unique_id=591121843]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "Edit Desc:"
-
 [node name="HBoxcontainer" type="HBoxContainer" parent="StaticUI/InfoPanel/TabContainer/EditDecisions" unique_id=1300503408]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="EditLabel" type="TextEdit" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer" unique_id=1714090887]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+placeholder_text = "Edit Label"
 
 [node name="EditDesc" type="TextEdit" parent="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxcontainer" unique_id=37782591]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+placeholder_text = "Edit Desc"
+
+[node name="TabContainer" type="TabContainer" parent="StaticUI" unique_id=903793033]
+use_parent_material = true
+layout_mode = 0
+offset_left = 512.0
+offset_top = 80.0
+offset_right = 1153.0
+offset_bottom = 648.0
+current_tab = 0
+
+[node name="Requirements" type="ScrollContainer" parent="StaticUI/TabContainer" unique_id=89978896]
 layout_mode = 2
 size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="ReqsBlock" type="VBoxContainer" parent="StaticUI/TabContainer/Requirements" unique_id=1332637957]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Finished" type="ScrollContainer" parent="StaticUI/TabContainer" unique_id=832013289]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 1
+
+[node name="FinishedBlock" type="VBoxContainer" parent="StaticUI/TabContainer/Finished" unique_id=1249962335]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TooltipPanel" type="Panel" parent="StaticUI" unique_id=320893541]
 visible = false
@@ -207,6 +249,9 @@ fit_content = true
 
 [connection signal="draw" from="CanvasAnchor/TreeCanvas" to="." method="_on_draw_canvas"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
+[connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditFunc" to="." method="_on_edit_func_toggled"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddRequirement" to="." method="_on_add_requirement_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddFinished" to="." method="_on_add_finished_pressed"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddDecision" to="." method="_on_add_decision_pressed"]
 [connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditMode" to="." method="_on_edit_mode_toggled"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/SaveDecisions" to="." method="_on_save_decisions_pressed"]

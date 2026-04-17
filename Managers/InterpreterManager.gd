@@ -1,5 +1,39 @@
 extends Node
 
+var functions: PackedStringArray = [
+	"return",
+	"and",
+	"not",
+	"or",
+	"xor",
+	"eq",
+	"gt",
+	"lt",
+	"all",
+	"any",
+	"probability",
+	"get",
+	"set_country_attr",
+	"add_country_attr",
+	"add",
+	"is_at_war",
+	"army_level_up",
+	"build_factory",
+	"declare_war",
+	"release",
+	"play_as",
+	"annex",
+	"add_ideology_drift",
+	"make_puppet",
+	"has_pids",
+	"add_plans",
+	"remove_plan",
+	"event",
+	"invite",
+	"change_province_types",
+	"set_fig_attr",
+	]
+
 var debug: bool:
 	get:
 		return SettingsManager.settings.debug_mode
@@ -214,7 +248,15 @@ func get_function(block, country: CountryData = null):
 					result = country_obj.get(evaled_args[1])
 				else:
 					result = null
-
+		"set_country_attr":
+			country[evaled_args[0]] = evaled_args[1]
+			result = country[evaled_args[0]]
+		"add_country_attr":
+			country[evaled_args[0]] += evaled_args[1]
+			result = country[evaled_args[0]]
+		"set_fig_attr":
+			if evaled_args.size() >= 3:
+				MapManager.significantFigures[evaled_args[0]][evaled_args[1]] = evaled_args[2]
 		# Math stuff**
 		"add":
 			if evaled_args.size() >= 2:
@@ -226,45 +268,6 @@ func get_function(block, country: CountryData = null):
 					evaled_args[0],
 					evaled_args[1]
 				)
-
-		"set_country_attr":
-			country[evaled_args[0]] = evaled_args[1]
-			result = country[evaled_args[0]]
-		"add_country_attr":
-			country[evaled_args[0]] += evaled_args[1]
-			result = country[evaled_args[0]]
-		# "change_hourly_money":
-		# 	country.hourly_money_income += evaled_args[0]
-		# 	result = country.hourly_money_income
-		# "loose_money":
-		# 	country.money -= evaled_args[0]
-		# 	result = country.money >= evaled_args[0]
-		# "has_money":
-		# 	result = country.money >= evaled_args[0]
-		# "loose_manpower":
-		# 	country.manpower -= evaled_args[0]
-		# 	result = country.manpower
-		# "change_manpower":
-		# 	country.manpower += evaled_args[0]
-		# 	result = country.manpower
-		# "has_manpower":
-		# 	result = country.manpower >= evaled_args[0]
-		# "loose_pp":
-		# 	country.daily_pp_gain += evaled_args[0]
-		# 	result = country.daily_pp_gain
-		# "change_daily_pp":
-		# 	country.daily_pp_gain += evaled_args[0]
-		# 	result = country.daily_pp_gain
-		# "has_pp":
-		# 	result = country.political_power >= evaled_args[0]
-		# "loose_stability":
-		# 	country.stability -= evaled_args[0]
-		# 	result = country.stability
-		# "change_stability":
-		# 	country.stability = min(1.0, country.stability + evaled_args[0])
-		# 	result = country.stability
-		# "has_stability":
-		# 	result = country.stability >= evaled_args[0]
 		"army_level_up":
 			country.army_level += 1
 			result = country.army_level
@@ -335,9 +338,6 @@ func get_function(block, country: CountryData = null):
 		"change_province_types":
 			if evaled_args.size() >= 3:
 				MapManager.change_province_types(evaled_args[0].map(func(a): return int(a)), evaled_args[1], evaled_args[2])
-		"set_fig_attr":
-			if evaled_args.size() >= 3:
-				MapManager.significantFigures[evaled_args[0]][evaled_args[1]] = evaled_args[2]
 
 	if store_key != "":
 		heap[store_key] = result

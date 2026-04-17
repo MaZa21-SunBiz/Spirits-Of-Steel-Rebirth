@@ -102,11 +102,13 @@ func _refresh_saves():
 func _on_sfx_changed(value: float) -> void:
 	SettingsManager.settings.sfx_volume = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_music_changed(value: float) -> void:
 	SettingsManager.settings.music_volume = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _add_save_row(parent: Node, save_name: String, file_path: String) -> void:
@@ -174,68 +176,82 @@ func _on_save_game_pressed():
 func _on_scanlines_changed(value: float) -> void:
 	SettingsManager.settings.scanlines = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 	
 
 func _on_vignette_upper_changed(value: float) -> void:
 	SettingsManager.settings.vignette_upper = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_vignette_lower_changed(value: float) -> void:
 	SettingsManager.settings.vignette_lower = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_map_effects_pressed() -> void:
 	SettingsManager.settings.map_effects = !SettingsManager.settings.map_effects
 	graphics_path.visible = !graphics_path.visible
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func m_OnProvinceBorderThicknessChanged(value: float) -> void:
 	SettingsManager.settings.provinceBorderThickness = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 	
 func _on_province_borders_changed(value: float) -> void:
 	SettingsManager.settings.province_borders = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_ui_upper_changed(value: float) -> void:
 	SettingsManager.settings.ui_upper = value
 	tab_container.material.set_shader_parameter("upper", value)
+	SettingsManager.save_settings()
 
 
 func _on_ui_lower_changed(value: float) -> void:
 	SettingsManager.settings.ui_lower = value
 	tab_container.material.set_shader_parameter("lower", value)
+	SettingsManager.save_settings()
 
 
 func _on_ui_dirt_changed(value: float) -> void:
 	SettingsManager.settings.ui_dirt = value
 	tab_container.material.set_shader_parameter("dirt", value)
+	SettingsManager.save_settings()
 
 
 func _on_daynight_contrast_changed(value: float) -> void:
 	SettingsManager.settings.daynight_contrast = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_daynight_smoothness_changed(value: float) -> void:
 	SettingsManager.settings.daynight_smoothness = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_clouds_changed(value: float) -> void:
 	SettingsManager.settings.clouds = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_edgeness_changed(value: float) -> void:
-	SettingsManager.settings.edgeness_slider = value
+	SettingsManager.settings.clouds_edgeness = value
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()
 
 
 func _on_debug_mode_pressed() -> void:
 	SettingsManager.settings.debug_mode = !SettingsManager.settings.debug_mode
 	SettingsManager.apply_settings()
+	SettingsManager.save_settings()

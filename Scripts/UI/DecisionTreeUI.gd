@@ -29,8 +29,15 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 # @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
 @export var close_button: Button
 @export var edit_button: Button
+@export var edit_function: CheckBox
 @export var save_button: Button
-@export var add_button: Button
+@export var add_decision: Button
+@export var add_req: Button
+@export var add_finished: Button
+@export var editor_tab: TabContainer
+@export var reqs_block: VBoxContainer
+@export var finished_block: VBoxContainer
+@onready var expression_scene = preload("res://Scenes/Expression.tscn")
 
 
 var current_category: String = "Economy"
@@ -47,6 +54,9 @@ var selected_node_btn: Button = null
 
 func _ready():
 	DecisionManager.ui_overlay = self
+	add_req.pressed.connect(_on_add_req_pressed)
+	add_finished.pressed.connect(_on_add_finished_pressed)
+	_on_edit_mode_toggled(false)
 
 
 func _process(delta: float) -> void:
@@ -170,17 +180,21 @@ func _load_category(cat_name: String):
 
 	for node in nodes:
 		if node.has("prereq"):
-			var start = _get_node_center(nodes, node["prereq"])
-			if start != Vector2.ZERO:
-				connection_lines.append(
-					{
-						"type": "prereq",
-						"from": start,
-						"to": Vector2(node["pos"][0], node["pos"][1]) \
-							+ (NODE_SIZE * 0.5),
-						"active": player.has_meta("finished_" + node["prereq"])
-					}
-				)
+			var prereqs = node["prereq"]
+			if not prereqs is Array:
+				prereqs = [prereqs]
+			for req_id in prereqs:
+				var start = _get_node_center(nodes, req_id)
+				if start != Vector2.ZERO:
+					connection_lines.append(
+						{
+							"type": "prereq",
+							"from": start,
+							"to": Vector2(node["pos"][0], node["pos"][1]) \
+								+ (NODE_SIZE * 0.5),
+							"active": player.has_meta("finished_" + req_id)
+						}
+					)
 				
 		if node.has("exclusive"):
 			var exclusives = node["exclusive"]
@@ -211,17 +225,21 @@ func _update_connections():
 
 	for node in nodes:
 		if node.has("prereq"):
-			var start = _get_node_center(nodes, node["prereq"])
-			if start != Vector2.ZERO:
-				connection_lines.append(
-					{
-						"type": "prereq",
-						"from": start,
-						"to": Vector2(node["pos"][0], node["pos"][1]) \
-							+ (NODE_SIZE * 0.5),
-						"active": player.has_meta("finished_" + node["prereq"])
-					}
-				)
+			var prereqs = node["prereq"]
+			if not prereqs is Array:
+				prereqs = [prereqs]
+			for req_id in prereqs:
+				var start = _get_node_center(nodes, req_id)
+				if start != Vector2.ZERO:
+					connection_lines.append(
+						{
+							"type": "prereq",
+							"from": start,
+							"to": Vector2(node["pos"][0], node["pos"][1]) \
+								+ (NODE_SIZE * 0.5),
+							"active": player.has_meta("finished_" + req_id)
+						}
+					)
 				
 		if node.has("exclusive"):
 			var exclusives = node["exclusive"]
@@ -345,11 +363,21 @@ func _apply_node_style(btn: Button, data: Dictionary, player: CountryData):
 					is_mutually_locked = true
 					break
 		
+		var is_prereq_locked = false
+		if data.has("prereq"):
+			var prereqs = data["prereq"]
+			if not prereqs is Array:
+				prereqs = [prereqs]
+			for req_id in prereqs:
+				if not player.has_meta("finished_" + req_id):
+					is_prereq_locked = true
+					break
+		
 		if is_mutually_locked:
 			btn.text = data["title"] + "\n[LOCKED]"
 			style.bg_color = Color(0.4, 0.1, 0.1)
 			btn.disabled = true
-		elif data.has("prereq") and not player.has_meta("finished_" + data["prereq"]):
+		elif is_prereq_locked:
 			btn.text = data["title"]
 			style.bg_color = Color(0.241, 0.102, 0.101, 1.0)
 			btn.disabled = true
@@ -442,6 +470,7 @@ func refresh_status_only():
 	var nodes = country_categories.get(current_category, [])
 	for btn in node_buttons.values():
 		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
+	_update_connections()
 	tree_canvas.queue_redraw()
 
 
@@ -452,9 +481,10 @@ func _on_reload_decisions_pressed():
 
 
 func _on_edit_mode_toggled(toggled_on: bool):
-	edit_mode = toggled_on
-	save_button.visible = toggled_on
-	add_button.visible = toggled_on
+	edit_mode = !toggled_on
+	save_button.visible = !toggled_on
+	add_decision.visible = !toggled_on
+	edit_function.visible = !toggled_on
 	
 	if info_tab:
 		info_tab.current_tab = 1 if toggled_on else 0
@@ -493,6 +523,7 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 					edit_desc.text = data.get("desc", "")
 					edit_days.value = data.get("days", 0)
 					edit_ppcost.value = data.get("cost_pp", 0)
+					_load_expression_blocks(data)
 				else:
 					if dragging_node == btn:
 						dragging_node = null
@@ -503,79 +534,126 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 			MOUSE_BUTTON_RIGHT:
 				if event.pressed:
 					if connecting_id != "":
-						if connecting_id != data.get("prereq", "") && connecting_id != data.get("exclusive", ""):
+						var prereqs = data.get("prereq", [])
+						if not prereqs is Array: prereqs = [prereqs]
+						var exclusives = data.get("exclusive", [])
+						if not exclusives is Array: exclusives = [exclusives]
+						
+						if connecting_id not in prereqs and connecting_id not in exclusives:
 							if connecting_id != data.get("id", ""):
 								if Input.is_key_pressed(KEY_SHIFT):
-									data["exclusive"] = connecting_id
+									exclusives.append(connecting_id)
+									data["exclusive"] = exclusives
 								else:
-									data["prereq"] = connecting_id
+									prereqs.append(connecting_id)
+									data["prereq"] = prereqs
 						else:
 							if Input.is_key_pressed(KEY_SHIFT):
-								data.erase("exclusive")
+								exclusives.erase(connecting_id)
+								if exclusives.is_empty():
+									data.erase("exclusive")
+								else:
+									data["exclusive"] = exclusives
 							else:
-								data.erase("prereq")
+								prereqs.erase(connecting_id)
+								if prereqs.is_empty():
+									data.erase("prereq")
+								else:
+									data["prereq"] = prereqs
 
 						connecting_id = ""
-						add_button.text = "Add Button"
+						add_decision.text = "Add Button"
 					else:
 						connecting_id = data["id"]
-						add_button.text = "[connecting]: %s" % connecting_id
+						add_decision.text = "[connecting]: %s" % connecting_id
 			MOUSE_BUTTON_MIDDLE:
-				var player = CountryManager.player_country
-				var country_cats = DecisionManager.get_country_categories(player.country_name)
-				var nodes: Array = country_cats.get(current_category, [])
-				var idx: int = nodes.find(data)
-				print(data)
-				nodes.remove_at(idx)
-				data.clear()
-				print(data)
-				btn.queue_free()
+				if Input.is_key_pressed(KEY_SHIFT):
+					var player = CountryManager.player_country
+					var country_cats = DecisionManager.get_country_categories(player.country_name)
+					var nodes: Array = country_cats.get(current_category, [])
+					var idx: int = nodes.find(data)
+					print(data)
+					nodes.remove_at(idx)
+					data.clear()
+					print(data)
+					btn.queue_free()
 
 		_update_connections()
 		tree_canvas.queue_redraw()
 
 func _on_add_decision_pressed() -> void:
-	var player = CountryManager.player_country
-	var country_cats = DecisionManager.get_country_categories(player.country_name)
+	var player: CountryData = CountryManager.player_country
+	var country_cats: Dictionary = DecisionManager.get_country_categories(player.country_name)
 	var nodes = country_cats.get(current_category, [])
-	var id: String = str(randi() % 100)
-	nodes.append(
-		{
-			"id": id,
-			"title": id,
-			"pos": [
-				100.0,
-				150.0
-			],
-			"days": 20.0,
-			"cost_pp": 25.0,
-			"reqs": [],
-			"action": [],
-			"desc": ""
-		}
-	)
-	_create_node(
-		{
-			"id": id,
-			"title": id,
-			"pos": [
-				100.0,
-				150.0
-			],
-			"days": 20.0,
-			"cost_pp": 25.0,
-			"reqs": [],
-			"action": [],
-			"desc": ""
-		},
-		nodes.size()-1,
-		player
-	)
+	var id: String = "%s_%d#%d" % [current_category, nodes.size(), randi_range(0, 100)]
+	var new_decision = {
+		"id": id,
+		"title": id,
+		"pos": [
+			100.0,
+			150.0
+		],
+		"days": 20.0,
+		"cost_pp": 25.0,
+		"reqs": [],
+		"action": [],
+		"desc": ""
+	}
+	nodes.append(new_decision)
+	_create_node(new_decision, nodes.size() - 1, player)
 
 	print(nodes)
 	
 	_update_connections()
 	tree_canvas.queue_redraw()
+
+
+func _load_expression_blocks(data: Dictionary):
+	for c in reqs_block.get_children():
+		reqs_block.remove_child(c)
+		c.queue_free()
+	for c in finished_block.get_children():
+		finished_block.remove_child(c)
+		c.queue_free()
+	
+	for req in data.get("reqs", []):
+		var expr = expression_scene.instantiate()
+		expr.is_child = true
+		reqs_block.add_child(expr)
+		expr.FromDict(req)
+		expr.changed.connect(_sync_expressions)
+		
+	for act in data.get("action", []):
+		var expr = expression_scene.instantiate()
+		expr.is_child = true
+		finished_block.add_child(expr)
+		expr.FromDict(act)
+		expr.changed.connect(_sync_expressions)
+
+
+func _on_add_req_pressed():
+	_add_expr_to_block(reqs_block)
+
+
+func _on_add_finished_pressed():
+	_add_expr_to_block(finished_block)
+
+
+func _add_expr_to_block(block: Control):
+	if selected_decision.is_empty(): return
+	var expr = expression_scene.instantiate()
+	expr.is_child = true
+	block.add_child(expr)
+	expr.changed.connect(_sync_expressions)
+	_sync_expressions()
+
+
+func _sync_expressions():
+	if selected_decision.is_empty() or not selected_node_btn: return
+	selected_decision["reqs"] = reqs_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
+	selected_decision["action"] = finished_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
+	_update_node_visuals(selected_node_btn, selected_decision)
+	_on_save_decisions_pressed()
 
 
 func _on_edit_label_text_changed() -> void:
@@ -584,6 +662,7 @@ func _on_edit_label_text_changed() -> void:
 	
 	selected_decision["title"] = edit_label.text
 	_update_node_visuals(selected_node_btn, selected_decision)
+	_on_save_decisions_pressed()
 
 
 func _on_edit_desc_text_changed() -> void:
@@ -592,6 +671,7 @@ func _on_edit_desc_text_changed() -> void:
 	
 	selected_decision["desc"] = edit_desc.text
 	_update_node_visuals(selected_node_btn, selected_decision)
+	_on_save_decisions_pressed()
 
 
 func _on_edit_days_value_changed(value: float) -> void:
@@ -600,6 +680,7 @@ func _on_edit_days_value_changed(value: float) -> void:
 	
 	selected_decision["days"] = int(value)
 	_update_node_visuals(selected_node_btn, selected_decision)
+	_on_save_decisions_pressed()
 
 
 func _on_edit_ppcost_value_changed(value: float) -> void:
@@ -608,6 +689,7 @@ func _on_edit_ppcost_value_changed(value: float) -> void:
 	
 	selected_decision["cost_pp"] = int(value)
 	_update_node_visuals(selected_node_btn, selected_decision)
+	_on_save_decisions_pressed()
 
 
 func _update_node_visuals(btn: Button, data: Dictionary):
@@ -629,3 +711,9 @@ func _update_node_visuals(btn: Button, data: Dictionary):
 	
 	btn.tooltip_text = tt
 
+
+
+func _on_edit_func_toggled(toggled_on: bool) -> void:
+	add_req.visible = toggled_on
+	add_finished.visible = toggled_on
+	editor_tab.visible = toggled_on
