@@ -471,6 +471,7 @@ offset_left = 368.0
 offset_top = -191.0
 offset_right = 738.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Stats" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1873248397]
 use_parent_material = true

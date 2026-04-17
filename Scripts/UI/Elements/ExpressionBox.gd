@@ -186,6 +186,7 @@ func _ready() -> void:
 func _add_inital_expression(box: Container):
 	if !box.get_children():
 		var expr: ExpressionBox = expression_instance.instantiate()
+		print(expr.expression_tabs)
 		expr.expression_tabs.current_tab = ExpressionTypes.Variable
 		expr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		expr.size_flags_vertical = Control.SIZE_EXPAND_FILL

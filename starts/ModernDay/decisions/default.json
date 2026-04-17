@@ -148,13 +148,13 @@
 			},
 			{
 				"action": [],
-				"cost_pp": 25.0,
-				"days": 20.0,
+				"cost_pp": 25,
+				"days": 20,
 				"desc": "",
 				"id": "25",
 				"pos": [
-					300.963134765625,
-					-14.8348083496094
+					300.0,
+					0.0
 				],
 				"reqs": [],
 				"title": "25"
@@ -239,6 +239,38 @@
 				],
 				"prereq": "mil_1",
 				"title": "Conscription Law"
+			},
+			{
+				"action": [],
+				"cost_pp": 25,
+				"days": 20,
+				"desc": "",
+				"id": "Military_4#89",
+				"pos": [
+					1813.08251953125,
+					168.826187133789
+				],
+				"reqs": [
+					{
+						"do": [],
+						"for": "",
+						"in": []
+					}
+				],
+				"title": "Military_4#89"
+			},
+			{
+				"action": [],
+				"cost_pp": 25.0,
+				"days": 20.0,
+				"desc": "",
+				"id": "Military_5#77",
+				"pos": [
+					1750.0,
+					150.0
+				],
+				"reqs": [],
+				"title": "Military_5#77"
 			}
 		],
 		"Political": [

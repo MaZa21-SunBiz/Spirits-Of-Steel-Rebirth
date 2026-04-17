@@ -18,7 +18,7 @@ participant_selector = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Winn
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
 material = ExtResource("1_o4gkq")
-offset_right = 398.0
+offset_right = 300.0
 offset_bottom = 648.0
 theme = ExtResource("1_41grw")
 
