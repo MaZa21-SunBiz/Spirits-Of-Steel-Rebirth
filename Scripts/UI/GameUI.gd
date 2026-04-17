@@ -1183,4 +1183,3 @@ func _on_play_as_pressed() -> void:
 	CountryManager.set_player_country(selected_country.country_name)
 	GameState.selectingCountry = false
 	_on_province_clicked(CountryManager.player_country.country_name)
-
