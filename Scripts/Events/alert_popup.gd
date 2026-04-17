@@ -18,8 +18,7 @@ func setup_alert(config: Dictionary):
 
 
 func _ready():
-	$PanelContainer.mouse_filter = Control.MOUSE_FILTER_PASS
-	button.pressed.connect(_on_ok)
+	button.pressed.connect(queue_free)
 	_build_ui()
 
 
@@ -33,7 +32,7 @@ func _gui_input(event):
 			else:
 				dragging = false
 		elif event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
-			_on_ok()
+			queue_free()
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position = get_global_mouse_position() - drag_offset
@@ -43,7 +42,6 @@ func _build_ui():
 	var c1 = data.get("c1")
 	var c2 = data.get("c2")
 	var custom_text = data.get("text", "")
-	var params = data.get("params", {})
 
 	# 1. Handle Flags (Hide them if null)
 	if c1:
@@ -64,7 +62,7 @@ func _build_ui():
 		description.text = custom_text
 	else:
 		# Fallback to standard types for backward compatibility
-		match data.get("type", "default"):
+		match data.get("event", "event"):
 			"war":
 				description.text = "%s has declared war on %s!" % [
 					c1.country_name.capitalize(), 
@@ -75,18 +73,7 @@ func _build_ui():
 			"game_over":
 				description.text = "Game Over"
 			var type:
-				description.text = "Event: " + type
-
-	# 3. Custom Styling from Params
-	if params.has("color"):
-		description.add_theme_color_override("font_color", params["color"])
-
-
-func _on_ok():
-	# If we passed a callback function in params, run it!
-	if data.get("params", {}).has("callback"):
-		data["params"]["callback"].call()
-	queue_free()
+				description.text = type
 
 
 func _get_flag(country: String, ideology: String = ""):

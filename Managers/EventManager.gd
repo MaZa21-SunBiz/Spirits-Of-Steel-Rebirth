@@ -17,60 +17,27 @@ func _ready():
 
 
 # UNIFIED ENTRY POINT
-func show_alert(
-	type_or_data: Variant,
-	c1: Variant = null,
-	c2: Variant = null,
-	custom_text: String = "",
-	extra_params: Dictionary = {}
-):
-	var type: String = ""
-	var data: Dictionary = {}
-
-	if type_or_data is Dictionary:
-		data = type_or_data
-		type = data.get("event", "event")
-		c1 = data.get("c1", c1)
-		c2 = data.get("c2", c2)
-		custom_text = data.get("text", custom_text)
-		extra_params = data
-		
-		# Handle string to CountryData conversion
-		if c1 is String:
-			c1 = CountryManager.countries.get(c1)
-		if c2 is String:
-			c2 = CountryManager.countries.get(c2)
-	else:
-		type = str(type_or_data)
-		data = extra_params
-
+func show_alert(data: Dictionary):
+	var popup: Node
 	# Delegate based on type
-	match type:
+	match data.get("event", "default"):
 		"super":
-			_trigger_super_event(data)
+			popup = _trigger_super_event(data)
 		"custom":
-			_trigger_custom_event(data)
+			popup = _trigger_custom_event(data)
 		_:
-			_show_standard_alert.call_deferred(type, c1, c2, custom_text, extra_params)
+			popup = _trigger_default_alert(data)
+	_add_popup_to_ui(popup)
 
 
-func _show_standard_alert(
-	type: String,
-	c1: CountryData,
-	c2: CountryData,
-	text: String,
-	params: Dictionary
-):
+func _trigger_default_alert(data: Dictionary) -> Node:
 	var popup = ALERT_POPUP_SCENE.instantiate()
-	popup.setup_alert(
-		{"type": type, "c1": c1, "c2": c2, "text": text, "params": params}
-	)
-	_add_popup_to_ui(popup)
+	popup.setup_alert(data)
+	return popup
 
 
-func _trigger_super_event(data: Dictionary):
+func _trigger_super_event(data: Dictionary) -> Node:
 	var popup = SUPER_EVENT_SCENE.instantiate()
-	_add_popup_to_ui(popup)
 	
 	# Center and setup (migrated logic)
 	popup.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -85,12 +52,13 @@ func _trigger_super_event(data: Dictionary):
 			MusicManager.play_custom_file(base_path + ".ogg")
 	else:
 		MusicManager.play_sfx(MusicManager.SFX.POPUP)
+	return popup
 
 
-func _trigger_custom_event(data: Dictionary):
+func _trigger_custom_event(data: Dictionary) -> Node:
 	var popup = CUSTOM_EVENT_SCENE.instantiate()
-	_add_popup_to_ui(popup)
 	popup.setup(data)
+	return popup
 
 
 var restackLatch: bool = false
@@ -112,10 +80,6 @@ func _add_popup_to_ui(popup: Control):
 				restackLatch = true
 				_restack_popups.call_deferred()
 	)
-
-
-func show_custom_popup(popup: Control) -> void:
-	_add_popup_to_ui(popup)
 
 
 func _restack_popups():
@@ -155,7 +119,7 @@ func check_super_events():
 	var index_cur: int = 0
 	for event in super_events:
 		if InterpreterManager.get_function(event.get("cause", {})):
-			_trigger_super_event(event)
+			_add_popup_to_ui(_trigger_super_event(event))
 			remove.append(index_cur)
 		index_cur += 1
 	remove.reverse()

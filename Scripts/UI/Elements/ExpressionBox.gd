@@ -1,6 +1,6 @@
 class_name ExpressionBox extends PanelContainer
 
-enum ExpressionTypes {Variable, List, Function, Loop, Match, Element, Close}
+enum ExpressionTypes {Variable, List, Event, Function, Loop, Match, Element, IdeologyDrift, Close}
 enum ElementTypes {Paragraph, Button, Image, Header}
 signal changed
 
@@ -16,6 +16,9 @@ var value_expression = Expression.new()
 
 @export_group("Array")
 @export var items_box: VBoxContainer
+
+@export_group("Event")
+@export var pairs: VBoxContainer
 
 @export_group("Function")
 @export var func_options: OptionButton
@@ -48,6 +51,11 @@ var value_expression = Expression.new()
 @export var country1_name: Container
 @export var country2_name: Container
 
+@export_group("IdeologyDrift")
+@export var drift_amount: SpinBox
+@export var final_x: SpinBox
+@export var final_y: SpinBox
+
 func ToDict():
 	match expression_tabs.current_tab:
 		ExpressionTypes.Variable:
@@ -62,6 +70,12 @@ func ToDict():
 
 		ExpressionTypes.List:
 			return items_box.get_children().map(func(x): return x.ToDict())
+
+		ExpressionTypes.Event:
+			var fish = {}
+			for pair in pairs.get_children():
+				fish.merge(pair.ToDict())
+			return fish
 
 		ExpressionTypes.Function:
 			return {
@@ -114,6 +128,12 @@ func ToDict():
 						"country2": country2_name.get_child(0).ToDict(),
 						}
 
+		ExpressionTypes.IdeologyDrift:
+			return {
+				"drift_amount": drift_amount.value,
+				"final_position": [final_x.value, final_y.value]
+				}
+
 func FromDict(data):
 	if typeof(data) == TYPE_ARRAY:
 		expression_tabs.current_tab = ExpressionTypes.List
@@ -136,21 +156,32 @@ func FromDict(data):
 		if idx != -1:
 			func_options.select(idx)
 		
-		for arg in data["args"]:
+		var args_arr = data["args"] if typeof(data["args"]) == TYPE_ARRAY else [data["args"]]
+		for arg in args_arr:
 			add_expression(args_box).FromDict(arg)
+
 	elif data.has("for"):
 		expression_tabs.current_tab = ExpressionTypes.Loop
 		if for_edit: for_edit.text = data["for"]
-		for item in data["in"]:
+		var in_arr = data["in"] if typeof(data["in"]) == TYPE_ARRAY else [data["in"]]
+		for item in in_arr:
 			add_expression(iter_element_box).FromDict(item)
-		for item in data["do"]:
+		var do_arr = data["do"] if typeof(data["do"]) == TYPE_ARRAY else [data["do"]]
+		for item in do_arr:
 			add_expression(do_box).FromDict(item)
+
 	elif data.has("match"):
 		expression_tabs.current_tab = ExpressionTypes.Match
 		add_expression(match_expression).FromDict(data["match"])
 		for key in data.keys():
 			if key == "match": continue
 			_on_add_case_pressed().FromDict({key: data[key]})
+
+	elif data.has("event"):
+		expression_tabs.current_tab = ExpressionTypes.Event
+		for key in data.keys():
+			_on_add_pair_pressed().FromDict({key: data[key]})
+
 	elif data.has("type"):
 		expression_tabs.current_tab = ExpressionTypes.Element
 		_on_expression_type_tab_selected(ExpressionTypes.Element)
@@ -158,18 +189,28 @@ func FromDict(data):
 			"paragraph":
 				element_tabs.current_tab = ElementTypes.Paragraph
 				paragraph_text.get_child(0).FromDict(data["text"])
+
 			"button":
 				element_tabs.current_tab = ElementTypes.Button
 				button_text.get_child(0).FromDict(data["text"])
-				button_condition.get_child(0).FromDict(data["condition"])
-				button_finished.get_child(0).FromDict(data["finished"])
+				button_condition.get_child(0).FromDict(data.get("condition", InterpreterManager.DUMMY_FUNC))
+				button_finished.get_child(0).FromDict(data.get("finished", InterpreterManager.DUMMY_FUNC))
+
 			"image":
 				element_tabs.current_tab = ElementTypes.Image
 				image_path.get_child(0).FromDict(data["text"])
+
 			"country_header":
 				element_tabs.current_tab = ElementTypes.Header
 				country1_name.get_child(0).FromDict(data["country1"])
 				country2_name.get_child(0).FromDict(data["country2"])
+
+	elif data.has("drift_amount"):
+		expression_tabs.current_tab = ExpressionTypes.IdeologyDrift
+		_on_expression_type_tab_selected(ExpressionTypes.IdeologyDrift)
+		drift_amount.value = data["drift_amount"]
+		final_x.value = data["final_position"][0]
+		final_y.value = data["final_position"][1]
 
 
 func _ready() -> void:
@@ -182,6 +223,11 @@ func _ready() -> void:
 	func_options.item_selected.connect(func(_idx): changed.emit())
 	if value_edit: value_edit.text_changed.connect(func(): changed.emit())
 	if for_edit: for_edit.text_changed.connect(func(): changed.emit())
+
+
+# func _process(delta: float) -> void:
+# 	print(ToDict())
+
 
 func _add_inital_expression(box: Container):
 	if !box.get_children():
@@ -197,11 +243,11 @@ func _on_expression_type_tab_selected(tab: int) -> void:
 	match tab:
 		ExpressionTypes.Close:
 			queue_free()
-		ExpressionTypes.Loop:
-			_add_inital_expression(iter_element_box)
-			_add_inital_expression(do_box)
-		ExpressionTypes.Match:
-			_add_inital_expression(match_expression)
+		# ExpressionTypes.Loop:
+		# 	_add_inital_expression(iter_element_box)
+		# 	_add_inital_expression(do_box)
+		# ExpressionTypes.Match:
+		# 	_add_inital_expression(match_expression)
 		ExpressionTypes.Element:
 			_add_inital_expression(paragraph_text)
 			_add_inital_expression(button_text)
@@ -248,5 +294,17 @@ func _on_add_case_pressed() -> Node:
 	return case
 
 
+func _on_add_pair_pressed() -> Node:
+	var pair = case_instance.instantiate()
+	pairs.add_child(pair)
+	pair.changed.connect(func(): changed.emit())
+	changed.emit()
+	return pair
+
+
 func _on_add_item_button_pressed() -> void:
 	add_expression(items_box)
+
+
+func _on_add_pairs_pressed() -> void:
+	pass # Replace with function body.

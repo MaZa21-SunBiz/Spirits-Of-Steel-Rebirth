@@ -369,17 +369,28 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 			declare_war(target, enemy_data)
 
 
-func declare_war(a: CountryData, b: CountryData, a_silent: bool = false) -> void:
-	if a == b || is_at_war(a, b) || FactionManager.in_faction(a, b):
+func declare_war(warer: CountryData, waree: CountryData, a_silent: bool = false) -> void:
+	if warer == waree || is_at_war(warer, waree) || FactionManager.in_faction(warer, waree):
 		return
 	#print("%s declared war on %s" % [a.country_name, b.country_name])
 	#_snapshot_country_territory(a.country_name)
 	#_snapshot_country_territory(b.country_name)
-	if !add_war_silent(a, b) || a_silent:
+	if !add_war_silent(warer, waree) || a_silent:
 		return
 
-	if a.is_player || b.is_player || is_at_war(CountryManager.player_country, a) || is_at_war(CountryManager.player_country, b):
-		EventManager.show_alert("war", a, b)
+	if (
+		warer.is_player
+		|| waree.is_player 
+		|| is_at_war(CountryManager.player_country, warer) 
+		|| is_at_war(CountryManager.player_country, waree)
+	):
+		EventManager.show_alert(
+			{
+				"event": "war",
+				"c1": warer,
+				"c2": waree
+			}
+		)
 		MusicManager.play_music(MusicManager.MUSIC.BATTLE_THEME)
 		MusicManager.play_sfx(MusicManager.SFX.DECLARE_WAR)
 
@@ -504,7 +515,13 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		MusicManager.play_music(MusicManager.MUSIC.MAIN_THEME)
 		MusicManager.play_sfx(MusicManager.SFX.POPUP)
 
-		EventManager.show_alert("capitulated", loser, loser)
+		EventManager.show_alert(
+			{
+				"event": "capitulated",
+				"c1": loser,
+				"c2": loser
+			}
+		)
 
 		if loser.is_player:
 			MusicManager.play_sfx(MusicManager.SFX.GAME_OVER)

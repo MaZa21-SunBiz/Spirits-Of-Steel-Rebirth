@@ -86,7 +86,13 @@ func process_country_day(country: CountryData):
 						break
 
 			# 2. Show the alert with the actual title
-			EventManager.show_alert("event", country, null, "%s completed" % decision_title)
+			EventManager.show_alert(
+				{
+					"event": "default",
+					"c1": country,
+					"text": "%s completed" % decision_title
+				}
+			)
 
 		tasks.erase(key)
 
