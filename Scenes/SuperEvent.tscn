@@ -6,10 +6,13 @@
 [ext_resource type="FontFile" uid="uid://cee8mbnpx3w3h" path="res://font/arial.TTF" id="3_2njta"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="4_ptv18"]
 
-[node name="Alert" type="Control" unique_id=118916730]
+[node name="Alert" type="Control" unique_id=118916730 node_paths=PackedStringArray("background_rect", "desc_label", "button")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uj0pn")
+background_rect = NodePath("Panel/background")
+desc_label = NodePath("Panel/description")
+button = NodePath("Button")
 
 [node name="Panel" type="ColorRect" parent="." unique_id=2056094251]
 material = ExtResource("2_jk02u")

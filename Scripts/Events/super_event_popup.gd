@@ -1,8 +1,8 @@
 extends Control
 
-@onready var background_rect: TextureRect = $"Panel/background"
-@onready var desc_label: Label = $"Panel/description"
-@onready var button: Button = $"Button"
+@export var background_rect: TextureRect
+@export var desc_label: Label
+@export var button: Button
 
 var manually_positioned = false
 var dragging = false
