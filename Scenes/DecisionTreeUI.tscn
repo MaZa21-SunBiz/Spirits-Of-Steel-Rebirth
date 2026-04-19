@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cdspipsa2vbk5" path="res://Scripts/UI/DecisionTreeUI.gd" id="1_x8y2v"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_qq7pm"]
 
-[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("info_text", "info_tab", "edit_label", "edit_desc", "edit_days", "edit_ppcost", "close_button", "edit_button", "edit_function", "save_button", "add_decision", "add_req", "add_finished", "editor_tab", "reqs_block", "finished_block")]
+[node name="DecisionTreeUI" type="CanvasLayer" unique_id=1860343269 node_paths=PackedStringArray("info_text", "info_tab", "edit_label", "edit_desc", "edit_days", "edit_ppcost", "close_button", "edit_button", "editing_buttons", "edit_function", "save_button", "add_decision", "add_req", "add_finished", "editor_tab", "reqs_block", "finished_block")]
 layer = 100
 script = ExtResource("1_x8y2v")
 info_text = NodePath("StaticUI/InfoPanel/TabContainer/InfoText")
@@ -14,11 +14,12 @@ edit_days = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContaine
 edit_ppcost = NodePath("StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/PPCost")
 close_button = NodePath("StaticUI/Header/HBoxContainer/CloseButton")
 edit_button = NodePath("StaticUI/Header/HBoxContainer/EditMode")
-edit_function = NodePath("StaticUI/Header/HBoxContainer/EditFunc")
-save_button = NodePath("StaticUI/Header/HBoxContainer/SaveDecisions")
-add_decision = NodePath("StaticUI/Header/HBoxContainer/AddDecision")
-add_req = NodePath("StaticUI/Header/HBoxContainer/AddRequirement")
-add_finished = NodePath("StaticUI/Header/HBoxContainer/AddFinished")
+editing_buttons = NodePath("StaticUI/Header/HBoxContainer/EditingButtons")
+edit_function = NodePath("StaticUI/Header/HBoxContainer/EditingButtons/EditFunc")
+save_button = NodePath("StaticUI/Header/HBoxContainer/EditingButtons/SaveDecisions")
+add_decision = NodePath("StaticUI/Header/HBoxContainer/EditingButtons/AddDecision")
+add_req = NodePath("StaticUI/Header/HBoxContainer/EditingButtons/AddRequirement")
+add_finished = NodePath("StaticUI/Header/HBoxContainer/EditingButtons/AddFinished")
 editor_tab = NodePath("StaticUI/TabContainer")
 reqs_block = NodePath("StaticUI/TabContainer/Requirements/ReqsBlock")
 finished_block = NodePath("StaticUI/TabContainer/Finished/FinishedBlock")
@@ -86,36 +87,42 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ReloadDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805188]
+[node name="EditingButtons" type="HBoxContainer" parent="StaticUI/Header/HBoxContainer" unique_id=1774232772]
+use_parent_material = true
+layout_mode = 2
+
+[node name="ReloadDecisions" type="Button" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=1987805188]
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "🗘"
 expand_icon = true
 
-[node name="EditFunc" type="CheckBox" parent="StaticUI/Header/HBoxContainer" unique_id=1269039078]
-visible = false
+[node name="EditFunc" type="CheckBox" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=1269039078]
 use_parent_material = true
 layout_mode = 2
 text = "Edit Decision Function"
 
-[node name="AddRequirement" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=113244181]
-visible = false
+[node name="AddRequirement" type="Button" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=113244181]
 use_parent_material = true
 layout_mode = 2
 text = "Add Requirement"
 
-[node name="AddFinished" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=825370584]
-visible = false
+[node name="AddFinished" type="Button" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=825370584]
 use_parent_material = true
 layout_mode = 2
 text = "Add Finished"
 
-[node name="AddDecision" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=956861038]
-visible = false
+[node name="AddDecision" type="Button" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=956861038]
 use_parent_material = true
 layout_mode = 2
 text = "Add Decision"
+
+[node name="SaveDecisions" type="Button" parent="StaticUI/Header/HBoxContainer/EditingButtons" unique_id=1987805190]
+use_parent_material = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = " SAVE "
 
 [node name="EditMode" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805189]
 use_parent_material = true
@@ -123,13 +130,6 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 text = " EDIT "
-
-[node name="SaveDecisions" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1987805190]
-visible = false
-use_parent_material = true
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = " SAVE "
 
 [node name="CloseButton" type="Button" parent="StaticUI/Header/HBoxContainer" unique_id=1140388651]
 use_parent_material = true
@@ -258,13 +258,13 @@ bbcode_enabled = true
 fit_content = true
 
 [connection signal="draw" from="CanvasAnchor/TreeCanvas" to="." method="_on_draw_canvas"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
-[connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditFunc" to="." method="_on_edit_func_toggled"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddRequirement" to="." method="_on_add_req_pressed"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddFinished" to="." method="_on_add_finished_pressed"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/AddDecision" to="." method="_on_add_decision_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/EditingButtons/ReloadDecisions" to="." method="_on_reload_decisions_pressed"]
+[connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditingButtons/EditFunc" to="." method="_on_edit_func_toggled"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/EditingButtons/AddRequirement" to="." method="_on_add_req_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/EditingButtons/AddFinished" to="." method="_on_add_finished_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/EditingButtons/AddDecision" to="." method="_on_add_decision_pressed"]
+[connection signal="pressed" from="StaticUI/Header/HBoxContainer/EditingButtons/SaveDecisions" to="." method="_on_save_decisions_pressed"]
 [connection signal="toggled" from="StaticUI/Header/HBoxContainer/EditMode" to="." method="_on_edit_mode_toggled"]
-[connection signal="pressed" from="StaticUI/Header/HBoxContainer/SaveDecisions" to="." method="_on_save_decisions_pressed"]
 [connection signal="pressed" from="StaticUI/Header/HBoxContainer/CloseButton" to="." method="close_menu"]
 [connection signal="value_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/EditDays" to="." method="_on_edit_days_value_changed"]
 [connection signal="value_changed" from="StaticUI/InfoPanel/TabContainer/EditDecisions/HBoxContainer/PPCost" to="." method="_on_edit_ppcost_value_changed"]

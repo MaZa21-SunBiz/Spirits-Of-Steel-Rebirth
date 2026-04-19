@@ -363,6 +363,10 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 	if caller == target:
 		return
 	
+	# DEAD CHECK: Target must have land to fight
+	if MapManager.country_to_provinces.get(target.country_name, []).is_empty() and !target.is_exiled:
+		return
+
 	for enemy_name in get_enemies_of(caller.country_name):
 		var enemy_data = CountryManager.countries.get(enemy_name)
 		if enemy_data:
@@ -371,6 +375,12 @@ func call_to_arms(caller: CountryData, target: CountryData) -> void:
 
 func declare_war(warer: CountryData, waree: CountryData, a_silent: bool = false) -> void:
 	if warer == waree || is_at_war(warer, waree) || FactionManager.in_faction(warer, waree):
+		return
+
+	# DEAD CHECK: Both must have land
+	if MapManager.country_to_provinces.get(warer.country_name, []).is_empty() and !warer.is_exiled:
+		return
+	if MapManager.country_to_provinces.get(waree.country_name, []).is_empty() and !waree.is_exiled:
 		return
 	#print("%s declared war on %s" % [a.country_name, b.country_name])
 	#_snapshot_country_territory(a.country_name)
@@ -503,6 +513,8 @@ func _handle_total_collapse(fallen_name: String, victor_name: String) -> void:
 		wars.erase(loser)
 		if loser.allowedCountries.has(victor_name):
 			loser.allowedCountries.erase(victor_name)
+	
+	FactionManager.clear_faction(loser)
 
 	for c in wars:
 		if wars[c].has(loser):

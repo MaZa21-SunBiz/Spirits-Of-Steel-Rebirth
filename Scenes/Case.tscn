@@ -7,6 +7,8 @@ use_parent_material = true
 offset_left = -2.0
 offset_right = 413.0
 offset_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_7a2we")
 block = NodePath("Case/Block")
 case_edit = NodePath("Case/AddCaseFunction/CaseEntry")
@@ -28,6 +30,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Case/AddCaseFunction" unique_id=2133058280]
+use_parent_material = true
 layout_mode = 2
 
 [node name="AddFunction" type="Button" parent="Case/AddCaseFunction/HBoxContainer" unique_id=496426190]
@@ -36,6 +39,7 @@ layout_mode = 2
 text = "Add Function"
 
 [node name="Close" type="Button" parent="Case/AddCaseFunction/HBoxContainer" unique_id=841386229]
+use_parent_material = true
 layout_mode = 2
 text = "X"
 

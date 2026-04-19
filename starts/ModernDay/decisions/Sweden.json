@@ -43,7 +43,15 @@
 				"title": "Alliance with Norway"
 			},
 			{
-				"action": [],
+				"action": [
+					{
+						"args": [
+							"manpower",
+							4000000.0
+						],
+						"func": "add_country_attr"
+					}
+				],
 				"cost_pp": 25.0,
 				"days": 20.0,
 				"desc": "",
@@ -57,7 +65,15 @@
 				"title": "Remove Unemployment"
 			},
 			{
-				"action": [],
+				"action": [
+					{
+						"args": [
+							"money",
+							2000000.0
+						],
+						"func": "add_country_attr"
+					}
+				],
 				"cost_pp": 25.0,
 				"days": 20.0,
 				"desc": "",
@@ -470,7 +486,15 @@
 				"title": "Demand the Aland island"
 			},
 			{
-				"action": [],
+				"action": [
+					{
+						"args": [
+							"Sweden",
+							"Finland"
+						],
+						"func": "declare_war"
+					}
+				],
 				"cost_pp": 25.0,
 				"days": 20.0,
 				"desc": "",
@@ -551,8 +575,8 @@
 			},
 			{
 				"action": [],
-				"cost_pp": 25,
-				"days": 20,
+				"cost_pp": 25.0,
+				"days": 20.0,
 				"desc": "",
 				"id": "Economy_36#26",
 				"pos": [
@@ -643,7 +667,7 @@
 					"Economy_17#21"
 				],
 				"reqs": [],
-				"title": "Invite European Investments"
+				"title": "Invite European Investors"
 			},
 			{
 				"action": [],
@@ -759,6 +783,43 @@
 				],
 				"reqs": [],
 				"title": "Join CSTO"
+			},
+			{
+				"action": [
+					{
+						"args": [
+							[
+								111.0
+							],
+							1.0,
+							"Sweden"
+						],
+						"func": "change_province_types"
+					}
+				],
+				"cost_pp": 25.0,
+				"days": 20.0,
+				"desc": "",
+				"id": "Economy_49#72",
+				"pos": [
+					1250.0,
+					-500.0
+				],
+				"reqs": [],
+				"title": "Economy_49#72"
+			},
+			{
+				"action": [],
+				"cost_pp": 25,
+				"days": 20,
+				"desc": "",
+				"id": "Economy_50#32",
+				"pos": [
+					100.0,
+					150.0
+				],
+				"reqs": [],
+				"title": "Economy_50#32"
 			}
 		],
 		"Military": [

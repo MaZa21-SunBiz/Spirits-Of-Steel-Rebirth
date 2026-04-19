@@ -58,6 +58,21 @@ func get_country_categories(country_name: String) -> Dictionary:
 	return country_decisions_map.get(country_name, default_categories)
 
 
+func get_country_categories_editable(country_name: String) -> Dictionary:
+	if not country_decisions_map.has(country_name):
+		# Create a deep copy of default categories for this country
+		var copied_cats = {}
+		for cat_name in default_categories.keys():
+			copied_cats[cat_name] = default_categories[cat_name].duplicate(true)
+		country_decisions_map[country_name] = copied_cats
+		
+		# Set a default save path if none exists
+		if not country_file_paths.has(country_name):
+			country_file_paths[country_name] = "res://decisions/" + country_name + ".json"
+			
+	return country_decisions_map[country_name]
+
+
 # --- TICKING SYSTEM ---
 func process_country_day(country: CountryData):
 	if not active_decisions.has(country.country_name):
@@ -163,7 +178,7 @@ func start_decision(country: CountryData, cat: String, index: int):
 
 func _finalize_decision(country: CountryData, id: String):
 	country.finished_decisions.append(id)
-	country.set_meta("finished_" + id, true)
+	country.set_meta("finished_" + id.replace("#","_"), true)
 
 	# Find the data to get the action (Slow search, but happens rarely)
 	for cat in get_country_categories(country.country_name).values():

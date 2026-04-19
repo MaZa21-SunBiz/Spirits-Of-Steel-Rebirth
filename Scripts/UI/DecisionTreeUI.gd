@@ -29,6 +29,7 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 # @onready var tooltip_panel := $StaticUI/TooltipPanel/TooltipLabel
 @export var close_button: Button
 @export var edit_button: Button
+@export var editing_buttons: HBoxContainer
 @export var edit_function: CheckBox
 @export var save_button: Button
 @export var add_decision: Button
@@ -37,7 +38,7 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 @export var editor_tab: TabContainer
 @export var reqs_block: VBoxContainer
 @export var finished_block: VBoxContainer
-@onready var expression_scene = preload("res://Scenes/Expression.tscn")
+@onready var expression_scene = load("res://Scenes/Expression.tscn")
 
 
 var current_category: String = "Economy"
@@ -50,6 +51,7 @@ var connecting_id: String = ""
 var drag_offset: Vector2 = Vector2.ZERO
 var selected_decision: Dictionary = {}
 var selected_node_btn: Button = null
+var _is_loading_expr: bool = false
 
 
 func _ready():
@@ -295,6 +297,7 @@ func _create_node(data: Dictionary, idx: int, player: CountryData):
 	node_buttons[data["id"]] = btn
 	tree_canvas.add_child(btn)
 	btn.material = DAMAGED_MAT
+	return btn
 
 
 func _show_info(data: Dictionary):
@@ -467,7 +470,8 @@ func refresh_status_only():
 	var country_categories = DecisionManager.get_country_categories(player.country_name)
 	var nodes = country_categories.get(current_category, [])
 	for btn in node_buttons.values():
-		_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
+		if is_instance_valid(btn):
+			_apply_node_style(btn, nodes[btn.get_meta("idx")], player)
 	_update_connections()
 	tree_canvas.queue_redraw()
 
@@ -480,12 +484,10 @@ func _on_reload_decisions_pressed():
 
 func _on_edit_mode_toggled(toggled_on: bool):
 	edit_mode = !toggled_on
-	save_button.visible = !toggled_on
-	add_decision.visible = !toggled_on
-	edit_function.visible = !toggled_on
+	editing_buttons.visible = !toggled_on
 	
 	if info_tab:
-		info_tab.current_tab = 1 if toggled_on else 0
+		info_tab.current_tab = 0 if toggled_on else 1
 
 	if not toggled_on:
 		selected_decision = {}
@@ -497,6 +499,10 @@ func _on_edit_mode_toggled(toggled_on: bool):
 
 
 func _on_save_decisions_pressed():
+	if not selected_decision.is_empty() and selected_node_btn:
+		selected_decision["reqs"] = reqs_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
+		selected_decision["action"] = finished_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
+		_update_node_visuals(selected_node_btn, selected_decision)
 	DecisionManager.save_country_decisions(CountryManager.player_country.country_name)
 
 
@@ -514,14 +520,18 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 					drag_offset = btn.get_local_mouse_position()
 					btn.z_index = 10 # Keep dragged node on top
 					
-					# Select for editing
-					selected_decision = data
-					selected_node_btn = btn
-					edit_label.text = data.get("title", "")
-					edit_desc.text = data.get("desc", "")
-					edit_days.value = data.get("days", 0)
-					edit_ppcost.value = data.get("cost_pp", 0)
-					_load_expression_blocks(data)
+					if selected_decision != data:
+						# Select for editing
+						selected_decision = data
+						selected_node_btn = btn
+						edit_label.text = data.get("title", "")
+						edit_desc.text = data.get("desc", "")
+						edit_days.value = data.get("days", 0)
+						edit_ppcost.value = data.get("cost_pp", 0)
+						if edit_function.button_pressed:
+							_load_expression_blocks(data)
+						else:
+							_load_expression_blocks({})
 				else:
 					if dragging_node == btn:
 						dragging_node = null
@@ -581,8 +591,12 @@ func _on_node_gui_input(event: InputEvent, btn: Button, data: Dictionary):
 
 func _on_add_decision_pressed() -> void:
 	var player: CountryData = CountryManager.player_country
-	var country_cats: Dictionary = DecisionManager.get_country_categories(player.country_name)
-	var nodes = country_cats.get(current_category, [])
+	var country_cats: Dictionary = DecisionManager.get_country_categories_editable(player.country_name)
+	
+	if not country_cats.has(current_category):
+		country_cats[current_category] = []
+		
+	var nodes = country_cats[current_category]
 	var id: String = "%s_%d#%d" % [current_category, nodes.size(), randi_range(0, 100)]
 	var new_decision = {
 		"id": id,
@@ -598,15 +612,24 @@ func _on_add_decision_pressed() -> void:
 		"desc": ""
 	}
 	nodes.append(new_decision)
-	_create_node(new_decision, nodes.size() - 1, player)
+	var btn = _create_node(new_decision, nodes.size() - 1, player)
 
-	print(nodes)
+	# Automatically select the new decision
+	selected_decision = new_decision
+	selected_node_btn = btn
+	edit_label.text = new_decision.get("title", "")
+	edit_desc.text = new_decision.get("desc", "")
+	edit_days.value = new_decision.get("days", 0)
+	edit_ppcost.value = new_decision.get("cost_pp", 0)
+	_load_expression_blocks(new_decision)
 	
 	_update_connections()
 	tree_canvas.queue_redraw()
+	_on_save_decisions_pressed()
 
 
 func _load_expression_blocks(data: Dictionary):
+	_is_loading_expr = true
 	for c in reqs_block.get_children():
 		reqs_block.remove_child(c)
 		c.queue_free()
@@ -615,18 +638,15 @@ func _load_expression_blocks(data: Dictionary):
 		c.queue_free()
 	
 	for req in data.get("reqs", []):
-		var expr = expression_scene.instantiate()
-		expr.is_child = true
+		var expr = ExpressionBox.FromDict(req, true)
 		reqs_block.add_child(expr)
-		expr.FromDict(req)
 		expr.changed.connect(_sync_expressions)
 		
 	for act in data.get("action", []):
-		var expr = expression_scene.instantiate()
-		expr.is_child = true
+		var expr = ExpressionBox.FromDict(act, true)
 		finished_block.add_child(expr)
-		expr.FromDict(act)
 		expr.changed.connect(_sync_expressions)
+	_is_loading_expr = false
 
 
 func _on_add_req_pressed():
@@ -647,11 +667,11 @@ func _add_expr_to_block(block: Control):
 
 
 func _sync_expressions():
-	if selected_decision.is_empty() or not selected_node_btn: return
+	if _is_loading_expr or selected_decision.is_empty() or not selected_node_btn: return
 	selected_decision["reqs"] = reqs_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
 	selected_decision["action"] = finished_block.get_children().filter(func(x): return !x.is_queued_for_deletion()).map(func(x): return x.ToDict())
 	_update_node_visuals(selected_node_btn, selected_decision)
-	_on_save_decisions_pressed()
+	DecisionManager.save_country_decisions(CountryManager.player_country.country_name)
 
 
 func _on_edit_label_text_changed() -> void:
@@ -660,7 +680,6 @@ func _on_edit_label_text_changed() -> void:
 	
 	selected_decision["title"] = edit_label.text
 	_update_node_visuals(selected_node_btn, selected_decision)
-	_on_save_decisions_pressed()
 
 
 func _on_edit_desc_text_changed() -> void:
@@ -669,7 +688,6 @@ func _on_edit_desc_text_changed() -> void:
 	
 	selected_decision["desc"] = edit_desc.text
 	_update_node_visuals(selected_node_btn, selected_decision)
-	_on_save_decisions_pressed()
 
 
 func _on_edit_days_value_changed(value: float) -> void:
@@ -678,7 +696,6 @@ func _on_edit_days_value_changed(value: float) -> void:
 	
 	selected_decision["days"] = int(value)
 	_update_node_visuals(selected_node_btn, selected_decision)
-	_on_save_decisions_pressed()
 
 
 func _on_edit_ppcost_value_changed(value: float) -> void:
@@ -687,7 +704,6 @@ func _on_edit_ppcost_value_changed(value: float) -> void:
 	
 	selected_decision["cost_pp"] = int(value)
 	_update_node_visuals(selected_node_btn, selected_decision)
-	_on_save_decisions_pressed()
 
 
 func _update_node_visuals(btn: Button, data: Dictionary):
@@ -715,3 +731,7 @@ func _on_edit_func_toggled(toggled_on: bool) -> void:
 	add_req.visible = toggled_on
 	add_finished.visible = toggled_on
 	editor_tab.visible = toggled_on
+	if toggled_on and not selected_decision.is_empty():
+		_load_expression_blocks(selected_decision)
+	elif not toggled_on:
+		_load_expression_blocks({})

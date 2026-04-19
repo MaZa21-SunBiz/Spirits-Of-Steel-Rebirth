@@ -1,38 +1,40 @@
 extends Node
 
-var functions: PackedStringArray = [
-	"return",
-	"and",
-	"not",
-	"or",
-	"xor",
-	"eq",
-	"gt",
-	"lt",
-	"all",
-	"any",
-	"probability",
-	"get",
-	"set_country_attr",
-	"add_country_attr",
-	"add",
-	"is_at_war",
-	"army_level_up",
-	"build_factory",
-	"declare_war",
-	"release",
-	"play_as",
-	"annex",
-	"add_ideology_drift",
-	"make_puppet",
-	"has_pids",
-	"add_plans",
-	"remove_plan",
-	"event",
-	"invite",
-	"change_province_types",
-	"set_fig_attr",
-	]
+enum ExpressionTypes {Variable, List, Event, Function, Loop, Match, Element, IdeologyDrift, Close}
+
+var functions: Dictionary = {
+	"return": [ExpressionTypes.Variable],
+	"and": [ExpressionTypes.Variable],
+	"not": [ExpressionTypes.Function],
+	"or": [ExpressionTypes.Variable],
+	"xor": [ExpressionTypes.Function, ExpressionTypes.Function],
+	"eq": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"gt": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"lt": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"all": [ExpressionTypes.Variable],
+	"any": [ExpressionTypes.Variable],
+	"probability": [ExpressionTypes.Variable],
+	"get": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"set_country_attr": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"add_country_attr": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"add": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"is_at_war": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"army_level_up": [],
+	"build_factory": [ExpressionTypes.Variable],
+	"declare_war": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"release": [ExpressionTypes.Variable],
+	"play_as": [ExpressionTypes.Variable],
+	"annex": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"add_ideology_drift": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.IdeologyDrift],
+	"make_puppet": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"has_pids": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"add_plans": [ExpressionTypes.Variable],
+	"remove_plan": [ExpressionTypes.Variable],
+	"event": [ExpressionTypes.Variable],
+	"invite": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"change_province_types": [ExpressionTypes.List, ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"set_fig_attr": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.Variable],
+}
 
 var debug: bool:
 	get:
@@ -152,15 +154,6 @@ func get_function(block, country: CountryData = null):
 	if country == null:
 		country = CountryManager.player_country
 
-	
-
-	#match statement
-	if block.has("match"):
-		var match_val = str(get_function(block["match"]))
-		if match_val != "match": # Prevent collision with 'match' key itself
-			get_function(block.get(match_val, {}))
-
-
 	# Handle multiple functions (Recusive Array Support)
 	if block is Array:
 		var last_result = null
@@ -168,11 +161,14 @@ func get_function(block, country: CountryData = null):
 			last_result = get_function(item, country)
 		return last_result
 
-
 	if !block is Dictionary:
-		push_error("Interpreter: block must be a Dictionary or Array.")
-		return null
+		return block
 
+	#match statement
+	if block.has("match"):
+		var match_val = str(get_function(block["match"]))
+		if match_val != "match": # Prevent collision with 'match' key itself
+			get_function(block.get(match_val, {}))
 	#for loop
 	if block.has("for"):
 		var var_name = block["for"]
@@ -195,14 +191,22 @@ func get_function(block, country: CountryData = null):
 	var args: Array = block.get("args", []).duplicate()
 	var evaled_args: Array = []
 	for arg in args:
-		arg = get_variable(arg)
-		if (arg is Dictionary && arg.has("func")) || arg is Array:
+		if arg is Dictionary or arg is Array:
 			arg = get_function(arg, country)
+		else:
+			arg = get_variable(arg)
 		evaled_args.push_back(arg)
 	var store_key: String = block.get("store", "")
 	var result = null
 
-	match block.get("func", ""):
+	var func_name = block.get("func", "")
+	if func_name != "" and functions.has(func_name):
+		var expected_args = functions[func_name]
+		if evaled_args.size() < expected_args.size():
+			push_error("Interpreter: Function '%s' expects at least %d args, got %d" % [func_name, expected_args.size(), evaled_args.size()])
+			return null
+
+	match func_name:
 		# idk stuff
 		"return":
 			if evaled_args.size() == 1:
@@ -337,7 +341,14 @@ func get_function(block, country: CountryData = null):
 				FactionManager.invite_faction(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
 		"change_province_types":
 			if evaled_args.size() >= 3:
-				MapManager.change_province_types(evaled_args[0].map(func(a): return int(a)), evaled_args[1], evaled_args[2])
+				var pids = evaled_args[0]
+				var pids_typed: Array[int] = []
+				if pids is float or pids is int:
+					pids_typed.append(int(pids))
+				elif pids is Array:
+					for p in pids:
+						pids_typed.append(int(p))
+				MapManager.change_province_types(pids_typed, int(evaled_args[1]), str(evaled_args[2]))
 
 	if store_key != "":
 		heap[store_key] = result

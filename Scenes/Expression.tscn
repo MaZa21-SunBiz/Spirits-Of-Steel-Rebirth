@@ -2,6 +2,11 @@
 
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_jleyo"]
 [ext_resource type="Script" uid="uid://b5d3cvioc35k5" path="res://Scripts/UI/Elements/ExpressionBox.gd" id="1_lrnd6"]
+[ext_resource type="Texture2D" uid="uid://bnqi6wm426p45" path="res://assets/icons/DecisionEditor/variable_icon.svg" id="3_is7lw"]
+[ext_resource type="Texture2D" uid="uid://cke87s6xb1x1g" path="res://assets/icons/DecisionEditor/array_icon.svg" id="4_q0juj"]
+[ext_resource type="Texture2D" uid="uid://bin66qrsdnisy" path="res://assets/icons/DecisionEditor/function_icon.svg" id="5_dq07d"]
+[ext_resource type="Texture2D" uid="uid://bgr0j52podfyq" path="res://assets/icons/DecisionEditor/loop_icon.svg" id="6_blat1"]
+[ext_resource type="Texture2D" uid="uid://bi3u6q64i40ls" path="res://assets/icons/DecisionEditor/match_icon.svg" id="7_s2pgo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrnd6"]
 bg_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
@@ -41,7 +46,12 @@ final_y = NodePath("ExpressionType/IdeologyDrift/FinalY")
 [node name="ExpressionType" type="TabContainer" parent="." unique_id=547955810]
 use_parent_material = true
 layout_mode = 2
-current_tab = 2
+current_tab = 4
+tab_0/icon = ExtResource("3_is7lw")
+tab_1/icon = ExtResource("4_q0juj")
+tab_3/icon = ExtResource("5_dq07d")
+tab_4/icon = ExtResource("6_blat1")
+tab_5/icon = ExtResource("7_s2pgo")
 
 [node name="Value" type="VBoxContainer" parent="ExpressionType" unique_id=1105832426]
 visible = false
@@ -87,6 +97,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Event" type="VBoxContainer" parent="ExpressionType" unique_id=1453034520]
+visible = false
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -99,10 +110,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="AddPairs" type="Button" parent="ExpressionType/Event" unique_id=478490500]
+[node name="AddPair" type="Button" parent="ExpressionType/Event" unique_id=478490500]
 use_parent_material = true
 layout_mode = 2
-text = "Add Case"
+text = "Add Pair"
 
 [node name="Function" type="GridContainer" parent="ExpressionType" unique_id=1719722842]
 visible = false
@@ -143,7 +154,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Loop" type="GridContainer" parent="ExpressionType" unique_id=1285511490]
-visible = false
 use_parent_material = true
 layout_mode = 2
 columns = 2
@@ -303,6 +313,6 @@ metadata/_tab_index = 8
 
 [connection signal="tab_selected" from="ExpressionType" to="." method="_on_expression_type_tab_selected"]
 [connection signal="pressed" from="ExpressionType/Array/AddItem/AddItemButton" to="." method="_on_add_item_button_pressed"]
-[connection signal="pressed" from="ExpressionType/Event/AddPairs" to="." method="_on_add_pairs_pressed"]
+[connection signal="pressed" from="ExpressionType/Event/AddPair" to="." method="_on_add_pair_pressed"]
 [connection signal="pressed" from="ExpressionType/Function/AddArgs/AddArgsButton" to="." method="_on_add_args_button_pressed"]
 [connection signal="pressed" from="ExpressionType/Match/AddCase" to="." method="_on_add_case_pressed"]
