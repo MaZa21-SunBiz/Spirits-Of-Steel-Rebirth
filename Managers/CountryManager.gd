@@ -237,6 +237,9 @@ func cleanup_empty_countries() -> void:
 				
 			for puppet: String in deleting.puppets:
 				CountryManager.release_puppet(deleting, CountryManager.countries[puppet])
+			
+			FactionManager.clear_faction(deleting)
+			
 			MapManager.country_to_provinces.erase(c_name)
 			MapManager.country_to_occupied_provinces.erase(c_name)
 			MapManager.country_to_owned_provinces.erase(c_name)

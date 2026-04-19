@@ -11,6 +11,12 @@ var drag_offset = Vector2.ZERO
 func _ready():
 	$Panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	button.pressed.connect(_on_button_pressed)
+	mouse_entered.connect(_on_mouse_entered)
+
+
+func _on_mouse_entered():
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		_on_button_pressed()
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

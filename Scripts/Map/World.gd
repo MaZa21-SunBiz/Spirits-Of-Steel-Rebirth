@@ -25,6 +25,7 @@ func _process(_delta: float) -> void:
 		var move_amount = clock.time_scale * 0.001 * _delta
 		water_offset.x += move_amount
 		map_sprite.material.set_shader_parameter("ocean_offset", water_offset)
+		map_sprite.material.set_shader_parameter("absolute_days", clock.get_absolute_days())
 
 
 func _enter_tree() -> void:

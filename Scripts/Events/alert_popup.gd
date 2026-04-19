@@ -19,7 +19,13 @@ func setup_alert(config: Dictionary):
 
 func _ready():
 	button.pressed.connect(queue_free)
+	mouse_entered.connect(_on_mouse_entered)
 	_build_ui()
+
+
+func _on_mouse_entered():
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		queue_free()
 
 
 func _gui_input(event):

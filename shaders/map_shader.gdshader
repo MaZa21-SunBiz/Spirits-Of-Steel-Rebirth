@@ -118,11 +118,16 @@ bool detect_border_at_distance(vec2 origin_uv, float dist_px, out vec4 out_color
     return false;
 }
 
+uniform float absolute_days;
+
 void fragment() {
-		//weird magic offset thing trust me i checked
-		float d = (PI*82.*-ocean_offset.x) + (PI*43.43) +.6;
-		float t = 0.55907372766767*cos(d/182.725);
-		float anti_t = 0.55907372766767*sin(d/182.725);
+		// Noon UTC at Longitude 0 (UV.x = 0.5) -> absolute_days fractional part is 0.5
+		float angle_daily = (-absolute_days - .5) * 2. * PI;
+		float angle_yearly = (-absolute_days / 365.25) * 2. * PI;
+		
+		float d = angle_daily;
+		float t = 0.409 * cos(angle_yearly); // Earth axial tilt
+		float anti_t = 0.409 * sin(angle_yearly);
 		//float t = 1.;
 		float lat = PI*(2.*UV.x-1.);
 		float lot = 2.*atan((2.*UV.y)-1.);

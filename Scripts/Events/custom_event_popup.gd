@@ -31,8 +31,12 @@ func setup(p_data: Dictionary):
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	$PanelContainer.mouse_filter = Control.MOUSE_FILTER_PASS
-	# Use standard OK behavior if no custom buttons?
-	# Or maybe custom events have their own buttons in contents.
+	mouse_entered.connect(_on_mouse_entered)
+
+
+func _on_mouse_entered():
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		queue_free()
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

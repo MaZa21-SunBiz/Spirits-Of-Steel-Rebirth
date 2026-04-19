@@ -39,6 +39,14 @@ func _process(delta: float) -> void:
 			date_dict_as_unix_time += 86400
 			day_passed.emit()
 		date_dict = Time.get_datetime_dict_from_unix_time(date_dict_as_unix_time)
+	
+func get_absolute_days() -> float:
+	var date_unix: int = Time.get_unix_time_from_datetime_dict(date_dict)
+	# date_dict usually has hour 0 if updated via Time.get_datetime_dict_from_unix_time(date_dict_as_unix_time)
+	# where date_dict_as_unix_time was multiple of 86400.
+	var tick_progress := accumulated_time / seconds_per_tick
+	var hours_today := hour + (tick_progress * hours_per_tick)
+	return (float(date_unix) / 86400.0) + (hours_today / 24.0)
 
 func get_time_string() -> String:
 	return "%02d:00" % hour
