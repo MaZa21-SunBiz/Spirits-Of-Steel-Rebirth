@@ -1223,7 +1223,9 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 		province.country = new_owner_name
 		if old_owner_name == oldControllerName:
 			CountryManager.countries[oldControllerName].total_population -= province.GetPopulation()
+			CountryManager.countries[oldControllerName].factories_amount -= province_objects[pid].buildings.size()
 		CountryManager.countries[new_owner_name].total_population += province.GetPopulation()
+		CountryManager.countries[new_owner_name].factories_amount += province_objects[pid].buildings.size()
 	else:
 		push_error("MapManager: Attempted to transfer ownership of non-existent PID: ", pid)
 		return
@@ -1279,9 +1281,11 @@ func OccupyProvince(pid: int, new_owner_name: String) -> void:
 	if province_objects[pid].occupier == old_owner_name:
 		province_objects[pid].occupier = ""
 		CountryManager.countries[new_owner_name].total_population += province_objects[pid].GetPopulation()
+		CountryManager.countries[new_owner_name].factories_amount += province_objects[pid].buildings.size()
 	else:
-		if oldControllerName == old_owner_name:
+		if oldControllerName == old_owner_name && oldControllerName != "Sea":
 			CountryManager.countries[old_owner_name].total_population -= province_objects[pid].GetPopulation()
+			CountryManager.countries[new_owner_name].factories_amount -= province_objects[pid].buildings.size()
 	
 		if not country_to_occupied_provinces.has(new_owner_name):
 			country_to_occupied_provinces[new_owner_name] = []
@@ -1300,6 +1304,7 @@ func DeoccupyProvince(pid: int) -> void:
 	var old_controller = province.GetFunctionalOwner()
 	if province.occupier != "":
 		CountryManager.countries[province.country].total_population += province.GetPopulation()
+		CountryManager.countries[province.country].factories_amount += province_objects[pid].buildings.size()
 		
 		if country_to_provinces.has(province.occupier):
 			country_to_provinces[province.occupier].erase(pid)
