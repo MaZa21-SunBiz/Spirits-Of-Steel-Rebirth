@@ -1303,8 +1303,9 @@ func DeoccupyProvince(pid: int) -> void:
 	var province: Province = province_objects[pid]
 	var old_controller = province.GetFunctionalOwner()
 	if province.occupier != "":
-		CountryManager.countries[province.country].total_population += province.GetPopulation()
-		CountryManager.countries[province.country].factories_amount += province_objects[pid].buildings.size()
+		if province.country != "Sea":
+			CountryManager.countries[province.country].total_population += province.GetPopulation()
+			CountryManager.countries[province.country].factories_amount += province_objects[pid].buildings.size()
 		
 		if country_to_provinces.has(province.occupier):
 			country_to_provinces[province.occupier].erase(pid)
