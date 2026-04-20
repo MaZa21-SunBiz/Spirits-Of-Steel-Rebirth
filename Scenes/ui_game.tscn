@@ -895,7 +895,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Sewage" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=112696949]
-points = PackedVector2Array(275, 179, 179, 114, 56, 29, 8, 103, 0, 0, 0, 0, 0, 0)
+points = PackedVector2Array(275, 179, 243, 114, 179, 114, 87, 26, 59, 97, 56, 29, 8, 103, 0, 0, 0, 0, 0, 0)
 default_color = Color(0.52496976, 0.24902457, 1.4439226e-07, 1)
 joint_mode = 2
 begin_cap_mode = 2
@@ -909,14 +909,14 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Water" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=352536297]
-points = PackedVector2Array(294, 164, 122, 117, 30, 151, 0, 192, 0, 0, 0, 0, 0, 0)
+points = PackedVector2Array(294, 164, 272, 70, 212, 174, 202, 94, 122, 117, 30, 151, 0, 192, 0, 0, 0, 0, 0, 0)
 default_color = Color(0, 1, 1, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Power" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=1299821553]
-points = PackedVector2Array(297, 55, 232, 192, 141, 105, 101, 36, 163, -11, 212, 54, 39, 173, 0, 0, 0, 0, 0, 0, 0, 0)
+points = PackedVector2Array(232, 192, 141, 105, 101, 36, 163, -11, 212, 54, 39, 173, 0, 0, 0, 0, 0, 0, 0, 0)
 default_color = Color(1, 1, 0, 1)
 joint_mode = 2
 begin_cap_mode = 2
