@@ -19,7 +19,7 @@ const DAMAGED_MAT = preload("res://Materials/damaged.tres")
 
 # --- NODES ---
 @onready var tree_canvas: Node2D = $CanvasAnchor/TreeCanvas
-@onready var tabs_container: HBoxContainer = $StaticUI/Header/TabsContainer
+@onready var tabs_container: TabBar = $StaticUI/Header/TabsContainer
 @export var info_text: RichTextLabel
 @export var info_tab: TabContainer
 @export var edit_label: TextEdit
@@ -57,6 +57,7 @@ var _is_loading_expr: bool = false
 func _ready():
 	DecisionManager.ui_overlay = self
 	_on_edit_mode_toggled(false)
+	tabs_container.tab_changed.connect(_on_tab_changed)
 
 
 func _process(delta: float) -> void:
@@ -144,25 +145,28 @@ func _toggle_pause(pause: bool):
 
 
 func _rebuild_tabs():
-	for c in tabs_container.get_children():
-		c.queue_free()
+	while tabs_container.tab_count > 0:
+		tabs_container.remove_tab(0)
 	
 	var player_country = CountryManager.player_country
 	var all_decisions = DecisionManager.get_country_categories(player_country.country_name)
+	var categories = all_decisions.keys()
 	
-	for cat in all_decisions.keys():
-		var btn = Button.new()
-		btn.text = " " + cat.to_upper() + " "
-		btn.toggle_mode = true
-		btn.button_pressed = (cat == current_category)
-		btn.pressed.connect(
-			func():
-				current_category = cat
-				_rebuild_tabs()
-				_load_category(cat)
-		)
-		tabs_container.add_child(btn)
-		btn.material = DAMAGED_MAT
+	for i in range(categories.size()):
+		var cat = categories[i]
+		tabs_container.add_tab(cat.to_upper())
+		if cat == current_category:
+			tabs_container.current_tab = i
+
+
+func _on_tab_changed(tab_idx: int):
+	var player_country = CountryManager.player_country
+	var all_decisions = DecisionManager.get_country_categories(player_country.country_name)
+	var categories = all_decisions.keys()
+	
+	if tab_idx < categories.size():
+		current_category = categories[tab_idx]
+		_load_category(current_category)
 
 
 func _load_category(cat_name: String):

@@ -73,6 +73,14 @@ func _add_popup_to_ui(popup: Control):
 		restackLatch = true
 		_restack_popups.call_deferred()
 
+	if popup.has_signal("setup_finished"):
+		popup.setup_finished.connect(
+			func():
+				if !restackLatch:
+					restackLatch = true
+					_restack_popups.call_deferred()
+		)
+
 	popup.tree_exited.connect(
 		func():
 			active_popups.erase(popup)

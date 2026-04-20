@@ -477,214 +477,181 @@
 			{
 				"action": [
 					{
-						"do": [
-							{
-								"false": [
-									{
-										"args": [
-											{
-												"contents": [
-													{
-														"text": [
-															{
-																"args": [
-																	"country",
-																	" has refused to joined the union"
-																],
-																"func": "add"
-															}
-														],
-														"type": "paragraph"
-													},
-													{
-														"condition": [
-															{
-																"args": [
-																	{
-																		"args": [
-																			"player",
-																			"political_power"
-																		],
-																		"func": "get"
-																	},
-																	100.0
-																],
-																"func": "gt"
-															}
-														],
-														"finished": [
-															{
-																"args": [
-																	"political_power",
-																	-100.0
-																],
-																"func": "add_country_attr"
-															},
-															{
-																"args": [
-																	"country",
-																	"bober",
-																	{
-																		"drift_amount": 0.4,
-																		"final_position": [
-																			-50.0,
-																			-50.0
-																		]
-																	}
-																],
-																"func": "add_ideology_drift"
-															},
-															{
-																"args": [
-																	{
-																		"condition": [
-																			{
-																				"args": [
-																					{
-																						"args": [
-																							"Russia",
-																							"ideology_name"
-																						],
-																						"func": "get"
-																					},
-																					{
-																						"args": [
-																							"country",
-																							"ideology_name"
-																						],
-																						"func": "get"
-																					}
-																				],
-																				"func": "eq"
-																			}
-																		],
-																		"finished": {
+						"do": {
+							"false": [
+								{
+									"args": [
+										{
+											"contents": [
+												{
+													"text": [
+														{
+															"args": [
+																"country",
+																" has refused to joined the union"
+															],
+															"func": "add"
+														}
+													],
+													"type": "paragraph"
+												},
+												{
+													"condition": [
+														{
+															"args": [
+																{
+																	"args": [
+																		"player",
+																		"political_power"
+																	],
+																	"func": "get"
+																},
+																100.0
+															],
+															"func": "gt"
+														}
+													],
+													"finished": [
+														{
+															"args": [
+																"political_power",
+																-100.0
+															],
+															"func": "add_country_attr"
+														},
+														{
+															"args": [
+																"country",
+																"bober",
+																{
+																	"drift_amount": 0.4,
+																	"final_position": [
+																		-50.0,
+																		-50.0
+																	]
+																}
+															],
+															"func": "add_ideology_drift"
+														},
+														{
+															"args": [
+																{
+																	"condition": [
+																		{
 																			"args": [
-																				"true"
+																				{
+																					"args": [
+																						"Russia",
+																						"ideology_name"
+																					],
+																					"func": "get"
+																				},
+																				{
+																					"args": [
+																						"country",
+																						"ideology_name"
+																					],
+																					"func": "get"
+																				}
 																			],
-																			"func": "return"
-																		},
-																		"text": [
-																			{
-																				"args": [
-																					"Puppet ",
-																					"country"
-																				],
-																				"func": "add"
-																			}
-																		],
-																		"type": "button"
-																	}
-																],
-																"func": "add_plans"
-															}
-														],
-														"text": "Influence Their Politics",
-														"type": "button"
-													},
-													{
-														"condition": {
-															"args": [
-																"true"
+																			"func": "eq"
+																		}
+																	],
+																	"text": [
+																		{
+																			"args": [
+																				"Puppet ",
+																				"country"
+																			],
+																			"func": "add"
+																		}
+																	],
+																	"type": "button",
+																	"finished": [
+																		{
+																			"args": [
+																				"Russia",
+																				"country"
+																			],
+																			"func": "make_puppet"
+																		}
+																	]
+																}
 															],
-															"func": "return"
-														},
-														"finished": [
-															{
-																"args": [
-																	"Russia",
-																	"country"
-																],
-																"func": "declare_war"
-															}
-														],
-														"text": "Declare War",
-														"type": "button"
-													},
-													{
-														"condition": {
+															"func": "add_plans"
+														}
+													],
+													"text": "Influence Their Politics",
+													"type": "button"
+												},
+												{
+													"finished": [
+														{
 															"args": [
-																"true"
+																"Russia",
+																"country"
 															],
-															"func": "return"
-														},
-														"finished": {
+															"func": "declare_war"
+														}
+													],
+													"text": "Declare War",
+													"type": "button"
+												},
+												{
+													"text": "Leave them be for now",
+													"type": "button"
+												}
+											],
+											"event": "custom"
+										}
+									],
+									"func": "event"
+								}
+							],
+							"match": [
+								{
+									"args": [
+										2.0
+									],
+									"func": "probability"
+								}
+							],
+							"true": [
+								{
+									"args": [
+										"Russia",
+										"country"
+									],
+									"func": "make_puppet"
+								},
+								{
+									"args": [
+										{
+											"contents": [
+												{
+													"text": [
+														{
 															"args": [
-																"true"
+																"country",
+																" has joined the union"
 															],
-															"func": "return"
-														},
-														"text": "Leave them be for now",
-														"type": "button"
-													}
-												],
-												"event": [
-													"custom"
-												]
-											}
-										],
-										"func": "event"
-									}
-								],
-								"match": [
-									{
-										"args": [
-											2.0
-										],
-										"func": "probability"
-									}
-								],
-								"true": [
-									{
-										"args": [
-											"Russia",
-											"country"
-										],
-										"func": "make_puppet"
-									},
-									{
-										"args": [
-											{
-												"contents": [
-													{
-														"text": [
-															{
-																"args": [
-																	"country",
-																	" has joined the union"
-																],
-																"func": "add"
-															}
-														],
-														"type": "paragraph"
-													},
-													{
-														"condition": {
-															"args": [
-																"true"
-															],
-															"func": "return"
-														},
-														"finished": {
-															"args": [
-																"true"
-															],
-															"func": "return"
-														},
-														"text": "The Union Grows Stronger",
-														"type": "button"
-													}
-												],
-												"event": [
-													"custom"
-												]
-											}
-										],
-										"func": "event"
-									}
-								]
-							}
-						],
+															"func": "add"
+														}
+													],
+													"type": "paragraph"
+												},
+												{
+													"text": "The Union Grows Stronger",
+													"type": "button"
+												}
+											],
+											"event": "custom"
+										}
+									],
+									"func": "event"
+								}
+							]
+						},
 						"for": "country",
 						"in": [
 							"Azerbaijan",
@@ -694,6 +661,7 @@
 							"Czechia",
 							"Romania",
 							"Bulgaria",
+							"Poland",
 							"Hungary",
 							"Slovakia",
 							"Lithuania",
@@ -704,13 +672,12 @@
 							"Turkmenistan",
 							"Kyrgyzstan",
 							"Mongolia",
-							"Tajikistan",
-							"Poland"
+							"Tajikistan"
 						]
 					}
 				],
-				"cost_pp": 50,
-				"days": 20,
+				"cost_pp": 50.0,
+				"days": 20.0,
 				"desc": "get the homies all up in here",
 				"id": "pol_6_c",
 				"pos": [
@@ -718,7 +685,6 @@
 					750.0
 				],
 				"prereq": "pol_5_c",
-				"reqs": [],
 				"title": "Unify with Former Soviet Countries"
 			},
 			{

@@ -70,6 +70,8 @@ func get_variable(variable):
 			return heap.get(variable, variable)
 
 func get_element(element, grid, country: CountryData = null):
+	if element == null:
+		return
 	var text: String
 	if element.has("text"):
 		if element["text"] is Array:
@@ -107,14 +109,19 @@ func get_element(element, grid, country: CountryData = null):
 			entry.material = grid.material
 			tr1.material = grid.material
 			tr2.material = grid.material
+			tr1.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tr2.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 		"button":
 			var entry = Button.new()
 			entry.text = text
 			
-			if not get_function(condition):
+			if not get_function(condition, country):
 				entry.disabled = true
 			
+			entry.set_meta("condition", condition)
+			entry.set_meta("country_context", country)
+
 			entry.pressed.connect(func():
 				if get_function(condition, country):
 					get_function(finished, country)
@@ -133,6 +140,7 @@ func get_element(element, grid, country: CountryData = null):
 			entry.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 			entry.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			entry.custom_minimum_size = Vector2(100, 100)
+			entry.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			grid.add_child(entry)
 			entry.material = grid.material
 		"paragraph":
@@ -142,9 +150,8 @@ func get_element(element, grid, country: CountryData = null):
 			entry.fit_content = true
 			entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			entry.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			entry.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			grid.add_child(entry)
-
-
 
 
 func get_function(block, country: CountryData = null):
@@ -164,11 +171,14 @@ func get_function(block, country: CountryData = null):
 	if !block is Dictionary:
 		return block
 
+	var store_key: String = block.get("store", "")
+	var result = null
+
 	#match statement
 	if block.has("match"):
-		var match_val = str(get_function(block["match"]))
+		var match_val = str(get_function(block["match"], country))
 		if match_val != "match": # Prevent collision with 'match' key itself
-			get_function(block.get(match_val, {}))
+			result = get_function(block.get(match_val, {}), country)
 	#for loop
 	if block.has("for"):
 		var var_name = block["for"]
@@ -177,7 +187,7 @@ func get_function(block, country: CountryData = null):
 		for item in block["in"]:
 			heap[var_name] = item
 			var substituted = _substitute(block["do"].duplicate(true), heap)
-			get_function(substituted)
+			result = get_function(substituted, country)
 		
 		if had_prev:
 			heap[var_name] = prev_val
@@ -196,10 +206,11 @@ func get_function(block, country: CountryData = null):
 		else:
 			arg = get_variable(arg)
 		evaled_args.push_back(arg)
-	var store_key: String = block.get("store", "")
-	var result = null
 
 	var func_name = block.get("func", "")
+	if func_name == "" and not (block.has("match") or block.has("for")):
+		return block
+
 	if func_name != "" and functions.has(func_name):
 		var expected_args = functions[func_name]
 		if evaled_args.size() < expected_args.size():
@@ -354,6 +365,16 @@ func get_function(block, country: CountryData = null):
 		heap[store_key] = result
 
 	return result
+
+func refresh_buttons(container: Node):
+	for child in container.get_children():
+		if child is Button and child.has_meta("condition"):
+			var condition = child.get_meta("condition")
+			var country = child.get_meta("country_context")
+			child.disabled = !get_function(condition, country)
+		
+		# Recurse
+		refresh_buttons(child)
 
 func format_functions(expression, indent: String = "", no_bullet: bool = false) -> String:
 	# return ""

@@ -61,7 +61,7 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="TabsContainer" type="HBoxContainer" parent="StaticUI/Header" unique_id=1925350161]
+[node name="TabsContainer" type="TabBar" parent="StaticUI/Header" unique_id=1925350161]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 4
@@ -71,7 +71,6 @@ offset_top = -20.0
 offset_right = 255.0
 offset_bottom = 20.0
 grow_vertical = 2
-theme_override_constants/separation = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StaticUI/Header" unique_id=769223892]
 use_parent_material = true
@@ -88,6 +87,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="EditingButtons" type="HBoxContainer" parent="StaticUI/Header/HBoxContainer" unique_id=1774232772]
+visible = false
 use_parent_material = true
 layout_mode = 2
 
@@ -151,11 +151,10 @@ grow_vertical = 0
 
 [node name="TabContainer" type="TabContainer" parent="StaticUI/InfoPanel" unique_id=393909199]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="InfoText" type="RichTextLabel" parent="StaticUI/InfoPanel/TabContainer" unique_id=1403528079]
-visible = false
 use_parent_material = true
 layout_mode = 2
 bbcode_enabled = true
@@ -163,6 +162,7 @@ text = "[center][color=gray]Hover over a node to see info[/color][/center]"
 metadata/_tab_index = 0
 
 [node name="EditDecisions" type="VBoxContainer" parent="StaticUI/InfoPanel/TabContainer" unique_id=494517236]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
