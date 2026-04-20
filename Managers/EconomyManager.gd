@@ -82,6 +82,7 @@ func _complete_construction(pid: int, project: Dictionary):
 	# Update enum to BUILT state
 	if project["index"] != -1 && MapManager.province_objects[pid].buildings.size() > project["index"]:
 		MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
+		CountryManager.countries[MapManager.province_objects[pid].country].factories_amount += 1
 	else:
 		match project["type"]:
 			"Infrastructure":

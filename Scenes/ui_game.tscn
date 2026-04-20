@@ -772,10 +772,11 @@ size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_type_variation = &"InfoTabContainer"
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 5
 tabs_visible = false
 
 [node name="Player" type="TabContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1238660091]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
@@ -901,7 +902,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Population" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=1161091349]
-points = PackedVector2Array(296, 104, 139, 53, 71, 175, -3, 121, 0, 0, 0, 0, 0, 0)
+points = PackedVector2Array(296, 104, 238, 75, 246, 11, 226, 71, 139, 53, 71, 175, -3, 121, 0, 0, 0, 0, 0, 0)
 default_color = Color(1, 0, 1, 1)
 joint_mode = 2
 begin_cap_mode = 2
@@ -915,7 +916,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Power" type="Line2D" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer" unique_id=1299821553]
-points = PackedVector2Array(297, 55, 143, 89, 39, 173, 0, 0, 0, 0, 0, 0, 0, 0)
+points = PackedVector2Array(297, 55, 232, 192, 141, 105, 101, 36, 163, -11, 212, 54, 39, 173, 0, 0, 0, 0, 0, 0, 0, 0)
 default_color = Color(1, 1, 0, 1)
 joint_mode = 2
 begin_cap_mode = 2
@@ -1878,7 +1879,6 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Kindly Ask For Manpower"
 
 [node name="Select" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context" unique_id=1473921671]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
