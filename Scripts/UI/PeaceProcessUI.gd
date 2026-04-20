@@ -29,6 +29,7 @@ var creatingProvinces: Dictionary[String, PackedInt32Array] = {}
 var ownersCreating: Dictionary[String, CountryData] = {} 
 var hovered_pid: int = -1
 var puppeting: Dictionary[CountryData, CountryData] = {}
+var puppetang: Dictionary[CountryData, CountryData] = {}
 @export var participant_selector: OptionButton
 var provinces_discussing: Array = []
 
@@ -111,47 +112,54 @@ func _process_click(map_pos: Vector2):
 	var pid = get_province_with_radius(map_pos, GameState.current_world.map_sprite, 5)
 	if pid <= 1:
 		return
-		
 	
-
-	match mouseMode:
-		MouseMode.ANNEX:
-			if pid not in provinces_discussing:
-				return
-			
-			if provincesCreating.has(pid):
-				creatingProvinces[provincesCreating[pid]].erase(pid)
-				provincesCreating.erase(pid)
+	if Input.is_key_pressed(KEY_CTRL):
+		current_selected = CountryManager.countries[MapManager.province_objects[pid].country]
+	else:
+		match mouseMode:
+			MouseMode.ANNEX:
+				if pid not in provinces_discussing:
+					return
 				
-				
-			if provinces_to_take.has(pid) && provinces_to_take[pid] == current_selected:
-				provinces_to_take.erase(pid)
-				_reset_province_visual(pid)
-			else:
-				provinces_to_take[pid] = current_selected
-				_update_map_visual(pid, current_selected.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
-		MouseMode.PUPPET:
-			if pid not in provinces_discussing:
-				return
-		MouseMode.ANNEX_NEW:
-			if pid not in provinces_discussing:
-				return
-			
-			if provinces_to_take.has(pid):
-				provinces_to_take.erase(pid)
-				
-			if provincesCreating.has(pid) && provincesCreating[pid] == creating[creating_selected].name:
-				provincesCreating.erase(pid)
-				creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
-				_reset_province_visual(pid)
-			else:
 				if provincesCreating.has(pid):
 					creatingProvinces[provincesCreating[pid]].erase(pid)
-				provincesCreating[pid] = creating[creating_selected].name
-				creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
-				print(Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2).to_html())
-				_update_map_visual(pid, Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
-
+					provincesCreating.erase(pid)
+					
+					
+				if provinces_to_take.has(pid) && provinces_to_take[pid] == current_selected:
+					provinces_to_take.erase(pid)
+					_reset_province_visual(pid)
+				else:
+					provinces_to_take[pid] = current_selected
+					_update_map_visual(pid, current_selected.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
+			MouseMode.PUPPET:
+				if pid not in provinces_discussing:
+					return
+				
+				var count: CountryData = CountryManager.countries[MapManager.province_objects[pid].country]
+				if count != current_selected:
+					if count in puppeting && puppeting[count] == current_selected:
+						puppeting.erase(count)
+					else:
+						puppeting[count] = current_selected
+			MouseMode.ANNEX_NEW:
+				if pid not in provinces_discussing:
+					return
+				
+				if provinces_to_take.has(pid):
+					provinces_to_take.erase(pid)
+					
+				if provincesCreating.has(pid) && provincesCreating[pid] == creating[creating_selected].name:
+					provincesCreating.erase(pid)
+					creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
+					_reset_province_visual(pid)
+				else:
+					if provincesCreating.has(pid):
+						creatingProvinces[provincesCreating[pid]].erase(pid)
+					provincesCreating[pid] = creating[creating_selected].name
+					creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(pid)
+					print(Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2).to_html())
+					_update_map_visual(pid, Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[pid].country))
 
 	_update_summary()
 
