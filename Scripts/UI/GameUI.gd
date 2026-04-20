@@ -355,7 +355,6 @@ func _update_sidemenu_visuals() -> void:
 		DoUpdateSidemenuVisuals()
 
 func DoUpdateSidemenuVisuals() -> void:
-	print("fish")
 	if GameState.selectingCountry:
 		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
 		for stat: String in [
@@ -380,7 +379,6 @@ func DoUpdateSidemenuVisuals() -> void:
 		]
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
-		print("fish")
 
 		MapManager.show_countries_map()
 

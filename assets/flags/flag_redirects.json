@@ -1,0 +1,194 @@
+{
+  "soviet_union": {
+    "target": "soviet_union",
+    "ideology": "communist"
+  },
+  "german_empire": {
+    "target": "germany",
+    "ideology": "monarchist"
+  },
+  "greek_republic": {
+    "target": "greece",
+    "ideology": "liberal"
+  },
+  "argentinian_kingdom": {
+    "target": "argentina",
+    "ideology": "monarchist"
+  },
+  "argentinian_republic": {
+    "target": "argentina",
+    "ideology": "liberal"
+  },
+  "australian_kingdom": {
+    "target": "australia",
+    "ideology": "monarchist"
+  },
+  "australian_republic": {
+    "target": "australia",
+    "ideology": "liberal"
+  },
+  "french_commune": {
+    "target": "france",
+    "ideology": "communist"
+  },
+  "french_empire": {
+    "target": "france",
+    "ideology": "monarchist"
+  },
+  "pakistani_republic": {
+    "target": "pakistan",
+    "ideology": "liberal"
+  },
+  "romanian_kingdom": {
+    "target": "romania",
+    "ideology": "monarchist"
+  },
+  "romanian_republic": {
+    "target": "romania",
+    "ideology": "liberal"
+  },
+  "vietnamese_empire": {
+    "target": "vietnam",
+    "ideology": "monarchist"
+  },
+  "vietnamese_kingdom": {
+    "target": "vietnam",
+    "ideology": "monarchist"
+  },
+  "vietnamese_republic": {
+    "target": "vietnam",
+    "ideology": "liberal"
+  },
+  "hungarian_republic": {
+    "target": "hungary",
+    "ideology": "liberal"
+  },
+  "indonesian_republic": {
+    "target": "indonesia",
+    "ideology": "liberal"
+  },
+  "iranian_republic": {
+    "target": "iran",
+    "ideology": "liberal"
+  },
+  "iraqi_kingdom": {
+    "target": "iraq",
+    "ideology": "monarchist"
+  },
+  "iraqi_republic": {
+    "target": "iraq",
+    "ideology": "liberal"
+  },
+  "portugese_kingdom": {
+    "target": "portugal",
+    "ideology": "monarchist"
+  },
+  "portugese_republic": {
+    "target": "portugal",
+    "ideology": "liberal"
+  },
+  "serbian_kingdom": {
+    "target": "serbia",
+    "ideology": "monarchist"
+  },
+  "serbian_republic": {
+    "target": "serbia",
+    "ideology": "liberal"
+  },
+  "nigerian_kingdom": {
+    "target": "nigeria",
+    "ideology": "monarchist"
+  },
+  "nigerian_republic": {
+    "target": "nigeria",
+    "ideology": "liberal"
+  },
+  "brazilian_empire": {
+    "target": "brazil",
+    "ideology": "monarchist"
+  },
+  "brazilian_republic": {
+    "target": "brazil",
+    "ideology": "liberal"
+  },
+  "swedish_kingdom": {
+    "target": "sweden",
+    "ideology": "monarchist"
+  },
+  "swedish_republic": {
+    "target": "sweden",
+    "ideology": "liberal"
+  },
+  "bulgarian_empire": {
+    "target": "bulgaria",
+    "ideology": "monarchist"
+  },
+  "bulgarian_kingdom": {
+    "target": "bulgaria",
+    "ideology": "monarchist"
+  },
+  "bulgarian_republic": {
+    "target": "bulgaria",
+    "ideology": "liberal"
+  },
+  "mexican_empire": {
+    "target": "mexico",
+    "ideology": "monarchist"
+  },
+  "mexican_republic": {
+    "target": "mexico",
+    "ideology": "liberal"
+  },
+  "ma_clique": {
+    "target": "mali",
+    "ideology": "neutral"
+  },
+  "african_union": {
+    "target": "african_union",
+    "ideology": "communist"
+  },
+  "belgian_republic": {
+    "target": "belgium",
+    "ideology": "liberal"
+  },
+  "czech_republic": {
+    "target": "czechia",
+    "ideology": "liberal"
+  },
+  "egyptian_kingdom": {
+    "target": "egypt",
+    "ideology": "monarchist"
+  },
+  "egyptian_republic": {
+    "target": "egypt",
+    "ideology": "liberal"
+  },
+  "irish_kingdom": {
+    "target": "ireland",
+    "ideology": "monarchist"
+  },
+  "irish_republic": {
+    "target": "ireland",
+    "ideology": "liberal"
+  },
+  "syrian_republic": {
+    "target": "syria",
+    "ideology": "liberal"
+  },
+  "spanish_republic": {
+    "target": "spain",
+    "ideology": "liberal"
+  },
+  "slovak_republic": {
+    "target": "slovakia",
+    "ideology": "liberal"
+  },
+  "norwegian_republic": {
+    "target": "norway",
+    "ideology": "liberal"
+  },
+  "danish_republic": {
+    "target": "denmark",
+    "ideology": "liberal"
+  }
+}

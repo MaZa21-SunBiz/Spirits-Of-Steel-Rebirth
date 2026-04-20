@@ -122,7 +122,7 @@ func DoSetup(a_progress: Array) -> void:
 
 	map_sprite.material = mat
 	a_progress[0] = 0.9
-
+	_clear_ghost_maps()
 	for i in [-2, -1, 1, 2]:
 		_create_ghost_map(Vector2(i * map_width, 0), mat)
 		a_progress[0] += 0.015
@@ -284,12 +284,25 @@ func load_game(save_name: String):
 	print("Game loaded successfully:", save_name)
 
 
+func _exit_tree() -> void:
+	_clear_ghost_maps()
+
+
+func _clear_ghost_maps() -> void:
+	var container = get_node_or_null("../../MapContainer")
+	if container:
+		for child in container.get_children():
+			if child.has_meta("is_ghost"):
+				child.queue_free()
+
+
 func _create_ghost_map(offset: Vector2, p_material: ShaderMaterial) -> void:
 	var ghost := Sprite2D.new()
 	ghost.texture = map_sprite.texture
 	ghost.centered = map_sprite.centered
 	ghost.material = p_material
 	ghost.position = map_sprite.position + offset
+	ghost.set_meta("is_ghost", true)
 	$"../../MapContainer".add_child(ghost)
 
 

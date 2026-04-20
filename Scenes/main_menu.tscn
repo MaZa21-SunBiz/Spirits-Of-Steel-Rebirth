@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
 [ext_resource type="Texture2D" uid="uid://cxilgtpeosl4d" path="res://assets/ui/johnjohn.png" id="6_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://c55xrkqv8k1vg" path="res://assets/ui/the_rock.png" id="7_wyh8j"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
@@ -64,7 +65,7 @@ offset_top = 209.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_vtepg")
-USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("6_wyh8j")])
+USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("6_wyh8j"), ExtResource("7_wyh8j")])
 AvatarImage = NodePath("Avatar")
 
 [node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]

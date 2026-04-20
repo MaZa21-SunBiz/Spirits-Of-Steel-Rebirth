@@ -3,10 +3,11 @@ extends Control
 @export var save_list: VBoxContainer
 @export var line_edit: TextEdit
 
-enum Section {SAVE, AUDIO, SETTINGS, EXIT}
+enum Section {SAVE, AUDIO, GRAPHICS, EXIT}
 var settings = {}
 
 @export var tab_container: TabContainer
+@export var save_settings: Button
 @export var graphics_path: GridContainer
 
 @export_group("Audio")
@@ -64,7 +65,7 @@ func _ready():
 	_initialize_ui_values()
 
 
-func save_settings() -> void:
+func _on_save_settings_pressed() -> void:
 	SettingsManager.save_settings()
 
 
@@ -211,19 +212,19 @@ func _on_province_borders_changed(value: float) -> void:
 
 func _on_ui_upper_changed(value: float) -> void:
 	SettingsManager.settings.ui_upper = value
-	tab_container.material.set_shader_parameter("upper", value)
+	material.set_shader_parameter("upper", value)
 	SettingsManager.save_settings()
 
 
 func _on_ui_lower_changed(value: float) -> void:
 	SettingsManager.settings.ui_lower = value
-	tab_container.material.set_shader_parameter("lower", value)
+	material.set_shader_parameter("lower", value)
 	SettingsManager.save_settings()
 
 
 func _on_ui_dirt_changed(value: float) -> void:
 	SettingsManager.settings.ui_dirt = value
-	tab_container.material.set_shader_parameter("dirt", value)
+	material.set_shader_parameter("dirt", value)
 	SettingsManager.save_settings()
 
 
@@ -255,3 +256,14 @@ func _on_debug_mode_pressed() -> void:
 	SettingsManager.settings.debug_mode = !SettingsManager.settings.debug_mode
 	SettingsManager.apply_settings()
 	SettingsManager.save_settings()
+
+
+func _on_exit_start_pressed() -> void:
+	KeyboardManager.settings.visible = false
+	SceneSwitcher.switch_to(SceneSwitcher.Type.MENU)
+
+
+
+
+func _on_tab_container_tab_changed(tab: int) -> void:
+	save_settings.visible = !(tab == Section.EXIT || tab == Section.SAVE)

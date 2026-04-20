@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_sj0rh"]
 [ext_resource type="Script" uid="uid://d00ogcoh5s68w" path="res://Scripts/UI/ManageCountryUI.gd" id="1_xesbs"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_vvlv7"]
-[ext_resource type="Texture2D" uid="uid://d3fu8mlb0k686" path="res://assets/flags/fallback_flag.png" id="3_xesbs"]
+[ext_resource type="Texture2D" uid="uid://pe3lbs4a15mx" path="res://assets/Flag_overlay.png" id="3_xesbs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7hts"]
 content_margin_left = 14.0
