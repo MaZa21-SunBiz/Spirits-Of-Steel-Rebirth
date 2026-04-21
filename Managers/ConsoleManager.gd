@@ -52,7 +52,44 @@ func _ready() -> void:
 	Console.add_command("editor", m_Editor, [], 0, "Swap Editor")
 	Console.add_command("sink_rise", _sink_rise, ["pid", "type", "country_name"], 3, "sink/rise province")
 	Console.add_command("random_figure", m_RandomFigure, ["country", "budget"], 2, "Add a randomly generated significant figure to a country.")
+	Console.add_command("start_revolution", m_StartRevolution, ["pid", "name", "count"], 3, "Start a revolution.")
 	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
+
+func m_StartRevolution(a_pid, a_name, a_count) -> void:
+	var pid: int = int(a_pid)
+	if !pid in MapManager.province_objects:
+		return
+	var	country: String = MapManager.province_objects[pid].country
+	var count: int = int(a_count)
+	var tries: int = 150
+	var toTake: Array[int] = [pid]
+	while tries > 0 && count > 0:
+		var options: Array = MapManager.province_graph.get_point_connections(toTake.pick_random())
+		for option: int in options.duplicate():
+			print("Option: " + str(option))
+			if MapManager.province_objects[option].country != country || option in toTake:
+				print("Deleting.")
+				options.erase(option)
+		if options.size() == 0:
+			tries -= 1
+		else:
+			toTake.append(options.pick_random())
+			count -= 1
+	MapManager.InstantiateCountryFromProvinces({
+			"name": a_name,
+			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
+			"money": 10000,
+			"ideology": [0, 0],
+			"political_power": 100,
+			"stability": 0.5,
+			"war_support": 1.5,
+			"puppets": [],
+			"accepted_cultures": [],
+			"hostedGovernments": [],
+			"figures": [],
+		}, toTake)
+	WarManager.declare_war(CountryManager.countries[a_name], CountryManager.countries[country])
+	MapManager.allow_pids(CountryManager.countries[a_name], CountryManager.countries[country])
 
 func m_RandomFigure(country, budget) -> void:
 	var figure: ImportantFigure = ImportantFigure.FromRandom(country, int(budget))
@@ -93,6 +130,7 @@ func _peace_treaty(country):
 func _annex(annexer: String, annexee) -> void:
 	if CountryManager.countries.has(annexee):
 		MapManager.annex_country(annexer, annexee)
+		CountryManager.cleanup_empty_countries()
 		return
 
 	Console.print_line("Unknown country: " + annexee)

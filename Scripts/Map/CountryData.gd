@@ -249,6 +249,8 @@ func InitializeCabinet() -> void:
 func process_hour() -> void:
 	if _is_loading:
 		return
+	
+	#print("Processing %s" % country_name)
 
 	political_power += daily_pp_gain
 
@@ -271,6 +273,7 @@ func process_hour() -> void:
 		update_is_at_war()
 
 	if !is_player:
+		#print("Thinking %s" % country_name)
 		ai_controller.think_hour()
 	else:
 		#print("Total: %d Militiable: %d Manpower: %d Mobilized: %d Armed: %d" % [total_population, total_population * military_size_ratio, manpower, mobilized, manpower + mobilized])

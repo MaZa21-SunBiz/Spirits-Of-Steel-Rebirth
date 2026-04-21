@@ -1221,9 +1221,12 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 
 	if province_objects.has(pid):
 		province.country = new_owner_name
-		if old_owner_name == oldControllerName:
+		if old_owner_name == oldControllerName && old_owner_name != "Sea":
 			CountryManager.countries[oldControllerName].total_population -= province.GetPopulation()
 			CountryManager.countries[oldControllerName].factories_amount -= province_objects[pid].buildings.size()
+		if oldControllerName in allowed_pids:
+			allowed_pids[oldControllerName].erase(pid)
+		allowed_pids.get_or_add(new_owner_name, []).append(pid)
 		CountryManager.countries[new_owner_name].total_population += province.GetPopulation()
 		CountryManager.countries[new_owner_name].factories_amount += province_objects[pid].buildings.size()
 	else:
@@ -1250,6 +1253,8 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 		
 	if not pid in country_to_owned_provinces[new_owner_name]:
 		country_to_owned_provinces[new_owner_name].append(pid)
+		
+		allowed_pids
 	
 	province.occupier = ""
 

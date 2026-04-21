@@ -352,7 +352,7 @@ func resolve_province_arrival(pid: int, troop: TroopData):
 
 	if target_country != troop.country_name && is_at_war_names(troop.country_name, target_country):
 		if TroopManager.get_province_strength(pid, target_country) <= 0:
-			if !is_at_war_names(troop.country_name, target_country) && CountryManager.countries[MapManager.province_objects[pid].country].allowedCountries.has(troop.country_name):
+			if !is_at_war_names(troop.country_name, target_country):
 				MapManager.DeoccupyProvince(pid)
 			else:
 				MapManager.OccupyProvince(pid, troop.country_name)
