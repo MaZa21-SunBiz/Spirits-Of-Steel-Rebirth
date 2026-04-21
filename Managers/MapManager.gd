@@ -118,6 +118,7 @@ func GetResourceIcon(a_resourceType: String):
 	return null
 
 func _clear_internal_data() -> void:
+	all_cities.clear()
 	unique_regions.clear()
 	province_objects.clear()
 	province_to_country.clear()

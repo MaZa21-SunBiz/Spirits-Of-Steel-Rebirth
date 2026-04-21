@@ -721,7 +721,7 @@ func get_flag(country: String, ideology: String = "") -> Texture2D:
 			var full_custom = custom_flag_path + sub_path
 			if ResourceLoader.exists(full_custom):
 				return full_custom
-		var full_default = "res://assets/flags/" + sub_path
+		var full_default = "res://assets/flags/%s" % [sub_path]
 		if ResourceLoader.exists(full_default):
 			return full_default
 		return ""

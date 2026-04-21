@@ -566,7 +566,16 @@
 																			"func": "add"
 																		}
 																	],
-																	"type": "button"
+																	"type": "button",
+																	"finished": [
+																		{
+																			"args": [
+																				"Russia",
+																				"country"
+																			],
+																			"func": "make_puppet"
+																		}
+																	]
 																}
 															],
 															"func": "add_plans"

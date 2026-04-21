@@ -63,12 +63,12 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="Theme" id="Theme_uqxsi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qum3k"]
-bg_color = Color(0.22352941, 0.30980393, 0.22352941, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qum3k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilaaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qum3k"]
+bg_color = Color(0.22352941, 0.30980393, 0.22352941, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_pvldk"]
 color = Color(1, 1, 1, 1)
@@ -138,7 +138,7 @@ label_industry = NodePath("Control/Topbar/HBoxContainer/Industry/HBoxContainer/l
 label_stability = NodePath("Control/Topbar/HBoxContainer/Stability/HBoxContainer/label_stability")
 label_war_support = NodePath("Control/Topbar/HBoxContainer/WarSupport/HBoxContainer/label_war_support")
 label_world_tension = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/label_tension")
-notif_box = NodePath("Control/Notifications")
+notif_box = NodePath("Control/HSplitContainer/SidemenuBG/Control/Notifications")
 plus = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Plus")
 minus = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl/Minus")
 progress_bar = NodePath("Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/ProgressBar")
@@ -147,7 +147,7 @@ sidemenu_pointer = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/P
 play_btn = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Select/ScrollContainer/VBoxContainer/PlayAs")
 sidemenu_country_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/HFlowContainer/Label")
 sidemenu_context = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context")
-sidemenu_trooplist = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/TroopList")
+sidemenu_trooplist = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList/TroopList")
 sidemenu_buildings = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Queue/VBoxContainer")
 sidemenu_leader_portrait = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/Leader")
 building_dropdown = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton")
@@ -164,14 +164,14 @@ sewage_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Conte
 population_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Population")
 water_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Water")
 power_graph = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/PanelContainer/Power")
-military_extra_panel = NodePath("Control/MilitaryExtra")
-input_division = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/input_division")
-button_train = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train")
-division_type = NodePath("Control/MilitaryExtra/Deploy/HBoxContainer/OptionButton")
-div_type = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type/amount")
-div_stats = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats/amount")
-costs = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost/amount")
-manpower = NodePath("Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower/amount")
+military_extra_panel = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra")
+input_division = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/input_division")
+button_train = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/Button_Train")
+division_type = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/OptionButton")
+div_type = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type/amount")
+div_stats = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats/amount")
+costs = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost/amount")
+manpower = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower/amount")
 troop_container = NodePath("Control/TroopContainer")
 troop_list_parent = NodePath("Control/TroopContainer/ScrollContainer/VBoxContainer")
 building_designer = NodePath("Control/CenterStuff/BuildingDesigner")
@@ -462,173 +462,6 @@ text = "20%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MilitaryExtra" type="Control" parent="Control" unique_id=2018129027]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 368.0
-offset_top = -191.0
-offset_right = 738.0
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="Stats" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1873248397]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.022000002
-anchor_top = 0.016
-anchor_right = 0.316
-anchor_bottom = 0.68600005
-offset_left = 0.14000034
-offset_top = -0.056000233
-offset_right = 0.0799942
-offset_bottom = -0.026016235
-grow_vertical = 0
-theme = ExtResource("13_sdmnd")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtra/Stats" unique_id=1745200345]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer" unique_id=1330084502]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 19
-
-[node name="button_infantry" type="Button" parent="Control/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1194038523]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("19_2igyl")
-icon_alignment = 1
-expand_icon = true
-
-[node name="button_artillery" type="Button" parent="Control/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=377772696]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("20_patwf")
-icon_alignment = 1
-expand_icon = true
-
-[node name="button_tank" type="Button" parent="Control/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1505714444]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("21_qnodh")
-icon_alignment = 1
-expand_icon = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer" unique_id=1435869281]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 4
-
-[node name="Type" type="HBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=770762487]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type" unique_id=55839728]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 14
-text = "Type:"
-
-[node name="amount" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type" unique_id=1928864754]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-theme_override_font_sizes/font_size = 14
-text = "bebe"
-
-[node name="Stats" type="HBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=405077906]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats" unique_id=1473736820]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Atk:
-Def:
-HP:"
-
-[node name="amount" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats" unique_id=1660878643]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_uqxsi")
-text = "10
-10
-100"
-
-[node name="Cost" type="HBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=693475866]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost" unique_id=1308475392]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Costs/day:"
-
-[node name="amount" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost" unique_id=1340317349]
-layout_mode = 2
-text = "100"
-
-[node name="Manpower" type="HBoxContainer" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=612873776]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower" unique_id=1107178966]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Manpower:"
-
-[node name="amount" type="Label" parent="Control/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower" unique_id=1283252395]
-layout_mode = 2
-text = "100"
-
-[node name="Deploy" type="PanelContainer" parent="Control/MilitaryExtra" unique_id=1009879633]
-use_parent_material = true
-layout_mode = 0
-offset_left = -8.0
-offset_top = 135.0
-offset_right = 370.0
-offset_bottom = 191.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MilitaryExtra/Deploy" unique_id=1011092415]
-use_parent_material = true
-layout_mode = 2
-
-[node name="OptionButton" type="OptionButton" parent="Control/MilitaryExtra/Deploy/HBoxContainer" unique_id=110122342]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 3
-expand_icon = true
-fit_to_longest_item = false
-
-[node name="input_division" type="SpinBox" parent="Control/MilitaryExtra/Deploy/HBoxContainer" unique_id=2119668414]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-theme = ExtResource("13_sdmnd")
-min_value = 0.999999999999968
-max_value = 999.999999999968
-value = 0.999999999999968
-alignment = 1
-script = ExtResource("21_w7nfq")
-
-[node name="Button_Train" type="Button" parent="Control/MilitaryExtra/Deploy/HBoxContainer" unique_id=1737024766]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
-text = "TRAIN"
-
 [node name="HSplitContainer" type="HSplitContainer" parent="Control" unique_id=86601275]
 use_parent_material = true
 layout_mode = 1
@@ -644,11 +477,24 @@ drag_area_offset = 356
 
 [node name="SidemenuBG" type="PanelContainer" parent="Control/HSplitContainer" unique_id=1353435381]
 material = ExtResource("16_lpwmk")
-clip_contents = true
 custom_minimum_size = Vector2(356, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
+
+[node name="Control" type="Control" parent="Control/HSplitContainer/SidemenuBG" unique_id=653734772]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Notifications" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/Control" unique_id=1074458046]
+use_parent_material = true
+layout_mode = 0
+offset_left = 356.0
+offset_right = 956.0
+offset_bottom = 32.0
+mouse_behavior_recursive = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG" unique_id=1423441942]
 use_parent_material = true
@@ -782,7 +628,7 @@ layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -792,6 +638,7 @@ tab_3/icon = ExtResource("24_5hlpc")
 metadata/_tab_index = 0
 
 [node name="Diplomacy" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=1476595681]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -1003,24 +850,196 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=958133288]
-visible = false
+[node name="Military" type="Control" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" unique_id=148025030]
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2
 metadata/_tab_name = ""
 
-[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=1501629434]
+[node name="MilitaryExtra" type="Control" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=2018129027]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 348.0
+offset_top = -148.0
+offset_right = 673.0
+offset_bottom = 8.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Stats" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra" unique_id=1873248397]
+use_parent_material = true
+layout_mode = 1
+offset_top = -11.0
+offset_right = 109.0
+offset_bottom = 101.0
+theme = ExtResource("13_sdmnd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats" unique_id=1745200345]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer" unique_id=1330084502]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 19
+
+[node name="button_infantry" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1194038523]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("19_2igyl")
+icon_alignment = 1
+expand_icon = true
+
+[node name="button_artillery" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=377772696]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("20_patwf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="button_tank" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1505714444]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("16_6c76w")
+icon = ExtResource("21_qnodh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer" unique_id=1435869281]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Type" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=770762487]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type" unique_id=55839728]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "Type:"
+
+[node name="amount" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Type" unique_id=1928864754]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+theme_override_font_sizes/font_size = 14
+text = "bebe"
+
+[node name="Stats" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=405077906]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats" unique_id=1473736820]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Atk:
+Def:
+HP:"
+
+[node name="amount" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats" unique_id=1660878643]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_uqxsi")
+text = "10
+10
+100"
+
+[node name="Cost" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=693475866]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost" unique_id=1308475392]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Costs/day:"
+
+[node name="amount" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost" unique_id=1340317349]
+layout_mode = 2
+text = "100"
+
+[node name="Manpower" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=612873776]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower" unique_id=1107178966]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Manpower:"
+
+[node name="amount" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower" unique_id=1283252395]
+layout_mode = 2
+text = "100"
+
+[node name="Deploy" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra" unique_id=1009879633]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy" unique_id=1011092415]
+use_parent_material = true
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer" unique_id=110122342]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_icon = true
+fit_to_longest_item = false
+
+[node name="input_division" type="SpinBox" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer" unique_id=2119668414]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+theme = ExtResource("13_sdmnd")
+min_value = 0.999999999999968
+max_value = 999.999999999968
+value = 0.999999999999968
+alignment = 1
+script = ExtResource("21_w7nfq")
+
+[node name="Button_Train" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer" unique_id=1737024766]
+material = ExtResource("16_lpwmk")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_qum3k")
+text = "TRAIN"
+
+[node name="Military" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=958133288]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military" unique_id=1501629434]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("32_anvjc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel" unique_id=1929221443]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/Panel" unique_id=1929221443]
 use_parent_material = true
 layout_mode = 2
 
-[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=2064020114]
+[node name="label_category" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/Panel/HBoxContainer" unique_id=2064020114]
 texture_filter = 2
 use_parent_material = true
 layout_mode = 2
@@ -1030,24 +1049,24 @@ text = "Military Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Panel/HBoxContainer" unique_id=925378781]
+[node name="TextureRect" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/Panel/HBoxContainer" unique_id=925378781]
 use_parent_material = true
 layout_mode = 2
 texture = ExtResource("8_qum3k")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military" unique_id=608373696]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military" unique_id=608373696]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer" unique_id=801649026]
+[node name="ActionsList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer" unique_id=801649026]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=2143465910]
+[node name="Button" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList" unique_id=2143465910]
 use_parent_material = true
 layout_mode = 2
 focus_mode = 0
@@ -1055,7 +1074,7 @@ theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Choose Deployment Province"
 
-[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=1602099174]
+[node name="Button2" type="Button" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList" unique_id=1602099174]
 use_parent_material = true
 layout_mode = 2
 focus_mode = 0
@@ -1063,7 +1082,7 @@ theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
 text = "Deploy All"
 
-[node name="TroopList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList" unique_id=940258689]
+[node name="TroopList" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList" unique_id=940258689]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1959,6 +1978,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Radios" type="PanelContainer" parent="Control" unique_id=1870105236]
+visible = false
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 1
@@ -1987,14 +2007,6 @@ text = "Now playing"
 use_parent_material = true
 layout_mode = 2
 
-[node name="Notifications" type="HBoxContainer" parent="Control" unique_id=1074458046]
-use_parent_material = true
-layout_mode = 0
-offset_left = 360.0
-offset_top = 30.000002
-offset_right = 960.0
-offset_bottom = 58.0
-
 [node name="CenterStuff" type="TabContainer" parent="Control" unique_id=340667560]
 use_parent_material = true
 layout_mode = 1
@@ -2003,8 +2015,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 360.0
 offset_top = 30.0
-offset_right = -192.0
-offset_bottom = -60.0
+offset_right = -189.0
+offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -2223,9 +2235,6 @@ expand = true
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Next" to="." method="_on_next_song_pressed"]
 [connection signal="pressed" from="Control/Topbar/HBoxContainer/PanelContainer/HBoxContainer2/HBoxContainer/GameSpeedControl2/Pause" to="." method="_on_pause_pressed"]
-[connection signal="item_selected" from="Control/MilitaryExtra/Deploy/HBoxContainer/OptionButton" to="." method="_on_division_type_selected"]
-[connection signal="value_changed" from="Control/MilitaryExtra/Deploy/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
-[connection signal="pressed" from="Control/MilitaryExtra/Deploy/HBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
 [connection signal="tab_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player" to="." method="_on_menu_button_button_up"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button" to="." method="open_manage_country"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/HBoxContainer/Button2" to="." method="open_decisions_tree"]
@@ -2234,8 +2243,11 @@ expand = true
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Diplomacy/ScrollContainer/ActionsList/Button4" to="." method="_open_faction"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/Button" to="." method="_on_building_designer_pressed"]
 [connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton" to="." method="_on_building_selected"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
-[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_deploy_all_pressed"]
+[connection signal="item_selected" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/OptionButton" to="." method="_on_division_type_selected"]
+[connection signal="value_changed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/input_division" to="." method="_on_input_division_text_changed"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/MilitaryExtra/Deploy/HBoxContainer/Button_Train" to="." method="_on_button_train_troops"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList/Button" to="." method="_choose_deploy_city"]
+[connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Military/Military/ScrollContainer/ActionsList/Button2" to="." method="_on_deploy_all_pressed"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Enemy/Diplomacy/ScrollContainer/ActionsList/Button" to="." method="_propose_peace"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button3" to="." method="_improve_relations"]
 [connection signal="pressed" from="Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Neutral/Diplomacy/ScrollContainer/ActionsList/Button5" to="." method="_on_invite_faction_pressed"]

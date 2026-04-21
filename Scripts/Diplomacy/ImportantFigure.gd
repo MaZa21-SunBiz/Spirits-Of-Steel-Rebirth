@@ -31,7 +31,7 @@ static var NOBLE_SKILLS: Dictionary[String, Dictionary] = {
 }
 
 static func FromRandom(a_allegiance: String, a_budget: float = 0.0) -> ImportantFigure:
-	print("Hello?")
+	# print("Hello?")
 	var figure: ImportantFigure = ImportantFigure.new()
 	
 	figure.name = ""
@@ -152,7 +152,7 @@ static func GetPortrait(a_figure: ImportantFigure) -> Texture:
 	if !a_figure:
 		return load("res://assets/portraits/Fallback.png")
 	
-	print("%s: %s, %s, %s" % [a_figure.name, a_figure.portrait_path, FileAccess.file_exists(a_figure.portrait_path), ResourceLoader.exists(a_figure.portrait_path)])
+	# print("%s: %s, %s, %s" % [a_figure.name, a_figure.portrait_path, FileAccess.file_exists(a_figure.portrait_path), ResourceLoader.exists(a_figure.portrait_path)])
 	
 	if a_figure.portrait_path != "" && (FileAccess.file_exists(a_figure.portrait_path) or ResourceLoader.exists(a_figure.portrait_path)):
 		return load(a_figure.portrait_path)

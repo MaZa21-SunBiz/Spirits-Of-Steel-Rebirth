@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
 [ext_resource type="Texture2D" uid="uid://cxilgtpeosl4d" path="res://assets/ui/johnjohn.png" id="6_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://c55xrkqv8k1vg" path="res://assets/ui/the_rock.png" id="7_wyh8j"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
@@ -64,7 +65,7 @@ offset_top = 209.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_vtepg")
-USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("6_wyh8j")])
+USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("6_wyh8j"), ExtResource("7_wyh8j")])
 AvatarImage = NodePath("Avatar")
 
 [node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]
@@ -135,7 +136,17 @@ process_callback = 0
 wait_time = 20.0
 autostart = true
 
-[node name="Logo" type="TextureRect" parent="." unique_id=110353226]
+[node name="Control" type="Control" parent="." unique_id=1445080907]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = 40.0
+offset_right = 34.0
+offset_bottom = 80.0
+scale = Vector2(0.58154315, 0.58154315)
+
+[node name="Logo" type="TextureRect" parent="Control" unique_id=110353226]
+layout_mode = 0
 offset_left = 27.5
 offset_top = 30.0
 offset_right = 387.5
@@ -143,7 +154,8 @@ offset_bottom = 390.0
 scale = Vector2(0.4138889, 0.4138889)
 texture = ExtResource("2_opfnp")
 
-[node name="Label2" type="Label" parent="." unique_id=624590657]
+[node name="Label2" type="Label" parent="Control" unique_id=624590657]
+layout_mode = 0
 offset_left = 463.0
 offset_top = 145.0
 offset_right = 751.0
@@ -156,7 +168,8 @@ theme_override_fonts/font = ExtResource("3_cp0ys")
 theme_override_font_sizes/font_size = 67
 text = "Rebirth"
 
-[node name="Label" type="Label" parent="." unique_id=639883253]
+[node name="Label" type="Label" parent="Control" unique_id=639883253]
+layout_mode = 0
 offset_left = 109.499985
 offset_top = 73.0
 offset_right = 1257.5
@@ -173,10 +186,13 @@ text = "Spirits Of Steel"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=964712662 node_paths=PackedStringArray("StartsUI", "CreditsUI")]
 material = ExtResource("5_yhxw7")
-offset_left = 59.49994
-offset_top = 192.0
-offset_right = 287.49994
-offset_bottom = 582.0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 161.0
+offset_right = 356.0
+offset_bottom = -61.0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 script = ExtResource("5_trj04")
 StartsUI = NodePath("../TabContainer/Starts")
@@ -222,17 +238,16 @@ text = "Quit
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1116322658]
 material = ExtResource("5_yhxw7")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -293.0
-offset_top = -140.0
-offset_right = 293.0
-offset_bottom = 266.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = 22.0
+offset_right = -184.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 1
 tabs_visible = false
 deselect_enabled = true
 
@@ -255,7 +270,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Credits" type="PanelContainer" parent="TabContainer" unique_id=585752186]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")
@@ -281,6 +295,7 @@ Rosseau
 Ariect Von don Koppan Finchendenstein II
 AirplaneEnjoyer
 FilipYo
+Nihal
 The Spirit of Gavin \"Grubhub\" Grubert"
 
 [node name="Exit" type="Button" parent="TabContainer/Credits/VBoxContainer" unique_id=1733367604]

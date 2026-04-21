@@ -1,7 +1,10 @@
 extends PanelContainer
 
 #region --- Nodes ---
-@export var laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
+@export var military_laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
+@export var economy_laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
+@export var country_laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
+@export var releasable_laws_grid: VBoxContainer # Changed to VBox for a cleaner list feel
 
 # Header & Stats
 @export var header_label: Label
@@ -13,14 +16,14 @@ var current_category: Category = Category.MILITARY
 var current_country: CountryData
 var _update_timer: float = 0.0
 
-const LOGISTICS_SCENE = preload("res://Scenes/logistics.tscn")
-
 @export var economic_status_val: Label
 @export var army_logistics_val: Label
 #endregion
 
 func _ready() -> void:
 	visible = false
+	_populate_military()
+	_populate_economy()
 
 func open_menu(country: CountryData, cat: Category = Category.MILITARY) -> void:
 	if current_country and current_country.ideology_changed.is_connected(_refresh_full_data):
@@ -29,7 +32,10 @@ func open_menu(country: CountryData, cat: Category = Category.MILITARY) -> void:
 	current_country = country
 	current_country.ideology_changed.connect(_refresh_full_data)
 	
-	_switch_category(cat) # Use requested category
+	_populate_country()
+	_populate_releasables(current_country.country_name)
+	
+	_switch_category(cat)
 	_refresh_full_data()
 	show()
 
@@ -49,21 +55,24 @@ func _process(delta: float) -> void:
 func _switch_category(cat: Category) -> void:
 	current_category = cat
 	
-	# Update Button Visuals (Scene buttons are standard Buttons, not naturally toggle grouped here)
-	# We'll just modulate or use styles if needed, but for now let's just switch
+	# Attempt to find parent TabContainer to switch tabs correctly if nested
+	var tab_container = country_laws_grid.get_parent()
+	while tab_container and not tab_container is TabContainer and tab_container != self:
+		tab_container = tab_container.get_parent()
 	
-	# Clear Current List
-	for child in laws_grid.get_children():
-		child.queue_free()
-
-	# Populate based on selection
-	match current_category:
-		Category.MILITARY: _populate_military()
-		Category.ECONOMY: _populate_economy()
-		Category.COUNTRY: _populate_country()
-		Category.RELEASABLES: _populate_releasables(current_country.country_name)
-	
-	_update_law_buttons_visuals()
+	if tab_container is TabContainer:
+		tab_container.current_tab = cat
+		# Ensure all grids are visible so the TabContainer can display the active one
+		military_laws_grid.visible = true
+		economy_laws_grid.visible = true
+		country_laws_grid.visible = true
+		releasable_laws_grid.visible = true
+	else:
+		# Fallback visibility toggling for non-TabContainer layouts
+		military_laws_grid.visible = (cat == Category.MILITARY)
+		economy_laws_grid.visible = (cat == Category.ECONOMY)
+		country_laws_grid.visible = (cat == Category.COUNTRY)
+		releasable_laws_grid.visible = (cat == Category.RELEASABLES)
 
 func _populate_military() -> void:
 	_add_law_option("Volunteer Only", 0.005, 0.0, 0, "Professional army.")
@@ -75,18 +84,20 @@ func _populate_military() -> void:
 func _populate_economy() -> void:
 	var lbl = Label.new()
 	lbl.text = "Economy laws coming soon..."
-	laws_grid.add_child(lbl)
+	economy_laws_grid.add_child(lbl)
 
 func _populate_country() -> void:
+	for child in country_laws_grid.get_children():
+		child.queue_free()
+
 	if not PlansManager.plans.has(current_country.country_name):
 		return
 
 	for element in PlansManager.plans[current_country.country_name]:
-		InterpreterManager.get_element(element, laws_grid)
-		print(laws_grid.get_children())
+		InterpreterManager.get_element(element, country_laws_grid)
 
 func _populate_releasables(player_country: String) -> void:
-	for child in laws_grid.get_children():
+	for child in releasable_laws_grid.get_children():
 		child.queue_free()
 
 	var releasables = MapManager.get_all_releasables(player_country)
@@ -95,7 +106,7 @@ func _populate_releasables(player_country: String) -> void:
 		var lbl = Label.new()
 		lbl.text = "No nations to release."
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		laws_grid.add_child(lbl)
+		releasable_laws_grid.add_child(lbl)
 	else:
 		for releasable_data in releasables:
 			_add_releasable_option(releasable_data)
@@ -119,7 +130,7 @@ func _refresh_army_counts() -> void:
 	# 1. Economic Status
 	if economic_status_val:
 		economic_status_val.text = "$%s\n+$%.1f\n+$%.1f\n-$%.1f" % [
-			_format_money(current_country.money),
+			_format_number(current_country.money, false),
 			current_country.gdp * 0.0000228310502, 
 			current_country.factories_amount * current_country.factory_income, 
 			current_country.army_cost]
@@ -134,62 +145,32 @@ func _refresh_army_counts() -> void:
 					counts[div.type] += 1
 				else:
 					counts[div.type] = 1
-		army_logistics_val.text = "%s / %s\n%d\n%d\n%d" % [_format_number(current_country.manpower), _format_number(int(current_country.total_population * current_country.military_size_ratio)), counts.get("infantry", 0), counts.get("tank", 0), counts.get("artillery", 0)]
-
+		army_logistics_val.text = "%s / %s\n%d\n%d\n%d" % [
+			_format_number(current_country.manpower), 
+			_format_number(int(current_country.total_population * current_country.military_size_ratio)), 
+			counts.get("infantry", 0), 
+			counts.get("tank", 0), 
+			counts.get("artillery", 0)]
 
 func _update_law_buttons_visuals() -> void:
-	if not laws_grid: return
-	for btn in laws_grid.get_children():
-		# Safety check: make sure this child has the metadata we expect
-		if not btn.has_meta("ratio") and not btn.has_meta("country_id"):
-			continue
+	for btn in military_laws_grid.get_children():
+		if not btn.has_meta("ratio"): continue
 
-		var hbox = btn.get_child(0).get_child(0) # Panel -> MarginContainer -> HBox
+		var hbox = btn.get_child(0).get_node("HBox")
+		var status_lbl = hbox.get_node("Status")
 		var cost_lbl = hbox.get_node("Cost")
-		
-		var style = btn.get_theme_stylebox("panel").duplicate()
-		
-		# Handle Military Laws
-		if btn.has_meta("ratio"):
-			#var _title_lbl = hbox.get_node("Title")
-			var status_lbl = hbox.get_node("Status")
+		var style = btn.get_theme_stylebox("panel")
 
-			# NOTE(soi): dear god fix this
-			if is_equal_approx(current_country.military_size_ratio, btn.get_meta("ratio")):
-				style.bg_color = Color(0.2, 0.4, 0.2, 0.9) # Dark Green
-				style.border_color = Color(0.4, 0.8, 0.4) # COLOR_POSITIVE
-				status_lbl.text = " ACTIVE"
-				status_lbl.add_theme_color_override("font_color", Color(0.4, 0.8, 0.4))
-				cost_lbl.visible = false
-				btn.mouse_default_cursor_shape = Control.CURSOR_ARROW
-			else:
-				status_lbl.text = ""
-				cost_lbl.visible = true
-
-				if current_country.political_power >= btn.get_meta("cost"):
-					cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
-					btn.modulate = Color(1, 1, 1, 1)
-					btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-				else:
-					cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
-					btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
-					btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
-		# Handle Releasable Nations
+		if is_equal_approx(current_country.military_size_ratio, btn.get_meta("ratio")):
+			btn.modulate = Color(0.8, 1.0, 0.8) # Greenish tint
+			status_lbl.text = " ACTIVE"
+			cost_lbl.visible = false
 		else:
-			if current_country.political_power >= btn.get_meta("cost"):
-				style.bg_color = Color(0.15, 0.16, 0.19, 1.0) # COLOR_PANEL_INNER
-				style.border_color = Color(0.3, 0.3, 0.3)
-				cost_lbl.add_theme_color_override("font_color", Color(0.9, 0.7, 0.2)) # COLOR_WARNING
-				btn.modulate = Color(1, 1, 1, 1)
-				btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-			else:
-				style.bg_color = Color(0.15, 0.16, 0.19, 1.0) # COLOR_PANEL_INNER
-				style.border_color = Color(0.3, 0.3, 0.3)
-				cost_lbl.add_theme_color_override("font_color", Color(0.85, 0.3, 0.3)) # COLOR_NEGATIVE
+			btn.modulate = Color(1.0, 1.0, 1.0)
+			status_lbl.text = ""
+			cost_lbl.visible = true
+			if current_country.political_power < btn.get_meta("cost"):
 				btn.modulate = Color(0.6, 0.6, 0.6, 0.7)
-				btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
-				
-		btn.add_theme_stylebox_override("panel", style)
 
 #endregion
 
@@ -267,7 +248,7 @@ func _add_releasable_option(country_id: String) -> void:
 	btn_play.pressed.connect(_on_release_and_play_pressed.bind(country_id))
 	h_btns.add_child(btn_play)
 
-	laws_grid.add_child(btn_panel)
+	releasable_laws_grid.add_child(btn_panel)
 
 func _on_release_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
@@ -299,17 +280,6 @@ func _add_law_option(
 	btn_panel.set_meta("ratio", ratio)
 	btn_panel.set_meta("penalty", eco_penalty)
 	btn_panel.set_meta("cost", cost)
-
-	# var style = StyleBoxFlat.new()
-	# style.corner_radius_top_left = 6
-	# style.corner_radius_top_right = 6
-	# style.corner_radius_bottom_right = 6
-	# style.corner_radius_bottom_left = 6
-	# style.border_width_left = 1
-	# style.border_width_top = 1
-	# style.border_width_right = 1
-	# style.border_width_bottom = 1
-	# btn_panel.add_theme_stylebox_override("panel", style)
 
 	var m = MarginContainer.new()
 	m.add_theme_constant_override("margin_left", 5)
@@ -348,31 +318,13 @@ func _add_law_option(
 	# Make it clickable
 	btn_panel.gui_input.connect(_on_law_gui_input.bind(btn_panel))
 
-	laws_grid.add_child(btn_panel)
+	military_laws_grid.add_child(btn_panel)
 
 
 #endregion
 
 
 #region --- Interactions ---
-
-func _on_releasable_gui_input(event: InputEvent, panel: PanelContainer) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var cost = panel.get_meta("cost")
-		
-		# Assuming you have a global 'PlayerData' or similar for Political Power
-		if current_country.political_power >= cost:
-			var country_id = panel.get_meta("country_id")
-			current_country.political_power -= cost
-			MapManager.ReleaseCountry(country_id)
-			
-			# Refresh the UI since the list might change after a release
-			_populate_releasables(current_country.country_name)
-			
-			print("Successfully released ", country_id)
-		else:
-			print("Not enough Political Power!")
-			# Optional: Play a "buzz" error sound or shake the panel
 
 func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -394,7 +346,6 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 			current_country.update_manpower_pool() # Recalc based on new ratio
 
 			# Refresh UI
-			_update_law_buttons_visuals()
 			_refresh_full_data()
 			print("Law enacted: ", ratio)
 		else:
@@ -403,20 +354,22 @@ func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 
 
 # Utils
-func _format_money(amount: float) -> String:
-	if amount >= 1000000:
-		return "%.2fM" % (amount * 0.000001)
-	if amount >= 1000:
-		return "%.2fK" % (amount * 0.001)
-	return "%.2f" % amount
-
-
-func _format_number(amount: int) -> String:
-	if amount >= 1000000:
-		return "%.1fM" % (amount * 0.000001)
-	if amount >= 1000:
-		return "%.1fK" % (amount * 0.001)
-	return str(amount)
+func _format_number(amount: float, as_int: bool = true) -> String:
+	var abs_amount = abs(amount)
+	var suffix = ""
+	var result = amount
+	
+	if abs_amount >= 1000000:
+		result = amount * 0.000001
+		suffix = "M"
+	elif abs_amount >= 1000:
+		result = amount * 0.001
+		suffix = "K"
+	
+	if suffix == "":
+		return str(int(amount)) if as_int else "%.2f" % amount
+	
+	return "%.1f%s" % [result, suffix]
 
 
 

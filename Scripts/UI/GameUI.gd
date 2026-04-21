@@ -219,6 +219,7 @@ func _enter_tree() -> void:
 	GameState.game_ui = self
 
 func _ready() -> void:
+	sidemenu_context.current_tab = Context.SELECT
 	for template in DivisionData.TEMPLATES:
 		division_type.add_icon_item(
 			load("res://starts/%s/assets/division_icons/%s.svg" % [GameState.current_start, template]),
@@ -235,7 +236,7 @@ func _ready() -> void:
 	}
 
 	pos_open = sidemenu.position
-	pos_closed = Vector2(pos_open.x - sidemenu.size.x, pos_open.y)
+	pos_closed = Vector2(pos_open.x - sidemenu.custom_minimum_size.x, pos_open.y)
 	sidemenu.position = pos_closed
 
 	GameState.game_ui = self
@@ -258,7 +259,6 @@ func _ready() -> void:
 	_update_flag()
 	updateProgressBar()
 	update_division_menu()
-	military_extra_panel.visible = false
 	
 	if world and world.clock:
 		var clock := world.clock
@@ -379,7 +379,6 @@ func DoUpdateSidemenuVisuals() -> void:
 		]
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
-		print("fish")
 
 		MapManager.show_countries_map()
 
@@ -393,6 +392,8 @@ func DoUpdateSidemenuVisuals() -> void:
 	
 	_update_relations_visuals()
 	sidemenuLatch = false
+
+
 func _on_selected_country_ideology_changed():
 	if selected_country:
 		_update_sidemenu_visuals()
@@ -460,6 +461,7 @@ func open_menu(context: Context, category: Category) -> void:
 		or GameState.industry_building != GameState.IndustryType.DEFAULT
 	):
 		return
+	military_extra_panel.visible = true
 	current_context = context
 	current_category = category
 
@@ -632,7 +634,6 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 			GameState.industry_building = GameState.IndustryType.DEFAULT
 			MapManager.show_countries_map()
 
-		military_extra_panel.visible = _menu_index == Category.MILITARY
 	# _build_action_list()
 
 # NOTE(Z21): Some of the things here are outdated and not used and overall bad way to do things ngl
@@ -733,8 +734,8 @@ func close_menu() -> void:
 	if is_open:
 		MusicManager.play_sfx(MusicManager.SFX.CLOSE_MENU)
 	GameState.reset_industry_building()
-	military_extra_panel.visible = false # just to be sure
 	slide_out()
+	military_extra_panel.visible = false
 
 func slide_in() -> void:
 	if is_open:

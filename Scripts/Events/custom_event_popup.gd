@@ -1,6 +1,8 @@
 extends Control
 
-@onready var content_list: VBoxContainer = $PanelContainer/VBoxContainer
+@export var content_list: VBoxContainer
+
+signal setup_finished
 
 var data: Dictionary = {}
 var manually_positioned = false
@@ -25,8 +27,10 @@ func setup(p_data: Dictionary):
 					new_node.pressed.connect(queue_free)
 	
 	# Wait one frame for the layout to update, then shrink root to fit
+	if not is_inside_tree(): await tree_entered
 	await get_tree().process_frame
 	size = $PanelContainer.size
+	setup_finished.emit()
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -37,6 +41,9 @@ func _ready():
 func _on_mouse_entered():
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
 		queue_free()
+
+func _process(delta: float) -> void:
+	InterpreterManager.refresh_buttons(content_list)
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
