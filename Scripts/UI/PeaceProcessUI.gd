@@ -16,6 +16,8 @@ enum MouseMode {
 @export var newOwner: OptionButton
 @export var newColor: ColorPickerButton
 
+@export var subsumeButton: Button
+
 var mouseMode: MouseMode = MouseMode.ANNEX
 
 var creating: Array[Dictionary] = []
@@ -223,6 +225,7 @@ func m_OnOwnerNewSelected(a_index: int) -> void:
 
 func m_OnAnnexNewPressed() -> void:
 	mouseMode = MouseMode.ANNEX_NEW
+	subsumeButton.disabled = false
 	
 func m_OnDeleteNewPressed() -> void:
 	for pid: int in creatingProvinces.get(creating[creating_selected].name, []):
@@ -235,6 +238,7 @@ func m_OnDeleteNewPressed() -> void:
 
 func _on_annex_all_pressed():
 	mouseMode = MouseMode.ANNEX
+	subsumeButton.disabled = false
 
 func _on_winner_selected(index: int):
 	current_selected = winners[index] if index < winners.size() else current_loser
@@ -242,6 +246,7 @@ func _on_winner_selected(index: int):
 
 func _on_puppet_pressed():
 	mouseMode = MouseMode.PUPPET
+	subsumeButton.disabled = true
 	#_update_summary()
 
 func _on_clear_selection_pressed():
@@ -273,6 +278,8 @@ func m_AnnexAll():
 # --- Logic & Integration ---
 
 func open_menu(p_winners: Array[CountryData], p_loser: CountryData):
+	mouseMode = MouseMode.ANNEX
+	subsumeButton.disabled = false
 	self.show()
 	winners = p_winners
 	current_loser = p_loser
