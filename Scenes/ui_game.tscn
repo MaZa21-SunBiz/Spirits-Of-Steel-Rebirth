@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cbnb2bc0uek4x" path="res://assets/icons/plan.svg" id="16_1nbba"]
 [ext_resource type="Theme" uid="uid://6wluupp1lmut" path="res://tab_button_theme.tres" id="16_6c76w"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
+[ext_resource type="Texture2D" uid="uid://c8e1qq2hmmr2g" path="res://assets/flags/tonga/neutral_flag.png" id="18_hx7os"]
 [ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
 [ext_resource type="Texture2D" uid="uid://blvxrdiioikq5" path="res://assets/ui/compass.svg" id="20_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://cs0x7p3s7884f" path="res://starts/ModernEmpires/assets/division_icons/artillery.svg" id="20_patwf"]
@@ -125,7 +126,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "relations_hbox", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -152,6 +153,12 @@ sidemenu_buildings = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2
 sidemenu_leader_portrait = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/Leader")
 building_dropdown = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Economy/Diplomacy/ActionsList/OptionButton")
 relations_hbox = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox")
+flag1 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country1")
+flag2 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country2")
+owner1 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country1/Owner")
+owner2 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country2/Owner")
+relation1 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Relation1")
+relation2 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Relation2")
 faction_prompt = NodePath("Control/CenterStuff/CreateFaction")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
 accepted_cultures = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
@@ -503,6 +510,57 @@ layout_mode = 2
 [node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1938162432]
 use_parent_material = true
 layout_mode = 2
+
+[node name="Country1" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox" unique_id=814244579]
+use_parent_material = true
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+texture = ExtResource("18_hx7os")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Owner" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country1" unique_id=1778923417]
+use_parent_material = true
+custom_minimum_size = Vector2(21, 13)
+layout_mode = 1
+offset_right = 21.0
+offset_bottom = 13.0
+texture = ExtResource("18_hx7os")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Relation1" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox" unique_id=10665390]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "420"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox" unique_id=962214154]
+layout_mode = 2
+text = " ↔ "
+
+[node name="Relation2" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox" unique_id=1942570261]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "69"
+
+[node name="Country2" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox" unique_id=1062497021]
+use_parent_material = true
+custom_minimum_size = Vector2(42, 26)
+layout_mode = 2
+texture = ExtResource("18_hx7os")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Owner" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country2" unique_id=1881100032]
+use_parent_material = true
+custom_minimum_size = Vector2(21, 13)
+layout_mode = 1
+offset_right = 21.0
+offset_bottom = 13.0
+texture = ExtResource("18_hx7os")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1411926768]
 use_parent_material = true

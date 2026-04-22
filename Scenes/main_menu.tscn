@@ -11,12 +11,16 @@
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
-[ext_resource type="Texture2D" uid="uid://cxilgtpeosl4d" path="res://assets/ui/johnjohn.png" id="6_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://yy1eedq3r5xk" path="res://assets/portraits/JoshPaulraj.png" id="7_ehtkc"]
 [ext_resource type="Texture2D" uid="uid://c55xrkqv8k1vg" path="res://assets/ui/the_rock.png" id="7_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://b6fwqyd1fl8kv" path="res://assets/portraits/DaleyJohnOttersbach.png" id="8_6dk6o"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
+[ext_resource type="Texture2D" uid="uid://hm1xuuhxy0t6" path="res://assets/portraits/AdolfHitler.png" id="9_jr6u5"]
+[ext_resource type="Texture2D" uid="uid://dfsodrjldvwq5" path="res://assets/ui/ariect2.png" id="10_6m47u"]
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
+[ext_resource type="Script" uid="uid://csrd7lwmkact6" path="res://Scripts/UI/Links.gd" id="18_ujyyl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
 shader = ExtResource("5_8dnnj")
@@ -65,7 +69,7 @@ offset_top = 209.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_vtepg")
-USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("6_wyh8j"), ExtResource("7_wyh8j")])
+USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("7_wyh8j"), ExtResource("7_ehtkc"), ExtResource("8_6dk6o"), ExtResource("9_jr6u5"), ExtResource("10_6m47u")])
 AvatarImage = NodePath("Avatar")
 
 [node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]
@@ -305,9 +309,26 @@ layout_mode = 2
 theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1546527840]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[url=https://discord.gg/GbyABEssVE]SOS:R Discord!!!![/url]"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("18_ujyyl")
+
 [connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer" method="_on_quit_pressed"]
 [connection signal="pressed" from="TabContainer/Credits/VBoxContainer/Exit" to="PanelContainer" method="_on_exit_credits_pressed"]
+[connection signal="meta_clicked" from="RichTextLabel" to="RichTextLabel" method="_on_meta_clicked"]
