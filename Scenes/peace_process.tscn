@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dmywidiiomun4" path="res://Scripts/UI/PeaceProcessUI.gd" id="1_52vyn"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="1_o4gkq"]
 
-[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label", "newDropdown", "newName", "newOwner", "newColor", "participant_selector")]
+[node name="PeaceProcessUI" type="CanvasLayer" unique_id=1219073297 node_paths=PackedStringArray("sidebar_panel", "summary_label", "stats_label", "loser_label", "newDropdown", "newName", "newOwner", "newColor", "subsumeButton", "participant_selector")]
 script = ExtResource("1_52vyn")
 sidebar_panel = NodePath("PanelContainer")
 summary_label = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/Label")
@@ -14,6 +14,7 @@ newDropdown = NodePath("PanelContainer2/CreatePolity/Form")
 newName = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/LineEdit")
 newOwner = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/OptionButton")
 newColor = NodePath("PanelContainer2/CreatePolity/MarginContainer/GridContainer/ColorPickerButton")
+subsumeButton = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Conquer")
 participant_selector = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Winner")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=975237978]
