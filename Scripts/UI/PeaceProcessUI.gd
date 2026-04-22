@@ -142,8 +142,14 @@ func _process_click(map_pos: Vector2):
 				if count != current_selected:
 					if count in puppeting && puppeting[count] == current_selected:
 						puppeting.erase(count)
+						for province: int in provinces_discussing:
+							if !provinces_to_take.has(province) && !provincesCreating.has(province):
+								_reset_province_visual(province)
 					else:
 						puppeting[count] = current_selected
+						for province: int in provinces_discussing:
+							if !provinces_to_take.has(province) && !provincesCreating.has(province):
+								_update_map_visual(province, CountryManager.GetCountryColor(MapManager.province_objects[province].country) * 0.8 + puppeting[count].country_color * 0.2, CountryManager.GetCountryColor(MapManager.province_objects[province].country))
 			MouseMode.ANNEX_NEW:
 				if pid not in provinces_discussing:
 					return

@@ -136,6 +136,15 @@ func _unhandled_input(event: InputEvent) -> void:
 					_handle_click(event.position, Drag.RIGHT)
 				else:
 					dragging = Drag.NONE
+	
+	if event is InputEventKey:
+		if event.ctrl_pressed && event.keycode == KEY_A && event.pressed && currentTool == Tool.MULTI_SELECT:
+			if multiSelectPID.size() == 1:
+				for pid: int in MapManager.country_to_owned_provinces[MapManager.province_objects[multiSelectPID[0]].country]:
+					if !pid in multiSelectPID:
+						multiSelectPID.push_back(pid)
+						MapManager.SetProvinceColor(pid, Color.CORNSILK)
+				update_multi_select_ui()
 
 func _handle_hover(screen_pos: Vector2) -> void:
 	if map_sprite == null:
