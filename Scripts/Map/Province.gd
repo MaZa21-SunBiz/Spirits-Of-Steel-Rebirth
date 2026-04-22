@@ -101,6 +101,12 @@ func GetPopulation() -> int:
 		totalPopulation += subpopulation.amount
 	return totalPopulation
 
+func GetFactories() -> int:
+	var totalFactories: int = 0
+	for building: BuildingData in buildings:
+		if building.state == BuildingData.BuildingState.FUNCTIONAL:
+			totalFactories += 1
+	return totalFactories
 
 func GetFunctionalOwner() -> String:
 	if occupier == "":

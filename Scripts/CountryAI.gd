@@ -131,10 +131,10 @@ func _execute_best(actions: Array) -> void:
 	
 	actions.sort_custom(func(a, b): return a.score > b.score)
 	
-	if country == GameState.game_ui.selected_country:
-		print(country.country_name + ": ")
-		for entry in actions:
-			print("%s - %f" % [str(entry.action), entry.score])
+	#if country == GameState.game_ui.selected_country:
+	#	print(country.country_name + ": ")
+	#	for entry in actions:
+	#		print("%s - %f" % [str(entry.action), entry.score])
 	
 	for action: Dictionary in actions:
 		if action.score < 0 || action.action.call():
@@ -282,7 +282,7 @@ func _execute_war() -> bool:
 	# 7. EXECUTION
 	if best_target:
 		#if country == GameState.game_ui.selected_country:
-		print("%s is declaring war on %s" % [country.country_name, best_target])
+		#print("%s is declaring war on %s" % [country.country_name, best_target])
 		WarManager.declare_war(country, CountryManager.countries[best_target])
 		
 		# Aggressive/Extreme countries cause more tension
@@ -306,7 +306,7 @@ func _execute_war() -> bool:
 func _execute_frontline():
 	if !country.ready_troops.is_empty():
 		# Get every city the country owns
-		var cities = _get_peace_hubs()
+		var cities = MapManager.country_to_cities.get(country.country_name, [])
 		if !cities.is_empty():
 			# We duplicate to safely erase during iteration
 			for troop_data: CountryData.ReadyTroop in country.ready_troops.duplicate():
@@ -321,16 +321,16 @@ func _execute_frontline():
 	
 	var idle_troops: Array = TroopManager.get_troops_for_country(country.country_name).filter(func(t): return not t.is_moving)
 	if idle_troops.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no idle troops" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no idle troops" % country.country_name)
 		return
 
 	var enemies: Array[String] = WarManager.get_enemies_of(country.country_name)
 	var move_payload: Array = []
 	if enemies.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no enemies" % country.country_name)
-		var hubs = _get_peace_hubs()
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no enemies" % country.country_name)
+		var hubs = MapManager.country_to_cities.get(country.country_name, [])
 		for troop in idle_troops:
 			if !hubs.has(troop.province_id):
 				# Choose closest hub to avoid unnecessary long moves
@@ -357,20 +357,20 @@ func _execute_frontline():
 		city_dict[city[0]] = true
 
 	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
-		if country == GameState.game_ui.selected_country:
-			print("Border Province: %d" % my_pid)
+		#if country == GameState.game_ui.selected_country:
+		#	print("Border Province: %d" % my_pid)
 		for n_id in MapManager.province_graph.get_point_connections(my_pid):
-			if country == GameState.game_ui.selected_country:
-				print("Neighbor Province: %d" % my_pid)
+			#if country == GameState.game_ui.selected_country:
+			#	print("Neighbor Province: %d" % my_pid)
 			if !MapManager.province_objects.has(n_id):
 				continue
-			if country == GameState.game_ui.selected_country:
-				print("Braveror Province: %d" % my_pid)
+			#if country == GameState.game_ui.selected_country:
+			#	print("Braveror Province: %d" % my_pid)
 			# Check if it's enemy territory
 			var enemy_name: String = MapManager.province_objects[n_id].GetFunctionalOwner()
 			if enemy_dict.has(enemy_name) && !seen.has(n_id):
-				if country == GameState.game_ui.selected_country:
-					print("Seenhbor Province: %d" % my_pid)
+				#if country == GameState.game_ui.selected_country:
+				#	print("Seenhbor Province: %d" % my_pid)
 				seen[n_id] = true
 				var e_str: int = TroopManager.get_province_strength(n_id, enemy_name)
 				var score: float = 10.0
@@ -411,8 +411,8 @@ func _execute_frontline():
 							}
 						)
 	if targets.is_empty():
-		if country == GameState.game_ui.selected_country:
-			print("%s had no targets" % country.country_name)
+		#if country == GameState.game_ui.selected_country:
+		#	print("%s had no targets" % country.country_name)
 		return
 
 	for troop in idle_troops:
@@ -457,8 +457,8 @@ func _execute_frontline():
 
 	if !move_payload.is_empty():
 		TroopManager.command_move_assigned(move_payload)
-	if country == GameState.game_ui.selected_country:
-		print("%s executed their frontline" % country.country_name)
+	#if country == GameState.game_ui.selected_country:
+	#	print("%s executed their frontline" % country.country_name)
 
 
 func _score_call_to_arms() -> float:
@@ -535,7 +535,7 @@ func _estimate_country_strength(country_name: String, only_deployed: bool = fals
 	var c: CountryData = CountryManager.countries.get(country_name)
 	
 	if !c:
-		print("Country %s doesn't exist." % country_name)
+		#print("Country %s doesn't exist." % country_name)
 		return 0.1
 	
 	if !only_deployed:

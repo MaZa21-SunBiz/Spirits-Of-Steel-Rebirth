@@ -23,7 +23,7 @@ func clear_all_troops() -> void:
 	troops_by_country.clear()
 	path_cache.clear()
 	flag_cache.clear()
-	print("TroopManager: All troops and caches cleared.")
+	#print("TroopManager: All troops and caches cleared.")
 
 
 func _process(delta: float) -> void:
@@ -563,7 +563,7 @@ func have_troops_in_both_provinces(province_id_a: int, province_id_b: int) -> bo
 
 func clear_path_cache() -> void:
 	path_cache.clear()
-	print("Pathfinding cache cleared")
+	#print("Pathfinding cache cleared")
 
 
 # Remove leading waypoints that are equal to the troop's current province.

@@ -53,30 +53,174 @@ func _ready() -> void:
 	Console.add_command("sink_rise", _sink_rise, ["pid", "type", "country_name"], 3, "sink/rise province")
 	Console.add_command("random_figure", m_RandomFigure, ["country", "budget"], 2, "Add a randomly generated significant figure to a country.")
 	Console.add_command("start_revolution", m_StartRevolution, ["pid", "name", "count"], 3, "Start a revolution.")
+	Console.add_command("start_rebellion", m_StartRebellion, ["country", "count"], 2, "Start a multi front rebellion.")
+	Console.add_command("partition_country", m_PartitionCountry, ["country", "count"], 2, "Evenly partition a country into X parts.")
 	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
 
-func m_StartRevolution(a_pid, a_name, a_count) -> void:
-	var pid: int = int(a_pid)
-	if !pid in MapManager.province_objects:
+var suffixes: Array[String] = [
+	"Diege",
+	"Rebellion",
+	"Revolution",
+	"Revolutioniary_Army",
+	"Army",
+	"Republic",
+	"Reich",
+	"Dominion",
+]
+
+var prefixes: Array[String] = [
+	"Independent",
+	"Islamic",
+	"Christian",
+	"Hindu",
+	"Anarchist",
+	"Revolutionary",
+	"Democratic",
+	"Fascist",
+]
+
+func m_StartRebellion(a_country, a_count) -> void:
+	var parent_country: CountryData = CountryManager.countries[a_country]
+	var city_ids: Array = MapManager.country_to_cities[a_country].duplicate()
+	var num_rebels: int = mini(int(a_count), city_ids.size())
+	
+	if num_rebels <= 0:
+		Console.print_line("No cities found in " + a_country + " to start rebellion.")
 		return
-	var	country: String = MapManager.province_objects[pid].country
-	var count: int = int(a_count)
-	var tries: int = 150
-	var toTake: Array[int] = [pid]
-	while tries > 0 && count > 0:
-		var options: Array = MapManager.province_graph.get_point_connections(toTake.pick_random())
-		for option: int in options.duplicate():
-			print("Option: " + str(option))
-			if MapManager.province_objects[option].country != country || option in toTake:
-				print("Deleting.")
-				options.erase(option)
-		if options.size() == 0:
-			tries -= 1
-		else:
-			toTake.append(options.pick_random())
-			count -= 1
-	MapManager.InstantiateCountryFromProvinces({
-			"name": a_name,
+
+	var seeds: Array[int] = []
+	var names: Array[String] = []
+	
+	city_ids.shuffle()
+	for i: int in range(num_rebels):
+		var city_id: int = city_ids.pop_back()
+		seeds.append(city_id)
+		
+		var city_name: String = MapManager.province_objects[city_id].city
+		var name: String = city_name
+		match randi_range(0, 2):
+			0: 
+				name = prefixes.pick_random() + "_" + name
+			1: 
+				name = prefixes.pick_random() + "_" + name + "_" + suffixes.pick_random()
+			2: 
+				name = name + "_" + suffixes.pick_random()
+		names.append(name)
+	
+	var total_provinces: int = MapManager.country_to_provinces[a_country].size()
+	var target_per_rebel: int = total_provinces / (num_rebels + 1)
+	
+	var rebels: Array[CountryData] = MultiFill(seeds, names, target_per_rebel * num_rebels)
+	
+	for rebel in rebels:
+		WarManager.declare_war(parent_country, rebel)
+	
+	for i: int in range(rebels.size()):
+		for j: int in range(i + 1, rebels.size()):
+			WarManager.declare_war(rebels[i], rebels[j])
+
+func m_PartitionCountry(a_country, a_count) -> void:
+	if !CountryManager.countries.has(a_country):
+		Console.print_line("Unknown country: " + a_country)
+		return
+		
+	var num_parts: int = int(a_count)
+	if num_parts <= 1:
+		Console.print_line("Parts must be > 1")
+		return
+
+	var country_provinces: Array = MapManager.country_to_provinces[a_country]
+	var city_ids: Array = MapManager.country_to_cities[a_country].duplicate()
+	
+	var seeds: Array[int] = []
+	var names: Array[String] = []
+	
+	city_ids.shuffle()
+	while seeds.size() < num_parts && city_ids.size() > 0:
+		seeds.append(city_ids.pop_back())
+	
+	if seeds.size() < num_parts:
+		var available = country_provinces.duplicate()
+		available.shuffle()
+		while seeds.size() < num_parts && available.size() > 0:
+			var p = available.pop_back()
+			if p not in seeds:
+				seeds.append(p)
+	
+	for i: int in range(seeds.size()):
+		names.append(a_country + "_" + str(i + 1))
+		
+	MultiFill(seeds, names, country_provinces.size())
+	
+
+func m_StartRevolution(a_pid, a_name, a_count) -> void:
+	var	country: String = MapManager.province_objects[int(a_pid)].country
+	QuickFill(int(a_pid), a_name, int(a_count))
+	WarManager.declare_war(CountryManager.countries[a_name], CountryManager.countries[country])
+	MapManager.allow_pids(CountryManager.countries[a_name], CountryManager.countries[country])
+
+func QuickFill(a_pid, a_name, a_count) -> CountryData:
+	var results = MultiFill([a_pid], [a_name], a_count)
+	return results[0] if results.size() > 0 else null
+
+func MultiFill(a_seeds: Array[int], a_names: Array[String], a_total_count: int) -> Array[CountryData]:
+	if a_seeds.is_empty():
+		return []
+		
+	var parent_country_name: String = MapManager.province_objects[a_seeds[0]].country
+	var results: Array[CountryData] = []
+	
+	var assignments: Array[Array] = []
+	var frontiers: Array[Array] = []
+	var all_taken: Dictionary = {}
+	
+	for i: int in range(a_seeds.size()):
+		assignments.append([a_seeds[i]])
+		all_taken[a_seeds[i]] = true
+		
+		var frontier: Array[int] = []
+		for opt: int in MapManager.province_graph.get_point_connections(a_seeds[i]):
+			if MapManager.province_objects[opt].country == parent_country_name && opt not in all_taken:
+				frontier.append(opt)
+		frontiers.append(frontier)
+		
+	var remaining_count: int = a_total_count - a_seeds.size()
+	var tries: int = a_total_count * 2
+	
+	while remaining_count > 0 && tries > 0:
+		tries -= 1
+		var expanded_any: bool = false
+		
+		for i: int in range(a_seeds.size()):
+			if remaining_count <= 0: break
+			
+			var frontier = frontiers[i]
+			if frontier.is_empty():
+				continue
+				
+			var choice_idx: int = randi() % frontier.size()
+			var choice: int = frontier[choice_idx]
+			frontier.remove_at(choice_idx)
+			
+			if choice in all_taken:
+				continue
+				
+			assignments[i].append(choice)
+			all_taken[choice] = true
+			remaining_count -= 1
+			expanded_any = true
+			
+			for opt: int in MapManager.province_graph.get_point_connections(choice):
+				if MapManager.province_objects[opt].country == parent_country_name && opt not in all_taken && opt not in frontier:
+					frontier.append(opt)
+					
+		if !expanded_any:
+			break
+			
+	# Instantiate countries
+	for i: int in range(a_seeds.size()):
+		var country = MapManager.InstantiateCountryFromProvinces({
+			"name": a_names[i],
 			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
 			"money": 10000,
 			"ideology": [0, 0],
@@ -87,9 +231,10 @@ func m_StartRevolution(a_pid, a_name, a_count) -> void:
 			"accepted_cultures": [],
 			"hostedGovernments": [],
 			"figures": [],
-		}, toTake)
-	WarManager.declare_war(CountryManager.countries[a_name], CountryManager.countries[country])
-	MapManager.allow_pids(CountryManager.countries[a_name], CountryManager.countries[country])
+		}, assignments[i])
+		results.append(country)
+		
+	return results
 
 func m_RandomFigure(country, budget) -> void:
 	var figure: ImportantFigure = ImportantFigure.FromRandom(country, int(budget))

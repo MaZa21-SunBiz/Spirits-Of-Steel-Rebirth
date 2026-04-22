@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Spirits of Steel Rebirth"
 run/main_scene="uid://bm4eje12awfbn"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 boot_splash/image="uid://lifcljm83dlp"
 config/icon="uid://claivv7l8p5lc"
 
@@ -35,7 +35,6 @@ SettingsManager="*res://Managers/SettingsManager.gd"
 WarManager="*res://Managers/WarManager.gd"
 KeyboardManager="*res://Managers/KeyboardManager.gd"
 ConsoleManager="*res://Managers/ConsoleManager.gd"
-Console="*uid://ouiu5xh1cs8n"
 DecisionManager="*res://Managers/DecisionManager.gd"
 EconomyManager="*res://Managers/EconomyManager.gd"
 InterpreterManager="*res://Managers/InterpreterManager.gd"
@@ -44,6 +43,7 @@ IdeologyManager="*uid://yqhi3i86rxuf"
 SceneSwitcher="*uid://b6nuwg2ue50me"
 PlansManager="*uid://2omlok4o48ss"
 EventManager="*res://Managers/EventManager.gd"
+Console="*uid://ouiu5xh1cs8n"
 
 [debug]
 

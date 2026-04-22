@@ -15,7 +15,7 @@ func reset_state() -> void:
 	wars.clear()
 	active_battles.clear()
 	original_territories.clear()
-	print("WarManager: State reset.")
+	#print("WarManager: State reset.")
 
 
 func save_wars() -> Array:
@@ -61,7 +61,7 @@ func check_for_new_battles() -> void:
 	if not MapManager or not TroopManager:
 		return
 	
-	print("WarManager: Scanning for overlapping enemies...")
+	#print("WarManager: Scanning for overlapping enemies...")
 	
 	for pid in TroopManager.troops_by_province.keys():
 		var province_troops = TroopManager.troops_by_province[pid]
