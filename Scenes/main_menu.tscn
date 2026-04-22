@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
-[ext_resource type="Script" uid="uid://csrd7lwmkact6" path="res://Scripts/UI/Links.gd" id="18_ujyyl"]
+[ext_resource type="Script" path="res://Scripts/UI/Links.gd" id="18_ujyyl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
 shader = ExtResource("5_8dnnj")
@@ -251,7 +251,6 @@ offset_right = -184.0
 offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
 tabs_visible = false
 deselect_enabled = true
 
@@ -274,6 +273,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Credits" type="PanelContainer" parent="TabContainer" unique_id=585752186]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vr1f0")

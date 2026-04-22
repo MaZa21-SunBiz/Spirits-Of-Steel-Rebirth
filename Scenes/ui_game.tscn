@@ -517,7 +517,7 @@ custom_minimum_size = Vector2(42, 26)
 layout_mode = 2
 texture = ExtResource("18_hx7os")
 expand_mode = 3
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="Owner" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country1" unique_id=1778923417]
 use_parent_material = true
@@ -550,7 +550,7 @@ custom_minimum_size = Vector2(42, 26)
 layout_mode = 2
 texture = ExtResource("18_hx7os")
 expand_mode = 3
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="Owner" type="TextureRect" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country2" unique_id=1881100032]
 use_parent_material = true
