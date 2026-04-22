@@ -46,6 +46,13 @@ var stats_labels := {}
 @export var building_dropdown: OptionButton
 
 @export var relations_hbox: HBoxContainer
+@export var flag1: TextureRect
+@export var flag2: TextureRect
+@export var owner1: TextureRect
+@export var owner2: TextureRect
+@export var relation1: Label
+@export var relation2: Label
+
 @export var faction_prompt: PanelContainer
 @export var military_access_label: Label
 
@@ -117,7 +124,7 @@ var current_category: Category = Category.GENERAL
 # ── Constants ──────────────────────────────────────────
 var action_costs: Dictionary[String, Callable] = {
 	"_declare_war": func(player: CountryData, _selected: CountryData): return {
-		"cost": 150,
+		"cost": 50,
 		"can_afford": player.war_support > 0.5
 	},
 	"_request_access": func(player: CountryData, selected: CountryData): return {
@@ -483,9 +490,6 @@ func _update_relations_visuals() -> void:
 	if current_category != Category.GENERAL:
 		return
 
-	for child in relations_hbox.get_children():
-		child.queue_free()
-	
 	var player = CountryManager.player_country
 	var target = selected_country
 
@@ -493,38 +497,25 @@ func _update_relations_visuals() -> void:
 		relations_hbox.visible = true
 		
 		# 1. FAR LEFT:  Target Flag
-		relations_hbox.add_child(_get_simple_flag(target.country_name, target.ideology_name))
+		flag1.texture = TroopManager.get_flag(target.country_name, target.ideology_name)
+		if target.is_puppet:
+			owner1.visible = true
+			owner1.texture = TroopManager.get_flag(target.owner, target.owner)
+		else:
+			owner1.visible = false
 
-		# 2. SPACER (Justify-Between)
-		var spacer1 = Control.new()
-		spacer1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		spacer1.use_parent_material = true
-		relations_hbox.add_child(spacer1)
 		
 		# 3. CENTER: Dual Opinions
-		var our_val = player.get_relation_with(target.country_name)
-		var their_val = target.get_relation_with(player.country_name)
-		
-
-		# "Their view"
-		relations_hbox.add_child(_create_styled_label(str(their_val), 20, their_val))
-		
-		# Visual Divider
-		var mid_icon = _create_styled_label(" ↔ ", 20, 50) # Neutral color for divider
-		mid_icon.modulate.a = 0.4
-		relations_hbox.add_child(mid_icon)
-		
-		# "Our view"
-		relations_hbox.add_child(_create_styled_label(str(our_val), 20, our_val))
-
-		# 4. SECOND SPACER
-		var spacer2 = Control.new()
-		spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		spacer2.use_parent_material = true
-		relations_hbox.add_child(spacer2)
+		relation1.text = str(target.get_relation_with(player.country_name))
+		relation2.text = str(player.get_relation_with(target.country_name))
 
 		# 5. FAR RIGHT: Player Flag
-		relations_hbox.add_child(_get_simple_flag(player.country_name, player.ideology_name))
+		flag2.texture = TroopManager.get_flag(player.country_name, player.ideology_name)
+		if player.is_puppet:
+			owner2.visible = true
+			owner2.texture = TroopManager.get_flag(player.owner, player.owner)
+		else:
+			owner2.visible = false
 	else:
 		relations_hbox.visible = false
 
@@ -581,36 +572,6 @@ func DoUpdateContextActionsVisuals() -> void:
 
 	contextLatch = false
 
-func _create_styled_label(text_content: String, size: int, score_ref: int) -> Label:
-	var l = Label.new()
-	l.text = text_content
-	l.use_parent_material = true
-	
-	# Apply the Custom Font
-	if custom_font:
-		l.add_theme_font_override("font", custom_font)
-	
-	# Apply Font Size
-	l.add_theme_font_size_override("font_size", size)
-	
-	# Apply Color based on score_ref
-	if score_ref >= 70:
-		l.modulate = Color.SPRING_GREEN
-	elif score_ref <= 30:
-		l.modulate = Color.ORANGE_RED
-	else:
-		l.modulate = Color.WHITE
-		
-	return l
-
-func _get_simple_flag(c_name: String, ideology: String = "") -> TextureRect:
-	var tex = TextureRect.new()
-	tex.texture = TroopManager.get_flag(c_name, ideology)
-	tex.use_parent_material = true
-	tex.custom_minimum_size = Vector2(42, 26)
-	tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	return tex
 
 func _on_tab_changed(new_category_index: int) -> void:
 	current_category = new_category_index as Category

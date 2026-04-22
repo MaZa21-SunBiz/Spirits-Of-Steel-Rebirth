@@ -159,8 +159,8 @@ func _sample_province_under_mouse() -> void:
 
 	var pid = MapManager.get_province_at_pos(get_global_mouse_position(), map_sprite)
 
-	if pid <= 0 || MapManager.province_objects[pid].type == Province.SEA:
-		return
+	# if pid <= 0 || MapManager.province_objects[pid].type == Province.SEA:
+	# 	return
 
 	# Check for military access
 	var prov = MapManager.province_objects[pid]
