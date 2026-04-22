@@ -66,6 +66,9 @@ var suffixes: Array[String] = [
 	"Republic",
 	"Reich",
 	"Dominion",
+	"Kingdom",
+	"Empire",
+	"Duchy",
 ]
 
 var prefixes: Array[String] = [
@@ -77,6 +80,7 @@ var prefixes: Array[String] = [
 	"Revolutionary",
 	"Democratic",
 	"Fascist",
+	"Divine",
 ]
 
 func m_StartRebellion(a_country, a_count) -> void:
