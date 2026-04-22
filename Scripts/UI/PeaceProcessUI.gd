@@ -254,6 +254,22 @@ func _on_clear_selection_pressed():
 func _reset_province_visual_immediate(pid: int):
 	_update_map_visual(pid, CountryManager.GetCountryColor(MapManager.province_objects[pid].GetFunctionalOwner(), Color.WHITE), CountryManager.GetCountryColor(MapManager.province_objects[pid].country, Color.WHITE))
 
+func m_AnnexAll():
+	match mouseMode:
+		MouseMode.ANNEX:
+			for province: int in provinces_discussing:
+				if !provinces_to_take.has(province) && !provincesCreating.has(province):
+					provinces_to_take[province] = current_selected
+					_update_map_visual(province, current_selected.country_color.lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[province].country))
+		MouseMode.ANNEX_NEW:
+			for province: int in provinces_discussing:
+				if !provinces_to_take.has(province) && !provincesCreating.has(province):
+					provincesCreating[province] = creating[creating_selected].name
+					creatingProvinces.get_or_add(creating[creating_selected].name, []).push_back(province)
+					_update_map_visual(province, Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE).lightened(0.2), CountryManager.GetCountryColor(MapManager.province_objects[province].country))
+
+	_update_summary()
+
 # --- Logic & Integration ---
 
 func open_menu(p_winners: Array[CountryData], p_loser: CountryData):

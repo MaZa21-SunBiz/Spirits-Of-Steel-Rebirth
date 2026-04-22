@@ -120,6 +120,13 @@ size_flags_horizontal = 3
 theme = ExtResource("1_41grw")
 text = "Annex"
 
+[node name="Conquer" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1322488307]
+material = ExtResource("1_o4gkq")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_41grw")
+text = "Subsume"
+
 [node name="Puppet" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=38295834]
 material = ExtResource("1_o4gkq")
 layout_mode = 2
@@ -220,6 +227,7 @@ text = "Delete"
 
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer/Winner" to="." method="_on_winner_selected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Annex" to="." method="_on_annex_all_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Conquer" to="." method="m_AnnexAll"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Puppet" to="." method="_on_puppet_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_clear_selection_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VBoxContainer/Sign" to="." method="_on_confirm_pressed"]
