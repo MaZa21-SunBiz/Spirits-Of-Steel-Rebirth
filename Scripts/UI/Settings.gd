@@ -59,10 +59,12 @@ func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if is_visible_in_tree():
 			_refresh_saves()
+			_update_tabs_visibility()
 
 func _ready():
 	_refresh_saves()
 	_initialize_ui_values()
+	_update_tabs_visibility()
 
 
 func _on_save_settings_pressed() -> void:
@@ -125,9 +127,7 @@ func _add_save_row(parent: Node, save_name: String, file_path: String) -> void:
 		var json_str = file.get_as_text()
 		var data = JSON.parse_string(json_str)
 		if data is Dictionary:
-			scenario_path = data.get("scenario_path", "")
-			if scenario_path == "":
-				scenario_path = "res://starts/ModernDay/map_data.json" # Fallback
+			scenario_path = data.get("scenario_path", "res://starts/ModernDay/map_data.json")
 			
 			if not FileAccess.file_exists(scenario_path):
 				scenario_exists = false
@@ -267,3 +267,9 @@ func _on_exit_start_pressed() -> void:
 
 func _on_tab_container_tab_changed(tab: int) -> void:
 	save_settings.visible = !(tab == Section.EXIT || tab == Section.SAVE)
+
+
+func _update_tabs_visibility():
+	if tab_container:
+		var is_menu = SceneSwitcher._current_type == SceneSwitcher.Type.MENU
+		tab_container.set_tab_hidden(Section.EXIT, is_menu)
