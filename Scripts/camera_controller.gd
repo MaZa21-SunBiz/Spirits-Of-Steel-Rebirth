@@ -10,12 +10,7 @@ var top_bar_height = 26
 func _process(delta: float) -> void:
 	if get_viewport().gui_get_focus_owner() != null || GameState.decision_menu_open:
 		return
-	_handle_keyboard_movement(delta)
-	camera.position.y = clampf(
-		camera.position.y, 
-		-top_bar_height / camera.zoom.y,  
-		MapManager.MAP_HEIGHT - (camera.get_viewport_rect().size.y / camera.zoom.y)
-	)
+	camera.position += Input.get_vector("move_left", "move_right", "move_up", "move_down") * (base_speed / camera.zoom.x) * delta
 
 
 func _is_mouse_over_ui() -> bool:
@@ -49,15 +44,11 @@ func _input(event: InputEvent) -> void:
 			_perform_zoom(zoom_dir)
 
 
-func _handle_keyboard_movement(delta: float) -> void:
-	camera.position += Input.get_vector("move_left", "move_right", "move_up", "move_down") * (base_speed / camera.zoom.x) * delta
-
-
 func _perform_zoom(direction: int) -> void:
 	var mouse_pos_before := camera.get_global_mouse_position()
 
 	camera.zoom = (camera.zoom + Vector2.ONE * direction).clamp(
-		Vector2.ONE * (648 + top_bar_height) / MapManager.MAP_HEIGHT,
+		Vector2.ONE,
 		Vector2.ONE * 12 
 	)
 
