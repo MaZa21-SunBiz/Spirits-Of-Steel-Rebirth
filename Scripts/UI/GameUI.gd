@@ -53,6 +53,8 @@ var stats_labels := {}
 @export var relation1: Label
 @export var relation2: Label
 
+@export var factions_box: VBoxContainer
+
 @export var faction_prompt: PanelContainer
 @export var military_access_label: Label
 
@@ -384,15 +386,36 @@ func DoUpdateSidemenuVisuals() -> void:
 			selected_country.ideology_name.capitalize(),
 			selected_country.country_name.capitalize()
 		]
+
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
+		# factions.text = selected_country.factions.reduce(func(x, y): return "%s\n%s" %[x, y], "")
+		factions_box.get_children().map(func(x: Label): x.queue_free())
+		for faction in selected_country.factions:
+			var faction_entry:Label = Label.new()
+			faction_entry.text = faction.capitalize()
+			faction_entry.mouse_filter = Control.MOUSE_FILTER_PASS
+			faction_entry.tooltip_text = FactionManager.factions[faction].members.map(
+			func(x: FactionMember) -> String:
+				return "%s: (%s)" % [x.polity.capitalize() , x.status]
+			).reduce(
+			func(x: String, y: String) -> String:
+				return "%s\n%s" % [x, y]
+				, ""
+			)
+			factions_box.add_child(faction_entry)
+
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
 
 		MapManager.show_countries_map()
 
 	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
-	#print(selected_country.figures)
-	sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(MapManager.significantFigures.get(selected_country.governmentPositions["Leader"]))
-	sidemenu_leader_portrait.tooltip_text = MapManager.significantFigures[selected_country.governmentPositions["Leader"]].GetDisplayString()
+	if selected_country.governmentPositions["Leader"]:
+		sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(
+			MapManager.significantFigures.get(
+				selected_country.governmentPositions["Leader"]
+				)
+			)
+		sidemenu_leader_portrait.tooltip_text = MapManager.significantFigures[selected_country.governmentPositions["Leader"]].GetDisplayString()
 	
 	sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 	sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)

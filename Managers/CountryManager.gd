@@ -77,6 +77,12 @@ func _ensure_country_has_leader(country: CountryData) -> void:
 		country.governmentPositions["Leader"] = new_figure.name
 		print("CountryManager: Assigned random leader %s to %s" % [new_figure.name, country.country_name])
 
+func generate_missing_leaders() -> void:
+	for c_name: String in countryNames:
+		var country: CountryData = countries[c_name]
+		_ensure_country_has_leader(country)
+		country.InitializeCabinet()
+
 func save_countries() -> Array:
 	var polities: Array = []
 	for country: CountryData in countries.values():
@@ -134,10 +140,6 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	if new_country.is_player:
 		player_country = new_country
 		#player_country.ai_controller = null # Ensure player doesn't have an AI brain
-
-	_ensure_country_has_leader(new_country)
-
-	new_country.InitializeCabinet()
 	
 	return new_country
 

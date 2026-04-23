@@ -126,7 +126,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "factions_box", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "sewage_graph", "population_graph", "water_graph", "power_graph", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "building_designer", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -159,6 +159,7 @@ owner1 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHb
 owner2 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Country2/Owner")
 relation1 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Relation1")
 relation2 = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/RelationsHbox/Relation2")
+factions_box = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer/Factions")
 faction_prompt = NodePath("Control/CenterStuff/CreateFaction")
 military_access_label = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Label")
 accepted_cultures = NodePath("Control/HSplitContainer/SidemenuBG/VBoxContainer2/Context/Player/Cultures/AcceptedCultures/ScrollContainer/VBoxContainer")
@@ -508,6 +509,7 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="RelationsHbox" type="HBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1938162432]
+visible = false
 use_parent_material = true
 layout_mode = 2
 
@@ -611,6 +613,24 @@ size_flags_vertical = 3
 texture = ExtResource("25_pvldk")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1748565883]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1716951170]
+layout_mode = 2
+mouse_filter = 1
+text = "Factions:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" unique_id=250380973]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Factions" type="VBoxContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=1448419965]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/HSplitContainer/SidemenuBG/VBoxContainer2" unique_id=1476466952]
 visible = false

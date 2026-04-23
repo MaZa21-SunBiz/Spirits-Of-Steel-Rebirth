@@ -27,10 +27,12 @@ var functions: Dictionary = {
 	"annex": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"add_ideology_drift": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.IdeologyDrift],
 	"make_puppet": [ExpressionTypes.Variable, ExpressionTypes.Variable],
+	"release_puppet": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"has_pids": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"add_plans": [ExpressionTypes.Variable],
 	"remove_plan": [ExpressionTypes.Variable],
 	"event": [ExpressionTypes.Variable],
+	"schedule_event": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"invite": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"change_province_types": [ExpressionTypes.List, ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"set_fig_attr": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.Variable],
@@ -322,6 +324,10 @@ func get_function(block, country: CountryData = null):
 			if evaled_args.size() >= 2:
 				CountryManager.make_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
 				result = true
+		"release_puppet":
+			if evaled_args.size() >= 2:
+				CountryManager.release_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
+				result = true
 		"has_pids":
 			if evaled_args.size() >= 2:
 				var i: int = 1
@@ -346,6 +352,10 @@ func get_function(block, country: CountryData = null):
 		"event":
 			if evaled_args.size() > 0 && evaled_args[0] is Dictionary:
 				EventManager.show_alert(evaled_args[0])
+				result = true
+		"schedule_event":
+			if evaled_args.size() >= 2 and evaled_args[1] is Dictionary:
+				EventManager.schedule_event(int(evaled_args[0]), evaled_args[1])
 				result = true
 		"invite":
 			if evaled_args.size() >= 2:
