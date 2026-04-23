@@ -227,7 +227,10 @@ var all_notifs: Dictionary = {}
 func _enter_tree() -> void:
 	GameState.game_ui = self
 
+
 func _ready() -> void:
+	set_tooltips_of_tabcontainers()
+	
 	sidemenu_context.current_tab = Context.SELECT
 	for template in DivisionData.TEMPLATES:
 		division_type.add_icon_item(
@@ -315,6 +318,15 @@ func _ready() -> void:
 	var compass = sidemenu_pointer.get_parent()
 	compass.mouse_filter = Control.MOUSE_FILTER_PASS
 	compass.gui_input.connect(_on_compass_gui_input)
+
+
+func set_tooltips_of_tabcontainers():
+	var tabs := %PlayerTabs as TabContainer
+	tabs.set_tab_tooltip(0, "Diplomacy")
+	tabs.set_tab_tooltip(1, "Economy")
+	tabs.set_tab_tooltip(2, "Military")
+	tabs.set_tab_tooltip(3, "Cultures")
+
 
 func _on_compass_gui_input(event: InputEvent) -> void:
 	if not SettingsManager.settings.debug_mode or not selected_country:
