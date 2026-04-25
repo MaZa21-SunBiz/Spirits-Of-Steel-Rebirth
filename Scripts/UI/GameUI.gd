@@ -396,12 +396,14 @@ func DoUpdateSidemenuVisuals() -> void:
 
 		sidemenu_country_label.text = "%s %s" % [
 			selected_country.ideology_name.capitalize(),
-			selected_country.country_name.capitalize()
+			selected_country.display_name.capitalize()
 		]
 
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 		# factions.text = selected_country.factions.reduce(func(x, y): return "%s\n%s" %[x, y], "")
-		factions_box.get_children().map(func(x: Label): x.queue_free())
+		for entry in factions_box.get_children():
+			entry.queue_free()
+
 		for faction in selected_country.factions:
 			var faction_entry:Label = Label.new()
 			faction_entry.text = faction.capitalize()
@@ -420,7 +422,6 @@ func DoUpdateSidemenuVisuals() -> void:
 
 		MapManager.show_countries_map()
 
-	sidemenu_country_label.text = IdeologyManager.get_ideology_name(selected_country.ideology).capitalize() + " " + selected_country.country_name.capitalize()
 	if selected_country.governmentPositions["Leader"]:
 		sidemenu_leader_portrait.texture = ImportantFigure.GetPortrait(
 			MapManager.significantFigures.get(
@@ -972,11 +973,19 @@ func close_troop_container() -> void:
 
 # --- Main Update Logic ---
 func update_division_menu():
-	var count: int = ceili(input_division.value)
 	var stats = DivisionData.TEMPLATES.get(division_type_selected)
-
 	if !stats:
 		return # Safety check
+
+	var player: CountryData = CountryManager.player_country
+	if player:
+		var max_manpower_divs = player.manpower / stats.manpower if stats.manpower > 0 else 999
+		var unit_cost = stats.cost * player.divCostMod
+		var max_money_divs = player.money / unit_cost if unit_cost > 0 else 999
+		
+		input_division.max_value = max(1, floor(min(max_manpower_divs, max_money_divs)))
+
+	var count: int = ceili(input_division.value)
 
 	div_type.text = division_type_selected.capitalize()
 	div_stats.text = "%s\n%s\n%s" % [stats.attack, stats.defense, stats.hp]
@@ -984,7 +993,6 @@ func update_division_menu():
 	var total_manpower: int = stats.manpower * count
 	manpower.text = format_number(total_manpower)
 
-	var player: CountryData = CountryManager.player_country
 	if player:
 		costs.text = format_number(stats.cost * count * player.divCostMod)
 
@@ -1010,6 +1018,9 @@ func _on_division_type_selected(index: int) -> void:
 	print(DivisionData.TEMPLATES)
 	division_type_selected = DivisionData.TEMPLATES.keys()[index]
 	print(division_type_selected)
+	update_division_menu()
+
+func _on_input_division_text_changed(_value: float) -> void:
 	update_division_menu()
 
 func _on_music_pressed():

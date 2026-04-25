@@ -45,7 +45,7 @@ var province_graph: SoiStar = SoiStar.new() # NOTE(soi): ehh
 var global_claims_registry: Dictionary = {}
 var world_tension: float = 0.1 # Global tension level (0.1 to 1.0)
 
-var all_cities: Array[Array] = []
+var all_cities: Array[Dictionary] = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
@@ -1476,11 +1476,16 @@ func InstantiateCountryFromProvinces(a_countryData: Dictionary, a_claims: Packed
 	CountryManager.cleanup_empty_countries()
 	return countryer
 
-func get_all_cities() -> Array[Array]:
-	var pids: Array[Array] = []
+func get_all_cities() -> Array[Dictionary]:
+	var pids: Array[Dictionary] = []
 	for obj: Province in province_objects.values():
 		if len(obj.city) > 0:
-			pids.append([obj.id, obj.city])
+			pids.append(
+				{
+					"id": obj.id,
+					"city": obj.city
+				}
+			)
 	return pids
 
 func get_cities_province_country(country_name) -> Array:

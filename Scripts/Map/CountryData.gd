@@ -13,6 +13,8 @@ var builtBuildings: Dictionary[String, int] = {}
 
 #region --- Properties ---
 var country_name: String
+var display_name: String
+var capital: String
 var country_color: Color
 var is_player: bool = false
 var is_puppet: bool = false
@@ -167,6 +169,8 @@ func _init() -> void:
 func ToDict() -> Dictionary:
 	return {
 		"name": country_name,
+		"display_name": display_name,
+		"capital": capital,
 		"color": "#"+country_color.to_html(false).to_upper(),
 		"money": money,
 		"ideology": [ideology.x, ideology.y],
@@ -187,6 +191,8 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	var country: CountryData = CountryData.new()
 	
 	country.country_name = a_data["name"]
+	country.display_name = a_data.get("display_name", a_data["name"])
+	country.capital = a_data.get("capital", "")
 	country.country_color = Color.html(a_data.get("color", "#FFFFFF"))
 	country.money = a_data.get("money", 0)
 	country.ideology = Vector2(a_data.get("ideology", [0, 0])[0], a_data.get("ideology", [0, 0])[1])

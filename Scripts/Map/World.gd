@@ -190,17 +190,7 @@ func load_map_data(mapData: Dictionary):
 	
 	if mapData.has("significant_figures"):
 		for fig in mapData["significant_figures"]:
-			var figure: ImportantFigure = ImportantFigure.FromDict(fig)
-			MapManager.significantFigures[figure.name] = figure
-			# Back-populate the country's figures list and government positions
-			var country: CountryData = CountryManager.countries.get(figure.allegiance)
-			if country:
-				if figure.name not in country.figures:
-					country.figures.append(figure.name)
-				if figure.occupation != "":
-					# Register position; first figure for each slot wins
-					if not country.governmentPositions.has(figure.occupation) or country.governmentPositions[figure.occupation] == "":
-						country.governmentPositions[figure.occupation] = figure.name
+			MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
 	CountryManager.generate_missing_leaders()
 	
 	Console.add_command_autocomplete_list("play_as", CountryManager.countries.keys())

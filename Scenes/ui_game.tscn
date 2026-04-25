@@ -508,6 +508,21 @@ mouse_behavior_recursive = 2
 use_parent_material = true
 layout_mode = 2
 
+[node name="HFlowContainer" type="HFlowContainer" parent="Control/SIDEBAR/SidemenuBG/VBoxContainer2" unique_id=1411926768]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/SIDEBAR/SidemenuBG/VBoxContainer2/HFlowContainer" unique_id=1954831864]
+texture_filter = 2
+use_parent_material = true
+custom_minimum_size = Vector2(201, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_yp111")
+theme_override_font_sizes/font_size = 24
+text = "Select country"
+autowrap_mode = 2
+
 [node name="RelationsHbox" type="HBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content" unique_id=1938162432]
 visible = false
 use_parent_material = true
@@ -871,7 +886,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 text = "Economy Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1125,6 +1140,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("13_sdmnd")
+theme_override_font_sizes/font_size = 22
 text = "Military Actions"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1152,7 +1168,7 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("13_sdmnd")
 theme_override_styles/normal = ExtResource("33_oouja")
-text = "Choose Deployment Province"
+text = "Choose Deployment City"
 
 [node name="Button2" type="Button" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/Military/ScrollContainer/ActionsList" unique_id=1602099174]
 use_parent_material = true
@@ -2192,103 +2208,6 @@ tab_6/tooltip = "Resources"
 tab_6/icon = ExtResource("41_vbips")
 tab_7/tooltip = "Biomes"
 tab_7/icon = ExtResource("41_hx7os")
-
-[node name="DiploScreen" type="PanelContainer" parent="." unique_id=620797111]
-visible = false
-offset_left = 182.0
-offset_top = 59.0
-offset_right = 900.0
-offset_bottom = 507.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="DiploScreen" unique_id=1097481890]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="DiploScreen/HBoxContainer" unique_id=1078806350]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DiploScreen/HBoxContainer/ScrollContainer" unique_id=163354315]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="CheckButton" type="CheckButton" parent="DiploScreen/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1203640113]
-layout_mode = 2
-text = "gooberino"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DiploScreen/HBoxContainer" unique_id=580617895]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Leader" type="TextureRect" parent="DiploScreen/HBoxContainer/VBoxContainer" unique_id=1253791632]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(120, 90)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("25_pvldk")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TabContainer" type="TabContainer" parent="DiploScreen/HBoxContainer/VBoxContainer" unique_id=1476899627]
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DiploScreen/HBoxContainer/VBoxContainer/TabContainer" unique_id=186210316]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="Button" type="Button" parent="DiploScreen/HBoxContainer/VBoxContainer/TabContainer/VBoxContainer" unique_id=458617707]
-layout_mode = 2
-text = "skibidi"
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="DiploScreen/HBoxContainer" unique_id=1791077587]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="VFlowContainer" type="VFlowContainer" parent="DiploScreen/HBoxContainer/ScrollContainer2" unique_id=1879088628]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Leader" type="TextureRect" parent="DiploScreen/HBoxContainer/ScrollContainer2/VFlowContainer" unique_id=1143142847]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("26_w7nfq")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Leader2" type="TextureRect" parent="DiploScreen/HBoxContainer/ScrollContainer2/VFlowContainer" unique_id=723002742]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("27_bfmcl")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Leader3" type="TextureRect" parent="DiploScreen/HBoxContainer/ScrollContainer2/VFlowContainer" unique_id=1467012168]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("28_1nbba")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Leader4" type="TextureRect" parent="DiploScreen/HBoxContainer/ScrollContainer2/VFlowContainer" unique_id=1949794052]
-material = ExtResource("16_lpwmk")
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("29_anvjc")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="PanelContainer" type="Panel" parent="." unique_id=275726808]
 visible = false

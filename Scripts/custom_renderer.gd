@@ -306,10 +306,11 @@ func _draw_cities() -> void:
 	var zoom_vec = Vector2(_current_inv_zoom, _current_inv_zoom)
 
 	for city_data in MapManager.all_cities:
-		var pid = city_data[0]
-		var city_name = city_data[1]
-
+		var pid = city_data["id"]
+		var city_name = city_data["city"]
 		var base_pos = MapManager.province_centers[pid]
+		var color: Color = Color.RED if CountryManager.countries[MapManager.province_objects[pid].country].capital == city_name else Color.WHITE 
+
 		if base_pos == Vector2.ZERO:
 			continue
 		base_pos += map_sprite.position
@@ -321,7 +322,7 @@ func _draw_cities() -> void:
 
 			draw_set_transform_matrix(Transform2D(0, zoom_vec, 0, world_pos))
 
-			draw_circle(Vector2.ZERO, base_dot_radius, Color.WHITE)
+			draw_circle(Vector2.ZERO, base_dot_radius, color)
 
 			if pid == hovered_pid:
 				draw_string_outline(
@@ -341,7 +342,7 @@ func _draw_cities() -> void:
 					HORIZONTAL_ALIGNMENT_LEFT,
 					-1,
 					base_font_size,
-					Color.WHITE
+					color
 				)
 
 	draw_set_transform_matrix(Transform2D.IDENTITY)

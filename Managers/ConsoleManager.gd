@@ -55,7 +55,9 @@ func _ready() -> void:
 	Console.add_command("start_revolution", m_StartRevolution, ["pid", "name", "count"], 3, "Start a revolution.")
 	Console.add_command("start_rebellion", m_StartRebellion, ["country", "count"], 2, "Start a multi front rebellion.")
 	Console.add_command("partition_country", m_PartitionCountry, ["country", "count"], 2, "Evenly partition a country into X parts.")
+	Console.add_command("set_attr", _set_attr, ["country", "attr", "val"], 3, "Sets the atribute of a country")
 	Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
+	Console.add_command_autocomplete_list("annex", CountryManager.countryNames)
 
 var suffixes: Array[String] = [
 	"Diege",
@@ -372,3 +374,7 @@ func _instabuild():
 func _sink_rise(pid, type, country_name: String):
 	print("skibidi")
 	MapManager.change_province_types([int(pid)], int(type), country_name)
+
+
+func _set_attr(country: String, attr: String, val: Variant):
+	CountryManager.countries[country][attr] = val
