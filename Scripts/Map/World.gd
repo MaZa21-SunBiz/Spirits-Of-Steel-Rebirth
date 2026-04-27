@@ -192,6 +192,7 @@ func load_map_data(mapData: Dictionary):
 		for fig in mapData["significant_figures"]:
 			MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
 	CountryManager.generate_missing_leaders()
+	CountryManager.cleanup_empty_countries()
 	
 	Console.add_command_autocomplete_list("play_as", CountryManager.countries.keys())
 

@@ -508,21 +508,6 @@ mouse_behavior_recursive = 2
 use_parent_material = true
 layout_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Control/SIDEBAR/SidemenuBG/VBoxContainer2" unique_id=1411926768]
-use_parent_material = true
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/SIDEBAR/SidemenuBG/VBoxContainer2/HFlowContainer" unique_id=1954831864]
-texture_filter = 2
-use_parent_material = true
-custom_minimum_size = Vector2(201, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_yp111")
-theme_override_font_sizes/font_size = 24
-text = "Select country"
-autowrap_mode = 2
-
 [node name="RelationsHbox" type="HBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content" unique_id=1938162432]
 visible = false
 use_parent_material = true
@@ -712,11 +697,12 @@ size_flags_vertical = 3
 theme = ExtResource("13_sdmnd")
 theme_type_variation = &"InfoTabContainer"
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ilaaa")
-current_tab = 0
+current_tab = 3
 tabs_visible = false
 
 [node name="PlayerTabs" type="TabContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons" unique_id=1238660091]
 unique_name_in_owner = true
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")
@@ -1601,7 +1587,6 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Launch Nuke"
 
 [node name="Puppet" type="TabContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons" unique_id=2040957791]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("13_sdmnd")

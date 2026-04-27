@@ -376,12 +376,6 @@ func _update_sidemenu_visuals() -> void:
 		DoUpdateSidemenuVisuals()
 
 func DoUpdateSidemenuVisuals() -> void:
-
-	sidemenu_country_label.text = "%s %s" % [
-		selected_country.ideology_name.capitalize(),
-		selected_country.display_name.capitalize()
-	]
-
 	if GameState.selectingCountry:
 		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
 		for stat: String in [
@@ -399,6 +393,11 @@ func DoUpdateSidemenuVisuals() -> void:
 			var stat_label: Label = Label.new()
 			stat_label.text = "%s: %s" % [stat.capitalize(), str(selected_country[stat]).capitalize()]
 			select_player_stat.add_child(stat_label)
+
+		sidemenu_country_label.text = "%s %s" % [
+			selected_country.ideology_name.capitalize(),
+			selected_country.display_name.capitalize()
+		]
 
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 		# factions.text = selected_country.factions.reduce(func(x, y): return "%s\n%s" %[x, y], "")
@@ -492,7 +491,7 @@ func toggle_menu(context := Context.PLAYER) -> void:
 		close_menu()
 	else:
 		selected_country = CountryManager.player_country
-		sidemenu_country_label.text = selected_country.country_name
+		nation_flag.texture = nation_flag.texture
 		open_menu(context, Category.GENERAL)
 		_update_context_actions_visuals()
 

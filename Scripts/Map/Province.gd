@@ -52,6 +52,7 @@ func ToDict(troops_data: Array = []) -> Dictionary:
 		"max_infrastructure": self.maxInfrastructure,
 		"troops": troops_data
 	}
+	province_dict["claims"].remove_at(0)
 	return province_dict
 
 
@@ -87,7 +88,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 			province.buildings.append(BuildingData.FromDict(buildingData))
 		for populationData: Dictionary in a_data.get("populations", []):
 			province.populations.append(PopulationData.FromDict(populationData))
-		province.claims = a_data.get("claims", [])
+		province.claims = [province.country] + a_data.get("claims", [])
 		province.gdp = a_data.get("gdp", 1000)
 		province.infrastructure = a_data.get("infrastructure", 0)
 		province.maxInfrastructure = a_data.get("max_infrastructure", 5)

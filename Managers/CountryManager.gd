@@ -6,6 +6,7 @@ var countryNames: PackedStringArray = []
 var player_country: CountryData
 
 var Releasables: Array[ReleasableData] = []
+var dead_countries: Dictionary[String, CountryData] = {}
 
 #var mutexer: Mutex = Mutex.new()
 
@@ -36,6 +37,7 @@ func initialize_countries(a_countriesData: Array) -> void:
 	# Clear existing data before adding
 	countries.clear()
 	countryNames.clear()
+	dead_countries.clear()
 	player_country = null
 	
 	if GameState.is_loading_game:
@@ -87,6 +89,8 @@ func save_countries() -> Array:
 	var polities: Array = []
 	for country: CountryData in countries.values():
 		polities.append(country.ToDict())
+	for country: CountryData in dead_countries.values():
+		polities.append(country.ToDict())
 	return polities
 
 func GetCountryColor(a_country: String, a_defaultColor: Color = Color.BLACK) -> Color:
@@ -117,6 +121,16 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 		push_warning("CountryManager: Country '%s' already exists!" % tempName)
 		return countries[tempName]
 
+	if dead_countries.has(tempName):
+		var revived: CountryData = dead_countries[tempName]
+		dead_countries.erase(tempName)
+		countries[tempName] = revived
+		countryNames.append(tempName)
+		if revived.is_player:
+			player_country = revived
+		print("CountryManager: Revived country '%s'." % tempName)
+		return revived
+
 	# NOTE(soi): I DONT CARE WHO THE IRS SENDS IM NOT PAYNG MY TAXES
 	# 2. Check if the flag exists before proceeding
 	# if TroopManager.get_flag(tempName, IdeologyManager.get_ideology_name(
@@ -135,6 +149,7 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	
 	#mutexer.lock()
 	countries[tempName] = new_country
+	print(countries[tempName])
 	countryNames.append(tempName)
 	
 	if new_country.is_player:
@@ -233,6 +248,7 @@ func cleanup_empty_countries() -> void:
 			pass
 		else:
 			var deleting: CountryData = CountryManager.countries[c_name]
+			dead_countries[c_name] = deleting
 			#CountryManager.Releasables.append(ReleasableData.FromDict({}))
 			if deleting.owner in countryNames:
 				CountryManager.release_puppet(CountryManager.countries[deleting.owner], deleting)
