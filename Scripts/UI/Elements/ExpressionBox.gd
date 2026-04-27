@@ -190,6 +190,7 @@ static func FromDict(data, _is_child: bool = false) -> ExpressionBox:
 			var child = FromDict(arg, true)
 			box.args_box.add_child(child)
 			child.changed.connect(func(): box.changed.emit())
+		box._update_add_args_button()
 
 	elif data.has("for"):
 		box.expression_tabs.current_tab = InterpreterManager.ExpressionTypes.Loop
@@ -286,6 +287,7 @@ static func FromDictInPlace(box: ExpressionBox, data):
 			var child = FromDict(arg, true)
 			box.args_box.add_child(child)
 			child.changed.connect(func(): box.changed.emit())
+		box._update_add_args_button()
 
 	elif data.has("for"):
 		box.expression_tabs.current_tab = InterpreterManager.ExpressionTypes.Loop
@@ -363,6 +365,20 @@ func _ready() -> void:
 	func_options.item_selected.connect(_on_func_selected)
 	if value_edit: value_edit.text_changed.connect(func(): changed.emit())
 	if for_edit: for_edit.text_changed.connect(func(): changed.emit())
+	if args_box:
+		args_box.child_entered_tree.connect(func(_node): _update_add_args_button())
+		args_box.child_exiting_tree.connect(func(_node): _update_add_args_button.call_deferred())
+
+func _update_add_args_button() -> void:
+	var func_name = func_options.get_item_text(func_options.selected) if func_options.selected != -1 else ""
+	var is_variadic = func_name in ["any", "all", "and", "or", "has_pids"]
+	var expected_args = 0
+	if InterpreterManager.functions.has(func_name):
+		expected_args = InterpreterManager.functions[func_name].size()
+	
+	var add_args_btn = args_box.get_parent().get_node_or_null("AddArgs/AddArgsButton")
+	if add_args_btn:
+		add_args_btn.disabled = not is_variadic and args_box.get_child_count() >= expected_args
 
 
 # func _process(delta: float) -> void:
@@ -429,6 +445,7 @@ func _on_func_selected(index: int) -> void:
 				expr.expression_tabs.current_tab = type
 				expr._on_expression_type_tab_selected(type)
 	
+	_update_add_args_button()
 	changed.emit()
 
 

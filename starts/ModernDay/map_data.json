@@ -70336,8 +70336,11 @@
 			"biome": "Plateau",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -70779,7 +70782,10 @@
 			"biome": "Plateau",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Pakistan",
+				"Afghanistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -71433,8 +71439,11 @@
 			"biome": "Plateau",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -71795,8 +71804,11 @@
 			"biome": "Plateau",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -71822,7 +71834,11 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan",
+				"China"
+			],
 			"gdp": 20000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -71849,7 +71865,11 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan",
+				"China"
+			],
 			"gdp": 20000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -72103,8 +72123,11 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -72915,8 +72938,11 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -73450,8 +73476,11 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -73477,7 +73506,10 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -73801,7 +73833,10 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -74439,8 +74474,11 @@
 			"biome": "Plateau",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -74466,8 +74504,11 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -74493,7 +74534,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -74520,7 +74564,10 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -74963,7 +75010,10 @@
 			"biome": "Arid_desert",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Pakistan",
+				"Afghanistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -74990,7 +75040,10 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75281,7 +75334,10 @@
 			"biome": "Temperate_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75308,7 +75364,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75335,7 +75394,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75362,7 +75424,10 @@
 			"biome": "Montane_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75848,7 +75913,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -75875,7 +75943,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -76465,7 +76536,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -76919,7 +76993,10 @@
 			"biome": "Arid_desert",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Pakistan",
+				"Afghanistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -76946,7 +77023,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -76973,7 +77053,10 @@
 			"biome": "Temperate_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -77329,7 +77412,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -77356,7 +77442,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -77410,7 +77499,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -78032,7 +78124,10 @@
 			"biome": "Temperate_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -78433,8 +78528,11 @@
 			"biome": "Temperate_forest",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -78905,7 +79003,10 @@
 				}
 			],
 			"city": "Lahore",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -79170,7 +79271,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -79876,7 +79980,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -80152,7 +80259,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -80179,7 +80289,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -80612,7 +80725,10 @@
 			"biome": "Arid_desert",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Pakistan",
+				"Afghanistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -81541,7 +81657,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -81980,7 +82099,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -82451,7 +82573,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -82505,7 +82630,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"Pakistan"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -82901,7 +83029,10 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Pakistan",
+				"Afghanistan"
+			],
 			"gdp": 2500,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -83171,8 +83302,11 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 2500,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -83545,7 +83679,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -84307,7 +84441,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 2500,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -84333,8 +84467,11 @@
 			"biome": "Xeric_shrubland",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"India",
+				"Pakistan"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -84685,7 +84822,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 2500,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -84712,7 +84849,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 2500,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -85728,7 +85865,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -85808,7 +85945,10 @@
 			"biome": "Mountainous",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"India",
+				"China"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -87080,7 +87220,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -87886,7 +88026,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 2500,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -89173,7 +89313,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -90085,7 +90225,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 2500,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -91482,7 +91622,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -91509,7 +91649,7 @@
 			"buildings": [],
 			"city": "",
 			"claims": [],
-			"gdp": 10000,
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",

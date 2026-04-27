@@ -382,6 +382,23 @@ func DoUpdateSidemenuVisuals() -> void:
 		selected_country.display_name.capitalize()
 	]
 
+	for entry in factions_box.get_children():
+		entry.queue_free()
+
+	for faction in selected_country.factions:
+		var faction_entry:Label = Label.new()
+		faction_entry.text = faction.capitalize()
+		faction_entry.mouse_filter = Control.MOUSE_FILTER_PASS
+		faction_entry.tooltip_text = FactionManager.factions[faction].members.map(
+		func(x: FactionMember) -> String:
+			return "%s: (%s)" % [x.polity.capitalize() , x.status]
+		).reduce(
+		func(x: String, y: String) -> String:
+			return "%s\n%s" % [x, y]
+			, ""
+		)
+		factions_box.add_child(faction_entry)
+
 	if GameState.selectingCountry:
 		for stat in GameState.game_ui.select_player_stat.get_children(): stat.queue_free()
 		for stat: String in [
@@ -402,22 +419,6 @@ func DoUpdateSidemenuVisuals() -> void:
 
 		nation_flag.texture = TroopManager.get_flag(selected_country.country_name, selected_country.ideology_name)
 		# factions.text = selected_country.factions.reduce(func(x, y): return "%s\n%s" %[x, y], "")
-		for entry in factions_box.get_children():
-			entry.queue_free()
-
-		for faction in selected_country.factions:
-			var faction_entry:Label = Label.new()
-			faction_entry.text = faction.capitalize()
-			faction_entry.mouse_filter = Control.MOUSE_FILTER_PASS
-			faction_entry.tooltip_text = FactionManager.factions[faction].members.map(
-			func(x: FactionMember) -> String:
-				return "%s: (%s)" % [x.polity.capitalize() , x.status]
-			).reduce(
-			func(x: String, y: String) -> String:
-				return "%s\n%s" % [x, y]
-				, ""
-			)
-			factions_box.add_child(faction_entry)
 
 		play_btn.text = "Play as %s" % selected_country.country_name.capitalize()
 

@@ -290,8 +290,8 @@ func _on_release_pressed(country_id: String) -> void:
 func _on_release_puppet_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
 		current_country.political_power -= 50
-		MapManager.ReleaseCountry(country_id)
-		CountryManager.make_puppet(current_country, CountryManager.countries[country_id])
+		MapManager.ReleasePuppet(current_country.country_name, country_id)
+		# CountryManager.make_puppet(current_country, CountryManager.countries[country_id])
 		# Refresh UI
 		_populate_releasables(current_country.country_name)
 	else:

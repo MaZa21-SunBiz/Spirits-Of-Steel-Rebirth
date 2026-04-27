@@ -11,8 +11,8 @@
 						"func": "add_country_attr"
 					}
 				],
-				"cost_pp": 25.0,
-				"days": 3.0,
+				"cost_pp": 25,
+				"days": 3,
 				"desc": "Focus the state on basic monetary gain.",
 				"id": "eco_1",
 				"pos": [
@@ -26,7 +26,8 @@
 							{
 								"args": [
 									"China",
-									"India"
+									"India",
+									null
 								],
 								"func": "is_at_war"
 							},
@@ -38,8 +39,7 @@
 								"func": "is_at_war"
 							}
 						],
-						"func": "and",
-						"store": "ww3"
+						"func": "and"
 					}
 				],
 				"title": "Industrial Effort"
@@ -148,8 +148,8 @@
 			},
 			{
 				"action": [],
-				"cost_pp": 25,
-				"days": 20,
+				"cost_pp": 25.0,
+				"days": 20.0,
 				"desc": "",
 				"id": "25",
 				"pos": [
@@ -242,8 +242,8 @@
 			},
 			{
 				"action": [],
-				"cost_pp": 25,
-				"days": 20,
+				"cost_pp": 25.0,
+				"days": 20.0,
 				"desc": "",
 				"id": "Military_4#89",
 				"pos": [

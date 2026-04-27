@@ -1429,7 +1429,6 @@ func get_all_releasables(my_country: String) -> Array[Dictionary]:
 			if p_id in my_provinces:
 				owned_provinces.append(p_id)
 		
-		print(owned_provinces.is_empty(), _country_exists_on_map(potential_country))
 		# no province and country exitsts -> don care
 		# no province and country not exitsts -> don care
 		# province and country exitsts -> return
@@ -1467,6 +1466,20 @@ func ReleaseCountry(a_countryName: String) -> void:
 
 			transfer_ownership(obj.id, a_countryName)
 	
+	CountryManager.cleanup_empty_countries()
+	show_countries_map()
+
+func ReleasePuppet(a_puppeter: String, a_puppetee: String) -> void:
+	CountryManager.add_country({"name": a_puppetee})
+	
+	for obj in province_objects.values():
+		if obj.claims.size() == 1 && obj.claims[0] == a_puppetee:
+			transfer_ownership(obj.id, a_puppetee)
+	
+	CountryManager.make_puppet(
+		CountryManager.countries[a_puppeter],
+		CountryManager.countries[a_puppetee]
+	)
 	CountryManager.cleanup_empty_countries()
 	show_countries_map()
 
