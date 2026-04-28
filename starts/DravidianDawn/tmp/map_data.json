@@ -103,8 +103,14 @@
 				"Canada_TrofimLysenko",
 				"Canada_BenitoMussolini",
 				"Canada_ChevalierDEon",
-				"Canada_UrNammu"
+				"Canada_UrNammu",
+				"Canada_ChevalierDEon",
+				"RogerirmydeCyveu"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "RogerirmydeCyveu"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -135,8 +141,14 @@
 				"United_states_JaneAustenCassandra",
 				"United_states_UrNammu",
 				"United_states_YukawaHideki",
-				"United_states_ChevalierDEon"
+				"United_states_ChevalierDEon",
+				"United_states_BenitoMussolini",
+				"YrkiJaikiddayEfai"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "YrkiJaikiddayEfai"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -173,8 +185,14 @@
 				"United_kingdom_UrNammu",
 				"United_kingdom_JaneAustenCassandra",
 				"United_kingdom_JaneAustenCassandra",
-				"United_kingdom_YukawaHideki"
+				"United_kingdom_YukawaHideki",
+				"United_kingdom_TrofimLysenko",
+				"ImmiscecAovitiwetedd"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "ImmiscecAovitiwetedd"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -206,8 +224,14 @@
 				"Germany_JaneAustenCassandra",
 				"Germany_TrofimLysenko",
 				"Germany_YukawaHideki",
-				"Germany_BenitoMussolini"
+				"Germany_BenitoMussolini",
+				"Germany_TrofimLysenko",
+				"EzzaceelkegoVoeveespousm"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EzzaceelkegoVoeveespousm"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -246,8 +270,14 @@
 				"China_BenjaminFranklin",
 				"China_TrofimLysenko",
 				"China_YukawaHideki",
-				"China_UrNammu"
+				"China_UrNammu",
+				"China_UrNammu",
+				"KnidEyeramaAkea"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "KnidEyeramaAkea"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -278,8 +308,14 @@
 				"Mongolia_UrNammu",
 				"Mongolia_BenitoMussolini",
 				"Mongolia_YukawaHideki",
-				"Mongolia_UrNammu"
+				"Mongolia_UrNammu",
+				"Mongolia_JaneAustenCassandra",
+				"GekUhiouro"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "GekUhiouro"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -318,8 +354,14 @@
 				"France_ChevalierDEon",
 				"France_BenjaminFranklin",
 				"France_BenitoMussolini",
-				"France_BenjaminFranklin"
+				"France_BenjaminFranklin",
+				"France_UrNammu",
+				"EfuiOce"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EfuiOce"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -352,8 +394,14 @@
 				"Italy_ChevalierDEon",
 				"Italy_BenjaminFranklin",
 				"Italy_BenjaminFranklin",
-				"Italy_JaneAustenCassandra"
+				"Italy_JaneAustenCassandra",
+				"Italy_YukawaHideki",
+				"QyvejoascOacosperpal"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "QyvejoascOacosperpal"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -384,8 +432,14 @@
 				"Japan_ChevalierDEon",
 				"Japan_ChevalierDEon",
 				"Japan_BenjaminFranklin",
-				"Japan_UrNammu"
+				"Japan_UrNammu",
+				"Japan_BenjaminFranklin",
+				"AutuotIhepuhoollYitchechoge"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AutuotIhepuhoollYitchechoge"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -423,8 +477,14 @@
 				"Spain_BenitoMussolini",
 				"Spain_UrNammu",
 				"Spain_TrofimLysenko",
-				"Spain_UrNammu"
+				"Spain_UrNammu",
+				"Spain_YukawaHideki",
+				"AurtoagYnesuose"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AurtoagYnesuose"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -455,8 +515,14 @@
 				"Portugal_JaneAustenCassandra",
 				"Portugal_JaneAustenCassandra",
 				"Portugal_UrNammu",
-				"Portugal_ChevalierDEon"
+				"Portugal_ChevalierDEon",
+				"Portugal_UrNammu",
+				"FysaeswizUinat"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "FysaeswizUinat"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -487,8 +553,14 @@
 				"Greece_JaneAustenCassandra",
 				"Greece_BenjaminFranklin",
 				"Greece_BenitoMussolini",
-				"Greece_ChevalierDEon"
+				"Greece_ChevalierDEon",
+				"Greece_UrNammu",
+				"OqeyNermizanuyAsce"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OqeyNermizanuyAsce"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -519,8 +591,14 @@
 				"Tunisia_TrofimLysenko",
 				"Tunisia_BenjaminFranklin",
 				"Tunisia_ChevalierDEon",
-				"Tunisia_BenjaminFranklin"
+				"Tunisia_BenjaminFranklin",
+				"Tunisia_TrofimLysenko",
+				"FasplowylledEepiwaeyufu"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "FasplowylledEepiwaeyufu"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -553,8 +631,14 @@
 				"Morocco_TrofimLysenko",
 				"Morocco_BenjaminFranklin",
 				"Morocco_YukawaHideki",
-				"Morocco_BenjaminFranklin"
+				"Morocco_BenjaminFranklin",
+				"Morocco_JaneAustenCassandra",
+				"ApalaurainuknIakreh"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "ApalaurainuknIakreh"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -616,8 +700,14 @@
 				"India_BenjaminFranklin",
 				"India_JaneAustenCassandra",
 				"India_UrNammu",
-				"India_UrNammu"
+				"India_UrNammu",
+				"India_UrNammu",
+				"QueleebiEequbEfluw"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "QueleebiEequbEfluw"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -650,8 +740,14 @@
 				"Saudi_arabia_TrofimLysenko",
 				"Saudi_arabia_BenjaminFranklin",
 				"Saudi_arabia_ChevalierDEon",
-				"Saudi_arabia_ChevalierDEon"
+				"Saudi_arabia_ChevalierDEon",
+				"Saudi_arabia_ChevalierDEon",
+				"EwylylpeSauvechufl"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EwylylpeSauvechufl"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -682,8 +778,14 @@
 				"Egypt_BenjaminFranklin",
 				"Egypt_UrNammu",
 				"Egypt_YukawaHideki",
-				"Egypt_BenjaminFranklin"
+				"Egypt_BenjaminFranklin",
+				"Egypt_UrNammu",
+				"UcytiUknirtIkiwe"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "UcytiUknirtIkiwe"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -714,8 +816,14 @@
 				"Mauritania_BenitoMussolini",
 				"Mauritania_BenjaminFranklin",
 				"Mauritania_UrNammu",
-				"Mauritania_JaneAustenCassandra"
+				"Mauritania_JaneAustenCassandra",
+				"Mauritania_UrNammu",
+				"PemelonusaeToquulmaskYjaur"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "PemelonusaeToquulmaskYjaur"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -746,8 +854,14 @@
 				"Cuba_BenjaminFranklin",
 				"Cuba_UrNammu",
 				"Cuba_JaneAustenCassandra",
-				"Cuba_UrNammu"
+				"Cuba_UrNammu",
+				"Cuba_TrofimLysenko",
+				"EosprumIsughytDyv"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EosprumIsughytDyv"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -778,8 +892,14 @@
 				"Haiti_JaneAustenCassandra",
 				"Haiti_BenjaminFranklin",
 				"Haiti_JaneAustenCassandra",
-				"Haiti_BenitoMussolini"
+				"Haiti_BenitoMussolini",
+				"Haiti_JaneAustenCassandra",
+				"AxiVawuqei"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AxiVawuqei"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -810,8 +930,14 @@
 				"Dominican_republic_BenjaminFranklin",
 				"Dominican_republic_JaneAustenCassandra",
 				"Dominican_republic_UrNammu",
-				"Dominican_republic_YukawaHideki"
+				"Dominican_republic_YukawaHideki",
+				"Dominican_republic_BenjaminFranklin",
+				"UxtucurlOpaystrelaYedaerrewe"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "UxtucurlOpaystrelaYedaerrewe"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -842,8 +968,14 @@
 				"Yemen_BenjaminFranklin",
 				"Yemen_ChevalierDEon",
 				"Yemen_BenitoMussolini",
-				"Yemen_JaneAustenCassandra"
+				"Yemen_JaneAustenCassandra",
+				"Yemen_TrofimLysenko",
+				"HydoroblaPyccynLobeh"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "HydoroblaPyccynLobeh"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -874,8 +1006,14 @@
 				"Jamaica_BenitoMussolini",
 				"Jamaica_ChevalierDEon",
 				"Jamaica_BenitoMussolini",
-				"Jamaica_ChevalierDEon"
+				"Jamaica_ChevalierDEon",
+				"Jamaica_YukawaHideki",
+				"CaghirgeEssaungaebrermupRojekamau"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "CaghirgeEssaungaebrermupRojekamau"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -906,8 +1044,14 @@
 				"Cabo_verde_ChevalierDEon",
 				"Cabo_verde_BenitoMussolini",
 				"Cabo_verde_UrNammu",
-				"Cabo_verde_BenitoMussolini"
+				"Cabo_verde_BenitoMussolini",
+				"Cabo_verde_ChevalierDEon",
+				"EmosloGhouvavewuh"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EmosloGhouvavewuh"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -938,8 +1082,14 @@
 				"St_kitts_and_nevis_ChevalierDEon",
 				"St_kitts_and_nevis_BenitoMussolini",
 				"St_kitts_and_nevis_TrofimLysenko",
-				"St_kitts_and_nevis_UrNammu"
+				"St_kitts_and_nevis_UrNammu",
+				"St_kitts_and_nevis_UrNammu",
+				"EeleUgafuqo"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EeleUgafuqo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -970,8 +1120,14 @@
 				"Dominica_BenitoMussolini",
 				"Dominica_BenjaminFranklin",
 				"Dominica_TrofimLysenko",
-				"Dominica_JaneAustenCassandra"
+				"Dominica_JaneAustenCassandra",
+				"Dominica_BenitoMussolini",
+				"JayextuAuwionOtovobonaey"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "JayextuAuwionOtovobonaey"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1004,8 +1160,14 @@
 				"Nigeria_BenjaminFranklin",
 				"Nigeria_TrofimLysenko",
 				"Nigeria_TrofimLysenko",
-				"Nigeria_UrNammu"
+				"Nigeria_UrNammu",
+				"Nigeria_BenitoMussolini",
+				"LobicauvAudourrotonu"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "LobicauvAudourrotonu"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1036,8 +1198,14 @@
 				"Barbados_TrofimLysenko",
 				"Barbados_ChevalierDEon",
 				"Barbados_JaneAustenCassandra",
-				"Barbados_BenitoMussolini"
+				"Barbados_BenitoMussolini",
+				"Barbados_UrNammu",
+				"EweInuFruouvozop"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EweInuFruouvozop"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1068,8 +1236,14 @@
 				"St_lucia_UrNammu",
 				"St_lucia_ChevalierDEon",
 				"St_lucia_UrNammu",
-				"St_lucia_YukawaHideki"
+				"St_lucia_YukawaHideki",
+				"St_lucia_JaneAustenCassandra",
+				"UnkodEnuottupayiv"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "UnkodEnuottupayiv"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1100,8 +1274,14 @@
 				"Grenada_BenjaminFranklin",
 				"Grenada_BenitoMussolini",
 				"Grenada_YukawaHideki",
-				"Grenada_BenjaminFranklin"
+				"Grenada_BenjaminFranklin",
+				"Grenada_BenitoMussolini",
+				"QoiroyiOhofrystuj"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "QoiroyiOhofrystuj"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1135,8 +1315,14 @@
 				"Central_african_republic_BenjaminFranklin",
 				"Central_african_republic_BenjaminFranklin",
 				"Central_african_republic_JaneAustenCassandra",
-				"Central_african_republic_UrNammu"
+				"Central_african_republic_UrNammu",
+				"Central_african_republic_UrNammu",
+				"EsesopooArroukaunuLemm"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EsesopooArroukaunuLemm"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1167,8 +1353,14 @@
 				"Sri_lanka_YukawaHideki",
 				"Sri_lanka_YukawaHideki",
 				"Sri_lanka_ChevalierDEon",
-				"Sri_lanka_BenjaminFranklin"
+				"Sri_lanka_BenjaminFranklin",
+				"Sri_lanka_YukawaHideki",
+				"OqekucYaskuniuDosyda"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OqekucYaskuniuDosyda"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1199,8 +1391,14 @@
 				"Palau_JaneAustenCassandra",
 				"Palau_ChevalierDEon",
 				"Palau_UrNammu",
-				"Palau_BenitoMussolini"
+				"Palau_BenitoMussolini",
+				"Palau_BenjaminFranklin",
+				"EtiyielOkeqaufafaufl"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EtiyielOkeqaufafaufl"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1232,8 +1430,14 @@
 				"Nauru_UrNammu",
 				"Nauru_JaneAustenCassandra",
 				"Nauru_UrNammu",
-				"Nauru_UrNammu"
+				"Nauru_UrNammu",
+				"Nauru_UrNammu",
+				"SchaejesoxeiAuminnaydOhuc"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "SchaejesoxeiAuminnaydOhuc"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1282,8 +1486,14 @@
 				"Indonesia_BenjaminFranklin",
 				"Indonesia_YukawaHideki",
 				"Indonesia_UrNammu",
-				"Indonesia_BenitoMussolini"
+				"Indonesia_BenitoMussolini",
+				"Indonesia_ChevalierDEon",
+				"UrtuschuddMotept"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "UrtuschuddMotept"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1317,8 +1527,14 @@
 				"Brazil_ChevalierDEon",
 				"Brazil_JaneAustenCassandra",
 				"Brazil_BenjaminFranklin",
-				"Brazil_ChevalierDEon"
+				"Brazil_ChevalierDEon",
+				"Brazil_UrNammu",
+				"OretteauwenoyYaerduneduUyskutyknech"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OretteauwenoyYaerduneduUyskutyknech"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1357,8 +1573,14 @@
 				"Dr_congo_YukawaHideki",
 				"Dr_congo_BenitoMussolini",
 				"Dr_congo_BenjaminFranklin",
-				"Dr_congo_ChevalierDEon"
+				"Dr_congo_ChevalierDEon",
+				"Dr_congo_TrofimLysenko",
+				"OupuajauErpaeyaqu"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OupuajauErpaeyaqu"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1389,8 +1611,14 @@
 				"Equatorial_guinea_UrNammu",
 				"Equatorial_guinea_JaneAustenCassandra",
 				"Equatorial_guinea_ChevalierDEon",
-				"Equatorial_guinea_UrNammu"
+				"Equatorial_guinea_UrNammu",
+				"Equatorial_guinea_BenjaminFranklin",
+				"AhejakocunEjeeguEurdasmurtauf"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AhejakocunEjeeguEurdasmurtauf"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1421,8 +1649,14 @@
 				"Singapore_BenitoMussolini",
 				"Singapore_JaneAustenCassandra",
 				"Singapore_JaneAustenCassandra",
-				"Singapore_ChevalierDEon"
+				"Singapore_ChevalierDEon",
+				"Singapore_YukawaHideki",
+				"EsmakeheEtweyytyVulgyf"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EsmakeheEtweyytyVulgyf"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1453,8 +1687,14 @@
 				"Sao_tome_and_principe_YukawaHideki",
 				"Sao_tome_and_principe_ChevalierDEon",
 				"Sao_tome_and_principe_YukawaHideki",
-				"Sao_tome_and_principe_YukawaHideki"
+				"Sao_tome_and_principe_YukawaHideki",
+				"Sao_tome_and_principe_YukawaHideki",
+				"IferaqiougyhWeeliqaub"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "IferaqiougyhWeeliqaub"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1485,8 +1725,14 @@
 				"Burundi_BenjaminFranklin",
 				"Burundi_UrNammu",
 				"Burundi_TrofimLysenko",
-				"Burundi_UrNammu"
+				"Burundi_UrNammu",
+				"Burundi_BenitoMussolini",
+				"DruteyoJaulkizz"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "DruteyoJaulkizz"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1519,8 +1765,14 @@
 				"Papua_new_guinea_JaneAustenCassandra",
 				"Papua_new_guinea_UrNammu",
 				"Papua_new_guinea_TrofimLysenko",
-				"Papua_new_guinea_UrNammu"
+				"Papua_new_guinea_UrNammu",
+				"Papua_new_guinea_BenjaminFranklin",
+				"YikoothrawAttiquifok"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "YikoothrawAttiquifok"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1551,8 +1803,14 @@
 				"Seychelles_BenjaminFranklin",
 				"Seychelles_BenitoMussolini",
 				"Seychelles_UrNammu",
-				"Seychelles_ChevalierDEon"
+				"Seychelles_ChevalierDEon",
+				"Seychelles_TrofimLysenko",
+				"EelmekaSprewennegHewheetoviyy"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EelmekaSprewennegHewheetoviyy"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1583,8 +1841,14 @@
 				"East_timor_YukawaHideki",
 				"East_timor_BenitoMussolini",
 				"East_timor_UrNammu",
-				"East_timor_JaneAustenCassandra"
+				"East_timor_JaneAustenCassandra",
+				"East_timor_ChevalierDEon",
+				"YyiwezeiBiulkeku"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "YyiwezeiBiulkeku"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1615,8 +1879,14 @@
 				"Australia_ChevalierDEon",
 				"Australia_TrofimLysenko",
 				"Australia_TrofimLysenko",
-				"Australia_JaneAustenCassandra"
+				"Australia_JaneAustenCassandra",
+				"Australia_TrofimLysenko",
+				"HepyrmywerdoYodula"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "HepyrmywerdoYodula"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1648,8 +1918,14 @@
 				"Madagascar_BenjaminFranklin",
 				"Madagascar_ChevalierDEon",
 				"Madagascar_TrofimLysenko",
-				"Madagascar_UrNammu"
+				"Madagascar_UrNammu",
+				"Madagascar_ChevalierDEon",
+				"RefaulollBosCufupogrytto"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "RefaulollBosCufupogrytto"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1683,8 +1959,14 @@
 				"Zimbabwe_TrofimLysenko",
 				"Zimbabwe_BenitoMussolini",
 				"Zimbabwe_BenjaminFranklin",
-				"Zimbabwe_BenitoMussolini"
+				"Zimbabwe_BenitoMussolini",
+				"Zimbabwe_BenjaminFranklin",
+				"EcyrtedisYlithauyimOudyhauddew"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EcyrtedisYlithauyimOudyhauddew"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1715,8 +1997,14 @@
 				"Mauritius_YukawaHideki",
 				"Mauritius_BenjaminFranklin",
 				"Mauritius_YukawaHideki",
-				"Mauritius_JaneAustenCassandra"
+				"Mauritius_JaneAustenCassandra",
+				"Mauritius_JaneAustenCassandra",
+				"LibbofaxtoilmNaigelyh"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "LibbofaxtoilmNaigelyh"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1747,8 +2035,14 @@
 				"New_zealand_BenjaminFranklin",
 				"New_zealand_BenitoMussolini",
 				"New_zealand_YukawaHideki",
-				"New_zealand_ChevalierDEon"
+				"New_zealand_ChevalierDEon",
+				"New_zealand_ChevalierDEon",
+				"AtayahuyuFetahoojUruoudoteel"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AtayahuyuFetahoojUruoudoteel"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1776,8 +2070,14 @@
 				"Antartica_BenitoMussolini",
 				"Antartica_UrNammu",
 				"Antartica_YukawaHideki",
-				"Antartica_TrofimLysenko"
+				"Antartica_TrofimLysenko",
+				"Antartica_BenitoMussolini",
+				"AcudoujeyuwHylgaw"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AcudoujeyuwHylgaw"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1801,8 +2101,14 @@
 				"Tibet-Rouran_JaneAustenCassandra",
 				"Tibet-Rouran_YukawaHideki",
 				"Tibet-Rouran_ChevalierDEon",
-				"Tibet-Rouran_ChevalierDEon"
+				"Tibet-Rouran_ChevalierDEon",
+				"Tibet-Rouran_BenitoMussolini",
+				"PhaulvuouwreaufleIstrusnitchufItepuyovae"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "PhaulvuouwreaufleIstrusnitchufItepuyovae"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1826,8 +2132,14 @@
 				"Korea_TrofimLysenko",
 				"Korea_TrofimLysenko",
 				"Korea_BenjaminFranklin",
-				"Korea_UrNammu"
+				"Korea_UrNammu",
+				"Korea_YukawaHideki",
+				"EowilgotwoVantauveemaykeEemmoy"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EowilgotwoVantauveemaykeEemmoy"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1851,8 +2163,14 @@
 				"Basque_county_ChevalierDEon",
 				"Basque_county_BenitoMussolini",
 				"Basque_county_BenjaminFranklin",
-				"Basque_county_BenitoMussolini"
+				"Basque_county_BenitoMussolini",
+				"Basque_county_TrofimLysenko",
+				"GeaqigunaEfodameegupWraeqi"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "GeaqigunaEfodameegupWraeqi"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1876,8 +2194,14 @@
 				"Scandinavia_BenitoMussolini",
 				"Scandinavia_JaneAustenCassandra",
 				"Scandinavia_UrNammu",
-				"Scandinavia_BenjaminFranklin"
+				"Scandinavia_BenjaminFranklin",
+				"Scandinavia_ChevalierDEon",
+				"YvusosimperBeeshoaloevide"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "YvusosimperBeeshoaloevide"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1901,8 +2225,14 @@
 				"Prussia_JaneAustenCassandra",
 				"Prussia_BenitoMussolini",
 				"Prussia_UrNammu",
-				"Prussia_BenjaminFranklin"
+				"Prussia_BenjaminFranklin",
+				"Prussia_BenitoMussolini",
+				"UjitenteAqaqYommub"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "UjitenteAqaqYommub"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1926,8 +2256,14 @@
 				"Furan_BenjaminFranklin",
 				"Furan_BenjaminFranklin",
 				"Furan_UrNammu",
-				"Furan_UrNammu"
+				"Furan_UrNammu",
+				"Furan_TrofimLysenko",
+				"NitchijaePeaschebaugyUewaekiwotub"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "NitchijaePeaschebaugyUewaekiwotub"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1951,8 +2287,14 @@
 				"Bengal_ChevalierDEon",
 				"Bengal_BenjaminFranklin",
 				"Bengal_ChevalierDEon",
-				"Bengal_JaneAustenCassandra"
+				"Bengal_JaneAustenCassandra",
+				"Bengal_BenitoMussolini",
+				"BruypyhidiqKehycugoovHiyyretchykn"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "BruypyhidiqKehycugoovHiyyretchykn"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -1976,8 +2318,14 @@
 				"Dravida_UrNammu",
 				"Dravida_BenitoMussolini",
 				"Dravida_BenjaminFranklin",
-				"Dravida_UrNammu"
+				"Dravida_UrNammu",
+				"Dravida_BenitoMussolini",
+				"EqaitirkaufleeOpecajGlouquwadug"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EqaitirkaufleeOpecajGlouquwadug"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2001,8 +2349,14 @@
 				"Maratha_UrNammu",
 				"Maratha_BenjaminFranklin",
 				"Maratha_YukawaHideki",
-				"Maratha_BenitoMussolini"
+				"Maratha_BenitoMussolini",
+				"Maratha_YukawaHideki",
+				"OnteccutamTrealmatodutIkemm"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OnteccutamTrealmatodutIkemm"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2026,8 +2380,14 @@
 				"Mazdarya_ChevalierDEon",
 				"Mazdarya_YukawaHideki",
 				"Mazdarya_UrNammu",
-				"Mazdarya_BenjaminFranklin"
+				"Mazdarya_BenjaminFranklin",
+				"Mazdarya_BenjaminFranklin",
+				"IpunacuYegaDidepsewra"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "IpunacuYegaDidepsewra"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2051,8 +2411,14 @@
 				"Khalistan_BenjaminFranklin",
 				"Khalistan_TrofimLysenko",
 				"Khalistan_ChevalierDEon",
-				"Khalistan_TrofimLysenko"
+				"Khalistan_TrofimLysenko",
+				"Khalistan_TrofimLysenko",
+				"SuqawruhuAfeheenau"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "SuqawruhuAfeheenau"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2076,8 +2442,14 @@
 				"Kurdistan_TrofimLysenko",
 				"Kurdistan_BenitoMussolini",
 				"Kurdistan_BenjaminFranklin",
-				"Kurdistan_UrNammu"
+				"Kurdistan_UrNammu",
+				"Kurdistan_YukawaHideki",
+				"KuroesnilYevuneppesOdysesitruac"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "KuroesnilYevuneppesOdysesitruac"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2101,8 +2473,14 @@
 				"Armenia_ChevalierDEon",
 				"Armenia_YukawaHideki",
 				"Armenia_BenjaminFranklin",
-				"Armenia_UrNammu"
+				"Armenia_UrNammu",
+				"Armenia_TrofimLysenko",
+				"EdozzaibEsudeqaySukossyrau"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EdozzaibEsudeqaySukossyrau"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2126,8 +2504,14 @@
 				"Siber-nippon_YukawaHideki",
 				"Siber-nippon_ChevalierDEon",
 				"Siber-nippon_ChevalierDEon",
-				"Siber-nippon_YukawaHideki"
+				"Siber-nippon_YukawaHideki",
+				"Siber-nippon_UrNammu",
+				"OlaekikeOujoOyo"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OlaekikeOujoOyo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2151,8 +2535,14 @@
 				"Gothia_YukawaHideki",
 				"Gothia_YukawaHideki",
 				"Gothia_YukawaHideki",
-				"Gothia_BenjaminFranklin"
+				"Gothia_BenjaminFranklin",
+				"Gothia_JaneAustenCassandra",
+				"RekozzijoXiniy"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "RekozzijoXiniy"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2176,8 +2566,14 @@
 				"Gotinia_YukawaHideki",
 				"Gotinia_ChevalierDEon",
 				"Gotinia_ChevalierDEon",
-				"Gotinia_TrofimLysenko"
+				"Gotinia_TrofimLysenko",
+				"Gotinia_JaneAustenCassandra",
+				"WuntalluijIoumaulStraudau"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "WuntalluijIoumaulStraudau"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2200,8 +2596,14 @@
 				"Puddu_dravida_TrofimLysenko",
 				"Puddu_dravida_BenitoMussolini",
 				"Puddu_dravida_JaneAustenCassandra",
-				"Puddu_dravida_JaneAustenCassandra"
+				"Puddu_dravida_JaneAustenCassandra",
+				"Puddu_dravida_BenjaminFranklin",
+				"IaskuheRowymEauqogebiru"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "IaskuheRowymEauqogebiru"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2223,8 +2625,14 @@
 				"Devanadu_ChevalierDEon",
 				"Devanadu_BenjaminFranklin",
 				"Devanadu_BenjaminFranklin",
-				"Devanadu_ChevalierDEon"
+				"Devanadu_ChevalierDEon",
+				"Devanadu_TrofimLysenko",
+				"LubulvoeYdevyntikau"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "LubulvoeYdevyntikau"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2246,8 +2654,14 @@
 				"Ryu_nippon_BenjaminFranklin",
 				"Ryu_nippon_TrofimLysenko",
 				"Ryu_nippon_ChevalierDEon",
-				"Ryu_nippon_UrNammu"
+				"Ryu_nippon_UrNammu",
+				"Ryu_nippon_YukawaHideki",
+				"NalgaupangUschespy"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "NalgaupangUschespy"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2268,8 +2682,14 @@
 				"New_brittany_YukawaHideki",
 				"New_brittany_TrofimLysenko",
 				"New_brittany_YukawaHideki",
-				"New_brittany_YukawaHideki"
+				"New_brittany_YukawaHideki",
+				"New_brittany_BenitoMussolini",
+				"AtyltongertiFlaecagafilmoEyoa"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AtyltongertiFlaecagafilmoEyoa"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2290,8 +2710,14 @@
 				"Neu_germania_TrofimLysenko",
 				"Neu_germania_UrNammu",
 				"Neu_germania_ChevalierDEon",
-				"Neu_germania_YukawaHideki"
+				"Neu_germania_YukawaHideki",
+				"Neu_germania_JaneAustenCassandra",
+				"EeptekrezzinPloguaxymouyi"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "EeptekrezzinPloguaxymouyi"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2312,8 +2738,14 @@
 				"Amazgha_YukawaHideki",
 				"Amazgha_BenjaminFranklin",
 				"Amazgha_JaneAustenCassandra",
-				"Amazgha_TrofimLysenko"
+				"Amazgha_TrofimLysenko",
+				"Amazgha_YukawaHideki",
+				"StuirlomijIeflataivipuQyceyjaus"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "StuirlomijIeflataivipuQyceyjaus"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2334,8 +2766,14 @@
 				"Nippon_dravida_ChevalierDEon",
 				"Nippon_dravida_BenitoMussolini",
 				"Nippon_dravida_UrNammu",
-				"Nippon_dravida_JaneAustenCassandra"
+				"Nippon_dravida_JaneAustenCassandra",
+				"Nippon_dravida_YukawaHideki",
+				"NesaLiojavuoutueglo"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "NesaLiojavuoutueglo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2356,8 +2794,14 @@
 				"Coptic_BenjaminFranklin",
 				"Coptic_JaneAustenCassandra",
 				"Coptic_YukawaHideki",
-				"Coptic_ChevalierDEon"
+				"Coptic_ChevalierDEon",
+				"Coptic_TrofimLysenko",
+				"KymipulyEynev"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "KymipulyEynev"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2378,8 +2822,14 @@
 				"Masr_ChevalierDEon",
 				"Masr_TrofimLysenko",
 				"Masr_JaneAustenCassandra",
-				"Masr_UrNammu"
+				"Masr_UrNammu",
+				"Masr_JaneAustenCassandra",
+				"OnticokaequaScheqewaelazi"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "OnticokaequaScheqewaelazi"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2400,8 +2850,14 @@
 				"Ghanaa_BenjaminFranklin",
 				"Ghanaa_BenjaminFranklin",
 				"Ghanaa_JaneAustenCassandra",
-				"Ghanaa_JaneAustenCassandra"
+				"Ghanaa_JaneAustenCassandra",
+				"Ghanaa_BenitoMussolini",
+				"WhacJyrasututu"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "WhacJyrasututu"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2421,8 +2877,14 @@
 			"figures": [
 				"Columbia_TrofimLysenko",
 				"Columbia_BenitoMussolini",
-				"Columbia_TrofimLysenko"
+				"Columbia_TrofimLysenko",
+				"Columbia_BenjaminFranklin",
+				"ItraOfaerag"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "ItraOfaerag"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2442,8 +2904,14 @@
 			"figures": [
 				"Inca_ChevalierDEon",
 				"Inca_YukawaHideki",
-				"Inca_ChevalierDEon"
+				"Inca_ChevalierDEon",
+				"Inca_BenitoMussolini",
+				"WemagMafasche"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "WemagMafasche"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2463,8 +2931,14 @@
 			"figures": [
 				"Patagonia_TrofimLysenko",
 				"Patagonia_BenitoMussolini",
-				"Patagonia_BenitoMussolini"
+				"Patagonia_BenitoMussolini",
+				"Patagonia_JaneAustenCassandra",
+				"AsmipheYfeejo"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AsmipheYfeejo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2484,8 +2958,14 @@
 			"figures": [
 				"Abyssinia_TrofimLysenko",
 				"Abyssinia_ChevalierDEon",
-				"Abyssinia_BenitoMussolini"
+				"Abyssinia_BenitoMussolini",
+				"Abyssinia_ChevalierDEon",
+				"AveEevaumabapraulvEesomasuzzy"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AveEevaumabapraulvEesomasuzzy"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2505,8 +2985,14 @@
 			"figures": [
 				"Kilwa_TrofimLysenko",
 				"Kilwa_BenjaminFranklin",
-				"Kilwa_UrNammu"
+				"Kilwa_UrNammu",
+				"Kilwa_ChevalierDEon",
+				"ThefononaunEghtachytHurlisiejan"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "ThefononaunEghtachytHurlisiejan"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2525,8 +3011,14 @@
 			"color": "#434322",
 			"figures": [
 				"Xhosa_JaneAustenCassandra",
-				"Xhosa_BenjaminFranklin"
+				"Xhosa_BenjaminFranklin",
+				"Xhosa_JaneAustenCassandra",
+				"AudaTiggiOufuaw"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AudaTiggiOufuaw"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2545,8 +3037,14 @@
 			"color": "#320707",
 			"figures": [
 				"Zulu_BenjaminFranklin",
-				"Zulu_JaneAustenCassandra"
+				"Zulu_JaneAustenCassandra",
+				"Zulu_YukawaHideki",
+				"AlpusyslehouwAseghtirifVekefly"
 			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AlpusyslehouwAseghtirifVekefly"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2563,7 +3061,14 @@
 		{
 			"accepted_cultures": [],
 			"color": "#0E5455",
-			"figures": [],
+			"figures": [
+				"Kushan_ChevalierDEon",
+				"AutaumolebRylvoufaerteJimimoo"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "AutaumolebRylvoufaerteJimimoo"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2580,7 +3085,14 @@
 		{
 			"accepted_cultures": [],
 			"color": "#C5CB6E",
-			"figures": [],
+			"figures": [
+				"Xin_zhongguo_BenitoMussolini",
+				"SataunepSom"
+			],
+			"finished_decisions": [],
+			"government_positions": {
+				"Leader": "SataunepSom"
+			},
 			"hostedGovernments": [],
 			"ideology": [
 				0.0,
@@ -2588,7 +3100,7 @@
 			],
 			"is_player": false,
 			"money": 0.0,
-			"name": "Xīn_zhōngguó",
+			"name": "Xin_zhongguo",
 			"political_power": 0.0,
 			"puppets": [],
 			"stability": 0.0,
@@ -2596,22 +3108,6 @@
 		}
 	],
 	"provinces": {
-		"10008": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"10009": {
 			"biome": "0, 70, 0",
 			"buildings": [],
@@ -6220,6 +6716,22 @@
 			"troops": [],
 			"type": 1
 		},
+		"10840": {
+			"biome": "Sea",
+			"buildings": [],
+			"city": "",
+			"claims": [],
+			"gdp": 0,
+			"infrastructure": 0,
+			"max_infrastructure": 0,
+			"name": "Sea",
+			"occupier": "",
+			"polity": "Sea",
+			"populations": [],
+			"resources": [],
+			"troops": [],
+			"type": 0
+		},
 		"10847": {
 			"biome": "0, 70, 0",
 			"buildings": [],
@@ -6538,22 +7050,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"10916": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"1092": {
 			"biome": "Sea",
 			"buildings": [],
@@ -6639,39 +7135,6 @@
 				{
 					"amount": 3643333,
 					"ethnicity": "Komo-birra"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
-		"10942": {
-			"biome": "0, 70, 0",
-			"buildings": [
-				{
-					"durability": 1.0,
-					"state": 1,
-					"type": "Factory"
-				}
-			],
-			"city": "Singapore",
-			"claims": [],
-			"gdp": 70000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Dravida",
-			"populations": [
-				{
-					"amount": 5917600,
-					"ethnicity": "Han-chinise"
 				}
 			],
 			"resources": [
@@ -9375,22 +9838,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"11501": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"11508": {
 			"biome": "6, 104, 6",
 			"buildings": [],
@@ -10455,7 +10902,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 10000,
@@ -11151,22 +11598,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"11849": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"1185": {
 			"biome": "146, 216, 71",
@@ -12134,22 +12565,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"12066": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"1207": {
 			"biome": "146, 216, 71",
 			"buildings": [],
@@ -12566,22 +12981,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"12134": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"1214": {
 			"biome": "146, 216, 71",
 			"buildings": [
@@ -12798,7 +13197,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 10000,
@@ -12825,7 +13224,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 10000,
@@ -13101,22 +13500,6 @@
 			"troops": [],
 			"type": 0
 		},
-		"12220": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"12235": {
 			"biome": "89, 129, 89",
 			"buildings": [],
@@ -13205,6 +13588,22 @@
 			"type": 1
 		},
 		"12245": {
+			"biome": "Sea",
+			"buildings": [],
+			"city": "",
+			"claims": [],
+			"gdp": 0,
+			"infrastructure": 0,
+			"max_infrastructure": 0,
+			"name": "Sea",
+			"occupier": "",
+			"polity": "Sea",
+			"populations": [],
+			"resources": [],
+			"troops": [],
+			"type": 0
+		},
+		"12255": {
 			"biome": "Sea",
 			"buildings": [],
 			"city": "",
@@ -13446,22 +13845,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"12299": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"12326": {
 			"biome": "0, 70, 0",
@@ -14520,7 +14903,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 734887,
@@ -15288,7 +15671,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 10000,
@@ -15412,6 +15795,22 @@
 			],
 			"troops": [],
 			"type": 1
+		},
+		"12774": {
+			"biome": "Sea",
+			"buildings": [],
+			"city": "",
+			"claims": [],
+			"gdp": 0,
+			"infrastructure": 0,
+			"max_infrastructure": 0,
+			"name": "Sea",
+			"occupier": "",
+			"polity": "Sea",
+			"populations": [],
+			"resources": [],
+			"troops": [],
+			"type": 0
 		},
 		"12776": {
 			"biome": "Sea",
@@ -15660,33 +16059,6 @@
 				{
 					"amount": 749491,
 					"ethnicity": "Balkarsk"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
-		"12853": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 10679,
-					"ethnicity": "Tuvalu"
 				}
 			],
 			"resources": [
@@ -18763,33 +19135,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"13646": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 1711225,
-					"ethnicity": "French-polynesian"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
 		"13653": {
 			"biome": "6, 104, 6",
 			"buildings": [
@@ -20239,7 +20584,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 100432,
@@ -20612,7 +20957,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 100432,
@@ -21163,7 +21508,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 100432,
@@ -21335,33 +21680,6 @@
 				{
 					"amount": 97354,
 					"ethnicity": "Mongols"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
-		"14243": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 446734,
-					"ethnicity": "Fiji"
 				}
 			],
 			"resources": [
@@ -21660,33 +21978,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"14354": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 446734,
-					"ethnicity": "Fiji"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
 		"14362": {
 			"biome": "96, 122, 34",
 			"buildings": [],
@@ -21783,33 +22074,6 @@
 			"resources": [],
 			"troops": [],
 			"type": 0
-		},
-		"14396": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 1689,
-					"ethnicity": "Niue"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
 		},
 		"1440": {
 			"biome": "146, 216, 71",
@@ -22670,22 +22934,6 @@
 			"troops": [],
 			"type": 0
 		},
-		"14589": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
 		"1459": {
 			"biome": "Sea",
 			"buildings": [],
@@ -22832,7 +23080,7 @@
 			"max_infrastructure": 0,
 			"name": "Sea",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Sea",
 			"populations": [],
 			"resources": [],
 			"troops": [],
@@ -23074,7 +23322,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 1711225,
@@ -23090,22 +23338,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"14709": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"1471": {
 			"biome": "146, 216, 71",
@@ -23724,33 +23956,6 @@
 			"troops": [],
 			"type": 1
 		},
-		"14888": {
-			"biome": "0, 70, 0",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Xīn_zhōngguó",
-			"populations": [
-				{
-					"amount": 100179,
-					"ethnicity": "Tonga"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
 		"1489": {
 			"biome": "41, 131, 132",
 			"buildings": [],
@@ -23777,22 +23982,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"14893": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"14906": {
 			"biome": "Sea",
@@ -32686,7 +32875,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -33838,7 +34027,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -34292,7 +34481,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -34774,7 +34963,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -34844,7 +35033,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -35514,7 +35703,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 10000,
@@ -35547,7 +35736,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -35574,7 +35763,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 757848,
@@ -35768,7 +35957,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -36119,7 +36308,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -36630,7 +36819,7 @@
 			"max_infrastructure": 5,
 			"name": "",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Xin_zhongguo",
 			"populations": [
 				{
 					"amount": 593211,
@@ -38142,22 +38331,6 @@
 			"type": 1
 		},
 		"19991": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
-		},
-		"2": {
 			"biome": "Sea",
 			"buildings": [],
 			"city": "",
@@ -44083,22 +44256,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"23132": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"2314": {
 			"biome": "245, 231, 89",
@@ -51475,33 +51632,6 @@
 				{
 					"amount": 1465505,
 					"ethnicity": "Romanian"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
-		"2817": {
-			"biome": "146, 216, 71",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 20000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Armenia",
-			"populations": [
-				{
-					"amount": 749491,
-					"ethnicity": "Russians"
 				}
 			],
 			"resources": [
@@ -61029,33 +61159,6 @@
 				{
 					"amount": 2032676,
 					"ethnicity": "Turks"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
-		},
-		"3586": {
-			"biome": "41, 131, 132",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 10000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Armenia",
-			"populations": [
-				{
-					"amount": 845960,
-					"ethnicity": "Azerbis"
 				}
 			],
 			"resources": [
@@ -93129,8 +93232,10 @@
 				}
 			],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -93156,8 +93261,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -93720,8 +93827,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -94315,8 +94424,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -94342,8 +94453,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -94450,7 +94563,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -94477,7 +94592,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -94900,7 +95017,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -95154,8 +95273,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -95181,8 +95302,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -95208,8 +95331,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -95235,8 +95360,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -95462,7 +95589,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -95489,7 +95618,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -95516,7 +95647,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -95549,7 +95682,9 @@
 				}
 			],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -95582,7 +95717,9 @@
 				}
 			],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96090,8 +96227,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96117,8 +96256,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96160,8 +96301,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96187,7 +96330,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96220,7 +96365,9 @@
 				}
 			],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96247,7 +96394,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96274,8 +96423,10 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96716,8 +96867,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96743,8 +96896,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -96770,7 +96925,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96797,7 +96954,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -96824,7 +96983,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97013,8 +97174,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -97316,8 +97479,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -97343,7 +97508,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97370,7 +97537,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97397,7 +97566,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97424,7 +97595,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97662,7 +97835,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97689,7 +97864,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97716,7 +97893,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -97770,7 +97949,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98013,7 +98194,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98245,8 +98428,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -98272,8 +98457,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -98299,7 +98486,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98326,7 +98515,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98353,8 +98544,10 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -98601,8 +98794,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -98628,7 +98823,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98655,7 +98852,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98682,7 +98881,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98715,7 +98916,7 @@
 			"max_infrastructure": 0,
 			"name": "Sea",
 			"occupier": "",
-			"polity": "Xīn_zhōngguó",
+			"polity": "Sea",
 			"populations": [],
 			"resources": [],
 			"troops": [],
@@ -98903,7 +99104,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98930,7 +99133,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -98957,7 +99162,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99179,7 +99386,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99206,7 +99415,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99233,7 +99444,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99497,8 +99710,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -99524,7 +99739,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99551,7 +99768,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -99578,8 +99797,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -99605,7 +99826,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100016,8 +100239,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -100043,7 +100268,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100070,7 +100297,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100200,7 +100429,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100227,7 +100458,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100254,8 +100487,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -100281,8 +100516,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -100308,8 +100545,10 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -100335,7 +100574,9 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100595,7 +100836,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -100622,8 +100865,10 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -100920,7 +101165,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101222,7 +101469,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101249,7 +101498,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101276,7 +101527,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101303,8 +101556,10 @@
 			"biome": "89, 129, 89",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -101330,7 +101585,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101352,22 +101609,6 @@
 			],
 			"troops": [],
 			"type": 1
-		},
-		"7509": {
-			"biome": "Sea",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 0,
-			"infrastructure": 0,
-			"max_infrastructure": 0,
-			"name": "Sea",
-			"occupier": "",
-			"polity": "Sea",
-			"populations": [],
-			"resources": [],
-			"troops": [],
-			"type": 0
 		},
 		"7514": {
 			"biome": "6, 104, 6",
@@ -101616,7 +101857,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101643,7 +101886,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101670,7 +101915,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101971,7 +102218,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -101998,7 +102247,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -102322,8 +102573,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -102419,8 +102672,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -102446,7 +102701,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -102473,7 +102730,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -102792,8 +103051,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -103057,7 +103318,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103084,7 +103347,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103229,7 +103494,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103256,7 +103523,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103283,7 +103552,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103504,8 +103775,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Maratha"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -103531,7 +103804,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103822,8 +104097,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -103967,7 +104244,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -103994,7 +104273,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104021,7 +104302,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104280,7 +104563,9 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104307,7 +104592,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104334,7 +104621,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104832,8 +105121,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -104859,7 +105150,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104886,7 +105179,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -104913,7 +105208,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -105222,7 +105519,9 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -105396,8 +105695,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -105597,7 +105898,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -105976,7 +106279,9 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106003,7 +106308,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106030,7 +106337,9 @@
 			"biome": "136, 111, 51",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106332,8 +106641,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -106359,7 +106670,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106386,7 +106699,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106722,7 +107037,9 @@
 				}
 			],
 			"city": "Bengaluru",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106749,7 +107066,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -106776,7 +107095,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107181,7 +107502,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107214,7 +107537,9 @@
 				}
 			],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107598,7 +107923,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107625,7 +107952,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107922,8 +108251,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -107948,8 +108279,10 @@
 		"8533": {
 			"biome": "96, 122, 34",
 			"buildings": [],
-			"city": "",
-			"claims": [],
+			"city": "Bangalore",
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -107976,7 +108309,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108003,7 +108338,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108311,7 +108648,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108338,7 +108677,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108629,7 +108970,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108656,7 +108999,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -108682,8 +109027,10 @@
 		"8643": {
 			"biome": "Sea",
 			"buildings": [],
-			"city": "",
-			"claims": [],
+			"city": "Chennai",
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 0,
@@ -109013,7 +109360,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -109359,8 +109708,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -109386,7 +109737,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -109413,7 +109766,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -109440,7 +109795,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -109797,8 +110154,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -109824,7 +110183,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -109851,7 +110212,9 @@
 			"biome": "Sea",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 0,
@@ -109867,7 +110230,9 @@
 			"biome": "Sea",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 0,
@@ -110046,7 +110411,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -110073,7 +110440,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -110099,8 +110468,10 @@
 		"8876": {
 			"biome": "96, 122, 34",
 			"buildings": [],
-			"city": "",
-			"claims": [],
+			"city": "Madura",
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -110127,7 +110498,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -110424,8 +110797,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -110728,8 +111103,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -110755,7 +111132,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -110782,8 +111161,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -110809,7 +111190,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -111538,8 +111921,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -111565,7 +111950,9 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
+			"claims": [
+				"Dravida"
+			],
 			"gdp": 5000,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
@@ -112094,8 +112481,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -112332,8 +112721,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -112537,8 +112928,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -112564,8 +112957,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -112995,8 +113390,10 @@
 			"biome": "0, 70, 0",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -113022,8 +113419,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -113460,8 +113859,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -113741,8 +114142,10 @@
 			"biome": "96, 122, 34",
 			"buildings": [],
 			"city": "",
-			"claims": [],
-			"gdp": 5000,
+			"claims": [
+				"Dravida"
+			],
+			"gdp": 0,
 			"infrastructure": 0,
 			"max_infrastructure": 5,
 			"name": "",
@@ -115228,33 +115631,6 @@
 			"resources": [],
 			"troops": [],
 			"type": 0
-		},
-		"9678": {
-			"biome": "6, 104, 6",
-			"buildings": [],
-			"city": "",
-			"claims": [],
-			"gdp": 1500000,
-			"infrastructure": 0,
-			"max_infrastructure": 5,
-			"name": "",
-			"occupier": "",
-			"polity": "Nauru",
-			"populations": [
-				{
-					"amount": 11680,
-					"ethnicity": "Nauru"
-				}
-			],
-			"resources": [
-				{
-					"amount": 2,
-					"quality": 0.5,
-					"type": "Iron"
-				}
-			],
-			"troops": [],
-			"type": 1
 		},
 		"9684": {
 			"biome": "0, 70, 0",
@@ -117245,5 +117621,1825 @@
 			}
 		}
 	],
-	"significant_figures": []
+	"significant_figures": [
+		{
+			"allegiance": "Canada",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RogerirmydeCyveu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 0.97,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 0.98,
+				"divCostMod": 1.01,
+				"stability": -0.04,
+				"troopAttackAdd": -0.1,
+				"troopAttackMod": 0.97,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.025,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "United_states",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YrkiJaikiddayEfai",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"dailyPPGain": 0.01,
+				"defenderAttackMitigation": 1.02,
+				"troopDefendAdd": 0.075,
+				"troopDefendMod": 1.03,
+				"troopSpeed": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "United_kingdom",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ImmiscecAovitiwetedd",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 0.97,
+				"defenderAttackMitigation": 0.97,
+				"stability": 0.04,
+				"troopAttackAdd": -0.075,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.98,
+				"troopSpeed": -0.025
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Germany",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EzzaceelkegoVoeveespousm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"dailyPPGain": 0.01,
+				"stability": 0.02,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 0.99,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "China",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KnidEyeramaAkea",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"divCostMod": 0.99,
+				"warSupport": -0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mongolia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GekUhiouro",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"dailyPPGain": 0.05,
+				"divCostMod": 0.95,
+				"stability": -0.04,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.96,
+				"troopSpeed": -0.005,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "France",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EfuiOce",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"divCostMod": 1.03,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.97,
+				"troopDefendAdd": 0.1,
+				"troopSpeed": 0.005
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Italy",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "QyvejoascOacosperpal",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 0.98,
+				"divCostMod": 1.03,
+				"stability": 0.02,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.01,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Japan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AutuotIhepuhoollYitchechoge",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.03,
+				"divCostMod": 1.01,
+				"troopDefendAdd": 0.125,
+				"troopDefendMod": 1.04,
+				"troopSpeed": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Spain",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AurtoagYnesuose",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"dailyPPGain": -0.02,
+				"stability": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Portugal",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "FysaeswizUinat",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.04,
+				"stability": 0.05,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 1.05,
+				"troopSpeed": 0.01,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Greece",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OqeyNermizanuyAsce",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"divCostMod": 1.03,
+				"stability": 0.03,
+				"troopAttackMod": 0.95,
+				"troopDefendMod": 1.01,
+				"troopSpeed": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tunisia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "FasplowylledEepiwaeyufu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"defenderAttackMitigation": 1.04,
+				"divCostMod": 1.02,
+				"stability": 0.02,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 1.03,
+				"troopDefendAdd": 0.025,
+				"troopSpeed": -0.01,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Morocco",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ApalaurainuknIakreh",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.03,
+				"divCostMod": 0.97,
+				"troopAttackAdd": -0.1,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.075,
+				"troopSpeed": 0.015,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "India",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "QueleebiEequbEfluw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"stability": 0.04,
+				"troopAttackMod": 1.01,
+				"troopSpeed": 0.005,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Saudi_arabia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EwylylpeSauvechufl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"divCostMod": 1.01,
+				"troopAttackAdd": 0.075,
+				"troopDefendMod": 0.96,
+				"troopSpeed": 0.015,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Egypt",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UcytiUknirtIkiwe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"dailyPPGain": 0.03,
+				"defenderAttackMitigation": 0.99,
+				"divCostMod": 1.01,
+				"stability": -0.01,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 0.98,
+				"troopDefendAdd": 0.05,
+				"troopDefendMod": 0.95
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mauritania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PemelonusaeToquulmaskYjaur",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"dailyPPGain": 0.04,
+				"divCostMod": 0.98,
+				"stability": -0.01,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 1.01,
+				"troopDefendAdd": -0.125,
+				"troopSpeed": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cuba",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EosprumIsughytDyv",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"defenderAttackMitigation": 1.05,
+				"divCostMod": 0.99,
+				"troopAttackAdd": 0.075,
+				"troopDefendAdd": 0.025,
+				"troopSpeed": 0.015
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Haiti",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AxiVawuqei",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 0.96,
+				"dailyPPGain": 0.01,
+				"stability": -0.01,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 0.96,
+				"troopDefendMod": 0.99
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dominican_republic",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UxtucurlOpaystrelaYedaerrewe",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 1.05,
+				"dailyPPGain": 0.04,
+				"divCostMod": 0.98,
+				"stability": 0.02,
+				"troopAttackMod": 0.97,
+				"troopDefendAdd": -0.075,
+				"troopDefendMod": 1.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Yemen",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "HydoroblaPyccynLobeh",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"stability": 0.01,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 0.97,
+				"troopDefendMod": 0.99,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Jamaica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "CaghirgeEssaungaebrermupRojekamau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"divCostMod": 0.96,
+				"troopDefendAdd": -0.125,
+				"troopDefendMod": 0.97
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Cabo_verde",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EmosloGhouvavewuh",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 0.97,
+				"dailyPPGain": 0.01,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.02,
+				"stability": 0.01,
+				"troopAttackAdd": -0.05,
+				"troopDefendMod": 0.96
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "St_kitts_and_nevis",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EeleUgafuqo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 0.98,
+				"troopAttackMod": 0.95
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dominica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "JayextuAuwionOtovobonaey",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 0.97,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.04,
+				"divCostMod": 0.99,
+				"troopAttackAdd": -0.075,
+				"troopDefendAdd": -0.1,
+				"troopDefendMod": 1.02,
+				"troopSpeed": -0.01,
+				"warSupport": -0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nigeria",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LobicauvAudourrotonu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.01,
+				"stability": -0.01,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.075,
+				"troopDefendMod": 1.04,
+				"troopSpeed": 0.02,
+				"warSupport": -0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Barbados",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EweInuFruouvozop",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"troopDefendAdd": 0.1,
+				"troopDefendMod": 0.98,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "St_lucia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UnkodEnuottupayiv",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"defenderAttackMitigation": 0.96,
+				"troopAttackAdd": -0.025,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Grenada",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "QoiroyiOhofrystuj",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"dailyPPGain": -0.04,
+				"troopAttackMod": 0.99,
+				"troopDefendMod": 1.01,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Central_african_republic",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EsesopooArroukaunuLemm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 0.95,
+				"divCostMod": 0.95,
+				"stability": -0.03,
+				"troopAttackAdd": -0.025,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 1.03,
+				"troopSpeed": -0.015,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sri_lanka",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OqekucYaskuniuDosyda",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.02,
+				"divCostMod": 1.01,
+				"stability": -0.05,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.1,
+				"troopDefendMod": 1.03,
+				"troopSpeed": -0.005,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Palau",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EtiyielOkeqaufafaufl",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"dailyPPGain": -0.04,
+				"troopDefendAdd": 0.075,
+				"troopDefendMod": 1.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nauru",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SchaejesoxeiAuminnaydOhuc",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"defenderAttackMitigation": 0.99,
+				"troopAttackMod": 0.98
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Indonesia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UrtuschuddMotept",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 0.98,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 1.03,
+				"troopAttackMod": 0.97,
+				"troopDefendAdd": 0.075,
+				"troopSpeed": 0.01,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Brazil",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OretteauwenoyYaerduneduUyskutyknech",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 1.05,
+				"troopAttackAdd": -0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.015
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dr_congo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OupuajauErpaeyaqu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 0.95,
+				"divCostMod": 1.02,
+				"stability": -0.01,
+				"troopAttackAdd": -0.025,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 1.01,
+				"troopSpeed": -0.005,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Equatorial_guinea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AhejakocunEjeeguEurdasmurtauf",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"dailyPPGain": 0.03,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 0.99,
+				"stability": 0.01,
+				"troopAttackAdd": 0.125,
+				"troopDefendMod": 0.97,
+				"warSupport": -0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Singapore",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EsmakeheEtweyytyVulgyf",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.02,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.01,
+				"troopAttackAdd": -0.025,
+				"troopAttackMod": 0.95,
+				"troopDefendMod": 1.03,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Sao_tome_and_principe",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IferaqiougyhWeeliqaub",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"troopDefendAdd": 0.075
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Burundi",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "DruteyoJaulkizz",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"defenderAttackMitigation": 1.04,
+				"troopDefendAdd": 0.025
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Papua_new_guinea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YikoothrawAttiquifok",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"defenderAttackMitigation": 0.96,
+				"divCostMod": 1.02,
+				"troopDefendMod": 0.98,
+				"troopSpeed": -0.015,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Seychelles",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EelmekaSprewennegHewheetoviyy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 0.99
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "East_timor",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YyiwezeiBiulkeku",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"troopAttackAdd": 0.125,
+				"troopDefendAdd": 0.075,
+				"troopSpeed": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Australia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "HepyrmywerdoYodula",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"divCostMod": 0.98,
+				"troopAttackMod": 1.01,
+				"troopDefendMod": 0.95
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Madagascar",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RefaulollBosCufupogrytto",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.02,
+				"defenderAttackMitigation": 1.03,
+				"divCostMod": 0.99,
+				"stability": -0.03,
+				"troopAttackAdd": 0.1,
+				"troopAttackMod": 0.99,
+				"troopDefendMod": 1.03,
+				"troopSpeed": -0.005,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Zimbabwe",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EcyrtedisYlithauyimOudyhauddew",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 0.96,
+				"divCostMod": 0.96,
+				"stability": 0.03,
+				"troopDefendAdd": -0.075,
+				"troopDefendMod": 0.97,
+				"troopSpeed": -0.015,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mauritius",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LibbofaxtoilmNaigelyh",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.03,
+				"divCostMod": 1.03,
+				"stability": -0.01,
+				"troopAttackAdd": 0.1,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.99
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "New_zealand",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AtayahuyuFetahoojUruoudoteel",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"defenderAttackMitigation": 0.98,
+				"stability": 0.01,
+				"troopAttackAdd": -0.05,
+				"troopAttackMod": 0.96,
+				"troopDefendAdd": 0.025,
+				"troopSpeed": 0.005
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Antartica",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AcudoujeyuwHylgaw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 1.02,
+				"divCostMod": 0.96,
+				"stability": -0.03,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 1.03,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.005,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Tibet-Rouran",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "PhaulvuouwreaufleIstrusnitchufItepuyovae",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 0.98,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 0.96,
+				"divCostMod": 1.03,
+				"stability": -0.01,
+				"troopAttackAdd": 0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.075,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.01,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Korea",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EowilgotwoVantauveemaykeEemmoy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"dailyPPGain": 0.02,
+				"divCostMod": 1.01,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.98,
+				"troopDefendMod": 1.02,
+				"troopSpeed": -0.005,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Basque_county",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "GeaqigunaEfodameegupWraeqi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/JaneAustenCassandra.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"troopSpeed": -0.015
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Scandinavia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "YvusosimperBeeshoaloevide",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"dailyPPGain": 0.01,
+				"troopAttackAdd": -0.1
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Prussia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "UjitenteAqaqYommub",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"dailyPPGain": -0.01,
+				"divCostMod": 0.96,
+				"troopAttackMod": 1.02,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": -0.01,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Furan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NitchijaePeaschebaugyUewaekiwotub",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 0.97,
+				"stability": -0.03,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 1.01,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": -0.005,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Bengal",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "BruypyhidiqKehycugoovHiyyretchykn",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"defenderAttackMitigation": 1.01,
+				"stability": 0.01,
+				"troopAttackAdd": 0.05,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Dravida",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EqaitirkaufleeOpecajGlouquwadug",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"divCostMod": 0.99,
+				"troopAttackAdd": -0.125,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Maratha",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OnteccutamTrealmatodutIkemm",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.02,
+				"stability": -0.01,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 1.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Mazdarya",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IpunacuYegaDidepsewra",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"dailyPPGain": -0.01,
+				"stability": -0.01,
+				"troopDefendAdd": -0.025,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Khalistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SuqawruhuAfeheenau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"dailyPPGain": -0.03,
+				"stability": -0.01,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 1.05,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 1.01,
+				"warSupport": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kurdistan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KuroesnilYevuneppesOdysesitruac",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"defenderAttackMitigation": 0.97,
+				"divCostMod": 1.04,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": 0.025
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Armenia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EdozzaibEsudeqaySukossyrau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.02,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 0.99,
+				"divCostMod": 1.01,
+				"stability": -0.01,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 1.03,
+				"troopDefendAdd": -0.125,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.015,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Siber-nippon",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OlaekikeOujoOyo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"divCostMod": 1.03,
+				"stability": 0.01,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.95
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Gothia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "RekozzijoXiniy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 0.98,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 1.04,
+				"divCostMod": 1.04,
+				"stability": -0.01,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.97,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 1.05,
+				"troopSpeed": -0.01,
+				"warSupport": -0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Gotinia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "WuntalluijIoumaulStraudau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 0.99
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Puddu_dravida",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "IaskuheRowymEauqogebiru",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.02,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 0.97,
+				"divCostMod": 1.02,
+				"stability": 0.03,
+				"troopAttackAdd": 0.025,
+				"troopSpeed": -0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Devanadu",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "LubulvoeYdevyntikau",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 0.98,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.03,
+				"stability": -0.01,
+				"troopDefendAdd": -0.025
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ryu_nippon",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NalgaupangUschespy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"divCostMod": 1.01,
+				"troopDefendMod": 0.98,
+				"troopSpeed": 0.015,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "New_brittany",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AtyltongertiFlaecagafilmoEyoa",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"divCostMod": 0.99,
+				"stability": -0.04,
+				"troopAttackAdd": -0.1,
+				"troopAttackMod": 1.03,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 0.98,
+				"warSupport": 0.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Neu_germania",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "EeptekrezzinPloguaxymouyi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"stability": 0.04,
+				"troopSpeed": -0.005
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Amazgha",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "StuirlomijIeflataivipuQyceyjaus",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"dailyPPGain": -0.05,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.01,
+				"stability": -0.02,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 1.03,
+				"troopDefendAdd": -0.05,
+				"troopDefendMod": 1.04,
+				"troopSpeed": -0.02,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Nippon_dravida",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "NesaLiojavuoutueglo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"stability": 0.01,
+				"troopDefendAdd": -0.05
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Coptic",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "KymipulyEynev",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 1.04,
+				"divCostMod": 0.99,
+				"troopDefendMod": 1.03,
+				"warSupport": -0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Masr",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "OnticokaequaScheqewaelazi",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenitoMussolini.png",
+			"skills": {
+				"troopAttackMod": 0.95,
+				"troopDefendAdd": 0.025,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Ghanaa",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "WhacJyrasututu",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"troopAttackAdd": 0.025,
+				"troopSpeed": -0.01,
+				"warSupport": 0.04
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Columbia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ItraOfaerag",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"dailyPPGain": -0.02,
+				"defenderAttackMitigation": 0.96,
+				"divCostMod": 0.99,
+				"stability": -0.03,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.125,
+				"troopDefendMod": 0.99,
+				"troopSpeed": 0.01,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Inca",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "WemagMafasche",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/YukawaHideki.png",
+			"skills": {
+				"attackerAttackMitigation": 0.95,
+				"dailyPPGain": -0.03,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 1.03,
+				"stability": -0.04,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": -0.05,
+				"troopDefendMod": 1.05,
+				"troopSpeed": -0.005,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Patagonia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AsmipheYfeejo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 0.98,
+				"divCostMod": 1.01,
+				"stability": -0.05,
+				"troopAttackAdd": -0.025,
+				"troopAttackMod": 1.05,
+				"troopDefendAdd": -0.025,
+				"troopDefendMod": 1.01,
+				"troopSpeed": -0.005,
+				"warSupport": -0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Abyssinia",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AveEevaumabapraulvEesomasuzzy",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/BenjaminFranklin.png",
+			"skills": {
+				"defenderAttackMitigation": 1.01,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kilwa",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "ThefononaunEghtachytHurlisiejan",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 1.03,
+				"dailyPPGain": 0.04,
+				"defenderAttackMitigation": 0.99,
+				"divCostMod": 1.01,
+				"stability": -0.02,
+				"troopAttackAdd": -0.025,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.99,
+				"troopSpeed": -0.005,
+				"warSupport": 0.02
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Xhosa",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AudaTiggiOufuaw",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": -0.04,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 0.96,
+				"troopAttackAdd": 0.1,
+				"troopAttackMod": 1.01
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Zulu",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AlpusyslehouwAseghtirifVekefly",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/UrNammu.png",
+			"skills": {
+				"attackerAttackMitigation": 0.97,
+				"dailyPPGain": 0.01,
+				"defenderAttackMitigation": 1.01,
+				"divCostMod": 0.96,
+				"stability": -0.02,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.98,
+				"troopSpeed": -0.015,
+				"warSupport": -0.03
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Kushan",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "AutaumolebRylvoufaerteJimimoo",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/ChevalierDEon.png",
+			"skills": {
+				"attackerAttackMitigation": 1.01,
+				"dailyPPGain": 0.05,
+				"stability": -0.03,
+				"troopAttackAdd": 0.025,
+				"troopAttackMod": 1.01,
+				"troopDefendAdd": 0.025,
+				"troopDefendMod": 0.97,
+				"warSupport": -0.05
+			},
+			"status": 0,
+			"traits": []
+		},
+		{
+			"allegiance": "Xin_zhongguo",
+			"ideology": [
+				0,
+				0
+			],
+			"legitimacy": 0,
+			"name": "SataunepSom",
+			"occupation": "Leader",
+			"portrait_path": "res://starts/DravidianDawn/assets/portraits/random/TrofimLysenko.png",
+			"skills": {
+				"attackerAttackMitigation": 0.99,
+				"dailyPPGain": -0.01,
+				"defenderAttackMitigation": 1.02,
+				"divCostMod": 1.05,
+				"stability": -0.03,
+				"troopAttackAdd": -0.075,
+				"troopAttackMod": 0.99,
+				"troopDefendAdd": 0.125,
+				"troopDefendMod": 1.02,
+				"troopSpeed": 0.01,
+				"warSupport": 0.03
+			},
+			"status": 0,
+			"traits": []
+		}
+	]
 }

@@ -1,6 +1,7 @@
 extends Node
 
 var active_popups: Array = []
+var scheduled_events: Array = []
 
 const ALERT_POPUP_SCENE = preload("res://Scenes/AlertPopup.tscn")
 const SUPER_EVENT_SCENE = preload("res://Scenes/SuperEvent.tscn")
@@ -133,3 +134,31 @@ func check_super_events():
 	remove.reverse()
 	for index in remove:
 		super_events.remove_at(index)
+
+
+func schedule_event(days: int, data: Dictionary):
+	if !GameState.current_world or !GameState.current_world.clock: return
+	var target_time = GameState.current_world.clock.get_absolute_days() + days
+	scheduled_events.append({
+		"trigger_time": target_time,
+		"event_data": data
+	})
+
+func _on_day_passed():
+	if !GameState.current_world or !GameState.current_world.clock: return
+	var current = GameState.current_world.clock.get_absolute_days()
+	var to_trigger = []
+	
+	for i in range(scheduled_events.size() - 1, -1, -1):
+		if current >= scheduled_events[i]["trigger_time"]:
+			to_trigger.append(scheduled_events[i]["event_data"])
+			scheduled_events.remove_at(i)
+	
+	for ev in to_trigger:
+		show_alert(ev)
+
+func save_events() -> Array:
+	return scheduled_events.duplicate(true)
+
+func load_events(data: Array):
+	scheduled_events = data.duplicate(true)

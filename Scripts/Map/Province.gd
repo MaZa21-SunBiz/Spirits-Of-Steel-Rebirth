@@ -47,7 +47,7 @@ func ToDict(troops_data: Array = []) -> Dictionary:
 		"buildings": building_array,
 		"populations": population_array,
 		"gdp": self.gdp,
-		"claims": self.claims,
+		"claims": [] as PackedStringArray if (self.claims.size() == 1 && self.claims[0] == self.country) else self.claims,
 		"infrastructure": self.infrastructure,
 		"max_infrastructure": self.maxInfrastructure,
 		"troops": troops_data
@@ -87,7 +87,9 @@ static func FromDict(a_data: Dictionary) -> Province:
 			province.buildings.append(BuildingData.FromDict(buildingData))
 		for populationData: Dictionary in a_data.get("populations", []):
 			province.populations.append(PopulationData.FromDict(populationData))
-		province.claims = a_data.get("claims", [])
+		print(a_data.get("claims", []))
+		province.claims = [province.country] if a_data.get("claims", []).is_empty() else a_data.get("claims", [])
+		# province.claims = a_data.get("claims", [])
 		province.gdp = a_data.get("gdp", 1000)
 		province.infrastructure = a_data.get("infrastructure", 0)
 		province.maxInfrastructure = a_data.get("max_infrastructure", 5)

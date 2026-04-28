@@ -174,7 +174,7 @@ func _update_law_buttons_visuals() -> void:
 
 #endregion
 
-func _add_releasable_option(country_id: String) -> void:
+func _add_releasable_option(releasable: Dictionary) -> void:
 	var btn_panel = PanelContainer.new()
 	btn_panel.custom_minimum_size = Vector2(0, 55) # Slimmer height for HBox layout
 	
@@ -201,7 +201,7 @@ func _add_releasable_option(country_id: String) -> void:
 	flag.custom_minimum_size = Vector2(40, 26)
 	flag.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	flag.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	flag.texture = TroopManager.get_flag(country_id)
+	flag.texture = TroopManager.get_flag(releasable.country)
 	hbox.add_child(flag)
 
 	# 4. Text Info (Expand to push buttons to the right)
@@ -211,7 +211,7 @@ func _add_releasable_option(country_id: String) -> void:
 	hbox.add_child(v_text)
 
 	var title = Label.new()
-	title.text = country_id.capitalize().replace("_", " ")
+	title.text = releasable.country.capitalize().replace("_", " ")
 	title.add_theme_font_size_override("font_size", 14)
 	v_text.add_child(title)
 
@@ -228,32 +228,70 @@ func _add_releasable_option(country_id: String) -> void:
 	h_btns.alignment = BoxContainer.ALIGNMENT_CENTER
 	hbox.add_child(h_btns)
 
-	# --- Button: Release ---
-	var btn_release = Button.new()
-	btn_release.text = "Release"
-	btn_release.custom_minimum_size = Vector2(80, 30)
-	btn_release.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	btn_release.pressed.connect(_on_release_pressed.bind(country_id))
-	h_btns.add_child(btn_release)
+	if MapManager._country_exists_on_map(releasable.country):
+		var btn_return = Button.new()
+		btn_return.text = "Return Territory"
+		btn_return.custom_minimum_size = Vector2(80, 30)
+		btn_return.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		btn_return.pressed.connect(
+			_on_return_territory_pressed.bind(releasable.country, releasable.owned_provinces)
+		)
+		h_btns.add_child(btn_return)
+	else:
+		# --- Button: Release ---
+		var btn_release = Button.new()
+		btn_release.text = "Release"
+		btn_release.custom_minimum_size = Vector2(80, 30)
+		btn_release.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		btn_release.pressed.connect(_on_release_pressed.bind(releasable.country))
+		h_btns.add_child(btn_release)
 
-	# --- Button: Play As (Distinct style) ---
-	var btn_play = Button.new()
-	btn_play.text = "Play As"
-	btn_play.custom_minimum_size = Vector2(80, 30)
-	btn_play.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	
-	# Optional: Give 'Play As' a slightly blue-ish tint to distinguish it
-	btn_play.add_theme_color_override("font_hover_color", Color(0.5, 0.8, 1.0))
-	
-	btn_play.pressed.connect(_on_release_and_play_pressed.bind(country_id))
-	h_btns.add_child(btn_play)
+		# --- Button: Release Puppet ---
+		var btn_puppet = Button.new()
+		btn_puppet.text = "Release As Puppet"
+		btn_puppet.custom_minimum_size = Vector2(80, 30)
+		btn_puppet.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		btn_puppet.pressed.connect(_on_release_puppet_pressed.bind(releasable.country))
+		h_btns.add_child(btn_puppet)
+
+		# --- Button: Play As (Distinct style) ---
+		var btn_play = Button.new()
+		btn_play.text = "Play As"
+		btn_play.custom_minimum_size = Vector2(80, 30)
+		btn_play.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		
+		# Optional: Give 'Play As' a slightly blue-ish tint to distinguish it
+		btn_play.add_theme_color_override("font_hover_color", Color(0.5, 0.8, 1.0))
+		btn_play.pressed.connect(_on_release_and_play_pressed.bind(releasable.country))
+		h_btns.add_child(btn_play)
+
 
 	releasable_laws_grid.add_child(btn_panel)
+
+func _on_return_territory_pressed(country_id: String, pids: PackedInt32Array) -> void:
+	if current_country.political_power >= 50:
+		current_country.political_power -= 50
+		for pid in pids:
+			MapManager.transfer_ownership(pid, country_id)
+		# Refresh UI
+		_populate_releasables(current_country.country_name)
+	else:
+		Console.print_error("Not enough Political Power!")
 
 func _on_release_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
 		current_country.political_power -= 50
 		MapManager.ReleaseCountry(country_id)
+		# Refresh UI
+		_populate_releasables(current_country.country_name)
+	else:
+		Console.print_error("Not enough Political Power!")
+
+func _on_release_puppet_pressed(country_id: String) -> void:
+	if current_country.political_power >= 50:
+		current_country.political_power -= 50
+		MapManager.ReleasePuppet(current_country.country_name, country_id)
+		# CountryManager.make_puppet(current_country, CountryManager.countries[country_id])
 		# Refresh UI
 		_populate_releasables(current_country.country_name)
 	else:
@@ -374,3 +412,8 @@ func _format_number(amount: float, as_int: bool = true) -> String:
 
 
 #endregion
+
+
+func _on_tab_container_tab_changed(tab: int) -> void:
+	if current_country:
+		_populate_releasables(current_country.country_name)

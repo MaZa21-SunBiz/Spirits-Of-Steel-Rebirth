@@ -139,6 +139,7 @@ func DoSetup(a_progress: Array) -> void:
 	
 	clock.hour_passed.connect(CountryManager._on_hour_passed)
 	clock.day_passed.connect(CountryManager._on_day_passed)
+	clock.day_passed.connect(EventManager._on_day_passed)
 	
 	_refresh_map_visuals()
 
@@ -191,6 +192,7 @@ func load_map_data(mapData: Dictionary):
 		for fig in mapData["significant_figures"]:
 			MapManager.significantFigures[fig["name"]] = ImportantFigure.FromDict(fig)
 	CountryManager.generate_missing_leaders()
+	CountryManager.cleanup_empty_countries()
 	
 	Console.add_command_autocomplete_list("play_as", CountryManager.countries.keys())
 
@@ -206,7 +208,8 @@ func save_game(slot: String):
 		"ideologies": IdeologyManager.ideologies,
 		"factions": FactionManager.save_factions(),
 		"wars": WarManager.save_wars(),
-		"original_territories": WarManager.save_original_territories()
+		"original_territories": WarManager.save_original_territories(),
+		"scheduled_events": EventManager.save_events()
 	}
 	
 	# Ensure directory exists
@@ -274,6 +277,8 @@ func load_game(save_name: String):
 	WarManager.load_wars(save_data.get("wars", []))
 	WarManager.load_original_territories(save_data.get("original_territories", {}))
 	WarManager.check_for_new_battles()
+	
+	EventManager.load_events(save_data.get("scheduled_events", []))
 	
 	GameState.is_loading_game = false
 	_refresh_map_visuals()

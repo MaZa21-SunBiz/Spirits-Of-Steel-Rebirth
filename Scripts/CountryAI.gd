@@ -354,7 +354,7 @@ func _execute_frontline():
 		
 	var city_dict: Dictionary = {}
 	for city in MapManager.all_cities:
-		city_dict[city[0]] = true
+		city_dict[city.id] = true
 
 	for my_pid in MapManager.get_provinces_bordering_enemies(country.country_name, enemies):
 		#if country == GameState.game_ui.selected_country:

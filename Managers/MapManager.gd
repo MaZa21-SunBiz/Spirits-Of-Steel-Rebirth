@@ -45,11 +45,11 @@ var province_graph: SoiStar = SoiStar.new() # NOTE(soi): ehh
 var global_claims_registry: Dictionary = {}
 var world_tension: float = 0.1 # Global tension level (0.1 to 1.0)
 
-var all_cities: Array[Array] = []
+var all_cities: Array[Dictionary] = []
 
 const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
-@onready var significantFigures: Dictionary[String, ImportantFigure] ={}
+@onready var significantFigures: Dictionary[String, ImportantFigure] = {}
 
 var gay: Label = Label.new()
 # soiladin time
@@ -260,7 +260,7 @@ func export_scenario_data(path: String) -> void:
 
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(export, "\t"))
+		file.store_string(JSON.stringify(export , "\t"))
 		file.close()
 		print("Scenario exported to: ", path)
 	else:
@@ -440,7 +440,6 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 	if _is_mouse_over_ui() or GameState.in_peace_process:
 		GameState.tooltip.SwitchTooltip(-1)
 		if GameState.selectingCountry:
-			
 			if last_hovered_pid > 1 && hoveredCountry != "Sea" && country_to_provinces.has(hoveredCountry):
 				original_hover_color = CountryManager.countries[hoveredCountry].country_color
 				for province in country_to_provinces[hoveredCountry]:
@@ -1405,11 +1404,11 @@ func get_border_provinces(country_name: String) -> PackedInt32Array:
 
 	return border_provinces
 
-func get_all_releasables(my_country: String) -> Array:
-	var releasables = []
+func get_all_releasables(my_country: String) -> Array[Dictionary]:
+	var releasables: Array[Dictionary] = []
 	
 	# 1. Get a list of all province IDs I currently own
-	var my_provinces = []
+	var my_provinces: PackedInt32Array = []
 	for obj in province_objects.values():
 		# Using 'country' as per your Province resource
 		if obj.country == my_country:
@@ -1420,20 +1419,34 @@ func get_all_releasables(my_country: String) -> Array:
 		if potential_country == my_country:
 			continue
 		
-		var required_provinces = global_claims_registry[potential_country]
-		var has_all_provinces = true
+		var required_provinces: PackedInt32Array = global_claims_registry[potential_country]
+
+
+		var owned_provinces: PackedInt32Array = []
 		
 		# 3. Verify I own every province they claim
 		for p_id in required_provinces:
-			if not p_id in my_provinces:
-				has_all_provinces = false
-				break
+			if p_id in my_provinces:
+				owned_provinces.append(p_id)
 		
-		if has_all_provinces:
-			# 4. Only add if they aren't already on the map
-			if not _country_exists_on_map(potential_country):
-				releasables.append(potential_country)
+		# no province and country exitsts -> don care
+		# no province and country not exitsts -> don care
+		# province and country exitsts -> return
+		# province and country not exitsts -> release
+		if owned_provinces.is_empty():
+			continue
+		# if has_all_provinces:
+		# 	# 4. Only add if they aren't already on the map
+		# 	if not _country_exists_on_map(potential_country):
+
+		releasables.append(
+			{
+				"country": potential_country,
+				"owned_provinces": owned_provinces,
+			}
+		)
 				
+
 	return releasables
 
 func _country_exists_on_map(c_name: String) -> bool:
@@ -1443,44 +1456,70 @@ func _country_exists_on_map(c_name: String) -> bool:
 	return false
 
 func ReleaseCountry(a_countryName: String) -> void:
+	CountryManager.add_country({"name": a_countryName})
+	
 	for obj in province_objects.values():
 		if obj.claims.has(a_countryName):
-			for troop in TroopManager.troops_by_province.get(obj.id, []):
+			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
 				if is_instance_valid(troop):
 					TroopManager.RemoveTroop(troop)
 
 			transfer_ownership(obj.id, a_countryName)
-	CountryManager.add_country({"name": a_countryName})
+	
 	CountryManager.cleanup_empty_countries()
+	show_countries_map()
+
+func ReleasePuppet(a_puppeter: String, a_puppetee: String) -> void:
+	CountryManager.add_country({"name": a_puppetee})
+	
+	for obj in province_objects.values():
+		if obj.claims.size() == 1 && obj.claims[0] == a_puppetee:
+			transfer_ownership(obj.id, a_puppetee)
+	
+	CountryManager.make_puppet(
+		CountryManager.countries[a_puppeter],
+		CountryManager.countries[a_puppetee]
+	)
+	CountryManager.cleanup_empty_countries()
+	show_countries_map()
 
 func InstantiateCountryFromClaims(a_countryData: Dictionary) -> void:
 	CountryManager.add_country(a_countryData)
 	
 	for obj: Province in province_objects.values():
 		if obj.claims.has(a_countryData["name"]):
-			for troop in TroopManager.troops_by_province.get(obj.id, []):
+			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
 				if is_instance_valid(troop):
 					TroopManager.RemoveTroop(troop)
 
 			transfer_ownership(obj.id, a_countryData["name"])
+	
 	CountryManager.cleanup_empty_countries()
+	show_countries_map()
 
 func InstantiateCountryFromProvinces(a_countryData: Dictionary, a_claims: PackedInt32Array) -> CountryData:
 	var countryer: CountryData = CountryManager.add_country(a_countryData)
 	for pid: int in a_claims:
-		for troop in TroopManager.troops_by_province.get(pid, []):
+		for troop in TroopManager.troops_by_province.get(pid, []).duplicate():
 			if is_instance_valid(troop):
 				TroopManager.RemoveTroop(troop)
 
 		transfer_ownership(pid, a_countryData["name"])
+	
 	CountryManager.cleanup_empty_countries()
+	show_countries_map()
 	return countryer
 
-func get_all_cities() -> Array[Array]:
-	var pids: Array[Array] = []
+func get_all_cities() -> Array[Dictionary]:
+	var pids: Array[Dictionary] = []
 	for obj: Province in province_objects.values():
 		if len(obj.city) > 0:
-			pids.append([obj.id, obj.city])
+			pids.append(
+				{
+					"id": obj.id,
+					"city": obj.city
+				}
+			)
 	return pids
 
 func get_cities_province_country(country_name) -> Array:
@@ -1573,7 +1612,7 @@ func _set_type_map(mat: Material, type_img: Image):
 		var province = MapManager.province_objects.get(MapManager._get_pid_fast(x, y))
 
 		if province:
-			type_img.set_pixel(x , y , Color(province.type , province.type , province.type))
+			type_img.set_pixel(x, y, Color(province.type, province.type, province.type))
 		else:
 			# It's a border (PID 1 or null). Mark as uncertain for now.
 			uncertain_pixels.append(Vector2i(x, y))
