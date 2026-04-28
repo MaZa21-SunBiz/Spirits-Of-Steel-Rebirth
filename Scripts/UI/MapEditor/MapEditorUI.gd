@@ -694,9 +694,7 @@ func m_OnProvinceClaimsSubmitted() -> void:
 	var raw_claims = input_claims.text.split(",")
 	var final_claims: Array[String] = []
 	for c in raw_claims:
-		var clean = c.strip_edges()
-		if clean in CountryManager.countries:
-			final_claims.append(clean)
+		final_claims.append(c.strip_edges())
 	
 	match currentTool:
 		Tool.NONE:
