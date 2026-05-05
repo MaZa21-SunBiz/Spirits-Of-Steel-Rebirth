@@ -301,8 +301,8 @@ func get_function(block, country: CountryData = null):
 				else:
 					result = false
 		"release":
-			if evaled_args.size() >= 1:
-				MapManager.ReleaseCountry(evaled_args[0])
+			if evaled_args.size() >= 2:
+				MapManager.ReleaseCountry(evaled_args[0], evaled_args[0])
 				result = true
 		"play_as":
 			if evaled_args.size() >= 1:

@@ -1244,7 +1244,9 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 			country_to_cities[oldControllerName].erase(pid)
 		if province.city != "":
 			country_to_cities.get_or_add(new_owner_name, []).append(pid)
+		print(allowed_pids.size())
 		allowed_pids.get_or_add(new_owner_name, []).append(pid)
+		print(allowed_pids.size())
 		CountryManager.countries[new_owner_name].total_population += province.GetPopulation()
 		CountryManager.countries[new_owner_name].factories_amount += province_objects[pid].GetFactories()
 	else:
@@ -1455,26 +1457,45 @@ func _country_exists_on_map(c_name: String) -> bool:
 			return true
 	return false
 
-func ReleaseCountry(a_countryName: String) -> void:
-	CountryManager.add_country({"name": a_countryName})
+func ReleaseCountry(a_releaser: String, a_releasee: String) -> void:
+	CountryManager.add_country(
+		{
+			"name": a_releasee,
+			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
+		}
+	)
 	
-	for obj in province_objects.values():
-		if obj.claims.has(a_countryName):
-			for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
+	for pid in country_to_provinces[a_releaser].duplicate():
+		var obj: Province = MapManager.province_objects[pid]
+		if obj.claims.has(a_releasee):
+			for troop in TroopManager.troops_by_province.get(
+				obj.id,
+				[]
+			).duplicate():
 				if is_instance_valid(troop):
 					TroopManager.RemoveTroop(troop)
 
-			transfer_ownership(obj.id, a_countryName)
+			transfer_ownership(obj.id, a_releasee)
 	
 	CountryManager.cleanup_empty_countries()
 	show_countries_map()
 
 func ReleasePuppet(a_puppeter: String, a_puppetee: String) -> void:
-	CountryManager.add_country({"name": a_puppetee})
+	CountryManager.add_country(
+		{
+			"name": a_puppetee,
+			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
+		}
+	)
 	
-	for obj in province_objects.values():
-		if obj.claims.size() == 1 && obj.claims[0] == a_puppetee:
+	for pid in country_to_provinces[a_puppeter].duplicate():
+		var obj: Province = MapManager.province_objects[pid]
+		print(obj.claims)
+		print(!(a_puppeter in obj.claims))
+		print(a_puppetee in obj.claims)
+		if !(a_puppeter in obj.claims) && a_puppetee in obj.claims:
 			transfer_ownership(obj.id, a_puppetee)
+			print(obj.id)
 	
 	CountryManager.make_puppet(
 		CountryManager.countries[a_puppeter],

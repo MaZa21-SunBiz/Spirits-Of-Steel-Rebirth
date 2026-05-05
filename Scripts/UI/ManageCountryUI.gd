@@ -281,7 +281,7 @@ func _on_return_territory_pressed(country_id: String, pids: PackedInt32Array) ->
 func _on_release_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
 		current_country.political_power -= 50
-		MapManager.ReleaseCountry(country_id)
+		MapManager.ReleaseCountry(current_country.country_name, country_id)
 		# Refresh UI
 		_populate_releasables(current_country.country_name)
 	else:
@@ -300,7 +300,7 @@ func _on_release_puppet_pressed(country_id: String) -> void:
 func _on_release_and_play_pressed(country_id: String) -> void:
 	if current_country.political_power >= 50:
 		# 1. Release the land
-		MapManager.ReleaseCountry(country_id)
+		MapManager.ReleaseCountry(current_country.country_name, country_id)
 		CountryManager.set_player_country(country_id)
 		Console.print_info("Switched playing as: " + country_id)
 		
