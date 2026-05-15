@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqv7jjsh8ckii"
-path="res://.godot/imported/load_8.png-6f5ac51e1f8f754ba0387adc2b3bab5f.ctex"
+uid="uid://vqncahcku1w6"
+path="res://.godot/imported/rail_road.svg-6011f435c733dc3726ab325341889ec4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/loading/load_8.png"
-dest_files=["res://.godot/imported/load_8.png-6f5ac51e1f8f754ba0387adc2b3bab5f.ctex"]
+source_file="res://assets/icons/rail_road.svg"
+dest_files=["res://.godot/imported/rail_road.svg-6011f435c733dc3726ab325341889ec4.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

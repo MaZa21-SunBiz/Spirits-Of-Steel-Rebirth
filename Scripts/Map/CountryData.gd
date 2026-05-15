@@ -32,6 +32,8 @@ var income: float = 0.0
 var factories_amount: int = 0
 var factory_income = 100
 var hourly_money_income: float = 0.0 # Calculated value
+var stockpile_change: Dictionary[String, int] = {}
+var stockpile: Dictionary[String, int] = {}
 
 var divCostMod: float = 1.0
 
@@ -184,6 +186,8 @@ func ToDict() -> Dictionary:
 		"government_positions": governmentPositions,
 		"is_player": is_player,
 		"finished_decisions": finished_decisions,
+		"stockpile_change": stockpile_change,
+		"stockpile": stockpile,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -201,12 +205,24 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	country.base_war_support = a_data.get("war_support", 0.5)
 	country.puppets = a_data.get("puppets", [])
 	country.accepted_cultures = a_data.get("accepted_cultures", [])
-	country.hostedGovernments = a_data.get("hosted_governments", [])
+	country.hostedGovernments = a_data.get("hosted_governments", a_data.get("hostedGovernments", []))
 	country.allowedCountries.append_array([country.country_name, "Sea"])
 	country.figures = a_data.get("figures", [])
 	country.governmentPositions.merge(a_data.get("government_positions", {}), true)
 	country.is_player = a_data.get("is_player", false)
-	country.finished_decisions = Array(a_data.get("finished_decisions", []), TYPE_STRING, &"", null)
+	country.finished_decisions = Array(
+		a_data.get("finished_decisions", []),
+		TYPE_STRING,
+		&"",
+		null
+	)
+	var exports_data: Dictionary = a_data.get("stockpile_change", {})
+	for key: String in exports_data:
+		country.stockpile_change[key] = int(exports_data[key])
+		
+	var stockpile_data: Dictionary = a_data.get("stockpile", {})
+	for key: String in stockpile_data:
+		country.stockpile[key] = int(stockpile_data[key])
 	
 	for id in country.finished_decisions:
 		country.set_meta("finished_" + id, true)

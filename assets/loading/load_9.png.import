@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ph447xe7bcy"
-path="res://.godot/imported/load_3.png-697c6210cad3809a9b31a85f503ce8fb.ctex"
+uid="uid://behj8wgd68j2u"
+path="res://.godot/imported/load_9.png-efae8a6de715074a7e3db6290d268d02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/loading/load_3.png"
-dest_files=["res://.godot/imported/load_3.png-697c6210cad3809a9b31a85f503ce8fb.ctex"]
+source_file="res://assets/loading/load_9.png"
+dest_files=["res://.godot/imported/load_9.png-efae8a6de715074a7e3db6290d268d02.ctex"]
 
 [params]
 

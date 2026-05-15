@@ -558,9 +558,10 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		GameState.game_ui.DoUpdateSidemenuVisuals()
 		show_countries_map()
 	else:
-		var player_country_name = CountryManager.player_country.country_name
-		var is_player_owned = MapManager.province_objects[pid].GetFunctionalOwner() == player_country_name
-		var is_puppet_owned = MapManager.province_objects[pid].GetFunctionalOwner() in CountryManager.player_country.puppets
+		var player_country_name: String = CountryManager.player_country.country_name
+		var pid_owner: String = province_objects[pid].GetFunctionalOwner()
+		var is_player_owned: bool = pid_owner == player_country_name
+		var is_puppet_owned: bool = pid_owner in CountryManager.player_country.puppets
 
 		if GameState.choosing_deploy_city:
 			if is_player_owned and province_objects[pid].city != "":
@@ -572,16 +573,16 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			if EconomyManager.is_province_building(pid):
 				print("Action Failed: Already building there.")
 			else:
-				if is_player_owned:
-					if _province_build_industry(pid, player_country_name, GameState.industry_building):
-						_cleanup_interaction_state()
-						show_industry_country(player_country_name)
-						country_clicked.emit(player_country_name)
-				elif is_puppet_owned:
-					if _province_build_industry(pid, province_objects[pid].GetFunctionalOwner(), GameState.industry_building):
-						_cleanup_interaction_state()
-						show_industry_country(province_objects[pid].GetFunctionalOwner())
-						country_clicked.emit(province_objects[pid].GetFunctionalOwner())
+				if (is_player_owned
+				&& _province_build_industry(pid, player_country_name, GameState.industry_building)):
+					_cleanup_interaction_state()
+					show_industry_country(player_country_name)
+					country_clicked.emit(player_country_name)
+				elif (is_puppet_owned
+				&& _province_build_industry(pid, pid_owner, GameState.industry_building)):
+					_cleanup_interaction_state()
+					show_industry_country(pid_owner)
+					country_clicked.emit(pid_owner)
 				else:
 					print("Action Failed: Cannot build in foreign territory.")
 					GameState.reset_industry_building()
@@ -601,33 +602,27 @@ func _execute_deployment(pid: int, player_name: String) -> void:
 func _province_build_industry(pid: int, a_countryName: String, type: GameState.IndustryType) -> bool:
 	var province = province_objects[pid]
 
-	# 1. Safety Check: Is there already something there or currently building?
-	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
-	if type == GameState.IndustryType.FACTORY:
-		if province.buildings.size() >= 4:
-			#print("Cannot build: Factory slot is busy or full.")
-			return false
-			
-		EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.countries[a_countryName])
-	elif type == GameState.IndustryType.PORT:
-		if province.buildings.size() >= 4 && province.buildings.find_custom(func(a_building: BuildingData): return a_building.type != "Port") == -1:
-			#print("Cannot build: Port slot is busy or full.")
-			return false
-			
-		# 3. Sea check for Ports
-		#province_objects[pid].
-		if pid in get_provinces_near_sea(a_countryName):
+	match type:
+		GameState.IndustryType.FACTORY:
+			if province.buildings.size() >= 4: return false
+			EconomyManager.start_construction(pid, "Factory", 10, 150.0, CountryManager.countries[a_countryName])
+
+		GameState.IndustryType.PORT:
+			if (
+				province.buildings.size() >= 4
+				&& !(pid in get_provinces_near_sea(a_countryName))
+				&& (
+					province.buildings.find_custom(
+					func(a_building: BuildingData): return a_building.type != "Port"
+					) == -1
+				)
+			): return false
 			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.countries[a_countryName])
-		else:
-			print("Action Failed: Port must be on a coast!")
-			return false
-	elif type == GameState.IndustryType.INFRASTRUCTURE:
-		if province.infrastructure >= province.maxInfrastructure:
-			#print("Cannot build: Infrastructure is already maxeda.")
-			return false
-			
-		EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.countries[a_countryName])
-		
+
+		GameState.IndustryType.INFRASTRUCTURE:
+			if province.infrastructure >= province.maxInfrastructure: return false
+			EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.countries[a_countryName])
+
 	return true
 
 
@@ -1457,50 +1452,54 @@ func _country_exists_on_map(c_name: String) -> bool:
 			return true
 	return false
 
-func ReleaseCountry(a_releaser: String, a_releasee: String) -> void:
-	CountryManager.add_country(
-		{
-			"name": a_releasee,
-			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
-		}
-	)
+func release(releaser: String, releasee: String, is_puppet: bool, include_claims: bool) -> void:
+	var releaser_data: CountryData = CountryManager.countries.get(releaser)
+	var releasee_data: CountryData = CountryManager.countries.get(releasee)
 	
-	for pid in country_to_provinces[a_releaser].duplicate():
-		var obj: Province = MapManager.province_objects[pid]
-		if obj.claims.has(a_releasee):
-			for troop in TroopManager.troops_by_province.get(
-				obj.id,
-				[]
-			).duplicate():
-				if is_instance_valid(troop):
-					TroopManager.RemoveTroop(troop)
+	if not releasee_data:
+		releasee_data = CountryManager.add_country(
+			{
+				"name": releasee,
+				"color": "#" + Color(randf(), randf(), randf()).to_html(false).to_upper(),
+			}
+		)
+	
+	if not releaser_data or not releasee_data:
+		return
 
-			transfer_ownership(obj.id, a_releasee)
-	
-	CountryManager.cleanup_empty_countries()
-	show_countries_map()
+	# Territory transfer
+	if country_to_provinces.has(releaser):
+		for pid in country_to_provinces[releaser].duplicate():
+			var obj: Province = MapManager.province_objects[pid]
+			
+			var can_transfer = false
+			if obj.claims.has(releasee):
+				if include_claims:
+					can_transfer = true
+				elif not obj.claims.has(releaser):
+					can_transfer = true
+					
+			if can_transfer:
+				for troop in TroopManager.troops_by_province.get(obj.id, []).duplicate():
+					if is_instance_valid(troop):
+						TroopManager.RemoveTroop(troop)
 
-func ReleasePuppet(a_puppeter: String, a_puppetee: String) -> void:
-	CountryManager.add_country(
-		{
-			"name": a_puppetee,
-			"color": "#"+Color(randf(), randf(), randf()).to_html(false).to_upper(),
-		}
-	)
+				transfer_ownership(obj.id, releasee)
 	
-	for pid in country_to_provinces[a_puppeter].duplicate():
-		var obj: Province = MapManager.province_objects[pid]
-		print(obj.claims)
-		print(!(a_puppeter in obj.claims))
-		print(a_puppetee in obj.claims)
-		if !(a_puppeter in obj.claims) && a_puppetee in obj.claims:
-			transfer_ownership(obj.id, a_puppetee)
-			print(obj.id)
-	
-	CountryManager.make_puppet(
-		CountryManager.countries[a_puppeter],
-		CountryManager.countries[a_puppetee]
-	)
+	# Diplomatic status
+	if is_puppet:
+		CountryManager.make_puppet(releaser_data, releasee_data)
+	else:
+		# Free them if they were our puppet
+		if releasee_data.owner == releaser:
+			unallow_pids(releaser_data, releasee_data)
+			releaser_data.puppets.erase(releasee)
+			releaser_data.allowedCountries.erase(releasee)
+			releasee_data.allowedCountries.erase(releaser)
+			releasee_data.is_puppet = false
+			releasee_data.owner = ""
+			releasee_data.factions = []
+		
 	CountryManager.cleanup_empty_countries()
 	show_countries_map()
 

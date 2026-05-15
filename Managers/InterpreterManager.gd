@@ -22,12 +22,11 @@ var functions: Dictionary = {
 	"army_level_up": [],
 	"build_factory": [ExpressionTypes.Variable],
 	"declare_war": [ExpressionTypes.Variable, ExpressionTypes.Variable],
-	"release": [ExpressionTypes.Variable],
+	"release": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"play_as": [ExpressionTypes.Variable],
 	"annex": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"add_ideology_drift": [ExpressionTypes.Variable, ExpressionTypes.Variable, ExpressionTypes.IdeologyDrift],
 	"make_puppet": [ExpressionTypes.Variable, ExpressionTypes.Variable],
-	"release_puppet": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"has_pids": [ExpressionTypes.Variable, ExpressionTypes.Variable],
 	"add_plans": [ExpressionTypes.Variable],
 	"remove_plan": [ExpressionTypes.Variable],
@@ -301,8 +300,8 @@ func get_function(block, country: CountryData = null):
 				else:
 					result = false
 		"release":
-			if evaled_args.size() >= 2:
-				MapManager.ReleaseCountry(evaled_args[0], evaled_args[0])
+			if evaled_args.size() >= 4:
+				MapManager.release(evaled_args[0], evaled_args[1], evaled_args[2], evaled_args[3])
 				result = true
 		"play_as":
 			if evaled_args.size() >= 1:
@@ -323,10 +322,6 @@ func get_function(block, country: CountryData = null):
 		"make_puppet":
 			if evaled_args.size() >= 2:
 				CountryManager.make_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
-				result = true
-		"release_puppet":
-			if evaled_args.size() >= 2:
-				CountryManager.release_puppet(CountryManager.countries[evaled_args[0]], CountryManager.countries[evaled_args[1]])
 				result = true
 		"has_pids":
 			if evaled_args.size() >= 2:

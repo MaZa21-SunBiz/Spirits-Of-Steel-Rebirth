@@ -44,6 +44,7 @@ var stats_labels := {}
 @export var sidemenu_buildings: VBoxContainer
 @export var sidemenu_leader_portrait: TextureRect
 @export var building_dropdown: OptionButton
+@export var trade_entries: Container
 
 @export var relations_hbox: HBoxContainer
 @export var flag1: TextureRect
@@ -64,16 +65,11 @@ var stats_labels := {}
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @onready var action_scene: PackedScene = preload("res://Scenes/action.tscn")
+@onready var trade_entry_scene: PackedScene = preload("res://Scenes/UI/TradeEntry.tscn")
 
 @export var radio_list: VBoxContainer
 @export var now_playing: Label
 @export var map_tabs: TabBar
-
-@export var sewage_graph: Line2D
-@export var population_graph: Line2D
-@export var water_graph: Line2D
-@export var power_graph: Line2D
-
 
 # --- MilitaryExtraPanel ---
 @export_group("Military Extra")
@@ -94,7 +90,6 @@ var stats_labels := {}
 
 # --- BuildingDesigner ---
 @export_group("Building Designer")
-@export var building_designer: PanelContainer
 
 # --- Logistics ---
 @export_group("Logistics")
@@ -271,6 +266,11 @@ func _ready() -> void:
 	_update_flag()
 	updateProgressBar()
 	update_division_menu()
+
+	for resource in MapManager.resources.values():
+		var entry = trade_entry_scene.instantiate()
+		trade_entries.add_child(entry)
+		entry.setup(resource)
 	
 	if world and world.clock:
 		var clock := world.clock
@@ -376,7 +376,6 @@ func _update_sidemenu_visuals() -> void:
 		DoUpdateSidemenuVisuals()
 
 func DoUpdateSidemenuVisuals() -> void:
-
 	sidemenu_country_label.text = "%s %s" % [
 		selected_country.ideology_name.capitalize(),
 		selected_country.display_name.capitalize()
@@ -386,12 +385,12 @@ func DoUpdateSidemenuVisuals() -> void:
 		entry.queue_free()
 
 	for faction in selected_country.factions:
-		var faction_entry:Label = Label.new()
+		var faction_entry: Label = Label.new()
 		faction_entry.text = faction.capitalize()
 		faction_entry.mouse_filter = Control.MOUSE_FILTER_PASS
 		faction_entry.tooltip_text = FactionManager.factions[faction].members.map(
 		func(x: FactionMember) -> String:
-			return "%s: (%s)" % [x.polity.capitalize() , x.status]
+			return "%s: (%s)" % [x.polity.capitalize(), x.status]
 		).reduce(
 		func(x: String, y: String) -> String:
 			return "%s\n%s" % [x, y]
@@ -669,25 +668,6 @@ func update_topbar_stats() -> void:
 	stats_labels.war_support.text = str(CountryManager.player_country.war_support * 100) + "%"
 	stats_labels.world_tension.text = str(round(MapManager.world_tension * 100)) + "%"
 	
-	for i in range(population_graph.points.size()-1):
-		population_graph.points[i] = population_graph.points[i+1]
-		population_graph.points[i].x -= 79
-
-		sewage_graph.points[i] = sewage_graph.points[i+1]
-		sewage_graph.points[i].x -= 79
-
-		power_graph.points[i] = power_graph.points[i+1]
-		power_graph.points[i].x -= 79
-
-		water_graph.points[i] = water_graph.points[i+1]
-		water_graph.points[i].x -= 79
-
-	population_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_population * 0.00001)
-	sewage_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_sewage)
-	power_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_power)
-	water_graph.points[-1] = Vector2(316, 236-CountryManager.player_country.total_water)
-
-	#print(population_graph.points)
 	_update_notifications()
 
 func _on_hour_passed() -> void:
@@ -854,7 +834,7 @@ func _on_release_puppet_pressed():
 		return
 	CountryManager.player_country.political_power -= cost
 	
-	CountryManager.release_puppet(CountryManager.player_country, selected_country)
+	MapManager.release(CountryManager.player_country.country_name, selected_country.country_name, false, false)
 	_update_context_actions_visuals()
 	close_menu()
 
@@ -1178,10 +1158,6 @@ func _on_map_changed(tab: int) -> void:
 		KeyboardManager.MapView.BIOMES:
 			MapManager.show_biomes_map()
 			print("Map Mode: Biomes")
-
-
-func _on_building_designer_pressed():
-	building_designer.visible = !building_designer.visible
 
 
 func m_OnGovernmentPressed() -> void:

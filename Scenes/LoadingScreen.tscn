@@ -8,14 +8,7 @@
 [ext_resource type="Shader" uid="uid://di44vounul5l7" path="res://Scenes/conveyorpet.gdshader" id="4_68uam"]
 [ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="6_suj04"]
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="7_634pj"]
-[ext_resource type="Texture2D" uid="uid://07witxacco24" path="res://starts/soilads shitty mod/assets/loading/load_1.png" id="7_e27xy"]
-[ext_resource type="Texture2D" uid="uid://dok5614ac4gl4" path="res://starts/soilads shitty mod/assets/loading/load_2.png" id="8_rmj2b"]
-[ext_resource type="Texture2D" uid="uid://cybfxqyvm0u3" path="res://starts/soilads shitty mod/assets/loading/load_4.png" id="9_a8804"]
-[ext_resource type="Texture2D" uid="uid://do46cph7hyeqe" path="res://starts/soilads shitty mod/assets/loading/load_6.png" id="10_aivxv"]
-[ext_resource type="Texture2D" uid="uid://drfhnwyayncll" path="res://starts/soilads shitty mod/assets/loading/load_5.png" id="10_e27xy"]
-[ext_resource type="Texture2D" uid="uid://bwj3bsf2f8ne" path="res://starts/soilads shitty mod/assets/loading/load_7.png" id="11_cr3uy"]
-[ext_resource type="Texture2D" uid="uid://c0ph447xe7bcy" path="res://starts/soilads shitty mod/assets/loading/load_3.png" id="11_rmj2b"]
-[ext_resource type="Texture2D" uid="uid://behj8wgd68j2u" path="res://starts/soilads shitty mod/assets/loading/load_9.png" id="12_wqgu2"]
+[ext_resource type="Texture2D" uid="uid://dok5614ac4gl4" path="res://starts/ModernEmpires/assets/loading/load_2.png" id="8_rmj2b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6p6t7"]
 shader = ExtResource("4_68uam")
@@ -57,8 +50,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_suj04")
-USSR = Array[Texture]([ExtResource("7_e27xy"), ExtResource("8_rmj2b"), ExtResource("9_a8804"), ExtResource("10_aivxv"), ExtResource("11_cr3uy"), ExtResource("12_wqgu2"), ExtResource("10_e27xy"), ExtResource("11_rmj2b")])
 AvatarImage = NodePath("Avatar")
+directory_path = "res://assets/loading"
 
 [node name="Avatar" type="TextureRect" parent="Butter" unique_id=341935476]
 layout_mode = 1

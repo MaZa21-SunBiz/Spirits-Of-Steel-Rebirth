@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dok5614ac4gl4"
-path="res://.godot/imported/load_2.png-b801ab288e103030a45b58955d2c7de8.ctex"
+uid="uid://cevjy3uka0r7f"
+path="res://.godot/imported/Bitcrushed_Maxwell.png-0a68688a8250b93eb048f8ed7c18eec9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starts/ModernDay/assets/loading/load_2.png"
-dest_files=["res://.godot/imported/load_2.png-b801ab288e103030a45b58955d2c7de8.ctex"]
+source_file="res://assets/loading/Bitcrushed_Maxwell.png"
+dest_files=["res://.godot/imported/Bitcrushed_Maxwell.png-0a68688a8250b93eb048f8ed7c18eec9.ctex"]
 
 [params]
 

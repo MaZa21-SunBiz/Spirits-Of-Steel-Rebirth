@@ -149,7 +149,6 @@ func add_country(a_countryData: Dictionary) -> CountryData:
 	
 	#mutexer.lock()
 	countries[tempName] = new_country
-	print(countries[tempName])
 	countryNames.append(tempName)
 	
 	if new_country.is_player:
@@ -251,10 +250,10 @@ func cleanup_empty_countries() -> void:
 			dead_countries[c_name] = deleting
 			#CountryManager.Releasables.append(ReleasableData.FromDict({}))
 			if deleting.owner in countryNames:
-				CountryManager.release_puppet(CountryManager.countries[deleting.owner], deleting)
+				MapManager.release(deleting.owner, deleting.country_name, false, false)
 				
 			for puppet: String in deleting.puppets:
-				CountryManager.release_puppet(deleting, CountryManager.countries[puppet])
+				MapManager.release(deleting.country_name, puppet, false, false)
 			
 			FactionManager.clear_faction(deleting)
 			
@@ -287,15 +286,7 @@ func make_puppet(puppeter: CountryData, puppetee: CountryData):
 	FactionManager.invite_faction(puppeter, puppetee)
 	MapManager.show_countries_map()
 
-func release_puppet(puppeter: CountryData, puppetee: CountryData):
-	MapManager.unallow_pids(puppeter, puppetee)
-	puppeter.puppets.erase(puppetee.country_name)
-	puppeter.allowedCountries.erase(puppetee.country_name)
-	puppetee.allowedCountries.erase(puppeter.country_name)
-	puppetee.is_puppet = false
-	puppetee.owner = ""
-	puppetee.factions = []
-	MapManager.show_countries_map()
+
 
 func MakeHost(a_host: CountryData, a_hosted: CountryData) -> void:
 	a_host.hostedGovernments.append(a_hosted.country_name)

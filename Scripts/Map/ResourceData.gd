@@ -4,6 +4,7 @@ class_name ResourceData
 @export var name: String
 @export var color: Color
 @export var icon: String
+@export var base_price: int
 @export var tags: Dictionary[String, float]
 
 static func FromDict(a_data: Dictionary) -> ResourceData:
@@ -12,6 +13,7 @@ static func FromDict(a_data: Dictionary) -> ResourceData:
 	resource.name = a_data["name"]
 	resource.color = Color.html(a_data.get("color", "#FFFFFF"))
 	resource.icon = a_data.get("icon", "")
+	resource.base_price = a_data.get("base_price", 100)
 	
 	var typed_tags: Dictionary[String, float] = {}
 	var raw_tags = a_data.get("tags", {})
@@ -36,5 +38,6 @@ func ToDict() -> Dictionary:
 		"name": self.name,
 		"color": "#" + self.color.to_html(false).to_upper(),
 		"icon": self.icon,
+		"base_price": self.base_price,
 		"tags": self.tags,
 	}

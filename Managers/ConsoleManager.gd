@@ -255,7 +255,7 @@ func _show_releasables_country(country):
 
 
 func _release_country(releaser, releasee):
-	MapManager.ReleaseCountry(releaser, releasee)
+	MapManager.release(releaser, releasee, false, true)
 
 
 func _add_pp(amount):
@@ -372,7 +372,6 @@ func _instabuild():
 
 
 func _sink_rise(pid, type, country_name: String):
-	print("skibidi")
 	MapManager.change_province_types([int(pid)], int(type), country_name)
 
 

@@ -743,7 +743,7 @@ func m_OnPolityNameSubmitted(new_text: String) -> void:
 func m_OnPolityOwnerSubmitted(new_text: String) -> void:
 	if selectedCountry in CountryManager.countries:
 		if (CountryManager.countries[selectedCountry].owner in CountryManager.countries):
-			CountryManager.release_puppet(CountryManager.countries[CountryManager.countries[selectedCountry].owner], CountryManager.countries[selectedCountry])
+			MapManager.release(CountryManager.countries[selectedCountry].owner, selectedCountry, false, false)
 		if (new_text in CountryManager.countries):
 			CountryManager.make_puppet(CountryManager.countries[new_text], CountryManager.countries[selectedCountry])
 

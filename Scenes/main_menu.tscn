@@ -54,7 +54,7 @@ expand_mode = 2
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="Butter" type="Control" parent="." unique_id=166950627]
+[node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -66,6 +66,16 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_vtepg")
 USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("7_wyh8j"), ExtResource("7_ehtkc"), ExtResource("8_6dk6o"), ExtResource("9_jr6u5"), ExtResource("10_6m47u")])
+AvatarImage = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="Butter" unique_id=1374494237]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 39.0
+offset_right = 282.0
+offset_bottom = 203.0
+texture = ExtResource("7_ehtkc")
+expand_mode = 1
 
 [node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
 material = SubResource("ShaderMaterial_8dnnj")

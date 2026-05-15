@@ -238,21 +238,29 @@ func _add_releasable_option(releasable: Dictionary) -> void:
 		)
 		h_btns.add_child(btn_return)
 	else:
+		# --- Checkboxes for Options ---
+		var v_opts = VBoxContainer.new()
+		v_opts.alignment = BoxContainer.ALIGNMENT_CENTER
+		h_btns.add_child(v_opts)
+
+		var chk_puppet = CheckBox.new()
+		chk_puppet.text = "Puppet"
+		chk_puppet.add_theme_font_size_override("font_size", 10)
+		v_opts.add_child(chk_puppet)
+
+		var chk_claims = CheckBox.new()
+		chk_claims.text = "Owner Claims"
+		chk_claims.button_pressed = true
+		chk_claims.add_theme_font_size_override("font_size", 10)
+		v_opts.add_child(chk_claims)
+
 		# --- Button: Release ---
 		var btn_release = Button.new()
 		btn_release.text = "Release"
 		btn_release.custom_minimum_size = Vector2(80, 30)
 		btn_release.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		btn_release.pressed.connect(_on_release_pressed.bind(releasable.country))
+		btn_release.pressed.connect(_on_release_pressed.bind(releasable.country, chk_puppet, chk_claims))
 		h_btns.add_child(btn_release)
-
-		# --- Button: Release Puppet ---
-		var btn_puppet = Button.new()
-		btn_puppet.text = "Release As Puppet"
-		btn_puppet.custom_minimum_size = Vector2(80, 30)
-		btn_puppet.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		btn_puppet.pressed.connect(_on_release_puppet_pressed.bind(releasable.country))
-		h_btns.add_child(btn_puppet)
 
 		# --- Button: Play As (Distinct style) ---
 		var btn_play = Button.new()
@@ -262,7 +270,7 @@ func _add_releasable_option(releasable: Dictionary) -> void:
 		
 		# Optional: Give 'Play As' a slightly blue-ish tint to distinguish it
 		btn_play.add_theme_color_override("font_hover_color", Color(0.5, 0.8, 1.0))
-		btn_play.pressed.connect(_on_release_and_play_pressed.bind(releasable.country))
+		btn_play.pressed.connect(_on_release_and_play_pressed.bind(releasable.country, chk_puppet, chk_claims))
 		h_btns.add_child(btn_play)
 
 
@@ -278,29 +286,21 @@ func _on_return_territory_pressed(country_id: String, pids: PackedInt32Array) ->
 	else:
 		Console.print_error("Not enough Political Power!")
 
-func _on_release_pressed(country_id: String) -> void:
+func _on_release_pressed(country_id: String, chk_puppet: CheckBox, chk_claims: CheckBox) -> void:
 	if current_country.political_power >= 50:
 		current_country.political_power -= 50
-		MapManager.ReleaseCountry(current_country.country_name, country_id)
+		MapManager.release(current_country.country_name, country_id, chk_puppet.button_pressed, chk_claims.button_pressed)
 		# Refresh UI
 		_populate_releasables(current_country.country_name)
 	else:
 		Console.print_error("Not enough Political Power!")
 
-func _on_release_puppet_pressed(country_id: String) -> void:
-	if current_country.political_power >= 50:
-		current_country.political_power -= 50
-		MapManager.ReleasePuppet(current_country.country_name, country_id)
-		# CountryManager.make_puppet(current_country, CountryManager.countries[country_id])
-		# Refresh UI
-		_populate_releasables(current_country.country_name)
-	else:
-		Console.print_error("Not enough Political Power!")
 
-func _on_release_and_play_pressed(country_id: String) -> void:
+
+func _on_release_and_play_pressed(country_id: String, chk_puppet: CheckBox, chk_claims: CheckBox) -> void:
 	if current_country.political_power >= 50:
 		# 1. Release the land
-		MapManager.ReleaseCountry(current_country.country_name, country_id)
+		MapManager.release(current_country.country_name, country_id, chk_puppet.button_pressed, chk_claims.button_pressed)
 		CountryManager.set_player_country(country_id)
 		Console.print_info("Switched playing as: " + country_id)
 		
