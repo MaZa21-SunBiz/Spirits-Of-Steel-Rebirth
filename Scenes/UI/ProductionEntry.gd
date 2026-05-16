@@ -10,6 +10,7 @@ func setup(resource: ResourceData) -> void:
 	resource_name = resource.name
 	resource_label.text = resource_name
 	resource_icon.texture = MapManager.GetResourceIcon(resource.name)
+	resource_icon.modulate = resource.color
 	
 	var player = CountryManager.player_country
 	if player:
@@ -26,6 +27,7 @@ func setup(resource: ResourceData) -> void:
 	for req in resource.production_reqs:
 		var rect = TextureRect.new()
 		rect.texture = MapManager.GetResourceIcon(req)
+		rect.modulate = MapManager.resources[req].color
 		rect.tooltip_text = req
 		rect.use_parent_material = true
 		rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE

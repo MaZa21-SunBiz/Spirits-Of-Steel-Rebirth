@@ -121,6 +121,13 @@ func m_CreateBiome() -> void:
 func m_CreateResource() -> void:
 	if resourceName.text in MapManager.resources:
 		return
-	MapManager.resources[resourceName.text] = ResourceData.FromValues(resourceName.text, resourceColor.color, resourceIcon.text, {})
+	MapManager.resources[resourceName.text] = ResourceData.FromValues(
+		resourceName.text,
+		resourceColor.color,
+		resourceIcon.text,
+		100,
+		[],
+		{}
+	)
 	mapEditor.SetupResourcesList()
 	visible = false

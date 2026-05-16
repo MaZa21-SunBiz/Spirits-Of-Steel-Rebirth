@@ -11,6 +11,7 @@ func setup(resource: ResourceData) -> void:
 	resource_data = resource
 	resource_name.text = resource.name
 	icon.texture = MapManager.GetResourceIcon(resource.name)
+	icon.modulate = resource.color
 	
 	var player = CountryManager.player_country
 	if player:

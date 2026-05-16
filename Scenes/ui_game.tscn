@@ -954,6 +954,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="TextureRect" type="TextureRect" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Trade/Diplomacy/ActionsList/ScrollContainer/TradeEntries" unique_id=284752059]
+layout_mode = 2
+
 [node name="Industry" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=1639946221]
 visible = false
 use_parent_material = true

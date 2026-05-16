@@ -746,6 +746,9 @@
 			"capital": "",
 			"color": "#C35C6D",
 			"display_name": "Canada",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaulpassingEuthoildyxuilm"
 			],
@@ -761,9 +764,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Canada",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -774,6 +783,9 @@
 			"capital": "",
 			"color": "#99745D",
 			"display_name": "Denmark",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AistreanuoschausiuswOesplaytwouEatragreippeerpoo"
 			],
@@ -789,9 +801,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Denmark",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -821,6 +839,9 @@
 			"capital": "Moscow",
 			"color": "#386038",
 			"display_name": "Russia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"VladimirPutin",
 				"EoldialiolpEethroisplauss"
@@ -837,7 +858,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Russia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [
 				"Abkhazia",
 				"South_ossetia",
@@ -846,6 +867,12 @@
 				"Donetsk"
 			],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -855,6 +882,9 @@
 			"capital": "",
 			"color": "#6F4747",
 			"display_name": "Norway",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"JonasGahrStore"
 			],
@@ -870,9 +900,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Norway",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -882,6 +918,9 @@
 			"capital": "",
 			"color": "#1485ED",
 			"display_name": "United_states",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"DonaldJohnTrump"
 			],
@@ -894,14 +933,20 @@
 				0.0,
 				0.0
 			],
-			"is_player": false,
+			"is_player": true,
 			"money": 100000.0,
 			"name": "United_states",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [
 				"Israel"
 			],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -911,6 +956,9 @@
 			"capital": "",
 			"color": "#C2C6D7",
 			"display_name": "Finland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UolkybRmeeneasloSirlio"
 			],
@@ -926,9 +974,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Finland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -938,6 +992,9 @@
 			"capital": "",
 			"color": "#2484F7",
 			"display_name": "Sweden",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IuffypteociudrauphauspaiqQuuylayAezzuouboygraps"
 			],
@@ -953,9 +1010,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sweden",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -965,6 +1028,9 @@
 			"capital": "",
 			"color": "#445171",
 			"display_name": "Iceland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EurmaewhiagaskoystaynkucuoSlioughoistreummaextiuIrpou"
 			],
@@ -980,9 +1046,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iceland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -992,6 +1064,9 @@
 			"capital": "",
 			"color": "#3287AF",
 			"display_name": "Estonia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OastiouleazearluossuyskiJuolpaeddaurpRguounkeesheudwoesprustai"
 			],
@@ -1007,9 +1082,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Estonia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1025,6 +1106,9 @@
 			"capital": "",
 			"color": "#C8385D",
 			"display_name": "United_kingdom",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"Keir_Starmer"
 			],
@@ -1040,9 +1124,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "United_kingdom",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1053,6 +1143,9 @@
 			"capital": "",
 			"color": "#4B4DBA",
 			"display_name": "Latvia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IouyiSmuiphiold"
 			],
@@ -1068,9 +1161,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Latvia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1081,6 +1180,9 @@
 			"capital": "",
 			"color": "#DBDB77",
 			"display_name": "Lithuania",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UokkailgSpaydweo"
 			],
@@ -1096,9 +1198,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lithuania",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1108,6 +1216,9 @@
 			"capital": "",
 			"color": "#C7D5E0",
 			"display_name": "Belarus",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AlexanderLukashenko",
 				"IastriekoikaischasheackIoukooshuirkaispruybioflioOangiastaugguoskei"
@@ -1124,9 +1235,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belarus",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1136,6 +1253,9 @@
 			"capital": "",
 			"color": "#509F5A",
 			"display_name": "Ireland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"HafrosmayckauckeeshaoflyflRduexteessoosk"
 			],
@@ -1151,9 +1271,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ireland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1164,6 +1290,9 @@
 			"capital": "",
 			"color": "#58A1C1",
 			"display_name": "Kazakhstan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"BbauyaestriaghtuophaulmeormLduoulkiawoedwiurleyrduygoomm"
 			],
@@ -1179,9 +1308,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kazakhstan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1192,6 +1327,9 @@
 			"capital": "",
 			"color": "#49484D",
 			"display_name": "Germany",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"FriedrichMerz"
 			],
@@ -1207,9 +1345,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Germany",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1219,6 +1363,9 @@
 			"capital": "",
 			"color": "#C55C6A",
 			"display_name": "Poland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ThruirgeibiEingoacAerpeecceaunesouptientoe"
 			],
@@ -1234,9 +1381,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Poland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1246,6 +1399,9 @@
 			"capital": "",
 			"color": "#C78749",
 			"display_name": "Netherlands",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UybruikounoylpAuscoiduantuizzaowaygoeOynuythruyguefoigliaskoe"
 			],
@@ -1261,9 +1417,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Netherlands",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1281,6 +1443,9 @@
 			"capital": "",
 			"color": "#A7575A",
 			"display_name": "China",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"XiJinping",
 				"DdiangoofuakroysnudwIastrouggunteikkaebraukkNtospoortoeschucciu"
@@ -1297,9 +1462,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "China",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1311,6 +1482,9 @@
 			"capital": "",
 			"color": "#34588A",
 			"display_name": "Ukraine",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"VolodymyrZelenskyy",
 				"TchaengyrdaoshuaboaptRpuouddaocceyccuoccaushAygruj"
@@ -1327,9 +1501,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ukraine",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1339,6 +1519,9 @@
 			"capital": "",
 			"color": "#A38E4B",
 			"display_name": "Mongolia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GeevUykkyschuflierpoowriStruedrountyrgay"
 			],
@@ -1354,9 +1537,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mongolia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1367,6 +1556,9 @@
 			"capital": "",
 			"color": "#C1AB08",
 			"display_name": "Belgium",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OedheattaoldiaflompiowhUavi"
 			],
@@ -1382,9 +1574,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belgium",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1402,6 +1600,9 @@
 			"capital": "",
 			"color": "#3D75E8",
 			"display_name": "France",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EmmanuelMacron"
 			],
@@ -1417,9 +1618,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "France",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1429,6 +1636,9 @@
 			"capital": "",
 			"color": "#36A79C",
 			"display_name": "Czechia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"StroesweauDdoynniolkeawhaisk"
 			],
@@ -1444,9 +1654,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Czechia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1456,6 +1672,9 @@
 			"capital": "",
 			"color": "#55E4E9",
 			"display_name": "Luxembourg",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EyttualmoimpyffRkuihioulmaestriupeorkeaupiouCeazzuofuadwoo"
 			],
@@ -1471,9 +1690,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Luxembourg",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1483,6 +1708,9 @@
 			"capital": "",
 			"color": "#795C9F",
 			"display_name": "Slovakia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AwhuyEultoyxteiRlourmeaulgui"
 			],
@@ -1498,9 +1726,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Slovakia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1510,6 +1744,9 @@
 			"capital": "",
 			"color": "#A8AEC6",
 			"display_name": "Austria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UitaixteikkeesproerruyzEozzaoppoorkeetcheepreyrdea"
 			],
@@ -1525,9 +1762,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Austria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1537,6 +1780,9 @@
 			"capital": "",
 			"color": "#4E7D73",
 			"display_name": "Hungary",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EmmuiskiaghoystroommyttaoldSluouyeygayhooghtiaghaytheauTweaxefluybiu"
 			],
@@ -1552,9 +1798,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Hungary",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1565,6 +1817,9 @@
 			"capital": "",
 			"color": "#866E52",
 			"display_name": "Moldova",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KkeulymoyntaopuapeygleyBlioulmoocc"
 			],
@@ -1580,9 +1835,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Moldova",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1593,6 +1854,9 @@
 			"capital": "",
 			"color": "#D7C448",
 			"display_name": "Romania",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NylgiouHeespleaurroiplympoantiuxteiEodwau"
 			],
@@ -1608,9 +1872,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Romania",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1621,6 +1891,9 @@
 			"capital": "",
 			"color": "#2A1618",
 			"display_name": "Transnistria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AutruzzuesplynnuabyluikkIulaorraudheoffaymmNneibriou"
 			],
@@ -1636,9 +1909,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Transnistria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1651,6 +1930,9 @@
 			"capital": "",
 			"color": "#E00505",
 			"display_name": "Switzerland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EvuouwreyluodwuyUorkeihoelmUaquayciuxiormeiceimmio"
 			],
@@ -1666,9 +1948,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Switzerland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1678,6 +1966,9 @@
 			"capital": "",
 			"color": "#575A7F",
 			"display_name": "Liechtenstein",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EbbylaorkoeghtourlEikkeytruyglaipoislylm"
 			],
@@ -1693,9 +1984,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Liechtenstein",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1707,6 +2004,9 @@
 			"capital": "",
 			"color": "#437F3F",
 			"display_name": "Italy",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaustaulmioufeasoampuittaiUequoschoytwulkuallaeUougreekea"
 			],
@@ -1722,9 +2022,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Italy",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1734,6 +2040,9 @@
 			"capital": "",
 			"color": "#4F6F96",
 			"display_name": "Slovenia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"YdueckouvadruytrOulpuowoippiampymEauspaoli"
 			],
@@ -1749,9 +2058,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Slovenia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1761,6 +2076,9 @@
 			"capital": "",
 			"color": "#2A2D60",
 			"display_name": "Croatia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LpaozzeynkeuwOeyoltuouvirguascoyzzais"
 			],
@@ -1776,9 +2094,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Croatia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1789,6 +2113,9 @@
 			"capital": "",
 			"color": "#9A6867",
 			"display_name": "Serbia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UoutchoybluardoangielmioswuweoXteobroikreoscee"
 			],
@@ -1804,9 +2131,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Serbia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1817,6 +2150,9 @@
 			"capital": "",
 			"color": "#DFC087",
 			"display_name": "Bosnia_and_herzegovina",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AnnoyzUeflilpaollaip"
 			],
@@ -1832,9 +2168,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bosnia_and_herzegovina",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1844,6 +2186,9 @@
 			"capital": "",
 			"color": "#CACEFD",
 			"display_name": "Uzbekistan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GhtoyrkoogroantooggeessouxuoIelpoetruofloirpoytrShaossuilaytaidwuy"
 			],
@@ -1859,9 +2204,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uzbekistan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1871,6 +2222,9 @@
 			"capital": "",
 			"color": "#FFC9B2",
 			"display_name": "Japan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"SanaeTakaichi"
 			],
@@ -1886,9 +2240,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Japan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1898,6 +2258,9 @@
 			"capital": "",
 			"color": "#339B00",
 			"display_name": "Bulgaria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EytwuaquayseiRliggiruarpyqueujempauStreuxteildappeistroustaybreausc"
 			],
@@ -1913,9 +2276,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bulgaria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1929,6 +2298,9 @@
 			"capital": "",
 			"color": "#F2CD5E",
 			"display_name": "Spain",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PedroSanchez"
 			],
@@ -1944,9 +2316,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Spain",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1956,6 +2334,9 @@
 			"capital": "",
 			"color": "#62B0C6",
 			"display_name": "San_marino",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IughtaeyoutriawuOeptuosmuykioUajue"
 			],
@@ -1971,9 +2352,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "San_marino",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -1983,6 +2370,9 @@
 			"capital": "",
 			"color": "#EDA2BA",
 			"display_name": "Monaco",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TcholeequaozugreaucciadwEartoiLdiouvokuyjiongeyxtoinkuy"
 			],
@@ -1998,9 +2388,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Monaco",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2010,6 +2406,9 @@
 			"capital": "",
 			"color": "#3F1F2D",
 			"display_name": "Abkhazia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EolpauptogreestruistOugeijotrUagguazistiexaurteullupr"
 			],
@@ -2025,9 +2424,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Abkhazia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2037,6 +2442,9 @@
 			"capital": "",
 			"color": "#FC7279",
 			"display_name": "Montenegro",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AsweaustriuPheyppeequeascuaxtimmuscutr"
 			],
@@ -2052,9 +2460,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Montenegro",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2064,6 +2478,9 @@
 			"capital": "",
 			"color": "#768EBA",
 			"display_name": "Kosovo",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ScioupriabeonnoeggLkultuelteaskeorg"
 			],
@@ -2079,9 +2496,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kosovo",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2091,6 +2514,9 @@
 			"capital": "",
 			"color": "#EFE4E8",
 			"display_name": "Georgia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TruehoxaetwaiswouknoyffNkouwrOaspreulkuefeaseauthroascayck"
 			],
@@ -2106,9 +2532,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Georgia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2118,6 +2550,9 @@
 			"capital": "",
 			"color": "#F43D6F",
 			"display_name": "Kyrgyzstan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LpiaroafyYnnoudeoswiaz"
 			],
@@ -2133,9 +2568,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kyrgyzstan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2145,6 +2586,9 @@
 			"capital": "",
 			"color": "#C90001",
 			"display_name": "Andorra",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AydaunuoggOazzadhuadheelpeyrgoyPyghaywhaelkyffuatoup"
 			],
@@ -2160,9 +2604,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Andorra",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2172,6 +2622,9 @@
 			"capital": "",
 			"color": "#C29657",
 			"display_name": "South_ossetia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OotchongealdaidwuounteypluiRuoureeUelgeulv"
 			],
@@ -2187,9 +2640,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_ossetia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2200,6 +2659,9 @@
 			"capital": "",
 			"color": "#BD8C6E",
 			"display_name": "Turkmenistan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UoffefaoZuowiasprablupreau"
 			],
@@ -2215,9 +2677,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkmenistan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2227,6 +2695,9 @@
 			"capital": "",
 			"color": "#F50C37",
 			"display_name": "North_korea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KimJongUn"
 			],
@@ -2242,9 +2713,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "North_korea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2254,6 +2731,9 @@
 			"capital": "",
 			"color": "#952D66",
 			"display_name": "Albania",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GloelluobloympeydraiCkiephoybroingJaummao"
 			],
@@ -2269,9 +2749,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Albania",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2282,6 +2768,9 @@
 			"capital": "",
 			"color": "#CA9576",
 			"display_name": "North_macedonia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AequorliuhuoustriodwSceippeybloeAfrefrioulm"
 			],
@@ -2297,9 +2786,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "North_macedonia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2309,6 +2804,9 @@
 			"capital": "",
 			"color": "#728CD9",
 			"display_name": "Azerbaijan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ArgouprKiashouLmoykkurrempiujayj"
 			],
@@ -2324,9 +2822,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Azerbaijan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2336,6 +2840,9 @@
 			"capital": "",
 			"color": "#277446",
 			"display_name": "Portugal",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaumpoildairguouchannIsciudhRdiotraeviolteeprou"
 			],
@@ -2351,9 +2858,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Portugal",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2365,6 +2878,9 @@
 			"capital": "",
 			"color": "#A63443",
 			"display_name": "Turkey",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TtoospEautchaikoafoplualizou"
 			],
@@ -2380,9 +2896,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkey",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2392,6 +2914,9 @@
 			"capital": "",
 			"color": "#C4B582",
 			"display_name": "Vatican_city",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OglanetcheuxteasoesyplioEewreoploiphyblaerdioSmifleaustroadw"
 			],
@@ -2407,9 +2932,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vatican_city",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2419,6 +2950,9 @@
 			"capital": "",
 			"color": "#5DB5E3",
 			"display_name": "Greece",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EeppoulmeeHiowharluwhoykkeyrdeaup"
 			],
@@ -2434,9 +2968,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Greece",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2446,6 +2986,9 @@
 			"capital": "",
 			"color": "#F6A286",
 			"display_name": "Armenia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RmiusplayZziaspleyscaggyfl"
 			],
@@ -2461,9 +3004,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Armenia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2473,6 +3022,9 @@
 			"capital": "",
 			"color": "#6D9482",
 			"display_name": "Tajikistan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OangeaulpaischiarkeauwhusheegRkeuggaiziggaospioulgKnioussuyppietchaesnui"
 			],
@@ -2488,9 +3040,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tajikistan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2506,6 +3064,9 @@
 			"capital": "",
 			"color": "#5A8F7B",
 			"display_name": "Iran",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OesmauDhooddeinaspregluifeot"
 			],
@@ -2521,9 +3082,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iran",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2536,6 +3103,9 @@
 			"capital": "",
 			"color": "#716B79",
 			"display_name": "Afghanistan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OirlaibriourraeblThaeghiYydwoybraptuadrou"
 			],
@@ -2551,9 +3121,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Afghanistan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2563,6 +3139,9 @@
 			"capital": "",
 			"color": "#5E76BE",
 			"display_name": "South_korea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LeeJaeMyung"
 			],
@@ -2578,9 +3157,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_korea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2590,6 +3175,9 @@
 			"capital": "",
 			"color": "#B9566A",
 			"display_name": "Tunisia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OogloarpaurmayploeplokniBbaottuoultauspreemuoujoeph"
 			],
@@ -2605,9 +3193,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tunisia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2619,6 +3213,9 @@
 			"capital": "",
 			"color": "#B27263",
 			"display_name": "Iraq",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AstoyrduipsaorduonnuedhiuSeukroakkoeghtoufleyschoiqu"
 			],
@@ -2634,9 +3231,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iraq",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2647,6 +3250,9 @@
 			"capital": "",
 			"color": "#374E5C",
 			"display_name": "Syria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OobuiwroiOermoethreostruoLgiuggoatch"
 			],
@@ -2662,9 +3268,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Syria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2681,6 +3293,9 @@
 			"capital": "",
 			"color": "#002917",
 			"display_name": "Pakistan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"MmoynteychiesteyruykkIacusploelgidr"
 			],
@@ -2696,9 +3311,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Pakistan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2709,6 +3330,9 @@
 			"capital": "",
 			"color": "#0A2B24",
 			"display_name": "Algeria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PpiaxtiuSceauruycuabroosneyrleontoabIuyiedruiddeo"
 			],
@@ -2724,9 +3348,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Algeria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2738,6 +3368,9 @@
 			"capital": "",
 			"color": "#9B4A59",
 			"display_name": "Morocco",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"MohammedBenElHassan"
 			],
@@ -2753,9 +3386,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Morocco",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2765,6 +3404,9 @@
 			"capital": "",
 			"color": "#D9D9D9",
 			"display_name": "Malta",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AezzalvoyssasteaSchiourm"
 			],
@@ -2780,9 +3422,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malta",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2792,6 +3440,9 @@
 			"capital": "",
 			"color": "#5C4D32",
 			"display_name": "Turkish_cyprus",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OuthroinkarmuoubrProodraoluikniulkEempakn"
 			],
@@ -2807,9 +3458,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkish_cyprus",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2850,6 +3507,9 @@
 			"capital": "",
 			"color": "#D0A36C",
 			"display_name": "India",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NarendraModi"
 			],
@@ -2862,12 +3522,18 @@
 				0.0,
 				0.0
 			],
-			"is_player": true,
+			"is_player": false,
 			"money": 100000.0,
 			"name": "India",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2877,6 +3543,9 @@
 			"capital": "",
 			"color": "#DEB51B",
 			"display_name": "Cyprus",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"SchoengQouthrasmuSlaefrikkodouthreubroahuy"
 			],
@@ -2892,9 +3561,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cyprus",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2904,6 +3579,9 @@
 			"capital": "",
 			"color": "#549C8B",
 			"display_name": "Lebanon",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LveoscaompoikkedreespraoAixoymeeckeuspreafrioudoujee"
 			],
@@ -2919,9 +3597,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lebanon",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2932,6 +3616,9 @@
 			"capital": "",
 			"color": "#2A7054",
 			"display_name": "Libya",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PhuoupUispreiseaulkouppiouduyskottSkeisseausluoulkuyghuefee"
 			],
@@ -2947,9 +3634,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Libya",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2959,6 +3652,9 @@
 			"capital": "",
 			"color": "#4569D9",
 			"display_name": "Israel",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"Netanyahu",
 				"BenjaminNetanyahu"
@@ -2975,9 +3671,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Israel",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -2987,6 +3689,9 @@
 			"capital": "",
 			"color": "#E3989C",
 			"display_name": "Jordan",
+			"factory_allocation": {
+
+			},
 			"figures": [],
 			"finished_decisions": [],
 			"government_positions": {
@@ -3000,9 +3705,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Jordan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3012,6 +3723,9 @@
 			"capital": "",
 			"color": "#689752",
 			"display_name": "Mexico",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ClaudiaSheinbaumPardo"
 			],
@@ -3027,9 +3741,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mexico",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3039,6 +3759,9 @@
 			"capital": "",
 			"color": "#ABBE98",
 			"display_name": "Saudi_arabia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"MohammedBinSalman"
 			],
@@ -3054,9 +3777,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Saudi_arabia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3066,6 +3795,9 @@
 			"capital": "",
 			"color": "#564857",
 			"display_name": "Palestine",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EostoyrdeuffeubrayrgakaiWralpoipsayjerpiuj"
 			],
@@ -3081,9 +3813,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Palestine",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3093,6 +3831,9 @@
 			"capital": "",
 			"color": "#AFA358",
 			"display_name": "Egypt",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RgaoghootraypsRuackadwioukioudaurreyTwyrguigiuwoychaemeosceo"
 			],
@@ -3108,9 +3849,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Egypt",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3120,6 +3867,9 @@
 			"capital": "",
 			"color": "#003893",
 			"display_name": "Nepal",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AoroeplybeisloeAilveejioyeySiakeau"
 			],
@@ -3135,9 +3885,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nepal",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3147,6 +3903,9 @@
 			"capital": "",
 			"color": "#5A402A",
 			"display_name": "Kuwait",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RmoazeaufrutwioupleylvoelgaexRleiforpualoasyflulmuemmTreyhiu"
 			],
@@ -3162,9 +3921,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kuwait",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3174,6 +3939,9 @@
 			"capital": "",
 			"color": "#79645F",
 			"display_name": "Bhutan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UepeedriukoeryOunkuisloystreisuefiffou"
 			],
@@ -3189,9 +3957,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bhutan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3201,6 +3975,9 @@
 			"capital": "",
 			"color": "#3B714F",
 			"display_name": "Myanmar",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IastruarguarrDouvoy"
 			],
@@ -3216,9 +3993,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Myanmar",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3228,6 +4011,9 @@
 			"capital": "",
 			"color": "#C5AE78",
 			"display_name": "Western_sahara",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OytyldPpaiswegg"
 			],
@@ -3243,9 +4029,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Western_sahara",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3255,6 +4047,9 @@
 			"capital": "",
 			"color": "#2A6F53",
 			"display_name": "Mauritania",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OusproolkaugeolduagheirkAsmuiltuysployreirmei"
 			],
@@ -3270,9 +4065,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mauritania",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3282,6 +4083,9 @@
 			"capital": "",
 			"color": "#3A414B",
 			"display_name": "Bahrain",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LtiurperUdhouboyflionneucc"
 			],
@@ -3297,9 +4101,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bahrain",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3309,6 +4119,9 @@
 			"capital": "",
 			"color": "#002A30",
 			"display_name": "Bangladesh",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EipruyslippuoutrieckeakeauOrdeylmialveampyppaipabrau"
 			],
@@ -3324,9 +4137,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bangladesh",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3336,6 +4155,9 @@
 			"capital": "",
 			"color": "#6F2373",
 			"display_name": "Qatar",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"CceolmoaghiejoIuruemmeuspluorEywruypsoodhioutchuecuourrie"
 			],
@@ -3351,9 +4173,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Qatar",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3363,6 +4191,9 @@
 			"capital": "",
 			"color": "#815458",
 			"display_name": "Oman",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AippemmuountuoulkoigryviouUibroyptuckeaudwuplualdieIoddugrerdeasuoffoegrouy"
 			],
@@ -3378,9 +4209,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Oman",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3390,6 +4227,9 @@
 			"capital": "",
 			"color": "#5B4D5C",
 			"display_name": "Taiwan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AspluobonurryflazTrioltoslieproppisleelpoispr"
 			],
@@ -3405,9 +4245,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Taiwan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3421,6 +4267,9 @@
 			"capital": "",
 			"color": "#9E8A57",
 			"display_name": "Mali",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TchoungonnIuhuespreinealpoirkOofleilmueskaunkeuffuytuy"
 			],
@@ -3436,9 +4285,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mali",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3448,6 +4303,9 @@
 			"capital": "",
 			"color": "#279678",
 			"display_name": "United_arab_emirates",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IokkairluiphuyzziphoubbAeldeiffaiwCheufoiwhouphiuthygeasci"
 			],
@@ -3463,9 +4321,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "United_arab_emirates",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3478,6 +4342,9 @@
 			"capital": "",
 			"color": "#26584D",
 			"display_name": "Niger",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"YrloelmaidweoqEaskiadwauckiouldou"
 			],
@@ -3493,9 +4360,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Niger",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3505,6 +4378,9 @@
 			"capital": "",
 			"color": "#9744B0",
 			"display_name": "Cuba",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UoxtuouOothreulpiourriaffaupseuz"
 			],
@@ -3520,9 +4396,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cuba",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3533,6 +4415,9 @@
 			"capital": "",
 			"color": "#BBAA7E",
 			"display_name": "Chad",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TufrustuodrioyaulmuolpeeflEtelkioddeaurkLpeauteypteyd"
 			],
@@ -3548,9 +4433,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Chad",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3565,6 +4456,9 @@
 			"capital": "",
 			"color": "#0C3827",
 			"display_name": "Sudan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"FaerruoultoldyrySliurtuylvixeyrrioccou"
 			],
@@ -3580,9 +4474,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sudan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3592,6 +4492,9 @@
 			"capital": "",
 			"color": "#C6BE75",
 			"display_name": "Vietnam",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IourdaeghtuybbNkealuppiergoastiekk"
 			],
@@ -3607,9 +4510,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vietnam",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3619,6 +4528,9 @@
 			"capital": "",
 			"color": "#594D3F",
 			"display_name": "Laos",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OrkialgeaurrooschoadhTchuelpagitriesmeenteRkaevayraegrouspaokkuaknobb"
 			],
@@ -3634,9 +4546,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Laos",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3650,6 +4568,9 @@
 			"capital": "",
 			"color": "#142D4C",
 			"display_name": "Thailand",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TroepRdeaheaulpeotweortuycOspaongaofruasnee"
 			],
@@ -3665,9 +4586,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Thailand",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3677,6 +4604,9 @@
 			"capital": "",
 			"color": "#A5746F",
 			"display_name": "Haiti",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NgienkuygrelgRmaixtiwoskeuxeuckOmieschoetheyplyknaobbiathuo"
 			],
@@ -3692,9 +4622,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Haiti",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3704,6 +4640,9 @@
 			"capital": "",
 			"color": "#728877",
 			"display_name": "Dominican_republic",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EukraufuycoaOaffuoubriacEeschoebinoeffuoudhayrpeau"
 			],
@@ -3719,9 +4658,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dominican_republic",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3731,6 +4676,9 @@
 			"capital": "",
 			"color": "#823214",
 			"display_name": "Belize",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GreapruwoyrreughEzziofoypOusto"
 			],
@@ -3746,9 +4694,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belize",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3758,6 +4712,9 @@
 			"capital": "",
 			"color": "#4E3235",
 			"display_name": "Yemen",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PhayxuespruaglosaebruinnUebrueskeelduitaizzussientAutaoroexoergukniarpee"
 			],
@@ -3773,9 +4730,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Yemen",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3785,6 +4748,9 @@
 			"capital": "",
 			"color": "#8BDC0A",
 			"display_name": "Jamaica",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"QoedaethreipleelkialgoyGhtiarruympilmuigaipheu"
 			],
@@ -3800,9 +4766,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Jamaica",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3812,6 +4784,9 @@
 			"capital": "",
 			"color": "#7255A6",
 			"display_name": "Philippines",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GgesmoashieffuouEermoi"
 			],
@@ -3827,9 +4802,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Philippines",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3839,6 +4820,9 @@
 			"capital": "",
 			"color": "#48306D",
 			"display_name": "Guatemala",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OasplealpeaudwaytchAigruytcheispreariakoYsuystust"
 			],
@@ -3854,9 +4838,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guatemala",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3866,6 +4856,9 @@
 			"capital": "",
 			"color": "#CE8CA2",
 			"display_name": "Eritrea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EobrayquuazzoirlorgAospiothruirkuywuoufriorka"
 			],
@@ -3881,9 +4874,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Eritrea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3893,6 +4892,9 @@
 			"capital": "",
 			"color": "#CE2027",
 			"display_name": "Cabo_verde",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KkeelpoiflixiouAojynkeysouFadhuik"
 			],
@@ -3908,9 +4910,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cabo_verde",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3920,6 +4928,9 @@
 			"capital": "",
 			"color": "#3B3800",
 			"display_name": "St_kitts_and_nevis",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RgaesmiesliosliespluoucheyqXiofruydruibbausloeryCcunkiouknaosm"
 			],
@@ -3935,9 +4946,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "St_kitts_and_nevis",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3950,6 +4967,9 @@
 			"capital": "",
 			"color": "#B8757C",
 			"display_name": "Senegal",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EdroampoibloentiettualdobbeUerlieskiaschaeshufeasch"
 			],
@@ -3965,9 +4985,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Senegal",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -3977,6 +5003,9 @@
 			"capital": "",
 			"color": "#99B04A",
 			"display_name": "Honduras",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IouppiuWoukruoudaeheauxtiakneldiou"
 			],
@@ -3992,9 +5021,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Honduras",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4007,6 +5042,9 @@
 			"capital": "",
 			"color": "#CA6E7B",
 			"display_name": "Burkina_faso",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IbrahimTraore"
 			],
@@ -4022,9 +5060,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Burkina_faso",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4034,6 +5078,9 @@
 			"capital": "",
 			"color": "#9F88C6",
 			"display_name": "El_salvador",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ZeuccooquyfoelpieLtoackae"
 			],
@@ -4049,9 +5096,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "El_salvador",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4061,6 +5114,9 @@
 			"capital": "",
 			"color": "#91B2BE",
 			"display_name": "Nicaragua",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KruygloaskeadweadhAystygroylgelkoepieqay"
 			],
@@ -4076,9 +5132,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nicaragua",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4093,6 +5155,9 @@
 			"capital": "",
 			"color": "#30477B",
 			"display_name": "Ethiopia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"SweorruppaghiertoalliTweawassuasniolkoyguakriaSchoozziuziu"
 			],
@@ -4108,9 +5173,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ethiopia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4120,6 +5191,9 @@
 			"capital": "",
 			"color": "#E2B490",
 			"display_name": "Cambodia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RraigeedassailtiffTreuzzuiffiouhiouldeauppoe"
 			],
@@ -4135,9 +5209,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cambodia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4147,6 +5227,9 @@
 			"capital": "",
 			"color": "#7670B2",
 			"display_name": "Dominica",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EekoytwiothuatuepoaOapleostaidraeckuyflBezzioldeyphynteekiogipr"
 			],
@@ -4162,9 +5245,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dominica",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4176,6 +5265,9 @@
 			"capital": "",
 			"color": "#C27A6B",
 			"display_name": "Nigeria",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UourleyduegholdoozzuountMmuigreyIushiugoa"
 			],
@@ -4191,9 +5283,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nigeria",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4203,6 +5301,9 @@
 			"capital": "",
 			"color": "#44355C",
 			"display_name": "Gambia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaproasprouldolkDeeh"
 			],
@@ -4218,9 +5319,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Gambia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4230,6 +5337,9 @@
 			"capital": "",
 			"color": "#FCD116",
 			"display_name": "Barbados",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TraoweoghyblEaskeequoUestuywruybbiawrue"
 			],
@@ -4245,9 +5355,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Barbados",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4257,6 +5373,9 @@
 			"capital": "",
 			"color": "#5DB7E6",
 			"display_name": "St_lucia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UouspreyeskaiviolpiouNuiggaontuoutteintaughuidr"
 			],
@@ -4272,9 +5391,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "St_lucia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4284,6 +5409,9 @@
 			"capital": "",
 			"color": "#DABD81",
 			"display_name": "Guinea_bissau",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OipseexaypleauzexAlliungeyrraonaormFiemmau"
 			],
@@ -4299,9 +5427,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guinea_bissau",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4314,6 +5448,9 @@
 			"capital": "",
 			"color": "#205A4E",
 			"display_name": "Guinea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UoucheauskikkoukkarmippoyrlYauvuef"
 			],
@@ -4329,9 +5466,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guinea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4342,6 +5485,9 @@
 			"capital": "",
 			"color": "#DEBB5B",
 			"display_name": "Colombia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KreapoeshialviextueScuisneephoybre"
 			],
@@ -4357,9 +5503,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Colombia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4369,6 +5521,9 @@
 			"capital": "",
 			"color": "#C86496",
 			"display_name": "Venezuela",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TteaspruypheyTchoottaydd"
 			],
@@ -4384,9 +5539,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Venezuela",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4396,6 +5557,9 @@
 			"capital": "",
 			"color": "#007B5F",
 			"display_name": "Grenada",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ScoistaextiapaebuoumyEofriuxoustreyssuepuifruiy"
 			],
@@ -4411,9 +5575,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Grenada",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4423,6 +5593,9 @@
 			"capital": "",
 			"color": "#DBC478",
 			"display_name": "Benin",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AossoirgXeidhoalvippaeghteiriorkieltMuockiubbeyffioussayxitr"
 			],
@@ -4438,9 +5611,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Benin",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4450,6 +5629,9 @@
 			"capital": "",
 			"color": "#D7141A",
 			"display_name": "Djibouti",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AybieEocinkuout"
 			],
@@ -4465,9 +5647,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Djibouti",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4479,6 +5667,9 @@
 			"capital": "",
 			"color": "#185E61",
 			"display_name": "Cameroon",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IablaequiophaythouciolvoiqAocheesseaukeiquuedai"
 			],
@@ -4494,9 +5685,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cameroon",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4512,6 +5709,9 @@
 			"capital": "",
 			"color": "#D4BF6E",
 			"display_name": "South_sudan",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"XtuextuolmQiejoypezzodduoudwoy"
 			],
@@ -4527,9 +5727,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_sudan",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4539,6 +5745,9 @@
 			"capital": "",
 			"color": "#6683AB",
 			"display_name": "Somalia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"VeadruoustoyfoiyiurgoeRguydraquaesw"
 			],
@@ -4554,9 +5763,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Somalia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4566,6 +5781,9 @@
 			"capital": "",
 			"color": "#55AB70",
 			"display_name": "Somaliland",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PluapruolmKnoyldiurpadduyLteausplauvastrao"
 			],
@@ -4581,9 +5799,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Somaliland",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4593,6 +5817,9 @@
 			"capital": "",
 			"color": "#A78C2A",
 			"display_name": "Costa_rica",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NtiogguerpauprioxuingeaIefreaumpihiacciarmittoanneyPriespr"
 			],
@@ -4608,9 +5835,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Costa_rica",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4621,6 +5854,9 @@
 			"capital": "",
 			"color": "#153323",
 			"display_name": "Togo",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AotchuiyetchykkuompoaccScioultiebliezee"
 			],
@@ -4636,9 +5872,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Togo",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4648,6 +5890,9 @@
 			"capital": "",
 			"color": "#929BA2",
 			"display_name": "Maldives",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OuroordoukkuoSkipsoafrairdeeSeoplapreubleyskiarde"
 			],
@@ -4663,9 +5908,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Maldives",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4675,6 +5926,9 @@
 			"capital": "",
 			"color": "#A24A58",
 			"display_name": "Ghana",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UotwaknoiApseolteuccoipl"
 			],
@@ -4690,9 +5944,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ghana",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4705,6 +5965,9 @@
 			"capital": "",
 			"color": "#A64D63",
 			"display_name": "Central_african_republic",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PreentIennuayeauwievoe"
 			],
@@ -4720,9 +5983,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Central_african_republic",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4732,6 +6001,9 @@
 			"capital": "",
 			"color": "#F05A27",
 			"display_name": "Trinidad_and_tobago",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UouffueSceylmuzaiYrmae"
 			],
@@ -4747,9 +6019,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Trinidad_and_tobago",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4762,6 +6040,9 @@
 			"capital": "",
 			"color": "#D1996A",
 			"display_name": "Ivory_coast",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AnosniormuohuyBbiawhooffeantuascheeld"
 			],
@@ -4777,9 +6058,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ivory_coast",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4790,6 +6077,9 @@
 			"capital": "",
 			"color": "#729FBE",
 			"display_name": "Sierra_leone",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PysmioussNkaerm"
 			],
@@ -4805,9 +6095,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sierra_leone",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4817,6 +6113,9 @@
 			"capital": "",
 			"color": "#3C3558",
 			"display_name": "Panama",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"FfaoxtuydwReecua"
 			],
@@ -4832,9 +6131,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Panama",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4844,6 +6149,9 @@
 			"capital": "",
 			"color": "#564B39",
 			"display_name": "Sri_lanka",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ZzuschiokniuccuyPsoerkeutrioumpiarluofr"
 			],
@@ -4859,9 +6167,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sri_lanka",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4871,6 +6185,9 @@
 			"capital": "",
 			"color": "#513D76",
 			"display_name": "Liberia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RoirgauwhiafruildoawhaAoneilluyleylgounn"
 			],
@@ -4886,9 +6203,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Liberia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4898,6 +6221,9 @@
 			"capital": "",
 			"color": "#B49678",
 			"display_name": "Guyana",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LviethreirpeecyngooschoithreiOegguadhiouckiouphyrroi"
 			],
@@ -4913,9 +6239,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guyana",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4925,6 +6257,9 @@
 			"capital": "",
 			"color": "#FFC90E",
 			"display_name": "Palau",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AopteauckaurkaermelveadwaedruaVaorpiuscousleontaifoi"
 			],
@@ -4940,9 +6275,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Palau",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4953,6 +6294,9 @@
 			"capital": "",
 			"color": "#292F85",
 			"display_name": "Nauru",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AifleinkeelmoirdeuddiouEighiousceebuourleiddu"
 			],
@@ -4968,9 +6312,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nauru",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -4980,6 +6330,9 @@
 			"capital": "",
 			"color": "#C56064",
 			"display_name": "Malaysia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OilpuocizeaupliutheuphoyglCciouppeauph"
 			],
@@ -4995,9 +6348,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malaysia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5007,6 +6366,9 @@
 			"capital": "",
 			"color": "#803754",
 			"display_name": "Suriname",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IouyoyEedhipeolv"
 			],
@@ -5022,9 +6384,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Suriname",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5052,6 +6420,9 @@
 			"capital": "",
 			"color": "#DDBEC4",
 			"display_name": "Indonesia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IrmouptiaPsayspleaummeauntooccoe"
 			],
@@ -5067,9 +6438,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Indonesia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5082,6 +6459,9 @@
 			"capital": "",
 			"color": "#4C913F",
 			"display_name": "Brazil",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LuizInacioLulaDaSilva"
 			],
@@ -5097,9 +6477,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Brazil",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5117,6 +6503,9 @@
 			"capital": "",
 			"color": "#416893",
 			"display_name": "Dr_congo",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IusythofEathraetruynneammebbay"
 			],
@@ -5132,9 +6521,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dr_congo",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5148,6 +6543,9 @@
 			"capital": "",
 			"color": "#833640",
 			"display_name": "Kenya",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AifrieriourRtuouwuoptoaptioSplaytuounnuyshafroirtoo"
 			],
@@ -5163,9 +6561,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kenya",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5175,6 +6579,9 @@
 			"capital": "",
 			"color": "#3C6E55",
 			"display_name": "Brunei",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UywhybraokkoosEoxysnaulloeffauRdiohaemmeiyiappinuablao"
 			],
@@ -5190,9 +6597,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Brunei",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5204,6 +6617,9 @@
 			"capital": "",
 			"color": "#92824F",
 			"display_name": "Uganda",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"PriupeeIouptyhaeskeadLmousmeimpoirdau"
 			],
@@ -5219,9 +6635,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uganda",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5231,6 +6653,9 @@
 			"capital": "",
 			"color": "#5090AB",
 			"display_name": "Equatorial_guinea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KkiuwayngoeffeEpluidweermoeslilpockaij"
 			],
@@ -5246,9 +6671,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Equatorial_guinea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5261,6 +6692,9 @@
 			"capital": "",
 			"color": "#D16C78",
 			"display_name": "Congo",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"WibraezeudwuiknElvuoustroomp"
 			],
@@ -5276,9 +6710,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Congo",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5292,6 +6732,9 @@
 			"capital": "",
 			"color": "#DCBF7B",
 			"display_name": "Gabon",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OinkeybluyrrougroatwOigrairmaemmoaffoejaennaetteuOiwriustioroy"
 			],
@@ -5307,9 +6750,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Gabon",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5319,6 +6768,9 @@
 			"capital": "",
 			"color": "#4D4986",
 			"display_name": "Singapore",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"KroyskayfuoLpioffaogaumm"
 			],
@@ -5334,9 +6786,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Singapore",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5346,6 +6804,9 @@
 			"capital": "",
 			"color": "#F99262",
 			"display_name": "Ecuador",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IourruydruahaurmoephaeIafluongiephiazzermuouhiu"
 			],
@@ -5361,9 +6822,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ecuador",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5373,6 +6840,9 @@
 			"capital": "",
 			"color": "#12AD2B",
 			"display_name": "Sao_tome_and_principe",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaulpeathiuwhouswoangoutriEystuaRpuopleurgoysmyslio"
 			],
@@ -5388,9 +6858,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sao_tome_and_principe",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5400,6 +6876,9 @@
 			"capital": "",
 			"color": "#C4BDCC",
 			"display_name": "Peru",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EuntiouAothruidhaepoestruahuouFleaurmuardoull"
 			],
@@ -5415,9 +6894,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Peru",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5427,6 +6912,9 @@
 			"capital": "",
 			"color": "#1D3841",
 			"display_name": "Rwanda",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LlueltoadweiptLairtoyccayyeu"
 			],
@@ -5442,9 +6930,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Rwanda",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5461,6 +6955,9 @@
 			"capital": "",
 			"color": "#678792",
 			"display_name": "Tanzania",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IarmeIoknuequosme"
 			],
@@ -5476,9 +6973,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tanzania",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5488,6 +6991,9 @@
 			"capital": "",
 			"color": "#9A4BA0",
 			"display_name": "Burundi",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NkaulmeorgormethrathackEauflioumetruykkaerIowearliuvoafr"
 			],
@@ -5503,9 +7009,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Burundi",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5517,6 +7029,9 @@
 			"capital": "",
 			"color": "#2B385A",
 			"display_name": "Papua_new_guinea",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IghiopruerkeespluippayGiepl"
 			],
@@ -5532,9 +7047,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Papua_new_guinea",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5546,6 +7067,9 @@
 			"capital": "",
 			"color": "#2C1823",
 			"display_name": "Angola",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RmeaswybbeEilaeraytraubboasprieddioqGlauptodheipreilp"
 			],
@@ -5561,9 +7085,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Angola",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5573,6 +7103,9 @@
 			"capital": "",
 			"color": "#A11E24",
 			"display_name": "Seychelles",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"IesloiduffirkeyzuevuysooThoiltiachestight"
 			],
@@ -5588,9 +7121,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Seychelles",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5600,6 +7139,9 @@
 			"capital": "",
 			"color": "#E20C0C",
 			"display_name": "Solomon_islands",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AetchuyluihOefretruarreupteappioutwaeOikaurdoutteaprusleaulvicc"
 			],
@@ -5615,9 +7157,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Solomon_islands",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5629,6 +7177,9 @@
 			"capital": "",
 			"color": "#22562F",
 			"display_name": "Zambia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EaubriompaybloazzeaurmoickUlvailpMaelvooquifeegucialtiou"
 			],
@@ -5644,9 +7195,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Zambia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5656,6 +7213,9 @@
 			"capital": "",
 			"color": "#28AA4C",
 			"display_name": "East_timor",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AobbuawhaikraoEaudwoiblZauppuaspoobbuikkoaspraytr"
 			],
@@ -5671,9 +7231,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "East_timor",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5683,6 +7249,9 @@
 			"capital": "",
 			"color": "#ED1C24",
 			"display_name": "Tuvalu",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"TrofimLysenko",
 				"XuaccoefloaccQuuouddyrruyldableovuabruouph"
@@ -5699,9 +7268,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tuvalu",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5712,6 +7287,9 @@
 			"capital": "",
 			"color": "#A15468",
 			"display_name": "Malawi",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AughoestryrpeoEdwykrioudeauldeyponiurrou"
 			],
@@ -5727,9 +7305,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malawi",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5740,6 +7324,9 @@
 			"capital": "",
 			"color": "#CCA66C",
 			"display_name": "Bolivia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ExodiaTheForbiddenOne",
 				"LkaungaommiumpaycoknIabethyjuashayryruiSmailmasploaltyslaowrionuo"
@@ -5756,9 +7343,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bolivia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5772,6 +7365,9 @@
 			"capital": "",
 			"color": "#0E363E",
 			"display_name": "Mozambique",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"RruobouqeithriutuylpeuscheauReexteeccautroeshaoknayswOepaeccoiboeffauscheiv"
 			],
@@ -5787,9 +7383,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mozambique",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5799,6 +7401,9 @@
 			"capital": "",
 			"color": "#398F61",
 			"display_name": "Australia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AzzaepsiouccoykraezzuetweighoTrayo"
 			],
@@ -5814,9 +7419,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Australia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5827,6 +7438,9 @@
 			"capital": "",
 			"color": "#2C8C04",
 			"display_name": "Madagascar",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EegloeschiaZzuesluybbyrluousw"
 			],
@@ -5842,9 +7456,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Madagascar",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5854,6 +7474,9 @@
 			"capital": "",
 			"color": "#EDA720",
 			"display_name": "Vanuatu",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NgeentiurgiattykriUouyuy"
 			],
@@ -5869,9 +7492,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vanuatu",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5884,6 +7513,9 @@
 			"capital": "",
 			"color": "#AD585D",
 			"display_name": "Zimbabwe",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"GavGrub"
 			],
@@ -5899,9 +7531,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Zimbabwe",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5911,6 +7549,9 @@
 			"capital": "",
 			"color": "#8F4952",
 			"display_name": "Fiji",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LdiouxyknaorkyOalpaibboibuinkuepluadweent"
 			],
@@ -5926,9 +7567,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Fiji",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5941,6 +7588,9 @@
 			"capital": "",
 			"color": "#C1D9A7",
 			"display_name": "Namibia",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"EurmueskischyflioshStriudreopsilmophOwoirmostreu"
 			],
@@ -5956,9 +7606,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Namibia",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5968,6 +7624,9 @@
 			"capital": "",
 			"color": "#B97A57",
 			"display_name": "Niue",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AirkoaproutwuiveaAurtacathimauschoosseimmuyNuogloeslooxtoilgoeggeaull"
 			],
@@ -5983,9 +7642,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Niue",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -5995,6 +7660,9 @@
 			"capital": "",
 			"color": "#9B656B",
 			"display_name": "Chile",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"LgoidwiompiostraoEycheiseerpul"
 			],
@@ -6010,9 +7678,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Chile",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6024,6 +7698,9 @@
 			"capital": "",
 			"color": "#889DBC",
 			"display_name": "Botswana",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OutrauzooYaoccoewulvAchiourgouspl"
 			],
@@ -6039,9 +7716,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Botswana",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6051,6 +7734,9 @@
 			"capital": "",
 			"color": "#3971E4",
 			"display_name": "Paraguay",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AuscuougialkiorrairgeilgiouquXtierduyrguordioubbea"
 			],
@@ -6066,9 +7752,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Paraguay",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6078,6 +7770,9 @@
 			"capital": "",
 			"color": "#B39500",
 			"display_name": "Mauritius",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"OeltaedwiogruyyounEeckaird"
 			],
@@ -6093,9 +7788,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mauritius",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6105,6 +7806,9 @@
 			"capital": "",
 			"color": "#FF7578",
 			"display_name": "Tonga",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"ChevalierDEon",
 				"OarkueghaikuouTwiuwrayglioulootroascSpliouspl"
@@ -6121,9 +7825,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tonga",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6133,6 +7843,9 @@
 			"capital": "",
 			"color": "#919DEC",
 			"display_name": "Argentina",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"UrNammu",
 				"RgierdairtaywrokkuischiOaphuouswuophotwaextuoMmuermynkuogayghtypl"
@@ -6149,9 +7862,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Argentina",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6167,6 +7886,9 @@
 			"capital": "",
 			"color": "#D2A56C",
 			"display_name": "South_africa",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"NgoirgoyrtouckiougleiknaEyptaynnuep"
 			],
@@ -6182,9 +7904,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_africa",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6194,6 +7922,9 @@
 			"capital": "",
 			"color": "#575F86",
 			"display_name": "Eswatini",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"DaleyJohnOttersbach",
 				"RmuoubeauchaethyppeiplAveylkio"
@@ -6210,9 +7941,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Eswatini",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6222,6 +7959,9 @@
 			"capital": "",
 			"color": "#00BEF0",
 			"display_name": "Lesotho",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"JaneAustenCassandra",
 				"XtaysteaupreaxuabeylUoultoipoyswaylm"
@@ -6238,9 +7978,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lesotho",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6250,6 +7996,9 @@
 			"capital": "",
 			"color": "#AEC09C",
 			"display_name": "Uruguay",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"JoshPaulraj",
 				"EatchoedweoppiupeypsorraythStuopreermuaghteauTaeck"
@@ -6266,9 +8015,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uruguay",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6278,6 +8033,9 @@
 			"capital": "",
 			"color": "#DAD1E9",
 			"display_name": "New_zealand",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"AyghaidhieveiAurgierdyjaolveoghturdathuaGluamuit"
 			],
@@ -6293,9 +8051,15 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "New_zealand",
-			"political_power": 500.56,
+			"political_power": 501.36,
 			"puppets": [],
 			"stability": 1.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 1.0
 		},
 		{
@@ -6303,6 +8067,9 @@
 			"capital": "",
 			"color": "#FDFDFD",
 			"display_name": "Antartica",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"BenitoMussolini",
 				"OelpuyEafrutriesmoaghtorruextoefSleiscuyrpeaustei"
@@ -6319,9 +8086,15 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Antartica",
-			"political_power": 0.56,
+			"political_power": 1.36,
 			"puppets": [],
 			"stability": 0.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 0.0
 		},
 		{
@@ -6329,6 +8102,9 @@
 			"capital": "",
 			"color": "#22617E",
 			"display_name": "Donetsk",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"YukawaHideki",
 				"OyspreythreimpOaglieMpempeauspang"
@@ -6345,9 +8121,15 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Donetsk",
-			"political_power": 0.0,
+			"political_power": 0.8,
 			"puppets": [],
 			"stability": 0.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 0.0
 		},
 		{
@@ -6355,6 +8137,9 @@
 			"capital": "",
 			"color": "#2D6458",
 			"display_name": "Luhansk",
+			"factory_allocation": {
+
+			},
 			"figures": [
 				"BenjaminFranklin",
 				"PokaessiettiouryAugleauxteerkoyAygrioulteoffoelmuis"
@@ -6371,9 +8156,15 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Luhansk",
-			"political_power": 0.0,
+			"political_power": 0.8,
 			"puppets": [],
 			"stability": 0.0,
+			"stockpile": {
+
+			},
+			"trade_settings": {
+
+			},
 			"war_support": 0.0
 		}
 	],
@@ -7444,7 +9235,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -7644,7 +9435,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -8173,7 +9964,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -8712,7 +10503,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -9802,7 +11593,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -10314,7 +12105,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -10357,7 +12148,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -10611,7 +12402,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -11346,7 +13137,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -11599,7 +13390,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -11923,7 +13714,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -13253,7 +15044,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -14264,7 +16055,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -15257,7 +17048,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -15284,7 +17075,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -15829,7 +17620,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -16185,7 +17976,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -16629,7 +18420,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromite"
 				}
 			],
 			"troops": [],
@@ -17764,7 +19555,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -19033,7 +20824,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -19847,7 +21638,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -21743,7 +23534,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -21813,7 +23604,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -22130,7 +23921,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -24070,7 +25861,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -25134,7 +26925,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -25393,7 +27184,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -25420,7 +27211,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -25680,7 +27471,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -27069,7 +28860,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -27096,7 +28887,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -27123,7 +28914,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -28010,7 +29801,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -28188,7 +29979,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -30614,7 +32405,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -31094,7 +32885,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -32389,7 +34180,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -32974,7 +34765,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -34290,7 +36081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -34446,7 +36237,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -34877,7 +36668,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -36665,7 +38456,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -37648,7 +39439,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "NIckel"
 				}
 			],
 			"troops": [],
@@ -38287,7 +40078,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -40143,7 +41934,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -40936,7 +42727,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -41216,7 +43007,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "NIckel"
 				}
 			],
 			"troops": [],
@@ -41378,7 +43169,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -41853,7 +43644,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -42733,7 +44524,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -45000,7 +46791,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -50158,7 +51949,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -51003,7 +52794,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -51327,7 +53118,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -52085,7 +53876,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -53595,7 +55386,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -55221,7 +57012,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -56194,7 +57985,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -56415,7 +58206,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -58400,7 +60191,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -58719,7 +60510,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -58800,7 +60591,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -58827,7 +60618,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -59768,7 +61559,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -62218,7 +64009,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -63338,7 +65129,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -64149,7 +65940,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -65778,7 +67569,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -65848,7 +67639,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -65875,7 +67666,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -66842,7 +68633,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -67036,7 +68827,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -67905,7 +69696,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -69492,7 +71283,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -69655,7 +71446,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -70772,7 +72563,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -70937,7 +72728,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -71664,7 +73455,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -72501,7 +74292,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -72636,7 +74427,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -75876,7 +77667,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -76331,7 +78122,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -77251,7 +79042,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -80279,7 +82070,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -81593,7 +83384,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -82062,7 +83853,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -82905,7 +84696,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -83544,7 +85335,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -87290,7 +89081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -87626,7 +89417,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -88680,7 +90471,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -89356,7 +91147,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -89793,7 +91584,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -89847,7 +91638,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -91471,7 +93262,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -91692,7 +93483,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -92740,7 +94531,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -93933,7 +95724,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -94420,7 +96211,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -96640,7 +98431,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -97044,7 +98835,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -97071,7 +98862,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -97675,6 +99466,11 @@
 					"amount": 2,
 					"quality": 0.5,
 					"type": "Iron"
+				},
+				{
+					"amount": 1,
+					"quality": 1.0,
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -97836,7 +99632,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -98284,7 +100080,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -98398,7 +100194,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -98425,7 +100221,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -98789,7 +100585,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -99070,7 +100866,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -101641,7 +103437,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -102434,7 +104230,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -102656,7 +104452,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -103206,7 +105002,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -103423,7 +105219,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -103574,7 +105370,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -104234,7 +106030,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -104267,7 +106063,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -104915,7 +106711,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -105891,7 +107687,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -106280,7 +108076,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -107100,7 +108896,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -107143,7 +108939,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -107671,7 +109467,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -108044,7 +109840,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -108428,7 +110224,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -108509,7 +110305,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -108536,7 +110332,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -109285,7 +111081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -110036,7 +111832,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -111934,7 +113730,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -111993,7 +113789,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -113723,7 +115519,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -114843,7 +116639,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -115010,7 +116806,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -116149,7 +117945,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -116537,7 +118333,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -116672,7 +118468,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -116759,7 +118555,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -118311,7 +120107,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -119488,7 +121284,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -120668,91 +122464,206 @@
 	},
 	"resources": [
 		{
+			"base_price": 100,
 			"color": "#71797E",
 			"icon": "Ingot",
 			"name": "Steel_ingot",
-			"tags": {
-				"metal": 1.0,
-				"structural_metal": 2.0
-			},
 			"production_reqs": [
 				"Iron_ore",
 				"Coal"
-			]
+			],
+			"tags": {
+				"metal": 1.0,
+				"structural_metal": 2.0
+			}
 		},
 		{
+			"base_price": 100,
 			"color": "#434B4D",
 			"icon": "Ingot",
 			"name": "Iron_ore",
+			"production_reqs": [],
 			"tags": {
 				"metal": 0.5,
 				"structural_metal": 0.5
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#8B5A2B",
 			"icon": "Lumber",
 			"name": "Lumber",
+			"production_reqs": [],
 			"tags": {
 				"fuel": 0.5,
 				"wood": 1.0
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#111111",
 			"icon": "Ingot",
 			"name": "Coal",
+			"production_reqs": [],
 			"tags": {
 				"fuel": 2.0
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#050505",
 			"icon": "Gas",
 			"name": "Crude_oil",
+			"production_reqs": [],
 			"tags": {
 				"fuel": 5.0
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#0000FF",
 			"icon": "Droplet",
 			"name": "Fresh_water",
+			"production_reqs": [],
 			"tags": {
 				"water": 1.0
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#00FF00",
 			"icon": "Ingot",
 			"name": "Basic_circuitry",
-			"tags": {
-				"electronic": 1.0
-			},
 			"production_reqs": [
 				"Iron_ore",
 				"Fresh_water"
-			]
+			],
+			"tags": {
+				"electronic": 1.0
+			}
 		},
 		{
+			"base_price": 100,
 			"color": "#DDDDDD",
 			"icon": "Ingot",
 			"name": "Limestone",
+			"production_reqs": [],
 			"tags": {
 				"stone": 1.0
 			}
 		},
 		{
+			"base_price": 100,
 			"color": "#FFFF00",
 			"icon": "Gas",
 			"name": "Battery_pack",
-			"tags": {
-				"power": 1.0
-			},
 			"production_reqs": [
 				"Basic_circuitry",
 				"Crude_oil"
-			]
+			],
+			"tags": {
+				"power": 1.0
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#467849",
+			"icon": "Ingot",
+			"name": "Bauxite",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#463458",
+			"icon": "Ingot",
+			"name": "Lead",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#61A1C9",
+			"icon": "Ingot",
+			"name": "Chromium",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#C68636",
+			"icon": "Ingot",
+			"name": "Copper",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#D7CA29",
+			"icon": "Ingot",
+			"name": "Gold",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#A38A54",
+			"icon": "Ingot",
+			"name": "Nickel",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#7A9398",
+			"icon": "Ingot",
+			"name": "Tin",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#222C3F",
+			"icon": "Ingot",
+			"name": "Titanium",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#3D4C58",
+			"icon": "Ingot",
+			"name": "Zinc",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#E89E9E",
+			"icon": "Ingot",
+			"name": "Manganese",
+			"production_reqs": [],
+			"tags": {
+
+			}
 		}
 	],
 	"significant_figures": [
@@ -120792,7 +122703,9 @@
 			"name": "VladimirPutin",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Russia/VladimirPutin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120806,7 +122719,9 @@
 			"name": "UrNammu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120820,7 +122735,9 @@
 			"name": "BenitoMussolini",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120834,7 +122751,9 @@
 			"name": "DaleyJohnOttersbach",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120848,7 +122767,9 @@
 			"name": "DonaldJohnTrump",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/UnitedStates/DonaldJohnTrump.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120862,7 +122783,9 @@
 			"name": "JaneAustenCassandra",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120876,7 +122799,9 @@
 			"name": "YukawaHideki",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120890,7 +122815,9 @@
 			"name": "ChevalierDEon",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120904,7 +122831,9 @@
 			"name": "TrofimLysenko",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120918,7 +122847,9 @@
 			"name": "AlexanderLukashenko",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Belarus/AlexanderLukashenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120932,7 +122863,9 @@
 			"name": "JoshPaulraj",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120946,7 +122879,9 @@
 			"name": "XiJinping",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/China/XiJinping.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120960,7 +122895,9 @@
 			"name": "VolodymyrZelenskyy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Ukraine/VolodymyrZelenskyy.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120974,7 +122911,9 @@
 			"name": "BenjaminFranklin",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -120988,7 +122927,9 @@
 			"name": "Netanyahu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Israel/Netanyahu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121002,7 +122943,9 @@
 			"name": "EaulpassingEuthoildyxuilm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121016,7 +122959,9 @@
 			"name": "AistreanuoschausiuswOesplaytwouEatragreippeerpoo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121030,7 +122975,9 @@
 			"name": "EoldialiolpEethroisplauss",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121044,7 +122991,9 @@
 			"name": "JonasGahrStore",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Norway/JonasGahrStore.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121058,7 +123007,9 @@
 			"name": "UolkybRmeeneasloSirlio",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121072,7 +123023,9 @@
 			"name": "IuffypteociudrauphauspaiqQuuylayAezzuouboygraps",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121086,7 +123039,9 @@
 			"name": "EurmaewhiagaskoystaynkucuoSlioughoistreummaextiuIrpou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121100,7 +123055,9 @@
 			"name": "OastiouleazearluossuyskiJuolpaeddaurpRguounkeesheudwoesprustai",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121114,7 +123071,9 @@
 			"name": "Keir_Starmer",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/UnitedKingdom/Keir_Starmer.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121128,7 +123087,9 @@
 			"name": "IouyiSmuiphiold",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121142,7 +123103,9 @@
 			"name": "UokkailgSpaydweo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121156,7 +123119,9 @@
 			"name": "IastriekoikaischasheackIoukooshuirkaispruybioflioOangiastaugguoskei",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121170,7 +123135,9 @@
 			"name": "HafrosmayckauckeeshaoflyflRduexteessoosk",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121184,7 +123151,9 @@
 			"name": "BbauyaestriaghtuophaulmeormLduoulkiawoedwiurleyrduygoomm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121198,7 +123167,9 @@
 			"name": "FriedrichMerz",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Germany/FriedrichMerz.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121212,7 +123183,9 @@
 			"name": "ThruirgeibiEingoacAerpeecceaunesouptientoe",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121226,7 +123199,9 @@
 			"name": "UybruikounoylpAuscoiduantuizzaowaygoeOynuythruyguefoigliaskoe",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121240,7 +123215,9 @@
 			"name": "DdiangoofuakroysnudwIastrouggunteikkaebraukkNtospoortoeschucciu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121254,7 +123231,9 @@
 			"name": "TchaengyrdaoshuaboaptRpuouddaocceyccuoccaushAygruj",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121268,7 +123247,9 @@
 			"name": "GeevUykkyschuflierpoowriStruedrountyrgay",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121282,7 +123263,9 @@
 			"name": "OedheattaoldiaflompiowhUavi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121296,7 +123279,9 @@
 			"name": "EmmanuelMacron",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/France/EmmanuelMacron.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121310,7 +123295,9 @@
 			"name": "StroesweauDdoynniolkeawhaisk",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121324,7 +123311,9 @@
 			"name": "EyttualmoimpyffRkuihioulmaestriupeorkeaupiouCeazzuofuadwoo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121338,7 +123327,9 @@
 			"name": "AwhuyEultoyxteiRlourmeaulgui",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121352,7 +123343,9 @@
 			"name": "UitaixteikkeesproerruyzEozzaoppoorkeetcheepreyrdea",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121366,7 +123359,9 @@
 			"name": "EmmuiskiaghoystroommyttaoldSluouyeygayhooghtiaghaytheauTweaxefluybiu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121380,7 +123375,9 @@
 			"name": "KkeulymoyntaopuapeygleyBlioulmoocc",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121394,7 +123391,9 @@
 			"name": "NylgiouHeespleaurroiplympoantiuxteiEodwau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121408,7 +123407,9 @@
 			"name": "AutruzzuesplynnuabyluikkIulaorraudheoffaymmNneibriou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121422,7 +123423,9 @@
 			"name": "EvuouwreyluodwuyUorkeihoelmUaquayciuxiormeiceimmio",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121436,7 +123439,9 @@
 			"name": "EbbylaorkoeghtourlEikkeytruyglaipoislylm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121450,7 +123455,9 @@
 			"name": "EaustaulmioufeasoampuittaiUequoschoytwulkuallaeUougreekea",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121464,7 +123471,9 @@
 			"name": "YdueckouvadruytrOulpuowoippiampymEauspaoli",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121478,7 +123487,9 @@
 			"name": "LpaozzeynkeuwOeyoltuouvirguascoyzzais",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121492,7 +123503,9 @@
 			"name": "UoutchoybluardoangielmioswuweoXteobroikreoscee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121506,7 +123519,9 @@
 			"name": "AnnoyzUeflilpaollaip",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121520,7 +123535,9 @@
 			"name": "GhtoyrkoogroantooggeessouxuoIelpoetruofloirpoytrShaossuilaytaidwuy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121534,7 +123551,9 @@
 			"name": "SanaeTakaichi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Japan/SanaeTakaichi.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121548,7 +123567,9 @@
 			"name": "EytwuaquayseiRliggiruarpyqueujempauStreuxteildappeistroustaybreausc",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121562,7 +123583,9 @@
 			"name": "PedroSanchez",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Spain/PedroSanchez.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121576,7 +123599,9 @@
 			"name": "IughtaeyoutriawuOeptuosmuykioUajue",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121590,7 +123615,9 @@
 			"name": "TcholeequaozugreaucciadwEartoiLdiouvokuyjiongeyxtoinkuy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121604,7 +123631,9 @@
 			"name": "EolpauptogreestruistOugeijotrUagguazistiexaurteullupr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121618,7 +123647,9 @@
 			"name": "AsweaustriuPheyppeequeascuaxtimmuscutr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121632,7 +123663,9 @@
 			"name": "ScioupriabeonnoeggLkultuelteaskeorg",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121646,7 +123679,9 @@
 			"name": "TruehoxaetwaiswouknoyffNkouwrOaspreulkuefeaseauthroascayck",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121660,7 +123695,9 @@
 			"name": "LpiaroafyYnnoudeoswiaz",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121674,7 +123711,9 @@
 			"name": "AydaunuoggOazzadhuadheelpeyrgoyPyghaywhaelkyffuatoup",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121688,7 +123727,9 @@
 			"name": "OotchongealdaidwuounteypluiRuoureeUelgeulv",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121702,7 +123743,9 @@
 			"name": "UoffefaoZuowiasprablupreau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121716,7 +123759,9 @@
 			"name": "KimJongUn",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/NorthKorea/KimJongUn.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121730,7 +123775,9 @@
 			"name": "GloelluobloympeydraiCkiephoybroingJaummao",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121744,7 +123791,9 @@
 			"name": "AequorliuhuoustriodwSceippeybloeAfrefrioulm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121758,7 +123807,9 @@
 			"name": "ArgouprKiashouLmoykkurrempiujayj",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121772,7 +123823,9 @@
 			"name": "EaumpoildairguouchannIsciudhRdiotraeviolteeprou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121786,7 +123839,9 @@
 			"name": "TtoospEautchaikoafoplualizou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121800,7 +123855,9 @@
 			"name": "OglanetcheuxteasoesyplioEewreoploiphyblaerdioSmifleaustroadw",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121814,7 +123871,9 @@
 			"name": "EeppoulmeeHiowharluwhoykkeyrdeaup",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121828,7 +123887,9 @@
 			"name": "RmiusplayZziaspleyscaggyfl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121842,7 +123903,9 @@
 			"name": "OangeaulpaischiarkeauwhusheegRkeuggaiziggaospioulgKnioussuyppietchaesnui",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121856,7 +123919,9 @@
 			"name": "OesmauDhooddeinaspregluifeot",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121870,7 +123935,9 @@
 			"name": "OirlaibriourraeblThaeghiYydwoybraptuadrou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121884,7 +123951,9 @@
 			"name": "LeeJaeMyung",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/SouthKorea/LeeJaeMyung.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121898,7 +123967,9 @@
 			"name": "OogloarpaurmayploeplokniBbaottuoultauspreemuoujoeph",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121912,7 +123983,9 @@
 			"name": "AstoyrduipsaorduonnuedhiuSeukroakkoeghtoufleyschoiqu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121926,7 +123999,9 @@
 			"name": "OobuiwroiOermoethreostruoLgiuggoatch",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121940,7 +124015,9 @@
 			"name": "MmoynteychiesteyruykkIacusploelgidr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121954,7 +124031,9 @@
 			"name": "PpiaxtiuSceauruycuabroosneyrleontoabIuyiedruiddeo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121968,7 +124047,9 @@
 			"name": "MohammedBenElHassan",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Morocco/MohammedBenElHassan.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121982,7 +124063,9 @@
 			"name": "AezzalvoyssasteaSchiourm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -121996,7 +124079,9 @@
 			"name": "OuthroinkarmuoubrProodraoluikniulkEempakn",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122010,7 +124095,9 @@
 			"name": "NarendraModi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/India/NarendraModi.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122024,7 +124111,9 @@
 			"name": "SchoengQouthrasmuSlaefrikkodouthreubroahuy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122038,7 +124127,9 @@
 			"name": "LveoscaompoikkedreespraoAixoymeeckeuspreafrioudoujee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122052,7 +124143,9 @@
 			"name": "PhuoupUispreiseaulkouppiouduyskottSkeisseausluoulkuyghuefee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122066,7 +124159,9 @@
 			"name": "BenjaminNetanyahu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/BenjaminNetanyahu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122080,7 +124175,9 @@
 			"name": "ClaudiaSheinbaumPardo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Mexico/ClaudiaSheinbaumPardo.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122094,7 +124191,9 @@
 			"name": "MohammedBinSalman",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/SaudiArabia/MohammedBinSalman.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122108,7 +124207,9 @@
 			"name": "EostoyrdeuffeubrayrgakaiWralpoipsayjerpiuj",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122122,7 +124223,9 @@
 			"name": "RgaoghootraypsRuackadwioukioudaurreyTwyrguigiuwoychaemeosceo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122136,7 +124239,9 @@
 			"name": "AoroeplybeisloeAilveejioyeySiakeau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122150,7 +124255,9 @@
 			"name": "RmoazeaufrutwioupleylvoelgaexRleiforpualoasyflulmuemmTreyhiu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122164,7 +124271,9 @@
 			"name": "UepeedriukoeryOunkuisloystreisuefiffou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122178,7 +124287,9 @@
 			"name": "IastruarguarrDouvoy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122192,7 +124303,9 @@
 			"name": "OytyldPpaiswegg",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122206,7 +124319,9 @@
 			"name": "OusproolkaugeolduagheirkAsmuiltuysployreirmei",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122220,7 +124335,9 @@
 			"name": "LtiurperUdhouboyflionneucc",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122234,7 +124351,9 @@
 			"name": "EipruyslippuoutrieckeakeauOrdeylmialveampyppaipabrau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122248,7 +124367,9 @@
 			"name": "CceolmoaghiejoIuruemmeuspluorEywruypsoodhioutchuecuourrie",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122262,7 +124383,9 @@
 			"name": "AippemmuountuoulkoigryviouUibroyptuckeaudwuplualdieIoddugrerdeasuoffoegrouy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122276,7 +124399,9 @@
 			"name": "AspluobonurryflazTrioltoslieproppisleelpoispr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122290,7 +124415,9 @@
 			"name": "TchoungonnIuhuespreinealpoirkOofleilmueskaunkeuffuytuy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122304,7 +124431,9 @@
 			"name": "IokkairluiphuyzziphoubbAeldeiffaiwCheufoiwhouphiuthygeasci",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122318,7 +124447,9 @@
 			"name": "YrloelmaidweoqEaskiadwauckiouldou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122332,7 +124463,9 @@
 			"name": "UoxtuouOothreulpiourriaffaupseuz",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122346,7 +124479,9 @@
 			"name": "TufrustuodrioyaulmuolpeeflEtelkioddeaurkLpeauteypteyd",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122360,7 +124495,9 @@
 			"name": "FaerruoultoldyrySliurtuylvixeyrrioccou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122374,7 +124511,9 @@
 			"name": "IourdaeghtuybbNkealuppiergoastiekk",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122388,7 +124527,9 @@
 			"name": "OrkialgeaurrooschoadhTchuelpagitriesmeenteRkaevayraegrouspaokkuaknobb",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122402,7 +124543,9 @@
 			"name": "TroepRdeaheaulpeotweortuycOspaongaofruasnee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122416,7 +124559,9 @@
 			"name": "NgienkuygrelgRmaixtiwoskeuxeuckOmieschoetheyplyknaobbiathuo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122430,7 +124575,9 @@
 			"name": "EukraufuycoaOaffuoubriacEeschoebinoeffuoudhayrpeau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122444,7 +124591,9 @@
 			"name": "GreapruwoyrreughEzziofoypOusto",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122458,7 +124607,9 @@
 			"name": "PhayxuespruaglosaebruinnUebrueskeelduitaizzussientAutaoroexoergukniarpee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122472,7 +124623,9 @@
 			"name": "QoedaethreipleelkialgoyGhtiarruympilmuigaipheu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122486,7 +124639,9 @@
 			"name": "GgesmoashieffuouEermoi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122500,7 +124655,9 @@
 			"name": "OasplealpeaudwaytchAigruytcheispreariakoYsuystust",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122514,7 +124671,9 @@
 			"name": "EobrayquuazzoirlorgAospiothruirkuywuoufriorka",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122528,7 +124687,9 @@
 			"name": "KkeelpoiflixiouAojynkeysouFadhuik",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122542,7 +124703,9 @@
 			"name": "RgaesmiesliosliespluoucheyqXiofruydruibbausloeryCcunkiouknaosm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122556,7 +124719,9 @@
 			"name": "EdroampoibloentiettualdobbeUerlieskiaschaeshufeasch",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122570,7 +124735,9 @@
 			"name": "IouppiuWoukruoudaeheauxtiakneldiou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122584,7 +124751,9 @@
 			"name": "IbrahimTraore",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/BurkinaFaso/IbrahimTraore.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122598,7 +124767,9 @@
 			"name": "ZeuccooquyfoelpieLtoackae",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122612,7 +124783,9 @@
 			"name": "KruygloaskeadweadhAystygroylgelkoepieqay",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122626,7 +124799,9 @@
 			"name": "SweorruppaghiertoalliTweawassuasniolkoyguakriaSchoozziuziu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122640,7 +124815,9 @@
 			"name": "RraigeedassailtiffTreuzzuiffiouhiouldeauppoe",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122654,7 +124831,9 @@
 			"name": "EekoytwiothuatuepoaOapleostaidraeckuyflBezzioldeyphynteekiogipr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122668,7 +124847,9 @@
 			"name": "UourleyduegholdoozzuountMmuigreyIushiugoa",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122682,7 +124863,9 @@
 			"name": "EaproasprouldolkDeeh",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122696,7 +124879,9 @@
 			"name": "TraoweoghyblEaskeequoUestuywruybbiawrue",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122710,7 +124895,9 @@
 			"name": "UouspreyeskaiviolpiouNuiggaontuoutteintaughuidr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122724,7 +124911,9 @@
 			"name": "OipseexaypleauzexAlliungeyrraonaormFiemmau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122738,7 +124927,9 @@
 			"name": "UoucheauskikkoukkarmippoyrlYauvuef",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122752,7 +124943,9 @@
 			"name": "KreapoeshialviextueScuisneephoybre",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122766,7 +124959,9 @@
 			"name": "TteaspruypheyTchoottaydd",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122780,7 +124975,9 @@
 			"name": "ScoistaextiapaebuoumyEofriuxoustreyssuepuifruiy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122794,7 +124991,9 @@
 			"name": "AossoirgXeidhoalvippaeghteiriorkieltMuockiubbeyffioussayxitr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122808,7 +125007,9 @@
 			"name": "AybieEocinkuout",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122822,7 +125023,9 @@
 			"name": "IablaequiophaythouciolvoiqAocheesseaukeiquuedai",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122836,7 +125039,9 @@
 			"name": "XtuextuolmQiejoypezzodduoudwoy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122850,7 +125055,9 @@
 			"name": "VeadruoustoyfoiyiurgoeRguydraquaesw",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122864,7 +125071,9 @@
 			"name": "PluapruolmKnoyldiurpadduyLteausplauvastrao",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122878,7 +125087,9 @@
 			"name": "NtiogguerpauprioxuingeaIefreaumpihiacciarmittoanneyPriespr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122892,7 +125103,9 @@
 			"name": "AotchuiyetchykkuompoaccScioultiebliezee",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122906,7 +125119,9 @@
 			"name": "OuroordoukkuoSkipsoafrairdeeSeoplapreubleyskiarde",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122920,7 +125135,9 @@
 			"name": "UotwaknoiApseolteuccoipl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122934,7 +125151,9 @@
 			"name": "PreentIennuayeauwievoe",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122948,7 +125167,9 @@
 			"name": "UouffueSceylmuzaiYrmae",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122962,7 +125183,9 @@
 			"name": "AnosniormuohuyBbiawhooffeantuascheeld",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122976,7 +125199,9 @@
 			"name": "PysmioussNkaerm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -122990,7 +125215,9 @@
 			"name": "FfaoxtuydwReecua",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123004,7 +125231,9 @@
 			"name": "ZzuschiokniuccuyPsoerkeutrioumpiarluofr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123018,7 +125247,9 @@
 			"name": "RoirgauwhiafruildoawhaAoneilluyleylgounn",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123032,7 +125263,9 @@
 			"name": "LviethreirpeecyngooschoithreiOegguadhiouckiouphyrroi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123046,7 +125279,9 @@
 			"name": "AopteauckaurkaermelveadwaedruaVaorpiuscousleontaifoi",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123060,7 +125295,9 @@
 			"name": "AifleinkeelmoirdeuddiouEighiousceebuourleiddu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123074,7 +125311,9 @@
 			"name": "OilpuocizeaupliutheuphoyglCciouppeauph",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123088,7 +125327,9 @@
 			"name": "IouyoyEedhipeolv",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123102,7 +125343,9 @@
 			"name": "IrmouptiaPsayspleaummeauntooccoe",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123116,7 +125359,9 @@
 			"name": "LuizInacioLulaDaSilva",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Brazil/LuizInacioLulaDaSilva.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123130,7 +125375,9 @@
 			"name": "IusythofEathraetruynneammebbay",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123144,7 +125391,9 @@
 			"name": "AifrieriourRtuouwuoptoaptioSplaytuounnuyshafroirtoo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123158,7 +125407,9 @@
 			"name": "UywhybraokkoosEoxysnaulloeffauRdiohaemmeiyiappinuablao",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123172,7 +125423,9 @@
 			"name": "PriupeeIouptyhaeskeadLmousmeimpoirdau",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123186,7 +125439,9 @@
 			"name": "KkiuwayngoeffeEpluidweermoeslilpockaij",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123200,7 +125455,9 @@
 			"name": "WibraezeudwuiknElvuoustroomp",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123214,7 +125471,9 @@
 			"name": "OinkeybluyrrougroatwOigrairmaemmoaffoejaennaetteuOiwriustioroy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123228,7 +125487,9 @@
 			"name": "KroyskayfuoLpioffaogaumm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123242,7 +125503,9 @@
 			"name": "IourruydruahaurmoephaeIafluongiephiazzermuouhiu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123256,7 +125519,9 @@
 			"name": "EaulpeathiuwhouswoangoutriEystuaRpuopleurgoysmyslio",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123270,7 +125535,9 @@
 			"name": "EuntiouAothruidhaepoestruahuouFleaurmuardoull",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123284,7 +125551,9 @@
 			"name": "LlueltoadweiptLairtoyccayyeu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123298,7 +125567,9 @@
 			"name": "IarmeIoknuequosme",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123312,7 +125583,9 @@
 			"name": "NkaulmeorgormethrathackEauflioumetruykkaerIowearliuvoafr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123326,7 +125599,9 @@
 			"name": "IghiopruerkeespluippayGiepl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123340,7 +125615,9 @@
 			"name": "RmeaswybbeEilaeraytraubboasprieddioqGlauptodheipreilp",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123354,7 +125631,9 @@
 			"name": "IesloiduffirkeyzuevuysooThoiltiachestight",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123368,7 +125647,9 @@
 			"name": "AetchuyluihOefretruarreupteappioutwaeOikaurdoutteaprusleaulvicc",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123382,7 +125663,9 @@
 			"name": "EaubriompaybloazzeaurmoickUlvailpMaelvooquifeegucialtiou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123396,7 +125679,9 @@
 			"name": "AobbuawhaikraoEaudwoiblZauppuaspoobbuikkoaspraytr",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123410,7 +125695,9 @@
 			"name": "XuaccoefloaccQuuouddyrruyldableovuabruouph",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123424,7 +125711,9 @@
 			"name": "AughoestryrpeoEdwykrioudeauldeyponiurrou",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123438,7 +125727,9 @@
 			"name": "LkaungaommiumpaycoknIabethyjuashayryruiSmailmasploaltyslaowrionuo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/ChevalierDEon.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123452,7 +125743,9 @@
 			"name": "RruobouqeithriutuylpeuscheauReexteeccautroeshaoknayswOepaeccoiboeffauscheiv",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123466,7 +125759,9 @@
 			"name": "AzzaepsiouccoykraezzuetweighoTrayo",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123480,7 +125775,9 @@
 			"name": "EegloeschiaZzuesluybbyrluousw",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123494,7 +125791,9 @@
 			"name": "NgeentiurgiattykriUouyuy",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123508,7 +125807,9 @@
 			"name": "GavGrub",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/Zimbabwe/GavGrub.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123522,7 +125823,9 @@
 			"name": "LdiouxyknaorkyOalpaibboibuinkuepluadweent",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123536,7 +125839,9 @@
 			"name": "EurmueskischyflioshStriudreopsilmophOwoirmostreu",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123550,7 +125855,9 @@
 			"name": "AirkoaproutwuiveaAurtacathimauschoosseimmuyNuogloeslooxtoilgoeggeaull",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123564,7 +125871,9 @@
 			"name": "LgoidwiompiostraoEycheiseerpul",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123578,7 +125887,9 @@
 			"name": "OutrauzooYaoccoewulvAchiourgouspl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/DaleyJohnOttersbach.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123592,7 +125903,9 @@
 			"name": "AuscuougialkiorrairgeilgiouquXtierduyrguordioubbea",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JaneAustenCassandra.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123606,7 +125919,9 @@
 			"name": "OeltaedwiogruyyounEeckaird",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/JoshPaulraj.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123620,7 +125935,9 @@
 			"name": "OarkueghaikuouTwiuwrayglioulootroascSpliouspl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123634,7 +125951,9 @@
 			"name": "RgierdairtaywrokkuischiOaphuouswuophotwaextuoMmuermynkuogayghtypl",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123648,7 +125967,9 @@
 			"name": "NgoirgoyrtouckiougleiknaEyptaynnuep",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123662,7 +125983,9 @@
 			"name": "RmuoubeauchaethyppeiplAveylkio",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123676,7 +125999,9 @@
 			"name": "XtaysteaupreaxuabeylUoultoipoyswaylm",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenjaminFranklin.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123690,7 +126015,9 @@
 			"name": "EatchoedweoppiupeypsorraythStuopreermuaghteauTaeck",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/YukawaHideki.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123704,7 +126031,9 @@
 			"name": "AyghaidhieveiAurgierdyjaolveoghturdathuaGluamuit",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123718,7 +126047,9 @@
 			"name": "OelpuyEafrutriesmoaghtorruextoefSleiscuyrpeaustei",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/BenitoMussolini.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123732,7 +126063,9 @@
 			"name": "OyspreythreimpOaglieMpempeauspang",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/UrNammu.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		},
@@ -123746,7 +126079,9 @@
 			"name": "PokaessiettiouryAugleauxteerkoyAygrioulteoffoelmuis",
 			"occupation": "Leader",
 			"portrait_path": "res://starts/ModernDay/assets/portraits/random/TrofimLysenko.png",
-			"skills": {},
+			"skills": {
+
+			},
 			"status": 0,
 			"traits": []
 		}
