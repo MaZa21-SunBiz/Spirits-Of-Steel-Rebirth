@@ -1,33 +1,37 @@
 [gd_scene format=3 uid="uid://cb5k8m8v8x7j7"]
 
-[ext_resource type="Script" path="res://Scripts/UI/TradeEntry.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://2xyhe2jvrxc2" path="res://Scripts/UI/TradeEntry.gd" id="1_script"]
 
-[node name="TradeEntry" type="HBoxContainer"]
+[node name="TradeEntry" type="HBoxContainer" unique_id=993888314]
+use_parent_material = true
 size_flags_horizontal = 3
 script = ExtResource("1_script")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=4007485]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ResourceStats" type="VBoxContainer" parent="."]
+[node name="ResourceStats" type="VBoxContainer" parent="." unique_id=2007483340]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResourceName" type="Label" parent="ResourceStats"]
+[node name="ResourceName" type="Label" parent="ResourceStats" unique_id=1433666366]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Resource Name"
 
-[node name="ResourceStock" type="Label" parent="ResourceStats"]
+[node name="ResourceStock" type="Label" parent="ResourceStats" unique_id=441107766]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "In Stock: 0, Net Change: 0"
 
-[node name="Exports" type="SpinBox" parent="."]
+[node name="Exports" type="SpinBox" parent="." unique_id=1263304958]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 min_value = -1000.0

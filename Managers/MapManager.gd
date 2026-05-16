@@ -1159,8 +1159,35 @@ func ShowResourcesMap() -> void:
 		if pid <= 1:
 			continue
 
-		state_color_image.set_pixel(pid, 0, GetCountryDisplayColor(province_objects[pid].country))
-		state_color_image.set_pixel(pid, 1, GetCountryDisplayColor(province_objects[pid].GetFunctionalOwner()))
+		var province: Province = province_objects[pid]
+		if province.resources.is_empty():
+			var empty_col = Color(0.1, 0.1, 0.1)
+			state_color_image.set_pixel(pid, 0, empty_col)
+			state_color_image.set_pixel(pid, 1, empty_col)
+			continue
+
+		var total_r := 0.0
+		var total_g := 0.0
+		var total_b := 0.0
+		var total_weight := 0.0
+
+		for node in province.resources:
+			var res_data = resources.get(node.type)
+			if res_data:
+				var weight = float(node.amount)
+				total_r += res_data.color.r * weight
+				total_g += res_data.color.g * weight
+				total_b += res_data.color.b * weight
+				total_weight += weight
+
+		var final_color: Color
+		if total_weight > 0:
+			final_color = Color(total_r / total_weight, total_g / total_weight, total_b / total_weight)
+		else:
+			final_color = Color(0.1, 0.1, 0.1)
+
+		state_color_image.set_pixel(pid, 0, final_color)
+		state_color_image.set_pixel(pid, 1, final_color)
 
 	state_color_texture.update(state_color_image)
 	KeyboardManager.current_view = KeyboardManager.MapView.RESOURCES
@@ -1667,3 +1694,7 @@ func _set_type_map(mat: Material, type_img: Image):
 			# If it only touches sea (or nothing), it's a Sea Grid/Open Water
 			type_img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
 	mat.set_shader_parameter("type_map", ImageTexture.create_from_image(type_img))
+
+
+func get_tag_resources(tag: String):
+	return resources.values().filter(func(resource): return tag in resource.tags.keys())

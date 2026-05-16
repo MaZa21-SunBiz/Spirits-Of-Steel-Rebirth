@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cgwatyt587dkm"]
+
+[ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="1_ldicg"]
+[ext_resource type="Script" uid="uid://c47y7lh4cwn72" path="res://Scenes/UI/ProductionEntry.gd" id="1_oxb67"]
+[ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="3_uss8d"]
+
+[node name="ProductionEntry" type="PanelContainer" unique_id=1301278158 node_paths=PackedStringArray("resource_label", "resource_icon", "allocated_factories", "reqs_box")]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 128)
+offset_right = 240.0
+offset_bottom = 128.0
+size_flags_horizontal = 3
+script = ExtResource("1_oxb67")
+resource_label = NodePath("VBoxContainer/ProducedResource/Label")
+resource_icon = NodePath("VBoxContainer/ProducedResource/TextureRect")
+allocated_factories = NodePath("VBoxContainer/HBoxContainer/HSlider")
+reqs_box = NodePath("VBoxContainer/RequiredResources")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2047495504]
+use_parent_material = true
+layout_mode = 2
+
+[node name="ProducedResource" type="HBoxContainer" parent="VBoxContainer" unique_id=172070455]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ProducedResource" unique_id=1801818984]
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("1_ldicg")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ProducedResource" unique_id=1539175700]
+layout_mode = 2
+text = "Gun"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=25933720]
+use_parent_material = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=116906703]
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("3_uss8d")
+expand_mode = 3
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=2000700027]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+tick_count = 8
+ticks_on_borders = true
+
+[node name="RequiredResources" type="HBoxContainer" parent="VBoxContainer" unique_id=1689013602]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3

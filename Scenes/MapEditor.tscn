@@ -113,10 +113,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5xoin")
 theme_override_styles/panel = SubResource("StyleBoxFlat_ieg8k")
-current_tab = 0
+current_tab = 4
 tab_focus_mode = 0
 
 [node name="Province" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=231677890]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_5xoin")
 horizontal_scroll_mode = 0
@@ -714,7 +715,6 @@ text = "Color:"
 layout_mode = 2
 
 [node name="Resource" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=1865267818]
-visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 metadata/_tab_index = 4
@@ -1396,11 +1396,8 @@ text = "Create Resource"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Population/VBoxContainer/BtnApply" to="." method="AddProvincePopulation"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Province/MarginContainer/VBoxContainer/Resources/VBoxContainer/BtnApply" to="." method="AddProvinceResource"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnFactionSelected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/NewFaction" to="PopupPanel" method="m_OpenScreen" binds= [0]]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnFactionColorChanged"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Faction/MarginContainer/VBoxContainer/MenuButton" to="PopupPanel" method="m_OpenScreen" binds= [2]]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnPolitySelected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/NewPolity" to="PopupPanel" method="m_OpenScreen" binds= [1]]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer2/Owner" to="." method="m_OnPolityOwnerSubmitted"]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnColorChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputMoney" to="." method="m_OnPolityMoneyChanged"]
@@ -1408,11 +1405,9 @@ text = "Create Resource"
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputWarSupport" to="." method="m_OnPolityWarSupportChanged"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Polity/MarginContainer/VBoxContainer/GridContainer/InputStability" to="." method="m_OnPolityStabilityChanged"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnBiomeSelected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/NewBiome" to="PopupPanel" method="m_OpenScreen" binds= [3]]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnBiomeNameSubmitted"]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Biome/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnBiomeColorChanged"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/ItemList" to="." method="m_OnResourceSelected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/NewResource" to="PopupPanel" method="m_OpenScreen" binds= [4]]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputName" to="." method="m_OnResourceNameSubmitted"]
 [connection signal="color_changed" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/InputColor" to="." method="m_OnResourceColorChanged"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/TabContainer/Resource/MarginContainer/VBoxContainer/GridContainer/HBoxContainer/InputIcon" to="." method="m_OnResourceIconSubmitted"]

@@ -45,6 +45,7 @@ var stats_labels := {}
 @export var sidemenu_leader_portrait: TextureRect
 @export var building_dropdown: OptionButton
 @export var trade_entries: Container
+@export var production_entries: Container
 
 @export var relations_hbox: HBoxContainer
 @export var flag1: TextureRect
@@ -66,6 +67,7 @@ var stats_labels := {}
 # Use the class_name of your action scene if available, or load strictly as packed scene
 @onready var action_scene: PackedScene = preload("res://Scenes/action.tscn")
 @onready var trade_entry_scene: PackedScene = preload("res://Scenes/UI/TradeEntry.tscn")
+@onready var production_entry_scene: PackedScene = preload("res://Scenes/UI/ProductionEntry.tscn")
 
 @export var radio_list: VBoxContainer
 @export var now_playing: Label
@@ -271,6 +273,11 @@ func _ready() -> void:
 		var entry = trade_entry_scene.instantiate()
 		trade_entries.add_child(entry)
 		entry.setup(resource)
+		
+		if !resource.production_reqs.is_empty():
+			var p_entry = production_entry_scene.instantiate()
+			production_entries.add_child(p_entry)
+			p_entry.setup(resource)
 	
 	if world and world.clock:
 		var clock := world.clock
@@ -676,6 +683,8 @@ func _on_hour_passed() -> void:
 	if is_open:
 		_update_context_actions_visuals()
 		update_economy_menu()
+		update_production_menu()
+		update_trade_menu()
 
 func format_number(value: float) -> String:
 	var abs_val = abs(value)
@@ -807,6 +816,18 @@ func DoEconomyMenuUpdate() -> void:
 				entry.add_child(text)
 				sidemenu_buildings.add_child(entry)
 	economyUpdate = false
+
+func update_production_menu() -> void:
+	var player = CountryManager.player_country
+	if !player: return
+	for entry in production_entries.get_children():
+		if entry.has_method("update_limit"):
+			entry.update_limit()
+
+func update_trade_menu() -> void:
+	for entry in trade_entries.get_children():
+		if entry.has_method("update_stock_label"):
+			entry.update_stock_label()
 
 func _request_access():
 	var cost = action_costs["_request_access"].call(CountryManager.player_country, selected_country)["cost"]

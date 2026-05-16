@@ -32,8 +32,10 @@ var income: float = 0.0
 var factories_amount: int = 0
 var factory_income = 100
 var hourly_money_income: float = 0.0 # Calculated value
-var stockpile_change: Dictionary[String, int] = {}
 var stockpile: Dictionary[String, int] = {}
+var trade_settings: Dictionary[String, int] = {}
+var factory_allocation: Dictionary[String, int] = {}
+var stockpile_change: Dictionary[String, int] = {} # Net change (Trade + Production)
 
 var divCostMod: float = 1.0
 
@@ -138,7 +140,7 @@ class ReadyTroop:
 
 	func _init(a_division: DivisionData, a_count: int):
 		self.division = a_division
-		self.count    = a_count
+		self.count = a_count
 
 
 #endregion
@@ -165,7 +167,7 @@ func _init() -> void:
 #	manpower = int((total_population * military_size_ratio) - manpower_used)
 #	_setup_starting_army()
 	#setup_ai()
-	ai_controller = CountryAI.new(self)
+	ai_controller = CountryAI.new(self )
 
 
 func ToDict() -> Dictionary:
@@ -173,7 +175,7 @@ func ToDict() -> Dictionary:
 		"name": country_name,
 		"display_name": display_name,
 		"capital": capital,
-		"color": "#"+country_color.to_html(false).to_upper(),
+		"color": "#" + country_color.to_html(false).to_upper(),
 		"money": money,
 		"ideology": [ideology.x, ideology.y],
 		"political_power": political_power,
@@ -186,8 +188,9 @@ func ToDict() -> Dictionary:
 		"government_positions": governmentPositions,
 		"is_player": is_player,
 		"finished_decisions": finished_decisions,
-		"stockpile_change": stockpile_change,
+		"trade_settings": trade_settings,
 		"stockpile": stockpile,
+		"factory_allocation": factory_allocation,
 	}
 	# NOTE(soi): AAAAUHHHHHGGG
 
@@ -216,13 +219,17 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 		&"",
 		null
 	)
-	var exports_data: Dictionary = a_data.get("stockpile_change", {})
-	for key: String in exports_data:
-		country.stockpile_change[key] = int(exports_data[key])
+	var trade_data: Dictionary = a_data.get("trade_settings", a_data.get("stockpile_change", {}))
+	for key: String in trade_data:
+		country.trade_settings[key] = int(trade_data[key])
 		
 	var stockpile_data: Dictionary = a_data.get("stockpile", {})
 	for key: String in stockpile_data:
 		country.stockpile[key] = int(stockpile_data[key])
+		
+	var allocation_data: Dictionary = a_data.get("factory_allocation", {})
+	for key: String in allocation_data:
+		country.factory_allocation[key] = int(allocation_data[key])
 	
 	for id in country.finished_decisions:
 		country.set_meta("finished_" + id, true)
@@ -231,11 +238,8 @@ static func FromDict(a_data: Dictionary) -> CountryData:
 	
 	country.stability = country.base_stability
 	country.war_support = country.base_war_support
-
-	# NOTE(Sockmit2007): Urgh...
-	# NOTE(soi): indeed
-	# NOTE(soi): ok the refresh things cause the map editor to crash when u make a country so...
-	#country.manpower = int((country.total_population * country.military_size_ratio) - CountryManager.get_country_used_manpower(country))
+	
+	country.recalculate_stockpile_change()
 	
 	return country
 
@@ -283,15 +287,18 @@ func process_hour() -> void:
 	income = hourly_money_income - army_cost
 	money += income
 
+	# Resource updates moved to process_day as per user request
+	# _process_resource_production()
+
 	troop_speed_modifier = 1.0 + (army_level * 0.1) + troopSpeedExtra
 
 	update_manpower_pool()
 	_process_reinforcements()
 
-	if dirty_manpower and !dirty:  # Because if dirty. refresh_economic_stats will do it anyways
+	if dirty_manpower and !dirty: # Because if dirty. refresh_economic_stats will do it anyways
 		update_manpower_pool()
 
-	if war_dirty:  # For the AI
+	if war_dirty: # For the AI
 		update_is_at_war()
 
 	if !is_player:
@@ -300,6 +307,60 @@ func process_hour() -> void:
 	else:
 		#print("Total: %d Militiable: %d Manpower: %d Mobilized: %d Armed: %d" % [total_population, total_population * military_size_ratio, manpower, mobilized, manpower + mobilized])
 		pass
+
+func _process_resource_production() -> void:
+	# This function handles the ACTUAL daily transfer of goods
+	for resource_name in factory_allocation:
+		var allocation = factory_allocation[resource_name]
+		if allocation <= 0: continue
+			
+		var res_data = MapManager.resources.get(resource_name)
+		if not res_data: continue
+			
+		var daily_allocation = allocation * 24
+		var can_produce = true
+		for req in res_data.production_reqs:
+			if stockpile.get(req, 0) < daily_allocation:
+				can_produce = false
+				break
+		
+		if can_produce:
+			for req in res_data.production_reqs:
+				stockpile[req] = stockpile.get(req, 0) - daily_allocation
+			stockpile[resource_name] = stockpile.get(resource_name, 0) + daily_allocation
+	
+	for res in trade_settings:
+		var daily_trade = trade_settings[res] * 24
+		stockpile[res] = stockpile.get(res, 0) + daily_trade
+		
+	# Refresh UI values
+	recalculate_stockpile_change()
+
+func recalculate_stockpile_change() -> void:
+	stockpile_change.clear()
+	
+	# Start with daily trade volume
+	for res in trade_settings:
+		stockpile_change[res] = trade_settings[res] * 24
+		
+	# Add daily production/consumption estimates
+	for resource_name in factory_allocation:
+		var allocation = factory_allocation[resource_name]
+		if allocation <= 0: continue
+		
+		var res_data = MapManager.resources.get(resource_name)
+		if not res_data: continue
+		
+		var daily_vol = allocation * 24
+		for req in res_data.production_reqs:
+			stockpile_change[req] = stockpile_change.get(req, 0) - daily_vol
+		stockpile_change[resource_name] = stockpile_change.get(resource_name, 0) + daily_vol
+
+func get_total_allocated_factories() -> int:
+	var total = 0
+	for val in factory_allocation.values():
+		total += val
+	return total
 
 func process_day() -> void:
 	if _is_loading:
@@ -315,13 +376,14 @@ func process_day() -> void:
 	# Refresh stats that change daily/weekly
 	_refresh_economic_stats()
 	_process_training()
-	DecisionManager.process_country_day(self)
+	_process_resource_production() # Added daily production
+	DecisionManager.process_country_day(self )
 	if !is_player:
 		ai_controller.think_day()
 
 func _refresh_economic_stats() -> void:
 	if not dirty:
-		return  # Already up to date
+		return # Already up to date
 
 	total_population = CountryManager.get_country_population(country_name)
 	factories_amount = CountryManager.get_factories_amount(country_name)
@@ -544,7 +606,7 @@ func _setup_starting_army() -> void:
 	# We use the same math as process_hour to see our projected income
 	# Don't spend more than 25% of hourly income on starting upkeep
 	# 2. Determine count (Strictly capped to prevent icon spam)
-	var final_count = clampi(int((((gdp* 0.0000228310502) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
+	var final_count = clampi(int((((gdp * 0.0000228310502) + factories_amount * factory_income) * 0.25) / max(1.0, (army_level * BASE_ARMY_COST))), 1, 6) # Start very small (1-6 divs)
 
 	# 3. Manpower Check
 	var template = DivisionData.TEMPLATES.get("infantry")

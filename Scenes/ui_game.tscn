@@ -128,7 +128,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "trade_entries", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "factions_box", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "trade_entries", "production_entries", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "factions_box", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -155,6 +155,7 @@ sidemenu_buildings = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButt
 sidemenu_leader_portrait = NodePath("Control/SIDEBAR/SidemenuBG/Content/PanelContainer/HBoxContainer/Leader")
 building_dropdown = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Economy/Diplomacy/ActionsList/OptionButton")
 trade_entries = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Trade/Diplomacy/ActionsList/ScrollContainer/TradeEntries")
+production_entries = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Industry/Diplomacy/ActionsList/ScrollContainer/ProductionEntries")
 relations_hbox = NodePath("Control/SIDEBAR/SidemenuBG/Content/RelationsHbox")
 flag1 = NodePath("Control/SIDEBAR/SidemenuBG/Content/RelationsHbox/Country1")
 flag2 = NodePath("Control/SIDEBAR/SidemenuBG/Content/RelationsHbox/Country2")
@@ -943,10 +944,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Trade/Diplomacy/ActionsList" unique_id=1561574411]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="TradeEntries" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Trade/Diplomacy/ActionsList/ScrollContainer" unique_id=1036209911]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -998,11 +1001,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Industry/Diplomacy/ActionsList" unique_id=512502855]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Production" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Industry/Diplomacy/ActionsList/ScrollContainer" unique_id=2118561355]
+[node name="ProductionEntries" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Industry/Diplomacy/ActionsList/ScrollContainer" unique_id=2118561355]
+use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Military" type="Control" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=148025030]
 visible = false

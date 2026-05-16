@@ -14,7 +14,8 @@ func setup(resource: ResourceData) -> void:
 	
 	var player = CountryManager.player_country
 	if player:
-		exports.value = player.stockpile_change.get(resource.name, 0)
+		# Use trade_settings for the user's defined trade volume
+		exports.value = player.trade_settings.get(resource.name, 0)
 		update_stock_label()
 
 func update_stock_label() -> void:
@@ -28,6 +29,9 @@ func update_stock_label() -> void:
 func _on_exports_value_changed(value: float) -> void:
 	var player = CountryManager.player_country
 	if player:
-		player.stockpile_change[resource_data.name] = int(value)
-		update_stock_label()
-		# print(player.stockpile_change)
+		player.trade_settings[resource_data.name] = int(value)
+		player.recalculate_stockpile_change()
+		
+		# Update the whole trade menu to reflect changes in other resources (e.g. if trade affects production indirectly)
+		if GameState.game_ui:
+			GameState.game_ui.update_trade_menu()
