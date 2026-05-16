@@ -313,9 +313,15 @@ func _build_country_to_provinces():
 			owned[country] = []
 			occupied[country] = []
 			cities[country] = []
-
+		
 		owned[country].append(pid)
 		if occupier != "":
+			if !result.has(occupier):
+				result[occupier] = []
+				owned[occupier] = []
+				occupied[occupier] = []
+				cities[occupier] = []
+			
 			result[occupier].append(pid)
 			occupied[occupier].append(pid)
 			if province_objects[pid].city != "":

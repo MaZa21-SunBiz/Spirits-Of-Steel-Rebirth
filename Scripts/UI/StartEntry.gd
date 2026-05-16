@@ -58,6 +58,7 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				FactionManager.Initialize(map_data.get("factions", []))
 				a_percent[0] = 0.9
 				Console.add_command_autocomplete_list("tag", CountryManager.countryNames)
+				GameState.clock_cache = map_data.get("clock", {"hour": 0, "date": {"year": 2010, "month": 1, "day": 1}})
 				a_percent[0] = 1.0
 				#CountryManager.generate_missing_leaders()
 			)

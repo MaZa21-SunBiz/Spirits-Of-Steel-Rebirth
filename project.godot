@@ -19,6 +19,7 @@ run/main_scene="uid://bm4eje12awfbn"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 boot_splash/image="uid://lifcljm83dlp"
 config/icon="uid://claivv7l8p5lc"
+config/tags=PackedStringArray("rts")
 
 [audio]
 

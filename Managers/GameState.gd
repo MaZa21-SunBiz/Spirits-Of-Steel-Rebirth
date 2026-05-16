@@ -6,6 +6,8 @@ var current_world: World
 var current_start: String
 # var current_scenario_path: String
 
+var clock_cache: Dictionary
+
 var choosing_deploy_city := false
 var industry_building := IndustryType.DEFAULT
 var instabuild: bool = false
