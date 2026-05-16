@@ -206,6 +206,8 @@ func m_OnDropdownSelected(a_selected: int) -> void:
 		newColor.color = Color.from_string(creating[creating_selected].color, Color.DEEP_SKY_BLUE)
 
 func m_OnNameNewSubmitted(a_value: String) -> void:
+	if creating_selected < 0:
+		return
 	if creating[creating_selected].name in creatingProvinces:
 		creatingProvinces[a_value] = creatingProvinces[creating[creating_selected].name].duplicate()
 	for pid: int in creatingProvinces.get(creating[creating_selected].name, []):

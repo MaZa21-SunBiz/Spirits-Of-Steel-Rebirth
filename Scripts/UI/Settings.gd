@@ -91,7 +91,6 @@ func _refresh_saves():
 				continue
 				
 			found_any = true
-			print("Settings UI: Found save: ", file_name)
 			_add_save_row(save_list, file_name.replace(".json", ""), path + file_name)
 	
 	if not found_any:

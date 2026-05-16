@@ -7,7 +7,6 @@
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://dx0ahfcjo7bad" path="res://assets/ui/xanax.jpg" id="4_m3bi6"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
-[ext_resource type="Shader" uid="uid://cac81x4hbfwue" path="res://shaders/goober.gdshader" id="5_8dnnj"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
@@ -21,9 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 [ext_resource type="Script" path="res://Scripts/UI/Links.gd" id="18_ujyyl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtepg"]
-shader = ExtResource("5_8dnnj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
 shader = ExtResource("6_m3bi6")
@@ -58,7 +54,7 @@ expand_mode = 2
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
+[node name="Butter" type="Control" parent="." unique_id=166950627]
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
@@ -70,15 +66,6 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("2_vtepg")
 USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("7_wyh8j"), ExtResource("7_ehtkc"), ExtResource("8_6dk6o"), ExtResource("9_jr6u5"), ExtResource("10_6m47u")])
-AvatarImage = NodePath("Avatar")
-
-[node name="Avatar" type="TextureRect" parent="Butter" unique_id=1375568892]
-material = SubResource("ShaderMaterial_vtepg")
-layout_mode = 0
-offset_right = 278.4519
-offset_bottom = 197.0
-texture = ExtResource("10_t1dhk")
-expand_mode = 1
 
 [node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
 material = SubResource("ShaderMaterial_8dnnj")
