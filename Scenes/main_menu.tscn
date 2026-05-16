@@ -2,27 +2,17 @@
 
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://lifcljm83dlp" path="res://assets/ui/menu.png" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://b7n5fthnnvtxr" path="res://assets/ui/noFilter.webp" id="2_5egv6"]
 [ext_resource type="Texture2D" uid="uid://claivv7l8p5lc" path="res://assets/ui/logo.png" id="2_opfnp"]
-[ext_resource type="Script" uid="uid://bkclpbbspngc8" path="res://Scripts/UI/AvatarOfHate.gd" id="2_vtepg"]
 [ext_resource type="FontFile" uid="uid://bnkj3vn7gx4qu" path="res://font/Google_Sans/static/GoogleSans-BoldItalic.ttf" id="3_cp0ys"]
-[ext_resource type="Texture2D" uid="uid://dx0ahfcjo7bad" path="res://assets/ui/xanax.jpg" id="4_m3bi6"]
+[ext_resource type="Texture2D" uid="uid://pvlwa8b0o7j1" path="res://assets/ui/Good.jpg" id="3_vtepg"]
+[ext_resource type="Texture2D" uid="uid://bij3qht7a0ul1" path="res://assets/ui/Cassidy_11b.webp" id="4_8dnnj"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
-[ext_resource type="Shader" uid="uid://cfhel4q1boofw" path="res://shaders/petpet.gdshader" id="6_m3bi6"]
-[ext_resource type="Texture2D" uid="uid://yy1eedq3r5xk" path="res://assets/portraits/JoshPaulraj.png" id="7_ehtkc"]
-[ext_resource type="Texture2D" uid="uid://c55xrkqv8k1vg" path="res://assets/ui/the_rock.png" id="7_wyh8j"]
-[ext_resource type="Texture2D" uid="uid://b6fwqyd1fl8kv" path="res://assets/portraits/DaleyJohnOttersbach.png" id="8_6dk6o"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
-[ext_resource type="Texture2D" uid="uid://hm1xuuhxy0t6" path="res://assets/portraits/AdolfHitler.png" id="9_jr6u5"]
-[ext_resource type="Texture2D" uid="uid://dfsodrjldvwq5" path="res://assets/ui/ariect2.png" id="10_6m47u"]
-[ext_resource type="Texture2D" uid="uid://vmu5mixor70t" path="res://assets/ui/ariect.png" id="10_t1dhk"]
-[ext_resource type="Texture2D" uid="uid://dxagea0m3wa61" path="res://assets/ui/petpet.png" id="12_vtepg"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
 [ext_resource type="Script" uid="uid://csrd7lwmkact6" path="res://Scripts/UI/Links.gd" id="18_ujyyl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dnnj"]
-shader = ExtResource("6_m3bi6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
 content_margin_left = 14.0
@@ -54,88 +44,32 @@ expand_mode = 2
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
-[node name="Butter" type="Control" parent="." unique_id=166950627 node_paths=PackedStringArray("AvatarImage")]
-layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -279.0
-offset_top = 209.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("2_vtepg")
-USSR = Array[Texture]([ExtResource("10_t1dhk"), ExtResource("4_m3bi6"), ExtResource("2_opfnp"), ExtResource("7_wyh8j"), ExtResource("7_ehtkc"), ExtResource("8_6dk6o"), ExtResource("9_jr6u5"), ExtResource("10_6m47u")])
-AvatarImage = NodePath("TextureRect")
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=570584922]
+offset_left = 499.0
+offset_top = 334.0
+offset_right = 830.0
+offset_bottom = 650.0
+texture = ExtResource("2_5egv6")
+expand_mode = 3
+stretch_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="Butter" unique_id=1374494237]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 39.0
-offset_right = 282.0
-offset_bottom = 203.0
-texture = ExtResource("7_ehtkc")
-expand_mode = 1
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1251231895]
+offset_left = 780.0
+offset_top = 280.0
+offset_right = 1171.0
+offset_bottom = 653.0
+texture = ExtResource("3_vtepg")
+expand_mode = 3
+stretch_mode = 4
 
-[node name="Hand" type="TextureRect" parent="Butter" unique_id=1924079947]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 32.06256
-offset_top = 64.78296
-offset_right = 115.16809
-offset_bottom = 128.42346
-rotation = -0.351973
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-
-[node name="Hand5" type="TextureRect" parent="Butter" unique_id=1572649922]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 100.00006
-offset_top = 19.0
-offset_right = 183.10559
-offset_bottom = 82.6405
-rotation = 0.21252406
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-
-[node name="Hand4" type="TextureRect" parent="Butter" unique_id=885631731]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 108.772766
-offset_top = 212.75848
-offset_right = 161.23926
-offset_bottom = 252.93622
-rotation = -1.6544858
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-
-[node name="Hand2" type="TextureRect" parent="Butter" unique_id=1333335628]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 270.90283
-offset_top = 193.86789
-offset_right = 365.7743
-offset_bottom = 259.91098
-rotation = 2.9900136
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-
-[node name="Hand3" type="TextureRect" parent="Butter" unique_id=2140408290]
-material = SubResource("ShaderMaterial_8dnnj")
-layout_mode = 0
-offset_left = 185.0
-offset_top = 27.999985
-offset_right = 259.01367
-offset_bottom = 90.7995
-rotation = 0.5416184
-texture = ExtResource("12_vtepg")
-expand_mode = 1
-
-[node name="Timer" type="Timer" parent="Butter" unique_id=1343216001]
-process_callback = 0
-wait_time = 20.0
-autostart = true
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1132694433]
+offset_left = 924.0
+offset_top = 332.0
+offset_right = 1154.0
+offset_bottom = 1107.0
+texture = ExtResource("4_8dnnj")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Control" type="Control" parent="." unique_id=1445080907]
 layout_mode = 3
@@ -238,6 +172,7 @@ text = "Quit
 "
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1116322658]
+visible = false
 material = ExtResource("5_yhxw7")
 anchors_preset = 15
 anchor_right = 1.0
@@ -321,7 +256,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("18_ujyyl")
 
-[connection signal="timeout" from="Butter/Timer" to="Butter" method="OnTimerTimeout"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/New" to="PanelContainer" method="_on_new_game_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Settings" to="PanelContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Credits" to="PanelContainer" method="_on_credits_pressed"]
