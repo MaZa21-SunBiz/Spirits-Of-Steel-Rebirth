@@ -310,6 +310,14 @@ func process_hour() -> void:
 
 func _process_resource_production() -> void:
 	# This function handles the ACTUAL daily transfer of goods
+	
+	var provinces = MapManager.country_to_owned_provinces.get(country_name, [])
+	for pid in provinces:
+		var province: Province = MapManager.province_objects.get(pid)
+		if province:
+			for resource in province.resources:
+				stockpile[resource.type] = stockpile.get(resource.type, 0) + resource.amount
+
 	for resource_name in factory_allocation:
 		var allocation = factory_allocation[resource_name]
 		if allocation <= 0: continue
@@ -331,6 +339,12 @@ func _process_resource_production() -> void:
 	
 	for res in trade_settings:
 		var daily_trade = trade_settings[res] * 24
+		
+		var res_data = MapManager.resources.get(res)
+		if res_data:
+			var trade_value = daily_trade * res_data.base_price
+			money -= trade_value
+			
 		stockpile[res] = stockpile.get(res, 0) + daily_trade
 		
 	# Refresh UI values
@@ -339,9 +353,16 @@ func _process_resource_production() -> void:
 func recalculate_stockpile_change() -> void:
 	stockpile_change.clear()
 	
-	# Start with daily trade volume
+	var provinces = MapManager.country_to_owned_provinces.get(country_name, [])
+	for pid in provinces:
+		var province: Province = MapManager.province_objects.get(pid)
+		if province:
+			for resource in province.resources:
+				stockpile_change[resource.type] = stockpile_change.get(resource.type, 0) + resource.amount
+	
+	# Add daily trade volume
 	for res in trade_settings:
-		stockpile_change[res] = trade_settings[res] * 24
+		stockpile_change[res] = stockpile_change.get(res, 0) + (trade_settings[res] * 24)
 		
 	# Add daily production/consumption estimates
 	for resource_name in factory_allocation:

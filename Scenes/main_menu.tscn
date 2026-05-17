@@ -172,7 +172,6 @@ text = "Quit
 "
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1116322658]
-visible = false
 material = ExtResource("5_yhxw7")
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,15 +240,12 @@ theme = ExtResource("1_28flt")
 text = "Thanks y'all"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1546527840]
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -154.0
-offset_top = -40.0
+offset_bottom = 40.0
 grow_horizontal = 0
-grow_vertical = 0
 bbcode_enabled = true
 text = "[url=https://discord.gg/GbyABEssVE]SOS:R Discord!!!![/url]"
 horizontal_alignment = 1

@@ -34,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://c7iqt8unxm2ec" path="res://assets/ui/fish2.png" id="27_bfmcl"]
 [ext_resource type="Texture2D" uid="uid://m0vdhqgoy3y6" path="res://assets/ui/fish3.jpg" id="28_1nbba"]
 [ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
-[ext_resource type="Texture2D" uid="uid://nb3jbdnpc4c0" path="res://assets/ui/AKey.png" id="30_vbips"]
 [ext_resource type="Texture2D" uid="uid://r6tnmnjrr2ug" path="res://assets/icons/anchor_element.svg" id="31_ekg1n"]
 [ext_resource type="StyleBox" uid="uid://c7a4lb0uslu15" path="res://UI/GameUI/SectionHeader.tres" id="32_anvjc"]
 [ext_resource type="Texture2D" uid="uid://vqncahcku1w6" path="res://assets/icons/rail_road.svg" id="32_ol53e"]
@@ -706,7 +705,7 @@ layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -818,7 +817,6 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=1287649525]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -873,19 +871,16 @@ theme_override_styles/normal = ExtResource("33_oouja")
 alignment = 1
 selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "None"
-popup/item_0/icon = ExtResource("30_vbips")
-popup/item_0/id = 3
-popup/item_1/text = "Factory"
-popup/item_1/icon = ExtResource("9_5hlpc")
-popup/item_1/id = 0
-popup/item_2/text = "Port"
-popup/item_2/icon = ExtResource("31_ekg1n")
-popup/item_2/id = 1
-popup/item_3/text = "Infrastructure"
-popup/item_3/icon = ExtResource("32_ol53e")
-popup/item_3/id = 2
+item_count = 3
+popup/item_0/text = "Factory"
+popup/item_0/icon = ExtResource("9_5hlpc")
+popup/item_0/id = 0
+popup/item_1/text = "Port"
+popup/item_1/icon = ExtResource("31_ekg1n")
+popup/item_1/id = 1
+popup/item_2/text = "Infrastructure"
+popup/item_2/icon = ExtResource("32_ol53e")
+popup/item_2/id = 2
 
 [node name="Queue" type="ScrollContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Economy/Diplomacy/ActionsList" unique_id=2015001235]
 use_parent_material = true
@@ -899,6 +894,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Trade" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=144003420]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 2

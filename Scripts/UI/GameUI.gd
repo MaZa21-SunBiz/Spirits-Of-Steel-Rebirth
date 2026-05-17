@@ -515,6 +515,10 @@ func open_menu(context: Context, category: Category) -> void:
 	current_context = context
 	current_category = category
 
+	var active_tab_container = sidemenu_context.get_child(context)
+	if active_tab_container is TabContainer:
+		active_tab_container.current_tab = category
+
 	if selected_country:
 		sidemenu_pointer.position.x = remap(selected_country.ideology[0], -100, 100, 3, 97)
 		sidemenu_pointer.position.y = remap(selected_country.ideology[1], -100, 100, 3, 97)
@@ -629,10 +633,12 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 			MapManager.show_industry_country(CountryManager.player_country.country_name)
 			print(EconomyManager.building_designs)
 			print(EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}))
-			building_dropdown.clear()
-			building_dropdown.add_item("Infrastructure")
+			var keep_count = 3
+			while building_dropdown.item_count > keep_count:
+				building_dropdown.remove_item(keep_count)
 			for buildingTemplateName: String in EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}):
 				building_dropdown.add_item(buildingTemplateName)
+			_on_building_selected(building_dropdown.selected)
 		else:
 			MapManager.set_country_color(CountryManager.player_country.country_name, Color.TRANSPARENT)
 			GameState.industry_building = GameState.IndustryType.DEFAULT

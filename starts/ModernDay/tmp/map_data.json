@@ -80,14 +80,10 @@
 	"clock": {
 		"date": {
 			"day": 1,
-			"hour": 0,
-			"minute": 0,
 			"month": 1,
-			"second": 0,
-			"weekday": 5,
 			"year": 2010
 		},
-		"hour": 20
+		"hour": 0
 	},
 	"factions": [
 		{
@@ -9239,7 +9235,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -9439,7 +9435,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -9968,7 +9964,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -10507,7 +10503,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -11597,7 +11593,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -12109,7 +12105,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -12152,7 +12148,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -12406,7 +12402,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -13141,7 +13137,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -13394,7 +13390,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -13718,7 +13714,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -15048,7 +15044,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -16059,7 +16055,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -17052,7 +17048,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -17079,7 +17075,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -17624,7 +17620,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -17980,7 +17976,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -18424,7 +18420,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromite"
 				}
 			],
 			"troops": [],
@@ -19559,7 +19555,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -20828,7 +20824,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -21642,7 +21638,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -23538,7 +23534,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -23925,7 +23921,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -25865,7 +25861,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -26929,7 +26925,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -27188,7 +27184,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -27215,7 +27211,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -27475,7 +27471,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -28864,7 +28860,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -28891,7 +28887,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -28918,7 +28914,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -29983,7 +29979,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -32409,7 +32405,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -34184,7 +34180,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -36085,7 +36081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -36241,7 +36237,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -36672,7 +36668,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -38460,7 +38456,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -42731,7 +42727,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -43648,7 +43644,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -46795,7 +46791,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -51953,7 +51949,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -52798,7 +52794,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -53122,7 +53118,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -53880,7 +53876,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -55390,7 +55386,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -57016,7 +57012,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -58210,7 +58206,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -60195,7 +60191,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -60514,7 +60510,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -60595,7 +60591,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -61563,7 +61559,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -64013,7 +64009,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -65133,7 +65129,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -67643,7 +67639,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -67670,7 +67666,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -68637,7 +68633,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -68831,7 +68827,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -69700,7 +69696,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -71287,7 +71283,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -71450,7 +71446,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -72567,7 +72563,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -74296,7 +74292,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -77671,7 +77667,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -78126,7 +78122,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -82074,7 +82070,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -83388,7 +83384,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -83857,7 +83853,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -84700,7 +84696,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -89085,7 +89081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -89421,7 +89417,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -90475,7 +90471,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -91151,7 +91147,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -91588,7 +91584,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -91642,7 +91638,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -93266,7 +93262,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -93487,7 +93483,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -94535,7 +94531,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -95728,7 +95724,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -96215,7 +96211,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -98435,7 +98431,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -98839,7 +98835,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -98866,7 +98862,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -99470,6 +99466,11 @@
 					"amount": 2,
 					"quality": 0.5,
 					"type": "Iron"
+				},
+				{
+					"amount": 1,
+					"quality": 1.0,
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -99631,7 +99632,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -100079,7 +100080,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Manganese"
 				}
 			],
 			"troops": [],
@@ -100193,7 +100194,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Lead"
 				}
 			],
 			"troops": [],
@@ -100584,7 +100585,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -100865,7 +100866,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -104229,7 +104230,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -104451,7 +104452,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -105001,7 +105002,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -105218,7 +105219,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -105369,7 +105370,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -106029,7 +106030,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -106062,7 +106063,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Bauxite"
 				}
 			],
 			"troops": [],
@@ -106710,7 +106711,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Chromium"
 				}
 			],
 			"troops": [],
@@ -107686,7 +107687,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -108075,7 +108076,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -108895,7 +108896,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -108938,7 +108939,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -109466,7 +109467,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -109839,7 +109840,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Zinc"
 				}
 			],
 			"troops": [],
@@ -110223,7 +110224,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -110304,7 +110305,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -111080,7 +111081,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -111831,7 +111832,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -113729,7 +113730,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Lead"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -115518,7 +115519,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -116638,7 +116639,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Tin"
 				}
 			],
 			"troops": [],
@@ -116805,7 +116806,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -117944,7 +117945,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -118332,7 +118333,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Titanium"
 				}
 			],
 			"troops": [],
@@ -118467,7 +118468,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -118554,7 +118555,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Nickel"
 				}
 			],
 			"troops": [],
@@ -120106,7 +120107,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Copper"
 				}
 			],
 			"troops": [],
@@ -121283,7 +121284,7 @@
 				{
 					"amount": 2,
 					"quality": 0.5,
-					"type": "Iron"
+					"type": "Gold"
 				}
 			],
 			"troops": [],
@@ -122649,6 +122650,16 @@
 			"color": "#3D4C58",
 			"icon": "Ingot",
 			"name": "Zinc",
+			"production_reqs": [],
+			"tags": {
+
+			}
+		},
+		{
+			"base_price": 100,
+			"color": "#E89E9E",
+			"icon": "Ingot",
+			"name": "Manganese",
 			"production_reqs": [],
 			"tags": {
 

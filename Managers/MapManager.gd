@@ -520,7 +520,7 @@ func _get_contextual_highlight(pid: int) -> Color:
 
 	if GameState.industry_building == GameState.IndustryType.PORT:
 		var coastal_provinces = get_provinces_near_sea(player_name)
-		if pid in coastal_provinces && province_objects[pid].buildings.find_custom(func(a_building): return a_building.type == "Port") != -1:
+		if pid in coastal_provinces && province_objects[pid].buildings.find_custom(func(a_building): return a_building.type == "Port") == -1:
 			return Color.CYAN
 		else:
 			return Color.TRANSPARENT
@@ -610,11 +610,11 @@ func _province_build_industry(pid: int, a_countryName: String, type: GameState.I
 		GameState.IndustryType.PORT:
 			if (
 				province.buildings.size() >= 4
-				&& !(pid in get_provinces_near_sea(a_countryName))
-				&& (
+				|| !(pid in get_provinces_near_sea(a_countryName))
+				|| (
 					province.buildings.find_custom(
-					func(a_building: BuildingData): return a_building.type != "Port"
-					) == -1
+					func(a_building: BuildingData): return a_building.type == "Port"
+					) != -1
 				)
 			): return false
 			EconomyManager.start_construction(pid, "Port", 10, 150.0, CountryManager.countries[a_countryName])
@@ -1041,21 +1041,32 @@ func ShowInfrastructureMap() -> void:
 	if province_objects.is_empty():
 		return
 
+	state_color_image.set_pixel(0, 0, SEA_MAIN) # ID 0: Sea
+	state_color_image.set_pixel(1, 0, Color.BLACK) # ID 1: Borders/Grid
+
 	for pid in province_objects.keys():
 		if pid <= 1 || province_objects[pid].country == "Sea":
 			continue
+			
+		var display_color = Color.BLACK
 		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.get_all_allowed_countries().has(province_objects[pid].country):
-			state_color_image.set_pixel(pid, 0, CountryManager.GetCountryColor(province_objects[pid].country))
+			display_color = CountryManager.GetCountryColor(province_objects[pid].country)
 		else:
 			var infra = province_objects[pid].infrastructure
 			if infra == 0:
-				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.WHITE * 0.5)
+				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.WHITE * 0.5
 			elif infra == province_objects[pid].maxInfrastructure:
-				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.BLUE * 0.5)
+				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.BLUE * 0.5
 			else:
-				state_color_image.set_pixel(pid, 0, CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure))
+				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure)
+				
+		state_color_image.set_pixel(pid, 0, display_color)
+		state_color_image.set_pixel(pid, 1, display_color)
 
 	state_color_texture.update(state_color_image)
+	KeyboardManager.current_view = KeyboardManager.MapView.INFRASTRUCTURE
+	if GameState.game_ui and GameState.game_ui.map_tabs:
+		GameState.game_ui.map_tabs.current_tab = KeyboardManager.current_view
 	print("MapManager: Infrastructure View Updated.")
 
 func show_ethnic_map() -> void:
