@@ -151,6 +151,9 @@ func load_map_data(mapData: Dictionary):
 	var b_data = mapData.get("biomes")
 	MapManager.LoadBiomes(b_data if b_data is Array else [])
 	
+	var recipes_data = mapData.get("recipes")
+	MapManager.LoadRecipes(recipes_data if recipes_data is Array else [])
+	
 	var r_data = mapData.get("resources")
 	MapManager.LoadResources(r_data if r_data is Array else [])
 	
@@ -202,6 +205,7 @@ func save_game(slot: String):
 	var save_data = {
 		"clock": clock.ToDict() if clock else {},
 		"resources": MapManager.SaveResourcesData(),
+		"recipes": MapManager.SaveRecipesData(),
 		"biomes": MapManager.SaveBiomeData(),
 		"provinces": MapManager.save_country_data(),
 		"polities": CountryManager.save_countries(),

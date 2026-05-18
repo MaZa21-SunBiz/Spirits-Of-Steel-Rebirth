@@ -1,9 +1,9 @@
 extends HBoxContainer
 
-@onready var icon: TextureRect = $Icon
-@onready var resource_name: Label = %ResourceName
-@onready var resource_stock: Label = %ResourceStock
-@onready var exports: SpinBox = $Exports
+@export var icon: TextureRect
+@export var resource_name: Label
+@export var resource_stock: Label
+@export var exports: SpinBox
 
 var resource_data: ResourceData
 
@@ -22,9 +22,15 @@ func setup(resource: ResourceData) -> void:
 func update_stock_label() -> void:
 	var player = CountryManager.player_country
 	if player:
+		var price = resource_data.base_price
+		var volume = player.trade_settings.get(resource_data.name, 0)
+		var daily_profit_loss = - (volume * 24 * price)
+		
 		resource_stock.text = (
-			"In Stock: " + str(player.stockpile.get(resource_data.name, 0)) 
-			+ ", Net Change: " + str(player.stockpile_change.get(resource_data.name, 0))
+			"Price: $" + str(price)
+			+"\nIn Stock: " + str(player.stockpile.get(resource_data.name, 0))
+			+"\nNet Change: " + str(player.stockpile_change.get(resource_data.name, 0))
+			+"\nDaily Income: $" + GameState.game_ui.format_number(daily_profit_loss)
 		)
 
 func _on_exports_value_changed(value: float) -> void:

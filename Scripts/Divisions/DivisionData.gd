@@ -15,7 +15,9 @@ const TEMPLATES = {
 		"days": 9,
 		"attack": 1,
 		"defense": 1,
-		"speed": 1.0
+		"speed": 1.0,
+		"required_resource": "Infantry_equipment",
+		"required_resource_amount": 100
 	},
 	"tank":
 	{
@@ -25,7 +27,9 @@ const TEMPLATES = {
 		"days": 30,
 		"attack": 5,
 		"defense": 7,
-		"speed": 2.5
+		"speed": 2.5,
+		"required_resource": "Tank_equipment",
+		"required_resource_amount": 50
 	},
 	"artillery":
 	{
@@ -35,7 +39,9 @@ const TEMPLATES = {
 		"days": 15,
 		"attack": 5,
 		"defense": 0.3,
-		"speed": 0.8
+		"speed": 0.8,
+		"required_resource": "Artillery_equipment",
+		"required_resource_amount": 30
 	}
 }
 

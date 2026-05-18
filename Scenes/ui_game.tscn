@@ -17,14 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cfcs8yypqofyp" path="res://assets/icons/merge_icon.png" id="15_bfmcl"]
 [ext_resource type="FontFile" uid="uid://cfsmiwr5bc70" path="res://font/Google_Sans/static/GoogleSans-Medium.ttf" id="15_yp111"]
 [ext_resource type="Texture2D" uid="uid://cbnb2bc0uek4x" path="res://assets/icons/plan.svg" id="16_1nbba"]
-[ext_resource type="Theme" uid="uid://6wluupp1lmut" path="res://tab_button_theme.tres" id="16_6c76w"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="16_lpwmk"]
 [ext_resource type="Texture2D" uid="uid://c8e1qq2hmmr2g" path="res://assets/flags/tonga/neutral_flag.png" id="18_hx7os"]
-[ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="19_2igyl"]
 [ext_resource type="Texture2D" uid="uid://blvxrdiioikq5" path="res://assets/ui/compass.svg" id="20_lpwmk"]
-[ext_resource type="Texture2D" uid="uid://cs0x7p3s7884f" path="res://starts/ModernEmpires/assets/division_icons/artillery.svg" id="20_patwf"]
 [ext_resource type="Texture2D" uid="uid://cguw0kyb47w0m" path="res://assets/icons/star_icon.svg" id="21_lpwmk"]
-[ext_resource type="Texture2D" uid="uid://bs0h3xk4410m" path="res://starts/ModernEmpires/assets/division_icons/tank.svg" id="21_qnodh"]
 [ext_resource type="Script" uid="uid://cxtx0rygv0x2i" path="res://Scripts/UI/Elements/input_division.gd" id="21_w7nfq"]
 [ext_resource type="Texture2D" uid="uid://vno81qg75ni2" path="res://assets/icons/culture_icon.svg" id="24_5hlpc"]
 [ext_resource type="StyleBox" uid="uid://b8oyijxntuvdq" path="res://UI/DividerLeftTheme.tres" id="25_2a76p"]
@@ -36,7 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://bsg7ftkm5j2h3" path="res://assets/ui/fish4.jpg" id="29_anvjc"]
 [ext_resource type="Texture2D" uid="uid://r6tnmnjrr2ug" path="res://assets/icons/anchor_element.svg" id="31_ekg1n"]
 [ext_resource type="StyleBox" uid="uid://c7a4lb0uslu15" path="res://UI/GameUI/SectionHeader.tres" id="32_anvjc"]
+[ext_resource type="Texture2D" uid="uid://c1fawjbd2awjl" path="res://assets/icons/lumber_camp.svg" id="32_ekg1n"]
 [ext_resource type="Texture2D" uid="uid://vqncahcku1w6" path="res://assets/icons/rail_road.svg" id="32_ol53e"]
+[ext_resource type="Texture2D" uid="uid://bxc1gkkme6b3h" path="res://assets/icons/quarry.svg" id="33_ol53e"]
 [ext_resource type="StyleBox" uid="uid://qsjt77iuokiv" path="res://UI/GameUI/SectionButton.tres" id="33_oouja"]
 [ext_resource type="Texture2D" uid="uid://cenvc2ywijqbq" path="res://assets/icons/decision.svg" id="34_qsn4r"]
 [ext_resource type="Texture2D" uid="uid://0cakty577pqq" path="res://assets/icons/flag_icon.svg" id="39_e0ul0"]
@@ -127,7 +125,7 @@ shadow_color = Color(0, 0, 0, 0.3137255)
 shadow_size = 7
 anti_aliasing = false
 
-[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "trade_entries", "production_entries", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "factions_box", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "troop_container", "troop_list_parent", "logistics")]
+[node name="GameUI" type="CanvasLayer" unique_id=4700273 node_paths=PackedStringArray("topbar", "nation_flag", "label_date", "radios_panel", "label_pp", "label_manpower", "label_money", "label_industry", "label_stability", "label_war_support", "label_world_tension", "notif_box", "plus", "minus", "progress_bar", "sidemenu", "sidemenu_pointer", "play_btn", "sidemenu_country_label", "sidemenu_context", "sidemenu_trooplist", "sidemenu_buildings", "sidemenu_leader_portrait", "building_dropdown", "trade_entries", "production_entries", "relations_hbox", "flag1", "flag2", "owner1", "owner2", "relation1", "relation2", "factions_box", "faction_prompt", "military_access_label", "accepted_cultures", "unaccepted_cultures", "select_player_stat", "radio_list", "now_playing", "map_tabs", "military_extra_panel", "input_division", "button_train", "division_type", "div_type", "div_stats", "costs", "manpower", "resouce", "resouce_cost", "troop_container", "troop_list_parent", "logistics")]
 script = ExtResource("1_rp7y5")
 topbar = NodePath("Control/Topbar/HBoxContainer")
 nation_flag = NodePath("Control/Topbar/HBoxContainer/nation_flag")
@@ -179,6 +177,8 @@ div_type = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/Player
 div_stats = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Stats/amount")
 costs = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost/amount")
 manpower = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Manpower/amount")
+resouce = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Resource/Label")
+resouce_cost = NodePath("Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Resource/amount")
 troop_container = NodePath("Control/TroopContainer")
 troop_list_parent = NodePath("Control/TroopContainer/ScrollContainer/VBoxContainer")
 logistics = NodePath("Control/CenterStuff/Logistics")
@@ -705,7 +705,7 @@ layout_mode = 2
 theme = ExtResource("13_sdmnd")
 theme_type_variation = &"InfoTabContainer"
 tab_alignment = 1
-current_tab = 1
+current_tab = 4
 clip_tabs = false
 all_tabs_in_front = true
 tab_0/icon = ExtResource("5_0e43j")
@@ -817,6 +817,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 text = "Create Faction"
 
 [node name="Economy" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=1287649525]
+visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
@@ -871,7 +872,7 @@ theme_override_styles/normal = ExtResource("33_oouja")
 alignment = 1
 selected = 0
 allow_reselect = true
-item_count = 3
+item_count = 5
 popup/item_0/text = "Factory"
 popup/item_0/icon = ExtResource("9_5hlpc")
 popup/item_0/id = 0
@@ -881,6 +882,12 @@ popup/item_1/id = 1
 popup/item_2/text = "Infrastructure"
 popup/item_2/icon = ExtResource("32_ol53e")
 popup/item_2/id = 2
+popup/item_3/text = "Lumber Camp"
+popup/item_3/icon = ExtResource("32_ekg1n")
+popup/item_3/id = 3
+popup/item_4/text = "Quarry"
+popup/item_4/icon = ExtResource("33_ol53e")
+popup/item_4/id = 4
 
 [node name="Queue" type="ScrollContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Economy/Diplomacy/ActionsList" unique_id=2015001235]
 use_parent_material = true
@@ -1011,7 +1018,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Military" type="Control" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs" unique_id=148025030]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 4
@@ -1033,49 +1039,13 @@ mouse_filter = 2
 [node name="Stats" type="PanelContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra" unique_id=1873248397]
 use_parent_material = true
 layout_mode = 1
-offset_top = -11.0
+offset_top = -33.0
 offset_right = 109.0
 offset_bottom = 101.0
 theme = ExtResource("13_sdmnd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats" unique_id=1745200345]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer" unique_id=1330084502]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 19
-
-[node name="button_infantry" type="Button" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1194038523]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("19_2igyl")
-icon_alignment = 1
-expand_icon = true
-
-[node name="button_artillery" type="Button" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=377772696]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("20_patwf")
-icon_alignment = 1
-expand_icon = true
-
-[node name="button_tank" type="Button" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/HBoxContainer" unique_id=1505714444]
-material = ExtResource("16_lpwmk")
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("16_6c76w")
-icon = ExtResource("21_qnodh")
-icon_alignment = 1
-expand_icon = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer" unique_id=1435869281]
 layout_mode = 2
@@ -1124,6 +1094,18 @@ size_flags_horizontal = 3
 text = "Costs/day:"
 
 [node name="amount" type="Label" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Cost" unique_id=1340317349]
+layout_mode = 2
+text = "100"
+
+[node name="Resource" type="HBoxContainer" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer" unique_id=1109547495]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Resource" unique_id=616405196]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Costs/day:"
+
+[node name="amount" type="Label" parent="Control/SIDEBAR/SidemenuBG/Content/ContextAndButtons/PlayerTabs/Military/MilitaryExtra/Stats/VBoxContainer/VBoxContainer/Resource" unique_id=752544367]
 layout_mode = 2
 text = "100"
 

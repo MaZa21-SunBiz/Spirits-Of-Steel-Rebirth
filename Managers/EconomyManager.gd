@@ -65,17 +65,13 @@ func start_construction(
 	daily_cost: float,
 	country: CountryData
 ):
-
-	print(
-		pid,
-		type,
-		total_days,
-		daily_cost,
-		country
-	)
+	var building_province: Province = MapManager.province_objects[pid]
 	# Set the province enum to BUILDING state immediately
-	MapManager.province_objects[pid].buildings.append(
-		BuildingData.FromValues(type, BuildingData.BuildingState.CONSTRUCTION)
+	building_province.buildings.append(
+		BuildingData.FromValues(
+			type,
+			BuildingData.BuildingState.CONSTRUCTION
+		)
 	)
 	
 	if country == CountryManager.player_country:
@@ -84,7 +80,7 @@ func start_construction(
 
 	construction_queue[pid] = {
 		"type": type,
-		"index": MapManager.province_objects[pid].buildings.size() - 1,
+		"index": building_province.buildings.size() - 1,
 		"days": total_days,
 		"daily_cost": daily_cost,
 		"country": country
@@ -95,15 +91,48 @@ func start_construction(
 		construction_queue.erase(pid)
 
 func _complete_construction(pid: int, project: Dictionary):
+	var building_province: Province = MapManager.province_objects[pid]
 	# Update enum to BUILT state
-	if project["index"] != -1 && MapManager.province_objects[pid].buildings.size() > project["index"]:
-		MapManager.province_objects[pid].buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
-		CountryManager.countries[MapManager.province_objects[pid].country].factories_amount += 1
+	print(project["index"])
+	print(building_province.buildings.size())
+	if (
+			project["index"] != -1
+			&& project["index"] < building_province.buildings.size()
+		):
+		building_province.buildings[project["index"]].state = BuildingData.BuildingState.FUNCTIONAL
+		print(project)
+		match project["type"]:
+			"Factory":
+				CountryManager.countries[building_province.country].factories_amount += 1
+			"Quarry":
+				print(building_province.resources)
+				if building_province.resources.size() == 0:
+					building_province.resources.append(
+						ResourceNode.FromDict(
+							{
+								"type": "Sandstone",
+								"amount": 2,
+								"quality": 2
+							}
+						)
+					)
+				building_province.resource_multiplier += 2
+			"Lumber":
+				building_province.resources.append(
+					ResourceNode.FromDict(
+						{
+							"type": "Timber",
+							"amount": 2,
+							"quality": 2
+						}
+					)
+				)
 	else:
 		match project["type"]:
 			"Infrastructure":
-				MapManager.province_objects[pid].infrastructure += 1
+				building_province.infrastructure += 1
 
+	CountryManager.countries[building_province.GetFunctionalOwner()].recalculate_stockpile_change()
 	if project["country"].is_player:
 		#EventManager.show_alert("economy", country, null, "Construction of %s complete!" % type.capitalize())
 		if GameState.industry_building:

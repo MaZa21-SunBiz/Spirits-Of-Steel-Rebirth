@@ -5,12 +5,17 @@ extends PanelContainer
 @export var resource_icon: TextureRect
 @export var allocated_factories: HSlider
 @export var reqs_box: Container
+@export var stockpile_value: Label
+@export var produced_value: Label
 
-func setup(resource: ResourceData) -> void:
-	resource_name = resource.name
+func setup(recipe: RecipeData) -> void:
+	resource_name = recipe.produced_resource
 	resource_label.text = resource_name
-	resource_icon.texture = MapManager.GetResourceIcon(resource.name)
-	resource_icon.modulate = resource.color
+	
+	var resource = MapManager.resources.get(resource_name)
+	if resource:
+		resource_icon.texture = MapManager.GetResourceIcon(resource_name)
+		resource_icon.modulate = resource.color
 	
 	var player = CountryManager.player_country
 	if player:
@@ -24,7 +29,7 @@ func setup(resource: ResourceData) -> void:
 	for child in reqs_box.get_children():
 		child.queue_free()
 	
-	for req in resource.production_reqs:
+	for req in recipe.resources_required:
 		var rect = TextureRect.new()
 		rect.texture = MapManager.GetResourceIcon(req)
 		rect.modulate = MapManager.resources[req].color
@@ -39,6 +44,8 @@ func update_limit() -> void:
 	var player = CountryManager.player_country
 	if !player: return
 	
+	stockpile_value.text = str(player.stockpile.get(resource_name, 0))
+	produced_value.text  = str(player.stockpile_change.get(resource_name, 0))
 	var current_total = player.get_total_allocated_factories()
 	var current_val = player.factory_allocation.get(resource_name, 0)
 	var available = player.factories_amount - current_total

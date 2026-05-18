@@ -1,17 +1,25 @@
 [gd_scene format=3 uid="uid://cb5k8m8v8x7j7"]
 
 [ext_resource type="Script" uid="uid://2xyhe2jvrxc2" path="res://Scripts/UI/TradeEntry.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://rw8a20c8pmlr" path="res://assets/icons/infantry.svg" id="2_m7pvk"]
 
-[node name="TradeEntry" type="HBoxContainer" unique_id=993888314]
+[node name="TradeEntry" type="HBoxContainer" unique_id=993888314 node_paths=PackedStringArray("icon", "resource_name", "resource_stock", "exports")]
 use_parent_material = true
+offset_right = 443.0
+offset_bottom = 101.0
 size_flags_horizontal = 3
 script = ExtResource("1_script")
+icon = NodePath("Icon")
+resource_name = NodePath("ResourceStats/ResourceName")
+resource_stock = NodePath("ResourceStats/HBoxContainer/ResourceStock")
+exports = NodePath("ResourceStats/HBoxContainer/Exports")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=4007485]
 use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-expand_mode = 1
+texture = ExtResource("2_m7pvk")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="ResourceStats" type="VBoxContainer" parent="." unique_id=2007483340]
@@ -20,21 +28,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ResourceName" type="Label" parent="ResourceStats" unique_id=1433666366]
-unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Resource Name"
+horizontal_alignment = 1
 
-[node name="ResourceStock" type="Label" parent="ResourceStats" unique_id=441107766]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="ResourceStats" unique_id=348154239]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "In Stock: 0, Net Change: 0"
 
-[node name="Exports" type="SpinBox" parent="." unique_id=1263304958]
+[node name="ResourceStock" type="Label" parent="ResourceStats/HBoxContainer" unique_id=441107766]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "In Stock: 0
+Net Change: 0
+adf
+asdf"
+
+[node name="Exports" type="SpinBox" parent="ResourceStats/HBoxContainer" unique_id=1263304958]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 min_value = -1000.0
 max_value = 1000.0
 
-[connection signal="value_changed" from="Exports" to="." method="_on_exports_value_changed"]
+[connection signal="value_changed" from="ResourceStats/HBoxContainer/Exports" to="." method="_on_exports_value_changed"]

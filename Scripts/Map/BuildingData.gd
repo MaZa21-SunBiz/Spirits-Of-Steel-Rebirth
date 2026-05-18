@@ -11,7 +11,11 @@ enum BuildingState {
 @export var state: BuildingState
 @export var durability: float
 
-static func FromValues(a_type: String, a_state: BuildingState, a_durability: float = 1.0) -> BuildingData:
+static func FromValues(
+	a_type: String,
+	a_state: BuildingState,
+	a_durability: float = 1.0
+) -> BuildingData:
 	var building: BuildingData = BuildingData.new()
 	
 	building.type = a_type

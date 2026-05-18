@@ -126,7 +126,6 @@ func m_CreateResource() -> void:
 		resourceColor.color,
 		resourceIcon.text,
 		100,
-		[],
 		{}
 	)
 	mapEditor.SetupResourcesList()

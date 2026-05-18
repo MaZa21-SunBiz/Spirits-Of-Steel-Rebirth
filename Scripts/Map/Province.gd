@@ -2,7 +2,14 @@ extends Resource
 class_name Province
 
 enum { SEA = 0, LAND = 1 }
-enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACTORY_BUILT = 2, PORT_BUILT = 2}
+enum {
+	NO_FACTORY = 0,
+	NO_PORT = 0,
+	FACTORY_BUILDING = 1,
+	PORT_BUILDING = 1,
+	FACTORY_BUILT = 2,
+	PORT_BUILT = 2
+}
 
 @export var type: int = Province.LAND
 @export var id: int
@@ -11,6 +18,7 @@ enum {NO_FACTORY = 0, NO_PORT = 0, FACTORY_BUILDING = 1, PORT_BUILDING = 1, FACT
 @export var occupier: String
 @export var biome: String
 @export var resources: Array[ResourceNode]
+@export var resource_multiplier: int = 1
 @export var city: String
 @export var buildings: Array[BuildingData]
 @export var populations: Array[PopulationData]
@@ -43,6 +51,7 @@ func ToDict(troops_data: Array = []) -> Dictionary:
 		"occupier": self.occupier,
 		"biome": self.biome,
 		"resources": resource_array,
+		"resource_multiplier": resource_multiplier,
 		"city": self.city,
 		"buildings": building_array,
 		"populations": population_array,
@@ -65,6 +74,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.country = "Sea"
 		province.occupier = ""
 		province.biome = a_data.get("biome", "Sea")
+		province.resource_multiplier = a_data.get("resource_multiplier", 1)
 		for resourceData: Dictionary in a_data.get("resources", []):
 			province.resources.append(ResourceNode.FromDict(resourceData))
 		province.city = ""
@@ -80,6 +90,7 @@ static func FromDict(a_data: Dictionary) -> Province:
 		province.country = a_data["polity"]
 		province.occupier = a_data.get("occupier", "")
 		province.biome = a_data.get("biome", "Plains")
+		province.resource_multiplier = a_data.get("resource_multiplier", 1)
 		for resourceData: Dictionary in a_data.get("resources", []):
 			province.resources.append(ResourceNode.FromDict(resourceData))
 		province.city =  a_data.get("city", "")

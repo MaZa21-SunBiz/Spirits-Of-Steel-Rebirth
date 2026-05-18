@@ -322,18 +322,18 @@ func _process_resource_production() -> void:
 		var allocation = factory_allocation[resource_name]
 		if allocation <= 0: continue
 			
-		var res_data = MapManager.resources.get(resource_name)
-		if not res_data: continue
+		var recipe = MapManager.recipes.get(resource_name)
+		if not recipe: continue
 			
 		var daily_allocation = allocation * 24
 		var can_produce = true
-		for req in res_data.production_reqs:
+		for req in recipe.resources_required:
 			if stockpile.get(req, 0) < daily_allocation:
 				can_produce = false
 				break
 		
 		if can_produce:
-			for req in res_data.production_reqs:
+			for req in recipe.resources_required:
 				stockpile[req] = stockpile.get(req, 0) - daily_allocation
 			stockpile[resource_name] = stockpile.get(resource_name, 0) + daily_allocation
 	
@@ -358,7 +358,7 @@ func recalculate_stockpile_change() -> void:
 		var province: Province = MapManager.province_objects.get(pid)
 		if province:
 			for resource in province.resources:
-				stockpile_change[resource.type] = stockpile_change.get(resource.type, 0) + resource.amount
+				stockpile_change[resource.type] = province.resource_multiplier*(stockpile_change.get(resource.type, 0) + resource.amount)
 	
 	# Add daily trade volume
 	for res in trade_settings:
@@ -369,11 +369,11 @@ func recalculate_stockpile_change() -> void:
 		var allocation = factory_allocation[resource_name]
 		if allocation <= 0: continue
 		
-		var res_data = MapManager.resources.get(resource_name)
-		if not res_data: continue
+		var recipe = MapManager.recipes.get(resource_name)
+		if not recipe: continue
 		
 		var daily_vol = allocation * 24
-		for req in res_data.production_reqs:
+		for req in recipe.resources_required:
 			stockpile_change[req] = stockpile_change.get(req, 0) - daily_vol
 		stockpile_change[resource_name] = stockpile_change.get(resource_name, 0) + daily_vol
 
@@ -426,13 +426,19 @@ func train_troops(count: int, type: String = "infantry") -> bool:
 		return false
 
 	var total_manpower_needed = count * template["manpower"]
+	var res_req = template.get("required_resource", "")
+	var res_amount = template.get("required_resource_amount", 0) * count
 
-	# Check affordability (Manpower + First day of cost)
+	# Check affordability (Manpower + First day of cost + Required resources)
 	if manpower < total_manpower_needed or money < count * template["cost"] * divCostMod:
+		return false
+	if res_req != "" and stockpile.get(res_req, 0) < res_amount:
 		return false
 
 	manpower -= total_manpower_needed
 	mobilized += total_manpower_needed
+	if res_req != "":
+		stockpile[res_req] = stockpile.get(res_req, 0) - res_amount
 	#dirty_manpower = true
 
 	# Add to training queue

@@ -32,6 +32,7 @@ var province_objects: Dictionary[int, Province] = {}
 
 var biomes: Dictionary[String, BiomeData] = {}
 var resources: Dictionary[String, ResourceData] = {}
+var recipes: Dictionary[String, RecipeData] = {}
 
 # var adjacency_list: Dictionary = {} # Stores {ID: [Neighbor_ID_1, Neighbor_ID_2, ...]}
 var current_hovered_pid: int = -1
@@ -81,6 +82,22 @@ func LoadResources(a_resourceData: Array) -> void:
 	resources.clear()
 	for resource: Dictionary in a_resourceData:
 		resources[resource["name"]] = ResourceData.FromDict(resource)
+		
+		# Fallback: extract recipe from resource production_reqs if recipes list is empty
+		if recipes.is_empty() and resource.has("production_reqs") and not resource["production_reqs"].is_empty():
+			var recipe_dict = {
+				"produced_resource": resource["name"],
+				"resources_required": resource["production_reqs"]
+			}
+			recipes[resource["name"]] = RecipeData.FromDict(recipe_dict)
+
+func LoadRecipes(a_recipesData: Array) -> void:
+	recipes.clear()
+	for recipe_dict in a_recipesData:
+		if recipe_dict is Dictionary:
+			var recipe = RecipeData.FromDict(recipe_dict)
+			if recipe.produced_resource != "":
+				recipes[recipe.produced_resource] = recipe
 
 # Helper to check both custom and default locations
 func FindResourceResource(sub_path: String):
@@ -201,7 +218,9 @@ func Initialize(a_map: Texture2D, a_provinceData: Dictionary, a_progress: Array)
 	a_progress[0] += 0.025
 	_build_adjacency_list(a_progress)
 	_build_global_registry()
+	recalculate_resource_prices()
 	a_progress[0] += 0.025
+
 
 
 func load_country_data(
@@ -236,6 +255,12 @@ func SaveResourcesData() -> Array:
 	for resource: ResourceData in resources.values():
 		returnResources.append(resource.ToDict())
 	return returnResources
+
+func SaveRecipesData() -> Array:
+	var returnRecipes: Array = []
+	for recipe: RecipeData in recipes.values():
+		returnRecipes.append(recipe.ToDict())
+	return returnRecipes
 	
 func SaveBiomeData() -> Array:
 	var returnBiomes: Array = []
@@ -250,6 +275,7 @@ func export_scenario_data(path: String) -> void:
 	var export = {
 		"clock": GameState.current_world.clock.ToDict() if GameState.current_world.clock else {},
 		"resources": SaveResourcesData(),
+		"recipes": SaveRecipesData(),
 		"biomes": SaveBiomeData(),
 		"provinces": save_country_data(),
 		"polities": CountryManager.save_countries(),
@@ -563,6 +589,9 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 		var is_player_owned: bool = pid_owner == player_country_name
 		var is_puppet_owned: bool = pid_owner in CountryManager.player_country.puppets
 
+		print(GameState.industry_building != GameState.IndustryType.DEFAULT)
+		print(GameState.industry_building)
+		print(GameState.IndustryType.DEFAULT)
 		if GameState.choosing_deploy_city:
 			if is_player_owned and province_objects[pid].city != "":
 				_execute_deployment(pid, player_country_name)
@@ -587,6 +616,7 @@ func handle_click(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 					print("Action Failed: Cannot build in foreign territory.")
 					GameState.reset_industry_building()
 					show_countries_map()
+					print("wwe")
 
 		if TroopManager.troop_selection.selected_troops.is_empty(): # Prevent menu from spawning when selecting troops (annoying)
 			#print("Prae Emit Click")
@@ -622,6 +652,13 @@ func _province_build_industry(pid: int, a_countryName: String, type: GameState.I
 		GameState.IndustryType.INFRASTRUCTURE:
 			if province.infrastructure >= province.maxInfrastructure: return false
 			EconomyManager.StartInfrastructureConstruction(pid, 10, 150.0, CountryManager.countries[a_countryName])
+
+		GameState.IndustryType.LUMBER:
+			if !biomes[province.biome].forest: return false
+			EconomyManager.start_construction(pid, "Lumber", 15, 100.0, CountryManager.countries[a_countryName])
+
+		GameState.IndustryType.QUARRY:
+			EconomyManager.start_construction(pid, "Quarry", 15, 100.0, CountryManager.countries[a_countryName])
 
 	return true
 
@@ -785,6 +822,66 @@ func _scan_across_border(x: int, y: int, pid: int) -> int:
 # Faster direct pid fetch
 func _get_pid_fast(x: int, y: int) -> int:
 	return id_map_image.get_pixel(x, y).to_rgba32() >> 8
+
+func get_production_steps(resource_name: String, visited: Dictionary = {}) -> int:
+	if visited.has(resource_name):
+		return 0
+	visited[resource_name] = true
+	var recipe = recipes.get(resource_name)
+	if not recipe or recipe.resources_required.is_empty():
+		return 0
+	var max_sub_steps = 0
+	for req in recipe.resources_required:
+		var sub_steps = get_production_steps(req, visited.duplicate())
+		if sub_steps > max_sub_steps:
+			max_sub_steps = sub_steps
+	return 1 + max_sub_steps
+
+func get_rarity_score(resource_name: String, natural_abundance: Dictionary, max_abundance: float, visited: Dictionary = {}) -> float:
+	if visited.has(resource_name):
+		return 1.0
+	visited[resource_name] = true
+	
+	var recipe = recipes.get(resource_name)
+	if recipe and not recipe.resources_required.is_empty():
+		var ingredient_rarity = 0.0
+		for req in recipe.resources_required:
+			ingredient_rarity += get_rarity_score(req, natural_abundance, max_abundance, visited.duplicate())
+		return ingredient_rarity + 1.0
+	else:
+		var abundance = natural_abundance.get(resource_name, 0)
+		if abundance <= 0:
+			return 5.0
+		return 1.0 + (max_abundance - abundance) / max_abundance * 4.0
+
+func recalculate_resource_prices() -> void:
+	if resources.is_empty():
+		return
+		
+	var natural_abundance: Dictionary = {}
+	for res_name in resources:
+		natural_abundance[res_name] = 0
+		
+	for province in province_objects.values():
+		for res_node in province.resources:
+			if natural_abundance.has(res_node.type):
+				natural_abundance[res_node.type] += res_node.amount
+				
+	var max_abundance = 1
+	for res in natural_abundance:
+		if natural_abundance[res] > max_abundance:
+			max_abundance = natural_abundance[res]
+			
+	for res_name in resources:
+		var res_data = resources[res_name]
+		var steps = get_production_steps(res_name)
+		var rarity = get_rarity_score(res_name, natural_abundance, float(max_abundance))
+		
+		var new_price = int(round(50.0 * rarity * (1.0 + float(steps) * 0.5)))
+		new_price = max(10, new_price)
+		
+		res_data.base_price = new_price
+		print("Resource: %s | Abundance: %d | Steps: %d | Rarity Score: %.2f | New Price: %d" % [res_name, natural_abundance.get(res_name, 0), steps, rarity, new_price])
 
 # --- Pathfinding section kinda. Should be in own file tbh.. ---#
 

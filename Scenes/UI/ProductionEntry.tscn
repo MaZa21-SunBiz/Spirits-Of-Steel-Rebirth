@@ -4,17 +4,19 @@
 [ext_resource type="Script" uid="uid://c47y7lh4cwn72" path="res://Scenes/UI/ProductionEntry.gd" id="1_oxb67"]
 [ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="3_uss8d"]
 
-[node name="ProductionEntry" type="PanelContainer" unique_id=1301278158 node_paths=PackedStringArray("resource_label", "resource_icon", "allocated_factories", "reqs_box")]
+[node name="ProductionEntry" type="PanelContainer" unique_id=1301278158 node_paths=PackedStringArray("resource_label", "resource_icon", "allocated_factories", "reqs_box", "stockpile_value", "produced_value")]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 128)
 offset_right = 240.0
 offset_bottom = 128.0
 size_flags_horizontal = 3
 script = ExtResource("1_oxb67")
-resource_label = NodePath("VBoxContainer/ProducedResource/Label")
+resource_label = NodePath("VBoxContainer/ProducedResource/VBoxContainer/Resource")
 resource_icon = NodePath("VBoxContainer/ProducedResource/TextureRect")
 allocated_factories = NodePath("VBoxContainer/HBoxContainer/HSlider")
 reqs_box = NodePath("VBoxContainer/RequiredResources")
+stockpile_value = NodePath("VBoxContainer/ProducedResource/VBoxContainer/GridContainer/Value")
+produced_value = NodePath("VBoxContainer/ProducedResource/VBoxContainer/GridContainer/Value2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2047495504]
 use_parent_material = true
@@ -32,9 +34,35 @@ layout_mode = 2
 texture = ExtResource("1_ldicg")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/ProducedResource" unique_id=1539175700]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ProducedResource" unique_id=1178286986]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resource" type="Label" parent="VBoxContainer/ProducedResource/VBoxContainer" unique_id=1539175700]
 layout_mode = 2
 text = "Gun"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ProducedResource/VBoxContainer" unique_id=2104579410]
+layout_mode = 2
+columns = 2
+
+[node name="Stockpile" type="Label" parent="VBoxContainer/ProducedResource/VBoxContainer/GridContainer" unique_id=1945244464]
+layout_mode = 2
+text = "In Stockpile:"
+
+[node name="Value" type="Label" parent="VBoxContainer/ProducedResource/VBoxContainer/GridContainer" unique_id=528063912]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="Produced" type="Label" parent="VBoxContainer/ProducedResource/VBoxContainer/GridContainer" unique_id=1848795024]
+layout_mode = 2
+text = "Produced:"
+
+[node name="Value2" type="Label" parent="VBoxContainer/ProducedResource/VBoxContainer/GridContainer" unique_id=1307566145]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=25933720]
 use_parent_material = true

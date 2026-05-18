@@ -86,6 +86,9 @@ var stats_labels := {}
 @export var costs: Label
 @export var manpower: Label
 
+@export var resouce: Label
+@export var resouce_cost: Label
+
 @export var troop_container: PanelContainer
 @export var troop_list_parent: VBoxContainer
 
@@ -274,10 +277,10 @@ func _ready() -> void:
 		trade_entries.add_child(entry)
 		entry.setup(resource)
 		
-		if !resource.production_reqs.is_empty():
-			var p_entry = production_entry_scene.instantiate()
-			production_entries.add_child(p_entry)
-			p_entry.setup(resource)
+	for recipe in MapManager.recipes.values():
+		var p_entry = production_entry_scene.instantiate()
+		production_entries.add_child(p_entry)
+		p_entry.setup(recipe)
 	
 	if world and world.clock:
 		var clock := world.clock
@@ -633,9 +636,6 @@ func _on_menu_button_button_up(_menu_index: int) -> void:
 			MapManager.show_industry_country(CountryManager.player_country.country_name)
 			print(EconomyManager.building_designs)
 			print(EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}))
-			var keep_count = 3
-			while building_dropdown.item_count > keep_count:
-				building_dropdown.remove_item(keep_count)
 			for buildingTemplateName: String in EconomyManager.building_designs.get_or_add(CountryManager.player_country.country_name, {}):
 				building_dropdown.add_item(buildingTemplateName)
 			_on_building_selected(building_dropdown.selected)
@@ -786,18 +786,7 @@ func improve_stability():
 
 func _on_building_selected(index: int):
 	#print()
-	match index:
-		0:
-			GameState.industry_building = GameState.IndustryType.FACTORY
-			#MapManager.show_industry_country(player.country_name)
-		1:
-			GameState.industry_building = GameState.IndustryType.PORT
-			#MapManager.show_industry_country(player.country_name)
-		2:
-			GameState.industry_building = GameState.IndustryType.INFRASTRUCTURE
-			#MapManager.show_industry_country(player.country_name)
-		_:
-			GameState.industry_building = GameState.IndustryType.DEFAULT
+	GameState.industry_building = index+1 as GameState.IndustryType
 	update_economy_menu()
 
 func update_economy_menu() -> void:
@@ -986,12 +975,18 @@ func update_division_menu():
 		return # Safety check
 
 	var player: CountryData = CountryManager.player_country
+	var res_req = stats.get("required_resource", "")
+	var res_amt = stats.get("required_resource_amount", 0)
+
 	if player:
 		var max_manpower_divs = player.manpower / stats.manpower if stats.manpower > 0 else 999
 		var unit_cost = stats.cost * player.divCostMod
 		var max_money_divs = player.money / unit_cost if unit_cost > 0 else 999
+		var max_res_divs = 999
+		if res_req != "" and res_amt > 0:
+			max_res_divs = player.stockpile.get(res_req, 0) / res_amt
 		
-		input_division.max_value = max(1, floor(min(max_manpower_divs, max_money_divs)))
+		input_division.max_value = max(1, floor(min(max_manpower_divs, min(max_money_divs, max_res_divs))))
 
 	var count: int = ceili(input_division.value)
 
@@ -1002,10 +997,17 @@ func update_division_menu():
 	manpower.text = format_number(total_manpower)
 
 	if player:
-		costs.text = format_number(stats.cost * count * player.divCostMod)
+		var has_resources = true
+		if res_req != "":
+			var needed = res_amt * count
+			var owned = player.stockpile.get(res_req, 0)
+			has_resources = owned >= needed
+			resouce.text = res_req.capitalize()+": "
+			resouce_cost.text = "%d/%d" % [owned, needed]
+			
 
 		# 4. Check Affordability & Update Button State & Visuals
-		button_train.disabled = !player || player.manpower < total_manpower
+		button_train.disabled = !player || player.manpower < total_manpower || not has_resources
 
 func _on_button_train_troops() -> void:
 	if CountryManager.player_country.train_troops(

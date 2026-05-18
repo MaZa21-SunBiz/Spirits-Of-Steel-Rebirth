@@ -39,6 +39,8 @@ func setup(a_text: String, a_background: String, mapdata_path: String):
 				a_percent[0] = 0.3
 				var b_data = map_data.get("biomes")
 				MapManager.LoadBiomes(b_data if b_data is Array else [])
+				var recipes_data = map_data.get("recipes")
+				MapManager.LoadRecipes(recipes_data if recipes_data is Array else [])
 				var r_data = map_data.get("resources")
 				MapManager.LoadResources(r_data if r_data is Array else [])
 				MapManager.load_country_data(
