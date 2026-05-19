@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var icon: TextureRect
 @export var resource_name: Label
-@export var resource_stock: Label
+@export var resource_stock: RichTextLabel
 @export var exports: SpinBox
 
 var resource_data: ResourceData
@@ -25,12 +25,16 @@ func update_stock_label() -> void:
 		var price = EconomyManager.get_resource_price(resource_data.name)
 		var volume = player.trade_settings.get(resource_data.name, 0)
 		var daily_profit_loss = - (volume * 24 * price)
+		var net_change = player.stockpile_change.get(resource_data.name, 0)
+		
+		var net_color = "#ff4d4d" if net_change < 0 else ("#4dff4d" if net_change > 0 else "#ffffff")
+		var income_color = "#ff4d4d" if daily_profit_loss < 0 else ("#4dff4d" if daily_profit_loss > 0 else "#ffffff")
 		
 		resource_stock.text = (
 			"Price: $" + str(price)
 			+"\nIn Stock: " + str(player.stockpile.get(resource_data.name, 0))
-			+"\nNet Change: " + str(player.stockpile_change.get(resource_data.name, 0))
-			+"\nDaily Income: $" + GameState.game_ui.format_number(daily_profit_loss)
+			+"\nNet Change: [color=" + net_color + "]" + str(net_change) + "[/color]"
+			+"\nDaily Income: [color=" + income_color + "]$" + GameState.game_ui.format_number(daily_profit_loss) + "[/color]"
 		)
 
 func _on_exports_value_changed(value: float) -> void:

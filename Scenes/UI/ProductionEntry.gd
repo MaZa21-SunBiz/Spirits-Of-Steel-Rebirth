@@ -45,7 +45,14 @@ func update_limit() -> void:
 	if !player: return
 	
 	stockpile_value.text = str(player.stockpile.get(resource_name, 0))
-	produced_value.text  = str(player.stockpile_change.get(resource_name, 0))
+	var change = player.stockpile_change.get(resource_name, 0)
+	produced_value.text  = str(change)
+	if change > 0:
+		produced_value.add_theme_color_override("font_color", Color("#4dff4d"))
+	elif change < 0:
+		produced_value.add_theme_color_override("font_color", Color("#ff4d4d"))
+	else:
+		produced_value.remove_theme_color_override("font_color")
 	var current_total = player.get_total_allocated_factories()
 	var current_val = player.factory_allocation.get(resource_name, 0)
 	var available = player.factories_amount - current_total
