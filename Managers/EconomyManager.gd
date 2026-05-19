@@ -5,6 +5,7 @@ extends Node
 var construction_queue: Dictionary = {}
 var building_functions: Dictionary = {}
 var building_designs: Dictionary[String, Dictionary] = {}
+var world_stockpile: Dictionary[String, int] = {}
 
 func initialize(path: String) -> void:
 	var content := FileAccess.get_file_as_string(path)
@@ -147,3 +148,20 @@ func get_progress_string(pid: int) -> String:
 		var p = construction_queue[pid]
 		return "%s: %d days left (%d/day)" % [p["type"].capitalize(), p["days"], p["daily_cost"]]
 	return ""
+
+
+func get_resource_price(res_name: String) -> float:
+	var res_data = MapManager.resources.get(res_name)
+	if not res_data:
+		return 100.0
+		
+	var base_price = res_data.base_price
+	var stockpile_val = world_stockpile.get(res_name, 0)
+	
+	# If world stockpile demand (imports - exports) is positive, demand > supply, price goes up.
+	# If negative, supply > demand, price goes down.
+	var multiplier = 1.0 + (float(stockpile_val) * 0.01)
+	multiplier = clampf(multiplier, 0.5, 3.0)
+	
+	return base_price * multiplier
+

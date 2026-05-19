@@ -788,6 +788,8 @@ func _on_building_selected(index: int):
 	#print()
 	GameState.industry_building = index+1 as GameState.IndustryType
 	update_economy_menu()
+	if CountryManager.player_country:
+		MapManager.show_industry_country(CountryManager.player_country.country_name)
 
 func update_economy_menu() -> void:
 	if !economyUpdate:

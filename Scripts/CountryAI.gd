@@ -117,6 +117,7 @@ func think_hour() -> void:
 
 
 func think_day() -> void:
+	_optimize_economy()
 	_execute_best([
 		{"score": _score_factory(), "action": _execute_factory},
 		{"score": _score_train(), "action": _execute_train},
@@ -173,14 +174,27 @@ func _execute_factory() -> bool:
 
 
 func _execute_train() -> bool:
-	# Improved: Recruit based on current needs (e.g., more if at war)
-	var template: Dictionary = DivisionData.TEMPLATES["infantry"]  # Could vary templates based on tech/manpower
-	var max_affordable: int = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
-	if max_affordable < 1:
-		return false
-	
-	country.train_troops(clampi(max_affordable, 1, 20 if !WarManager.get_enemies_of(country.country_name).is_empty() else 10), "infantry")
-	return true
+	var trained_any = false
+	for type in DivisionData.TEMPLATES.keys():
+		var template: Dictionary = DivisionData.TEMPLATES[type]
+		var max_affordable: int = mini(int(country.money / template["cost"]), int(country.manpower / template["manpower"]))
+		
+		var res_req = template.get("required_resource", "")
+		var res_amount = template.get("required_resource_amount", 1)
+		if res_req != "":
+			var max_by_equip: int = int(country.stockpile.get(res_req, 0) / res_amount)
+			max_affordable = mini(max_affordable, max_by_equip)
+			
+		if max_affordable < 1:
+			continue
+			
+		var limit = 20 if !WarManager.get_enemies_of(country.country_name).is_empty() else 10
+		var train_count = clampi(max_affordable, 1, limit)
+		if country.train_troops(train_count, type):
+			trained_any = true
+			break
+			
+	return trained_any
 
 
 func _execute_war() -> bool:
@@ -592,3 +606,148 @@ func _get_extremism() -> float:
 	# Higher distance from center (0,0) = more extreme.
 	# Return value 0.0 (neutral) to 1.0 (extreme)
 	return clamp(country.ideology.length() * 0.00707113562, 0.0, 1.0) # 141.42 is approx dist to corner
+
+
+func _optimize_economy() -> void:
+	if MapManager.recipes.is_empty():
+		return
+	_optimize_factory_allocation()
+	_optimize_trading()
+
+
+func _optimize_factory_allocation() -> void:
+	if country.factories_amount <= 0:
+		country.factory_allocation.clear()
+		return
+
+	# Target weights for military production
+	var W_inf := 4.0
+	var W_tank := 2.0 if country.factories_amount >= 4 else 0.0
+	var W_art := 1.5 if country.factories_amount >= 2 else 0.0
+	var W_total := W_inf + W_tank + W_art
+	if W_total <= 0.0:
+		W_total = 1.0
+
+	var target_production := {
+		"Infantry_equipment": 24.0 * country.factories_amount * (W_inf / W_total),
+		"Tank_equipment": 24.0 * country.factories_amount * (W_tank / W_total),
+		"Artillery_equipment": 24.0 * country.factories_amount * (W_art / W_total),
+		"Steel_ingot": 0.0,
+		"Battery_pack": 0.0,
+		"Basic_circuitry": 0.0
+	}
+
+	var current_daily_production := {}
+	for res in target_production:
+		current_daily_production[res] = 0.0
+
+	var temp_allocations := {}
+	for recipe_name in MapManager.recipes:
+		temp_allocations[recipe_name] = 0
+
+	for i in range(country.factories_amount):
+		# Re-evaluate intermediate targets based on current allocations
+		target_production["Steel_ingot"] = 24.0 * (temp_allocations.get("Infantry_equipment", 0) + temp_allocations.get("Tank_equipment", 0) + temp_allocations.get("Artillery_equipment", 0))
+		target_production["Battery_pack"] = 24.0 * temp_allocations.get("Tank_equipment", 0)
+		target_production["Basic_circuitry"] = 24.0 * temp_allocations.get("Battery_pack", 0)
+
+		var best_recipe := ""
+		var max_deficit := -INF
+
+		for recipe_name in MapManager.recipes:
+			var deficit: float = target_production.get(recipe_name, 0.0) - current_daily_production.get(recipe_name, 0.0)
+			if deficit > max_deficit:
+				max_deficit = deficit
+				best_recipe = recipe_name
+
+		if best_recipe != "":
+			temp_allocations[best_recipe] = temp_allocations.get(best_recipe, 0) + 1
+			current_daily_production[best_recipe] = current_daily_production.get(best_recipe, 0.0) + 24.0
+			var recipe = MapManager.recipes.get(best_recipe)
+			if recipe:
+				for req in recipe.resources_required:
+					if req in current_daily_production:
+						current_daily_production[req] = current_daily_production[req] - 24.0
+
+	# Apply new allocations
+	country.factory_allocation.clear()
+	for recipe_name in temp_allocations:
+		if temp_allocations[recipe_name] > 0:
+			country.factory_allocation[recipe_name] = temp_allocations[recipe_name]
+
+
+func _optimize_trading() -> void:
+	# Calculate net daily resource change before trade
+	var net_before_trade := {}
+
+	# 1. Province yields
+	var provinces = MapManager.country_to_owned_provinces.get(country.country_name, [])
+	for pid in provinces:
+		var province: Province = MapManager.province_objects.get(pid)
+		if province:
+			for resource in province.resources:
+				net_before_trade[resource.type] = net_before_trade.get(resource.type, 0.0) + resource.amount
+
+	# 2. Factory production and consumption
+	for resource_name in country.factory_allocation:
+		var allocation = country.factory_allocation[resource_name]
+		if allocation <= 0:
+			continue
+
+		var recipe = MapManager.recipes.get(resource_name)
+		if not recipe:
+			continue
+
+		var daily_vol: float = allocation * 24.0
+		net_before_trade[resource_name] = net_before_trade.get(resource_name, 0.0) + daily_vol
+		for req in recipe.resources_required:
+			net_before_trade[req] = net_before_trade.get(req, 0.0) - daily_vol
+
+	var new_trade_settings := {}
+
+	for res_name in MapManager.resources:
+		var net: float = net_before_trade.get(res_name, 0.0)
+		var stock: int = country.stockpile.get(res_name, 0)
+		
+		# Define target reserves for military equipment
+		var target_reserve = 0
+		if res_name == "Infantry_equipment":
+			target_reserve = 500
+		elif res_name == "Tank_equipment":
+			target_reserve = 200
+		elif res_name == "Artillery_equipment":
+			target_reserve = 150
+
+		if target_reserve > 0 and stock < target_reserve:
+			# Even if net is positive/neutral, we want to import to reach target reserve!
+			if country.money > 1000:
+				var needed = target_reserve - stock
+				var import_qty := clampi(int(ceil(needed / 24.0)), 1, 5)
+				new_trade_settings[res_name] = import_qty
+		else:
+			# Non-military or stockpile above target reserve
+			if net < 0:
+				# Deficit -> import if stockpile is low
+				if stock < 200 and country.money > 500:
+					var import_qty := int(ceil(abs(net) / 24.0))
+					new_trade_settings[res_name] = min(import_qty, 5) # Cap imports at 5 units/hour
+			elif net > 0:
+				# Surplus -> export if stockpile is healthy (safety buffer for military equipment)
+				var healthy_threshold = 50 if target_reserve == 0 else target_reserve + 100
+				if stock > healthy_threshold:
+					var export_qty := int(floor(net / 24.0))
+					if export_qty > 0:
+						# Negative trade settings represent exports
+						new_trade_settings[res_name] = -export_qty
+
+	# Apply new trade settings and update global world stockpile
+	for res in MapManager.resources:
+		var old_val: int = country.trade_settings.get(res, 0)
+		var new_val: int = new_trade_settings.get(res, 0)
+		if old_val != new_val:
+			country.trade_settings[res] = new_val
+			if not EconomyManager.world_stockpile.has(res):
+				EconomyManager.world_stockpile[res] = 0
+			EconomyManager.world_stockpile[res] += new_val - old_val
+
+	country.recalculate_stockpile_change()

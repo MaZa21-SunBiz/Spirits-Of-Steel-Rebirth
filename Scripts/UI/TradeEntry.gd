@@ -22,7 +22,7 @@ func setup(resource: ResourceData) -> void:
 func update_stock_label() -> void:
 	var player = CountryManager.player_country
 	if player:
-		var price = resource_data.base_price
+		var price = EconomyManager.get_resource_price(resource_data.name)
 		var volume = player.trade_settings.get(resource_data.name, 0)
 		var daily_profit_loss = - (volume * 24 * price)
 		
@@ -36,8 +36,12 @@ func update_stock_label() -> void:
 func _on_exports_value_changed(value: float) -> void:
 	var player = CountryManager.player_country
 	if player:
+		var initial_stock: int = player.trade_settings.get_or_add(resource_data.name, 0)
 		player.trade_settings[resource_data.name] = int(value)
+		if !EconomyManager.world_stockpile.has(resource_data.name): EconomyManager.world_stockpile[resource_data.name] = 0
+		EconomyManager.world_stockpile[resource_data.name] += value - initial_stock
 		player.recalculate_stockpile_change()
+		print(EconomyManager.world_stockpile)
 		
 		# Update the whole trade menu to reflect changes in other resources (e.g. if trade affects production indirectly)
 		if GameState.game_ui:

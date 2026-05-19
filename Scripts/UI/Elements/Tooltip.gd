@@ -57,7 +57,28 @@ func SwitchTooltip(a_mode: int) -> void:
 			tabs.current_tab = 1
 			var prov: Province = MapManager.province_objects[MapManager.current_hovered_pid]
 			provinceName.text = prov.name
-			provinceDescription.text = prov.city
+			
+			var desc_text = ""
+			if !prov.city.is_empty():
+				desc_text += prov.city
+			
+			var active_buildings = []
+			for building in prov.buildings:
+				var state_str = ""
+				if building.state == BuildingData.BuildingState.CONSTRUCTION:
+					state_str = " (Under Construction)"
+				elif building.state == BuildingData.BuildingState.RUIN:
+					state_str = " (Ruin)"
+				active_buildings.append(building.type + state_str)
+			
+			if !active_buildings.is_empty():
+				if !desc_text.is_empty():
+					desc_text += "\n"
+				desc_text += "Buildings:"
+				for b in active_buildings:
+					desc_text += "\n- " + b
+			
+			provinceDescription.text = desc_text
 			provinceInfrastructure.text = "%d/%d" % [prov.infrastructure, prov.maxInfrastructure]
 			provinceConstructionIcon.visible = MapManager.current_hovered_pid in EconomyManager.construction_queue
 			provinceOccupiedIcon.visible = !prov.occupier.is_empty()

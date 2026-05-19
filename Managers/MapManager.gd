@@ -512,6 +512,8 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 						GameState.tooltip.SwitchTooltip(1)
 					KeyboardManager.MapView.RESOURCES:
 						GameState.tooltip.SwitchTooltip(0)
+					KeyboardManager.MapView.INFRASTRUCTURE:
+						GameState.tooltip.SwitchTooltip(1)
 					_:
 						GameState.tooltip.SwitchTooltip(-1)
 				
@@ -548,6 +550,12 @@ func _get_contextual_highlight(pid: int) -> Color:
 		var coastal_provinces = get_provinces_near_sea(player_name)
 		if pid in coastal_provinces && province_objects[pid].buildings.find_custom(func(a_building): return a_building.type == "Port") == -1:
 			return Color.CYAN
+		else:
+			return Color.TRANSPARENT
+	elif GameState.industry_building == GameState.IndustryType.LUMBER:
+		var can_build = biomes.has(province_objects[pid].biome) and biomes[province_objects[pid].biome].forest
+		if can_build:
+			return Color.GREEN.lightened(0.2)
 		else:
 			return Color.TRANSPARENT
 	elif GameState.choosing_deploy_city:
@@ -1145,17 +1153,54 @@ func ShowInfrastructureMap() -> void:
 		if pid <= 1 || province_objects[pid].country == "Sea":
 			continue
 			
-		var display_color = Color.BLACK
-		if !GameState.selectingCountry and CountryManager.player_country.country_name != province_objects[pid].country and !CountryManager.player_country.get_all_allowed_countries().has(province_objects[pid].country):
-			display_color = CountryManager.GetCountryColor(province_objects[pid].country)
-		else:
-			var infra = province_objects[pid].infrastructure
-			if infra == 0:
-				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.WHITE * 0.5
-			elif infra == province_objects[pid].maxInfrastructure:
-				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.BLUE * 0.5
+		var province = province_objects[pid]
+		var building_colors = []
+		for b in province.buildings:
+			var c = Color.WHITE
+			if b.state == BuildingData.BuildingState.CONSTRUCTION:
+				c = Color.ORANGE
+			elif b.state == BuildingData.BuildingState.FUNCTIONAL:
+				match b.type:
+					"Factory":
+						c = Color.GREEN
+					"Port":
+						c = Color.DODGER_BLUE
+					"Lumber":
+						c = Color.FOREST_GREEN
+					"Quarry":
+						c = Color.SADDLE_BROWN
+					_:
+						c = Color.WHITE
 			else:
-				display_color = CountryManager.countries[province_objects[pid].country].country_color * 0.5 + Color.YELLOW * 0.5 * (float(infra) / province_objects[pid].maxInfrastructure)
+				continue
+			building_colors.append(c)
+
+		var display_color = Color.BLACK
+		if !building_colors.is_empty():
+			var r = 0.0
+			var g = 0.0
+			var b = 0.0
+			var a = 0.0
+			for c in building_colors:
+				r += c.r
+				g += c.g
+				b += c.b
+				a += c.a
+			var count = float(building_colors.size())
+			display_color = Color(r / count, g / count, b / count, a / count)
+		elif !GameState.selectingCountry and CountryManager.player_country.country_name != province.country and !CountryManager.player_country.get_all_allowed_countries().has(province.country):
+			display_color = CountryManager.GetCountryColor(province.country)
+		else:
+			var infra = province.infrastructure
+			if infra == 0:
+				display_color = CountryManager.countries[province.country].country_color * 0.5 + Color.WHITE * 0.5
+			elif infra == province.maxInfrastructure:
+				display_color = CountryManager.countries[province.country].country_color * 0.5 + Color.BLUE * 0.5
+			else:
+				display_color = CountryManager.countries[province.country].country_color * 0.5 + Color.YELLOW * 0.5 * (float(infra) / province.maxInfrastructure)
+		
+		if biomes.has(province.biome) and biomes[province.biome].forest:
+			display_color = display_color.lerp(Color.FOREST_GREEN, 0.4)
 				
 		state_color_image.set_pixel(pid, 0, display_color)
 		state_color_image.set_pixel(pid, 1, display_color)
@@ -1333,21 +1378,56 @@ func show_industry_country(country_name: String) -> void:
 		var province = province_objects[pid]
 		var color = Color.WHITE # Default color
 
-		# TODO(sockmit2007): This whole section has to be reworked.
-		if province.city.length() > 0:
+		var building_colors = []
+		for b in province.buildings:
+			var c = Color.WHITE
+			if b.state == BuildingData.BuildingState.CONSTRUCTION:
+				c = Color.ORANGE
+			elif b.state == BuildingData.BuildingState.FUNCTIONAL:
+				match b.type:
+					"Factory":
+						c = Color.GREEN
+					"Port":
+						c = Color.DODGER_BLUE
+					"Lumber":
+						c = Color.FOREST_GREEN
+					"Quarry":
+						c = Color.SADDLE_BROWN
+					_:
+						c = Color.WHITE
+			else:
+				continue
+			building_colors.append(c)
+
+		for i in range(province.infrastructure):
+			building_colors.append(Color.GRAY)
+
+		if pid in EconomyManager.construction_queue:
+			var constr = EconomyManager.construction_queue[pid]
+			if constr.get("type") == "Infrastructure":
+				building_colors.append(Color.ORANGE)
+
+		if not building_colors.is_empty():
+			var r = 0.0
+			var g = 0.0
+			var b = 0.0
+			var a = 0.0
+			for c in building_colors:
+				r += c.r
+				g += c.g
+				b += c.b
+				a += c.a
+			var count = float(building_colors.size())
+			color = Color(r / count, g / count, b / count, a / count)
+		elif province.city.length() > 0:
 			color = Color.YELLOW
-		
-		#elif province.factory == province.FACTORY_BUILT:
-		#	color = Color.GREEN
-		elif EconomyManager.is_province_building(pid):
-			color = Color.ORANGE # Show progress
-		#elif province.port == province.PORT_BUILT:
-		#	color = Color.BLUE
-		#elif province.port == province.PORT_BUILDING:
-		#	color = Color.CYAN # Show progress
-			
 		elif pid in provinces_near_sea:
 			color = Color.LIGHT_SKY_BLUE
+		else:
+			color = Color.WHITE
+		
+		if biomes.has(province.biome) and biomes[province.biome].forest:
+			color = color.lerp(Color.FOREST_GREEN, 0.4)
 		
 		state_color_image.set_pixel(pid, 0, color)
 		state_color_image.set_pixel(pid, 1, color)

@@ -338,14 +338,34 @@ func _process_resource_production() -> void:
 			stockpile[resource_name] = stockpile.get(resource_name, 0) + daily_allocation
 	
 	for res in trade_settings:
-		var daily_trade = trade_settings[res] * 24
-		
-		var res_data = MapManager.resources.get(res)
-		if res_data:
-			var trade_value = daily_trade * res_data.base_price
-			money -= trade_value
+		var hourly_val = trade_settings[res]
+		if hourly_val == 0:
+			continue
 			
-		stockpile[res] = stockpile.get(res, 0) + daily_trade
+		var res_data = MapManager.resources.get(res)
+		if not res_data:
+			continue
+			
+		var base_price = EconomyManager.get_resource_price(res)
+		
+		if hourly_val > 0:
+			# Import: buy up to what we want or can afford
+			var max_affordable = int(floor(max(0.0, money) / base_price))
+			var desired_import = hourly_val * 24
+			var actual_import = min(desired_import, max_affordable)
+			
+			if actual_import > 0:
+				money -= actual_import * base_price
+				stockpile[res] = stockpile.get(res, 0) + actual_import
+		else:
+			# Export: sell up to what we want or have in stock
+			var desired_export = abs(hourly_val) * 24
+			var current_stock = stockpile.get(res, 0)
+			var actual_export = min(desired_export, current_stock)
+			
+			if actual_export > 0:
+				stockpile[res] = current_stock - actual_export
+				money += actual_export * base_price
 		
 	# Refresh UI values
 	recalculate_stockpile_change()
