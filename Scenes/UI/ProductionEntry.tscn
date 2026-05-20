@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c47y7lh4cwn72" path="res://Scenes/UI/ProductionEntry.gd" id="1_oxb67"]
 [ext_resource type="Texture2D" uid="uid://qanby5aw4r20" path="res://assets/icons/industry_icon.svg" id="3_uss8d"]
 
-[node name="ProductionEntry" type="PanelContainer" unique_id=1301278158 node_paths=PackedStringArray("resource_label", "resource_icon", "allocated_factories", "reqs_box", "stockpile_value", "produced_value")]
+[node name="ProductionEntry" type="PanelContainer" unique_id=1301278158 node_paths=PackedStringArray("resource_label", "resource_icon", "allocated_factories", "allocated_label", "reqs_box", "stockpile_value", "produced_value")]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 128)
 offset_right = 240.0
@@ -14,6 +14,7 @@ script = ExtResource("1_oxb67")
 resource_label = NodePath("VBoxContainer/ProducedResource/VBoxContainer/Resource")
 resource_icon = NodePath("VBoxContainer/ProducedResource/TextureRect")
 allocated_factories = NodePath("VBoxContainer/HBoxContainer/HSlider")
+allocated_label = NodePath("VBoxContainer/HBoxContainer/Label")
 reqs_box = NodePath("VBoxContainer/RequiredResources")
 stockpile_value = NodePath("VBoxContainer/ProducedResource/VBoxContainer/GridContainer/Value")
 produced_value = NodePath("VBoxContainer/ProducedResource/VBoxContainer/GridContainer/Value2")
@@ -73,6 +74,10 @@ use_parent_material = true
 layout_mode = 2
 texture = ExtResource("3_uss8d")
 expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=141622004]
+layout_mode = 2
+text = "(6/9)"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=2000700027]
 use_parent_material = true

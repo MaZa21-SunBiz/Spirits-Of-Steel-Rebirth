@@ -9,7 +9,7 @@ var resource_data: ResourceData
 
 func setup(resource: ResourceData) -> void:
 	resource_data = resource
-	resource_name.text = resource.name
+	resource_name.text = resource.name.capitalize()
 	icon.texture = MapManager.GetResourceIcon(resource.name)
 	icon.modulate = resource.color
 	

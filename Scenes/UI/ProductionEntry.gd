@@ -4,13 +4,14 @@ extends PanelContainer
 @export var resource_label: Label
 @export var resource_icon: TextureRect
 @export var allocated_factories: HSlider
+@export var allocated_label: Label
 @export var reqs_box: Container
 @export var stockpile_value: Label
 @export var produced_value: Label
 
 func setup(recipe: RecipeData) -> void:
 	resource_name = recipe.produced_resource
-	resource_label.text = resource_name
+	resource_label.text = resource_name.capitalize()
 	
 	var resource = MapManager.resources.get(resource_name)
 	if resource:
@@ -63,7 +64,7 @@ func update_limit() -> void:
 	allocated_factories.max_value = max_val
 	allocated_factories.tick_count = max_val+1
 	# Update the label to show current allocation
-	resource_label.text = "%s, Factories: (%d/%d)" % [resource_name, current_val, max_val]
+	allocated_label.text = "(%d/%d)" % [current_val, max_val]
 
 func _on_allocated_factories_value_changed(value: float) -> void:
 	var player = CountryManager.player_country

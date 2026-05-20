@@ -118,11 +118,16 @@
 	"clock": {
 		"date": {
 			"day": 1,
+			"hour": 0,
+			"minute": 0,
 			"month": 1,
+			"second": 0,
+			"weekday": 5,
 			"year": 2010
 		},
-		"hour": 0
+		"hour": 11
 	},
+	"current_start": "ModernDay",
 	"factions": [
 		{
 			"color": "#0048E6",
@@ -956,6 +961,9 @@
 			]
 		}
 	},
+	"original_territories": {
+
+	},
 	"polities": [
 		{
 			"accepted_cultures": [
@@ -984,7 +992,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Canada",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1021,7 +1029,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Denmark",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1078,7 +1086,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Russia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [
 				"Abkhazia",
 				"South_ossetia",
@@ -1120,7 +1128,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Norway",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1156,7 +1164,7 @@
 			"is_player": true,
 			"money": 100000.0,
 			"name": "United_states",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [
 				"Israel"
 			],
@@ -1194,7 +1202,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Finland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1230,7 +1238,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sweden",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1266,7 +1274,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iceland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1302,7 +1310,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Estonia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1344,7 +1352,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "United_kingdom",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1381,7 +1389,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Latvia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1418,7 +1426,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lithuania",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1455,7 +1463,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belarus",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1491,7 +1499,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ireland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1528,7 +1536,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kazakhstan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1565,7 +1573,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Germany",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1601,7 +1609,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Poland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1637,7 +1645,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Netherlands",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1682,7 +1690,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "China",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1721,7 +1729,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ukraine",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1757,7 +1765,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mongolia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1794,7 +1802,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belgium",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1838,7 +1846,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "France",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1874,7 +1882,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Czechia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1910,7 +1918,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Luxembourg",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1946,7 +1954,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Slovakia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -1982,7 +1990,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Austria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2018,7 +2026,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Hungary",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2055,7 +2063,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Moldova",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2092,7 +2100,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Romania",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2129,7 +2137,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Transnistria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2168,7 +2176,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Switzerland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2204,7 +2212,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Liechtenstein",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2242,7 +2250,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Italy",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2278,7 +2286,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Slovenia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2314,7 +2322,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Croatia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2351,7 +2359,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Serbia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2388,7 +2396,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bosnia_and_herzegovina",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2424,7 +2432,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uzbekistan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2460,7 +2468,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Japan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2496,7 +2504,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bulgaria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2536,7 +2544,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Spain",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2572,7 +2580,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "San_marino",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2608,7 +2616,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Monaco",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2644,7 +2652,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Abkhazia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2680,7 +2688,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Montenegro",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2716,7 +2724,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kosovo",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2752,7 +2760,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Georgia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2788,7 +2796,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kyrgyzstan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2824,7 +2832,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Andorra",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2860,7 +2868,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_ossetia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2897,7 +2905,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkmenistan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2933,7 +2941,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "North_korea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -2969,7 +2977,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Albania",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3006,7 +3014,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "North_macedonia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3042,7 +3050,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Azerbaijan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3078,7 +3086,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Portugal",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3116,7 +3124,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkey",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3152,7 +3160,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vatican_city",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3188,7 +3196,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Greece",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3224,7 +3232,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Armenia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3260,7 +3268,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tajikistan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3302,7 +3310,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iran",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3341,7 +3349,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Afghanistan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3377,7 +3385,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_korea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3413,7 +3421,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tunisia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3451,7 +3459,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Iraq",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3488,7 +3496,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Syria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3531,7 +3539,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Pakistan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3568,7 +3576,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Algeria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3606,7 +3614,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Morocco",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3642,7 +3650,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malta",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3678,7 +3686,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Turkish_cyprus",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3745,7 +3753,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "India",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3781,7 +3789,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cyprus",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3817,7 +3825,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lebanon",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3854,7 +3862,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Libya",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3891,7 +3899,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Israel",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3925,7 +3933,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Jordan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3961,7 +3969,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mexico",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -3997,7 +4005,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Saudi_arabia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4033,7 +4041,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Palestine",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4069,7 +4077,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Egypt",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4105,7 +4113,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nepal",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4141,7 +4149,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kuwait",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4177,7 +4185,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bhutan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4213,7 +4221,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Myanmar",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4249,7 +4257,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Western_sahara",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4285,7 +4293,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mauritania",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4321,7 +4329,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bahrain",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4357,7 +4365,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bangladesh",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4393,7 +4401,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Qatar",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4429,7 +4437,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Oman",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4465,7 +4473,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Taiwan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4505,7 +4513,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mali",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4541,7 +4549,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "United_arab_emirates",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4580,7 +4588,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Niger",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4616,7 +4624,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cuba",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4653,7 +4661,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Chad",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4694,7 +4702,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sudan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4730,7 +4738,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vietnam",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4766,7 +4774,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Laos",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4806,7 +4814,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Thailand",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4842,7 +4850,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Haiti",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4878,7 +4886,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dominican_republic",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4914,7 +4922,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Belize",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4950,7 +4958,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Yemen",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -4986,7 +4994,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Jamaica",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5022,7 +5030,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Philippines",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5058,7 +5066,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guatemala",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5094,7 +5102,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Eritrea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5130,7 +5138,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cabo_verde",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5166,7 +5174,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "St_kitts_and_nevis",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5205,7 +5213,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Senegal",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5241,7 +5249,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Honduras",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5280,7 +5288,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Burkina_faso",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5316,7 +5324,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "El_salvador",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5352,7 +5360,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nicaragua",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5393,7 +5401,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ethiopia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5429,7 +5437,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cambodia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5465,7 +5473,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dominica",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5503,7 +5511,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nigeria",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5539,7 +5547,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Gambia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5575,7 +5583,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Barbados",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5611,7 +5619,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "St_lucia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5647,7 +5655,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guinea_bissau",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5686,7 +5694,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guinea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5723,7 +5731,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Colombia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5759,7 +5767,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Venezuela",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5795,7 +5803,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Grenada",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5831,7 +5839,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Benin",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5867,7 +5875,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Djibouti",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5905,7 +5913,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Cameroon",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5947,7 +5955,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_sudan",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -5983,7 +5991,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Somalia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6019,7 +6027,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Somaliland",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6055,7 +6063,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Costa_rica",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6092,7 +6100,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Togo",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6128,7 +6136,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Maldives",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6164,7 +6172,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ghana",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6203,7 +6211,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Central_african_republic",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6239,7 +6247,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Trinidad_and_tobago",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6278,7 +6286,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ivory_coast",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6315,7 +6323,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sierra_leone",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6351,7 +6359,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Panama",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6387,7 +6395,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sri_lanka",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6423,7 +6431,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Liberia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6459,7 +6467,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Guyana",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6495,7 +6503,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Palau",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6532,7 +6540,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Nauru",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6568,7 +6576,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malaysia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6604,7 +6612,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Suriname",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6658,7 +6666,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Indonesia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6697,7 +6705,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Brazil",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6741,7 +6749,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Dr_congo",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6781,7 +6789,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Kenya",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6817,7 +6825,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Brunei",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6855,7 +6863,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uganda",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6891,7 +6899,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Equatorial_guinea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6930,7 +6938,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Congo",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -6970,7 +6978,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Gabon",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7006,7 +7014,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Singapore",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7042,7 +7050,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Ecuador",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7078,7 +7086,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Sao_tome_and_principe",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7114,7 +7122,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Peru",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7150,7 +7158,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Rwanda",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7193,7 +7201,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tanzania",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7229,7 +7237,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Burundi",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7267,7 +7275,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Papua_new_guinea",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7305,7 +7313,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Angola",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7341,7 +7349,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Seychelles",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7377,7 +7385,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Solomon_islands",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7415,7 +7423,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Zambia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7451,7 +7459,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "East_timor",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7488,7 +7496,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tuvalu",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7525,7 +7533,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Malawi",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7563,7 +7571,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Bolivia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7603,7 +7611,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mozambique",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7639,7 +7647,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Australia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7676,7 +7684,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Madagascar",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7712,7 +7720,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Vanuatu",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7751,7 +7759,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Zimbabwe",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7787,7 +7795,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Fiji",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7826,7 +7834,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Namibia",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7862,7 +7870,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Niue",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7898,7 +7906,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Chile",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7936,7 +7944,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Botswana",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -7972,7 +7980,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Paraguay",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8008,7 +8016,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Mauritius",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8045,7 +8053,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Tonga",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8082,7 +8090,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Argentina",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8124,7 +8132,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "South_africa",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8161,7 +8169,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Eswatini",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8198,7 +8206,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Lesotho",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8235,7 +8243,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "Uruguay",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8271,7 +8279,7 @@
 			"is_player": false,
 			"money": 100000.0,
 			"name": "New_zealand",
-			"political_power": 501.36,
+			"political_power": 501.8,
 			"puppets": [],
 			"stability": 1.0,
 			"stockpile": {
@@ -8306,7 +8314,7 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Antartica",
-			"political_power": 1.36,
+			"political_power": 1.8,
 			"puppets": [],
 			"stability": 0.0,
 			"stockpile": {
@@ -8341,7 +8349,7 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Donetsk",
-			"political_power": 0.8,
+			"political_power": 1.24,
 			"puppets": [],
 			"stability": 0.0,
 			"stockpile": {
@@ -8376,7 +8384,7 @@
 			"is_player": false,
 			"money": 0.0,
 			"name": "Luhansk",
-			"political_power": 0.8,
+			"political_power": 1.24,
 			"puppets": [],
 			"stability": 0.0,
 			"stockpile": {
@@ -32317,7 +32325,7 @@
 				{
 					"amount": 2,
 					"quality": 1.99999999999994,
-					"type": "Iron"
+					"type": "Unknown"
 				}
 			],
 			"troops": [],
@@ -55983,7 +55991,7 @@
 				{
 					"amount": 2,
 					"quality": 1.99999999999994,
-					"type": "Iron"
+					"type": "Unknown"
 				}
 			],
 			"troops": [],
@@ -78108,6 +78116,11 @@
 					"amount": 2,
 					"quality": 0.5,
 					"type": "Gold"
+				},
+				{
+					"amount": 4,
+					"quality": 1.99999999999994,
+					"type": "Unknown"
 				}
 			],
 			"troops": [],
@@ -111665,7 +111678,7 @@
 	],
 	"resources": [
 		{
-			"base_price": 613,
+			"base_price": 575,
 			"color": "#71797E",
 			"icon": "Ingot",
 			"name": "Steel_ingot",
@@ -111675,7 +111688,7 @@
 			}
 		},
 		{
-			"base_price": 613,
+			"base_price": 943,
 			"color": "#7179AE",
 			"icon": "Ingot",
 			"name": "Stainless_steel_ingot",
@@ -111695,7 +111708,7 @@
 			}
 		},
 		{
-			"base_price": 250,
+			"base_price": 450,
 			"color": "#8B5A2B",
 			"icon": "Lumber",
 			"name": "Lumber",
@@ -111723,7 +111736,7 @@
 			}
 		},
 		{
-			"base_price": 825,
+			"base_price": 450,
 			"color": "#8AAAFA",
 			"icon": "Gear",
 			"name": "Silicon",
@@ -111732,7 +111745,7 @@
 			}
 		},
 		{
-			"base_price": 825,
+			"base_price": 1168,
 			"color": "#00FF00",
 			"icon": "Ingot",
 			"name": "Basic_circuitry",
@@ -111777,7 +111790,7 @@
 			}
 		},
 		{
-			"base_price": 235,
+			"base_price": 234,
 			"color": "#C68636",
 			"icon": "Ingot",
 			"name": "Copper",
@@ -111786,7 +111799,7 @@
 			}
 		},
 		{
-			"base_price": 229,
+			"base_price": 228,
 			"color": "#D7CA29",
 			"icon": "Ingot",
 			"name": "Gold",
@@ -111876,7 +111889,7 @@
 			}
 		},
 		{
-			"base_price": 1417,
+			"base_price": 1467,
 			"color": "#556B2F",
 			"icon": "Infantry",
 			"name": "Infantry_equipment",
@@ -111885,7 +111898,7 @@
 			}
 		},
 		{
-			"base_price": 2771,
+			"base_price": 1457,
 			"color": "#8B0000",
 			"icon": "Tank",
 			"name": "Tank_equipment",
@@ -111894,7 +111907,7 @@
 			}
 		},
 		{
-			"base_price": 1134,
+			"base_price": 1084,
 			"color": "#B8860B",
 			"icon": "Artillery",
 			"name": "Artillery_equipment",
@@ -111903,7 +111916,7 @@
 			}
 		},
 		{
-			"base_price": 250,
+			"base_price": 225,
 			"color": "#434B4D",
 			"icon": "Ingot",
 			"name": "Iron",
@@ -111913,6 +111926,7 @@
 			}
 		}
 	],
+	"scheduled_events": [],
 	"significant_figures": [
 		{
 			"allegiance": "Bolivia",
@@ -115332,5 +115346,6 @@
 			"status": 0,
 			"traits": []
 		}
-	]
+	],
+	"wars": []
 }

@@ -12,10 +12,10 @@ func _enter_tree() -> void:
 @export var provinceName: Label
 @export var provinceDescription: RichTextLabel
 @export var provinceInfrastructure: Label
-@export var provinceConstructionIcon: TextureRect
-@export var provinceOccupiedIcon: TextureRect
-@export var provinceDestroyedIcon: TextureRect
 @export var provinceClaims: Label
+
+@export var buildingsLabel: Label
+@export var resourcesGrid: Container
 
 var tooltipLatch: bool = false
 var shouldBeVisible: bool = false
@@ -62,27 +62,46 @@ func SwitchTooltip(a_mode: int) -> void:
 			if !prov.city.is_empty():
 				desc_text += prov.city
 			
-			var active_buildings = []
+			var active_buildings = ""
 			for building in prov.buildings:
 				var state_str = ""
-				if building.state == BuildingData.BuildingState.CONSTRUCTION:
-					state_str = " (Under Construction)"
-				elif building.state == BuildingData.BuildingState.RUIN:
-					state_str = " (Ruin)"
-				active_buildings.append(building.type + state_str)
+				match building.state:
+					BuildingData.BuildingState.CONSTRUCTION:
+						state_str = " (Under Construction)"
+					BuildingData.BuildingState.RUIN:
+						state_str = " (Ruin)"
+				active_buildings += building.type + state_str + "\n"
+			buildingsLabel.text = active_buildings
 			
-			if !active_buildings.is_empty():
-				if !desc_text.is_empty():
-					desc_text += "\n"
-				desc_text += "Buildings:"
-				for b in active_buildings:
-					desc_text += "\n- " + b
+			# if !active_buildings.is_empty():
+			# 	if !desc_text.is_empty():
+			# 		desc_text += "\n"
+			# 	desc_text += "Buildings:"
+			# 	for b in active_buildings:
+			# 		desc_text += "\n- " + b
+			
+			# var active_resources = []
+
+			for resource in resourcesGrid.get_children(): resource.queue_free()
+			for resource in prov.resources:
+				print(resource)
+				var resourceBop: HBoxContainer = resourceTemplate.duplicate()
+				resourceBop.get_node("TextureRect").texture = MapManager.GetResourceIcon(resource.type)
+				resourceBop.get_node("TextureRect").modulate = MapManager.resources[resource.type].color
+				resourceBop.get_node("Label").text = "%s - %d (%.2f%%)" % [resource.type, resource.amount, 100 * resource.quality]
+				resourceBop.visible = true
+				resourcesGrid.add_child(resourceBop)
+
+				# active_resources.append("%s - %d (%.2f%%)" % [resource.type, resource.amount, 100.0 * resource.quality])
+			
+			# if !active_resources.is_empty():
+			# 	if !resouce_text.is_empty():
+			# 		resouce_text += "\n"
+			# 	for r in active_resources:
+			# 		resouce_text += "\n- " + r
 			
 			provinceDescription.text = desc_text
-			provinceInfrastructure.text = "%d/%d" % [prov.infrastructure, prov.maxInfrastructure]
-			provinceConstructionIcon.visible = MapManager.current_hovered_pid in EconomyManager.construction_queue
-			provinceOccupiedIcon.visible = !prov.occupier.is_empty()
-			provinceDestroyedIcon.visible = false
+			# provinceInfrastructure.text = "%d/%d" % [prov.infrastructure, prov.maxInfrastructure]
 			for claim in prov.claims:
 				fmt_claims += claim+"\n"
 			provinceClaims.text = fmt_claims

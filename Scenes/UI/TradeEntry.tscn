@@ -41,11 +41,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-fit_content = true
 text = "Price: $0
 In Stock: 0
 Net Change: 0
 Daily Income: $0"
+fit_content = true
 
 [node name="Exports" type="SpinBox" parent="ResourceStats/HBoxContainer" unique_id=1263304958]
 use_parent_material = true

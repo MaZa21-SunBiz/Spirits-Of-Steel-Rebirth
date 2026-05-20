@@ -69,11 +69,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_lhmql")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 drag_to_rearrange_enabled = true
 
 [node name="Saves" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=1381486399]
-visible = false
 material = ExtResource("1_lhmql")
 use_parent_material = true
 layout_mode = 2
@@ -95,7 +94,8 @@ custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-placeholder_text = "Search"
+placeholder_text = "Save Name
+"
 
 [node name="SaveGame" type="Button" parent="VBoxContainer/TabContainer/Saves/VBoxContainer/HBoxContainer" unique_id=530483480]
 material = ExtResource("1_lhmql")
@@ -116,6 +116,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Audio" type="PanelContainer" parent="VBoxContainer/TabContainer" unique_id=750041884]
+visible = false
 material = ExtResource("1_lhmql")
 use_parent_material = true
 layout_mode = 2

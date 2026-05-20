@@ -148,6 +148,9 @@ func _refresh_map_visuals() -> void:
 		mat.set_shader_parameter("state_colors", MapManager.state_color_texture)
 
 func load_map_data(mapData: Dictionary):
+	if mapData.has("current_start"):
+		GameState.current_start = mapData["current_start"]
+		
 	var b_data = mapData.get("biomes")
 	MapManager.LoadBiomes(b_data if b_data is Array else [])
 	
@@ -202,7 +205,12 @@ func load_map_data(mapData: Dictionary):
 
 func save_game(slot: String):
 	# Construct a unified save dictionary
+	var fig_dicts: Array[Dictionary] = []
+	for x in MapManager.significantFigures.values():
+		fig_dicts.append(x.ToDict())
+
 	var save_data = {
+		"current_start": GameState.current_start,
 		"clock": clock.ToDict() if clock else {},
 		"resources": MapManager.SaveResourcesData(),
 		"recipes": MapManager.SaveRecipesData(),
@@ -213,7 +221,8 @@ func save_game(slot: String):
 		"factions": FactionManager.save_factions(),
 		"wars": WarManager.save_wars(),
 		"original_territories": WarManager.save_original_territories(),
-		"scheduled_events": EventManager.save_events()
+		"scheduled_events": EventManager.save_events(),
+		"significant_figures": fig_dicts
 	}
 	
 	# Ensure directory exists
