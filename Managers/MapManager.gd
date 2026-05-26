@@ -21,7 +21,7 @@ var state_color_texture: ImageTexture
 var max_province_id: int = 0
 
 var ethnic_name_to_color: Dictionary = {}
-var gdp_map: Dictionary = {}
+# var gdp_map: Dictionary = {}
 
 var province_to_country: Dictionary[int, String] = {}
 var country_to_provinces: Dictionary = {}
