@@ -746,3 +746,21 @@ func update_is_at_war():
 	enemies = WarManager.get_enemies_of(self.country_name)
 	is_at_war = !enemies.is_empty()
 	war_dirty = false
+
+# i watched one video on composition
+
+# func MakePuppet(country: CountryData):
+# 	self.puppets.append(country.country_name)
+# 	self.allowedCountries.append(country.country_name)
+# 	country.allowedCountries.append(self.country_name)
+# 	# MapManager.allow_pids(self, country)
+# 	# MapManager.allow_pids(country, self)
+# 	country.is_puppet = false
+# 	country.owner = self.country_name
+# 	country.ideology = self.ideology
+# 	country.relations[self.country_name] = 200
+# 	FactionManager.clear_faction(country)
+# 	country.factions = self.factions
+# 	FactionManager.invite_faction(self, country)
+# 	MapManager.show_countries_map()
+#
