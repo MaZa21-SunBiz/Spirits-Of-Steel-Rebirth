@@ -7,16 +7,16 @@ using System.Collections.Generic;
 public partial class SoiStar : AStar2D {
 	string[] contextAllowedCountries = [];
 
-	public float _ComputeCost(Dictionary<int, Province> provinceObjects, int fromId, int toId) {
-		if (NeighborFilterEnabled && _FilterNeighbour(provinceObjects, fromId, toId)) {
+	public float _ComputeCost(int fromId, int toId) {
+		if (NeighborFilterEnabled && _FilterNeighbour(fromId, toId)) {
 			return int.MaxValue;
 		}
 		return GetPointPosition(fromId).DistanceTo(GetPointPosition(toId));
 	}
 
-	private bool _FilterNeighbour(Dictionary<int, Province> provinceObjects, int fromId, int toId) {
-		Province fromProv = provinceObjects[fromId];
-		Province toProv   = provinceObjects[toId];
+	private bool _FilterNeighbour(int fromId, int toId) {
+		Province fromProv = MapManager.Instance.provinceObjects[fromId];
+		Province toProv   = MapManager.Instance.provinceObjects[toId];
 
 		if (fromProv == null || toProv == null) {
 			return true;

@@ -52,8 +52,6 @@ const MAP_DATA_PATH = "res://map_data/MapData.tres"
 
 @onready var significantFigures: Dictionary[String, ImportantFigure] = {}
 
-var gay: Label = Label.new()
-# soiladin time
 var allowed_pids: Dictionary = {}
 
 func increase_world_tension(amount: float) -> void:

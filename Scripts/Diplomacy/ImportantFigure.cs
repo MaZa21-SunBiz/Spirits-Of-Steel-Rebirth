@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class ImportantFigure : Node {
 	enum Status {
@@ -12,7 +13,7 @@ public partial class ImportantFigure : Node {
 	Dictionary<string, float> skills;
 	// this isnt implemented yet so idk the array type
 	// [] traits;
-	Godot.Vector2i ideology;
+	Godot.Vector2I ideology;
 
 
 }
