@@ -1,23 +1,24 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 // [GlobalClass]
 public partial class SoiStar : AStar2D {
 	string[] contextAllowedCountries = [];
 
-	public float computeCost(int fromId, int toId) {
-		if (NeighborFilterEnabled && FilterNeighbour(fromId, toId)) {
+	public float _ComputeCost(Dictionary<int, Province> provinceObjects, int fromId, int toId) {
+		if (NeighborFilterEnabled && _FilterNeighbour(provinceObjects, fromId, toId)) {
 			return int.MaxValue;
 		}
 		return GetPointPosition(fromId).DistanceTo(GetPointPosition(toId));
 	}
 
-	private bool FilterNeighbour(int fromId, int toId) {
-		Province fromProv = MapManager.provinceObjects[fromId];
-		Province toProv   = MapManager.provinceObjects[toId];
+	private bool _FilterNeighbour(Dictionary<int, Province> provinceObjects, int fromId, int toId) {
+		Province fromProv = provinceObjects[fromId];
+		Province toProv   = provinceObjects[toId];
 
-		if (!(fromProv != null && toProv != null)) {
+		if (fromProv == null || toProv == null) {
 			return true;
 		}
 

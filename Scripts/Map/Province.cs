@@ -124,7 +124,7 @@ public partial class Province : Node {
 		return totalFactories;
 	}
 
-	public string getFunctionalOwner() {
+	public string GetFunctionalOwner() {
 		return (this.occupier == "" ? country : occupier);
 	}
 

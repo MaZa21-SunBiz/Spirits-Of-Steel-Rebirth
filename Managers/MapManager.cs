@@ -30,12 +30,22 @@ public partial class MapManager : Node
 	Dictionary<string, ResourceData> resources					 = new Dictionary<string, ResourceData>();
 	Dictionary<string, RecipeData> recipes							 = new Dictionary<string, RecipeData>();
 
-	int currentHoveredPid = -1;
-	int lastHoveredPid = -1;
-	int originalHoverColor = -1;
+	int currentHoveredPid										 = -1;
+	int lastHoveredPid		 									 = -1;
+	int originalHoverColor 									 = -1;
 	Dictionary<int, Vector2> provinceCenters = new Dictionary<int, Vector2>();
-	Dictionary<int, int> uniqueRegions = new Dictionary<int, int>();
-	SoiStar provinceGraph = new SoiStar();
+	Dictionary<int, int> uniqueRegions			 = new Dictionary<int, int>();
+	SoiStar provinceGraph										 = new SoiStar();
+
+	Dictionary<string, int[]> globalClaimsRegistry = new Dictionary<string, int[]>();
+	float worldTension = 0.1;
+
+	Dictionary<string, Variant>[] allCities = [];
+
+	const string MAP_DATA_PATH = "res://map_data/MapData.tres";
+
+	// this has @onready in gdscript
+	Dictionary<string, ImportantFigure> significantFigures = {};
 	
 
 }
