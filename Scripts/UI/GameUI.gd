@@ -65,7 +65,7 @@ var stats_labels := {}
 @export var select_player_stat: VBoxContainer
 
 # Use the class_name of your action scene if available, or load strictly as packed scene
-@onready var action_scene: PackedScene = preload("res://Scenes/action.tscn")
+@onready var action_scene: PackedScene = preload("res://Scenes/TroopTraining.tscn")
 @onready var trade_entry_scene: PackedScene = preload("res://Scenes/UI/TradeEntry.tscn")
 @onready var production_entry_scene: PackedScene = preload("res://Scenes/UI/ProductionEntry.tscn")
 
@@ -668,7 +668,7 @@ func _build_trooplist() -> void:
 		# Callable points to deploy_troop, passing the specific troop object
 		btn.setup_ready(troop, Callable(self , "deploy_troop").bind(troop))
 
-#NOTE(Sockmit2007): Soilad is literally Hitler for this one.
+# NOTE(Sockmit2007): Soilad is literally Hitler for this one.
 
 func update_topbar_stats() -> void:
 	if !CountryManager.player_country:

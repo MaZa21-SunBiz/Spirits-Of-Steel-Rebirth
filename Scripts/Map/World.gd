@@ -16,7 +16,7 @@ var mat: ShaderMaterial
 
 func _process(_delta: float) -> void:
 	if !map_sprite or !MapManager.id_map_image: return
-	var map_width := MapManager.id_map_image.get_width()
+	var map_width = MapManager.id_map_image.get_width()
 	if camera.position.x > map_sprite.position.x + map_width:
 		camera.position.x -= map_width
 	elif camera.position.x < map_sprite.position.x - map_width:

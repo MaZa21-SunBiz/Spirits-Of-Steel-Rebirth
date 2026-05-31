@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class ResourceData : Node {
 	string name;
 	Color color;
-	string icon;
+	public string icon;
 	int basePrice;
 	Dictionary<string, float> tags = new Dictionary<string, float>();
 

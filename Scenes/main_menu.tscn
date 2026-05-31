@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bij3qht7a0ul1" path="res://assets/ui/Cassidy_11b.webp" id="4_8dnnj"]
 [ext_resource type="FontFile" uid="uid://bfw0gn63lgdhq" path="res://font/Google_Sans/static/GoogleSans-Bold.ttf" id="4_yhxw7"]
 [ext_resource type="Script" uid="uid://bmubx6hdbo3bt" path="res://Scripts/UI/MainMenu.gd" id="5_trj04"]
+[ext_resource type="Texture2D" uid="uid://c5kus2s8moj7w" path="res://assets/ui/milk_chan.webp" id="5_vtepg"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="5_yhxw7"]
 [ext_resource type="FontFile" uid="uid://c1jnrhadjfe68" path="res://font/Google_Sans/static/GoogleSans-Regular.ttf" id="8_trj04"]
 [ext_resource type="Script" uid="uid://cg4pa1ta81t7l" path="res://Scenes/starts.gd" id="14_8dnnj"]
@@ -45,29 +46,38 @@ stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=570584922]
-offset_left = 499.0
-offset_top = 334.0
-offset_right = 830.0
-offset_bottom = 650.0
+offset_left = 510.0
+offset_top = 332.0
+offset_right = 841.0
+offset_bottom = 648.0
 texture = ExtResource("2_5egv6")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1251231895]
-offset_left = 780.0
-offset_top = 280.0
-offset_right = 1171.0
-offset_bottom = 653.0
+offset_left = 763.0
+offset_top = 283.0
+offset_right = 1154.0
+offset_bottom = 656.0
 texture = ExtResource("3_vtepg")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1132694433]
-offset_left = 924.0
-offset_top = 332.0
-offset_right = 1154.0
-offset_bottom = 1107.0
+offset_left = 976.0
+offset_top = 315.0
+offset_right = 1206.0
+offset_bottom = 1090.0
 texture = ExtResource("4_8dnnj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=462709763]
+offset_left = 841.0
+offset_top = 380.0
+offset_right = 1172.0
+offset_bottom = 696.0
+texture = ExtResource("5_vtepg")
 expand_mode = 3
 stretch_mode = 4
 

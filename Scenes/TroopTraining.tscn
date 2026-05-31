@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d054r2umstj43"]
+
+[ext_resource type="Script" uid="uid://dbtaov6443af6" path="res://Scripts/UI/Elements/TroopTraining.cs" id="1_tlws2"]
+[ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_wpa20"]
+[ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_b56ea"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=2066544094 node_paths=PackedStringArray("button")]
+offset_right = 226.0
+offset_bottom = 50.0
+script = ExtResource("1_tlws2")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=1647895448]
+material = ExtResource("2_wpa20")
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_b56ea")
+theme_override_font_sizes/font_size = 20
+text = "adfdsa"
+autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_OnButtonPressed"]

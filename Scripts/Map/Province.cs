@@ -17,7 +17,7 @@ public partial class Province : Node {
 		PORT_BUILT = 2
 	}
 	ProvinceTypes type = ProvinceTypes.LAND;
-	int id;
+	public int id;
 	string name;
 	string country;
 	string occupier;
@@ -33,7 +33,7 @@ public partial class Province : Node {
 	int infrastructure;
 	int maxInfrastructure;
 
-	public Godot.Collections.Dictionary<string, Variant> ToDict(Godot.Collections.Dictionary[] troopData) {
+	public Godot.Collections.Dictionary<string, Variant> ToDict(Godot.Collections.Array<Godot.Collections.Dictionary> troopsData = null) {
 		return new Godot.Collections.Dictionary<string, Variant>() {
 			{"type", (int) this.type},
 			{"name", this.name},
@@ -49,7 +49,7 @@ public partial class Province : Node {
 			{"claims", (claims.Length == 1 && claims[0] == country) ? [] : this.claims},
 			{"infrastructure", this.infrastructure},
 			{"max_infrastructure", this.maxInfrastructure},
-			{"troops", new Godot.Collections.Array<Godot.Collections.Dictionary>(troopData)}
+			{"troops", new Godot.Collections.Array<Godot.Collections.Dictionary>(troopsData == null ? [] : troopsData)}
 		};
 	}
 
