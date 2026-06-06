@@ -26,8 +26,8 @@ public partial class MapManager : Node
 
 	Dictionary<string, Color> ethnicNameToColor						 = new Dictionary<string, Color>();
 	Dictionary<string, int[]> countryToProvinces					 = new Dictionary<string, int[]>();
-	Dictionary<string, int[]> countryToOwnedProvinces		 	 = new Dictionary<string, int[]>();
-	Dictionary<string, int[]> countryToOccupiedProvinces 	 = new Dictionary<string, int[]>();
+	public Dictionary<string, int[]> countryToOwnedProvinces		 	 = new Dictionary<string, int[]>();
+	public Dictionary<string, int[]> countryToOccupiedProvinces 	 = new Dictionary<string, int[]>();
 	Dictionary<string, int[]> countryToCities						 	 = new Dictionary<string, int[]>();
 	public Dictionary<int, Province> provinceObjects		 	 = new Dictionary<int, Province>();
 	Dictionary<string, BiomeData> biomes								 	 = new Dictionary<string, BiomeData>();

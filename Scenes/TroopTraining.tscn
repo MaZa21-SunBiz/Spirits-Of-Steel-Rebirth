@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d054r2umstj43"]
 
-[ext_resource type="Script" uid="uid://dbtaov6443af6" path="res://Scripts/UI/Elements/TroopTraining.cs" id="1_tlws2"]
+[ext_resource type="Script" uid="uid://dbtaov6443af6" path="res://Scripts/UI/Elements/TrainingUIEntry.cs" id="1_tlws2"]
 [ext_resource type="Material" uid="uid://btordm7082cxn" path="res://Materials/damaged.tres" id="2_wpa20"]
 [ext_resource type="Theme" uid="uid://c38ivksvf4is0" path="res://main_theme.tres" id="3_b56ea"]
 

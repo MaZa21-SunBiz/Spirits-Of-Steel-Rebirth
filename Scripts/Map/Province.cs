@@ -25,7 +25,7 @@ public partial class Province : Node {
 	ResourceNode[] resources;
 	int resourceMultiplier;
 	string city;
-	BuildingData[] buildings;
+	public BuildingData[] buildings;
 	PopulationData[] populations;
 	int gdp = 1_000;
 	Vector2 center;

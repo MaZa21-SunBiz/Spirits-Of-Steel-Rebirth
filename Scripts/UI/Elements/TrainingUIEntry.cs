@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class  : HBoxContainer {
+public partial class TrainingUIEntry : HBoxContainer {
 	[Export] Button button;
 	// Dictionary<,> data = new();
 	string baseText = "";
@@ -17,7 +17,9 @@ public partial class  : HBoxContainer {
 		CountryManager.Instance.playerCountry.politicalPower -= data.TryGetValue("cost", out float politicalPower) ? politicalPower : 0;
 	}
 
-	public void SetupTraining(trainingObj)
+	// public void SetupTraining(trainingObj) {
+	//
+	// }
 
 
 }

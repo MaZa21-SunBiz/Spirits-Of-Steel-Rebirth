@@ -13,18 +13,19 @@ signal pressed
 
 func _ready() -> void:
 	button.pressed.connect(func(): pressed.emit())
+	pressed.connect(_on_button_pressed)
 	# Assuming GameState is a global singleton
 	if GameState.current_world and GameState.current_world.clock:
 		GameState.current_world.clock.day_passed.connect(refresh_ui)
 
 
 # 1. Standard Setup
-# func setup(item_data: Dictionary, on_click: Callable) -> void:
-# 	data = item_data
-# 	_callback = on_click
-# 	source_object = null
-# 	base_text = data.get("text", "Unknown Action")
-# 	_init_ui()
+func setup(item_data: Dictionary, on_click: Callable) -> void:
+	data = item_data
+	_callback = on_click
+	source_object = null
+	base_text = data.get("text", "Unknown Action")
+	_init_ui()
 
 
 # 2. Training Setup

@@ -7,7 +7,7 @@ var emptyLatch: bool = false
 var to_remove: Array = []
 var troops: Array = []
 var moving_troops: Array = []
-var troops_by_province: Dictionary[int, Array] = {} # { province_id: [TroopData, ...] }
+var troops_by_province: Dictionary[int, Array] = {}		# { province_id:  [TroopData, ...] }
 var troops_by_country: Dictionary[String, Array] = {} # { country_name: [TroopData, ...] }
 
 var path_cache: Dictionary = {} # { start_id: { target_id: path_array } }

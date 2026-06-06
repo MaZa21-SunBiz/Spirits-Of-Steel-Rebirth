@@ -22,38 +22,7 @@ const EMERGENCY_DEPLOYMENT_THRESHOLD := 5 # If at war and fewer than this, panic
 
 
 var country: CountryData
-var personality: Dictionary[String, Variant]= {
-	"economy": {
-		"trade": 1.0,
-		"industry_amount_factor": 0.08,
-		"industry": 0.75,
-		"surplus": 1.0
-	},
-	"military": {
-		"training_factor": 1.0,
-		"max_economic_ratio": 0.7,
-	},
-	"war": {
-		"probability": {
-			"base": 0.1,
-			"tension_factor": 2.0,
-		},
-		"score": {
-			"strength": 2.0,
-			"money_factor": 0.00002,
-			"max_cities": 3,
-			"cities": 0.5
-		},
-		"combat": {
-			"attack_weight": 2.0,
-			"defense_weight": 1.5,
-			"city_bonus": 50.0,
-		},
-		"min_strength_ratio": 1.1,
-		"min_economy": 15000,
-	},
-	"aggression": 1.0,
-}
+var personality: Dictionary[String, Variant]
 var _last_declare_frame: int = -999999
 var _neighbor_cache: Array = []
 var _neighbors_dirty: bool = true
@@ -87,6 +56,7 @@ func _init(_country: CountryData) -> void:
 				"attack_weight": 5 * randf(),
 				"defense_weight": 5 * randf(),
 				"city_bonus": 100 * randf(),
+
 			},
 			"min_strength_ratio": 1.1 + randf(),
 			"min_economy": 10000 * randf(),
@@ -108,7 +78,7 @@ func _on_province_ownership_changed(_pid: int, _old_owner: String, _new_owner: S
 
 
 func think_hour() -> void:
-	if Engine.get_frames_drawn() % (TICK_RATE_WAR if !WarManager.get_enemies_of(country.country_name).is_empty() else TICK_RATE_PEACE) != 0:
+	if Engine.get_frames_drawn() % (TICK_RATE_WAR if WarManager.get_enemies_of(country.country_name) else TICK_RATE_PEACE) != 0:
 		return
 	
 	_execute_best([
