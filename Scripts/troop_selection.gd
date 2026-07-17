@@ -95,23 +95,57 @@ func _perform_selection() -> void:
 	var world_rect := Rect2(drag_start, drag_end - drag_start).abs()
 	var texture_width := map_sprite.texture.get_width()
 	var cam = get_viewport().get_camera_2d()
-	var inv_zoom = 1.0 / cam.zoom.x if cam else 1.0
+	var inv_zoom: float = 1.0 / cam.zoom.x if cam else 1.0
+
+	var player_troops = CountryManager.player_country.troops_country
+	var troops_by_province = {} # { province_id: [TroopData, ...] }
+	for t in player_troops:
+		if t.is_moving:
+			continue
+		if not troops_by_province.has(t.province_id):
+			troops_by_province[t.province_id] = []
+		troops_by_province[t.province_id].append(t)
+
+	var troop_offsets = {}
+	var scaled_vertical_offset := 20.0 * inv_zoom
+	var card_offset := Vector2(3.0, -3.0) * inv_zoom
+
+	for pid in troops_by_province:
+		var p_troops = troops_by_province[pid]
+		
+		# Separate them by type
+		var typed_groups = {} # { type: [TroopData, ...] }
+		for t in p_troops:
+			var t_type = t.get_main_type()
+			if not typed_groups.has(t_type):
+				typed_groups[t_type] = []
+			typed_groups[t_type].append(t)
+			
+		var group_keys = typed_groups.keys()
+		var start_y = (group_keys.size() - 1) * scaled_vertical_offset * 0.5
+		
+		for g_idx in range(group_keys.size()):
+			var t_type = group_keys[g_idx]
+			var group = typed_groups[t_type]
+			
+			var group_base_pos = Vector2(0, start_y - (g_idx * scaled_vertical_offset))
+			
+			for t_idx in range(group.size()):
+				var t = group[t_idx]
+				troop_offsets[t] = group_base_pos + (card_offset * t_idx)
 
 	var selected_list: Array[TroopData] = []
-	var flag_size = Vector2(FLAG_WIDTH_BASE, FLAG_HEIGHT_BASE) * inv_zoom
-	var pad = PADDING_BASE * inv_zoom
+	var box_size = Vector2(76.0, 32.0) * inv_zoom
 
-	for t in CountryManager.player_country.troops_country:
-		var label = str(t.divisions_count)
-		var font_size := CustomRenderer.LAYOUT.font_size
-		var text_size = (
-			font.get_string_size(label, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size) * inv_zoom
-		)
+	for t in player_troops:
+		var visual_center = t.position
+		if t.is_moving:
+			var progress = t.get_meta("progress", 0.0)
+			visual_center = t.position.lerp(t.target_position, progress)
+		else:
+			visual_center = t.position + troop_offsets.get(t, Vector2.ZERO)
 
-		var w = flag_size.x + (GAP_BASE * inv_zoom) + text_size.x + (pad * 2)
-		var h = max(flag_size.y, text_size.y) + (pad * 2)
-		var box_size = Vector2(w, h)
-		var troop_world_center = t.position + map_sprite.position
+		var troop_world_center = visual_center + map_sprite.position
 		var troop_rect = Rect2(troop_world_center - box_size * 0.5, box_size)
 
 		if _check_rect_intersection(world_rect, troop_rect, t.position.x, texture_width):
@@ -128,7 +162,7 @@ func _perform_selection() -> void:
 
 	# Update max_path_length based on current live selection
 	max_path_length = 0
-	for troop in selected_list:
+	for troop in selected_troops:
 		max_path_length += troop.divisions_count
 
 

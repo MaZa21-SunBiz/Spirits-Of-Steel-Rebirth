@@ -167,7 +167,8 @@ text = "PLAY AS NATION"
 
 [node name="FooterNote" type="Label" parent="MainSidebar/ContentStack/Padding/InnerLayout" unique_id=766451533]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.90359825, 0.90359825, 0.9035982, 1)
-theme_override_font_sizes/font_size = 17
-text = "Press Right Mouse button to Deselect country"
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Press Right Mouse button to deselect country"
 horizontal_alignment = 1
+autowrap_mode = 3

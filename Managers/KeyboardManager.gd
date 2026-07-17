@@ -20,7 +20,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("open_menu"):
 		if not _debounce:
 			_debounce = true
-			toggle_menu.emit()
+			var menu = get_tree().root.find_child("Menu", true, false)
+			if menu:
+				menu.toggle_menu()
 
 	if Input.is_action_just_released("open_menu"):
 		_debounce = false

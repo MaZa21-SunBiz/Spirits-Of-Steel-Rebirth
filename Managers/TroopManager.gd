@@ -195,7 +195,7 @@ func _get_cached_path(start_id: int, target_id: int, allowed_countries: Array[St
 	if start_id == target_id:
 		return []
 
-	var key = Vector2i(start_id, target_id)
+	var key = Vector3i(start_id, target_id, allowed_countries.hash())
 	if path_cache.has(key):
 		return path_cache[key].duplicate()
 

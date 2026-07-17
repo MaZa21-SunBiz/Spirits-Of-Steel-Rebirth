@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func on_play_pressed():
 	if selected_country != "" and CountryManager.countries.has(selected_country):
-		CountryManager.set_player_country(hovered_country)
+		CountryManager.set_player_country(selected_country)
 		ConsoleManager.switch_scene("world")
 
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bonl378c51366"]
 
 [ext_resource type="Script" uid="uid://bjvlgraecimcy" path="res://Scenes/main.gd" id="1_kry3j"]
-[ext_resource type="Script" path="res://Scenes/map_container.gd" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://dfiom5fy34v8q" path="res://Scenes/map_container.gd" id="2_21xkr"]
 [ext_resource type="Shader" uid="uid://bnmv2hv80mfw5" path="res://shaders/map_shader.gdshader" id="3_6bp64"]
 [ext_resource type="Script" uid="uid://cvkc8n0kgyk3c" path="res://Scripts/camera_controller.gd" id="4_344ge"]
 [ext_resource type="Script" uid="uid://cnm2s5owh7ec3" path="res://Scripts/game_clock.gd" id="6_21xkr"]

@@ -372,7 +372,7 @@ func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-			province_hovered.emit(-1, "")
+			province_hovered.emit(-1)
 
 
 func _reset_last_hover() -> void:
@@ -464,6 +464,9 @@ func highlight_country(country_name: String) -> void:
 	var light_color = base_color.lightened(0.2)
 
 	for pid in provinces:
+		var prov = province_objects.get(pid)
+		if prov and not prov.troops_here.is_empty():
+			continue # Do not highlight provinces with troops on them
 		_update_lookup(pid, light_color)
 
 	state_color_texture.update(state_color_image)

@@ -23,10 +23,10 @@ func _ready() -> void:
 	_on_time_passed(0)
 	updateProgressBar()
 	
-	#MapManager.province_hovered.connect(_on_province_hovered)
-	#active_popup = PROVINCE_POPUP_SCENE.instantiate()
-	#add_child(active_popup)
-	#active_popup.hide()
+	MapManager.province_hovered.connect(_on_province_hovered)
+	active_popup = PROVINCE_POPUP_SCENE.instantiate()
+	add_child(active_popup)
+	active_popup.hide()
 
 func _on_player_change() -> void:
 	_update_flag()
@@ -65,12 +65,11 @@ func _on_time_passed(x) -> void:
 
 func _on_province_hovered(pid: int):
 	if pid in [-1, 0, 1]:
-		active_popup.hide()
+		active_popup.hide_popup()
 		return
 
 	var data = MapManager.province_objects[pid]
-	active_popup.update_info(data)
-	active_popup.show()
+	active_popup.show_popup(data)
 
 func updateProgressBar():
 	var clock = GameState.main.clock

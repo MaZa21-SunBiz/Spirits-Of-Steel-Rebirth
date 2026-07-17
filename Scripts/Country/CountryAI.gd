@@ -15,11 +15,47 @@ func _init(c: CountryData):
 
 func think_day():
 	_manage_economy()
+	_manage_politics()
 	_manage_military_growth()
 	_deploy_queued_troops()
 
+func _manage_politics():
+	var at_war = WarManager.is_country_at_war(country.country_name)
+	
+	if country.political_power >= 150.0:
+		var desired_ratio = 0.005
+		if at_war:
+			desired_ratio = 0.02
+		else:
+			desired_ratio = 0.01
+			
+		if country.military_size_ratio < desired_ratio:
+			country.political_power -= 150.0
+			country.military_size_ratio = desired_ratio
+			if desired_ratio == 0.01:
+				country.economy_law_penalty = 0.05
+			elif desired_ratio == 0.02:
+				country.economy_law_penalty = 0.30
+			country.update_manpower_pool()
+
+	if country.political_power >= 100.0:
+		if country.stability < 0.6:
+			country.political_power -= 50.0
+			country.stability = min(1.0, country.stability + 0.15)
+		elif country.war_support < 0.6 and at_war:
+			country.political_power -= 50.0
+			country.war_support = min(1.0, country.war_support + 0.15)
+		elif country.money >= 5000:
+			country.political_power -= 100.0
+			country.money -= 5000.0
+			country.factories_amount += 1
+			country.factories_available += 1
+
 func think_hour():
-	_manage_movement()
+	# Stagger movement thinking so that countries don't all process paths on every single tick.
+	# Checking every 6 hours is more than sufficient for movement updates.
+	if (GameState.main.clock.total_ticks + country.daily_process_hour) % 6 == 0:
+		_manage_movement()
 
 # --- 1. STRATEGIC: Economy & Industry ---
 
@@ -85,38 +121,84 @@ func _manage_movement():
 	if idle_troops.is_empty(): 
 		return
 	
-	#var enemies = WarManager.get_enemies_of(country.country_name)
 	var move_payload = []
-
-	# Move Troops to border provinces where enemy nearby
-	var threatened_pids = _get_active_threat_pids()
-	if not threatened_pids.is_empty():
-		for troop in idle_troops:
-			var target_pid = _get_closest_pid(troop.province_id, threatened_pids)
-			if target_pid != -1 and target_pid != troop.province_id:
-				move_payload.append({
-					"troop": troop, 
-					"province_id": target_pid, 
-					"divisions": troop.divisions_count
-				})
-	else:
-		if country.provinces_with_city.is_empty(): 
-			return
-			
-		var city_ids = []
-		for p in country.provinces_with_city: 
-			city_ids.append(p.id)
-
-		for troop in idle_troops:
-			# If not in a city, move to the nearest one
-			if not troop.province_id in city_ids:
-				var target_city = _get_closest_pid(troop.province_id, city_ids)
-				if target_city != -1:
+	var enemies = WarManager.get_enemies_of(country.country_name)
+	
+	# Determine if we are at war
+	if not enemies.is_empty():
+		# 1. First priority: Retake our own provinces that have been captured by enemies
+		var captured_pids = []
+		if MapManager.country_to_provinces.has(country.country_name):
+			for pid in MapManager.country_to_provinces[country.country_name]:
+				var prov = MapManager.province_objects.get(pid)
+				if prov and prov.country != country.country_name:
+					captured_pids.append(pid)
+					
+		# 2. Find enemy border provinces or provinces owned by enemies bordering us
+		var threat_pids = []
+		for border_prov in country.enemy_border_provinces:
+			if border_prov.country in enemies:
+				threat_pids.append(border_prov.id)
+				
+		var targets = []
+		targets.append_array(captured_pids)
+		targets.append_array(threat_pids)
+		
+		# If we have targets, send idle troops to the closest target
+		if not targets.is_empty():
+			for troop in idle_troops:
+				var target_pid = _get_closest_pid(troop.province_id, targets)
+				if target_pid != -1 and target_pid != troop.province_id:
 					move_payload.append({
 						"troop": troop, 
-						"province_id": target_city, 
+						"province_id": target_pid, 
 						"divisions": troop.divisions_count
 					})
+		else:
+			# Just try to move closer to any province owned by the enemy
+			var enemy_pids = []
+			for enemy_name in enemies:
+				var enemy_provinces = MapManager.country_to_provinces.get(enemy_name, [])
+				enemy_pids.append_array(enemy_provinces)
+			
+			if not enemy_pids.is_empty():
+				for troop in idle_troops:
+					var target_pid = _get_closest_pid(troop.province_id, enemy_pids)
+					if target_pid != -1 and target_pid != troop.province_id:
+						move_payload.append({
+							"troop": troop, 
+							"province_id": target_pid, 
+							"divisions": troop.divisions_count
+						})
+	else:
+		# Peace-time default logic
+		var threatened_pids = _get_active_threat_pids()
+		if not threatened_pids.is_empty():
+			for troop in idle_troops:
+				var target_pid = _get_closest_pid(troop.province_id, threatened_pids)
+				if target_pid != -1 and target_pid != troop.province_id:
+					move_payload.append({
+						"troop": troop, 
+						"province_id": target_pid, 
+						"divisions": troop.divisions_count
+					})
+		else:
+			if country.provinces_with_city.is_empty(): 
+				return
+				
+			var city_ids = []
+			for p in country.provinces_with_city: 
+				city_ids.append(p.id)
+
+			for troop in idle_troops:
+				if not troop.province_id in city_ids:
+					var target_city = _get_closest_pid(troop.province_id, city_ids)
+					if target_city != -1:
+						move_payload.append({
+							"troop": troop, 
+							"province_id": target_city, 
+							"divisions": troop.divisions_count
+						})
 
 	# Execute all moves in one batch call
 	if not move_payload.is_empty():
@@ -132,11 +214,13 @@ func _get_active_threat_pids() -> Array:
 
 func _get_idle_troops() -> Array:
 	var idle = []
+	var battles_by_prov = {}
+	for b in WarManager.active_battles:
+		battles_by_prov[b.attacker_pid] = true
+		battles_by_prov[b.defender_pid] = true
+		
 	for t in country.troops_country:
-		var in_battle = WarManager.active_battles.any(func(b): 
-			return b.attacker_pid == t.province_id or b.defender_pid == t.province_id
-		)
-		if not t.is_moving and not in_battle:
+		if not t.is_moving and not battles_by_prov.has(t.province_id):
 			idle.append(t)
 	return idle
 

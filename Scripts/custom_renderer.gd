@@ -28,6 +28,19 @@ var troop_multimesh: MultiMeshInstance2D
 
 var _last_cam_pos := Vector2.INF
 var _last_cam_zoom := Vector2.INF
+var icon_cache: Dictionary = {}
+
+
+func _get_division_icon(type: String) -> Texture2D:
+	if icon_cache.has(type):
+		return icon_cache[type]
+	var path = "res://assets/icons/hoi4/%s.png" % type.to_lower()
+	if ResourceLoader.exists(path):
+		var tex = load(path) as Texture2D
+		icon_cache[type] = tex
+		return tex
+	icon_cache[type] = null
+	return null
 
 
 # --- Lifecycle ---
@@ -74,15 +87,6 @@ func rebuild_troops():
 	if not troop_multimesh:
 		_setup_multimesh()
 
-	var mm = troop_multimesh.multimesh
-	if not mm:
-		_setup_multimesh()
-		mm = troop_multimesh.multimesh
-
-	# Force MultiMesh instance_count to match troops
-	var total_instances = TroopManager.troops.size() + TroopManager.moving_troops.size()
-	mm.instance_count = total_instances
-
 	_update_multimesh_buffer()
 	queue_redraw()
 
@@ -92,7 +96,6 @@ func _setup_multimesh():
 	if not troop_multimesh:
 		troop_multimesh = MultiMeshInstance2D.new()
 		troop_multimesh.name = "TroopMultiMesh"
-#		troop_multimesh.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		# Crucial: Move the boxes behind the labels
 		troop_multimesh.z_index = -1
 		add_child(troop_multimesh)
@@ -112,27 +115,12 @@ func _setup_multimesh():
 	mat.shader.code = """
 shader_type canvas_item;
 
-uniform float game_time;
-
 void vertex() {
-    vec2 start_pos = INSTANCE_CUSTOM.xy;
-    float start_time = INSTANCE_CUSTOM.z;
-    float duration = INSTANCE_CUSTOM.w;
-    float progress = 1.0;
-    if (duration > 0.0) {
-        progress = clamp((game_time - start_time) / duration, 0.0, 1.0);
-    }
-    vec2 target_pos = vec2(MODEL_MATRIX[3][0], MODEL_MATRIX[3][1]);
-    vec2 offset = (start_pos - target_pos) * (1.0 - progress);
-    VERTEX += offset;
+	// Standard passthrough
 }
 
 void fragment() {
-    // We adjust the border based on the zoom factor
     float zoom = max(0.4, COLOR.a);
-    
-    // Use smaller, more precise values for a wide rectangle
-    // For a 64x32 rect, these values keep the border looking uniform
     float border_width = 0.04 * zoom; 
     float border_height = 0.08 * zoom;
 
@@ -146,76 +134,96 @@ void fragment() {
     }
 }
 	"""
-	# Apply material to the Instance, not the Mesh (more reliable for updates)
 	troop_multimesh.material = mat
 	troop_multimesh.multimesh = mm
 
 
-## CustomRenderer.gd
-
-
 func _update_multimesh_buffer():
 	var mm = troop_multimesh.multimesh
-	var total_troops = TroopManager.troops.size()
+	if not mm:
+		return
 
-	if mm.instance_count != total_troops * 3:
-		mm.instance_count = total_troops * 3
+	var player_country = CountryManager.player_country.country_name if CountryManager.player_country else ""
+	var selected_dict = {}
+	if is_instance_valid(TroopManager.troop_selection):
+		for t in TroopManager.troop_selection.selected_troops:
+			selected_dict[t] = true
+
+	# Filter player troops and group by province
+	var player_stacks = {} # { province_id: [TroopData, ...] }
+	for troop in TroopManager.troops:
+		if troop.country_name != player_country or troop.is_moving:
+			continue
+		var pid = troop.province_id
+		if not player_stacks.has(pid):
+			player_stacks[pid] = []
+		player_stacks[pid].append(troop)
+
+	# Calculate player moving troops
+	var player_moving = []
+	for troop in TroopManager.moving_troops:
+		if troop.country_name == player_country:
+			player_moving.append(troop)
 
 	var idx = 0
-	var player_country = CountryManager.player_country.country_name
-	var selected_troops = []
-	if is_instance_valid(TroopManager.troop_selection):
-		selected_troops = TroopManager.troop_selection.selected_troops
-	var stacks_to_draw = {}  # { province_id: [TroopData, ...] }
+	
+	# For static player troops, we group them by main division type per province
+	for pid in player_stacks:
+		var stack = player_stacks[pid]
+		var typed_groups = {} # { type_string: [TroopData, ...] }
+		for troop in stack:
+			var t_type = troop.get_main_type()
+			if not typed_groups.has(t_type):
+				typed_groups[t_type] = []
+			typed_groups[t_type].append(troop)
 
-	for troop in TroopManager.troops:
+		# Offset each typed group's stacks vertically
+		var group_keys = typed_groups.keys()
+		var scaled_vertical_offset := STACKING_OFFSET_Y * _current_inv_zoom
+		var start_y = (group_keys.size() - 1) * scaled_vertical_offset * 0.5
+
+		for g_idx in range(group_keys.size()):
+			var t_type = group_keys[g_idx]
+			var group = typed_groups[t_type]
+			var group_pos = MapManager.province_centers.get(pid, Vector2.ZERO) + Vector2(0, start_y - (g_idx * scaled_vertical_offset))
+			idx = _write_player_group_to_multimesh(group, group_pos, idx, selected_dict)
+
+	for troop in player_moving:
+		var visual_pos = troop.position
 		if troop.is_moving:
-			continue
+			var progress = troop.get_meta("progress", 0.0)
+			visual_pos = troop.position.lerp(troop.target_position, progress)
+		idx = _write_player_group_to_multimesh([troop], visual_pos, idx, selected_dict)
 
-		var pid = troop.province_id
-		if not stacks_to_draw.has(pid):
-			stacks_to_draw[pid] = []
-		stacks_to_draw[pid].append(troop)
-
-	for pid in stacks_to_draw:
-		var stack = stacks_to_draw[pid]
-		var base_pos = MapManager.province_centers.get(pid, Vector2.ZERO)
-		idx = _write_stack_to_multimesh(stack, base_pos, idx, player_country, selected_troops)
-
-	for troop in TroopManager.moving_troops:
-		idx = _write_stack_to_multimesh(
-			[troop], troop.position, idx, player_country, selected_troops
-		)
-
-	_hide_unused_instances(idx, mm)
+	# Update mm instance count to fit idx exactly
+	if mm.instance_count != idx:
+		mm.instance_count = idx
 
 
-func _hide_unused_instances(start_idx: int, mm: MultiMesh) -> void:
-	for i in range(start_idx, mm.instance_count):
-		mm.set_instance_transform_2d(i, Transform2D().scaled(Vector2.ZERO))
-
-
-func _write_stack_to_multimesh(
-	stack: Array, base_pos: Vector2, idx: int, player: String, selected: Array
+func _write_player_group_to_multimesh(
+	group: Array, base_pos: Vector2, idx: int, selected_dict: Dictionary
 ) -> int:
 	var mm = troop_multimesh.multimesh
-	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
-	var start_y = (stack.size() - 1) * scaled_offset * 0.5
+	var card_offset := Vector2(3.0, -3.0) * _current_inv_zoom
 	var mm_scale := Vector2(_current_inv_zoom, _current_inv_zoom)
 
-	for i in range(stack.size()):
-		var troop = stack[i]
-		var vertical_pos = base_pos + Vector2(0, start_y - (i * scaled_offset))
+	for i in range(group.size()):
+		var troop = group[i]
+		# Bottom-to-top stacking: i = 0 is bottom, group.size()-1 is top
+		var offset_pos = base_pos + (card_offset * i)
+		var final_pos = offset_pos + map_sprite.position
 
-		var col = COLORS.border_other
-		if troop.country_name == player:
-			col = COLORS.border_selected if selected.has(troop) else COLORS.border_default
+		var col = COLORS.border_selected if selected_dict.has(troop) else COLORS.border_default
 
-		for m in [0]:
-			var final_pos = vertical_pos + Vector2(map_width * m, 0) + map_sprite.position
-			mm.set_instance_transform_2d(idx, Transform2D(0, mm_scale, 0, final_pos))
-			mm.set_instance_color(idx, col)
-			idx += 1
+		mm.set_instance_transform_2d(idx, Transform2D(0, mm_scale, 0, final_pos))
+		mm.set_instance_color(idx, col)
+		
+		var start_time = troop.get_meta("start_time") if troop.has_meta("start_time") else 0.0
+		var duration = troop.get_meta("duration") if troop.has_meta("duration") else 0.0
+		var start_pos = troop.get_meta("start_pos") if troop.has_meta("start_pos") else final_pos
+		mm.set_instance_custom_data(idx, Color(start_pos.x, start_pos.y, start_time, duration))
+		
+		idx += 1
 	return idx
 
 
@@ -234,7 +242,10 @@ func _draw_troops() -> void:
 	if _current_inv_zoom > 1.5:
 		return
 
-	var static_stacks = {}  # { province_id: [TroopData, ...] }
+	var player_country = CountryManager.player_country.country_name if CountryManager.player_country else ""
+
+	# Group ALL static troops by province
+	var static_stacks = {} # { province_id: [TroopData, ...] }
 
 	for troop in TroopManager.troops:
 		if troop.is_moving:
@@ -248,38 +259,99 @@ func _draw_troops() -> void:
 	for pid in static_stacks:
 		var stack = static_stacks[pid]
 		var base_pos = MapManager.province_centers.get(pid, Vector2.ZERO)
-		_draw_stack_labels(stack, base_pos)
+		_draw_province_troop_stack(stack, base_pos, player_country)
 
+	# Draw moving troops
 	for troop in TroopManager.moving_troops:
-		_draw_stack_labels([troop], troop.position)
+		var visual_pos = troop.position
+		if troop.is_moving:
+			var progress = troop.get_meta("progress", 0.0)
+			visual_pos = troop.position.lerp(troop.target_position, progress)
+
+		var d_pos = visual_pos + map_sprite.position
+		if _screen_rect.has_point(d_pos):
+			if troop.country_name == player_country:
+				_draw_player_troop(troop, d_pos, true)
+			else:
+				_draw_ai_troop_circle(troop.country_name, troop.divisions_count, d_pos)
 
 
-func _draw_stack_labels(stack: Array, base_pos: Vector2) -> void:
+func _draw_province_troop_stack(province_troops: Array, base_pos: Vector2, player_country: String) -> void:
+	var player_troops = []
+	var ai_troops_by_country = {} # { country_name: [TroopData, ...] }
+
+	for troop in province_troops:
+		if troop.country_name == player_country:
+			player_troops.append(troop)
+		else:
+			var c = troop.country_name
+			if not ai_troops_by_country.has(c):
+				ai_troops_by_country[c] = []
+			ai_troops_by_country[c].append(troop)
+
+	var visual_elements = []
+
+	# Player groups by type
+	var player_by_type = {}
+	for troop in player_troops:
+		var t = troop.get_main_type()
+		if not player_by_type.has(t):
+			player_by_type[t] = []
+		player_by_type[t].append(troop)
+
+	for t in player_by_type:
+		visual_elements.append({
+			"type": "player",
+			"group": player_by_type[t]
+		})
+
+	# AI groups by country
+	for c in ai_troops_by_country:
+		visual_elements.append({
+			"type": "ai",
+			"country": c,
+			"group": ai_troops_by_country[c]
+		})
+
 	var scaled_offset := STACKING_OFFSET_Y * _current_inv_zoom
-	var start_y = (stack.size() - 1) * scaled_offset * 0.5
+	var start_y = (visual_elements.size() - 1) * scaled_offset * 0.5
 
-	for i in range(stack.size()):
-		var troop = stack[i]
-		var vertical_pos = base_pos + Vector2(0, start_y - (i * scaled_offset))
+	for i in range(visual_elements.size()):
+		var elem = visual_elements[i]
+		var elem_pos = base_pos + Vector2(0, start_y - (i * scaled_offset))
+		var d_pos = elem_pos + map_sprite.position
 
-		for m in [-1, 0, 1]:
-			var d_pos = vertical_pos + Vector2(map_width * m, 0) + map_sprite.position
-			if _screen_rect.has_point(d_pos):
-				_draw_troop(troop, d_pos)
+		if _screen_rect.has_point(d_pos):
+			if elem["type"] == "player":
+				var group = elem["group"]
+				var card_offset := Vector2(3.0, -3.0) * _current_inv_zoom
+				var top_idx = group.size() - 1
+				var top_pos = d_pos + (card_offset * top_idx)
+				# Draw only the top card fully
+				_draw_player_troop(group[top_idx], top_pos, true)
+			else:
+				var total_divs = 0
+				for troop in elem["group"]:
+					total_divs += troop.divisions_count
+				_draw_ai_troop_circle(elem["country"], total_divs, d_pos)
 
 
 const HP_COLORS = {
-	"bg": Color(0.1, 0.1, 0.1, 0.9),
-	"healthy": Color(0.1, 0.9, 0.1),
-	"damaged": Color(0.9, 0.8, 0.1),
-	"critical": Color(0.9, 0.1, 0.1)
+	"bg": Color(0.1, 0.1, 0.1, 0.95),
+	"healthy": Color("#2ecc71"),   # Flat UI emerald green
+	"damaged": Color("#f1c40f"),   # Flat UI sun yellow
+	"critical": Color("#e74c3c")   # Flat UI alizarin red
 }
-const LAYOUT = {"box_w": 64.0, "box_h": 32.0, "hp_bar_h": 3.0, "font_size": 18}  # Wide rectangle  # Shorter height  # Visible strip at the bottom
-# Add this to your variables or constants
-var show_division_icon: bool = false
+const LAYOUT = {"box_w": 76.0, "box_h": 32.0, "hp_bar_h": 4.0, "font_size": 14}
+var show_division_icon: bool = true   # Default to showing division icons for clear gameplay feedback
 
 
-func _draw_troop(troop: TroopData, pos: Vector2) -> void:
+func _draw_player_troop(troop: TroopData, pos: Vector2, is_top: bool) -> void:
+	# If we are zoomed out, we rely solely on the GPU-rendered MultiMesh plate 
+	# and skip drawing any detailed overlays (flag, icon, text, HP bar) to save performance.
+	if _current_inv_zoom >= 0.25:
+		return
+
 	var t := Transform2D(0, Vector2(_current_inv_zoom, _current_inv_zoom), 0, pos)
 	draw_set_transform_matrix(t)
 
@@ -288,61 +360,142 @@ func _draw_troop(troop: TroopData, pos: Vector2) -> void:
 	var hp_h = LAYOUT.hp_bar_h
 	var top_left = Vector2(-w / 2.0, -h / 2.0)
 
-	# --- 1. THE MAIN PLATE ---
-	# Solid dark background
-	var plate_rect = Rect2(top_left, Vector2(w, h - hp_h))
-	draw_rect(plate_rect, Color(0.08, 0.08, 0.08, 0.95), true)
+	# --- 1. THE STYLIZED PLATE ---
+	# MultiMesh draws the background plate for player troops!
+	if not is_top:
+		draw_set_transform_matrix(Transform2D())
+		return
 
-	# --- 2. LEFT SLOT (Flag OR Icon) ---
-	var slot_size = (h - hp_h) - 4.0  # Padding of 2px top/bottom
-	var slot_pos = top_left + Vector2(3, 2)
-	var slot_rect = Rect2(slot_pos, Vector2(slot_size, slot_size))
+	# --- 2. LEFT SLOT (Country Flag) ---
+	var flag_w = 18.0
+	var flag_h = 12.0
+	var flag_pos = top_left + Vector2(6, (h - hp_h - flag_h) / 2.0)
+	var flag_rect = Rect2(flag_pos, Vector2(flag_w, flag_h))
 
-	if show_division_icon:
-		# MODE A: Division Icon
-		var type = troop.get_main_type()
-		var icon_tex = load("res://assets/icons/hoi4/%s.png" % type)
-		if icon_tex:
-			draw_texture_rect(icon_tex, slot_rect, false)
-	else:
-		# MODE B: Country Flag
-		var flag_tex = TroopManager.get_flag(troop.country_name)
-		if flag_tex:
-			draw_texture_rect(flag_tex, slot_rect, false)
+	var flag_tex = TroopManager.get_flag(troop.country_name)
+	if flag_tex:
+		draw_texture_rect(flag_tex, flag_rect, false)
 
-	# --- 3. THE NUMBER (Right Side) ---
+	# --- 3. MIDDLE SLOT (Division Type Icon) ---
+	var icon_size = 16.0
+	var icon_pos = top_left + Vector2(28, (h - hp_h - icon_size) / 2.0)
+	var icon_rect = Rect2(icon_pos, Vector2(icon_size, icon_size))
+
+	var type = troop.get_main_type()
+	var icon_tex = _get_division_icon(type)
+	if icon_tex:
+		draw_texture_rect(icon_tex, icon_rect, false)
+
+	# --- 4. RIGHT SLOT (Division Count Number) ---
 	var label = str(troop.divisions_count)
-	var font_size = 18
+	var font_size = LAYOUT.font_size
 	var text_size = _font.get_string_size(label, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size)
 
-	# Position the number centered in the remaining space on the right
+	# Position centered in the remaining right slot
 	var text_pos = Vector2(
-		top_left.x + slot_size + (w - slot_size - text_size.x) / 2.0 + 2,
+		top_left.x + 46.0 + (w - 46.0 - text_size.x) / 2.0,
 		top_left.y + (h - hp_h + text_size.y * 0.35) / 2.0
 	)
 
 	draw_string_outline(
-		_font, text_pos, label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 3, Color.BLACK
+		_font, text_pos, label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 3, Color(0, 0, 0, 0.85)
 	)
 	draw_string(_font, text_pos, label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
 
-	# --- 4. THE HP BAR ---
+	# --- 5. THE HP BAR ---
 	var hp_pct = troop.get_average_hp_percent()
 	var hp_bg_rect = Rect2(top_left + Vector2(0, h - hp_h), Vector2(w, hp_h))
-	draw_rect(hp_bg_rect, Color(0, 0, 0, 1.0), true)
+	
+	# Draw HP background
+	var hp_sb_bg = StyleBoxFlat.new()
+	hp_sb_bg.bg_color = HP_COLORS.bg
+	hp_sb_bg.set_corner_radius_all(0)
+	hp_sb_bg.corner_radius_bottom_left = 4
+	hp_sb_bg.corner_radius_bottom_right = 4
+	draw_style_box(hp_sb_bg, hp_bg_rect)
 
 	if hp_pct > 0:
-		# Use your HP_COLORS constant if available, otherwise fallback
-		var hp_col = HP_COLORS.healthy if hp_pct > 0.5 else HP_COLORS.critical
-		draw_rect(Rect2(hp_bg_rect.position, Vector2(w * hp_pct, hp_h)), hp_col, true)
+		var hp_col = HP_COLORS.healthy
+		if hp_pct < 0.35:
+			hp_col = HP_COLORS.critical
+		elif hp_pct < 0.75:
+			hp_col = HP_COLORS.damaged
+
+		var hp_fill_rect = Rect2(hp_bg_rect.position, Vector2(w * hp_pct, hp_h))
+		var hp_sb_fill = StyleBoxFlat.new()
+		hp_sb_fill.bg_color = hp_col
+		hp_sb_fill.set_corner_radius_all(0)
+		hp_sb_fill.corner_radius_bottom_left = 4
+		if hp_pct >= 0.98:
+			hp_sb_fill.corner_radius_bottom_right = 4
+		draw_style_box(hp_sb_fill, hp_fill_rect)
 
 	draw_set_transform_matrix(Transform2D())
 
 
-func _group_troops_by_visual_position(troops: Array) -> Dictionary:
+func _draw_ai_troop_circle(country_name: String, divisions_count: int, pos: Vector2) -> void:
+	var t := Transform2D(0, Vector2(_current_inv_zoom, _current_inv_zoom), 0, pos)
+	draw_set_transform_matrix(t)
+
+	var radius = 13.0
+	
+	if _current_inv_zoom >= 0.25:
+		# Zoomed out: Draw a simple country-colored dot with a black outline and skip flag/badge
+		var country_color = MapManager.country_colors.get(country_name, Color(0.5, 0.5, 0.5))
+		draw_circle(Vector2.ZERO, radius + 2.0, Color.BLACK)
+		draw_circle(Vector2.ZERO, radius, country_color)
+		draw_set_transform_matrix(Transform2D())
+		return
+
+	# Draw background circle shadow/border
+	draw_circle(Vector2.ZERO, radius + 2.0, Color(0, 0, 0, 0.8))
+	
+	# Draw country border
+	var country_color = MapManager.country_colors.get(country_name, Color(0.5, 0.5, 0.5))
+	draw_circle(Vector2.ZERO, radius + 1.0, country_color)
+	
+	# Draw circular flag
+	var flag_tex = TroopManager.get_flag(country_name)
+	if flag_tex:
+		draw_circle_texture(flag_tex, radius)
+	else:
+		draw_circle(Vector2.ZERO, radius, country_color.darkened(0.2))
+
+	# Draw division count badge in the top-right corner
+	var badge_radius = 8.0
+	var badge_pos = Vector2(9.0, -9.0)
+	
+	# Draw badge background
+	draw_circle(badge_pos, badge_radius, Color(0, 0, 0, 0.9))
+	draw_circle(badge_pos, badge_radius - 1.0, Color(0.18, 0.8, 0.44)) # Sleek green notification badge!
+	
+	# Draw badge text
+	var badge_label = str(divisions_count)
+	var badge_font_size = 11
+	var badge_text_size = _font.get_string_size(badge_label, HORIZONTAL_ALIGNMENT_CENTER, -1, badge_font_size)
+	
+	# Center the text inside the badge
+	var badge_text_pos = badge_pos + Vector2(-badge_text_size.x / 2.0, badge_text_size.y * 0.3)
+	draw_string(_font, badge_text_pos, badge_label, HORIZONTAL_ALIGNMENT_LEFT, -1, badge_font_size, Color.WHITE)
+
+	draw_set_transform_matrix(Transform2D())
+
+
+func draw_circle_texture(tex: Texture2D, radius: float) -> void:
+	var points = PackedVector2Array()
+	var uvs = PackedVector2Array()
+	var num_sides = 32
+	for i in range(num_sides):
+		var angle = i * TAU / num_sides
+		var dir = Vector2(cos(angle), sin(angle))
+		points.append(dir * radius)
+		uvs.append(dir * 0.5 + Vector2(0.5, 0.5))
+	draw_polygon(points, [Color.WHITE], uvs, tex)
+
+
+func _group_troops_by_visual_position(troops_list: Array) -> Dictionary:
 	var g = {}
-	for t in troops:
-		# Get interpolated position if moving, else static position
+	for t in troops_list:
 		var visual_pos = t.position
 		if t.is_moving:
 			var progress = t.get_meta("progress", 0.0)
@@ -452,6 +605,11 @@ func draw_battles():
 			continue
 
 		var pos: Vector2 = battle.position
+		var draw_pos = pos + map_sprite.position
+
+		if not _screen_rect.has_point(draw_pos):
+			continue
+
 		var progress: float = battle.attack_progress
 
 		# 1. Determine Win/Loss relative to player
@@ -471,34 +629,35 @@ func draw_battles():
 			is_winning = true
 			display_ratio = progress
 
-		# 2. Your Exact Sizes
-		var base_radius = 1.0
-		var ring_radius = 1.2
-		var line_width = 0.5
+		# 2. Proportional Sizes based on Zoom
+		var base_radius = 12.0 * _current_inv_zoom
+		var ring_radius = 16.0 * _current_inv_zoom
+		var line_width = 3.5 * _current_inv_zoom
 		var start_angle = -PI / 2  # Top
 
 		# 3. Colors
 		var arc_color = Color.GOLD
 		if is_player_involved:
 			# High-saturation colors work better at tiny scales
-			arc_color = Color(0.0, 1.0, 0.0) if is_winning else Color(1.0, 0.0, 0.0)
+			arc_color = Color(0.18, 0.8, 0.44) if is_winning else Color(0.9, 0.3, 0.23)
 		else:
-			arc_color = Color(0.8, 0.5, 0.0)
+			arc_color = Color(0.95, 0.6, 0.1)
 
-		# 4. Draw Background/Outline (Crucial for tiny icons)
-		# We draw a slightly larger black circle first so the icon "pops"
-		draw_circle(pos, ring_radius + 0.3, Color(0, 0, 0, 0.8))
+		# 4. Draw Background/Outline
+		draw_circle(draw_pos, ring_radius + 3.0 * _current_inv_zoom, Color(0, 0, 0, 0.85))
 
 		# 5. Draw Progress Arc
 		var end_angle: float
 		if is_winning:
 			# Clockwise Green
 			end_angle = start_angle + (display_ratio * TAU)
-			draw_arc(pos, ring_radius, start_angle, end_angle, 16, arc_color, line_width, true)
+			draw_arc(draw_pos, ring_radius, start_angle, end_angle, 24, arc_color, line_width, true)
 		else:
 			# Counter-Clockwise Red
 			end_angle = start_angle - (display_ratio * TAU)
-			draw_arc(pos, ring_radius, end_angle, start_angle, 16, arc_color, line_width, true)
+			draw_arc(draw_pos, ring_radius, end_angle, start_angle, 24, arc_color, line_width, true)
 
-		# 6. Static Center White Dot (No Pulse)
-		draw_circle(pos, base_radius, Color.WHITE)
+		# 6. Pulse effect and center dot
+		var pulse = 1.0 + 0.12 * sin(Time.get_ticks_msec() * 0.007)
+		draw_circle(draw_pos, base_radius * pulse, Color.WHITE)
+		draw_circle(draw_pos, base_radius * 0.5 * pulse, Color(0.75, 0.15, 0.15))

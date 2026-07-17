@@ -237,17 +237,18 @@ func _populate_military() -> void:
 
 
 func _populate_economy() -> void:
-	var lbl = Label.new()
-	lbl.text = "Economy laws coming soon..."
-	lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
-	laws_grid.add_child(lbl)
+	_add_economy_law_option("Civilian Economy", 0.30, 100, "Conscription limit penalty. Focus on consumer goods.")
+	_add_economy_law_option("Early Mobilization", 0.15, 150, "Reduced economy penalty.")
+	_add_economy_law_option("War Economy", 0.0, 150, "Optimal economy. Focus on weapon factories.")
+	_add_economy_law_option("Total Mobilization", -0.10, 150, "Conscription capacity penalty. Income bonus +10%.")
 
 
 func _populate_country() -> void:
-	var lbl = Label.new()
-	lbl.text = "Country decisions coming soon..."
-	lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
-	laws_grid.add_child(lbl)
+	_add_decision_option("Political Propaganda", 50, 0, "+15% Stability", "propaganda_stability")
+	_add_decision_option("War Propaganda", 50, 0, "+15% War Support", "propaganda_war_support")
+	_add_decision_option("Industrial Effort", 100, 5000, "+1 Factory", "industrial_effort")
+	_add_decision_option("Naval Infrastructure", 75, 3000, "+1 Port in coastal province", "naval_infrastructure")
+	_add_decision_option("Military Maneuvers", 50, 0, "Level up army & +10% speed", "military_maneuvers")
 
 
 func _populate_releasables(player_country: String) -> void:
@@ -441,25 +442,35 @@ func _refresh_army_counts() -> void:
 
 func _update_law_buttons_visuals() -> void:
 	for btn in laws_grid.get_children():
-		# Safety check: make sure this child has the metadata we expect
-		if not btn.has_meta("ratio"):
+		if not btn is PanelContainer:
+			continue
+		if not btn.has_meta("cost"):
 			continue
 
-		var law_ratio = btn.get_meta("ratio")
 		var cost = btn.get_meta("cost")
-		var is_active = is_equal_approx(current_country.military_size_ratio, law_ratio)
+		var is_active = false
+		var can_afford = false
 
-		# Look for nodes using the exact internal path we built
-		# Note: The MarginContainer we created didn't have a name,
-		# so Godot likely named it "MarginContainer" or "@MarginContainer@..."
-		# To be safe, we'll find them by their class or specific names.
+		var law_type = btn.get_meta("law_type") if btn.has_meta("law_type") else "military"
+
+		if law_type == "military":
+			var ratio = btn.get_meta("ratio")
+			is_active = is_equal_approx(current_country.military_size_ratio, ratio)
+			can_afford = current_country.political_power >= cost
+		elif law_type == "economy":
+			var penalty = btn.get_meta("penalty")
+			is_active = is_equal_approx(current_country.economy_law_penalty, penalty)
+			can_afford = current_country.political_power >= cost
+		elif law_type == "decision":
+			is_active = false
+			var cost_money = btn.get_meta("cost_money") if btn.has_meta("cost_money") else 0.0
+			can_afford = current_country.political_power >= cost and current_country.money >= cost_money
+
 		var hbox = btn.get_child(0).get_child(0)  # Panel -> MarginContainer -> HBox
-
 		var title_lbl = hbox.get_node("Title")
 		var status_lbl = hbox.get_node("Status")
 		var cost_lbl = hbox.get_node("Cost")
 
-		# Reset Style
 		var style = btn.get_theme_stylebox("panel").duplicate()
 
 		if is_active:
@@ -475,7 +486,7 @@ func _update_law_buttons_visuals() -> void:
 			status_lbl.text = ""
 			cost_lbl.visible = true
 
-			if current_country.political_power >= cost:
+			if can_afford:
 				cost_lbl.add_theme_color_override("font_color", COLOR_WARNING)
 				btn.modulate = Color(1, 1, 1, 1)
 				btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -540,6 +551,7 @@ func _add_law_option(
 	btn_panel.custom_minimum_size = Vector2(0, 50)
 
 	# Metadata storage for logic
+	btn_panel.set_meta("law_type", "military")
 	btn_panel.set_meta("ratio", ratio)
 	btn_panel.set_meta("penalty", eco_penalty)
 	btn_panel.set_meta("cost", cost)
@@ -622,30 +634,209 @@ func _on_releasable_gui_input(event: InputEvent, panel: PanelContainer) -> void:
 
 func _on_law_gui_input(event: InputEvent, btn: PanelContainer) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var ratio = btn.get_meta("ratio")
-		var penalty = btn.get_meta("penalty")
 		var cost = btn.get_meta("cost")
 
-		# 1. Is this already active?
-		if is_equal_approx(current_country.military_size_ratio, ratio):
-			return  # Do nothing
-
-		# 2. Can we afford it?
+		# Can we afford it?
 		if current_country.political_power >= cost:
-			# Execute Change
-			current_country.political_power -= cost
-			current_country.military_size_ratio = ratio
-			current_country.economy_law_penalty = penalty
-
-			current_country.update_manpower_pool()  # Recalc based on new ratio
+			var law_type = btn.get_meta("law_type") if btn.has_meta("law_type") else "military"
+			
+			if law_type == "military":
+				var ratio = btn.get_meta("ratio")
+				var penalty = btn.get_meta("penalty")
+				if is_equal_approx(current_country.military_size_ratio, ratio):
+					return  # Do nothing
+				current_country.political_power -= cost
+				current_country.military_size_ratio = ratio
+				current_country.economy_law_penalty = penalty
+				current_country.update_manpower_pool()
+			elif law_type == "economy":
+				var penalty = btn.get_meta("penalty")
+				if is_equal_approx(current_country.economy_law_penalty, penalty):
+					return  # Do nothing
+				current_country.political_power -= cost
+				current_country.economy_law_penalty = penalty
+				# Total Mobilization penalty
+				if penalty == -0.10:
+					current_country.military_size_ratio = max(0.005, current_country.military_size_ratio - 0.03)
+					current_country.update_manpower_pool()
 
 			# Refresh UI
 			_update_law_buttons_visuals()
 			_refresh_full_data()
-			print("Law enacted: ", ratio)
+			MusicManager.play_sfx(MusicManager.SFX.TROOP_SELECTED)
 		else:
-			# Optional: Shake animation or error sound
 			print("Not enough Political Power!")
+
+
+func _add_economy_law_option(name: String, eco_penalty: float, cost: int, tooltip: String) -> void:
+	var btn_panel = PanelContainer.new()
+	btn_panel.custom_minimum_size = Vector2(0, 50)
+
+	btn_panel.set_meta("law_type", "economy")
+	btn_panel.set_meta("penalty", eco_penalty)
+	btn_panel.set_meta("cost", cost)
+	btn_panel.set_meta("ratio", 0.0)
+
+	var style = StyleBoxFlat.new()
+	style.corner_radius_top_left = 6
+	style.corner_radius_top_right = 6
+	style.corner_radius_bottom_right = 6
+	style.corner_radius_bottom_left = 6
+	style.border_width_left = 1
+	style.border_width_top = 1
+	style.border_width_right = 1
+	style.border_width_bottom = 1
+	btn_panel.add_theme_stylebox_override("panel", style)
+
+	var m = MarginContainer.new()
+	m.add_theme_constant_override("margin_left", 15)
+	m.add_theme_constant_override("margin_right", 15)
+	btn_panel.add_child(m)
+
+	var hbox = HBoxContainer.new()
+	hbox.name = "HBox"
+	m.add_child(hbox)
+
+	var title = Label.new()
+	title.name = "Title"
+	title.text = name
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	var effect_lbl = Label.new()
+	if eco_penalty < 0:
+		effect_lbl.text = "Eco Bonus: +%.0f%%" % [abs(eco_penalty) * 100.0]
+	else:
+		effect_lbl.text = "Eco Penalty: -%.0f%%" % [eco_penalty * 100.0]
+	effect_lbl.add_theme_font_size_override("font_size", 12)
+	effect_lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
+
+	var cost_lbl = Label.new()
+	cost_lbl.name = "Cost"
+	cost_lbl.text = "%d PP" % cost
+
+	var status_lbl = Label.new()
+	status_lbl.name = "Status"
+	status_lbl.text = ""
+	status_lbl.add_theme_font_size_override("font_size", 12)
+
+	hbox.add_child(title)
+	hbox.add_child(effect_lbl)
+	hbox.add_child(VSeparator.new())
+	hbox.add_child(cost_lbl)
+	hbox.add_child(status_lbl)
+
+	btn_panel.gui_input.connect(_on_law_gui_input.bind(btn_panel))
+
+	laws_grid.add_child(btn_panel)
+
+
+func _add_decision_option(
+	name: String, cost_pp: int, cost_money: float, effect_desc: String, action_id: String
+) -> void:
+	var btn_panel = PanelContainer.new()
+	btn_panel.custom_minimum_size = Vector2(0, 50)
+
+	btn_panel.set_meta("law_type", "decision")
+	btn_panel.set_meta("cost", cost_pp)
+	btn_panel.set_meta("cost_money", cost_money)
+	btn_panel.set_meta("action_id", action_id)
+
+	var style = StyleBoxFlat.new()
+	style.corner_radius_top_left = 6
+	style.corner_radius_top_right = 6
+	style.corner_radius_bottom_right = 6
+	style.corner_radius_bottom_left = 6
+	style.border_width_left = 1
+	style.border_width_top = 1
+	style.border_width_right = 1
+	style.border_width_bottom = 1
+	btn_panel.add_theme_stylebox_override("panel", style)
+
+	var m = MarginContainer.new()
+	m.add_theme_constant_override("margin_left", 15)
+	m.add_theme_constant_override("margin_right", 15)
+	btn_panel.add_child(m)
+
+	var hbox = HBoxContainer.new()
+	hbox.name = "HBox"
+	m.add_child(hbox)
+
+	var title = Label.new()
+	title.name = "Title"
+	title.text = name
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	var effect_lbl = Label.new()
+	effect_lbl.text = effect_desc
+	effect_lbl.add_theme_font_size_override("font_size", 12)
+	effect_lbl.add_theme_color_override("font_color", COLOR_TEXT_DIM)
+
+	var cost_lbl = Label.new()
+	cost_lbl.name = "Cost"
+	if cost_money > 0:
+		cost_lbl.text = "%d PP | $%d" % [cost_pp, int(cost_money)]
+	else:
+		cost_lbl.text = "%d PP" % cost_pp
+
+	var status_lbl = Label.new()
+	status_lbl.name = "Status"
+	status_lbl.text = ""
+	status_lbl.add_theme_font_size_override("font_size", 12)
+
+	hbox.add_child(title)
+	hbox.add_child(effect_lbl)
+	hbox.add_child(VSeparator.new())
+	hbox.add_child(cost_lbl)
+	hbox.add_child(status_lbl)
+
+	btn_panel.gui_input.connect(_on_decision_gui_input.bind(btn_panel))
+
+	laws_grid.add_child(btn_panel)
+
+
+func _on_decision_gui_input(event: InputEvent, btn: PanelContainer) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var cost_pp = btn.get_meta("cost")
+		var cost_money = btn.get_meta("cost_money")
+		var action_id = btn.get_meta("action_id")
+
+		if current_country.political_power >= cost_pp and current_country.money >= cost_money:
+			current_country.political_power -= cost_pp
+			current_country.money -= cost_money
+
+			_execute_decision_action(action_id)
+
+			# Refresh UI
+			_update_law_buttons_visuals()
+			_refresh_full_data()
+			MusicManager.play_sfx(MusicManager.SFX.DECLARE_WAR)
+		else:
+			print("Cannot afford decision!")
+
+
+func _execute_decision_action(action_id: String) -> void:
+	match action_id:
+		"propaganda_stability":
+			current_country.stability = min(1.0, current_country.stability + 0.15)
+		"propaganda_war_support":
+			current_country.war_support = min(1.0, current_country.war_support + 0.15)
+		"industrial_effort":
+			current_country.factories_amount += 1
+			current_country.factories_available += 1
+		"naval_infrastructure":
+			var coastal_pids = MapManager.get_provinces_near_sea(current_country.country_name)
+			if not coastal_pids.is_empty():
+				var target_pid = coastal_pids.pick_random()
+				var province = MapManager.province_objects.get(target_pid)
+				if province:
+					province.port = Province.PORT_BUILT
+			else:
+				current_country.political_power += 75
+				current_country.money += 3000
+				print("No coastal provinces! Refunded.")
+		"military_maneuvers":
+			current_country.army_level += 1
+			current_country.troop_speed_modifier += 0.1
 
 
 # Utils

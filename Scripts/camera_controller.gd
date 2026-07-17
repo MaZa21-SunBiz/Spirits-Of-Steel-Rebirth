@@ -18,15 +18,20 @@ func _is_mouse_over_ui() -> bool:
 
 
 func _input(event: InputEvent) -> void:
-	if Console.is_visible() or _is_mouse_over_ui():
+	if Console.is_visible():
 		return
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
 		is_dragging = event.pressed
 		get_viewport().set_input_as_handled()
+		return
 
 	if event is InputEventMouseMotion and is_dragging:
 		camera.position -= event.relative / camera.zoom.x
+		return
+
+	if _is_mouse_over_ui():
+		return
 
 	if event is InputEventMouseButton and event.is_pressed():
 		var zoom_dir = 0

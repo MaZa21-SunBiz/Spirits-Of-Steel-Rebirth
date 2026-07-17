@@ -49,7 +49,7 @@ func _on_country_selected(country_id: String) -> void:
 func _update_ui(country) -> void:
 	country_label.text = country.country_name.to_upper()
 	flag_rect.texture = TroopManager.get_flag(country.country_name)
-	status_label.text = "Stability: 85% | War Support: 40%"
+	status_label.text = "Stability: %d%% | War Support: %d%%" % [int(country.stability * 100.0), int(country.war_support * 100.0)]
 
 	# Clear old buttons
 	for child in action_container.get_children():
@@ -58,7 +58,11 @@ func _update_ui(country) -> void:
 	# Add context-specific buttons
 	if country == CountryManager.player_country:
 		_add_action("Manage Country", open_manage_country, Color(0.08, 0.16, 0.22))  # Dark steel blue
-		_add_action("POLITICS", func(): print("Open Pol"), Color(0.18, 0.08, 0.28))  # Deep royal purple
+		_add_action("POLITICS", func(): 
+			var dt_ui = get_tree().root.find_child("DecisionTreeUI", true, false)
+			if dt_ui:
+				dt_ui.open_menu()
+		, Color(0.18, 0.08, 0.28))  # Deep royal purple
 		_add_action(
 			"INDUSTRY",
 			func(): _toggle_submenu("res://Scenes/UI/Industry/IndustryMenu.tscn"),

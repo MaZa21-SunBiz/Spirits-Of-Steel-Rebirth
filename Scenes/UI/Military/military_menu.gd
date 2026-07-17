@@ -94,8 +94,26 @@ func _on_division_input_changed(new_text: String):
 
 
 func _train_troops():
-	CountryManager.player_country.train_troops(current_division_amount, current_selected_type)
-	_refresh_ui()
+	var ok = CountryManager.player_country.train_troops(current_division_amount, current_selected_type)
+	if ok:
+		_refresh_ui()
+	else:
+		var stats = templates[current_selected_type]
+		var total_manpower_needed = current_division_amount * stats["manpower"]
+		var total_cost = current_division_amount * stats["cost"]
+		var country = CountryManager.player_country
+		
+		var reason = ""
+		if country.manpower < total_manpower_needed:
+			reason = "Not enough manpower! (Needs %d, you have %d)" % [total_manpower_needed, country.manpower]
+		elif country.money < total_cost:
+			reason = "Not enough money! (Needs %d, you have %d)" % [total_cost, int(country.money)]
+		else:
+			reason = "Insufficient resources!"
+			
+		PopupManager.show_alert("alert", country, country, reason)
+		# Trigger dialogue warning
+		print("Training Failed: ", reason)
 
 
 func _refresh_training_queue():

@@ -18,6 +18,7 @@ func _on_hour_passed(_ticks) -> void:
 	if total == 0:
 		return
 
+	# 1. Staggered hourly country updates
 	var countries_per_hour := int(ceil(float(total) / hours_per_full_country_tick))
 
 	var processed := 0
@@ -33,14 +34,18 @@ func _on_hour_passed(_ticks) -> void:
 	if _hour_process_index >= total:
 		_hour_process_index = 0
 
+	# 2. Staggered daily country updates (process_day)
+	var current_hour := int(_ticks) % 24
+	for c_name in countries:
+		var country_obj: CountryData = countries[c_name]
+		if country_obj.daily_process_hour == current_hour:
+			country_obj.process_day()
+
 
 func _on_day_passed(_date) -> void:
-	if GameState.is_loading_game:
-		return
-
-	for c_name: String in countries:
-		var country_obj: CountryData = countries[c_name]
-		country_obj.process_day()
+	# Note: Country daily processing is now staggered hourly in _on_hour_passed 
+	# to distribute the CPU load evenly and avoid frame rate spikes.
+	pass
 
 
 func initialize_countries() -> void:
@@ -103,6 +108,7 @@ func add_country(country_name: String) -> CountryData:
 
 	# 3. Create the instance
 	var new_country = CountryData.new(country_name)
+	new_country.daily_process_hour = countries.size() % 24
 	
 	# 4. Initialize Relations Safely
 	# We add to the dictionary BEFORE setting relations to prevent lookup errors

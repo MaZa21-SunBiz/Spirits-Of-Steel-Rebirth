@@ -3,7 +3,7 @@ class_name GameClock
 
 signal hour_passed(total_ticks)
 signal day_passed(date_string)
-signal speed_changed(speed_level)
+signal speed_changed
 
 @export_group("Starting Settings")
 @export var start_year := 2010

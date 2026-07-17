@@ -28,7 +28,10 @@ func show_alert(
 	ui_layer.add_child(popup)
 	active_popups.append(popup)
 
-	popup.call_deferred("reset_size")
+	if popup.has_method("custom_reset_size"):
+		popup.call_deferred("custom_reset_size")
+	else:
+		popup.call_deferred("reset_size")
 	call_deferred("_restack_popups")
 
 	popup.tree_exited.connect(
