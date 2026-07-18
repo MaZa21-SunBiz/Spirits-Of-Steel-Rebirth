@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="MapData" format=4]
+[gd_resource type="Resource" script_class="MapData" format=4 uid="uid://dw4kxn1cbl5uk"]
 
-[ext_resource type="Script" path="res://map_data/Province.gd" id="1_2s4mh"]
-[ext_resource type="Script" path="res://map_data/MapData.gd" id="2_miic0"]
+[ext_resource type="Script" uid="uid://cwsfwiffoqm48" path="res://map_data/Province.gd" id="1_2s4mh"]
+[ext_resource type="Script" uid="uid://cwg8rlhwlrd6g" path="res://map_data/MapData.gd" id="2_miic0"]
 
 [sub_resource type="Image" id="Image_6dbdh"]
 data = {
@@ -61237,7 +61237,7 @@ country_to_provinces = {
 "zimbabwe": [3202, 3206, 3214, 3217, 3239, 3290]
 }
 max_province_id = 3717
-province_objects = Dictionary[int, ExtResource("1_2s4mh")]({
+province_objects = {
 2: SubResource("Resource_7r6r0"),
 3: SubResource("Resource_4bohs"),
 4: SubResource("Resource_26uk8"),
@@ -64954,4 +64954,4 @@ province_objects = Dictionary[int, ExtResource("1_2s4mh")]({
 3715: SubResource("Resource_bge10"),
 3716: SubResource("Resource_sc72f"),
 3717: SubResource("Resource_v2lqh")
-})
+}

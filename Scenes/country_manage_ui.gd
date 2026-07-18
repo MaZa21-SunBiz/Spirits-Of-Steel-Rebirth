@@ -2,14 +2,14 @@ extends CanvasLayer
 class_name CountryManageUI
 
 #region --- Theme Configuration ---
-const COLOR_BG_GLASS = Color(0.08, 0.09, 0.11, 0.96)
-const COLOR_PANEL_INNER = Color(0.15, 0.16, 0.19, 1.0)
-const COLOR_ACCENT = Color(0.24, 0.65, 0.85)
-const COLOR_TEXT_HEADER = Color(0.9, 0.9, 0.9)
-const COLOR_TEXT_DIM = Color(0.6, 0.6, 0.6)
-const COLOR_POSITIVE = Color(0.4, 0.8, 0.4)
-const COLOR_NEGATIVE = Color(0.85, 0.3, 0.3)
-const COLOR_WARNING = Color(0.9, 0.7, 0.2)
+const COLOR_BG_GLASS = Color(0.18, 0.16, 0.14, 0.98) # Warm hand-painted wood panel
+const COLOR_PANEL_INNER = Color(0.11, 0.10, 0.09, 1.0) # Inset slate board
+const COLOR_ACCENT = Color(0.72, 0.58, 0.38) # Burnished brass/gold border
+const COLOR_TEXT_HEADER = Color(0.92, 0.88, 0.82) # Aged typewriter paper white
+const COLOR_TEXT_DIM = Color(0.65, 0.60, 0.55) # Dim paper gray
+const COLOR_POSITIVE = Color(0.35, 0.50, 0.30) # Olive drab military green
+const COLOR_NEGATIVE = Color(0.70, 0.25, 0.25) # Rust red
+const COLOR_WARNING = Color(0.80, 0.50, 0.20) # Copper orange
 #endregion
 
 #region --- Nodes ---
@@ -82,9 +82,12 @@ func _build_ui() -> void:
 	var bg_panel = PanelContainer.new()
 	var style = StyleBoxFlat.new()
 	style.bg_color = COLOR_BG_GLASS
-#	style.corner_radius_all(8)
-#	style.border_width_all(2)
-	style.border_color = Color(0.3, 0.35, 0.4)
+	style.set_corner_radius_all(0)
+	style.border_width_left = 3
+	style.border_width_top = 3
+	style.border_width_right = 3
+	style.border_width_bottom = 3
+	style.border_color = COLOR_ACCENT
 	bg_panel.add_theme_stylebox_override("panel", style)
 	main_container.add_child(bg_panel)
 
@@ -278,10 +281,10 @@ func _add_releasable_option(country_id: String) -> void:
 
 	# 1. Styling
 	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.12, 0.12, 0.14)
-	style.border_color = Color(0.25, 0.25, 0.3)
+	style.bg_color = COLOR_PANEL_INNER
+	style.border_color = COLOR_ACCENT
 	style.set_border_width_all(1)
-	style.set_corner_radius_all(4)
+	style.set_corner_radius_all(0)
 	btn_panel.add_theme_stylebox_override("panel", style)
 
 	# 2. Main Layout
@@ -557,14 +560,10 @@ func _add_law_option(
 	btn_panel.set_meta("cost", cost)
 
 	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
+	style.bg_color = COLOR_PANEL_INNER
+	style.border_color = COLOR_ACCENT
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(0)
 	btn_panel.add_theme_stylebox_override("panel", style)
 
 	var m = MarginContainer.new()
@@ -678,14 +677,10 @@ func _add_economy_law_option(name: String, eco_penalty: float, cost: int, toolti
 	btn_panel.set_meta("ratio", 0.0)
 
 	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
+	style.bg_color = COLOR_PANEL_INNER
+	style.border_color = COLOR_ACCENT
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(0)
 	btn_panel.add_theme_stylebox_override("panel", style)
 
 	var m = MarginContainer.new()
@@ -742,14 +737,10 @@ func _add_decision_option(
 	btn_panel.set_meta("action_id", action_id)
 
 	var style = StyleBoxFlat.new()
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_right = 6
-	style.corner_radius_bottom_left = 6
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
+	style.bg_color = COLOR_PANEL_INNER
+	style.border_color = COLOR_ACCENT
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(0)
 	btn_panel.add_theme_stylebox_override("panel", style)
 
 	var m = MarginContainer.new()

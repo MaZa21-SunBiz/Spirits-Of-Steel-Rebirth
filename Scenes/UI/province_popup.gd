@@ -41,17 +41,17 @@ func _ready() -> void:
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(panel)
 
-	# Sleek dark translucent glass style
+	# Sleek painted wood tabletop style
 	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.05, 0.06, 0.08, 0.94)
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.border_color = Color(0.85, 0.65, 0.2, 0.5) # Gold accent border
-	style.set_corner_radius_all(6)
-	style.shadow_size = 8
-	style.shadow_color = Color(0, 0, 0, 0.4)
+	style.bg_color = Color(0.18, 0.16, 0.14, 0.98)
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.border_color = Color(0.72, 0.58, 0.38, 1.0) # Gold brass accent border
+	style.set_corner_radius_all(0) # Sharp pixel corners
+	style.shadow_size = 6
+	style.shadow_color = Color(0, 0, 0, 0.5)
 	panel.add_theme_stylebox_override("panel", style)
 
 	# 2. Margins

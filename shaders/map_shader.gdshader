@@ -112,37 +112,7 @@ void fragment() {
     } 
     // 2. If it's Land (type_map 1.0) and a real province
     else if (id > 1) {
-        vec3 land_col = get_country_color(id).rgb;
-        
-        // Dynamic inner vignette for 3D paper feel
-        float border_factor = 0.0;
-        vec2 pixel_size = 1.0 / tex_size;
-        
-        // Scan 4 diagonal directions for fast and smooth province boundary detection
-        for (int i = 4; i < 8; i++) {
-            vec2 sample_uv1 = clamp(UV + DIRS[i] * pixel_size * 2.2, vec2(0.0), vec2(1.0));
-            int nid1 = get_id(sample_uv1);
-            float ntype1 = texture(type_map, sample_uv1).r;
-            if (nid1 != id || ntype1 < 0.5) {
-                border_factor += 0.22;
-            }
-            
-            vec2 sample_uv2 = clamp(UV + DIRS[i] * pixel_size * 4.4, vec2(0.0), vec2(1.0));
-            int nid2 = get_id(sample_uv2);
-            float ntype2 = texture(type_map, sample_uv2).r;
-            if (nid2 != id || ntype2 < 0.5) {
-                border_factor += 0.15;
-            }
-        }
-        
-        // Apply beautiful province edge darkening (vignetting)
-        vec3 final_color = mix(land_col, land_col * 0.76, clamp(border_factor, 0.0, 1.0));
-        
-        // Add subtle paper grain/noise using the ocean noise texture at high frequency
-        float noise_val = texture(ocean_noise, UV * 15.0).r;
-        final_color = mix(final_color, final_color * (0.90 + 0.16 * noise_val), 0.25);
-        
-        COLOR = vec4(final_color, 1.0);
+        COLOR = vec4(get_country_color(id).rgb, 1.0);
     } 
     // 3. If it's Land (type_map 1.0) and ID 1 (Border)
     else {

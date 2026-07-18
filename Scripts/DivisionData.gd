@@ -11,7 +11,9 @@ const TEMPLATES = {
 		"days": 1,
 		"attack": 1,
 		"defense": 1,
-		"speed": 1.0
+		"speed": 1.0,
+		"steel": 1.0,
+		"oil": 0.0
 	},
 	"tank":
 	{
@@ -21,7 +23,9 @@ const TEMPLATES = {
 		"days": 30,
 		"attack": 5,
 		"defense": 7,
-		"speed": 2.5
+		"speed": 2.5,
+		"steel": 8.0,
+		"oil": 6.0
 	},
 	"artillery":
 	{
@@ -31,7 +35,9 @@ const TEMPLATES = {
 		"days": 15,
 		"attack": 5,
 		"defense": 0.3,
-		"speed": 0.8
+		"speed": 0.8,
+		"steel": 5.0,
+		"oil": 1.0
 	}
 }
 

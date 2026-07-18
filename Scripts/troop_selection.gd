@@ -1,6 +1,8 @@
 extends Node2D
 class_name TroopSelection
 
+signal selection_changed
+
 var font: Font = preload("res://font/TTT-Regular.otf")
 
 # --- Constants ---
@@ -40,6 +42,7 @@ func _input(event) -> void:
 
 func deselect_all() -> void:
 	selected_troops.clear()
+	selection_changed.emit()
 
 
 func _handle_mouse_motion() -> void:
@@ -164,6 +167,7 @@ func _perform_selection() -> void:
 	max_path_length = 0
 	for troop in selected_troops:
 		max_path_length += troop.divisions_count
+	selection_changed.emit()
 
 
 func _check_rect_intersection(
@@ -310,6 +314,7 @@ func _perform_path_assignment() -> void:
 
 	selected_troops.clear()
 	right_path.clear()
+	selection_changed.emit()
 
 
 # --- Helper functions for the logic above ---

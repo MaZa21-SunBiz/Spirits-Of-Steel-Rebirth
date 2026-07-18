@@ -30,6 +30,15 @@ var factories_amount: int = 1
 var factories_available: int = 1
 var factory_income = 100
 var hourly_money_income: float = 0.0  # Calculated value
+var steel: float = 50.0
+var oil: float = 30.0
+var steel_production: float = 0.0
+var oil_production: float = 0.0
+var steel_consumption: float = 0.0
+var oil_consumption: float = 0.0
+var trade_deals: Dictionary = {}
+var base_troop_speed_modifier: float = 1.0
+var generals: Array = []
 #endregion
 
 #region --- POLITICAL ---
@@ -50,6 +59,8 @@ var army_level: int = 1
 var army_cost: float = 0.0
 var troop_speed_modifier: float = 1.0
 var deploy_pid: int = -1  # ID of province to deploy to
+var recurring_steel_buy: float = 0.0
+var recurring_oil_buy: float = 0.0
 #endregion
 
 var enemies = []
@@ -76,6 +87,27 @@ func _init(p_country_name: String = "") -> void:
 	reset_factories()
 	reset_cities()
 	setup_ai()
+	
+	# Starting resources based on size/ports & historical values
+	var starting_steel_val = 30.0 + factories_amount * 10.0
+	var ports_count = 0
+	if is_instance_valid(MapManager) and MapManager.country_to_provinces_obj.has(self.country_name):
+		for province in MapManager.country_to_provinces_obj[self.country_name]:
+			if province.port == Province.PORT_BUILT:
+				ports_count += 1
+	var starting_oil_val = 20.0 + ports_count * 15.0
+	
+	if is_instance_valid(CountryManager) and CountryManager.HISTORICAL_RESOURCES.has(country_name.to_lower()):
+		var hist = CountryManager.HISTORICAL_RESOURCES[country_name.to_lower()]
+		starting_steel_val = hist.get("starting_steel", starting_steel_val)
+		starting_oil_val = hist.get("starting_oil", starting_oil_val)
+		
+	steel = starting_steel_val
+	oil = starting_oil_val
+
+	# Generate starting generals
+	generate_general()
+	generate_general()
 
 
 func process_hour() -> void:
@@ -88,6 +120,7 @@ func process_hour() -> void:
 
 
 func process_day() -> void:
+	update_resources()
 	_process_training()
 	_process_reinforcements()
 
@@ -97,6 +130,116 @@ func process_day() -> void:
 	if not is_player:
 		ai_controller.think_day()
 
+
+func update_resources() -> void:
+	# Calculate Consumer Goods factor based on stability
+	var consumer_goods_ratio = clamp(0.4 - stability * 0.3, 0.1, 0.4)
+	var factories_utilization = ceil(factories_amount * consumer_goods_ratio)
+	factories_available = max(0, factories_amount - factories_utilization)
+
+	# 1. Base resource extraction + factories/ports
+	var base_steel_rate = 3.0
+	var base_oil_rate = 1.5
+	
+	if is_instance_valid(CountryManager) and CountryManager.HISTORICAL_RESOURCES.has(country_name.to_lower()):
+		var hist = CountryManager.HISTORICAL_RESOURCES[country_name.to_lower()]
+		base_steel_rate = hist.get("base_steel", 3.0)
+		base_oil_rate = hist.get("base_oil", 1.5)
+	
+	steel_production = base_steel_rate + factories_available * 1.5
+	
+	var ports_count = 0
+	if is_instance_valid(MapManager) and MapManager.country_to_provinces_obj.has(self.country_name):
+		for province in MapManager.country_to_provinces_obj[self.country_name]:
+			if province.port == Province.PORT_BUILT:
+				ports_count += 1
+	oil_production = base_oil_rate + ports_count * 2.5
+	
+	# 2. Consumption from active troops in field
+	var troop_steel_cost = 0.0
+	var troop_oil_cost = 0.0
+	
+	if is_instance_valid(TroopManager):
+		var my_troops = TroopManager.get_troops_for_country(country_name)
+		for troop in my_troops:
+			for div in troop.stored_divisions:
+				var temp = DivisionData.TEMPLATES.get(div.type, {})
+				# Daily maintenance is 10% of training requirements, reduced by general logistics skill if assigned
+				var general_log_mod = 1.0 - (troop.general_logistics * 0.05) if troop.general_id != "" else 1.0
+				var div_steel = temp.get("steel", 0.0) * 0.1 * general_log_mod
+				var div_oil = temp.get("oil", 0.0) * 0.1 * general_log_mod
+				if troop.is_moving:
+					div_oil *= 2.0 # double oil when moving
+				troop_steel_cost += div_steel
+				troop_oil_cost += div_oil
+			
+	# Consumption from training queue
+	for training in ongoing_training:
+		var temp = DivisionData.TEMPLATES.get(training.division_type, {})
+		var t_days = max(1.0, float(temp.get("days", 1.0)))
+		# training consumes resources daily
+		troop_steel_cost += (temp.get("steel", 0.0) / t_days) * training.divisions_count
+		troop_oil_cost += (temp.get("oil", 0.0) / t_days) * training.divisions_count
+		
+	steel_consumption = troop_steel_cost
+	oil_consumption = troop_oil_cost
+	
+	# 3. Trade deals balance
+	var trade_steel = 0.0
+	var trade_oil = 0.0
+	var trade_money = 0.0
+	
+	for deal_id in trade_deals:
+		var deal = trade_deals[deal_id]
+		var is_sender = (deal.sender.to_lower() == country_name.to_lower())
+		var is_recipient = (deal.recipient.to_lower() == country_name.to_lower())
+		
+		# Amount is daily rate
+		if deal.resource == "steel":
+			if is_sender:
+				trade_steel -= deal.amount
+				trade_money += deal.price
+			elif is_recipient:
+				trade_steel += deal.amount
+				trade_money -= deal.price
+		elif deal.resource == "oil":
+			if is_sender:
+				trade_oil -= deal.amount
+				trade_money += deal.price
+			elif is_recipient:
+				trade_oil += deal.amount
+				trade_money -= deal.price
+				
+	# Apply recurring market flows
+	var recurring_cost = 0.0
+	var recurring_steel_flow = 0.0
+	var recurring_oil_flow = 0.0
+	
+	if recurring_steel_buy > 0.0:
+		recurring_cost += recurring_steel_buy * CountryManager.market_steel_price
+		recurring_steel_flow = recurring_steel_buy
+	elif recurring_steel_buy < 0.0:
+		recurring_cost -= abs(recurring_steel_buy) * CountryManager.market_steel_price * 0.8
+		recurring_steel_flow = recurring_steel_buy
+		
+	if recurring_oil_buy > 0.0:
+		recurring_cost += recurring_oil_buy * CountryManager.market_oil_price
+		recurring_oil_flow = recurring_oil_buy
+	elif recurring_oil_buy < 0.0:
+		recurring_cost -= abs(recurring_oil_buy) * CountryManager.market_oil_price * 0.8
+		recurring_oil_flow = recurring_oil_buy
+		
+	money = max(0.0, money + trade_money - recurring_cost)
+	
+	# Update stocks
+	steel = max(0.0, steel + steel_production - steel_consumption + trade_steel + recurring_steel_flow)
+	oil = max(0.0, oil + oil_production - oil_consumption + trade_oil + recurring_oil_flow)
+	
+	# Apply speed modifier
+	if oil <= 0.0:
+		troop_speed_modifier = base_troop_speed_modifier * 0.5
+	else:
+		troop_speed_modifier = base_troop_speed_modifier
 
 #endregion
 func reset_factories():
@@ -141,9 +284,9 @@ func update_political_power() -> void:
 	political_power += daily_pp_gain
 
 func update_money():
-	var factories_income = factories_amount * factory_income
+	var factories_income = factories_available * factory_income
 	var gross_income = income + factories_income - army_cost
-	money += gross_income * (1.0 - economy_law_penalty)
+	money += (gross_income / 24.0) * (1.0 - economy_law_penalty)
 
 # Run only once
 func get_income():
@@ -194,7 +337,12 @@ func _process_training() -> void:
 
 		if money >= batch_daily_cost:
 			money -= batch_daily_cost
-			training.days_left -= 1
+			var speed_mult = 1.0
+			if steel <= 0.0:
+				speed_mult *= 0.5
+			if oil <= 0.0:
+				speed_mult *= 0.5
+			training.days_left -= 1.0 * speed_mult
 
 		if training.days_left <= 0:
 			_graduate_troops(training)
@@ -219,16 +367,28 @@ func get_army_pressure() -> float:
 
 func get_max_morale() -> float:
 	var base = 60.0 + (stability * 40.0) + (army_level * 5.0)
-	return base * 0.5 if money < 0 else base
+	var mult = 1.0
+	if money < 0: mult *= 0.5
+	if steel <= 0: mult *= 0.8
+	if oil <= 0: mult *= 0.8
+	return base * mult
 
 func get_attack_efficiency() -> float:
 	var eff = 0.9 + (war_support * 0.3) + (army_level * 0.05)
-	return eff * 0.7 if money < 0 else eff
+	var mult = 1.0
+	if money < 0: mult *= 0.7
+	if steel <= 0: mult *= 0.9
+	if oil <= 0: mult *= 0.7
+	return eff * mult
 
 
 func get_defense_efficiency() -> float:
 	var eff = 1.0 + (stability * 0.15) + (army_level * 0.05)
-	return eff * 0.8 if money < 0 else eff
+	var mult = 1.0
+	if money < 0: mult *= 0.8
+	if steel <= 0: mult *= 0.75
+	if oil <= 0: mult *= 0.9
+	return eff * mult
 #endregion
 
 
@@ -239,13 +399,14 @@ func deploy_ready_troop(troop: Training.ReadyTroop, specific_pid: int = -1) -> b
 		return false
 
 	var target_pid = specific_pid
-
-	# If no specific ID provided, pick random
 	if target_pid == -1:
-		var provinces = MapManager.country_to_provinces.get(country_name, [])
-		if provinces.is_empty():
-			return false
-		target_pid = provinces.pick_random()
+		if deploy_pid != -1 and MapManager.province_objects[deploy_pid].country == country_name:
+			target_pid = deploy_pid
+		else:
+			var provinces = MapManager.country_to_provinces.get(country_name, [])
+			if provinces.is_empty():
+				return false
+			target_pid = provinces.pick_random()
 
 	TroopManager.deploy_specific_divisions(country_name, troop.stored_divisions, target_pid)
 	ready_troops.remove_at(index)
@@ -284,3 +445,81 @@ func set_relation_with(other_country_name: String, value: int) -> void:
 func get_relation_with(other_country_name: String) -> int:
 	other_country_name = other_country_name.to_lower()
 	return relations.get(other_country_name, 50)
+
+
+# --- GENERALS MANAGEMENT ---
+
+func generate_general(g_name: String = "") -> Dictionary:
+	if g_name == "":
+		var first_names = ["Arthur", "George", "Charles", "Erwin", "Douglas", "Bernard", "Dwight", "Georgy", "Philippe", "Rodion", "Gerd", "Heinz", "Tomoyuki", "Isoroku"]
+		var last_names = ["Montgomery", "Patton", "Rommel", "MacArthur", "Eisenhower", "Zhukov", "Leclerc", "Malinovsky", "Rundstedt", "Guderian", "Yamashita", "Yamamoto", "De Gaulle", "Bradley"]
+		g_name = "Gen. " + first_names.pick_random() + " " + last_names.pick_random()
+	var gen = {
+		"id": "gen_" + str(randi()),
+		"name": g_name,
+		"attack": randi_range(1, 4),
+		"defense": randi_range(1, 4),
+		"logistics": randi_range(1, 4),
+		"level": 1,
+		"xp": 0.0,
+		"assigned_troop_id": ""
+	}
+	generals.append(gen)
+	return gen
+
+
+func assign_general(gen_id: String, troop: TroopData) -> void:
+	for g in generals:
+		if g.id == gen_id:
+			# Unassign from old troop first
+			if g.assigned_troop_id != "":
+				var old_troop = instance_from_id(int(g.assigned_troop_id))
+				if is_instance_valid(old_troop):
+					old_troop.general_id = ""
+					old_troop.general_name = ""
+					old_troop.general_attack = 0
+					old_troop.general_defense = 0
+					old_troop.general_logistics = 0
+			
+			# Assign to new troop
+			g.assigned_troop_id = str(troop.get_instance_id())
+			troop.general_id = g.id
+			troop.general_name = g.name
+			troop.general_attack = g.attack
+			troop.general_defense = g.defense
+			troop.general_logistics = g.logistics
+			break
+
+
+func unassign_general(gen_id: String) -> void:
+	for g in generals:
+		if g.id == gen_id:
+			if g.assigned_troop_id != "":
+				var old_troop = instance_from_id(int(g.assigned_troop_id))
+				if is_instance_valid(old_troop):
+					old_troop.general_id = ""
+					old_troop.general_name = ""
+					old_troop.general_attack = 0
+					old_troop.general_defense = 0
+					old_troop.general_logistics = 0
+				g.assigned_troop_id = ""
+			break
+
+
+func add_general_xp(gen_id: String, xp_gain: float) -> void:
+	for g in generals:
+		if g.id == gen_id:
+			g.xp += xp_gain
+			var target_xp = g.level * 100.0
+			if g.xp >= target_xp:
+				g.xp -= target_xp
+				g.level += 1
+				var stat = randi() % 3
+				if stat == 0:
+					g.attack += 1
+				elif stat == 1:
+					g.defense += 1
+				else:
+					g.logistics += 1
+				print("General %s leveled up to %d!" % [g.name, g.level])
+			break

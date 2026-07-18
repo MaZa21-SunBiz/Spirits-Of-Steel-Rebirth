@@ -9,6 +9,13 @@ var position: Vector2
 
 var stored_divisions: Array[DivisionData] = []
 
+# --- GENERAL STUFF ---
+var general_id: String = ""
+var general_name: String = ""
+var general_attack: int = 0
+var general_defense: int = 0
+var general_logistics: int = 0
+
 var divisions_count: int:
 	get:
 		return stored_divisions.size()

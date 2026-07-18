@@ -123,10 +123,11 @@ func _toggle_pause(pause: bool):
 	var world = GameState.current_world
 	if world:
 		world.set_process(!pause)
-		world.clock.set_process(!pause)
 		var cam = world.find_child("CameraController", true, false)
 		if cam:
 			cam.set_process(!pause)
+	if GameState.main and GameState.main.clock:
+		GameState.main.clock.set_process(!pause)
 	TroopManager.set_process(!pause)
 
 

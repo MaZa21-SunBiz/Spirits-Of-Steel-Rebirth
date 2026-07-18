@@ -13,6 +13,9 @@ var game_ui: GameUI
 
 var decision_menu_open: bool = false
 var in_peace_process: bool = false
+var chosen_diplomacy_country: CountryData = null
+var chosen_production_tab := 0
+var production_menu_instance: Control = null
 
 
 func reset_industry_building():

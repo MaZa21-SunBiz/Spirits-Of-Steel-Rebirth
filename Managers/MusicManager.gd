@@ -17,7 +17,8 @@ enum SFX {
 	GAME_OVER,
 	POPUP,
 	BUILD,
-	CLAPPING
+	CLAPPING,
+	UPGRADE
 }
 
 enum MUSIC { MAIN_THEME, BATTLE_THEME }
@@ -35,7 +36,9 @@ var sfx_map = {
 	SFX.GAME_OVER: preload("res://assets/snd/endGameSound.mp3"),
 	SFX.POPUP: preload("res://assets/snd/popupSound.mp3"),
 	SFX.BUILD: preload("res://assets/snd/buildSound.mp3"),
-	SFX.CLAPPING: preload("res://assets/snd/clappingSound.mp3")
+	SFX.CLAPPING: preload("res://assets/snd/clappingSound.mp3"),
+	SFX.UPGRADE: preload("res://assets/snd/upgradeSound.mp3"),
+
 }
 
 var sfx_volume_map = {

@@ -84,23 +84,29 @@ class Battle:
 			manager.end_battle(self)
 			return
 
-		# --- NEW: SUPPLY & MONEY CHECK ---
-		# Calculate how much it costs to keep these divisions fighting this round
-		# We'll use 1% of their recruitment cost as a "per-round" supply cost
+		# --- NEW: SUPPLY, MONEY & RESOURCE CHECK ---
 		var att_supply_cost = 0.0
+		var att_steel_cost = 0.0
+		var att_oil_cost = 0.0
 		for t in att_troops:
+			var gen_mod = 1.0 - (t.general_logistics * 0.05) if t.general_id != "" else 1.0
 			for div in t.stored_divisions:
 				var template = div.TEMPLATES.get(div.type, div.TEMPLATES["infantry"])
-				att_supply_cost += template["cost"] * 0.5
-		attacker_stats.money -= att_supply_cost
+				att_supply_cost += template["cost"] * 0.25 * gen_mod
+				att_steel_cost += template.get("steel", 0.0) * 0.05 * gen_mod
+				att_oil_cost += template.get("oil", 0.0) * 0.1 * gen_mod
 
 		var def_supply_cost = 0.0
+		var def_steel_cost = 0.0
+		var def_oil_cost = 0.0
 		for t in def_troops:
+			var gen_mod = 1.0 - (t.general_logistics * 0.05) if t.general_id != "" else 1.0
 			for div in t.stored_divisions:
 				var template = div.TEMPLATES.get(div.type, div.TEMPLATES["infantry"])
-				def_supply_cost += template["cost"] * 0.1
+				def_supply_cost += template["cost"] * 0.05 * gen_mod
+				def_steel_cost += template.get("steel", 0.0) * 0.02 * gen_mod
+				def_oil_cost += template.get("oil", 0.0) * 0.05 * gen_mod
 
-		defender_stats.money -= def_supply_cost
 		# Apply costs and determine penalties
 		var att_supply_mult = 1.0
 		var def_supply_mult = 1.0
@@ -109,33 +115,113 @@ class Battle:
 			if attacker_stats.money >= att_supply_cost:
 				attacker_stats.money -= att_supply_cost
 			else:
-				att_supply_mult = 0.4
+				att_supply_mult *= 0.4
 				att_morale -= 2.0  # Extra morale penalty for hungry troops
+
+			# Deduct Steel
+			if attacker_stats.steel >= att_steel_cost:
+				attacker_stats.steel -= att_steel_cost
+			else:
+				attacker_stats.steel = 0.0
+				att_supply_mult *= 0.75
+				att_morale -= 1.0
+
+			# Deduct Oil
+			if attacker_stats.oil >= att_oil_cost:
+				attacker_stats.oil -= att_oil_cost
+			else:
+				attacker_stats.oil = 0.0
+				att_supply_mult *= 0.7
+				att_morale -= 1.0
 
 		if defender_stats:
 			if defender_stats.money >= def_supply_cost:
 				defender_stats.money -= def_supply_cost
 			else:
-				def_supply_mult = 0.4
+				def_supply_mult *= 0.4
 				def_morale -= 2.0
 
-		# --- 1. Calculate Power (Now including Supply Penalty) ---
-		var total_atk_power = 0.0
-		for t in att_troops:
-			for div in t.stored_divisions:
-				total_atk_power += div.get_attack_power() * (div.hp / div.max_hp) * att_supply_mult
+			# Deduct Steel
+			if defender_stats.steel >= def_steel_cost:
+				defender_stats.steel -= def_steel_cost
+			else:
+				defender_stats.steel = 0.0
+				def_supply_mult *= 0.75
+				def_morale -= 1.0
 
-		var total_def_power = 0.0
-		for t in def_troops:
+			# Deduct Oil
+			if defender_stats.oil >= def_oil_cost:
+				defender_stats.oil -= def_oil_cost
+			else:
+				defender_stats.oil = 0.0
+				def_supply_mult *= 0.7
+				def_morale -= 1.0
+
+		# --- COMBAT TACTICS ---
+		var attacker_tactics = ["Blitz", "Shock", "Close Combat", "Tactical Advance"]
+		var defender_tactics = ["Entrench", "Tactical Withdrawal", "Counter-Attack", "Elastic Defense"]
+		var att_tactic = attacker_tactics.pick_random()
+		var def_tactic = defender_tactics.pick_random()
+		
+		var tactic_atk_mod = 1.0
+		var tactic_def_mod = 1.0
+		
+		match att_tactic:
+			"Blitz":
+				tactic_atk_mod *= 1.25
+				tactic_def_mod *= 0.9
+			"Shock":
+				tactic_atk_mod *= 1.15
+			"Close Combat":
+				tactic_atk_mod *= 1.15
+				tactic_def_mod *= 1.10
+			"Tactical Advance":
+				tactic_atk_mod *= 1.20
+				
+		match def_tactic:
+			"Entrench":
+				tactic_def_mod *= 1.30
+				tactic_atk_mod *= 0.90
+			"Tactical Withdrawal":
+				tactic_def_mod *= 1.25
+				tactic_atk_mod *= 0.85
+			"Counter-Attack":
+				tactic_atk_mod *= 1.20
+			"Elastic Defense":
+				tactic_def_mod *= 1.20
+				tactic_atk_mod *= 1.10
+
+		# --- 1. Calculate Power (Combat Width limit of 8 divisions) ---
+		var active_att_divs = []
+		for t in att_troops:
+			var gen_atk_bonus = 1.0 + (t.general_attack * 0.10) if t.general_id != "" else 1.0
 			for div in t.stored_divisions:
-				total_def_power += div.get_defense_power() * (div.hp / div.max_hp) * def_supply_mult
+				active_att_divs.append({"div": div, "atk_bonus": gen_atk_bonus})
+		active_att_divs.resize(min(active_att_divs.size(), 8))
+		
+		var total_atk_power = 0.0
+		for entry in active_att_divs:
+			var div = entry.div
+			total_atk_power += div.get_attack_power() * (div.hp / div.max_hp) * att_supply_mult * entry.atk_bonus
+
+		var active_def_divs = []
+		for t in def_troops:
+			var gen_def_bonus = 1.0 + (t.general_defense * 0.10) if t.general_id != "" else 1.0
+			for div in t.stored_divisions:
+				active_def_divs.append({"div": div, "def_bonus": gen_def_bonus})
+		active_def_divs.resize(min(active_def_divs.size(), 8))
+		
+		var total_def_power = 0.0
+		for entry in active_def_divs:
+			var div = entry.div
+			total_def_power += div.get_defense_power() * (div.hp / div.max_hp) * def_supply_mult * entry.def_bonus
 
 		# --- 2. Modifiers (Morale and Efficiency) ---
 		var att_eff = attacker_stats.get_attack_efficiency() if attacker_stats else 1.0
 		var def_eff = defender_stats.get_defense_efficiency() if defender_stats else 1.0
 
-		var final_attack = total_atk_power * (att_morale / 100.0) * att_eff
-		var final_defense = total_def_power * (def_morale / 100.0) * def_eff
+		var final_attack = total_atk_power * (att_morale / 100.0) * att_eff * tactic_atk_mod
+		var final_defense = total_def_power * (def_morale / 100.0) * def_eff * tactic_def_mod
 
 		# --- 3. Apply Damage ---
 		manager.apply_casualties(defender_pid, defender_country, final_attack)
@@ -145,7 +231,15 @@ class Battle:
 		att_morale -= (final_defense * manager.MORALE_DECAY_RATE)
 		def_morale -= (final_attack * manager.MORALE_DECAY_RATE)
 
-		# --- 5. Wrap up Round ---
+		# --- 5. Award XP to Generals ---
+		for t in att_troops:
+			if t.general_id != "" and attacker_stats:
+				attacker_stats.add_general_xp(t.general_id, 0.5)
+		for t in def_troops:
+			if t.general_id != "" and defender_stats:
+				defender_stats.add_general_xp(t.general_id, 0.5)
+
+		# --- 6. Wrap up Round ---
 		_update_hp_totals()
 
 		if current_def_hp <= 0 or def_morale <= 5.0:

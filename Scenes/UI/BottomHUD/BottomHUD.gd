@@ -11,11 +11,7 @@ var tween: Tween
 
 
 func _ready() -> void:
-	_apply_modern_styling()
-
-	# Start completely hidden
-	main_panel.modulate.a = 0
-	main_panel.position.y += 50
+	hide() # Bottom HUD is completely hidden/removed from display
 
 	if is_instance_valid(MapManager):
 		MapManager.country_clicked.connect(_on_country_selected)
@@ -23,27 +19,17 @@ func _ready() -> void:
 
 
 func _on_menu_close() -> void:
-	_request_back()
-
-
-func _request_back() -> void:
-	if current_submenu != null:
-		_close_submenu()
-		GameState.industry_building = GameState.IndustryType.DEFAULT
-	elif is_visible:
-		_animate_appearance(false)
+	if GameState.production_menu_instance and not GameState.production_menu_instance.is_menu_collapsed:
+		GameState.production_menu_instance._toggle_collapse()
 
 
 func _on_country_selected(country_id: String) -> void:
 	var country = CountryManager.get_country(country_id)
-	if country:
-		if current_submenu != null:
-			_close_submenu()
-		_update_ui(country)
-		if not is_visible:
-			_animate_appearance(true)
-	else:
-		_request_back()
+	if country and GameState.production_menu_instance:
+		if country == CountryManager.player_country:
+			GameState.production_menu_instance.open_and_switch_to_tab(0, null)
+		else:
+			GameState.production_menu_instance.open_and_switch_to_tab(3, country)
 
 
 func _update_ui(country) -> void:
@@ -65,18 +51,31 @@ func _update_ui(country) -> void:
 		, Color(0.18, 0.08, 0.28))  # Deep royal purple
 		_add_action(
 			"INDUSTRY",
-			func(): _toggle_submenu("res://Scenes/UI/Industry/IndustryMenu.tscn"),
-			Color(0.08, 0.22, 0.10)
-		)  # Dark emerald
+			func():
+				GameState.chosen_production_tab = 0
+				_toggle_submenu("res://Scenes/UI/ProductionMenu.tscn")
+		, Color(0.08, 0.22, 0.10))  # Dark emerald
 		_add_action(
 			"MILITARY",
-			func(): _toggle_submenu("res://Scenes/UI/Military/military_menu.tscn"),
-			Color(0.30, 0.05, 0.05)
-		)  # Blood crimson
+			func():
+				GameState.chosen_production_tab = 1
+				_toggle_submenu("res://Scenes/UI/ProductionMenu.tscn")
+		, Color(0.30, 0.05, 0.05))  # Blood crimson
+		_add_action(
+			"MARKET & TRADE",
+			func():
+				GameState.chosen_diplomacy_country = country
+				GameState.chosen_production_tab = 2
+				_toggle_submenu("res://Scenes/UI/ProductionMenu.tscn")
+		, Color(0.12, 0.20, 0.28))
 		_add_action("RESEARCH", func(): print("Open Res"), Color(0.05, 0.18, 0.32))  # Midnight blue
 
 	else:
-		_add_action("DIPLOMACY", func(): print("Open Dip"))
+		_add_action("DIPLOMACY & TRADE", func():
+			GameState.chosen_diplomacy_country = country
+			GameState.chosen_production_tab = 4
+			_toggle_submenu("res://Scenes/UI/ProductionMenu.tscn")
+		, Color(0.1, 0.25, 0.2))
 		_add_action("SEND SPY", func(): print("War"), Color(0.6, 0.2, 0.2))
 
 
@@ -117,15 +116,13 @@ func _add_action(
 
 	var normal = StyleBoxFlat.new()
 	normal.bg_color = base_color
-	normal.border_width_bottom = 3
-	normal.border_color = base_color.darkened(0.25)  # darker bottom edge
-
-	# Very subtle top highlight (cyber/metal feeling)
-	normal.border_width_top = 1
-	normal.border_color = Color(1, 1, 1, 0.08)
+	normal.set_corner_radius_all(0)
+	normal.border_width_bottom = 2
+	normal.border_color = Color(0.72, 0.58, 0.38, 0.8)
 
 	var hover = normal.duplicate()
 	hover.bg_color = base_color.lightened(0.12)
+	hover.border_color = Color(0.72, 0.58, 0.38, 1.0)
 
 	var pressed = normal.duplicate()
 	pressed.bg_color = base_color.darkened(0.15)
@@ -145,18 +142,15 @@ func _add_action(
 
 func _apply_modern_styling() -> void:
 	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.05, 0.05, 0.06, 0.98)  # Darker, more opaque
+	style.bg_color = Color(0.18, 0.16, 0.14, 0.98) # Warm hand-painted wood panel
 	style.set_corner_radius_all(0)  # Sharp edges
-
-	# Remove shadows
-	style.shadow_size = 0
-
-	# Use a solid border instead of a shadow for definition
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.border_color = Color(0.3, 0.3, 0.3, 1.0)  # Solid grey border
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.border_color = Color(0.72, 0.58, 0.38, 1.0) # Brass border
+	style.shadow_size = 8
+	style.shadow_color = Color(0, 0, 0, 0.5)
 
 	main_panel.add_theme_stylebox_override("panel", style)
 
