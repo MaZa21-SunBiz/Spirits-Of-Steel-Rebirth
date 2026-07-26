@@ -4,7 +4,7 @@ signal player_country_changed
 signal message_received(msg: Dictionary)
 signal messages_updated
 
-var countries: Dictionary[String, CountryData] = {}
+var countries: Dictionary = {}
 var player_country: CountryData
 
 const HISTORICAL_RESOURCES = {
@@ -38,36 +38,23 @@ var _hour_process_index: int = 0
 
 
 func _on_hour_passed(_ticks) -> void:
-	if GameState.is_loading_game:
+	if GameState.is_loading_game or countries.is_empty():
 		return
 
-	var country_keys := countries.keys()
-	var total := country_keys.size()
-	if total == 0:
-		return
-
-	# 1. Staggered hourly country updates
-	var countries_per_hour := int(ceil(float(total) / hours_per_full_country_tick))
-
-	var processed := 0
-	while processed < countries_per_hour and _hour_process_index < total:
-		var c_name: String = country_keys[_hour_process_index]
-		var country_obj: CountryData = countries[c_name]
-
-		country_obj.process_hour()
-
-		_hour_process_index += 1
-		processed += 1
-
-	if _hour_process_index >= total:
-		_hour_process_index = 0
-
-	# 2. Staggered daily country updates (process_day)
+	# Stagger country hourly processing across the 24 hours of the day using daily_process_hour
 	var current_hour := int(_ticks) % 24
+
+	# Always process player country every hour for immediate responsive UI feedback
+	if is_instance_valid(player_country):
+		player_country.process_hour()
+
+	# Process AI countries staggered by their daily_process_hour
 	for c_name in countries:
 		var country_obj: CountryData = countries[c_name]
-		if country_obj.daily_process_hour == current_hour:
-			country_obj.process_day()
+		if not country_obj.is_player:
+			if country_obj.daily_process_hour == current_hour:
+				country_obj.process_hour()
+				country_obj.process_day()
 
 
 func _on_day_passed(_date) -> void:
@@ -94,7 +81,59 @@ func initialize_countries() -> void:
 	for country_name in detected_countries:
 		add_country(country_name)
 
+	initialize_starting_armies()
+
 	print("CountryManager: Initialized %d countries." % countries.size())
+
+
+func initialize_starting_armies() -> void:
+	if is_instance_valid(TroopManager) and not TroopManager.troops.is_empty():
+		return
+
+	for c_name in countries.keys():
+		var country_obj: CountryData = countries[c_name]
+		if not is_instance_valid(country_obj):
+			continue
+
+		var country_provinces = MapManager.country_to_provinces.get(c_name, []) if is_instance_valid(MapManager) else []
+		if country_provinces.is_empty():
+			continue
+
+		var prov_count = country_provinces.size()
+
+		# Consolidate into fewer, larger army stacks for 120+ FPS performance
+		var troop_count = 1
+		var divs_per_troop = 3
+
+		if prov_count <= 3:
+			troop_count = 1
+			divs_per_troop = randi_range(3, 6)
+		elif prov_count <= 12:
+			troop_count = randi_range(2, 3)
+			divs_per_troop = randi_range(6, 12)
+		elif prov_count <= 30:
+			troop_count = randi_range(3, 4)
+			divs_per_troop = randi_range(10, 20)
+		else:
+			troop_count = randi_range(4, 6)
+			divs_per_troop = randi_range(15, 30)
+
+		var city_pids = []
+		for p in country_obj.provinces_with_city:
+			if p and "id" in p:
+				city_pids.append(p.id)
+
+		var available_pids = city_pids.duplicate()
+		if available_pids.is_empty():
+			available_pids = country_provinces.duplicate()
+
+		available_pids.shuffle()
+
+		for i in range(troop_count):
+			var pid = available_pids[i % available_pids.size()]
+			TroopManager.spawn_troop(country_obj.country_name, pid, divs_per_troop)
+
+		country_obj.update_manpower_pool()
 
 
 func get_country(c_name: String) -> CountryData:
@@ -133,11 +172,8 @@ func add_country(country_name: String) -> CountryData:
 	if countries.has(c_name_lower):
 		return countries[c_name_lower]
 
-	# 2. Check if the flag exists
+	# 2. Flag check (Optional - countries can exist without a flag texture)
 	var flag = TroopManager.get_flag(c_name_lower)
-	if flag == null:
-		push_error("CountryManager: No flag for '%s'. Skipping." % country_name)
-		return null
 
 	# 3. Create the instance
 	var new_country = CountryData.new(country_name)

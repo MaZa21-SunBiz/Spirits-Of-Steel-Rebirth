@@ -6,11 +6,8 @@ signal selection_changed
 var font: Font = preload("res://font/TTT-Regular.otf")
 
 # --- Constants ---
-const FLAG_WIDTH_BASE := 24.0
-const FLAG_HEIGHT_BASE := 20.0
-const PADDING_BASE := 6.0
-const GAP_BASE := 8.0
-const CLICK_THRESHOLD := 1.0  # pixels – how far mouse can move and still count as a "click"
+const CLICK_THRESHOLD := 2.0
+const SPREAD_DRAG_THRESHOLD := 15.0
 
 # --- State ---
 var dragging: bool = false
@@ -18,12 +15,12 @@ var drag_start: Vector2 = Vector2.ZERO
 var drag_end: Vector2 = Vector2.ZERO
 
 var right_dragging: bool = false
-var right_path: Array = []
+var right_drag_start: Vector2 = Vector2.ZERO
+var right_drag_current: Vector2 = Vector2.ZERO
+var right_drag_path: Array[Vector2] = []
 
 @onready var map_sprite: Sprite2D = $"../../../MapContainer/CultureSprite"
 
-# --- Path Length Limit ---
-var max_path_length: int = 0
 var selected_troops: Array[TroopData] = []
 
 func _input(event) -> void:
@@ -39,27 +36,209 @@ func _input(event) -> void:
 	elif event is InputEventMouseMotion:
 		_handle_mouse_motion()
 
+var selection_ui_layer: CanvasLayer
+var selection_menu_panel: PanelContainer
+
+func _ready() -> void:
+	_setup_selection_ui()
+
+func _setup_selection_ui() -> void:
+	selection_ui_layer = CanvasLayer.new()
+	selection_ui_layer.layer = 100
+	add_child(selection_ui_layer)
+
+	selection_menu_panel = PanelContainer.new()
+	selection_menu_panel.custom_minimum_size = Vector2(360, 240)
+	selection_menu_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	selection_menu_panel.visible = false
+
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.04, 0.04, 0.05, 0.99) # Sleek HOI4 dark panel
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.border_color = Color(0.85, 0.45, 0.15, 1.0) # Copper accent border
+	style.set_corner_radius_all(0)
+	selection_menu_panel.add_theme_stylebox_override("panel", style)
+
+	selection_ui_layer.add_child(selection_menu_panel)
+	selection_changed.connect(_on_selection_changed_update_ui)
+
+func _on_selection_changed_update_ui() -> void:
+	if not is_instance_valid(selection_menu_panel):
+		return
+
+	if selected_troops.is_empty():
+		selection_menu_panel.visible = false
+		return
+
+	_update_selection_menu_content()
+	selection_menu_panel.visible = true
+
+	# Position panel at bottom right
+	var vp_size = get_viewport_rect().size
+	selection_menu_panel.position = Vector2(vp_size.x - 380, vp_size.y - 260)
+
+func _update_selection_menu_content() -> void:
+	for child in selection_menu_panel.get_children():
+		child.queue_free()
+
+	var margin = MarginContainer.new()
+	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	margin.add_theme_constant_override("margin_left", 12)
+	margin.add_theme_constant_override("margin_top", 12)
+	margin.add_theme_constant_override("margin_right", 12)
+	margin.add_theme_constant_override("margin_bottom", 12)
+	selection_menu_panel.add_child(margin)
+
+	var main_vbox = VBoxContainer.new()
+	main_vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	main_vbox.add_theme_constant_override("separation", 8)
+	margin.add_child(main_vbox)
+
+	# Header Row
+	var header_hbox = HBoxContainer.new()
+	header_hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	main_vbox.add_child(header_hbox)
+
+	var title = Label.new()
+	title.text = "⚔️ ARMY COMMAND (%d UNIT%s)" % [selected_troops.size(), "S" if selected_troops.size() > 1 else ""]
+	title.add_theme_font_size_override("font_size", 12)
+	title.add_theme_color_override("font_color", Color(0.9, 0.5, 0.15))
+	header_hbox.add_child(title)
+
+	var spacer = Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header_hbox.add_child(spacer)
+
+	var delete_all_btn = Button.new()
+	delete_all_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	delete_all_btn.text = "🗑️ Disband All"
+	_apply_ui_btn_style(delete_all_btn, Color(0.9, 0.25, 0.2))
+	delete_all_btn.pressed.connect(func():
+		var troops_copy = selected_troops.duplicate()
+		deselect_all()
+		for t in troops_copy:
+			TroopManager.delete_troop(t)
+	)
+	header_hbox.add_child(delete_all_btn)
+
+	# Scroll Container for Units
+	var scroll = ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(336, 180)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	main_vbox.add_child(scroll)
+
+	var list_vbox = VBoxContainer.new()
+	list_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	list_vbox.add_theme_constant_override("separation", 6)
+	scroll.add_child(list_vbox)
+
+	for troop_idx in range(selected_troops.size()):
+		var troop: TroopData = selected_troops[troop_idx]
+		if not is_instance_valid(troop):
+			continue
+
+		var item_panel = PanelContainer.new()
+		var p_style = StyleBoxFlat.new()
+		p_style.bg_color = Color(0.08, 0.09, 0.12, 0.95)
+		p_style.border_width_left = 3
+		p_style.border_color = Color(0.2, 0.65, 0.35) if troop.cached_main_type == "infantry" else (Color(0.85, 0.3, 0.2) if troop.cached_main_type == "artillery" else Color(0.2, 0.5, 0.85))
+		p_style.set_corner_radius_all(0)
+		item_panel.add_theme_stylebox_override("panel", p_style)
+		list_vbox.add_child(item_panel)
+
+		var item_margin = MarginContainer.new()
+		item_margin.add_theme_constant_override("margin_left", 8)
+		item_margin.add_theme_constant_override("margin_top", 6)
+		item_margin.add_theme_constant_override("margin_right", 8)
+		item_margin.add_theme_constant_override("margin_bottom", 6)
+		item_panel.add_child(item_margin)
+
+		var item_vbox = VBoxContainer.new()
+		item_vbox.add_theme_constant_override("separation", 4)
+		item_margin.add_child(item_vbox)
+
+		# Top Row: Unit Name & Single Delete
+		var top_row = HBoxContainer.new()
+		item_vbox.add_child(top_row)
+
+		var type_icon = "🟩" if troop.cached_main_type == "infantry" else ("🔺" if troop.cached_main_type == "artillery" else "🔵")
+		var u_name = Label.new()
+		u_name.text = "%s Unit #%d (%s)" % [type_icon, troop_idx + 1, troop.cached_main_type.capitalize()]
+		u_name.add_theme_font_size_override("font_size", 11)
+		u_name.add_theme_color_override("font_color", Color.WHITE)
+		top_row.add_child(u_name)
+
+		var sp_item = Control.new()
+		sp_item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		top_row.add_child(sp_item)
+
+		var del_single = Button.new()
+		del_single.mouse_filter = Control.MOUSE_FILTER_STOP
+		del_single.text = "✖"
+		_apply_ui_btn_style(del_single, Color(0.8, 0.2, 0.2))
+		del_single.custom_minimum_size = Vector2(24, 20)
+		del_single.pressed.connect(func():
+			selected_troops.erase(troop)
+			TroopManager.delete_troop(troop)
+			_on_selection_changed_update_ui()
+		)
+		top_row.add_child(del_single)
+
+		# Health Progress Bar
+		var hp_percent = troop.get_average_hp_percent()
+		var hp_bar = ProgressBar.new()
+		hp_bar.custom_minimum_size = Vector2(0, 8)
+		hp_bar.show_percentage = false
+		hp_bar.value = hp_percent * 100.0
+
+		var bar_style = StyleBoxFlat.new()
+		bar_style.bg_color = Color(0.15, 0.8, 0.35) if hp_percent > 0.5 else (Color(0.9, 0.7, 0.1) if hp_percent > 0.25 else Color(0.85, 0.2, 0.2))
+		bar_style.set_corner_radius_all(0)
+		hp_bar.add_theme_stylebox_override("fill", bar_style)
+
+		var bg_bar_style = StyleBoxFlat.new()
+		bg_bar_style.bg_color = Color(0.04, 0.04, 0.05, 1.0)
+		bg_bar_style.set_corner_radius_all(0)
+		hp_bar.add_theme_stylebox_override("background", bg_bar_style)
+
+		item_vbox.add_child(hp_bar)
+
+		# Divisions Info
+		var div_info = Label.new()
+		div_info.text = "Health: %d%% | Divisions: %d" % [int(hp_percent * 100.0), troop.divisions_count]
+		div_info.add_theme_font_size_override("font_size", 9)
+		div_info.add_theme_color_override("font_color", Color(0.75, 0.75, 0.75))
+		item_vbox.add_child(div_info)
+
+func _apply_ui_btn_style(btn: Button, border_color: Color) -> void:
+	var s = StyleBoxFlat.new()
+	s.bg_color = Color(0.12, 0.14, 0.18, 0.95)
+	s.border_width_bottom = 2
+	s.border_color = border_color
+	s.set_corner_radius_all(0)
+	btn.add_theme_stylebox_override("normal", s)
+	btn.add_theme_color_override("font_color", Color.WHITE)
+	btn.add_theme_font_size_override("font_size", 10)
+	btn.custom_minimum_size = Vector2(70, 24)
 
 func deselect_all() -> void:
 	selected_troops.clear()
 	selection_changed.emit()
 
-
 func _handle_mouse_motion() -> void:
 	if dragging:
 		drag_end = get_global_mouse_position()
-		var drag_distance = drag_start.distance_to(drag_end)
-
-		if drag_distance >= CLICK_THRESHOLD:
-			_perform_selection()
 
 	if right_dragging:
-		if drag_start.distance_to(get_global_mouse_position()) >= CLICK_THRESHOLD:
-			_sample_province_under_mouse()
-
+		right_drag_current = get_global_mouse_position()
+		if right_drag_path.is_empty() or right_drag_path[-1].distance_to(right_drag_current) > 10.0:
+			right_drag_path.append(right_drag_current)
 
 func _handle_left_mouse(event: InputEventMouseButton) -> void:
-	if !dragging and MapManager._is_mouse_over_ui():
+	if !dragging and is_instance_valid(MapManager) and MapManager._is_mouse_over_ui():
 		return
 	if event.pressed:
 		dragging = true
@@ -72,89 +251,138 @@ func _handle_left_mouse(event: InputEventMouseButton) -> void:
 		drag_end = get_global_mouse_position()
 		dragging = false
 
+		if drag_start.distance_to(drag_end) < CLICK_THRESHOLD:
+			_perform_single_click_selection()
+		else:
+			_perform_selection()
+
 		if selected_troops.size() > 0:
 			MusicManager.play_sfx(MusicManager.SFX.TROOP_SELECTED)
 
-
 func _handle_right_mouse(event: InputEventMouseButton) -> void:
-	if event.pressed and not selected_troops.is_empty():
+	if selected_troops.is_empty():
+		return
+
+	if event.pressed:
 		right_dragging = true
-		drag_start = get_global_mouse_position()
-		right_path.clear()
-		_sample_province_under_mouse()
+		right_drag_start = get_global_mouse_position()
+		right_drag_current = right_drag_start
+		right_drag_path.clear()
+		right_drag_path.append(right_drag_start)
 	else:
 		if not right_dragging:
 			return
 
-		_perform_path_assignment()
-		right_path.clear()
+		right_drag_current = get_global_mouse_position()
 		right_dragging = false
 
+		var drag_distance = right_drag_start.distance_to(right_drag_current)
+
+		if drag_distance >= SPREAD_DRAG_THRESHOLD and right_drag_path.size() > 1:
+			_spread_troops_along_freeform_path()
+		else:
+			var start_local = (right_drag_start - map_sprite.position) / map_sprite.scale
+			_move_troops_to_single_point(start_local)
+
+		right_drag_path.clear()
+		MusicManager.play_sfx(MusicManager.SFX.TROOP_SELECTED)
+
+func _spread_troops_along_freeform_path() -> void:
+	if selected_troops.is_empty() or right_drag_path.size() < 2:
+		return
+
+	var count = selected_troops.size()
+
+	# Convert screen path points to local map coordinates
+	var local_path: Array[Vector2] = []
+	for pt in right_drag_path:
+		local_path.append((pt - map_sprite.position) / map_sprite.scale)
+
+	# Calculate total path length
+	var total_length = 0.0
+	var segment_lengths: Array[float] = []
+	for i in range(local_path.size() - 1):
+		var seg_len = local_path[i].distance_to(local_path[i + 1])
+		segment_lengths.append(seg_len)
+		total_length += seg_len
+
+	for i in range(count):
+		var target_dist = (float(i) / float(max(1, count - 1))) * total_length if count > 1 else 0.5 * total_length
+		var target_point = _get_point_at_distance_along_path(local_path, segment_lengths, target_dist)
+		TroopManager.move_troop_to_position(selected_troops[i], target_point)
+
+func _get_point_at_distance_along_path(path: Array[Vector2], segment_lengths: Array[float], target_dist: float) -> Vector2:
+	if path.is_empty():
+		return Vector2.ZERO
+	if target_dist <= 0.0:
+		return path[0]
+
+	var accumulated = 0.0
+	for i in range(segment_lengths.size()):
+		var seg_len = segment_lengths[i]
+		if accumulated + seg_len >= target_dist:
+			var remaining = target_dist - accumulated
+			var factor = remaining / seg_len if seg_len > 0 else 0.0
+			return path[i].lerp(path[i + 1], factor)
+		accumulated += seg_len
+
+	return path[-1]
+
+func _move_troops_to_single_point(base_point: Vector2) -> void:
+	if selected_troops.is_empty():
+		return
+
+	var count = selected_troops.size()
+	if count == 1:
+		TroopManager.move_troop_to_position(selected_troops[0], base_point)
+		return
+
+	# Arrange multiple troops in a compact formation circle around the clicked point
+	var radius = 22.0
+	for i in range(count):
+		var angle = (float(i) / float(count)) * TAU
+		var offset = Vector2(cos(angle), sin(angle)) * radius
+		var target_point = base_point + offset
+		TroopManager.move_troop_to_position(selected_troops[i], target_point)
+
+func _perform_single_click_selection() -> void:
+	if not map_sprite or not CountryManager.player_country:
+		return
+
+	var click_pos = get_global_mouse_position()
+	var local_pos = (click_pos - map_sprite.position) / map_sprite.scale
+	var player_troops = CountryManager.player_country.troops_country
+
+	var clicked_troop: TroopData = null
+	for t in player_troops:
+		var dist = t.position.distance_to(local_pos)
+		if dist <= max(14.0, t.get_influence_radius()):
+			clicked_troop = t
+			break
+
+	var additive = Input.is_key_pressed(KEY_SHIFT)
+	if not additive:
+		selected_troops.clear()
+
+	if clicked_troop:
+		if not selected_troops.has(clicked_troop):
+			selected_troops.append(clicked_troop)
+
+	selection_changed.emit()
 
 func _perform_selection() -> void:
-	if not map_sprite:
+	if not map_sprite or not CountryManager.player_country:
 		return
 
 	var world_rect := Rect2(drag_start, drag_end - drag_start).abs()
-	var texture_width := map_sprite.texture.get_width()
-	var cam = get_viewport().get_camera_2d()
-	var inv_zoom: float = 1.0 / cam.zoom.x if cam else 1.0
-
 	var player_troops = CountryManager.player_country.troops_country
-	var troops_by_province = {} # { province_id: [TroopData, ...] }
-	for t in player_troops:
-		if t.is_moving:
-			continue
-		if not troops_by_province.has(t.province_id):
-			troops_by_province[t.province_id] = []
-		troops_by_province[t.province_id].append(t)
-
-	var troop_offsets = {}
-	var scaled_vertical_offset := 20.0 * inv_zoom
-	var card_offset := Vector2(3.0, -3.0) * inv_zoom
-
-	for pid in troops_by_province:
-		var p_troops = troops_by_province[pid]
-		
-		# Separate them by type
-		var typed_groups = {} # { type: [TroopData, ...] }
-		for t in p_troops:
-			var t_type = t.get_main_type()
-			if not typed_groups.has(t_type):
-				typed_groups[t_type] = []
-			typed_groups[t_type].append(t)
-			
-		var group_keys = typed_groups.keys()
-		var start_y = (group_keys.size() - 1) * scaled_vertical_offset * 0.5
-		
-		for g_idx in range(group_keys.size()):
-			var t_type = group_keys[g_idx]
-			var group = typed_groups[t_type]
-			
-			var group_base_pos = Vector2(0, start_y - (g_idx * scaled_vertical_offset))
-			
-			for t_idx in range(group.size()):
-				var t = group[t_idx]
-				troop_offsets[t] = group_base_pos + (card_offset * t_idx)
 
 	var selected_list: Array[TroopData] = []
-	var box_size = Vector2(76.0, 32.0) * inv_zoom
-
 	for t in player_troops:
-		var visual_center = t.position
-		if t.is_moving:
-			var progress = t.get_meta("progress", 0.0)
-			visual_center = t.position.lerp(t.target_position, progress)
-		else:
-			visual_center = t.position + troop_offsets.get(t, Vector2.ZERO)
-
-		var troop_world_center = visual_center + map_sprite.position
-		var troop_rect = Rect2(troop_world_center - box_size * 0.5, box_size)
-
-		if _check_rect_intersection(world_rect, troop_rect, t.position.x, texture_width):
+		var t_world_pos = t.position + map_sprite.position
+		if world_rect.has_point(t_world_pos) or world_rect.grow(t.get_influence_radius()).has_point(t_world_pos):
 			selected_list.append(t)
 
-	# Apply selection
 	var additive = Input.is_key_pressed(KEY_SHIFT)
 	if not additive:
 		selected_troops.clear()
@@ -163,181 +391,7 @@ func _perform_selection() -> void:
 		if not selected_troops.has(t):
 			selected_troops.append(t)
 
-	# Update max_path_length based on current live selection
-	max_path_length = 0
-	for troop in selected_troops:
-		max_path_length += troop.divisions_count
 	selection_changed.emit()
-
-
-func _check_rect_intersection(
-	selection_rect: Rect2, troop_rect: Rect2, tx: float, tex_w: float
-) -> bool:
-	# Standard check
-	if selection_rect.intersects(troop_rect):
-		return true
-
-	# Ghost check (Wrapping)
-	var GHOST_MARGIN = 600.0
-	if tx < GHOST_MARGIN:
-		var wrapped = troop_rect
-		wrapped.position.x += tex_w
-		if selection_rect.intersects(wrapped):
-			return true
-	elif tx > tex_w - GHOST_MARGIN:
-		var wrapped = troop_rect
-		wrapped.position.x -= tex_w
-		if selection_rect.intersects(wrapped):
-			return true
-
-	return false
-
-
-func _sample_province_under_mouse() -> void:
-	if not map_sprite:
-		return
-
-	# Stop sampling if we've reached max provinces
-	if right_path.size() >= max_path_length:
-		return
-
-	var local_pos = get_global_mouse_position()
-	var pid = MapManager.get_province_at_pos(local_pos, map_sprite)
-
-	if pid <= 0:
-		return
-
-	# Don't add duplicate consecutive provinces
-	if right_path.size() > 0 and right_path[-1]["pid"] == pid:
-		return
-
-	var center_tex = MapManager.province_centers.get(pid)
-	if not center_tex:
-		return
-
-	right_path.append({"pid": pid, "map_pos": center_tex, "texture_pos": center_tex})
-
-	print("Sampled province %d. Path length: %d/%d" % [pid, right_path.size(), max_path_length])
-
-
-func _perform_path_assignment() -> void:
-	if right_path.is_empty() or selected_troops.is_empty():
-		return
-
-	var path_pids = []
-	for entry in right_path:
-		if path_pids.is_empty() or path_pids[-1] != entry["pid"]:
-			path_pids.append(entry["pid"])
-
-	if path_pids.is_empty():
-		return
-
-	# =========================================================
-	# PRE-CALC: Map each division to its owning troop (O(1))
-	# =========================================================
-	var div_owner_map: Dictionary = {}
-	for t in selected_troops:
-		for div in t.stored_divisions:
-			div_owner_map[div] = t
-	# =========================================================
-
-	# 1. Cast the moving pool correctly
-	var moving_pool: Array[DivisionData] = []
-
-	for t in selected_troops:
-		moving_pool.append_array(t.stored_divisions)
-
-	# 2. Ensure the Dictionary values are typed arrays
-	var pool_by_origin = {}
-
-	for div in moving_pool:
-		var owner = TroopManager.find_troop_owning_division(div)
-		if owner:
-			var origin_id = owner.province_id
-			if not pool_by_origin.has(origin_id):
-				var new_list: Array[DivisionData] = []
-				pool_by_origin[origin_id] = new_list
-			pool_by_origin[origin_id].append(div)
-
-	var all_assignments = []
-
-	for origin_id in pool_by_origin:
-		var origin_batch = pool_by_origin[origin_id] as Array[DivisionData]
-
-		var template = null
-		for t in selected_troops:
-			if t.province_id == origin_id:
-				template = t
-				break
-
-		if not template:
-			var troops_at_origin = TroopManager.get_troops_in_province(origin_id)
-			if not troops_at_origin.is_empty():
-				template = troops_at_origin[0]
-
-		if not template:
-			continue
-
-		@warning_ignore("integer_division")
-		var divs_per_target = int(origin_batch.size() / path_pids.size())  #
-		var remainder = origin_batch.size() % path_pids.size()
-		var current_batch_idx = 0
-
-		for province_idx in range(path_pids.size()):
-			var target_pid = path_pids[province_idx]
-			var count_needed = divs_per_target + (1 if province_idx < remainder else 0)
-
-			var final_divs: Array[DivisionData] = []
-
-			for i in range(count_needed):
-				if current_batch_idx < origin_batch.size():
-					var div = origin_batch[current_batch_idx]
-
-					# O(1) removal instead of scanning all troops
-					if div_owner_map.has(div):
-						var owner_troop = div_owner_map[div]
-						owner_troop.stored_divisions.erase(div)
-						div_owner_map.erase(div)
-					# =============================================
-
-					final_divs.append(div)
-					current_batch_idx += 1
-
-			if final_divs.is_empty():
-				continue
-
-			var new_troop = TroopManager._create_new_split_troop(template, final_divs)
-			all_assignments.append({"troop": new_troop, "province_id": target_pid})
-
-	TroopManager.command_move_assigned(all_assignments)
-	_cleanup_empty_troops()
-
-	selected_troops.clear()
-	right_path.clear()
-	selection_changed.emit()
-
-
-# --- Helper functions for the logic above ---
-func _cleanup_empty_troops():
-	# If a troop gave away all its divisions, delete it from the world
-	for t in selected_troops:
-		if t.stored_divisions.is_empty():
-			TroopManager.remove_troop(t)
-
-
-func _print_troop_details(troop: TroopData) -> void:
-	print("--- Selected Troop (Prov: %d) ---" % troop.province_id)
-	for div in troop.stored_divisions:
-		var hp_percent = int(div.hp)
-		var exp_level = "Green"
-		if div.experience > 0.7:
-			exp_level = "Veteran"
-		elif div.experience > 0.3:
-			exp_level = "Trained"
-
-		print(
-			(
-				" > %s [%s] - HP: %d%% - Exp: %s"
-				% [div.name, div.type.to_upper(), hp_percent, exp_level]
-			)
-		)
+	var main_node = get_tree().root.find_child("CustomRenderer", true, false)
+	if is_instance_valid(main_node) and main_node.has_method("rebuild_troops"):
+		main_node.rebuild_troops()

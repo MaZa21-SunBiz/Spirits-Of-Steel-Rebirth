@@ -19,8 +19,8 @@ const TEMPLATES = {
 	{
 		"hp": 300.0,
 		"manpower": 30000,
-		"cost": 10000,
-		"days": 30,
+		"cost": 10,
+		"days": 1,
 		"attack": 5,
 		"defense": 7,
 		"speed": 2.5,
@@ -31,8 +31,8 @@ const TEMPLATES = {
 	{
 		"hp": 50.0,
 		"manpower": 10000,
-		"cost": 10000,
-		"days": 15,
+		"cost": 10,
+		"days": 1,
 		"attack": 5,
 		"defense": 0.3,
 		"speed": 0.8,

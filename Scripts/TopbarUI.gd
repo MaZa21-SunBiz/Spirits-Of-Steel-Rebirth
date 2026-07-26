@@ -43,7 +43,10 @@ func _ready() -> void:
 		var steel_panel = %label_industry.get_parent().get_parent().duplicate() as PanelContainer
 		steel_panel.tooltip_text = "Steel stock and daily flow"
 		var steel_hbox = steel_panel.get_child(0) as HBoxContainer
-		steel_hbox.get_child(0).visible = false
+		var steel_icon = steel_hbox.get_child(0) as TextureRect
+		if ResourceLoader.exists("res://assets/icons/steelingot.png"):
+			steel_icon.texture = load("res://assets/icons/steelingot.png")
+			steel_icon.visible = true
 		label_steel = steel_hbox.get_child(1) as Label
 		parent_hbox.add_child(steel_panel)
 		
@@ -51,7 +54,7 @@ func _ready() -> void:
 		var oil_panel = %label_industry.get_parent().get_parent().duplicate() as PanelContainer
 		oil_panel.tooltip_text = "Oil stock and daily flow"
 		var oil_hbox = oil_panel.get_child(0) as HBoxContainer
-		oil_hbox.get_child(0).visible = false
+		oil_hbox.get_child(0).visible = true
 		label_oil = oil_hbox.get_child(1) as Label
 		parent_hbox.add_child(oil_panel)
 		
@@ -137,7 +140,7 @@ func update_topbar_stats() -> void:
 	if is_instance_valid(label_steel):
 		var net_steel = country.steel_production - country.steel_consumption + country.recurring_steel_buy
 		var net_steel_sign = "+" if net_steel >= 0 else ""
-		label_steel.text = "⛓️ " + format_number(country.steel)
+		label_steel.text = format_number(country.steel)
 		if net_steel < 0:
 			label_steel.add_theme_color_override("font_color", Color(1.0, 0.4, 0.4))
 		else:
@@ -400,46 +403,14 @@ func _process(_delta: float) -> void:
 func _on_viewport_resized() -> void:
 	if is_instance_valid(troop_control_card) and troop_control_card.visible:
 		var size = get_viewport().get_visible_rect().size
-		troop_control_card.position = Vector2(size.x - 330, size.y - 170)
+		troop_control_card.position = Vector2(size.x - 375, size.y - 260)
 
 
 func _on_troop_selection_changed() -> void:
-	if not is_instance_valid(troop_control_card):
-		_build_troop_control_card()
-		
-	var selected = TroopManager.troop_selection.selected_troops
-	var country = CountryManager.player_country
-	
-	if not country or selected.is_empty() or selected[0].country != country.country_name:
-		troop_control_card.hide()
-		return
-		
-	# Show and draw card details
-	troop_control_card.show()
-	_on_viewport_resized() # Align position
-	
-	_draw_troop_control_card(selected[0])
+	pass
 
 
-func _build_troop_control_card() -> void:
-	troop_control_card = PanelContainer.new()
-	troop_control_card.custom_minimum_size = Vector2(320, 160)
-	troop_control_card.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.04, 0.04, 0.05, 0.99) # Sleek pixel black
-	style.border_width_left = 2
-	style.border_width_top = 2
-	style.border_width_right = 2
-	style.border_width_bottom = 2
-	style.border_color = Color(0.85, 0.45, 0.15, 1.0) # Copper orange highlight
-	style.set_corner_radius_all(0) # Flat pixel look
-	troop_control_card.add_theme_stylebox_override("panel", style)
-	
-	add_child(troop_control_card)
-
-
-func _draw_troop_control_card(troop: TroopData) -> void:
+func _draw_troop_control_card(selected_list: Array) -> void:
 	# Clear old layout
 	for child in troop_control_card.get_children():
 		child.queue_free()
@@ -452,105 +423,123 @@ func _draw_troop_control_card(troop: TroopData) -> void:
 	margin.add_theme_constant_override("margin_bottom", 12)
 	troop_control_card.add_child(margin)
 	
-	var vbox = VBoxContainer.new()
-	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	vbox.add_theme_constant_override("separation", 8)
-	margin.add_child(vbox)
+	var main_vbox = VBoxContainer.new()
+	main_vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	main_vbox.add_theme_constant_override("separation", 10)
+	margin.add_child(main_vbox)
 	
-	# Header title
+	# Header Row: Title & Bulk Delete Button
+	var header_hbox = HBoxContainer.new()
+	header_hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	main_vbox.add_child(header_hbox)
+
 	var title = Label.new()
-	title.text = "⚔️ SELECTED ARMY FORMATION"
+	title.text = "⚔️ ARMY COMMAND (%d UNIT%s)" % [selected_list.size(), "S" if selected_list.size() > 1 else ""]
 	title.add_theme_font_size_override("font_size", 12)
-	title.add_theme_color_override("font_color", Color(0.85, 0.45, 0.15))
-	vbox.add_child(title)
-	
-	# Location / stats
-	var prov = MapManager.province_objects.get(troop.province_id)
-	var loc_name = prov.city.capitalize() if (prov and prov.city != "") else ("Province " + str(troop.province_id))
-	
-	var info = Label.new()
-	info.text = "Divisions: %d | Location: %s" % [troop.divisions_count, loc_name]
-	info.add_theme_font_size_override("font_size", 11)
-	info.add_theme_color_override("font_color", Color(0.95, 0.95, 0.95))
-	vbox.add_child(info)
-	
-	# Commander Info
-	var country = CountryManager.player_country
-	var assigned_gen = null
-	for g in country.generals:
-		if g.assigned_troop_id == str(troop.get_instance_id()):
-			assigned_gen = g
-			break
-			
-	var comm_hbox = HBoxContainer.new()
-	comm_hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	comm_hbox.add_theme_constant_override("separation", 10)
-	vbox.add_child(comm_hbox)
-	
-	if assigned_gen:
-		var gen_lbl = Label.new()
-		gen_lbl.text = "General: %s (Lvl %d)\nAtk: +%d0%% | Def: +%d0%%" % [assigned_gen.name, assigned_gen.level, assigned_gen.attack, assigned_gen.defense]
-		gen_lbl.add_theme_font_size_override("font_size", 10)
-		gen_lbl.add_theme_color_override("font_color", Color(0.3, 0.75, 0.35))
-		comm_hbox.add_child(gen_lbl)
-		
-		var spacer = Control.new()
-		spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		comm_hbox.add_child(spacer)
-		
-		var dismiss = Button.new()
-		dismiss.mouse_filter = Control.MOUSE_FILTER_STOP
-		dismiss.text = "Dismiss"
-		_apply_popup_btn_style(dismiss, Color(0.8, 0.2, 0.2))
-		dismiss.pressed.connect(func():
-			country.unassign_general(assigned_gen.id)
-			_on_troop_selection_changed()
+	title.add_theme_color_override("font_color", Color(0.9, 0.5, 0.15))
+	header_hbox.add_child(title)
+
+	var spacer_h = Control.new()
+	spacer_h.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header_hbox.add_child(spacer_h)
+
+	var delete_all_btn = Button.new()
+	delete_all_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	delete_all_btn.text = "🗑️ Disband All"
+	_apply_popup_btn_style(delete_all_btn, Color(0.9, 0.25, 0.2))
+	delete_all_btn.pressed.connect(func():
+		var troops_copy = selected_list.duplicate()
+		for t in troops_copy:
+			TroopManager.delete_troop(t)
+	)
+	header_hbox.add_child(delete_all_btn)
+
+	# Scroll Container for Division Cards
+	var scroll = ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(340, 180)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	main_vbox.add_child(scroll)
+
+	var list_vbox = VBoxContainer.new()
+	list_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	list_vbox.add_theme_constant_override("separation", 6)
+	scroll.add_child(list_vbox)
+
+	for troop_idx in range(selected_list.size()):
+		var troop: TroopData = selected_list[troop_idx]
+		if not is_instance_valid(troop):
+			continue
+
+		var item_panel = PanelContainer.new()
+		var p_style = StyleBoxFlat.new()
+		p_style.bg_color = Color(0.08, 0.09, 0.12, 0.95)
+		p_style.border_width_left = 2
+		p_style.border_color = Color(0.2, 0.65, 0.35) if troop.cached_main_type == "infantry" else (Color(0.85, 0.3, 0.2) if troop.cached_main_type == "artillery" else Color(0.2, 0.5, 0.85))
+		p_style.set_corner_radius_all(0)
+		item_panel.add_theme_stylebox_override("panel", p_style)
+		list_vbox.add_child(item_panel)
+
+		var item_margin = MarginContainer.new()
+		item_margin.add_theme_constant_override("margin_left", 8)
+		item_margin.add_theme_constant_override("margin_top", 6)
+		item_margin.add_theme_constant_override("margin_right", 8)
+		item_margin.add_theme_constant_override("margin_bottom", 6)
+		item_panel.add_child(item_margin)
+
+		var item_vbox = VBoxContainer.new()
+		item_vbox.add_theme_constant_override("separation", 4)
+		item_margin.add_child(item_vbox)
+
+		# Unit Name & Disband Single Unit
+		var top_row = HBoxContainer.new()
+		item_vbox.add_child(top_row)
+
+		var type_icon = "🟩" if troop.cached_main_type == "infantry" else ("🔺" if troop.cached_main_type == "artillery" else "🔵")
+		var u_name = Label.new()
+		u_name.text = "%s Unit #%d (%s)" % [type_icon, troop_idx + 1, troop.cached_main_type.capitalize()]
+		u_name.add_theme_font_size_override("font_size", 11)
+		u_name.add_theme_color_override("font_color", Color.WHITE)
+		top_row.add_child(u_name)
+
+		var sp_row = Control.new()
+		sp_row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		top_row.add_child(sp_row)
+
+		var del_single = Button.new()
+		del_single.mouse_filter = Control.MOUSE_FILTER_STOP
+		del_single.text = "✖"
+		_apply_popup_btn_style(del_single, Color(0.8, 0.2, 0.2))
+		del_single.custom_minimum_size = Vector2(24, 20)
+		del_single.pressed.connect(func():
+			TroopManager.delete_troop(troop)
 		)
-		comm_hbox.add_child(dismiss)
-	else:
-		var no_lbl = Label.new()
-		no_lbl.text = "General: None Assigned"
-		no_lbl.add_theme_font_size_override("font_size", 10)
-		no_lbl.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
-		comm_hbox.add_child(no_lbl)
-		
-		var spacer = Control.new()
-		spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		comm_hbox.add_child(spacer)
-		
-		var assign_btn = Button.new()
-		assign_btn.mouse_filter = Control.MOUSE_FILTER_STOP
-		assign_btn.text = "Assign"
-		_apply_popup_btn_style(assign_btn, Color(0.85, 0.45, 0.15))
-		
-		var opt = OptionButton.new()
-		opt.mouse_filter = Control.MOUSE_FILTER_STOP
-		opt.add_item("Select General...", 0)
-		opt.visible = false
-		opt.custom_minimum_size = Vector2(130, 26)
-		
-		for g in country.generals:
-			if g.assigned_troop_id == "":
-				opt.add_item("%s (Lvl %d)" % [g.name, g.level], g.id.hash())
-				
-		comm_hbox.add_child(opt)
-		comm_hbox.add_child(assign_btn)
-		
-		assign_btn.pressed.connect(func():
-			assign_btn.visible = false
-			opt.visible = true
-			opt.show_popup()
-		)
-		
-		opt.item_selected.connect(func(idx):
-			if idx > 0:
-				var sel_text = opt.get_item_text(idx)
-				for g in country.generals:
-					if g.assigned_troop_id == "" and sel_text.begins_with(g.name):
-						country.assign_general(g.id, troop)
-						break
-			_on_troop_selection_changed()
-		)
+		top_row.add_child(del_single)
+
+		# Health / HP Progress Bar
+		var hp_percent = troop.get_average_hp_percent()
+		var hp_bar = ProgressBar.new()
+		hp_bar.custom_minimum_size = Vector2(0, 10)
+		hp_bar.show_percentage = false
+		hp_bar.value = hp_percent * 100.0
+
+		var bar_style = StyleBoxFlat.new()
+		bar_style.bg_color = Color(0.15, 0.8, 0.35) if hp_percent > 0.5 else (Color(0.9, 0.7, 0.1) if hp_percent > 0.25 else Color(0.85, 0.2, 0.2))
+		bar_style.set_corner_radius_all(0)
+		hp_bar.add_theme_stylebox_override("fill", bar_style)
+
+		var bg_bar_style = StyleBoxFlat.new()
+		bg_bar_style.bg_color = Color(0.04, 0.04, 0.05, 1.0)
+		bg_bar_style.set_corner_radius_all(0)
+		hp_bar.add_theme_stylebox_override("background", bg_bar_style)
+
+		item_vbox.add_child(hp_bar)
+
+		# Divisions breakdown list inside this unit
+		var div_info = Label.new()
+		div_info.text = "Health: %d%% | Divisions: %d" % [int(hp_percent * 100.0), troop.divisions_count]
+		div_info.add_theme_font_size_override("font_size", 9)
+		div_info.add_theme_color_override("font_color", Color(0.75, 0.75, 0.75))
+		item_vbox.add_child(div_info)
 
 
 func _apply_popup_btn_style(btn: Button, border_color: Color) -> void:

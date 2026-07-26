@@ -258,6 +258,8 @@ func _display_info(province) -> void:
 
 
 func _process(delta: float) -> void:
+	if not visible:
+		return
 	# Calculate coordinates to follow mouse smoothly and clamp within viewport bounds
 	var mouse_pos = get_viewport().get_mouse_position()
 	var viewport_size = get_viewport_rect().size

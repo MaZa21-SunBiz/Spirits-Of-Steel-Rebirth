@@ -16,16 +16,34 @@ var general_attack: int = 0
 var general_defense: int = 0
 var general_logistics: int = 0
 
+var cached_divisions_count: int = 0
+var cached_main_type: String = "infantry"
+
 var divisions_count: int:
 	get:
-		return stored_divisions.size()
+		return cached_divisions_count
 	set(value):
 		_adjust_divisions_to_match_count(value)
 
 var is_moving: bool = false
 var path: Array = []
+var waypoints: Array[Vector2] = []
 var target_position: Vector2 = Vector2.ZERO
 var progress: float = 0.0
+
+func _update_caches() -> void:
+	cached_divisions_count = stored_divisions.size()
+	if stored_divisions.is_empty():
+		cached_main_type = "infantry"
+	else:
+		cached_main_type = stored_divisions[0].type
+
+func get_influence_radius() -> float:
+	return clamp(12.0 + (cached_divisions_count * 1.5), 12.0, 36.0)
+
+func get_speed() -> float:
+	var speed_mod = country_obj.troop_speed_modifier if (is_instance_valid(country_obj) and "troop_speed_modifier" in country_obj) else 1.0
+	return 12.0 * speed_mod
 
 
 func _init(
@@ -45,6 +63,7 @@ func _init(
 		var div = DivisionData.new()
 		div.name = "Division %d" % (i + 1)
 		stored_divisions.append(div)
+	_update_caches()
 
 
 func _adjust_divisions_to_match_count(target_count: int):
@@ -54,6 +73,7 @@ func _adjust_divisions_to_match_count(target_count: int):
 			stored_divisions.append(DivisionData.new())
 	elif target_count < current:
 		stored_divisions.resize(target_count)
+	_update_caches()
 
 
 func get_average_hp_percent() -> float:
@@ -68,9 +88,7 @@ func get_average_hp_percent() -> float:
 
 
 func get_main_type() -> String:
-	if stored_divisions.is_empty():
-		return "infantry"
-	return stored_divisions[0].type
+	return cached_main_type
 
 
 func get_raw_state() -> Dictionary:

@@ -296,15 +296,91 @@ class Battle:
 		return float(TroopManager.get_province_strength(pid, country))
 
 
+var _influence_check_timer: float = 0.0
+
 func _process(delta: float):
 	if active_battles.is_empty():
 		return
-	var current_intensity = delta * GameState.main.clock.time_scale
+	var current_intensity = delta * (GameState.main.clock.time_scale if (is_instance_valid(GameState) and GameState.main and GameState.main.clock) else 1.0)
 	if current_intensity <= 0:
 		return
 
 	for battle in active_battles:
 		battle.tick(current_intensity)
+
+
+func _check_influence_battles_spatial() -> void:
+	if not is_instance_valid(GameState) or not GameState.main or not GameState.main.clock or GameState.main.clock.paused:
+		return
+	if not is_instance_valid(TroopManager):
+		return
+
+	# 1. Filter all valid troops
+	var warring_troops = TroopManager.troops.filter(
+		func(t): return is_instance_valid(t)
+	)
+
+	if warring_troops.size() < 2:
+		return
+
+	# 2. Build Spatial Grid (128x128 pixel cells)
+	var spatial_grid: Dictionary = {} # { Vector2i: [TroopData, ...] }
+	const CELL_SIZE := 128.0
+
+	for t in warring_troops:
+		var cell = Vector2i(floor(t.position.x / CELL_SIZE), floor(t.position.y / CELL_SIZE))
+		if not spatial_grid.has(cell):
+			spatial_grid[cell] = []
+		spatial_grid[cell].append(t)
+
+	# 3. Check overlaps ONLY within neighboring cells (O(N) local spatial search)
+	var checked_pairs: Dictionary = {}
+
+	for cell in spatial_grid.keys():
+		var cell_troops = spatial_grid[cell]
+		# Check same cell & 8 neighboring cells
+		for dx in range(-1, 2):
+			for dy in range(-1, 2):
+				var neighbor_cell = cell + Vector2i(dx, dy)
+				if not spatial_grid.has(neighbor_cell):
+					continue
+				var n_troops = spatial_grid[neighbor_cell]
+
+				for t1 in cell_troops:
+					for t2 in n_troops:
+						if t1 == t2 or t1.country_name == t2.country_name:
+							continue
+						var id1: int = t1.get_instance_id()
+						var id2: int = t2.get_instance_id()
+						var pair_key: int = (min(id1, id2) << 32) | max(id1, id2)
+						if checked_pairs.has(pair_key):
+							continue
+						checked_pairs[pair_key] = true
+
+						var r_sum = t1.get_influence_radius() + t2.get_influence_radius()
+						if t1.position.distance_squared_to(t2.position) <= (r_sum * r_sum):
+							if not _is_troop_in_battle(t1) and not _is_troop_in_battle(t2):
+								var mid = (t1.position + t2.position) * 0.5
+								start_battle_at_position(t1, t2, mid)
+
+
+func _is_troop_in_battle(troop: TroopData) -> bool:
+	for b in active_battles:
+		if b.attacker_pid == troop.province_id or b.defender_pid == troop.province_id:
+			return true
+	return false
+
+
+func start_battle_at_position(t1: TroopData, t2: TroopData, pos: Vector2) -> void:
+	for b in active_battles:
+		if (b.attacker_pid == t1.province_id and b.defender_pid == t2.province_id) or (b.attacker_pid == t2.province_id and b.defender_pid == t1.province_id):
+			return
+
+	TroopManager.pause_troop(t1)
+	TroopManager.pause_troop(t2)
+
+	var battle = Battle.new(t1.province_id, t2.province_id, t1.country_name, t2.country_name, pos, self)
+	active_battles.append(battle)
 
 
 func start_battle(attacker_pid: int, defender_pid: int):

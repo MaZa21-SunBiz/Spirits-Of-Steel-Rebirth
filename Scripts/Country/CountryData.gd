@@ -42,8 +42,8 @@ var generals: Array = []
 #endregion
 
 #region --- POLITICAL ---
-var political_power: float = 5000.0
-var daily_pp_gain: float = 0.04
+var political_power: float = 100.0
+var daily_pp_gain: float = 0.08
 var stability: float = 0.5
 var war_support: float = 0.5
 var relations: Dictionary = {}
@@ -63,6 +63,7 @@ var recurring_steel_buy: float = 0.0
 var recurring_oil_buy: float = 0.0
 #endregion
 
+var active_constructions: Array = []
 var enemies = []
 
 var ongoing_training: Array[Training.TroopTraining] = []
@@ -105,13 +106,21 @@ func _init(p_country_name: String = "") -> void:
 	steel = starting_steel_val
 	oil = starting_oil_val
 
+	# Starting Money based on industry & population
+	money = 2500.0 + (factories_amount * 1200.0) + clamp(total_population * 0.002, 0.0, 50000.0)
+
 	# Generate starting generals
 	generate_general()
 	generate_general()
 
+	update_manpower_pool()
+
 
 func process_hour() -> void:
 	update_political_power()
+	if is_player:
+		_process_constructions_hour()
+		_process_training_hour()
 	update_money()
 	update_manpower_pool()
 	
@@ -119,16 +128,57 @@ func process_hour() -> void:
 		ai_controller.think_hour()
 
 
+func _process_training_hour() -> void:
+	for i in range(ongoing_training.size() - 1, -1, -1):
+		var training = ongoing_training[i]
+		var batch_hourly_cost = (training.divisions_count * training.daily_cost) / 24.0
+
+		if money >= batch_hourly_cost:
+			money -= batch_hourly_cost
+			var speed_mult = 1.0
+			if steel <= 0.0:
+				speed_mult *= 0.5
+			if oil <= 0.0:
+				speed_mult *= 0.5
+			training.days_left -= (1.0 / 24.0) * speed_mult
+
+		if training.days_left <= 0:
+			_graduate_troops(training)
+			ongoing_training.remove_at(i)
+
+
+
 func process_day() -> void:
+	_process_constructions()
 	update_resources()
 	_process_training()
 	_process_reinforcements()
 
-	# note z21: needs to be replaced by eventmanager
-	#DecisionManager.process_country_day(self)
 	process_day_complete.emit()
 	if not is_player:
 		ai_controller.think_day()
+
+
+func _process_constructions_hour() -> void:
+	for i in range(active_constructions.size() - 1, -1, -1):
+		var c = active_constructions[i]
+		var hourly_cost = c.get("hourly_cost", c.get("daily_cost", 1000.0) / 24.0)
+		money -= hourly_cost
+		var hl = c.get("hours_left", c.get("days_left", 5) * 24) - 1
+		c["hours_left"] = hl
+		c["days_left"] = int(ceil(hl / 24.0))
+		if hl <= 0:
+			active_constructions.remove_at(i)
+
+
+func _process_constructions() -> void:
+	if not is_player:
+		for i in range(active_constructions.size() - 1, -1, -1):
+			var c = active_constructions[i]
+			var dl = c.get("days_left", 5) - 1
+			c["days_left"] = dl
+			if dl <= 0:
+				active_constructions.remove_at(i)
 
 
 func update_resources() -> void:
@@ -140,47 +190,42 @@ func update_resources() -> void:
 	# 1. Base resource extraction + factories/ports
 	var base_steel_rate = 3.0
 	var base_oil_rate = 1.5
-	
+
 	if is_instance_valid(CountryManager) and CountryManager.HISTORICAL_RESOURCES.has(country_name.to_lower()):
 		var hist = CountryManager.HISTORICAL_RESOURCES[country_name.to_lower()]
 		base_steel_rate = hist.get("base_steel", 3.0)
 		base_oil_rate = hist.get("base_oil", 1.5)
-	
+
 	steel_production = base_steel_rate + factories_available * 1.5
-	
+
 	var ports_count = 0
-	if is_instance_valid(MapManager) and MapManager.country_to_provinces_obj.has(self.country_name):
-		for province in MapManager.country_to_provinces_obj[self.country_name]:
+	var my_provinces = MapManager.country_to_provinces_obj.get(country_name) if is_instance_valid(MapManager) else null
+	if my_provinces:
+		for province in my_provinces:
 			if province.port == Province.PORT_BUILT:
 				ports_count += 1
 	oil_production = base_oil_rate + ports_count * 2.5
-	
+
 	# 2. Consumption from active troops in field
 	var troop_steel_cost = 0.0
 	var troop_oil_cost = 0.0
-	
-	if is_instance_valid(TroopManager):
-		var my_troops = TroopManager.get_troops_for_country(country_name)
-		for troop in my_troops:
+
+	for troop in troops_country:
+		if is_instance_valid(troop):
+			var general_log_mod = 1.0 - (troop.general_logistics * 0.05) if troop.general_id != "" else 1.0
+			var moving_mult = 2.0 if troop.is_moving else 1.0
 			for div in troop.stored_divisions:
-				var temp = DivisionData.TEMPLATES.get(div.type, {})
-				# Daily maintenance is 10% of training requirements, reduced by general logistics skill if assigned
-				var general_log_mod = 1.0 - (troop.general_logistics * 0.05) if troop.general_id != "" else 1.0
-				var div_steel = temp.get("steel", 0.0) * 0.1 * general_log_mod
-				var div_oil = temp.get("oil", 0.0) * 0.1 * general_log_mod
-				if troop.is_moving:
-					div_oil *= 2.0 # double oil when moving
-				troop_steel_cost += div_steel
-				troop_oil_cost += div_oil
-			
+				var temp = DivisionData.TEMPLATES.get(div.type, DivisionData.TEMPLATES["infantry"])
+				troop_steel_cost += temp.get("steel", 0.0) * 0.1 * general_log_mod
+				troop_oil_cost += temp.get("oil", 0.0) * 0.1 * general_log_mod * moving_mult
+
 	# Consumption from training queue
 	for training in ongoing_training:
-		var temp = DivisionData.TEMPLATES.get(training.division_type, {})
+		var temp = DivisionData.TEMPLATES.get(training.division_type, DivisionData.TEMPLATES["infantry"])
 		var t_days = max(1.0, float(temp.get("days", 1.0)))
-		# training consumes resources daily
 		troop_steel_cost += (temp.get("steel", 0.0) / t_days) * training.divisions_count
 		troop_oil_cost += (temp.get("oil", 0.0) / t_days) * training.divisions_count
-		
+
 	steel_consumption = troop_steel_cost
 	oil_consumption = troop_oil_cost
 	
@@ -259,10 +304,22 @@ func reset_cities():
 				provinces_with_city.append(province)
 
 func build_factory(province):
-	if factories_available <= 0: return
+	if factories_available <= 0 or money < 1000.0: return
 	province.factory = province.FACTORY_BUILDING
 	factories_available -= 1
-	EventManager.repeat_task_for_days(5, "money -= 5000", self)
+	var loc_name = province.city.capitalize() if province.city != "" else ("Province " + str(province.id))
+	active_constructions.append({
+		"type": "Factory",
+		"location": loc_name,
+		"hours_left": 120,
+		"total_hours": 120,
+		"days_left": 5,
+		"daily_cost": 1000.0,
+		"hourly_cost": 1000.0 / 24.0,
+		"province": province
+	})
+	if not is_player:
+		EventManager.repeat_task_for_days(5, "money -= 1000", self)
 	EventManager.add_event_after_days(5, [
 		{province: "factory = FACTORY_BUILT"},
 		{self: "factories_amount += 1"},
@@ -270,10 +327,22 @@ func build_factory(province):
 	])
 
 func build_port(province):
-	if factories_available <= 0: return
+	if factories_available <= 0 or money < 100.0: return
 	province.port = Province.PORT_BUILDING
 	factories_available -= 1
-	EventManager.repeat_task_for_days(5, "money -= 500", self)
+	var loc_name = province.city.capitalize() if province.city != "" else ("Province " + str(province.id))
+	active_constructions.append({
+		"type": "Naval Port",
+		"location": loc_name,
+		"hours_left": 120,
+		"total_hours": 120,
+		"days_left": 5,
+		"daily_cost": 100.0,
+		"hourly_cost": 100.0 / 24.0,
+		"province": province
+	})
+	if not is_player:
+		EventManager.repeat_task_for_days(5, "money -= 100", self)
 	EventManager.add_event_after_days(5, [ 
 		{province: "port = PORT_BUILT"},
 		{self: "factories_available += 1"}
@@ -283,7 +352,19 @@ func build_port(province):
 func update_political_power() -> void:
 	political_power += daily_pp_gain
 
+func update_army_cost() -> float:
+	var total_cost = 0.0
+	if is_instance_valid(TroopManager):
+		var my_troops = TroopManager.get_troops_for_country(country_name)
+		for troop in my_troops:
+			for div in troop.stored_divisions:
+				var temp = DivisionData.TEMPLATES.get(div.type, {})
+				total_cost += temp.get("cost", 100) * 0.05
+	army_cost = total_cost
+	return army_cost
+
 func update_money():
+	update_army_cost()
 	var factories_income = factories_available * factory_income
 	var gross_income = income + factories_income - army_cost
 	money += (gross_income / 24.0) * (1.0 - economy_law_penalty)
@@ -296,15 +377,33 @@ func get_income():
 		return
 	for province in provinces:
 		income += province.gdp
+
+func get_fielded_manpower() -> int:
+	var total_men = 0
+	if is_instance_valid(TroopManager):
+		var my_troops = TroopManager.get_troops_for_country(country_name)
+		for troop in my_troops:
+			for div in troop.stored_divisions:
+				var temp = DivisionData.TEMPLATES.get(div.type, {})
+				total_men += temp.get("manpower", 1000)
 	
+	for ready in ready_troops:
+		for div in ready.stored_divisions:
+			var temp = DivisionData.TEMPLATES.get(div.type, {})
+			total_men += temp.get("manpower", 1000)
+
+	for training in ongoing_training:
+		var temp = DivisionData.TEMPLATES.get(training.division_type, {})
+		total_men += temp.get("manpower", 1000) * training.divisions_count
+
+	return total_men
 
 func update_manpower_pool() -> void:
-	var max_allowed_manpower = int(total_population * military_size_ratio)
-	if manpower < max_allowed_manpower:
-		var increase = int(max_allowed_manpower * military_size_ratio * 0.5)
-		manpower += increase
-	manpower = min(manpower, max_allowed_manpower)
-	manpower = max(0, manpower)
+	if total_population <= 0 and is_instance_valid(CountryManager):
+		total_population = CountryManager.get_country_population(country_name)
+	troops_in_field = get_fielded_manpower()
+	var max_eligible = int(total_population * military_size_ratio)
+	manpower = max(0, max_eligible - troops_in_field)
 #endregion
 
 
@@ -360,7 +459,8 @@ func _graduate_troops(training: Training.TroopTraining) -> void:
 func get_army_pressure() -> float:
 	var army_size = 0
 	for troop in TroopManager.get_troops_for_country(country_name):
-		army_size += troop.divisions  # assuming .divisions property exists on TroopData
+		army_size += troop.divisions_count
+	return army_size
 
 	#var capacity = max(1.0, (gdp * 0.03) + factories_amount * 5)
 	return 0.5

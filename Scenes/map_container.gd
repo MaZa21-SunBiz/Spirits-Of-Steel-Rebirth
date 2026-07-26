@@ -10,16 +10,25 @@ class_name MapContainer
 var water_offset: Vector2 = Vector2.ZERO
 
 
+var _cached_map_width: int = 0
+var _ocean_shader_timer: float = 0.0
+
 func _process(_delta: float) -> void:
-	var map_width := MapManager.id_map_image.get_width()
-	if camera.position.x > map_sprite.position.x + map_width:
-		camera.position.x -= map_width
-	elif camera.position.x < map_sprite.position.x - map_width:
-		camera.position.x += map_width
-	if map_sprite.material and is_instance_valid(clock) and !clock.paused:
-		var move_amount = clock.time_scale * 0.001 * _delta
-		water_offset.x += move_amount
-		map_sprite.material.set_shader_parameter("ocean_offset", water_offset)
+	if _cached_map_width <= 0 and is_instance_valid(MapManager) and MapManager.id_map_image:
+		_cached_map_width = MapManager.id_map_image.get_width()
+
+	if _cached_map_width > 0 and camera:
+		if camera.position.x > map_sprite.position.x + _cached_map_width:
+			camera.position.x -= _cached_map_width
+		elif camera.position.x < map_sprite.position.x - _cached_map_width:
+			camera.position.x += _cached_map_width
+
+	if map_sprite and map_sprite.material and is_instance_valid(clock) and !clock.paused:
+		_ocean_shader_timer += _delta
+		if _ocean_shader_timer >= 0.066: # ~15 FPS shader uniform update
+			water_offset.x += clock.time_scale * 0.001 * _ocean_shader_timer
+			_ocean_shader_timer = 0.0
+			map_sprite.material.set_shader_parameter("ocean_offset", water_offset)
 
 
 func _enter_tree() -> void:

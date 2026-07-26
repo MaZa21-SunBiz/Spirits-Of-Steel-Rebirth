@@ -12,8 +12,7 @@ signal speed_changed
 @export var start_hour := 0
 
 # HOI4-Style Speed levels (Seconds to wait between hourly ticks)
-# Speed 5 is 0.0, meaning it runs as fast as your CPU/Frame-rate allows.
-const SPEEDS = {0: -1.0, 1: 1.0, 2: 0.5, 3: 0.1, 4: 0.02, 5: 0.0}  # Paused  # Very Slow (1 tick per second)  # Slow  # Normal  # Fast  # Unlocked (As fast as possible)
+const SPEEDS = {0: -1.0, 1: 1.5, 2: 0.8, 3: 0.35, 4: 0.12, 5: 0.04}  # Paused, Very Slow, Slow, Normal, Fast, Speed 5
 
 # --- State Variables -
 var time_scale: float = 0.0  # to not break existing code
@@ -51,19 +50,14 @@ func _process(delta: float) -> void:
 		return
 
 	# 1. Update visual clock (for your CustomRenderer)
-	# This stays smooth even if the simulation ticks are slow.
 	total_game_seconds += delta * _get_visual_multiplier()
 
 	# 2. Update simulation ticks
-	if current_speed_level == 5:
-		# Speed 5: Run exactly one tick every frame
+	tick_timer += delta
+	var wait_time = SPEEDS[current_speed_level]
+	while tick_timer >= wait_time:
+		tick_timer -= wait_time
 		_perform_tick()
-	else:
-		tick_timer += delta
-		var wait_time = SPEEDS[current_speed_level]
-		while tick_timer >= wait_time:
-			tick_timer -= wait_time
-			_perform_tick()
 
 
 func _perform_tick() -> void:
@@ -108,18 +102,17 @@ func get_datetime_string() -> String:
 
 
 func _get_visual_multiplier() -> float:
-	# Helps total_game_seconds scale roughly with game speed for animations
 	match current_speed_level:
 		1:
 			return 1.0
 		2:
 			return 2.0
 		3:
-			return 10.0
+			return 6.0
 		4:
-			return 50.0
+			return 15.0
 		5:
-			return 100.0
+			return 35.0
 		_:
 			return 0.0
 
@@ -131,22 +124,19 @@ func set_speed(level: int) -> void:
 	current_speed_level = clamp(level, 0, 5)
 	paused = (current_speed_level == 0)
 
-	# Map the Speed Level to a float "time_scale" for your movement logic
-	# Level 1 = 1x, Level 2 = 2x, etc.
-	# Adjust these numbers to match how fast you want units to move!
 	match current_speed_level:
 		0:
 			time_scale = 0.0
 		1:
 			time_scale = 1.0
 		2:
-			time_scale = 5.0
+			time_scale = 2.5
 		3:
-			time_scale = 20.0
+			time_scale = 8.0
 		4:
-			time_scale = 50.0
+			time_scale = 20.0
 		5:
-			time_scale = 100.0
+			time_scale = 45.0
 
 	speed_changed.emit()
 

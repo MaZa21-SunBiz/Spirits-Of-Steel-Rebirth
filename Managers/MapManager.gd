@@ -24,7 +24,7 @@ var map_data: Dictionary = {}
 
 var country_to_provinces: Dictionary = {}
 var country_to_provinces_obj: Dictionary = {}
-var province_objects: Dictionary[int, Province] = {}
+var province_objects: Dictionary = {}
 
 var adjacency_list: Dictionary = {}
 var current_hovered_pid: int = -1
@@ -41,6 +41,8 @@ const CACHE_FOLDER = "res://map_data/"
 
 @export var region_texture: Texture2D
 @export var culture_texture: Texture2D
+
+var map_astar: AStar2D = AStar2D.new()
 
 
 func _ready():
@@ -195,35 +197,48 @@ func _finalize_map_processing():
 	_build_lookup_texture()
 
 
-func _province_finishing_touches():
+func _province_finishing_touches() -> void:
 	country_to_provinces_obj.clear()
 
 	for prov in province_objects.values():
-		# rebuild neighbor object references
+		# Rebuild neighbor object references
 		prov.neighbors_obj.clear()
 		for pid in prov.neighbors:
-			var neighbor = province_objects.get(int(pid), null)
+			var neighbor: Province = province_objects.get(int(pid), null)
 			if neighbor != null:
 				prov.neighbors_obj.append(neighbor)
 
-		# rebuild country -> province object mapping
-		var c = prov.country.to_lower()
-
-		if !country_to_provinces_obj.has(c):
+		# Rebuild country -> province object mapping
+		var c: String = prov.country.to_lower()
+		if not country_to_provinces_obj.has(c):
 			country_to_provinces_obj[c] = []
-
 		country_to_provinces_obj[c].append(prov)
 
+	_build_native_astar()
 
-func _build_country_to_provinces():
-	var result: Dictionary = {}
+
+func _build_native_astar() -> void:
+	map_astar.clear()
+	for pid in province_centers.keys():
+		var center: Vector2 = province_centers[pid]
+		map_astar.add_point(pid, center)
+
+	for pid in adjacency_list.keys():
+		var neighbors = adjacency_list[pid]
+		for n_id in neighbors:
+			if map_astar.has_point(int(n_id)) and not map_astar.are_points_connected(pid, int(n_id)):
+				map_astar.connect_points(pid, int(n_id), true)
+
+
+
+func _build_country_to_provinces() -> void:
+	country_to_provinces.clear()
 	for province in province_objects.values():
 		var country = province.country
-		if not result.has(country):
-			result[country] = []
-		result[country].append(province.id)
-	country_to_provinces = result
-	return
+		if not country_to_provinces.has(country):
+			country_to_provinces[country] = []
+		country_to_provinces[country].append(province.id)
+
 
 
 func draw_province_centroids(image: Image, color: Color = Color(0, 1, 0, 1)) -> void:
@@ -321,13 +336,13 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 	if not id_map_image:
 		return 0
 
-	var size = id_map_image.get_size()
+	var size := id_map_image.get_size()
 	var x: int
 	var y: int
 
 	if map_sprite:
-		var local = map_sprite.to_local(pos)
-		var tex_size = map_sprite.texture.get_size()
+		var local := map_sprite.to_local(pos)
+		var tex_size := map_sprite.texture.get_size()
 
 		if map_sprite.centered:
 			local += tex_size / 2.0
@@ -338,16 +353,16 @@ func get_province_at_pos(pos: Vector2, map_sprite: Sprite2D = null) -> int:
 		x = int(pos.x)
 		y = int(pos.y)
 
-	if y < 0 or y >= size.y or x < 0 or x >= size.x:
+	if x < 0 or y < 0 or x >= size.x or y >= size.y:
 		return 0
 
-	var pixel_index = (y * size.x + x) * 3
-	var data = id_map_image.get_data()
+	var data := id_map_image.get_data()
+	var pixel_index := (y * size.x + x) * 3
+	if pixel_index + 1 >= data.size():
+		return 0
 
-	var r = data[pixel_index]  # Red byte (0-255)
-	var g = data[pixel_index + 1]  # Green byte (0-255)
+	return data[pixel_index] + (data[pixel_index + 1] << 8)
 
-	return r + (g << 8)  # Using bit-shift (<< 8) is slightly faster than (g * 256)
 
 
 func handle_hover(global_pos: Vector2, map_sprite: Sprite2D) -> void:
@@ -383,6 +398,9 @@ func _reset_last_hover() -> void:
 
 func _get_contextual_highlight(pid: int) -> Color:
 	if pid <= 1:
+		return Color.TRANSPARENT
+
+	if not is_instance_valid(CountryManager) or not CountryManager.player_country:
 		return Color.TRANSPARENT
 
 	var player_name = CountryManager.player_country.country_name
@@ -464,9 +482,6 @@ func highlight_country(country_name: String) -> void:
 	var light_color = base_color.lightened(0.2)
 
 	for pid in provinces:
-		var prov = province_objects.get(pid)
-		if prov and not prov.troops_here.is_empty():
-			continue # Do not highlight provinces with troops on them
 		_update_lookup(pid, light_color)
 
 	state_color_texture.update(state_color_image)
@@ -487,10 +502,11 @@ func restore_country_color(country_name: String) -> void:
 
 
 func _execute_deployment(pid: int, player_name: String) -> void:
-	country_clicked.emit(player_name)
 	CountryManager.player_country.deploy_pid = pid
 	GameState.choosing_deploy_city = false
 	_cleanup_interaction_state()
+	if is_instance_valid(GameState.production_menu_instance) and GameState.production_menu_instance.has_method("update_deployment_province_label"):
+		GameState.production_menu_instance.update_deployment_province_label()
 
 
 func _province_build_industry(pid: int, player_name: String) -> void:
@@ -499,16 +515,16 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 	var country = CountryManager.get_country(player_name)
 
 	# 1. Safety Check: Is there already something there or currently building?
-	# Using your Enums: 0 = NO, 1 = BUILDING, 2 = BUILT
 	if type == GameState.IndustryType.FACTORY:
 		if province.factory != province.NO_FACTORY:
 			print("Cannot build: Factory slot is busy or full.")
 			return
 		
 		country.build_factory(province)
-
 		_cleanup_interaction_state()
 		show_industry_country(player_name)
+		if is_instance_valid(GameState.production_menu_instance) and GameState.production_menu_instance.has_method("_refresh_ui"):
+			GameState.production_menu_instance._refresh_ui()
 
 	elif type == GameState.IndustryType.PORT:
 		if province.port != province.NO_PORT:
@@ -520,6 +536,8 @@ func _province_build_industry(pid: int, player_name: String) -> void:
 			country.build_port(province)
 			_cleanup_interaction_state()
 			show_industry_country(player_name)
+			if is_instance_valid(GameState.production_menu_instance) and GameState.production_menu_instance.has_method("_refresh_ui"):
+				GameState.production_menu_instance._refresh_ui()
 		else:
 			print("Action Failed: Port must be on a coast!")
 			return
@@ -564,11 +582,9 @@ func get_lighter_country_color(country: String, amount: float = 0.5) -> Color:
 
 
 func update_province_troop_state(pid):
-	var prov_obj = province_objects[pid]
-	if prov_obj.troops_here.is_empty():
+	var prov_obj = province_objects.get(pid)
+	if prov_obj:
 		update_province_color(pid, prov_obj.country)
-	else:
-		_update_lookup(pid, get_lighter_country_color(prov_obj.country, 0.3))
 
 
 func _update_lookup(pid: int, color: Color) -> void:
@@ -577,41 +593,46 @@ func _update_lookup(pid: int, color: Color) -> void:
 
 
 func _calculate_province_centroids() -> void:
-	# Use a dictionary to accumulate data: {ID: [total_x, total_y, pixel_count]}
 	var accumulators: Dictionary = {}
 
-	# Initialize accumulators for all valid province IDs (IDs > 1)
 	for i in range(2, max_province_id + 1):
 		accumulators[i] = [0.0, 0.0, 0]
 
-	var w = id_map_image.get_width()
-	var h = id_map_image.get_height()
+	var w := id_map_image.get_width()
+	var h := id_map_image.get_height()
+	var data := id_map_image.get_data()
 
-	# --- Pass 1: Accumulate Coordinates ---
+	# --- Pass 1: Accumulate Coordinates directly from byte array ---
 	for y in range(h):
+		var row_offset := y * w * 3
 		for x in range(w):
-			var pid = get_province_at_pos(Vector2(x, y), null)  # Use direct coordinates, sprite is null
+			var idx := row_offset + x * 3
+			var r := int(data[idx])
+			var g := int(data[idx + 1])
+			var pid := r + (g << 8)
 
 			if pid > 1 and accumulators.has(pid):
-				accumulators[pid][0] += x
-				accumulators[pid][1] += y
-				accumulators[pid][2] += 1
+				var acc: Array = accumulators[pid]
+				acc[0] += x
+				acc[1] += y
+				acc[2] += 1
 
 	# --- Pass 2: Calculate Average (Centroid) ---
 	for pid in accumulators:
-		var data = accumulators[pid]
-		var total_pixels = data[2]
+		var acc: Array = accumulators[pid]
+		var total_pixels: int = acc[2]
 
 		if total_pixels > 0:
-			var center_x = data[0] / total_pixels
-			var center_y = data[1] / total_pixels
+			var center_x: float = acc[0] / total_pixels
+			var center_y: float = acc[1] / total_pixels
+			var center := Vector2(center_x, center_y)
 
-			# Store the resulting centroid as a Vector2
-			province_centers[pid] = Vector2(center_x, center_y)
+			province_centers[pid] = center
 			if province_objects.has(pid):
-				province_objects[pid].center = Vector2(center_x, center_y)
+				province_objects[pid].center = center
 
 	print("MapManager: Centroids calculated for %d provinces." % province_centers.size())
+
 
 
 func _build_adjacency_list() -> void:
@@ -710,22 +731,32 @@ func _get_pid_fast(x: int, y: int) -> int:
 
 var path_cache: Dictionary = {}
 
-const HEURISTIC_SCALE: float = 1.0  #/ 50.0
+const HEURISTIC_SCALE: float = 1.0
 
 
 func find_path(start_pid: int, end_pid: int, allowed_countries: Array[String] = []) -> Array[int]:
 	if start_pid == end_pid:
-		return [start_pid]
+		var res: Array[int] = [start_pid]
+		return res
 
-	var use_cache = allowed_countries.is_empty()
-	var cache_key := Vector2i(start_pid, end_pid)
+	var cache_key = Vector3i(start_pid, end_pid, allowed_countries.hash())
 
-	if use_cache and path_cache.has(cache_key):
+	if path_cache.has(cache_key):
 		return path_cache[cache_key].duplicate()
 
-	var path = _find_path_astar(start_pid, end_pid, allowed_countries)
+	var path: Array[int] = []
 
-	if use_cache and not path.is_empty():
+	if allowed_countries.is_empty() and map_astar.has_point(start_pid) and map_astar.has_point(end_pid):
+		var raw_id_path = map_astar.get_id_path(start_pid, end_pid)
+		for id in raw_id_path:
+			path.append(int(id))
+
+	if path.is_empty():
+		path = _find_path_astar(start_pid, end_pid, allowed_countries)
+
+	if not path.is_empty():
+		if path_cache.size() > 1200:
+			path_cache.clear()
 		path_cache[cache_key] = path.duplicate()
 
 	return path
@@ -751,7 +782,13 @@ func _find_path_astar(start_pid: int, end_pid: int, allowed_countries: Array[Str
 	var closest_pid_so_far = start_pid
 	var closest_dist_so_far = f_score[start_pid]
 
+	var iterations := 0
+	var max_iterations := 350
+
 	while open_set.size() > 0:
+		iterations += 1
+		if iterations > max_iterations:
+			break
 		# --- FIND LOWEST F-SCORE ---
 		var current = open_set[0]
 		var best_idx = 0
@@ -962,8 +999,8 @@ func transfer_ownership(pid: int, new_owner_name: String) -> void:
 		push_error("MapManager: Attempted to transfer ownership of non-existent PID: ", pid)
 		return
 
-	var province := province_objects[pid]
-	var old_owner_name := province.country
+	var province = province_objects[pid]
+	var old_owner_name = province.country
 
 	if old_owner_name == new_owner_name:
 		return
@@ -1105,23 +1142,12 @@ func get_provinces_near_sea(country_name: String) -> Array[int]:
 
 
 func get_provincesID_for_country(country: String) -> Array:
-	var provinces := []
-
-	for province in province_objects.values():
-		if province.country == country:
-			provinces.append(province.id)
-
-	return provinces
+	return country_to_provinces.get(country, []).duplicate()
 
 
 func get_provincesOBJ_for_country(country: String) -> Array:
-	var provinces := []
+	return country_to_provinces_obj.get(country, []).duplicate()
 
-	for province in province_objects.values():
-		if province.country == country:
-			provinces.append(province)
-
-	return provinces
 
 
 ## Returns an array of province IDs that are on the border of a different country
@@ -1151,41 +1177,36 @@ func get_border_provinces(country_name: String) -> Array[int]:
 
 func get_all_releasables(my_country: String) -> Array:
 	var releasables = []
+	var my_provinces: Array = country_to_provinces.get(my_country, [])
+	if my_provinces.is_empty():
+		return releasables
 
-	# 1. Get a list of all province IDs I currently own
-	var my_provinces = []
-	for obj in province_objects.values():
-		# Using 'country' as per your Province resource
-		if obj.country == my_country:
-			my_provinces.append(obj.id)
+	# Create a dictionary set for O(1) province lookup
+	var my_prov_set: Dictionary = {}
+	for pid in my_provinces:
+		my_prov_set[pid] = true
 
-	# 2. Check every country in the registry
 	for potential_country in global_claims_registry.keys():
 		if potential_country == my_country:
 			continue
 
 		var required_provinces = global_claims_registry[potential_country]
-		var has_all_provinces = true
+		var has_all_provinces := true
 
-		# 3. Verify I own every province they claim
 		for p_id in required_provinces:
-			if not p_id in my_provinces:
+			if not my_prov_set.has(p_id):
 				has_all_provinces = false
 				break
 
-		if has_all_provinces:
-			# 4. Only add if they aren't already on the map
-			if not _country_exists_on_map(potential_country):
-				releasables.append(potential_country)
+		if has_all_provinces and not _country_exists_on_map(potential_country):
+			releasables.append(potential_country)
 
 	return releasables
 
 
 func _country_exists_on_map(c_name: String) -> bool:
-	for obj in province_objects.values():
-		if obj.country == c_name:
-			return true
-	return false
+	return country_to_provinces.has(c_name) and not country_to_provinces[c_name].is_empty()
+
 
 
 func release_country(country_name: String) -> void:
@@ -1227,12 +1248,15 @@ func get_all_cities() -> Array:
 			cities.append({"id": province.id, "name": province.city})
 	return cities
 
-func get_cities_province_country(country_name) -> Array:
-	var provinces = []
-	for pid in country_to_provinces[country_name]:
-		if len(province_objects[pid].city) > 0:
+func get_cities_province_country(country_name: String) -> Array:
+	var provinces := []
+	var pids: Array = country_to_provinces.get(country_name, [])
+	for pid in pids:
+		var prov: Province = province_objects.get(pid)
+		if prov and not prov.city.is_empty():
 			provinces.append(pid)
 	return provinces
+
 
 
 ## Returns provinces that specifically border a certain enemy
